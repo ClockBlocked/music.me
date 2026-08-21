@@ -1,0 +1,2341 @@
+<!DOCTYPE html>
+
+
+
+	<!---
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>
+MyBeats™  |  Stream & Share 
+    </title>
+    
+    <meta
+      name="description"
+      content="MyBeats – Stream & Share"
+    />
+
+<link rel="stylesheet" href="https://mybeats.cloud/ui/progress.css" />
+<script src="https://mybeats.cloud/modules/progress.js"></script>
+
+<script>
+(function initTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  document.querySelectorAll('.themeToggle').forEach(btn => {
+    btn.classList.toggle('dark', savedTheme === 'dark');
+  });
+})();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9NGGNFW3HL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9NGGNFW3HL');
+</script>
+
+
+<script data-label="styles">
+(function loadStyleSheets() {
+  const BASE_PATH = '/styling/';
+
+  const sheets = [
+			'new',
+			'popups',
+			/**
+    'base/setup',
+  //  'base/themes',
+    'base/icons',
+    'base/images',
+    'base/lists',
+    'base/youTube',
+    
+    'navbars/top',
+    'navbars/breadcrumbs',
+    'navbars/albums',
+    
+    'pages/home',
+    'pages/library',
+    'pages/playlists',
+    'pages/artists',
+    'pages/favorites',
+    
+    'players/drawer',
+    'players/floating',
+    
+    'overlays/modals',
+    'overlays/dropDowns',
+    'overlays/popOvers',
+    'overlays/search',
+    'overlays/toasts',
+    'overlays/toolTips',
+
+
+
+    'newCSS/base/setup',
+    'newCSS/base/themes',
+    'newCSS/base/icons',
+    'newCSS/base/images',
+    'newCSS/base/lists',
+    'newCSS/base/youTube',
+    
+    'newCSS/navbars/top',
+    'newCSS/navbars/breadcrumbs',
+    'newCSS/navbars/albums',
+    
+    'newCSS/pages/home',
+    'newCSS/pages/library',
+    'newCSS/pages/playlists',
+    'newCSS/pages/artists',
+    'newCSS/pages/favorites',
+    
+    'newCSS/players/drawer',
+    'newCSS/players/floating',
+    
+    'newCSS/overlays/modals',
+    'newCSS/overlays/dropDowns',
+    'newCSS/overlays/popOvers',
+    'newCSS/overlays/search',
+    'newCSS/overlays/toasts',
+    'newCSS/overlays/toolTips'
+**/
+
+  ];
+
+  const fragment = document.createDocumentFragment();
+
+  sheets.forEach(name => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `${BASE_PATH}${name}.css`;
+    fragment.appendChild(link);
+  });
+
+  document.head.appendChild(fragment);
+})();
+</script>
+
+
+
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/manifest/ios/57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/manifest/ios/60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/manifest/ios/72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/manifest/ios/76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/manifest/ios/114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/manifest/ios/120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/manifest/ios/144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/manifest/ios/152.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/manifest/ios/167.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/manifest/ios/180.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/manifest/ios/32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/manifest/ios/16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="msapplication-TileColor" content="#12141c" />
+    <meta
+      name="msapplication-TileImage"
+      content="/manifest/icons/mstile-100.png"
+    />
+    <meta name="theme-color" content="#12141c" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/ui/ytSaver.css" />
+  
+
+    <meta name="app-version" content="v2024.06" />
+
+    
+  </head>
+
+--->
+
+
+
+<html lang="en" data-theme="dark">
+  <head>
+
+<script>
+  window.addEventListener('error', function(event) {
+    if (event.target && (event.target.tagName === 'SCRIPT' || event.target.type === 'module')) {
+      console.error('Module Load Error Caught:', event.message || 'Failed to fetch/compile module:', event.target.src || event);
+    }
+  }, true);
+</script>
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>
+    setTimeout(function() {
+      eruda.init();
+    }, 500);
+  </script>
+<script>
+(() => {
+  const MODAL_ID = "__style_visualizer_modal__";
+  const HOVER_STYLE_ID = "__style_visualizer_hover__";
+
+  if (document.getElementById(MODAL_ID)) return;
+
+  const modal = document.createElement("div");
+  modal.id = MODAL_ID;
+
+  modal.innerHTML = `
+    <style>
+      #${MODAL_ID} {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        font-family: Arial, sans-serif;
+        color: #fff;
+      }
+
+      #${MODAL_ID} .sv-bg {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.7);
+      }
+
+      #${MODAL_ID} .sv-modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(760px, calc(100vw - 24px));
+        max-height: calc(100vh - 24px);
+        overflow: auto;
+        padding: 18px;
+        background: #1a1f26;
+        border: 1px solid #3a424c;
+        border-radius: 12px;
+        box-shadow: 0 20px 70px rgba(0,0,0,.7);
+      }
+
+      #${MODAL_ID} h2 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      #${MODAL_ID} .sv-subtitle {
+        margin: 5px 0 16px;
+        color: #9da7b3;
+        font-size: 12px;
+      }
+
+      #${MODAL_ID} .sv-row {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 1fr 1fr auto;
+        gap: 8px;
+        align-items: end;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #20262e;
+        border: 1px solid #343b45;
+        border-radius: 9px;
+      }
+
+      #${MODAL_ID} label {
+        display: block;
+        margin-bottom: 4px;
+        color: #aeb7c2;
+        font-size: 10px;
+      }
+
+      #${MODAL_ID} input,
+      #${MODAL_ID} select,
+      #${MODAL_ID} button {
+        font: inherit;
+      }
+
+      #${MODAL_ID} input,
+      #${MODAL_ID} select {
+        width: 100%;
+        height: 35px;
+        padding: 0 8px;
+        box-sizing: border-box;
+        background: #151a20;
+        color: #fff;
+        border: 1px solid #3b444f;
+        border-radius: 6px;
+        outline: none;
+      }
+
+      #${MODAL_ID} input:focus,
+      #${MODAL_ID} select:focus {
+        border-color: #728091;
+      }
+
+      #${MODAL_ID} .sv-hover {
+        display: flex;
+        align-items: center;
+        height: 35px;
+        gap: 5px;
+        color: #fff;
+        font-size: 12px;
+      }
+
+      #${MODAL_ID} .sv-hover input {
+        width: 15px;
+        height: 15px;
+      }
+
+      #${MODAL_ID} .sv-remove {
+        width: 35px;
+        height: 35px;
+        background: #151a20;
+        color: #fff;
+        border: 1px solid #3b444f;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      #${MODAL_ID} .sv-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      #${MODAL_ID} .sv-buttons button {
+        min-height: 38px;
+        padding: 0 15px;
+        background: #2d353f;
+        color: #fff;
+        border: 1px solid #414b57;
+        border-radius: 7px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      #${MODAL_ID} .sv-buttons button:hover,
+      #${MODAL_ID} .sv-remove:hover {
+        background: #3a444f;
+      }
+
+      #${MODAL_ID} .sv-status {
+        min-height: 18px;
+        margin-top: 10px;
+        color: #9da7b3;
+        font-size: 12px;
+      }
+
+      @media (max-width: 650px) {
+        #${MODAL_ID} .sv-row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 420px) {
+        #${MODAL_ID} .sv-row {
+          grid-template-columns: 1fr;
+        }
+
+        #${MODAL_ID} .sv-buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+
+    <div class="sv-bg"></div>
+
+    <div class="sv-modal">
+      <div style="display:flex;justify-content:space-between;gap:10px;">
+        <div>
+          <h2>Style Visualizer</h2>
+          <div class="sv-subtitle">
+            Temporarily style elements on this page.
+          </div>
+        </div>
+
+        <button class="sv-close" title="Close">✕</button>
+      </div>
+
+      <div class="sv-rows"></div>
+
+      <div class="sv-buttons">
+        <button class="sv-add">+ Add Row</button>
+        <button class="sv-apply">Apply Style</button>
+      </div>
+
+      <div class="sv-status"></div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const rows = modal.querySelector(".sv-rows");
+  const status = modal.querySelector(".sv-status");
+
+  function addRow() {
+    const row = document.createElement("div");
+
+    row.className = "sv-row";
+
+    row.innerHTML = `
+      <div>
+        <label>Target</label>
+        <select class="sv-type">
+          <option value="data">Data Attribute</option>
+          <option value="id">ID (#)</option>
+          <option value="class">Class Name (.)</option>
+          <option value="custom">Custom Query</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Identifier</label>
+        <input
+          class="sv-identifier"
+          type="text"
+          placeholder="site"
+        >
+      </div>
+
+      <div>
+        <label>Property</label>
+        <select class="sv-property">
+          <option value="background-color">
+            Background Color
+          </option>
+          <option value="color">
+            Text Color
+          </option>
+          <option value="border-color">
+            Border Color
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label>Color</label>
+        <input
+          class="sv-color"
+          type="text"
+          placeholder="#ff0000 / #ff0000cc / rgba(...)"
+        >
+      </div>
+
+      <div>
+        <label>&nbsp;</label>
+        <label class="sv-hover">
+          <input class="sv-on-hover" type="checkbox">
+          On Hover
+        </label>
+      </div>
+
+      <button class="sv-remove" title="Remove row">✕</button>
+    `;
+
+    row.querySelector(".sv-remove").onclick = () => {
+      row.remove();
+
+      if (!rows.children.length) {
+        addRow();
+      }
+    };
+
+    rows.appendChild(row);
+  }
+
+  addRow();
+
+  modal.querySelector(".sv-add").onclick = addRow;
+
+  function getSelector(type, value) {
+    value = value.trim();
+
+    if (!value) {
+      throw new Error("Identifier is empty.");
+    }
+
+    if (type === "id") {
+      return value.startsWith("#") ? value : "#" + value;
+    }
+
+    if (type === "class") {
+      return value.startsWith(".") ? value : "." + value;
+    }
+
+    if (type === "data") {
+      if (value.startsWith("[")) {
+        return value;
+      }
+
+      return `[data-nav="${CSS.escape(value)}"]`;
+    }
+
+    if (type === "custom") {
+      return value;
+    }
+
+    throw new Error("Unknown selector type.");
+  }
+
+  function validColor(value) {
+    try {
+      return CSS.supports("color", value.trim());
+    } catch {
+      return false;
+    }
+  }
+
+  modal.querySelector(".sv-apply").onclick = () => {
+    document.getElementById(HOVER_STYLE_ID)?.remove();
+
+    const hoverRules = [];
+    let applied = 0;
+    let skipped = 0;
+
+    for (const row of rows.querySelectorAll(".sv-row")) {
+      const type =
+        row.querySelector(".sv-type").value;
+
+      const identifier =
+        row.querySelector(".sv-identifier").value;
+
+      const property =
+        row.querySelector(".sv-property").value;
+
+      const color =
+        row.querySelector(".sv-color").value.trim();
+
+      const onHover =
+        row.querySelector(".sv-on-hover").checked;
+
+      if (!identifier.trim() || !color) {
+        skipped++;
+        continue;
+      }
+
+      if (!validColor(color)) {
+        console.warn(
+          "[Style Visualizer] Invalid color:",
+          color
+        );
+        skipped++;
+        continue;
+      }
+
+      let selector;
+
+      try {
+        selector = getSelector(type, identifier);
+      } catch (error) {
+        console.warn(
+          "[Style Visualizer] Invalid selector:",
+          error
+        );
+        skipped++;
+        continue;
+      }
+
+      let elements;
+
+      try {
+        elements = [...document.querySelectorAll(selector)];
+      } catch (error) {
+        console.warn(
+          "[Style Visualizer] Invalid CSS selector:",
+          selector,
+          error
+        );
+        skipped++;
+        continue;
+      }
+
+      if (!elements.length) {
+        console.warn(
+          "[Style Visualizer] No elements matched:",
+          selector
+        );
+        skipped++;
+        continue;
+      }
+
+      if (onHover) {
+        hoverRules.push(`
+          ${selector}:hover {
+            ${property}: ${color} !important;
+          }
+        `);
+
+        applied += elements.length;
+      } else {
+        for (const element of elements) {
+          element.style.setProperty(
+            property,
+            color,
+            "important"
+          );
+
+          applied++;
+        }
+      }
+    }
+
+    if (hoverRules.length) {
+      const hoverStyle =
+        document.createElement("style");
+
+      hoverStyle.id = HOVER_STYLE_ID;
+      hoverStyle.textContent =
+        hoverRules.join("\n");
+
+      document.head.appendChild(hoverStyle);
+    }
+
+    status.textContent =
+      `Applied ${applied} target${applied === 1 ? "" : "s"}` +
+      (skipped
+        ? `; skipped ${skipped}`
+        : "") +
+      ".";
+
+    console.info(
+      "[Style Visualizer]",
+      `Applied ${applied} target(s).`
+    );
+  };
+
+  function close() {
+    document.getElementById(HOVER_STYLE_ID)?.remove();
+    modal.remove();
+  }
+
+  modal.querySelector(".sv-close").onclick = close;
+  modal.querySelector(".sv-bg").onclick = close;
+
+  document.addEventListener(
+    "keydown",
+    function escapeHandler(event) {
+      if (event.key === "Escape") {
+        close();
+        document.removeEventListener(
+          "keydown",
+          escapeHandler
+        );
+      }
+    }
+  );
+})();
+</script>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+
+    <title>MyBeats™ | Stream &amp; Share</title>
+    <meta name="description" content="MyBeats – Stream & Share" />
+    <meta name="app-version" content="v2024.06" />
+
+    <link rel="preconnect" href="https://mybeats.cloud" />
+    <link rel="dns-prefetch" href="https://mybeats.cloud" />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+<link rel="preload" href="./dev/CoPilot/base/themes.css" as="style">
+<link rel="stylesheet" href="./dev/CoPilot/base/themes.css">
+
+<script>
+  (function initTheme() {
+    var savedTheme = localStorage.getItem('theme') || 'light';
+
+    var darkThemes = ['dark', 'midnight', 'graphite', 'forest'];
+
+    var lightThemes = ['ivory', 'slate', 'linen', 'mint', 'chalk', 'aurora'];
+
+    var themeColors = {
+      dark:     '#353b45',
+      midnight: '#29303c',
+      graphite: '#3a3a3d',
+      forest:   '#313e37',
+      ivory:    '#e8e0d4',
+      slate:    '#dae4f0',
+      linen:    '#ecdece',
+      mint:     '#d8eae4',
+      chalk:    '#eeecea',
+      aurora:   '#eae2f6'
+    };
+
+    var allThemes = darkThemes.concat(lightThemes);
+    if (allThemes.indexOf(savedTheme) === -1) {
+      savedTheme = 'ivory';
+    }
+
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      meta.setAttribute('content', themeColors[savedTheme] || themeColors.ivory);
+    }
+
+    var isDark = darkThemes.indexOf(savedTheme) !== -1;
+    document.querySelectorAll('.themeToggle').forEach(function (btn) {
+      btn.classList.toggle('dark', isDark);
+    });
+  })();
+</script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      *::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+        font-size: 16px;
+      }
+
+
+*,
+*::before,
+*::after {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+body {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
+
+button,
+a,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+label,
+select,
+summary {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+button:focus,
+button:active,
+a:focus,
+a:active,
+[role="button"]:focus,
+[role="button"]:active {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.scroll-contain {
+  overscroll-behavior: contain;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-contain::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+
+      
+      body {
+        min-height: 100vh;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: var(--font-body);
+        font-size: var(--fs-400);
+        font-weight: var(--fw-normal);
+        line-height: var(--lh-body);
+        background-color: rgba(var(--bgBody) / 0.835) !important;
+        background-image: linear-gradient(rgba(var(--textOthers) / 0.06) 1px, transparent 0), linear-gradient(90deg, rgba(var(--textOthers) / 0.06) 1px, transparent 0);
+        background-size: 40px 40px;
+        color: rgba(var(--textPrimary));
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      button {
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        font-weight: var(--fw-semibold);
+        line-height: var(--lh-heading);
+        letter-spacing: -.03em;
+        text-wrap: balance;
+      }
+
+      h1 { font-size: var(--fs-900); }
+      h2 { font-size: var(--fs-800); }
+      h3 { font-size: var(--fs-700); }
+      h4 { font-size: var(--fs-600); }
+      h5 { font-size: var(--fs-500); }
+      h6 { font-size: 1.125rem; }
+
+      p {
+        max-width: 70ch;
+        line-height: var(--lh-body);
+        text-wrap: pretty;
+      }
+
+      code,
+      pre {
+        font-family: var(--font-mono);
+        font-size: .9rem;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .wrapper {
+        padding-block: 5.35rem;
+       /* padding-inline: 1rem; */
+      }
+
+      #main-content {
+        flex: 1;
+        padding-top: 0;
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      :root {
+        --font-body: "WF Visual Sans Text", sans-serif;
+        --font-heading: "WF Visual Sans", sans-serif;
+        --font-mono: "WF Visual Sans Mono", monospace;
+        --fw-light: 200;
+        --fw-normal: 400;
+        --fw-medium: 500;
+        --fw-semibold: 600;
+        --fw-bold: 700;
+        --fs-900: clamp(3rem, 5vw, 5rem);
+        --fs-800: clamp(2.5rem, 4vw, 4rem);
+        --fs-700: clamp(2rem, 3vw, 3rem);
+        --fs-600: clamp(1.75rem, 2.5vw, 2.5rem);
+        --fs-500: clamp(1.375rem, 2vw, 2rem);
+        --fs-400: 1rem;
+        --fs-300: .9375rem;
+        --fs-200: .875rem;
+        --fs-100: .75rem;
+        --lh-tight: 1.1;
+        --lh-heading: 1.2;
+        --lh-body: 1.6;
+        --theme-transition: background 1.2s ease, color 0.8s ease, box-shadow 1s ease, border-color 0.8s ease;
+      }
+
+      /**
+ [data-theme="dark"] {
+  --bgNav: 76 85 103;
+  --borderNavs: 101 113 136;
+  --bgBreadcrumbs: 85 94 114;
+  --bgLists: #141420;
+  --RGBA_bgLists: 20 20 32;
+  --bgBody: 53 59 69;
+  --bgOthers: 40 44 52;
+  --bgCard: 44 49 60;
+  --bgPopups: 53 59 69;
+  --bgButtons: 62 68 81;
+  --textPrimary: 171 178 191;
+  --textSecondary: 130 137 151;
+  --textOthers: 92 99 112;
+  --borderPrimary: 59 64 77;
+  --borderSubtle: 47 51 61;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 83 155 245;
+  --colorPurple: 198 120 221;
+  --colorPink: 232 102 141;
+  --colorOrange: 224 108 117;
+  --colorRed: 224 108 117;
+  --buttonPrimary: 198 120 221;
+  --buttonPrimaryHover: 212 145 232;
+  --buttonSecondary: 232 102 141;
+  --buttonSecondaryHover: 240 132 166;
+  --buttonTertiary: 224 108 117;
+  --buttonTertiaryHover: 236 138 146;
+  --buttonActive: 172 96 196;
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.4;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.6;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.5;
+  --playerBgPrimary: 33 37 43;
+  --playerBgSecondary: 40 44 52;
+  --playerAccent: 224 108 117;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 44 49 60;
+  --vinylMid: 36 40 48;
+  --vinylDeep: 30 33 40;
+  --vinylBg: 24 27 33;
+}
+
+[data-theme="midnight"] {
+  --bgNav: 66 76 95;
+  --borderNavs: 89 102 124;
+  --bgBreadcrumbs: 74 84 104;
+  --bgLists: #101521;
+  --RGBA_bgLists: 16 21 33;
+  --bgBody: 41 48 60;
+  --bgOthers: 31 37 47;
+  --bgCard: 36 42 54;
+  --bgPopups: 41 48 60;
+  --bgButtons: 48 56 70;
+  --textPrimary: 176 186 202;
+  --textSecondary: 136 148 167;
+  --textOthers: 97 110 130;
+  --borderPrimary: 52 61 77;
+  --borderSubtle: 43 50 63;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 83 155 245;
+  --colorPurple: 170 126 218;
+  --colorPink: 206 110 152;
+  --colorOrange: 205 128 104;
+  --colorRed: 206 104 113;
+  --buttonPrimary: 170 126 218;
+  --buttonPrimaryHover: 186 146 228;
+  --buttonSecondary: 206 110 152;
+  --buttonSecondaryHover: 222 133 171;
+  --buttonTertiary: 205 128 104;
+  --buttonTertiaryHover: 220 148 125;
+  --buttonActive: 150 104 196;
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.42;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.62;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.55;
+  --playerBgPrimary: 28 33 42;
+  --playerBgSecondary: 34 40 51;
+  --playerAccent: 206 104 113;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 36 42 54;
+  --vinylMid: 30 35 45;
+  --vinylDeep: 24 28 37;
+  --vinylBg: 18 22 29;
+}
+
+[data-theme="graphite"] {
+  --bgNav: 92 92 96;
+  --borderNavs: 118 118 124;
+  --bgBreadcrumbs: 100 100 105;
+  --bgLists: #1d1d1f;
+  --RGBA_bgLists: 29 29 31;
+  --bgBody: 58 58 61;
+  --bgOthers: 45 45 47;
+  --bgCard: 49 49 52;
+  --bgPopups: 58 58 61;
+  --bgButtons: 68 68 71;
+  --textPrimary: 188 188 191;
+  --textSecondary: 150 150 154;
+  --textOthers: 112 112 116;
+  --borderPrimary: 66 66 70;
+  --borderSubtle: 53 53 56;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 83 155 245;
+  --colorPurple: 168 142 200;
+  --colorPink: 198 132 162;
+  --colorOrange: 197 142 108;
+  --colorRed: 198 114 114;
+  --buttonPrimary: 168 142 200;
+  --buttonPrimaryHover: 184 160 214;
+  --buttonSecondary: 198 132 162;
+  --buttonSecondaryHover: 214 151 178;
+  --buttonTertiary: 197 142 108;
+  --buttonTertiaryHover: 212 160 128;
+  --buttonActive: 148 122 180;
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.35;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.52;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.46;
+  --playerBgPrimary: 38 38 40;
+  --playerBgSecondary: 46 46 48;
+  --playerAccent: 198 114 114;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 49 49 52;
+  --vinylMid: 40 40 42;
+  --vinylDeep: 33 33 35;
+  --vinylBg: 27 27 29;
+}
+
+[data-theme="forest"] {
+  --bgNav: 88 108 95;
+  --borderNavs: 111 134 120;
+  --bgBreadcrumbs: 98 118 105;
+  --bgLists: #18221c;
+  --RGBA_bgLists: 24 34 28;
+  --bgBody: 49 62 55;
+  --bgOthers: 37 47 41;
+  --bgCard: 42 53 46;
+  --bgPopups: 49 62 55;
+  --bgButtons: 58 72 64;
+  --textPrimary: 180 193 181;
+  --textSecondary: 138 154 140;
+  --textOthers: 101 117 104;
+  --borderPrimary: 61 77 67;
+  --borderSubtle: 49 62 54;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 83 155 245;
+  --colorPurple: 142 154 198;
+  --colorPink: 168 132 172;
+  --colorOrange: 194 142 104;
+  --colorRed: 190 104 104;
+  --buttonPrimary: 109 168 129;
+  --buttonPrimaryHover: 132 186 149;
+  --buttonSecondary: 107 149 172;
+  --buttonSecondaryHover: 128 167 188;
+  --buttonTertiary: 194 142 104;
+  --buttonTertiaryHover: 209 160 125;
+  --buttonActive: 92 144 110;
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.38;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.56;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.48;
+  --playerBgPrimary: 34 44 38;
+  --playerBgSecondary: 41 53 46;
+  --playerAccent: 109 168 129;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--buttonPrimary)), rgba(var(--buttonSecondary)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 42 53 46;
+  --vinylMid: 35 44 39;
+  --vinylDeep: 29 36 32;
+  --vinylBg: 23 30 26;
+}
+
+[data-theme="ivory"] {
+  --bgNav: 220 211 198;
+  --borderNavs: 196 184 168;
+  --bgBreadcrumbs: 228 221 210;
+  --bgLists: #ede6da;
+  --RGBA_bgLists: 237 230 218;
+  --bgBody: 232 224 212;
+  --bgOthers: 240 234 224;
+  --bgCard: 226 218 206;
+  --bgPopups: 214 204 190;
+  --bgButtons: 203 192 176;
+  --textPrimary: 38 30 22;
+  --textSecondary: 76 64 52;
+  --textOthers: 122 108 92;
+  --borderPrimary: 180 167 150;
+  --borderSubtle: 200 190 175;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 158 108 140;
+  --colorPurple: 148 102 130;
+  --colorPink: 188 130 118;
+  --colorOrange: 210 148 88;
+  --colorRed: 186 90 78;
+  --buttonPrimary: 148 102 130;
+  --buttonPrimaryHover: 128 84 112;
+  --buttonSecondary: 110 140 108;
+  --buttonSecondaryHover: 90 120 88;
+  --buttonTertiary: 210 148 88;
+  --buttonTertiaryHover: 190 128 68;
+  --buttonActive: 108 66 96;
+  --shadowPrimary: 38 30 22;
+  --shadowPrimaryAlpha: 0.04;
+  --shadowHeavy: 38 30 22;
+  --shadowHeavyAlpha: 0.09;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.12;
+  --playerBgPrimary: 218 209 196;
+  --playerBgSecondary: 204 194 180;
+  --playerAccent: 148 102 130;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 200 188 172;
+  --vinylMid: 176 163 146;
+  --vinylDeep: 156 142 126;
+  --vinylBg: 216 207 194;
+}
+
+[data-theme="slate"] {
+  --bgNav: 204 214 228;
+  --borderNavs: 176 190 208;
+  --bgBreadcrumbs: 214 223 235;
+  --bgLists: #dce5f0;
+  --RGBA_bgLists: 220 229 240;
+  --bgBody: 218 228 240;
+  --bgOthers: 228 236 246;
+  --bgCard: 212 222 235;
+  --bgPopups: 200 212 228;
+  --bgButtons: 188 202 220;
+  --textPrimary: 16 24 38;
+  --textSecondary: 44 58 80;
+  --textOthers: 88 104 130;
+  --borderPrimary: 164 180 202;
+  --borderSubtle: 186 200 218;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 72 142 220;
+  --colorPurple: 88 118 200;
+  --colorPink: 106 148 218;
+  --colorOrange: 56 168 186;
+  --colorRed: 48 140 172;
+  --buttonPrimary: 72 118 190;
+  --buttonPrimaryHover: 54 98 170;
+  --buttonSecondary: 56 148 186;
+  --buttonSecondaryHover: 40 128 166;
+  --buttonTertiary: 88 164 210;
+  --buttonTertiaryHover: 68 144 192;
+  --buttonActive: 40 82 152;
+  --shadowPrimary: 16 24 48;
+  --shadowPrimaryAlpha: 0.04;
+  --shadowHeavy: 16 24 48;
+  --shadowHeavyAlpha: 0.08;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.1;
+  --playerBgPrimary: 202 214 230;
+  --playerBgSecondary: 188 202 220;
+  --playerAccent: 72 118 190;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 186 200 218;
+  --vinylMid: 164 180 200;
+  --vinylDeep: 146 163 185;
+  --vinylBg: 200 212 228;
+}
+
+[data-theme="linen"] {
+  --bgNav: 224 208 186;
+  --borderNavs: 198 180 156;
+  --bgBreadcrumbs: 232 218 198;
+  --bgLists: #ede0ca;
+  --RGBA_bgLists: 237 224 202;
+  --bgBody: 236 222 204;
+  --bgOthers: 242 230 214;
+  --bgCard: 230 215 196;
+  --bgPopups: 218 202 182;
+  --bgButtons: 206 188 166;
+  --textPrimary: 44 34 20;
+  --textSecondary: 88 70 48;
+  --textOthers: 136 112 84;
+  --borderPrimary: 186 166 142;
+  --borderSubtle: 208 190 168;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 198 128 72;
+  --colorPurple: 172 112 68;
+  --colorPink: 196 98 72;
+  --colorOrange: 218 148 60;
+  --colorRed: 192 82 58;
+  --buttonPrimary: 172 112 68;
+  --buttonPrimaryHover: 152 94 52;
+  --buttonSecondary: 196 98 72;
+  --buttonSecondaryHover: 176 80 56;
+  --buttonTertiary: 218 148 60;
+  --buttonTertiaryHover: 198 128 44;
+  --buttonActive: 136 78 44;
+  --shadowPrimary: 44 28 10;
+  --shadowPrimaryAlpha: 0.05;
+  --shadowHeavy: 44 28 10;
+  --shadowHeavyAlpha: 0.1;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.12;
+  --playerBgPrimary: 222 206 184;
+  --playerBgSecondary: 208 190 167;
+  --playerAccent: 172 112 68;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 204 186 163;
+  --vinylMid: 180 160 136;
+  --vinylDeep: 160 140 116;
+  --vinylBg: 220 204 182;
+}
+
+[data-theme="mint"] {
+  --bgNav: 196 220 214;
+  --borderNavs: 168 198 190;
+  --bgBreadcrumbs: 208 228 222;
+  --bgLists: #d4ede6;
+  --RGBA_bgLists: 212 237 230;
+  --bgBody: 216 234 228;
+  --bgOthers: 226 240 236;
+  --bgCard: 206 226 220;
+  --bgPopups: 194 216 209;
+  --bgButtons: 180 206 198;
+  --textPrimary: 14 36 32;
+  --textSecondary: 38 78 70;
+  --textOthers: 78 120 112;
+  --borderPrimary: 156 194 186;
+  --borderSubtle: 178 210 204;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 52 168 148;
+  --colorPurple: 64 158 142;
+  --colorPink: 72 186 168;
+  --colorOrange: 68 196 172;
+  --colorRed: 42 148 128;
+  --buttonPrimary: 52 152 136;
+  --buttonPrimaryHover: 38 132 118;
+  --buttonSecondary: 72 178 158;
+  --buttonSecondaryHover: 54 158 140;
+  --buttonTertiary: 90 196 174;
+  --buttonTertiaryHover: 70 176 156;
+  --buttonActive: 28 112 98;
+  --shadowPrimary: 10 40 36;
+  --shadowPrimaryAlpha: 0.04;
+  --shadowHeavy: 10 40 36;
+  --shadowHeavyAlpha: 0.08;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.1;
+  --playerBgPrimary: 194 218 212;
+  --playerBgSecondary: 178 206 198;
+  --playerAccent: 52 152 136;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 176 204 196;
+  --vinylMid: 152 182 174;
+  --vinylDeep: 132 163 154;
+  --vinylBg: 192 216 210;
+}
+
+[data-theme="chalk"] {
+  --bgNav: 226 222 220;
+  --borderNavs: 202 196 192;
+  --bgBreadcrumbs: 234 230 228;
+  --bgLists: #edeae8;
+  --RGBA_bgLists: 237 234 232;
+  --bgBody: 238 235 232;
+  --bgOthers: 244 242 240;
+  --bgCard: 232 228 226;
+  --bgPopups: 220 215 212;
+  --bgButtons: 208 202 198;
+  --textPrimary: 30 26 24;
+  --textSecondary: 70 64 60;
+  --textOthers: 118 110 106;
+  --borderPrimary: 188 182 178;
+  --borderSubtle: 208 204 200;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 148 112 162;
+  --colorPurple: 138 106 158;
+  --colorPink: 168 118 138;
+  --colorOrange: 192 140 100;
+  --colorRed: 172 96 90;
+  --buttonPrimary: 138 106 158;
+  --buttonPrimaryHover: 118 88 138;
+  --buttonSecondary: 168 118 138;
+  --buttonSecondaryHover: 148 100 120;
+  --buttonTertiary: 192 140 100;
+  --buttonTertiaryHover: 172 120 82;
+  --buttonActive: 100 72 120;
+  --shadowPrimary: 20 16 14;
+  --shadowPrimaryAlpha: 0.04;
+  --shadowHeavy: 20 16 14;
+  --shadowHeavyAlpha: 0.08;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.1;
+  --playerBgPrimary: 224 220 217;
+  --playerBgSecondary: 210 205 202;
+  --playerAccent: 138 106 158;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 206 200 196;
+  --vinylMid: 182 176 172;
+  --vinylDeep: 162 155 151;
+  --vinylBg: 222 218 215;
+}
+
+[data-theme="aurora"] {
+  --bgNav: 218 208 234;
+  --borderNavs: 192 178 214;
+  --bgBreadcrumbs: 228 220 240;
+  --bgLists: #ede6f8;
+  --RGBA_bgLists: 237 230 248;
+  --bgBody: 234 226 246;
+  --bgOthers: 242 236 252;
+  --bgCard: 226 218 242;
+  --bgPopups: 212 202 232;
+  --bgButtons: 198 186 222;
+  --textPrimary: 28 18 46;
+  --textSecondary: 68 52 102;
+  --textOthers: 118 100 152;
+  --borderPrimary: 176 160 208;
+  --borderSubtle: 198 184 224;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 148 108 220;
+  --colorPurple: 148 108 220;
+  --colorPink: 222 120 168;
+  --colorOrange: 248 158 108;
+  --colorRed: 220 90 120;
+  --buttonPrimary: 148 108 220;
+  --buttonPrimaryHover: 126 88 200;
+  --buttonSecondary: 222 120 168;
+  --buttonSecondaryHover: 200 100 148;
+  --buttonTertiary: 248 158 108;
+  --buttonTertiaryHover: 228 136 86;
+  --buttonActive: 108 72 188;
+  --shadowPrimary: 28 18 56;
+  --shadowPrimaryAlpha: 0.05;
+  --shadowHeavy: 28 18 56;
+  --shadowHeavyAlpha: 0.1;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.1;
+  --playerBgPrimary: 216 206 236;
+  --playerBgSecondary: 200 188 224;
+  --playerAccent: 148 108 220;
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+  --vinylDark: 196 182 222;
+  --vinylMid: 172 156 202;
+  --vinylDeep: 152 136 184;
+  --vinylBg: 214 204 234;
+}
+			
+[data-theme="vscode"] {
+  --bgNav: 37 37 38;
+  --borderNavs: 62 62 66;
+  --bgBreadcrumbs: 45 45 48;
+  --bgLists: #1e1e1e;
+  --RGBA_bgLists: 30 30 30;
+  --bgBody: 30 30 30;
+  --bgOthers: 37 37 38;
+  --bgCard: 37 37 38;
+  --bgPopups: 45 45 48;
+  --bgButtons: 50 50 53;
+  --textPrimary: 212 212 212;
+  --textSecondary: 156 156 156;
+  --textOthers: 110 110 110;
+  --borderPrimary: 62 62 66;
+  --borderSubtle: 47 47 50;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 0 122 204;
+  --colorPurple: 197 134 192;
+  --colorPink: 216 160 223;
+  --colorOrange: 206 145 120;
+  --colorRed: 244 71 71;
+  --buttonPrimary: 0 122 204;
+  --buttonPrimaryHover: 28 145 228;
+  --buttonSecondary: 197 134 192;
+  --buttonSecondaryHover: 216 160 223;
+  --buttonTertiary: 206 145 120;
+  --buttonTertiaryHover: 224 168 144;
+  --buttonActive: 9 101 168;
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.45;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.65;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.55;
+  --playerBgPrimary: 25 25 26;
+  --playerBgSecondary: 32 32 33;
+  --playerAccent: 0 122 204;
+  --gradientAccent: linear-gradient(135deg, rgb(var(--borderBlue)), rgb(var(--colorPurple)));
+  --gradientPlayer: linear-gradient(135deg, rgb(var(--playerBgPrimary)), rgb(var(--playerBgSecondary)));
+  --vinylDark: 37 37 38;
+  --vinylMid: 30 30 31;
+  --vinylDeep: 25 25 26;
+  --vinylBg: 20 20 21;
+}
+
+[data-theme="steel"] {
+  --bgNav: 56 66 82;
+  --borderNavs: 78 90 110;
+  --bgBreadcrumbs: 64 75 92;
+  --bgLists: #141a24;
+  --RGBA_bgLists: 20 26 36;
+  --bgBody: 34 41 53;
+  --bgOthers: 27 33 43;
+  --bgCard: 31 38 49;
+  --bgPopups: 38 46 59;
+  --bgButtons: 46 56 71;
+  --textPrimary: 188 200 216;
+  --textSecondary: 138 152 172;
+  --textOthers: 96 110 130;
+  --borderPrimary: 56 68 86;
+  --borderSubtle: 44 54 70;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 97 175 239;
+  --colorPurple: 152 138 220;
+  --colorPink: 208 132 172;
+  --colorOrange: 209 154 102;
+  --colorRed: 224 108 117;
+  --buttonPrimary: 97 175 239;
+  --buttonPrimaryHover: 122 192 250;
+  --buttonSecondary: 152 138 220;
+  --buttonSecondaryHover: 172 160 232;
+  --buttonTertiary: 209 154 102;
+  --buttonTertiaryHover: 226 175 126;
+  --buttonActive: 72 148 214;
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.42;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.62;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.55;
+  --playerBgPrimary: 24 30 40;
+  --playerBgSecondary: 30 37 48;
+  --playerAccent: 97 175 239;
+  --gradientAccent: linear-gradient(135deg, rgb(var(--buttonPrimary)), rgb(var(--colorPurple)));
+  --gradientPlayer: linear-gradient(135deg, rgb(var(--playerBgPrimary)), rgb(var(--playerBgSecondary)));
+  --vinylDark: 31 38 49;
+  --vinylMid: 26 32 42;
+  --vinylDeep: 21 27 36;
+  --vinylBg: 17 22 30;
+}
+
+[data-theme="ash"] {
+  --bgNav: 178 178 184;
+  --borderNavs: 148 148 156;
+  --bgBreadcrumbs: 190 190 196;
+  --bgLists: #c6c6cc;
+  --RGBA_bgLists: 198 198 204;
+  --bgBody: 210 210 216;
+  --bgOthers: 222 222 227;
+  --bgCard: 200 200 207;
+  --bgPopups: 188 188 196;
+  --bgButtons: 168 168 178;
+  --textPrimary: 12 12 16;
+  --textSecondary: 48 48 58;
+  --textOthers: 92 92 104;
+  --borderPrimary: 138 138 150;
+  --borderSubtle: 162 162 172;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 62 92 168;
+  --colorPurple: 108 88 168;
+  --colorPink: 168 88 128;
+  --colorOrange: 188 118 62;
+  --colorRed: 178 68 68;
+  --buttonPrimary: 62 72 108;
+  --buttonPrimaryHover: 48 58 92;
+  --buttonSecondary: 108 88 168;
+  --buttonSecondaryHover: 88 70 148;
+  --buttonTertiary: 188 118 62;
+  --buttonTertiaryHover: 168 100 48;
+  --buttonActive: 34 42 72;
+  --shadowPrimary: 12 12 20;
+  --shadowPrimaryAlpha: 0.08;
+  --shadowHeavy: 12 12 20;
+  --shadowHeavyAlpha: 0.14;
+  --overlayBg: 10 10 16;
+  --overlayAlpha: 0.18;
+  --playerBgPrimary: 184 184 192;
+  --playerBgSecondary: 168 168 178;
+  --playerAccent: 62 72 108;
+  --gradientAccent: linear-gradient(135deg, rgb(var(--buttonPrimary)), rgb(var(--colorPurple)));
+  --gradientPlayer: linear-gradient(135deg, rgb(var(--playerBgPrimary)), rgb(var(--playerBgSecondary)));
+  --vinylDark: 162 162 172;
+  --vinylMid: 138 138 150;
+  --vinylDeep: 118 118 130;
+  --vinylBg: 180 180 188;
+}
+
+[data-theme="porcelain"] {
+  --bgNav: 214 218 226;
+  --borderNavs: 182 188 200;
+  --bgBreadcrumbs: 224 228 236;
+  --bgLists: #e8ebf1;
+  --RGBA_bgLists: 232 235 241;
+  --bgBody: 240 242 247;
+  --bgOthers: 246 248 251;
+  --bgCard: 228 232 240;
+  --bgPopups: 218 223 232;
+  --bgButtons: 202 208 220;
+  --textPrimary: 10 14 24;
+  --textSecondary: 42 50 68;
+  --textOthers: 86 96 118;
+  --borderPrimary: 172 180 196;
+  --borderSubtle: 196 202 214;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 38 102 208;
+  --colorPurple: 108 82 190;
+  --colorPink: 198 72 128;
+  --colorOrange: 208 122 42;
+  --colorRed: 198 52 62;
+  --buttonPrimary: 38 102 208;
+  --buttonPrimaryHover: 26 84 188;
+  --buttonSecondary: 108 82 190;
+  --buttonSecondaryHover: 88 64 172;
+  --buttonTertiary: 208 122 42;
+  --buttonTertiaryHover: 188 104 28;
+  --buttonActive: 22 66 152;
+  --shadowPrimary: 10 14 28;
+  --shadowPrimaryAlpha: 0.06;
+  --shadowHeavy: 10 14 28;
+  --shadowHeavyAlpha: 0.12;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.14;
+  --playerBgPrimary: 210 216 228;
+  --playerBgSecondary: 196 203 217;
+  --playerAccent: 38 102 208;
+  --gradientAccent: linear-gradient(135deg, rgb(var(--buttonPrimary)), rgb(var(--colorPurple)));
+  --gradientPlayer: linear-gradient(135deg, rgb(var(--playerBgPrimary)), rgb(var(--playerBgSecondary)));
+  --vinylDark: 196 202 214;
+  --vinylMid: 172 180 196;
+  --vinylDeep: 152 161 178;
+  --vinylBg: 206 212 224;
+}
+
+**/
+
+					
+      [data-navbar="site"] {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 3.5rem;
+        background: rgba(var(--bgNav, 18 18 18) / 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(var(--borderNavs, 255 255 255) / 0.08);
+      }
+
+      [data-navbar="site"] .wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        height: 100%;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+
+    <link rel="preload" href="https://mybeats.cloud/dev/fonts/regularText.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="https://mybeats.cloud/dev/fonts/semiBoldHeadings.ttf" as="font" type="font/ttf" crossorigin />
+
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/base/fonts.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/base/themes.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/base/setup.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/base/icons.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/base/images.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/base/lists.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/navbars/top.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/navbars/breadcrumbs.css?v=1.0.1" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/navbars/albums.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/dropDowns.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/modals.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/popOvers.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/dialogs.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/search.css?v=1.0.2" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/toolTips.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/toasts.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/pages/home.css?v=1.0.3" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/pages/library.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/pages/artists.css?v=1.0.1" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/pages/playlists.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/pages/favorites.css" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/players/drawer.css?v=1.0.1" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/players/floating.css?v=1.0.1" />
+    <link rel="stylesheet" href="https://mybeats.cloud/dev/CoPilot/overlays/all.css?v=1.1.2" />
+    <link rel="stylesheet" href="/styling/progress.css" />
+    <link rel="stylesheet" href="/styling/ytSaver.css" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://mybeats.cloud/manifest/ios/57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="https://mybeats.cloud/manifest/ios/60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="https://mybeats.cloud/manifest/ios/72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="https://mybeats.cloud/manifest/ios/76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="https://mybeats.cloud/manifest/ios/114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="https://mybeats.cloud/manifest/ios/120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="https://mybeats.cloud/manifest/ios/144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="https://mybeats.cloud/manifest/ios/152.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="https://mybeats.cloud/manifest/ios/167.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mybeats.cloud/manifest/ios/180.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mybeats.cloud/manifest/ios/32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mybeats.cloud/manifest/ios/16.png" />
+    <link rel="manifest" href="https://mybeats.cloud/manifest.json" crossorigin="use-credentials" />
+    <meta name="msapplication-TileColor" content="#12141c" />
+    <meta name="msapplication-TileImage" content="https://mybeats.cloud/manifest/icons/mstile-100.png" />
+    <meta name="theme-color" content="#e0e6f0" />
+
+    <script defer src="https://mybeats.cloud/modules/progress.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NGGNFW3HL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9NGGNFW3HL');
+    </script>
+  </head>
+
+
+
+
+
+
+	
+
+	
+  <body>
+
+
+
+   <!-- TOP NAVBAR -->
+<nav data-navbar="site">
+  <div class="wrap">
+    <div class="logo">
+      <div class="icon">
+        <svg viewBox="0 0 500 500" fill="currentColor">
+          <!-- Your original Capa_1 SVG graphical vectors -->
+        </svg>
+      </div>
+      <span class="text">MyBeats<span>™</span></span>
+    </div>
+    
+    <div class="links">
+      <button class="link active" data-nav="home">Home</button>
+      <button class="link" data-nav="library">Library</button>
+      <button class="link" data-nav="favorites">Favorites</button>
+      <button class="link" data-nav="playlists">Playlists</button>
+    </div>
+    
+    <div class="actions">
+      <button id="open-search" class="btn" title="Search (Ctrl+K)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+      </button>
+
+      <button data-action="settings" class="btn" data-hint="Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
+      </button>
+
+      <button id="notification-bell" class="btn" data-dash="notifications" aria-label="Notifications">
+         <!-- your SVG icon -->
+      </button>
+
+					
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMBS NAVBAR -->
+<div data-navbar="breadcrumbs">
+  <div class="trail">
+    <div class="wrap">
+      <div class="items" id="breadcrumb-items"></div>
+    </div>
+  </div>
+  <button id="breadcrumb-toggle" class="toggle" title="Toggle breadcrumbs">
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+</div>
+ 
+
+
+
+
+
+
+			
+<div id="search-bar" class="hidden" data-overlay="search">
+  <div class="overlay" id="search-overlay"></div>
+  <div class="panel">
+    <div class="head">
+      <div class="field">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search songs, artists, albums..."
+          autocomplete="on"
+          autocorrect="off"
+          spellcheck="false"
+        />
+
+        <!-- Search Icon -->
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+
+
+        <!-- Close Icon -->
+        <button class="close" id="close-search" title="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div id="search-results-container" class="results hidden"></div>
+  </div>
+</div>
+
+
+
+    <main
+      id="main-content"
+      class="wrapper"
+    >
+
+
+
+
+
+
+    </main>
+
+
+
+    <div id="player-bar-container"></div>
+    <div
+      data-overlay="drawer"
+      id="player-drawer-overlay"
+    ></div>
+
+    <div id="full-player-drawer"></div>
+
+    <div id="visualizer-canvas"></div>
+
+
+    <div
+      data-overlay="modal"
+      id="modal-overlay"
+    ></div>
+    <div
+      class="modal"
+      id="modal"
+    ></div>
+    
+    <div
+      data-overlay="toast"
+      id="toast"
+    ></div>
+
+
+
+    <audio
+      id="global-audio"
+      preload="none"
+      crossorigin="anonymous"
+    ></audio>
+
+
+
+<script src="/pwa.js"></script>
+
+<script>
+        (function () {
+            const CONFIG = {
+                swUrl: '/sw.js', // Path to your service worker file
+                swScope: '/', // Scope — must be at or below the SW file's location
+                updateCheckIntervalMs: 10 * 60 * 1000, // Check for updates every 10 minutes
+                updateBannerAutoShow: true, // Automatically show update banner when update found
+                debug: (function () {
+                    // Enable debug via query param: ?sw-debug=1
+                    try {
+                        return new URLSearchParams(window.location.search).get('sw-debug') === '1';
+                    } catch (_) {
+                        return false;
+                    }
+                })(),
+            };
+
+            // ─── State ──────────────────────────────────
+            const STATE = {
+                supported: false,
+                registration: null,
+                installingWorker: null,
+                waitingWorker: null,
+                activeWorker: null,
+                updateBanner: null,
+                updateBannerVisible: false,
+                updateCheckTimer: null,
+                isOnline: typeof navigator !== 'undefined' ? navigator.onLine : true,
+                deferredPrompt: null, // shared reference for install banner
+            };
+
+            // ─── Logger ─────────────────────────────────
+            const log = CONFIG.debug
+                ? (...args) => console.log('[SW·Reg]', ...args)
+                : () => { };
+            const warn = (...args) => console.warn('[SW·Reg]', ...args);
+            const error = (...args) => console.error('[SW·Reg]', ...args);
+
+            log('Initialized with config:', CONFIG);
+
+            // ─── Feature Detection ──────────────────────
+            function detectSupport() {
+                const hasSW = 'serviceWorker' in navigator;
+                const hasFetch = 'fetch' in window;
+                const hasPromise = typeof Promise !== 'undefined';
+                const isSecure =
+                    window.location.protocol === 'https:' ||
+                    window.location.hostname === 'localhost' ||
+                    window.location.hostname === '127.0.0.1' ||
+                    window.location.hostname.startsWith('192.168.') ||
+                    window.location.hostname.startsWith('10.') ||
+                    window.location.hostname.includes('.local');
+
+                STATE.supported = hasSW && hasFetch && hasPromise && isSecure;
+
+                if (!STATE.supported) {
+                    const reasons = [];
+                    if (!hasSW) reasons.push('Service Worker API missing');
+                    if (!hasFetch) reasons.push('Fetch API missing');
+                    if (!hasPromise) reasons.push('Promise support missing');
+                    if (!isSecure) reasons.push('Non-secure context (requires HTTPS or localhost)');
+                    warn('Service Worker not supported:', reasons.join('; '));
+                } else {
+                    log('Service Worker is supported');
+                }
+
+                return STATE.supported;
+            }
+
+            // ─── Create Update Banner DOM ──────────────
+            function createUpdateBanner() {
+                if (STATE.updateBanner) return STATE.updateBanner;
+
+                const banner = document.createElement('div');
+                banner.className = 'updateBanner';
+                banner.setAttribute('data-overlay','update');
+                banner.setAttribute('role', 'alert');
+                banner.setAttribute('aria-live', 'polite');
+                banner.innerHTML = `
+                    <div class="content">
+                        <p class="title">Update Available</p>
+                        <p class="desc">A new version is ready. Tap to refresh.</p>
+                    </div>
+                    <div class="refresh">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                        </svg>
+                    </div>
+                    <button class="close" aria-label="Dismiss update" title="Dismiss">&times;</button>
+                `;
+
+                // Click on banner body → trigger update
+                banner.addEventListener('click', function (e) {
+                    // Don't trigger if the close button was clicked
+                    if (e.target.closest('.close')) return;
+                    triggerUpdate();
+                });
+
+                // Close button
+                const closeBtn = banner.querySelector('.close');
+                closeBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    dismissUpdateBanner();
+                });
+
+                document.body.appendChild(banner);
+                STATE.updateBanner = banner;
+                log('Update banner DOM created');
+                return banner;
+            }
+
+            // ─── Show Update Banner ────────────────────
+            function showUpdateBanner() {
+                if (STATE.updateBannerVisible) return;
+                const banner = createUpdateBanner();
+                // Reset any dismiss animation
+                banner.classList.remove('dismissing');
+                // Force reflow to restart animation
+                void banner.offsetWidth;
+                banner.classList.add('visible');
+                STATE.updateBannerVisible = true;
+                log('Update banner shown');
+            }
+
+            // ─── Dismiss Update Banner ─────────────────
+            function dismissUpdateBanner() {
+                if (!STATE.updateBannerVisible || !STATE.updateBanner) return;
+                const banner = STATE.updateBanner;
+                banner.classList.add('dismissing');
+                banner.classList.remove('visible');
+                STATE.updateBannerVisible = false;
+                // Clean up after animation
+                banner.addEventListener(
+                    'animationend',
+                    function handler() {
+                        banner.classList.remove('dismissing');
+                        banner.removeEventListener('animationend', handler);
+                        log('Update banner dismissed');
+                    },
+                    { once: true }
+                );
+            }
+
+            // ─── Trigger Update (Skip Waiting + Reload) ─
+            function triggerUpdate() {
+                const waiting = STATE.waitingWorker;
+                if (!waiting) {
+                    warn('No waiting worker to activate');
+                    return;
+                }
+
+                log('Triggering skipWaiting on waiting worker');
+                waiting.postMessage({ type: 'SKIP_WAITING' });
+
+                // Listen for controller change, then reload
+                const controllerChangeHandler = function () {
+                    log('Controller changed — reloading page');
+                    navigator.serviceWorker.removeEventListener('controllerchange', controllerChangeHandler);
+                    window.location.reload();
+                };
+
+                navigator.serviceWorker.addEventListener('controllerchange', controllerChangeHandler);
+
+                // Fallback: if controllerchange doesn't fire within 3s, reload anyway
+                setTimeout(function () {
+                    if (navigator.serviceWorker.controller === STATE.waitingWorker ||
+                        STATE.waitingWorker?.state === 'activated') {
+                        log('Fallback reload after skipWaiting');
+                        navigator.serviceWorker.removeEventListener('controllerchange', controllerChangeHandler);
+                        window.location.reload();
+                    }
+                }, 3000);
+            }
+
+            // ─── Handle New Worker (Installing → Waiting) ──
+            function handleNewWorker(worker) {
+                log('New worker detected, state:', worker.state);
+
+                STATE.installingWorker = worker;
+
+                worker.addEventListener('statechange', function () {
+                    log('Worker state changed to:', worker.state);
+
+                    if (worker.state === 'installed') {
+                        // The new worker is installed but waiting
+                        STATE.waitingWorker = worker;
+                        STATE.installingWorker = null;
+
+                        if (CONFIG.updateBannerAutoShow) {
+                            showUpdateBanner();
+                        }
+
+                        log('New worker is waiting. Update banner ' +
+                            (CONFIG.updateBannerAutoShow ? 'shown.' : 'suppressed.'));
+                    }
+
+                    if (worker.state === 'activated') {
+                        STATE.activeWorker = worker;
+                        STATE.waitingWorker = null;
+                        dismissUpdateBanner();
+                        log('New worker activated');
+                    }
+
+                    if (worker.state === 'redundant') {
+                        STATE.installingWorker = null;
+                        STATE.waitingWorker = null;
+                        warn('Worker became redundant');
+                    }
+                });
+            }
+
+            // ─── Register Service Worker ────────────────
+            async function registerSW() {
+                if (!STATE.supported) return null;
+
+                try {
+                    log('Registering service worker:', CONFIG.swUrl, 'scope:', CONFIG.swScope);
+                    const registration = await navigator.serviceWorker.register(CONFIG.swUrl, {
+                        scope: CONFIG.swScope,
+                        // 'updateViaCache': 'none' ensures the browser always fetches
+                        // the latest SW script (respecting HTTP cache headers)
+                        updateViaCache: 'none',
+                    });
+
+                    STATE.registration = registration;
+                    log('Registration successful. Scope:', registration.scope);
+
+                    // ── Check existing state ────────────────
+                    if (registration.installing) {
+                        log('Worker already installing');
+                        handleNewWorker(registration.installing);
+                    } else if (registration.waiting) {
+                        log('Worker already waiting (from previous visit)');
+                        STATE.waitingWorker = registration.waiting;
+                        handleNewWorker(registration.waiting);
+                        // Show banner immediately since there's a pending update
+                        if (CONFIG.updateBannerAutoShow) {
+                            showUpdateBanner();
+                        }
+                    } else if (registration.active) {
+                        STATE.activeWorker = registration.active;
+                        log('Active worker found. State:', registration.active.state);
+                    }
+
+                    // ── Listen for updates ──────────────────
+                    registration.addEventListener('updatefound', function () {
+                        const newWorker = registration.installing;
+                        if (!newWorker) return;
+                        log('Update found — new worker installing');
+                        handleNewWorker(newWorker);
+                    });
+
+                    // ── Periodic update checks ──────────────
+                    if (CONFIG.updateCheckIntervalMs > 0) {
+                        STATE.updateCheckTimer = setInterval(function () {
+                            log('Periodic update check triggered');
+                            if (STATE.registration) {
+                                STATE.registration.update().catch(function (err) {
+                                    warn('Periodic update check failed:', err.message);
+                                });
+                            }
+                        }, CONFIG.updateCheckIntervalMs);
+                        log('Periodic update checks enabled every',
+                            CONFIG.updateCheckIntervalMs / 1000, 'seconds');
+                    }
+
+                    // ── Controller reference ─────────────────
+                    if (navigator.serviceWorker.controller) {
+                        STATE.activeWorker = navigator.serviceWorker.controller;
+                        log('Page is controlled by SW. Script URL:',
+                            navigator.serviceWorker.controller.scriptURL);
+                    }
+
+                    return registration;
+
+                } catch (err) {
+                    error('Service worker registration failed:', err.message);
+                    STATE.registration = null;
+
+                    // Dispatch a custom event so the app can react if needed
+                    window.dispatchEvent(new CustomEvent('sw:registration-failed', {
+                        detail: { error: err.message },
+                    }));
+
+                    return null;
+                }
+            }
+
+            // ─── Online/Offline Monitoring ──────────────
+            function setupConnectivityMonitoring() {
+                window.addEventListener('online', function () {
+                    STATE.isOnline = true;
+                    log('Network: online');
+                    // Optionally trigger an immediate update check when coming back online
+                    if (STATE.registration) {
+                        STATE.registration.update().catch(function () { });
+                    }
+                    window.dispatchEvent(new CustomEvent('sw:online'));
+                });
+
+                window.addEventListener('offline', function () {
+                    STATE.isOnline = false;
+                    log('Network: offline');
+                    window.dispatchEvent(new CustomEvent('sw:offline'));
+                });
+
+                log('Connectivity monitoring enabled. Current status:',
+                    STATE.isOnline ? 'online' : 'offline');
+            }
+
+            // ─── Message Handler (SW → Page) ────────────
+            function setupMessageHandler() {
+                navigator.serviceWorker.addEventListener('message', function (event) {
+                    log('Message from SW:', event.data);
+
+                    // Handle various message types from the service worker
+                    if (event.data && event.data.type) {
+                        switch (event.data.type) {
+                            case 'UPDATE_AVAILABLE':
+                                log('SW notified: update available');
+                                if (!STATE.updateBannerVisible && CONFIG.updateBannerAutoShow) {
+                                    showUpdateBanner();
+                                }
+                                break;
+                            case 'CACHE_UPDATED':
+                                log('SW notified: cache updated —', event.data.payload);
+                                break;
+                            case 'OFFLINE_READY':
+                                log('SW notified: offline content ready');
+                                break;
+                            default:
+                                log('Unhandled SW message type:', event.data.type);
+                        }
+                    }
+
+                    // Forward all SW messages as custom events
+                    window.dispatchEvent(new CustomEvent('sw:message', {
+                        detail: event.data,
+                    }));
+                });
+                log('SW message handler configured');
+            }
+
+            // ─── Debug: Unregister Helper ───────────────
+            function exposeDebugAPI() {
+                if (!CONFIG.debug) return;
+
+                window.__swDebug = {
+                    state: STATE,
+                    config: CONFIG,
+                    register: registerSW,
+                    unregister: async function () {
+                        if (STATE.registration) {
+                            const success = await STATE.registration.unregister();
+                            log('Unregistration result:', success);
+                            STATE.registration = null;
+                            STATE.activeWorker = null;
+                            STATE.waitingWorker = null;
+                            STATE.installingWorker = null;
+                            if (STATE.updateCheckTimer) clearInterval(STATE.updateCheckTimer);
+                            dismissUpdateBanner();
+                            return success;
+                        }
+                        return false;
+                    },
+                    update: function () {
+                        if (STATE.registration) {
+                            return STATE.registration.update();
+                        }
+                        return Promise.reject(new Error('No registration'));
+                    },
+                    showUpdateBanner: showUpdateBanner,
+                    dismissUpdateBanner: dismissUpdateBanner,
+                    triggerUpdate: triggerUpdate,
+                };
+
+                console.log(
+                    '%c[SW·Reg] %cDebug API exposed at %cwindow.__swDebug',
+                    'color: #4da6ff;', 'color: inherit;', 'font-weight: bold; color: #34c759;'
+                );
+                console.log('  __swDebug.state        — Current state');
+                console.log('  __swDebug.register()   — Re-register SW');
+                console.log('  __swDebug.unregister() — Unregister SW');
+                console.log('  __swDebug.update()     — Force update check');
+                console.log('  __swDebug.triggerUpdate() — Skip waiting + reload');
+            }
+
+            // ─── Initialization ─────────────────────────
+            async function init() {
+                log('Starting initialization...');
+
+                if (!detectSupport()) {
+                    // SW not supported — exit gracefully
+                    // (install banner may still work via beforeinstallprompt on some browsers)
+                    exposeDebugAPI();
+                    return;
+                }
+
+                setupConnectivityMonitoring();
+                setupMessageHandler();
+
+                const registration = await registerSW();
+
+                if (registration) {
+                    log('Service worker registration complete.');
+                    window.dispatchEvent(new CustomEvent('sw:ready', {
+                        detail: { registration },
+                    }));
+                }
+
+                exposeDebugAPI();
+            }
+
+            // ─── Handle Controller Change (External) ────
+            // This catches cases where skipWaiting is called from DevTools
+            // or another tab, ensuring our state stays in sync
+            navigator.serviceWorker.addEventListener('controllerchange', function () {
+                log('Controller change detected (may be from another tab)');
+                if (navigator.serviceWorker.controller) {
+                    STATE.activeWorker = navigator.serviceWorker.controller;
+                    STATE.waitingWorker = null;
+                    STATE.installingWorker = null;
+                }
+                window.dispatchEvent(new CustomEvent('sw:controller-change'));
+            });
+
+            // ─── Handle Service Worker Errors ───────────
+            navigator.serviceWorker.addEventListener('messageerror', function (event) {
+                error('Message error from SW:', event);
+                window.dispatchEvent(new CustomEvent('sw:message-error', {
+                    detail: event,
+                }));
+            });
+
+            // ─── Start ──────────────────────────────────
+            // Run immediately if document.body exists (script at end of body),
+            // otherwise wait for DOM readiness
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+
+            // ─── Expose for install banner integration ──
+            // Share the registration reference so the install banner
+            // or other scripts can access it
+            window.__swRegistration = function () {
+                return STATE.registration;
+            };
+            window.__swState = function () {
+                return STATE;
+            };
+
+            log('Service Worker registration module loaded.');
+        })();
+    </script>
+
+    <script>
+        (function () {
+            if (
+                window.matchMedia("(display-mode: standalone)").matches ||
+                navigator.standalone
+            )
+                return;
+            let deferredPrompt;
+            let banner;
+            window.addEventListener("beforeinstallprompt", (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                if (banner) {
+                    banner.style.pointerEvents = "auto";
+                    banner.style.opacity = "1";
+                }
+            });
+            banner = document.createElement("div");
+            banner.className = "installBanner";
+            banner.setAttribute('data-overlay','install');
+            banner.style.pointerEvents = "none";
+            banner.innerHTML = `
+        <div class="text">
+          <p class="title">Install App</p>
+          <p class="desc">Add to Home Screen for fast, full‑screen access</p>
+        </div>
+        <div class="arrow">
+          <svg viewBox="0 0 24 24"><polyline points="7 17 12 22 17 17"/><line x1="12" y1="22" x2="12" y2="2"/></svg>
+        </div>
+      `;
+            document.body.prepend(banner);
+            banner.addEventListener("click", async () => {
+                if (!deferredPrompt) return;
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                if (outcome === "accepted") banner.remove();
+            });
+            setTimeout(() => {
+                if (banner && banner.parentNode) {
+                    banner.style.opacity = "0";
+                    banner.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        if (banner.parentNode) banner.remove();
+                    }, 250);
+                }
+            }, 3000);
+            window.addEventListener("appinstalled", () => {
+                if (banner && banner.parentNode) banner.remove();
+            });
+        })();
+</script>
+
+
+
+
+
+
+
+    
+<script type="module" src="/modules/global.js" defer></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
