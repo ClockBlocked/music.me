@@ -1,0 +1,587 @@
+/* ============================================================================
+   base/lists.css
+   List primitives — scroll rows, shared cards, generic song rows
+   NOTE: Artist-page song items (.songItem) intentionally live in
+   pages/artists.css and are NOT styled here.
+   ============================================================================ */
+
+
+/* ===== 1. HORIZONTAL SCROLL ROWS ===== */
+.scroll-row {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem 1.25rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.scroll-row > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+
+/* ===== 2. SHARED CARDS (reveal-on-hover: album / artist / playlist) ===== */
+[data-card="album"],
+[data-card="artist"],
+[data-card="playlist"] {
+  position: relative;
+  width: var(--w, 150px);
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(var(--bgCard));
+  border: 1px solid rgba(var(--borderSubtle));
+  box-shadow: 0 8px 24px rgba(var(--shadowPrimary) / 0.15);
+  color: rgb(var(--textPrimary));
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 44px rgba(var(--shadowPrimary) / 0.35);
+    border-color: rgba(var(--borderSecondary));
+  }
+
+  &:active {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+[data-card="album"] .art-wrap,
+[data-card="artist"] > img,
+[data-card="artist"] .art-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(var(--accent-coral) / 0.08), rgba(var(--accent-pink) / 0.08));
+}
+
+[data-card="album"] .art-wrap,
+[data-card="artist"] .art-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-card="album"] .art-wrap img,
+[data-card="artist"] > img,
+[data-card="artist"] .art-wrap img,
+[data-card="playlist"] .art-wrap img,
+[data-card="playlist"] .mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+[data-card="album"]:hover .art-wrap img,
+[data-card="artist"]:hover .art-wrap img,
+[data-card="artist"]:hover > img,
+[data-card="playlist"]:hover .art-wrap img,
+[data-card="playlist"]:hover .mosaic img {
+  transform: scale(1.08);
+}
+
+[data-card="album"] .art-overlay,
+[data-card="artist"] .art-overlay,
+[data-card="playlist"] .art-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--overlayBg), 0.35);
+  opacity: 0;
+  transition: opacity 0.25s ease, backdrop-filter 0.25s ease;
+  pointer-events: none;
+}
+
+[data-card="album"]:hover .art-overlay,
+[data-card="artist"]:hover .art-overlay,
+[data-card="playlist"]:hover .art-overlay {
+  opacity: 1;
+  backdrop-filter: blur(2px);
+}
+
+[data-card="album"] .play-glyph,
+[data-card="artist"] .play-glyph,
+[data-card="playlist"] .play-glyph {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--accent-coral), 0.95);
+  color: #fff;
+  transform: translateY(12px) scale(0.85);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+  box-shadow: 0 8px 24px rgba(var(--accent-coral), 0.4);
+}
+
+[data-card="album"]:hover .play-glyph,
+[data-card="artist"]:hover .play-glyph,
+[data-card="playlist"]:hover .play-glyph {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+[data-card="album"] .card-info,
+[data-card="artist"] .card-info,
+[data-card="playlist"] .card-info {
+  padding: 0.75rem;
+}
+
+[data-card="album"] .card-info .primary,
+[data-card="artist"] .card-info .primary,
+[data-card="playlist"] .card-info .primary {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-card="album"] .card-info .secondary,
+[data-card="artist"] .card-info .secondary,
+[data-card="playlist"] .card-info .secondary {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgb(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ===== 3. CARD VARIANTS ===== */
+[data-card="artist"] {
+  border-radius: 999px;
+
+  > img,
+  .art-wrap {
+    border-radius: 50%;
+  }
+}
+
+[data-card="playlist"] {
+  --w: 160px;
+
+  .art-wrap {
+    aspect-ratio: 1 / 1;
+    padding: 0.35rem;
+    background: rgba(var(--bgCardHeader));
+  }
+
+  .mosaic {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.25rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: rgba(var(--bgOthers));
+  }
+
+  .mosaic .cell,
+  .mosaic .thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mosaic .cell {
+    background: rgba(var(--bgButtons));
+  }
+}
+
+
+/* ===== 4. LEGACY CARD MARKUP (.wrap / .overlay / .title / .sub) ===== */
+[data-card="album"] .wrap {
+  margin-bottom: 0.5rem;
+}
+[data-card="album"] .wrap img {
+  width: var(--w, 150px);
+  height: var(--w, 150px);
+  object-fit: cover;
+}
+[data-card="album"] .overlay {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+}
+[data-card="album"] .title {
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-card="album"] .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-area="scroll"] [data-card="album"] .wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--borderSubtle));
+  box-shadow: 0 20px 50px rgba(var(--shadowPrimaryAlpha));
+  overflow: hidden;
+
+  & > img {
+    object-fit: cover;
+  }
+}
+
+[data-area="scroll"] [data-card="artist"] {
+  width: 130px;
+}
+[data-area="scroll"] [data-card="artist"] .name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-area="scroll"] [data-card="artist"] .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-card="recent"] {
+  width: var(--w, 140px);
+}
+[data-card="recent"] .wrap {
+  margin-bottom: 0.5rem;
+}
+[data-card="recent"] .wrap img {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+}
+[data-card="recent"] .overlay {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+}
+[data-card="recent"] .title {
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-card="recent"] .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artist-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.artist-card:hover {
+  background: rgba(var(--bgButtons) / 0.4);
+  transform: translateY(-4px);
+}
+
+.artist-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.artist-card:hover img {
+  border-color: rgba(var(--colorPurple) / 0.5);
+  box-shadow: 0 8px 30px rgba(var(--colorPurple) / 0.2);
+}
+
+
+/* ===== 5. GENERIC SONG ROWS (everywhere EXCEPT artist page) ===== */
+.song-row,
+[data-list="songs"] .song-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.85rem;
+  background: rgba(var(--bgCard));
+  border: 1px solid transparent;
+  color: rgb(var(--textPrimary));
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.song-row:hover,
+[data-list="songs"] .song-row:hover {
+  background: rgba(var(--bgHovers));
+  border-color: rgba(var(--borderSubtle));
+  transform: translateX(4px);
+}
+
+.song-row:active {
+  transform: scale(0.995);
+}
+
+.song-row.active {
+  background: linear-gradient(90deg, rgba(var(--colorPurple) / 0.15), rgba(var(--colorPink) / 0.1));
+  border-left: 3px solid rgba(var(--colorPurple));
+}
+
+.song-row:hover .hoverPlay {
+  color: var(--playerAccent);
+}
+
+.song-row .cover {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.65rem;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(var(--bgOthers));
+}
+
+.song-row .info {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.song-row .info .title {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgb(var(--textPrimary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.song-row .info .sub {
+  margin: 0.15rem 0 0;
+  font-size: 0.78rem;
+  color: rgb(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.most-played-count {
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(var(--colorOrange) / 0.14);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.song-row .rank,
+.most-played-count,
+.song-row .time {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgb(var(--textOthers));
+  flex-shrink: 0;
+}
+
+.song-row .rank {
+  width: 1.5rem;
+  text-align: center;
+  color: rgb(var(--textOthers));
+}
+
+.song-row .rank-played {
+  width: auto;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(var(--accent-coral), 0.12);
+  color: rgb(var(--accent-coral));
+}
+
+.song-row .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.song-row button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(var(--textSecondary));
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.15s ease, transform 0.15s ease, background 0.12s ease, color 0.12s ease;
+}
+
+.song-row:hover button {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.song-row button:hover {
+  background: rgba(var(--bgButtons));
+  color: rgb(var(--textPrimary));
+}
+
+.song-row button.favorited {
+  color: rgb(var(--colorPink));
+}
+
+.song-row button:active {
+  transform: scale(0.92);
+}
+
+.song-row .cover-wrap {
+  position: relative;
+}
+
+.song-row .play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.65rem;
+  background: rgba(var(--overlayBg), 0.45);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.song-row:hover .play-overlay {
+  opacity: 1;
+}
+
+
+/* ===== 6. SONG ROW — MAIN HIT AREA (UIManager.songRow) ===== */
+.song-row .main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1 1 0%;
+  min-width: 0;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+.song-row .main .cover {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.song-row .main .info {
+  text-align: left;
+  min-width: 0;
+}
+
+.song-row .main .title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.song-row .main .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.song-row .main .album-link {
+  cursor: pointer;
+}
+
+.song-row .main .album-link:hover {
+  text-decoration: underline;
+}
+
+.song-row > .time {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textOthers));
+}
+
+.song-row > .downloadBtn {
+  padding: 0.5rem;
+  border-radius: 9999px;
+}
+
+
+/* ===== 7. DOWNLOAD BUTTONS — HOVER REVEAL ===== */
+.song-row .downloadBtn,
+[data-page="favorites"] [data-list="songs"] .row .downloadBtn {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.35s ease, transform 0.35s ease, color 0.2s ease;
+}
+
+.song-row:hover .downloadBtn,
+[data-page="favorites"] [data-list="songs"] .row:hover .downloadBtn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.song-row .downloadBtn svg,
+[data-page="favorites"] [data-list="songs"] .row .downloadBtn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  transition: opacity 0.35s ease-in-out;
+}

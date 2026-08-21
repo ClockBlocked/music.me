@@ -1,0 +1,43 @@
+/* ============================================================================
+   base/icons.css
+   Icon & glyph atoms — spinner, badges, empty-state icon
+   ============================================================================ */
+
+
+/* ===== 1. LOADING SPINNER ===== */
+.spinner {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 3px solid rgba(var(--textSecondary) / 0.15);
+  border-top-color: rgba(var(--colorRed));
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ===== 2. OFFLINE-CACHED BADGE (song rows) ===== */
+.offline-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
+  color: rgba(var(--colorOrange));
+  flex-shrink: 0;
+}
+
+.offline-badge svg {
+  display: block;
+}
+
+
+/* ===== 3. EMPTY-STATE ICON ===== */
+.empty-state-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}

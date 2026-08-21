@@ -1,0 +1,356 @@
+/* ============================================================================
+   base/setup.css
+   Reset, typography tokens, base elements, layout scaffolding, global utilities
+   ============================================================================ */
+
+
+/* ===== 1. RESET ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ===== 2. SCROLLBARS (globally hidden) ===== */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/* ===== 3. TYPOGRAPHY TOKENS ===== */
+:root {
+  --font-body: "WF Visual Sans Text", sans-serif;
+  --font-heading: "WF Visual Sans", sans-serif;
+  --font-mono: "WF Visual Sans Mono", monospace;
+
+  --fw-light: 200;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --fs-900: clamp(3rem, 5vw, 5rem);
+  --fs-800: clamp(2.5rem, 4vw, 4rem);
+  --fs-700: clamp(2rem, 3vw, 3rem);
+  --fs-600: clamp(1.75rem, 2.5vw, 2.5rem);
+  --fs-500: clamp(1.375rem, 2vw, 2rem);
+  --fs-400: 1rem;
+  --fs-300: .9375rem;
+  --fs-200: .875rem;
+  --fs-100: .75rem;
+
+  --lh-tight: 1.1;
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+}
+
+
+/* ===== 4. BASE TYPOGRAPHY ===== */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-normal);
+  line-height: var(--lh-body);
+
+  background-color: rgba(var(--bgBody) / 0.835);
+  background-image: linear-gradient(rgba(var(--textOthers) / 0.06) 1px, transparent 0), linear-gradient(90deg, rgba(var(--textOthers) / 0.06) 1px, transparent 0);
+  background-size: 40px 40px;
+
+  color: rgba(var(--textPrimary));
+
+  font-feature-settings:
+    "cv02",
+    "cv03",
+    "cv04",
+    "cv11";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: -.03em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-900);
+}
+h2 {
+  font-size: var(--fs-800);
+}
+h3 {
+  font-size: var(--fs-700);
+}
+h4 {
+  font-size: var(--fs-600);
+}
+h5 {
+  font-size: var(--fs-500);
+}
+h6 {
+  font-size: 1.125rem;
+}
+
+p {
+  max-width: 70ch;
+  line-height: var(--lh-body);
+  text-wrap: pretty;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: .9rem;
+}
+
+
+/* ===== 5. TYPOGRAPHY UTILITIES ===== */
+.text-center {
+  text-align: center;
+}
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+.font-heading {
+  font-family: var(--font-heading);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.fw-700 {
+  font-weight: 700;
+}
+
+
+/* ===== 6. LAYOUT ===== 
+.wrapper {
+  padding-block: 0.35rem;
+  padding-inline: 1rem;
+}
+**/
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+#main-content {
+  flex: 1;
+  padding-top: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+/* ===== 7. SHARED SCAFFOLDING ===== */
+.page {
+  padding-bottom: 7rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+[data-page] .missing {
+  text-align: center;
+  padding: 2rem 0;
+  color: rgba(var(--textSecondary));
+}
+
+.hidden {
+  display: none !important;
+}
+
+.section-header {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-header:after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(var(--borderPrimary)), transparent);
+  margin-left: 0.5rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+
+/* ===== 8. PAGE TRANSITIONS ===== */
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-enter-active,
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+
+/* ===== 9. GLOBAL KEYFRAMES ===== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingBarGradient {
+  0% {
+    background-position: 0 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes loadingBarPulse {
+  0%,
+  to {
+    box-shadow: 0 0 6px rgba(var(--colorRed) / 0.6), 0 0 14px rgba(var(--colorRed) / 0.5), 0 0 26px rgba(var(--colorRed) / 0.4), 0 0 40px rgba(var(--colorRed) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(var(--colorRed) / 0.9), 0 0 22px rgba(var(--colorRed) / 0.8), 0 0 38px rgba(var(--colorRed) / 0.7), 0 0 55px rgba(var(--colorRed) / 0.35);
+  }
+}
+
+@keyframes spinVinyl {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes loaderPulse {
+  0%,
+  to {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes loaderProgress {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 70%;
+  }
+  to {
+    width: 100%;
+  }
+}
