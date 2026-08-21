@@ -1,0 +1,514 @@
+/* ============================================================================
+   pages/favorites.css
+   Favorites page — hero, stats, tabs, song / artist / album / playlist
+   grids, plus the favorite-card component set
+   ============================================================================ */
+
+
+/* ===== 1. FAVORITES HERO ===== */
+[data-page="favorites"] .hero {
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, rgba(var(--colorOrange) / 0.18), rgba(var(--colorPink) / 0.1));
+  border: 1px solid rgba(var(--borderSubtle) / 0.2);
+}
+
+[data-page="favorites"] .hero .wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  [data-page="favorites"] .hero .wrap {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+[data-page="favorites"] .hero .kicker {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  margin-bottom: 0.5rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="favorites"] .hero .title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  [data-page="favorites"] .hero .title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+[data-page="favorites"] .hero .sub {
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="favorites"] .hero [data-list="stats"] {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  [data-page="favorites"] .hero [data-list="stats"] {
+    width: auto;
+  }
+}
+
+[data-page="favorites"] .hero .stat {
+  border-radius: 1rem;
+  padding: 0.75rem;
+  background: rgba(var(--bgPopups) / 0.8);
+}
+
+[data-page="favorites"] .hero .value {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 900;
+  color: rgba(var(--colorOrange));
+}
+
+[data-page="favorites"] .hero .label {
+  font-size: 11px;
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="favorites"] .hero .total {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 1rem;
+  color: rgba(var(--textSecondary));
+}
+
+
+/* ===== 2. TABS & EMPTY STATES ===== */
+[data-page="favorites"] .tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+[data-page="favorites"] .empty {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+[data-page="favorites"] .empty .icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+[data-page="favorites"] .empty .title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+[data-page="favorites"] .empty .desc {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  max-width: 28rem;
+  margin: 0 auto;
+  color: rgba(var(--textSecondary));
+}
+
+
+/* ===== 3. FAVORITE SONGS ===== */
+[data-page="favorites"] [data-list="songs"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+[data-page="favorites"] [data-list="songs"] .row {
+  border-radius: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(var(--bgPopups));
+  border: 1px solid rgba(var(--borderSubtle) / 0.2);
+}
+
+[data-page="favorites"] [data-list="songs"] .cover {
+  position: relative;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+[data-page="favorites"] [data-list="songs"] .cover img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  object-fit: cover;
+  display: block;
+}
+
+[data-page="favorites"] [data-list="songs"] .info {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+[data-page="favorites"] [data-list="songs"] .title {
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-page="favorites"] [data-list="songs"] .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-page="favorites"] [data-list="songs"] .time {
+  font-size: 11px;
+  margin-top: 0.25rem;
+  color: rgba(var(--textOthers));
+}
+
+[data-page="favorites"] [data-list="songs"] .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-page="favorites"] [data-list="songs"] .play {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-page="favorites"] [data-list="songs"] .play:hover {
+  background: rgba(var(--bgButtons));
+}
+
+[data-page="favorites"] [data-list="songs"] .downloadBtn {
+  padding: 0.5rem;
+  border-radius: 9999px;
+}
+
+
+/* ===== 4. FAVORITE ARTISTS ===== */
+[data-page="favorites"] [data-list="artists"] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  [data-page="favorites"] [data-list="artists"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-page="favorites"] [data-list="artists"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+[data-page="favorites"] [data-card="artist"] {
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  text-align: center;
+  background: rgba(var(--bgPopups));
+  border: 1px solid rgba(var(--borderSubtle) / 0.2);
+  color: inherit;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-page="favorites"] [data-card="artist"]:hover {
+  transform: translateY(-0.25rem);
+}
+
+[data-page="favorites"] [data-card="artist"] .avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 0 4px rgba(var(--colorOrange) / 0.15);
+}
+
+@media (min-width: 640px) {
+  [data-page="favorites"] [data-card="artist"] .avatar {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+[data-page="favorites"] [data-card="artist"] .name {
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-page="favorites"] [data-card="artist"] .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.25rem;
+  color: rgba(var(--textSecondary));
+}
+
+
+/* ===== 5. FAVORITE ALBUMS ===== */
+[data-page="favorites"] [data-list="albums"] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  [data-page="favorites"] [data-list="albums"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-page="favorites"] [data-list="albums"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+[data-page="favorites"] [data-card="album"] {
+  border-radius: 1.5rem;
+  padding: 0.75rem;
+  background: rgba(var(--bgPopups));
+  border: 1px solid rgba(var(--borderSubtle) / 0.2);
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-page="favorites"] [data-card="album"]:hover {
+  transform: translateY(-0.25rem);
+}
+
+[data-page="favorites"] [data-card="album"] .wrap {
+  margin-bottom: 0.75rem;
+  border-radius: 1rem;
+}
+
+[data-page="favorites"] [data-card="album"] .wrap img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-page="favorites"] [data-card="album"] .wrap img:hover {
+  transform: scale(1.05);
+}
+
+[data-page="favorites"] [data-card="album"] .title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-page="favorites"] [data-card="album"] .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ===== 6. FAVORITE PLAYLISTS ===== */
+[data-page="favorites"] [data-list="playlists"] {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  [data-page="favorites"] [data-list="playlists"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+[data-page="favorites"] [data-card="playlist"] {
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(var(--bgPopups));
+  border: 1px solid rgba(var(--borderSubtle) / 0.2);
+}
+
+[data-page="favorites"] [data-card="playlist"] .row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+[data-page="favorites"] [data-card="playlist"] .kicker {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.25rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="favorites"] [data-card="playlist"] .name {
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+[data-page="favorites"] [data-card="playlist"] .count {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 0.25rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="favorites"] [data-card="playlist"] .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+[data-page="favorites"] [data-card="playlist"] .more {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-page="favorites"] [data-card="playlist"] .more:hover {
+  background: rgba(var(--bgButtons));
+}
+
+
+/* ===== 7. FAVORITE CARD COMPONENTS (fav-*) ===== */
+.fav-header {
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--borderSubtle) / 0.15);
+}
+
+.fav-stat {
+  text-align: center;
+}
+
+.fav-song-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.fav-song-card:hover {
+  background: rgba(var(--bgPopups));
+}
+
+.fav-artist-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+
+.fav-artist-card:hover {
+  transform: translateY(-4px);
+  background: rgba(var(--bgPopups));
+}
+
+.fav-artist-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.fav-album-card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  background: rgba(var(--bgPopups));
+}
+
+.fav-album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+}
+
+.fav-album-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+
+/* ===== 8. TAB BUTTONS (favorites tab nav) ===== */
+.tab-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(var(--textSecondary));
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.2), rgba(var(--colorPink) / 0.15));
+  color: rgba(var(--colorPurple));
+}
+
+.tab-btn:not(.active):hover {
+  background: rgba(var(--bgButtons));
+  color: rgba(var(--textPrimary));
+}

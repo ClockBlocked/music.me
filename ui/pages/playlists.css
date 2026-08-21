@@ -1,0 +1,487 @@
+/* ============================================================================
+   pages/playlists.css
+   Playlists page — header, grid, playlist viewer, playlist components,
+   play-all buttons
+   ============================================================================ */
+
+
+/* ===== 1. PLAYLISTS PAGE — HEADER ===== */
+[data-page="playlists"] > .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+[data-page="playlists"] > .head .kicker {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.5rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="playlists"] > .head .title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 900;
+}
+
+@media (min-width: 768px) {
+  [data-page="playlists"] > .head .title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+[data-page="playlists"] > .head .sub {
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="playlists"] .create {
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+[data-page="playlists"] .empty {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+[data-page="playlists"] .empty .icon {
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto 1rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--bgButtons));
+}
+
+[data-page="playlists"] .empty .icon svg {
+  color: rgba(var(--colorOrange));
+}
+
+[data-page="playlists"] .empty .title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+[data-page="playlists"] .empty .desc {
+  margin-bottom: 1rem;
+  color: rgba(var(--textSecondary));
+}
+
+
+/* ===== 2. PLAYLISTS PAGE — GRID ===== */
+[data-page="playlists"] [data-list="playlists"] {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  [data-page="playlists"] [data-list="playlists"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-page="playlists"] [data-list="playlists"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+[data-page="playlists"] [data-card="playlist"] {
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  background: rgba(var(--bgPopups));
+  border: 1px solid rgba(var(--borderSubtle) / 0.2);
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-page="playlists"] [data-card="playlist"]:hover {
+  transform: translateY(-0.25rem);
+}
+
+[data-page="playlists"] [data-card="playlist"] .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+[data-page="playlists"] [data-card="playlist"] .kicker {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.25rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="playlists"] [data-card="playlist"] .name {
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+[data-page="playlists"] [data-card="playlist"] .count {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-page="playlists"] [data-card="playlist"] .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-page="playlists"] [data-card="playlist"] .more {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-page="playlists"] [data-card="playlist"] .more:hover {
+  background: rgba(var(--bgButtons));
+}
+
+[data-page="playlists"] [data-card="playlist"] .previews {
+  display: flex;
+  gap: 0.5rem;
+}
+
+[data-page="playlists"] [data-card="playlist"] .previews .thumb {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+
+[data-page="playlists"] [data-card="playlist"] .previews .extra {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(var(--bgButtons));
+}
+
+
+/* ===== 3. PLAYLIST VIEWER ===== */
+[data-area="viewer"] {
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: rgba(var(--bgPopups));
+  border: 1px solid rgba(var(--borderSubtle) / 0.2);
+}
+
+[data-area="viewer"] .head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+[data-area="viewer"] .kicker {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.25rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-area="viewer"] .title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+
+[data-area="viewer"] .sub {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba(var(--textSecondary));
+}
+
+[data-area="viewer"] .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-area="viewer"] .share {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  background: rgba(var(--bgButtons));
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+[data-area="viewer"] [data-list="songs"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+[data-area="viewer"] .song-row {
+  padding: 0.75rem;
+  border-radius: 1rem;
+  background: rgba(var(--bgButtons) / 0.4);
+  border: 1px solid rgba(var(--borderSubtle) / 0.15);
+}
+
+[data-area="viewer"] .song-row .num {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 1.5rem;
+  color: rgba(var(--textOthers));
+}
+
+[data-area="viewer"] .song-row .cover {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+
+[data-area="viewer"] .song-row .info {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+[data-area="viewer"] .song-row .title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-area="viewer"] .song-row .sub {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-area="viewer"] .song-row .time {
+  font-size: 11px;
+  text-align: right;
+  color: rgba(var(--textOthers));
+}
+
+[data-area="viewer"] .song-row .downloadBtn {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+[data-area="viewer"] .song-row .remove {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  color: rgb(248 113 113);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-area="viewer"] .song-row .remove:hover {
+  background: rgba(var(--bgButtons));
+}
+
+
+/* ===== 4. PLAYLIST CARDS & HERO (components) ===== */
+.playlist-card-enhanced,
+.playlist-hero {
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--borderSubtle) / 0.15);
+}
+
+.playlist-card-enhanced {
+  overflow: hidden;
+  background: rgba(var(--bgPopups));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.playlist-card-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+}
+
+.playlist-mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  aspect-ratio: 1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.playlist-mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playlist-accent-bar {
+  height: 3px;
+  background: linear-gradient(90deg, rgba(var(--colorOrange)), rgba(var(--colorPink)), transparent);
+  border-radius: 0 0 1rem 1rem;
+}
+
+.playlist-card-cover {
+  position: relative;
+}
+
+.playlist-play-overlay {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.playlist-card-cover:hover .playlist-play-overlay,
+.playlist-play-overlay:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .playlist-play-overlay {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.playlist-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.playlist-hero-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(var(--colorOrange) / 0.35);
+}
+
+.playlist-hero-btn-alt {
+  background: rgba(var(--bgButtons));
+  color: rgba(var(--textPrimary));
+}
+
+.playlist-card-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.playlist-card-play:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(var(--colorOrange) / 0.4);
+}
+
+
+/* ===== 5. PLAY-ALL BUTTONS ===== */
+.play-all-btn {
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-all-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(var(--colorOrange) / 0.4);
+}
+
+.play-all {
+  border-radius: 9999px;
+  background: #8B5CF6;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: fit-content;
+  margin-top: 0.25rem;
+}
+
+.play-all:hover {
+  background: #7C3AED;
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+
+/* ===== 6. ABOUT AREA (shared scope) ===== */
+[data-area="about"] {
+  min-height: 100vh;
+}
