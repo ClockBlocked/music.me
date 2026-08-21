@@ -8,7 +8,7 @@
 // ============================================================
 
 // ---------- 1. Side-effect libraries (load first) ----------
-// import "./progress.js";
+// import "https://clockblocked.github.io/music.me/modules/progress.js";
 
 // ---------- 2. Core utilities ----------
 import {
@@ -18,23 +18,23 @@ import {
   IdUtils,
   ColorExtractor,
   Spinner
-} from "./utilities.js";
+} from "https://clockblocked.github.io/music.me/modules/utilities.js";
 
 // ---------- 3. Theme bootstrap (reads localStorage, sets data-theme/accent) ----------
-//  import { Themes } from "./theming.js";
+//  import { Themes } from "https://clockblocked.github.io/music.me/modules/theming.js";
 
 // ---------- 4. UI primitives ----------
-import { Icons } from "./icons.js";
-import { Popups } from "./overlays/popups.js";
+import { Icons } from "https://clockblocked.github.io/music.me/modules/icons.js";
+import { Popups } from "https://clockblocked.github.io/music.me/modules/overlays/popups.js";
 
-import { metadata } from "./library.js";
+import { metadata } from "https://clockblocked.github.io/music.me/modules/library.js";
 
 // ---------- 5. State / audio engine ----------
-import { PlayerState, AudioEngine } from "./background.js";
+import { PlayerState, AudioEngine } from "https://clockblocked.github.io/music.me/modules/background.js";
 
 // ---------- 6. Feature modules ----------
-import { FavoritesPlaylists } from "./FavoritesPlaylists.js";
-import { SaveToLibraryDrawer, createSaveDrawer } from "./ytSaver.js";
+import { FavoritesPlaylists } from "https://clockblocked.github.io/music.me/modules/FavoritesPlaylists.js";
+import { SaveToLibraryDrawer, createSaveDrawer } from "https://clockblocked.github.io/music.me/modules/ytSaver.js";
 
 // ---------- 7. Page renderers ----------
 import {
@@ -45,10 +45,10 @@ import {
   Artists,
   EditPlaylist,
   Error404
-} from "./layouts.js";
+} from "https://clockblocked.github.io/music.me/modules/layouts.js";
 
 // ---------- 8. Player UI ----------
-import { PlayerManager, MediaSessionManager } from "./players.js";
+import { PlayerManager, MediaSessionManager } from "https://clockblocked.github.io/music.me/modules/players.js";
 
 // ---------- 9. App orchestration ----------
 import {
@@ -59,7 +59,7 @@ import {
   SearchManager,
   UIManager,
   ContextMenu
-} from "./builder.js";
+} from "https://clockblocked.github.io/music.me/modules/builder.js";
 
 // ============================================================
 // Bootstrap
