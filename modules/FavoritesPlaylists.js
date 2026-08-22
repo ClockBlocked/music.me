@@ -1,5 +1,5 @@
-import { Utils, CONFIG } from "./utilities.js";
-import { Icons } from "./icons.js";
+import { Utils, CONFIG } from "https://clockblocked.github.io/music.me/modules/utilities.js";
+import { Icons } from "https://clockblocked.github.io/music.me/modules/icons.js";
 
 
 export class FavoritesPlaylists {
