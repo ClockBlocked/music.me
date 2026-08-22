@@ -7,8 +7,8 @@
 //   • Live updates animate in place — no page reloads
 // ---------------------------------------------------------------------
 // layouts.js
-import { Utils, IdUtils } from "./utilities.js";
-import { Icons } from "./icons.js";
+import { Utils, IdUtils } from "https://clockblocked.github.io/music.me/modules/utilities.js";
+import { Icons } from "https://clockblocked.github.io/music.me/modules/icons.js";
 
 
 export class Home {
