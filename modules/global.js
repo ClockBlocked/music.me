@@ -18,23 +18,22 @@ import {
   IdUtils,
   ColorExtractor,
   Spinner
-} from "https://clockblocked.github.io/music.me/modules/utilities.js";
+} from "./utilities.js";
 
 // ---------- 3. Theme bootstrap (reads localStorage, sets data-theme/accent) ----------
-//  import { Themes } from "https://clockblocked.github.io/music.me/modules/theming.js";
+//  import { Themes } from "./theming.js";
 
 // ---------- 4. UI primitives ----------
-import { Icons } from "https://clockblocked.github.io/music.me/modules/icons.js";
-import { Popups } from "https://clockblocked.github.io/music.me/modules/overlays/popups.js";
+import { Icons } from "./icons.js";
+import { Popups } from "./overlays/popups.js";
 
-import { metadata } from "https://clockblocked.github.io/music.me/modules/library.js";
+import { metadata } from "./library.js";
 
 // ---------- 5. State / audio engine ----------
-import { PlayerState, AudioEngine } from "https://clockblocked.github.io/music.me/modules/background.js";
+import { PlayerState, AudioEngine } from "./background.js";
 
 // ---------- 6. Feature modules ----------
-import { FavoritesPlaylists } from "https://clockblocked.github.io/music.me/modules/FavoritesPlaylists.js";
-import { SaveToLibraryDrawer, createSaveDrawer } from "https://clockblocked.github.io/music.me/modules/ytSaver.js";
+import { FavoritesPlaylists } from "./FavoritesPlaylists.js";
 
 // ---------- 7. Page renderers ----------
 import {
@@ -45,10 +44,10 @@ import {
   Artists,
   EditPlaylist,
   Error404
-} from "https://clockblocked.github.io/music.me/modules/layouts.js";
+} from "./layouts.js";
 
 // ---------- 8. Player UI ----------
-import { PlayerManager, MediaSessionManager } from "https://clockblocked.github.io/music.me/modules/players.js";
+import { PlayerManager, MediaSessionManager } from "./players.js";
 
 // ---------- 9. App orchestration ----------
 import {
@@ -59,7 +58,7 @@ import {
   SearchManager,
   UIManager,
   ContextMenu
-} from "https://clockblocked.github.io/music.me/modules/builder.js";
+} from "./builder.js";
 
 // ============================================================
 // Bootstrap
@@ -92,9 +91,6 @@ window.popups.ui = window.uiManager;
 // of whatever was right-clicked: song / album / artist / playlist).
 window.contextMenu = new ContextMenu();
 
-// ytSaver auto-initializes on import; this is a fallback to ensure a drawer instance exists.
-window.saveDrawer =
-  window.saveToLibraryDrawer || createSaveDrawer(window.uiManager);
 
 window.offlineCache = new OfflineCacheManager(window.state);
 
@@ -132,8 +128,6 @@ export {
   PlayerState,
   AudioEngine,
   FavoritesPlaylists,
-  SaveToLibraryDrawer,
-  createSaveDrawer,
   Home,
   Library,
   Playlists,

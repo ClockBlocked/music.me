@@ -1,8 +1,8 @@
 
 
-import { Utils, Prefs, IdUtils, Spinner } from "https://clockblocked.github.io/music.me/modules/utilities.js";
-import { Icons } from "https://clockblocked.github.io/music.me/modules/icons.js";
-import { Popups } from "https://clockblocked.github.io/music.me/modules/overlays/popups.js";
+import { Utils, Prefs, IdUtils, Spinner } from "./utilities.js";
+import { Icons } from "./icons.js";
+import { Popups } from "./overlays/popups.js";
 import {
   Home,
   Library,
@@ -11,8 +11,8 @@ import {
   Artists,
   EditPlaylist,
   Error404
-} from "https://clockblocked.github.io/music.me/modules/layouts.js";
-import { PlayerManager } from "https://clockblocked.github.io/music.me/modules/players.js";
+} from "./layouts.js";
+import { PlayerManager } from "./players.js";
 
 
 // ---------------------------------------------------------------------
@@ -1873,19 +1873,31 @@ export class UIManager {
   }
 
   routes() {
-    const pageMap = {
-      home:      () => this.homePage.render(),
-      library:   () => this.libraryPage.render(),
-      favorites: () => this.favoritesPage.render(),
-      playlists: () => this.playlistsPage.render(),
-      editPlaylist: () => this.editPlaylistPage.render(),
-      artist:    () => this.artistPage.render(),
-      '404':     () => this.errorPage.render(),
+    const currentPage = this.state.currentPage;
+    const loadAndRenderPage = async () => {
+      this.showSpinner();
+      const layoutsModule = await import("./layouts.js");
+
+      const renderers = {
+        home: () => (this.homePage = this.homePage || new layoutsModule.Home(this)).render(),
+        library: () => (this.libraryPage = this.libraryPage || new layoutsModule.Library(this)).render(),
+        favorites: () => (this.favoritesPage = this.favoritesPage || new layoutsModule.Favorites(this)).render(),
+        playlists: () => (this.playlistsPage = this.playlistsPage || new layoutsModule.Playlists(this)).render(),
+        editPlaylist: () => (this.editPlaylistPage = this.editPlaylistPage || new layoutsModule.EditPlaylist(this)).render(),
+        artist: () => (this.artistPage = this.artistPage || new layoutsModule.Artists(this)).render(),
+        '404': () => (this.errorPage = this.errorPage || new layoutsModule.Error404(this)).render(),
+      };
+
+      const renderFn = renderers[currentPage] ?? (() => '<div>Not found</div>');
+      return renderFn();
     };
-    setTimeout(() => {
+
+    setTimeout(async () => {
       try {
-        this.main.innerHTML = (pageMap[this.state.currentPage] ?? (() => '<div>Not found</div>'))();
-        this._ensureSpinner();
+        const html = await loadAndRenderPage();
+        if (this.state.currentPage !== currentPage) return;
+        this.main.innerHTML = html;
+        this.hideSpinner();
         Object.assign(this.main.style, { opacity: '1', transform: 'translateY(0)' });
         setTimeout(() => { this.main.style.transition = ''; this.isTransitioning = false; }, 300);
         this.contentEvents.attachContentEvents();
@@ -1893,6 +1905,7 @@ export class UIManager {
         this._maybeAutoPlayDeepLink();
       } catch (err) {
         console.error('[UIManager] Page render error:', err);
+        this.hideSpinner();
         this.isTransitioning = false;
         if (window.NProgress && NProgress.status !== null) NProgress.done();
       }

@@ -1,5 +1,5 @@
-import { CONFIG, Utils, Prefs } from "https://clockblocked.github.io/music.me/modules/utilities.js";
-import { metadata } from "https://clockblocked.github.io/music.me/modules/library.js";
+import { CONFIG, Utils, Prefs } from "./utilities.js";
+import { metadata } from "./library.js";
 
 
 
