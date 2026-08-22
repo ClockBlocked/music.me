@@ -1,8 +1,8 @@
 
 
-import { Utils, Prefs, IdUtils, Spinner } from "./utilities.js";
-import { Icons } from "./icons.js";
-import { Popups } from "./overlays/popups.js";
+import { Utils, Prefs, IdUtils, Spinner } from "https://clockblocked.github.io/music.me/modules/utilities.js";
+import { Icons } from "https://clockblocked.github.io/music.me/modules/icons.js";
+import { Popups } from "https://clockblocked.github.io/music.me/modules/overlays/popups.js";
 import {
   Home,
   Library,
@@ -11,8 +11,8 @@ import {
   Artists,
   EditPlaylist,
   Error404
-} from "./layouts.js";
-import { PlayerManager } from "./players.js";
+} from "https://clockblocked.github.io/music.me/modules/layouts.js";
+import { PlayerManager } from "https://clockblocked.github.io/music.me/modules/players.js";
 
 
 // ---------------------------------------------------------------------
