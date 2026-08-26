@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<title>Gallery Pro — Icon Library</title>
+<script>
+(function () {
+    var saved = null;
+    try { saved = localStorage.getItem('gp-theme'); } catch (e) {}
+    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar" id="sidebar" aria-label="Library navigation">
+        <div class="sidebar-head">
+            <div class="brand">
+                <span class="brand-mark">
+                    <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </span>
+                <span class="brand-name">Gallery<em>Pro</em></span>
+            </div>
+            <button class="icon-btn mobile-only" id="mobile-menu-close" aria-label="Close menu">
+                <svg viewBox="0 0 320 512" aria-hidden="true"><path fill="currentColor" d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <span class="nav-label">Library</span>
+                <ul class="nav-list" id="style-filters"></ul>
+            </div>
+            <div class="nav-section">
+                <span class="nav-label">Personal</span>
+                <ul class="nav-list">
+                    <li class="nav-item" id="favorites-filter" role="button" tabindex="0">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 512 512" aria-hidden="true"><use href="./sprites/solid.svg#heart"></use></svg>
+                        </span>
+                        <span class="nav-text">Favorites</span>
+                        <span class="nav-count" id="favorites-count"></span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="shortcut-hint">Press <kbd>/</kbd> to search</div>
+            <div class="lib-meta" id="lib-meta"></div>
+        </div>
+    </aside>
+
+    <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="icon-btn mobile-only" id="mobile-menu-toggle" aria-label="Open menu">
+                <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+            </button>
+
+            <div class="search" id="search-wrap">
+                <svg class="search-icon" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                <input type="text" id="search-input" placeholder="Search icons, terms…" autocomplete="off" spellcheck="false" aria-label="Search icons">
+                <button class="clear-search" id="clear-search" aria-label="Clear search">
+                    <svg viewBox="0 0 320 512" aria-hidden="true"><path fill="currentColor" d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
+                </button>
+                <kbd class="kbd">/</kbd>
+            </div>
+
+            <span class="results-count" id="results-count" aria-live="polite"></span>
+
+            <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+                <svg class="theme-icon-sun" viewBox="0 0 512 512" aria-hidden="true"><use href="./sprites/solid.svg#sun"></use></svg>
+                <svg class="theme-icon-moon" viewBox="0 0 384 512" aria-hidden="true"><use href="./sprites/solid.svg#moon"></use></svg>
+            </button>
+        </header>
+
+        <div class="gallery-scroll" id="gallery-scroll-container">
+            <div class="icon-grid" id="icon-grid" role="list"></div>
+
+            <div class="loading-trigger" id="loading-trigger" aria-hidden="true">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="empty-state" id="no-results">
+                <div class="empty-icon">
+                    <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </div>
+                <h2 id="empty-title">No icons found</h2>
+                <p id="empty-sub">Try a different search term or switch styles.</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div class="sheet-backdrop" id="offcanvas-backdrop"></div>
+
+<section class="sheet" id="offcanvas-bottom" role="dialog" aria-modal="true" aria-labelledby="offcanvas-title">
+    <div class="sheet-grabber" aria-hidden="true"></div>
+
+    <header class="sheet-head">
+        <div class="sheet-heading">
+            <h2 id="offcanvas-title"></h2>
+            <div class="sheet-chips">
+                <button class="chip mono" id="offcanvas-id" title="Copy icon name"></button>
+                <button class="chip mono" id="offcanvas-unicode" title="Copy unicode"></button>
+            </div>
+        </div>
+        <div class="sheet-actions">
+            <button class="icon-btn" id="sheet-fav" aria-label="Toggle favorite">
+                <svg class="fav-outline" viewBox="0 0 512 512" aria-hidden="true"><use href="./sprites/regular.svg#heart"></use></svg>
+                <svg class="fav-filled" viewBox="0 0 512 512" aria-hidden="true"><use href="./sprites/solid.svg#heart"></use></svg>
+            </button>
+            <button class="icon-btn" id="offcanvas-close" aria-label="Close details">
+                <svg viewBox="0 0 320 512" aria-hidden="true"><path fill="currentColor" d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="sheet-body">
+        <div class="preview-panel">
+            <div class="preview-stage" id="preview-stage" data-bg="adaptive">
+                <svg id="offcanvas-svg" aria-hidden="true"></svg>
+            </div>
+            <div class="preview-controls">
+                <div class="seg" id="bg-seg" role="group" aria-label="Preview background">
+                    <button data-bg="adaptive" class="active">Auto</button>
+                    <button data-bg="light">Light</button>
+                    <button data-bg="dark">Dark</button>
+                    <button data-bg="grid">Grid</button>
+                </div>
+                <div class="size-ctl">
+                    <input type="range" id="size-range" min="16" max="128" value="48" aria-label="Preview size">
+                    <span class="size-val"><span id="size-val">48</span>px</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-details">
+            <div class="detail-block">
+                <span class="block-label">SVG Markup</span>
+                <div class="code-box">
+                    <code id="svg-code-block" class="mono"></code>
+                    <button class="btn-accent" id="copy-svg-btn">
+                        <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="currentColor" d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="quick-copies">
+                    <button class="qc" data-copy="name">Name</button>
+                    <button class="qc" data-copy="class">CSS class</button>
+                    <button class="qc" data-copy="unicode">Unicode</button>
+                    <button class="qc" data-copy="datauri">Data URI</button>
+                </div>
+            </div>
+
+            <div class="detail-block">
+                <span class="block-label">Download</span>
+                <div class="download-row">
+                    <button class="btn-ghost" id="dl-svg">
+                        <svg viewBox="0 0 512 512" aria-hidden="true"><use href="./sprites/solid.svg#download"></use></svg>
+                        <span>SVG</span>
+                    </button>
+                    <button class="btn-ghost" id="dl-png">
+                        <svg viewBox="0 0 512 512" aria-hidden="true"><use href="./sprites/solid.svg#download"></use></svg>
+                        <span>PNG · 512px</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="detail-block">
+                <span class="block-label">Available Styles</span>
+                <div class="style-variations" id="style-variations"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="toast" id="toast" role="status">
+    <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L160 338.7 393.4 105.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>
+    <span id="toast-text">Copied to clipboard</span>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>
