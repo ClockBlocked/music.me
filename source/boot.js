@@ -46,16 +46,16 @@ jQuery(function ($) {
 function loadLibrary() {
   let jsonUrl;
   try {
-    jsonUrl = new URL("./source/library.json", window.__MYBEATS_BASE__).href;
+    jsonUrl = new URL("https://clockblocked.github.io/music.me/source/library.json", window.__MYBEATS_BASE__).href;
   } catch {
-    jsonUrl = "./source/library.json";
+    jsonUrl = "https://clockblocked.github.io/music.me/source/library.json";
   }
 
   const candidates = [
     jsonUrl,
 //    "https://mybeats.cloud/source/library.json",
 //    "/library.json",
-    "./library.json"
+    "https://clockblocked.github.io/music.me/source/library.json"
   ].filter((v, i, a) => v && a.indexOf(v) === i);
 
   return tryNext(0);
