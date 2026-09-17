@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+
+
+<body>
+
+<template id="tpl-artist-page">
+  <div class="artist-page" data-page="artist">
+    <div class="artist-shell">
+      <div data-mount="header"></div>
+      <div class="albumTabsSentinel" aria-hidden="true"></div>
+      <div data-mount="tabs"></div>
+      <div class="artist-heroBody">
+        <div class="hero-stage">
+          <div class="hero-left">
+            <div data-mount="cover"></div>
+            <div data-mount="meta"></div>
+          </div>
+          <div class="hero-right">
+            <div data-mount="songs"></div>
+          </div>
+        </div>
+      </div>
+      <div data-mount="similar"></div>
+    </div>
+  </div>
+</template>
+
+<!-- ---------- Fragment: header ---------- -->
+<template id="tpl-artist-header">
+  <header class="artist-header">
+    <div class="artist-header-left">
+      <span class="artist-header-kicker">Artist</span>
+      <h1 class="artist-name">{{artistName}}</h1>
+    </div>
+    <button type="button" class="artist-heart" data-artist-heart="{{artistId}}" aria-label="Favorite artist"></button>
+  </header>
+</template>
+
+<!-- ---------- Fragment: tabs ---------- -->
+<template id="tpl-album-tabs">
+  <nav class="albumTabsBar" data-area="albums" aria-label="Albums">
+    <div class="albumTabs-scroll"></div>
+  </nav>
+</template>
+
+<template id="tpl-album-tab">
+  <button type="button" class="albumTab" data-artist-id="{{artistId}}" data-album-id="{{albumId}}">{{albumTitle}}
+  </button>
+</template>
+
+<!-- ---------- Fragment: cover ---------- -->
+<template id="tpl-artist-cover">
+  <div class="hero-cover">
+    <img src="{{coverUrl}}" alt="{{albumTitle}}" loading="eager">
+    <div class="hero-scrim"></div>
+    <div class="hero-overlay">
+      <div class="album-meta">
+        <h2 class="album-title">{{albumTitle}}</h2>
+        <span class="track-count">{{trackCountText}}</span>
+      </div>
+      <button type="button" class="play-all" data-play-album="{{playData}}" aria-label="Shuffle album">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="currentColor"
+                  fill-opacity="0.1" />
+          <polygon points="10,7 17,12 10,17" fill="currentColor" />
+        </svg>
+        <span class="shuffle-text">Shuffle</span>
+      </button>
+    </div>
+  </div>
+</template>
+
+<!-- ---------- Fragment: meta ---------- -->
+<template id="tpl-artist-meta">
+  <div data-area="meta-summary" class="hero-meta">
+    <div data-list="editorial-brief" class="bento-meta-node">
+      <div class="brief-wrapper">
+        <span class="brief-mono">{{year}}</span>
+        <span class="brief-heading">{{status}}</span>
+      </div>
+      <a href="#" class="brief-anchor" id="bento-album-share" data-album-title="{{albumTitle}}">Share this album</a>
+    </div>
+    <div data-list="utility-hub" class="bento-meta-node">
+      <button type="button" class="hub-pill-btn" id="bento-offline-toggle" data-album-id="{{albumId}}">
+        <span class="hub-btn-txt">Listen Offline</span>
+      </button>
+      <div class="hub-group">
+        <h5 class="hub-group-title">Add to library</h5>
+        <div class="hub-links">
+          <a href="#" class="hub-link-item" data-action="add-album-to-playlist" data-album-id="{{albumId}}">Playlist</a>
+          <a href="#" class="hub-link-item" data-action="add-album-to-queue" data-album-id="{{albumId}}">Queue</a>
+          <a href="#" class="hub-link-item" data-action="toggle-favorite-album"
+             data-album-id="{{albumId}}">{{favLabel}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- ---------- Fragment: songs ---------- -->
+<template id="tpl-artist-songs">
+  <div data-list="songs" data-type="album" class="hero-songs">
+    <div id="songsList" class="body"></div>
+  </div>
+</template>
+
+<template id="tpl-song-row">
+  <div class="songItem" data-song-id="{{songId}}" data-context="{{context}}" style="--i:{{stagger}}">
+    <div class="left">
+      <div class="trackNum">{{index}}</div>
+      <div class="play">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="currentColor"
+                  fill-opacity="0.1" />
+          <polygon points="10,7 17,12 10,17" fill="currentColor" />
+        </svg>
+      </div>
+    </div>
+    <div class="center">
+      <div class="title"><span>{{title}}</span></div>
+    </div>
+    <div class="right" style="gap: 10px;">
+      <div class="time">{{duration}}</div>
+      <button type="button" class="heart" data-fav-song="{{songId}}" aria-label="Favorite song"
+              aria-pressed="{{isFav}}"></button>
+      <button type="button" class="downloadBtn" data-size="large" data-color="neutral" data-variant="ghost"
+              data-shape="rounded" data-icon="leading" data-elevated data-action="download-song"
+              data-song-id="{{songId}}" data-song-title="{{title}}" data-song-thumbnail="{{coverUrl}}"
+              aria-label="Download song">
+        <icon-me name="cloud-arrow-down"></icon-me>
+      </button>
+      <button type="button" class="moreMenu" data-more-song="{{songId}}" aria-label="More options"></button>
+    </div>
+  </div>
+</template>
+
+<!-- ---------- Fragment: similar artists ---------- -->
+<template id="tpl-similar-section">
+  <div data-area="similar" class="similar-artists-section">
+    <h5 class="similar-artists-title">Listen to similar Artists</h5>
+  </div>
+</template>
+
+<template id="tpl-similar-marquee">
+  <div class="marquee-container">
+    <div class="marquee-track" style="animation-duration: {{duration}}s;"></div>
+  </div>
+</template>
+
+<template id="tpl-similar-pill">
+  <span class="artist-name-pill animate-fadeIn" data-artist-id="{{artistId}}" data-artist-name="{{artistName}}">{{artistName}}</span>
+</template>
+</body>
+
+
+
+</html>
