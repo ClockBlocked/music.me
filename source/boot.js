@@ -46,9 +46,9 @@ jQuery(function ($) {
 function loadLibrary() {
   let jsonUrl;
   try {
-    jsonUrl = new URL("https://mybeats.cloud/source/library.json", window.__MYBEATS_BASE__).href;
+    jsonUrl = new URL("./source/library.json", window.__MYBEATS_BASE__).href;
   } catch {
-    jsonUrl = "https://mybeats.cloud/source/library.json";
+    jsonUrl = "./source/library.json";
   }
 
   const candidates = [
