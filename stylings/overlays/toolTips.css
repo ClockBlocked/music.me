@@ -1,0 +1,31 @@
+/* ============================================================================
+   overlays/toolTips.css
+   Tooltip surfaces — hover/focus popup used by artist-name links
+   ============================================================================ */
+
+
+/* ===== 1. POPUP BUBBLE ===== */
+.popup {
+  opacity: 0;
+  transition: opacity 0.45s ease-in-out;
+
+  padding: 0.5rem;
+  width: fit-content;
+  height: auto;
+
+  background: rgba(var(--bgPopups));
+  border: 1px solid rgba(var(--borderSubtle));
+  border-radius: 1rem;
+  box-shadow: var(--shadowHeavy);
+}
+
+
+/* ===== 2. TOOLTIP WRAPPER ===== */
+.tooltip-wrapper .text {
+  font-size: 0.75rem;
+
+  &:hover .popup {
+    opacity: 1;
+    transition: opacity 0.45s ease-in-out;
+  }
+}

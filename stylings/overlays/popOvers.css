@@ -1,0 +1,72 @@
+/* ============================================================================
+   overlays/popOvers.css
+   Popover motion primitives.
+   NOTE: The .artist-popover rule set was fully commented out in new.css and
+   has been omitted (popover visuals are owned by the external popups.css).
+   These keyframes are kept live because popover markup/JS still references
+   the animations.
+   ============================================================================ */
+
+
+/* ===== 1. POPOVER ENTRANCE ===== */
+@keyframes popoverFloatIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* ===== 2. POPOVER EXIT ===== */
+@keyframes popoverFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+}
+
+
+/* ===== 3. GRADIENT BORDER SHIFT ===== */
+@keyframes borderShift {
+  0%,
+  to {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+/* ===== 4. WAVEFORM BOUNCE ===== */
+@keyframes waveformBounce {
+  0%,
+  to {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.6);
+  }
+}
+
+
+/* ===== 5. BUTTON PULSE ===== */
+@keyframes btnPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}

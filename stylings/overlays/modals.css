@@ -1,0 +1,516 @@
+/* ============================================================================
+   overlays/modals.css
+   Modal shell kit + modal-rendered content
+   (settings, playlists manager, add-to-playlist, delete confirmation, tags)
+   ============================================================================ */
+
+
+/* ===== 1. SCROLL LOCK WHILE MODAL IS OPEN ===== */
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+}
+
+
+/* ===== 2. SHARED MODAL KIT ([data-modal]) ===== */
+[data-modal] .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+[data-modal] .head .title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+[data-modal] .close {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-modal] .close:hover {
+  background: rgba(var(--bgButtons));
+}
+[data-modal] .cta {
+  width: 100%;
+  padding: 0.75rem 0;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+[data-modal] .input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  background: rgba(var(--bgPopups));
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+[data-modal] .note {
+  font-size: 0.875rem;
+  color: rgba(var(--textSecondary));
+}
+[data-modal] .empty {
+  text-align: center;
+  padding: 1rem 0;
+  color: rgba(var(--textSecondary));
+}
+[data-modal="save-queue"] .note {
+  margin-bottom: 0.75rem;
+}
+[data-modal="delete-playlist"] .note {
+  margin-bottom: 1rem;
+}
+[data-modal="stats"] .empty {
+  padding: 1.5rem 0;
+}
+
+
+/* ===== 3. DELETE-PLAYLIST CONFIRMATION ===== */
+[data-modal="delete-playlist"] .actions {
+  display: flex;
+  gap: 0.75rem;
+}
+[data-modal="delete-playlist"] .cancel,
+[data-modal="delete-playlist"] .confirm {
+  flex: 1 1 0%;
+  padding: 0.75rem 0;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+[data-modal="delete-playlist"] .cancel {
+  background: rgba(var(--bgPopups));
+}
+[data-modal="delete-playlist"] .confirm {
+  background: rgba(var(--colorRed));
+  color: #ffffff;
+}
+
+
+/* ===== 4. PLAYLISTS MANAGER MODAL ===== */
+[data-modal="playlists"] .rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+[data-modal="playlists"] .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--bgPopups));
+}
+[data-modal="playlists"] .name {
+  font-weight: 600;
+}
+[data-modal="playlists"] .count {
+  font-size: 0.75rem;
+  color: rgba(var(--textSecondary));
+}
+[data-modal="playlists"] .actions {
+  display: flex;
+  gap: 0.5rem;
+}
+[data-modal="playlists"] .edit,
+[data-modal="playlists"] .delete {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-modal="playlists"] .edit:hover {
+  background: rgba(var(--bgButtons));
+}
+[data-modal="playlists"] .delete {
+  color: rgba(var(--colorRed));
+}
+[data-modal="playlists"] .delete:hover {
+  background: rgb(239 68 68 / 0.2);
+}
+
+
+/* ===== 5. ADD-TO-PLAYLIST MODAL ===== */
+[data-modal="add-to-playlist"] .context {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(var(--bgButtons));
+}
+[data-modal="add-to-playlist"] .context .cover {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.375rem;
+  object-fit: cover;
+}
+[data-modal="add-to-playlist"] .context .info {
+  min-width: 0;
+}
+[data-modal="add-to-playlist"] .context .title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-modal="add-to-playlist"] .context .sub {
+  font-size: 0.75rem;
+  color: rgba(var(--textSecondary));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-modal="add-to-playlist"] .scroll {
+  max-height: 16rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+[data-modal="add-to-playlist"] .pick {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-modal="add-to-playlist"] .pick:hover {
+  background: rgba(var(--bgButtons));
+}
+[data-modal="add-to-playlist"] .pick .icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(var(--colorOrange) / 0.2), rgba(var(--colorPink) / 0.15));
+}
+[data-modal="add-to-playlist"] .pick .icon svg {
+  color: rgba(var(--colorOrange));
+}
+[data-modal="add-to-playlist"] .pick .info {
+  min-width: 0;
+  flex: 1 1 0%;
+}
+[data-modal="add-to-playlist"] .pick .name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-modal="add-to-playlist"] .pick .count {
+  font-size: 0.75rem;
+  color: rgba(var(--textSecondary));
+}
+[data-modal="add-to-playlist"] .cta {
+  margin-top: 0.5rem;
+}
+
+
+/* ===== 6. PLAYLIST TAG CHIPS ===== */
+.tag-chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(var(--bgButtons));
+}
+.tag-chip .remove-tag-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tag-chip .remove-tag-btn:hover {
+  color: rgba(var(--colorRed));
+}
+
+
+/* ===== 7. SETTINGS MODAL ===== */
+.settings-modal {
+  width: min(760px, calc(100vw - 2rem));
+  max-height: min(88vh, 920px);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgb(var(--bgCard));
+  border: 1px solid rgb(var(--borderPrimary));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  color: rgb(var(--textPrimary));
+}
+
+.settings-shell {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+  min-height: 420px;
+}
+
+.settings-head {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background: rgb(var(--bgCardHeader, var(--bgCard)));
+  border-bottom: 1px solid rgb(var(--borderSubtle));
+  backdrop-filter: saturate(140%) blur(6px);
+}
+
+.settings-head .title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.settings-head .close {
+  height: 36px;
+  width: 36px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 1px solid rgb(var(--borderPrimary));
+  background: rgb(var(--bgButtons));
+  color: rgb(var(--textPrimary));
+  transition: var(--theme-transition);
+}
+
+.settings-head .close:hover {
+  background: rgb(var(--bgHovers));
+  border-color: rgb(var(--borderHover, var(--borderPrimary)));
+}
+
+.settings-head .close:focus-visible {
+  outline: 2px solid rgb(var(--buttonPrimary, var(--textPrimary)));
+  outline-offset: 2px;
+}
+
+.settings-body-scroll {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 1rem 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.settings-section {
+  padding: 0.25rem 0 0.1rem;
+}
+
+.settings-section .label {
+  margin: 0 0 0.6rem;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgb(var(--textOthers));
+  font-weight: 700;
+}
+
+/* --- 7a. Theme picker cards --- */
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.theme-card {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.55rem;
+  border-radius: 12px;
+  border: 1px solid rgb(var(--borderPrimary));
+  background: rgb(var(--bgOthers, var(--bgCard)));
+  color: rgb(var(--textPrimary));
+  transition: var(--theme-transition);
+}
+
+.theme-card:hover {
+  transform: translateY(-1px);
+  border-color: rgb(var(--borderHover, var(--borderPrimary)));
+  background: rgb(var(--bgHovers));
+}
+
+.theme-card.active {
+  border-color: rgb(var(--buttonPrimary, var(--textPrimary)));
+  box-shadow: 0 0 0 2px rgba(var(--buttonPrimary, var(--textPrimary)), 0.22);
+}
+
+.theme-card:focus-visible {
+  outline: 2px solid rgb(var(--buttonPrimary, var(--textPrimary)));
+  outline-offset: 2px;
+}
+
+.theme-preview {
+  width: 58px;
+  height: 40px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgb(var(--preview-bg));
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-preview-bar {
+  height: 9px;
+  background: rgb(var(--preview-card));
+  border-bottom: 1px solid rgba(var(--preview-text), 0.14);
+}
+
+.theme-preview-body {
+  flex: 1;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  gap: 4px;
+  align-items: center;
+}
+
+.theme-preview-chip {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgb(var(--preview-accent));
+}
+
+.theme-preview-line {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(var(--preview-text), 0.4);
+}
+
+.theme-name {
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+/* --- 7b. Accent swatches --- */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+  gap: 0.55rem;
+}
+
+.swatch {
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgb(var(--borderPrimary));
+  transition: transform 0.2s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.swatch:hover {
+  transform: translateY(-1px);
+  border-color: rgb(var(--borderHover, var(--borderPrimary)));
+}
+
+.swatch.active {
+  box-shadow: 0 0 0 2px rgba(var(--buttonPrimary, var(--textPrimary)), 0.22);
+  border-color: rgb(var(--buttonPrimary, var(--textPrimary)));
+}
+
+.swatch:focus-visible {
+  outline: 2px solid rgb(var(--buttonPrimary, var(--textPrimary)));
+  outline-offset: 2px;
+}
+
+/* --- 7c. Toggle rows --- */
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.58rem 0.1rem;
+  color: rgb(var(--textSecondary));
+}
+
+.toggle input[type="checkbox"] {
+  accent-color: rgb(var(--buttonPrimary, var(--textPrimary)));
+}
+
+
+/* ===== 8. SETTINGS — LEGACY (B7-era class names) ===== */
+.settings-label {
+  margin: 14px 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(var(--textSecondary));
+}
+.settings-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.settings-swatch {
+  width: 38px;
+  height: 38px;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.settings-swatch:hover {
+  transform: scale(1.1);
+}
+.settings-swatch.active {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(var(--colorOrange) / 0.45);
+}
+.settings-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: rgba(var(--bgPopups));
+  cursor: pointer;
+  font-size: 13px;
+  color: rgba(var(--textPrimary));
+}
+.settings-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: rgba(var(--colorOrange));
+  cursor: pointer;
+  flex-shrink: 0;
+}

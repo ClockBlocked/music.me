@@ -1,0 +1,9 @@
+/* ============================================================================
+   overlays/toasts.css
+   Toast notifications.
+
+   NOTE: Every .toast rule in new.css was inside a commented-out block and
+   has been omitted per the refactor rules. Toast visuals are currently
+   owned by the external popups.css. Add toast styles here when you migrate
+   them out of that file.
+   ============================================================================ */
