@@ -1,0 +1,613 @@
+/* ============================================================================
+   players/drawer.css
+   Full-player drawer — overlay, shell, vinyl art, controls, queue modal,
+   lyrics overlay, sleep timer trigger
+   ============================================================================ */
+
+
+/* ===== 1. DRAWER OVERLAY ===== */
+.player-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(var(--overlayBg) / var(--overlayAlpha));
+  backdrop-filter: blur(8px);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.45s ease-in-out;
+}
+
+.player-drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s ease-in-out, visibility 0.45s ease;
+  pointer-events: auto;
+}
+
+
+/* ===== 2. DRAWER SHELL ===== */
+.player-drawer {
+  position: fixed;
+  bottom: -10px;
+  left: 1rem;
+  right: 1rem;
+  height: 85vh;
+  max-height: 800px;
+  z-index: 100;
+  background: var(--gradientPlayer);
+  border: 1.5px solid rgba(var(--borderPrimary) / 0.65);
+  border-radius: 1.75rem 1.75rem 0 0;
+  transform: translateY(100%);
+  transition: transform 0.45s ease-in-out, var(--theme-transition);
+  overflow: hidden;
+  box-shadow: 0 -10px 60px rgba(var(--shadowHeavy) / var(--shadowHeavyAlpha));
+}
+
+.player-drawer.open {
+  transform: translateY(0);
+  transition: all 0.35s ease-in-out;
+}
+
+.player-drawer .dot-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(var(--playerBgPrimary)) 1.5px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.4;
+  z-index: 0;
+  transition: var(--theme-transition);
+}
+
+.player-drawer .playerStripe {
+  position: absolute;
+  height: auto;
+  width: 175%;
+  left: -5rem;
+  transform: rotate(180deg);
+}
+
+.player-drawer .drawerUpper {
+  overflow: hidden;
+}
+
+.player-drawer .drawer-header {
+  position: absolute;
+  top: 1.25rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  z-index: 20;
+}
+
+.player-drawer .header-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 35%;
+  background: rgba(var(--buttonPrimary) / 0.25);
+  color: rgba(var(--textPrimary));
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease, var(--theme-transition);
+  backdrop-filter: blur(8px);
+}
+
+.player-drawer .header-btn:hover {
+  background: rgba(var(--buttonSecondary) / 0.5);
+  border-radius: 50%;
+  transition: all 0.45s ease;
+}
+
+
+/* ===== 3. VINYL ALBUM ART ===== */
+.player-drawer .album-art-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 240px;
+  height: 240px;
+  margin: 120px auto 0;
+  border-radius: 50%;
+  padding: 0;
+  border: 10px solid rgba(var(--vinylMid));
+  box-shadow: 0 20px 50px rgba(var(--shadowHeavy) / var(--shadowHeavyAlpha)), 0 0 40px rgba(var(--playerAccent) / 0.25), 0 0 80px rgba(var(--playerAccent) / 0.25);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), var(--theme-transition);
+  cursor: pointer;
+}
+
+.player-drawer .album-art-wrapper:active {
+  transform: scale(0.96);
+}
+
+.player-drawer .album-art {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(var(--vinylDark));
+}
+
+.player-drawer #visualizer {
+  position: absolute;
+  bottom: 180px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 5;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+
+/* ===== 4. TRACK META ===== */
+[data-player="full"] .meta {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+}
+[data-player="full"] .meta .title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-player="full"] .meta .sub {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(148 163 184);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ===== 5. CONTROL PANEL ===== */
+.player-drawer .control-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(var(--playerBgSecondary) / 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 30px 32px 40px;
+  z-index: 20;
+  border-top: 1px solid rgba(var(--borderSubtle) / 0.05);
+  transition: var(--theme-transition);
+}
+
+.player-drawer .progress-container {
+  width: 100%;
+  margin-bottom: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+.player-drawer .progress-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: rgba(var(--borderSubtle) / 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.player-drawer .progress-bar-fill {
+  height: 100%;
+  background: rgba(var(--playerAccent));
+  width: 0;
+  transition: width 0.1s linear, background 0.8s ease, box-shadow 1s ease;
+  box-shadow: 0 0 12px rgba(var(--playerAccent) / 0.5);
+}
+
+.player-drawer .time-display {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(var(--textSecondary));
+  margin-top: 8px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.player-drawer .controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-drawer .control-btn {
+  background: none;
+  border: none;
+  color: rgba(var(--textSecondary));
+  cursor: pointer;
+  transition: all 0.2s ease, color 0.8s ease;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-drawer .control-btn:active {
+  transform: scale(0.9);
+  color: rgba(var(--textPrimary));
+}
+
+.player-drawer .control-btn.active {
+  color: rgba(var(--playerAccent));
+  filter: drop-shadow(0 0 4px rgba(var(--playerAccent) / 0.25));
+}
+
+.player-drawer .play-btn {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, rgba(var(--playerAccent)), rgba(var(--playerBgPrimary))) !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: rgba(var(--textPrimary));
+  cursor: pointer;
+  box-shadow: 0 0 40px rgba(var(--playerAccent) / 0.5);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.8s ease, box-shadow 1s ease;
+  position: relative;
+}
+
+.player-drawer .play-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 60px rgba(var(--playerAccent));
+}
+
+.player-drawer .play-btn:active {
+  transform: scale(0.95);
+}
+
+.player-drawer .play-btn.playing {
+  animation: pulse 2s infinite;
+}
+
+.player-drawer .extra-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.player-drawer .speed-btn {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(var(--textSecondary));
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(var(--borderSubtle) / 0.1);
+  cursor: pointer;
+  border: none;
+}
+
+.player-drawer .speed-btn.active {
+  color: rgba(var(--playerAccent));
+  background: rgba(var(--playerAccent) / 0.25);
+  border: 1px solid rgba(var(--playerAccent));
+}
+
+
+/* ===== 6. SLEEP TIMER TRIGGER ===== */
+#sleep-btn {
+  position: relative;
+}
+#sleep-btn.active {
+  color: rgba(var(--colorOrange));
+}
+.sleep-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+
+/* ===== 7. UP NEXT QUEUE MODAL ===== */
+.player-drawer .queue-modal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: rgba(var(--playerBgSecondary) / 0.7);
+  backdrop-filter: blur(30px);
+  z-index: 50;
+  border-radius: 30px 30px 0 0;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), background 1.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-drawer .queue-modal.open {
+  transform: translateY(0);
+}
+
+.player-drawer .queue-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(var(--borderSubtle) / 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-drawer .queue-list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 10px 0;
+}
+
+.player-drawer .queue-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.player-drawer .queue-item:hover {
+  background: rgba(var(--bgButtons) / 0.3);
+}
+
+.player-drawer .queue-item.active {
+  background: rgba(var(--playerAccent) / 0.25);
+  border-left: 3px solid rgba(var(--playerAccent));
+  transition: background 1.2s ease, border-color 0.8s ease;
+}
+
+.player-drawer .queue-item.dragging {
+  opacity: 0.45;
+  background: rgba(var(--bgButtons) / 0.5);
+}
+
+.player-drawer .queue-item-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.player-drawer .queue-item-info {
+  flex: 1;
+}
+
+.player-drawer .queue-item-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: rgba(var(--textPrimary));
+}
+
+.player-drawer .queue-item-artist {
+  font-size: 13px;
+  color: rgba(var(--textSecondary));
+}
+
+.queue-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.queue-action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 9999px;
+  background: rgba(var(--bgButtons) / 0.8);
+  color: rgba(var(--textSecondary));
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.queue-action-btn:hover {
+  background: rgba(var(--bgButtons));
+  color: rgba(var(--textPrimary));
+}
+
+.queue-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  color: rgba(var(--textOthers));
+  cursor: grab;
+  flex-shrink: 0;
+  touch-action: none;
+}
+
+.queue-drag-handle:active {
+  cursor: grabbing;
+}
+
+.queue-item-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: rgba(var(--textOthers));
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.player-drawer .queue-item:hover .queue-item-remove,
+.player-drawer .queue-item.active .queue-item-remove {
+  opacity: 1;
+}
+
+.queue-item-remove:hover {
+  background: rgba(var(--bgButtons));
+  color: rgba(var(--colorOrange));
+}
+
+@media (hover: none) {
+  .queue-item-remove {
+    opacity: 1;
+  }
+}
+
+[data-player="full"] .queue-header .title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+[data-player="full"] .queue-list .empty {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(var(--textSecondary));
+}
+[data-player="full"] .queue-item .num {
+  color: rgb(100 116 139);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+
+/* ===== 8. NOW-PLAYING INDICATOR ===== */
+.player-drawer .now-playing-indicator {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 20px;
+}
+
+.player-drawer .now-playing-indicator .bar-anim {
+  width: 4px;
+  background: rgba(var(--playerAccent));
+  animation: sound 1s infinite;
+  box-shadow: 0 0 6px rgba(var(--playerAccent) / 0.25);
+  transition: background 0.8s ease, box-shadow 1s ease;
+}
+
+.player-drawer .now-playing-indicator .bar-anim:first-child {
+  animation-delay: 0s;
+  height: 40%;
+}
+
+.player-drawer .now-playing-indicator .bar-anim:nth-child(2) {
+  animation-delay: 0.2s;
+  height: 80%;
+}
+
+.player-drawer .now-playing-indicator .bar-anim:nth-child(3) {
+  animation-delay: 0.4s;
+  height: 50%;
+}
+
+
+/* ===== 9. LYRICS OVERLAY ===== */
+.player-drawer .lyrics-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--playerBgSecondary) / 0.7);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, background 1.2s ease;
+}
+
+.player-drawer .lyrics-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.player-drawer .lyrics-text {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  padding: 20px;
+  color: rgba(var(--textSecondary) / 0.8);
+  line-height: 1.6;
+}
+
+[data-player="full"] .lyrics-overlay .hint {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(148 163 184);
+  margin-top: 1rem;
+}
+
+
+/* ===== 10. DISABLED CONTROLS ===== */
+#full-player-drawer button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ===== 11. DRAWER KEYFRAMES ===== */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--playerAccent) / 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 20px transparent;
+  }
+  to {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes sound {
+  0%,
+  to {
+    height: 40%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+
+
+/* ===== 12. DESKTOP POSITIONING ===== */
+@media (min-width: 768px) {
+  .player-drawer {
+    max-width: 480px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+  }
+
+  .player-drawer.open {
+    transform: translateX(-50%) translateY(0);
+  }
+}
