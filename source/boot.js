@@ -53,8 +53,8 @@ function loadLibrary() {
 
   const candidates = [
     jsonUrl,
-    "https://mybeats.cloud/source/library.json",
-    "/library.json",
+//    "https://mybeats.cloud/source/library.json",
+//    "/library.json",
     "./library.json"
   ].filter((v, i, a) => v && a.indexOf(v) === i);
 
