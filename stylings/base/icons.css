@@ -1,0 +1,490 @@
+
+
+
+
+
+.spinner {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 3px solid rgba(var(--textSecondary) / 0.15);
+  border-top-color: rgba(var(--colorRed));
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.offline-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
+  color: rgba(var(--colorOrange));
+  flex-shrink: 0;
+}
+.offline-badge svg {
+  display: block;
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  button {
+    --btn-size-sm:  0.875rem;
+    --btn-size-md:  1rem;
+    --btn-size-lg:  1.25rem;
+    --btn-size-xl:  1.75rem;
+    --btn-size-2xl: 2.5rem;
+    --btn-font-size: var(--btn-size-md);
+    --btn-icon-size: 1em;
+    --btn-pad-block: 0.75em;
+    --btn-pad-inline: 1.35em;
+    --btn-gap: 0.5em;
+    --btn-radius: 0.6em;
+    --btn-base: oklch(0.55 0.02 260);
+    --btn-on:   oklch(0.99 0 0);
+    --btn-soft: color-mix(in oklab, var(--btn-base) 14%, transparent);
+    --btn-ring: color-mix(in oklab, var(--btn-base) 55%, transparent);
+    --btn-dur: 160ms;
+    --btn-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--btn-gap);
+    font-size: var(--btn-font-size);
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: var(--btn-pad-block) var(--btn-pad-inline);
+    border: 1px solid transparent;
+    border-radius: var(--btn-radius);
+    background: transparent;
+    color: var(--btn-base);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+    font-family: inherit;
+    position: relative;
+    isolation: isolate;
+    transition:
+      background-color var(--btn-dur) var(--btn-ease),
+      border-color     var(--btn-dur) var(--btn-ease),
+      color            var(--btn-dur) var(--btn-ease),
+      box-shadow       var(--btn-dur) var(--btn-ease),
+      transform        var(--btn-dur) var(--btn-ease);
+  }
+
+  button[data-size="small"] {
+    --btn-font-size: var(--btn-size-sm);
+    --btn-pad-inline: 1em;
+  }
+
+  button[data-size="medium"] {
+    --btn-font-size: var(--btn-size-md);
+  }
+
+  button[data-size="large"] {
+    --btn-font-size: var(--btn-size-lg);
+  }
+
+  button[data-size="xlarge"] {
+    --btn-font-size: var(--btn-size-xl);
+  }
+
+  button[data-size="xxlarge"] {
+    --btn-font-size: var(--btn-size-2xl);
+  }
+
+  button[data-shape="square"] {
+    --btn-radius: 0;
+  }
+
+  button[data-shape="rounded"] {
+    --btn-radius: 0.6em;
+  }
+
+  button[data-shape="pill"] {
+    --btn-radius: 999px;
+  }
+
+  button[data-color="primary"] {
+    --btn-base: oklch(0.62 0.19 255);
+    --btn-on:   oklch(0.99 0 0);
+  }
+
+  button[data-color="neutral"] {
+    --btn-base: oklch(0.55 0.015 260);
+    --btn-on:   oklch(0.99 0 0);
+  }
+
+  button[data-color="success"] {
+    --btn-base: oklch(0.65 0.16 150);
+    --btn-on:   oklch(0.99 0 0);
+  }
+
+  button[data-color="warning"] {
+    --btn-base: oklch(0.78 0.16 75);
+    --btn-on:   oklch(0.20 0.03 75);
+  }
+
+  button[data-color="danger"] {
+    --btn-base: oklch(0.60 0.22 25);
+    --btn-on:   oklch(0.99 0 0);
+  }
+
+  button[data-color="info"] {
+    --btn-base: oklch(0.68 0.13 220);
+    --btn-on:   oklch(0.99 0 0);
+  }
+
+  button[data-variant="solid"] {
+    background: var(--btn-base);
+    color: var(--btn-on);
+    border-color: transparent;
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.15);
+  }
+
+  button[data-variant="soft"] {
+    background: var(--btn-soft);
+    color: var(--btn-base);
+    border-color: transparent;
+  }
+
+  button[data-variant="outline"] {
+    background: transparent;
+    color: var(--btn-base);
+    border-color: color-mix(in oklab, var(--btn-base) 45%, transparent);
+  }
+
+  button[data-variant="ghost"] {
+    background: transparent;
+    color: var(--btn-base);
+    border-color: transparent;
+  }
+
+  button[data-variant="link"] {
+    background: transparent;
+    color: var(--btn-base);
+    border-color: transparent;
+    padding-inline: 0;
+    text-underline-offset: 0.25em;
+    text-decoration: underline transparent;
+    transition: text-decoration-color var(--btn-dur) var(--btn-ease);
+  }
+
+  button[data-elevated] {
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.10),
+      0 4px 12px -2px oklch(0 0 0 / 0.15);
+  }
+
+  button svg {
+    inline-size: var(--btn-icon-size);
+    block-size: var(--btn-icon-size);
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    transition: transform var(--btn-dur) var(--btn-ease);
+  }
+
+  button svg[data-fill] {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  button[data-icon="only"] {
+    padding: var(--btn-pad-block);
+    aspect-ratio: 1;
+  }
+
+  button[data-icon="trailing"] {
+    flex-direction: row-reverse;
+  }
+
+  button[data-full] {
+    inline-size: 100%;
+  }
+
+  button:not(:disabled, [data-loading]):hover[data-variant="solid"] {
+    background: color-mix(in oklab, var(--btn-base) 88%, white);
+  }
+
+  button:not(:disabled, [data-loading]):hover[data-variant="soft"] {
+    background: color-mix(in oklab, var(--btn-base) 22%, transparent);
+  }
+
+  button:not(:disabled, [data-loading]):hover[data-variant="outline"] {
+    background: var(--btn-soft);
+  }
+
+  button:not(:disabled, [data-loading]):hover[data-variant="ghost"] {
+    background: var(--btn-soft);
+  }
+
+  button:not(:disabled, [data-loading]):hover[data-variant="link"] {
+    text-decoration-color: currentColor;
+  }
+
+  button[data-elevated]:not(:disabled, [data-loading]):hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 2px 4px oklch(0 0 0 / 0.12),
+      0 8px 20px -4px oklch(0 0 0 / 0.20);
+  }
+
+  button:not(:disabled, [data-loading]):active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 60ms;
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--btn-ring);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--btn-base) 18%, transparent);
+  }
+
+  button:disabled,
+  button[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: saturate(0.4);
+  }
+
+  button[data-loading] {
+    cursor: progress;
+    color: transparent !important;
+    pointer-events: none;
+  }
+
+  button[data-loading]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    inline-size: 1em;
+    block-size: 1em;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    color: var(--btn-on, var(--btn-base));
+    animation: btn-spin 0.6s linear infinite;
+  }
+
+  button[data-loading][data-variant="soft"]::after,
+  button[data-loading][data-variant="outline"]::after,
+  button[data-loading][data-variant="ghost"]::after {
+    color: var(--btn-base);
+  }
+
+  button[data-attention] {
+    animation: btn-pulse 2s var(--btn-ease) infinite;
+  }
+
+  button:not(:disabled):hover svg[data-anim="bounce"] {
+    animation: btn-bounce 400ms var(--btn-ease);
+  }
+
+  button:not(:disabled):hover svg[data-anim="spin"] {
+    transform: rotate(90deg);
+  }
+
+  button:not(:disabled):hover svg[data-anim="slide"] {
+    transform: translateX(3px);
+  }
+
+  button[data-shake] {
+    animation: btn-shake 400ms var(--btn-ease);
+  }
+
+  @keyframes btn-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes btn-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--btn-base) 45%, transparent); }
+    50%      { box-shadow: 0 0 0 6px color-mix(in oklab, var(--btn-base) 0%, transparent); }
+  }
+
+  @keyframes btn-bounce {
+    0%, 100% { transform: translateY(0); }
+    40%      { transform: translateY(-3px); }
+    70%      { transform: translateY(1px); }
+  }
+
+  @keyframes btn-shake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-3px); }
+    40%      { transform: translateX(3px); }
+    60%      { transform: translateX(-2px); }
+    80%      { transform: translateX(2px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    button,
+    button * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    button:active {
+      transform: none;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    button {
+      --btn-soft: color-mix(in oklab, var(--btn-base) 22%, transparent);
+    }
+    button[data-color="neutral"] {
+      --btn-base: oklch(0.72 0.02 260);
+      --btn-on:   oklch(0.15 0.01 260);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+  --heart-rest:    0.05;   /* idle — the near-invisible baseline   */
+  --heart-reveal:  0.65;   /* list hovered / row tapped             */
+  --heart-active:  1;      /* heart itself hovered (set 0.65 if you
+                              want it to match your original spec) */
+  --heart-idle:    #b0b0b0;
+  --heart-on:      #ff2d55;
+
+  --heart-in:      300ms;  /* appearing — snappy                    */
+  --heart-out:     600ms;  /* leaving  — slow, soft, cinematic      */
+  --heart-ease:    cubic-bezier(0.22, 1, 0.36, 1); /* easeOutQuint */
+  --heart-pop:     cubic-bezier(0.34, 1.56, 0.64, 1); /* overshoot  */
+}
+
+.heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 32px;          /* generous hit target, even at 0.05 */
+  block-size: 32px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.heart svg {
+  inline-size: 18px;
+  block-size: 18px;
+  color: var(--heart-idle);       /* SVG must use currentColor */
+  opacity: var(--heart-op, var(--heart-rest));
+  transform: scale(1);
+  transform-origin: center;
+  transition:
+    opacity   var(--heart-dur, var(--heart-out)) var(--heart-ease),
+    color     260ms ease,
+    transform 260ms var(--heart-pop);
+}
+
+
+
+#songsList:hover .heart svg,
+#songsList:focus-within .heart svg,
+.songItem.is-revealed .heart svg {
+  --heart-op:  var(--heart-reveal);
+  --heart-dur: var(--heart-in);
+}
+
+#songsList .heart:hover svg,
+#songsList .heart:focus-visible svg {
+  --heart-op:  var(--heart-active);
+  --heart-dur: var(--heart-in);
+  transform: scale(1.15);
+}
+
+.heart.favorited svg {
+  color: var(--heart-on);
+  fill: var(--heart-on);
+  filter: drop-shadow(0 0 5px rgba(255, 45, 85, 0.35));
+}
+
+.heart:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--heart-on) 70%, transparent);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+
+@keyframes heartPop {
+  0%   { transform: scale(1);    }
+  30%  { transform: scale(1.38); }
+  55%  { transform: scale(0.90); }
+  100% { transform: scale(1);    }
+}
+
+.heart.just-favorited svg {
+  animation: heartPop 460ms var(--heart-pop);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .heart svg { transition-duration: 1ms; }
+  .heart.just-favorited svg { animation: none; }
+}
+
+
+
+
+
+
+/**
+*
+*    Copyright © 2 0 2 6
+*      MyBeats Music 
+*
+*
+*
+
+  Free to use with anything.
+Personal — Business — Anything!
+
+*
+*
+*      William Cole Hanson
+*     Chevrolay@Outlook.com
+*        m.me/Chevrolay
+*
+*
+**/

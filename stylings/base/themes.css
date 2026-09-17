@@ -1,0 +1,473 @@
+/* ============================================================================
+   base/themes.css
+   Theme tokens — every [data-theme] custom-property set
+
+   Curated set (greens, browns & tans intentionally excluded):
+     dark       — GitHub Dark Dimmed-inspired (default dark)
+     onedark    — Atom One Dark
+     mocha      — Catppuccin Mocha (dark pastel)
+     tokyonight — Tokyo Night Storm
+     moon       — Rosé Pine Moon (dark pastel)
+     light      — Cool Light, GitHub-inspired (default light)
+     bloom      — Bloom, soft pastel light
+   ============================================================================ */
+
+
+/* ===== 1. SHARED THEME TRANSITION ===== */
+:root {
+  --theme-transition: background 1.2s ease, color 0.8s ease, box-shadow 1s ease, border-color 0.8s ease;
+}
+
+/* ===== DARK DIMMED ===== */
+[data-theme="dark"] {
+  --bgNav: 34 39 46;
+  --borderNavs: 68 76 86;
+  --bgBreadcrumbs: 45 51 59;
+
+  --bgLists: #1c2128;
+  --RGBA_bgLists: 28 33 40;
+
+  --bgBody: 34 39 46;
+  --bgOthers: 28 33 40;
+  --bgCard: 45 51 59;
+  --bgCardHeader: 50 56 65;
+  --bgPopups: 50 56 65;
+  --bgButtons: 55 62 71;
+  --bgHovers: 55 62 71;
+
+  --textPrimary: 173 186 199;
+  --textSecondary: 118 131 144;
+  --textOthers: 99 110 123;
+
+  --borderPrimary: 68 76 86;
+  --borderSubtle: 55 62 71;
+  --borderSecondary: 82 91 102;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 83 155 245;
+
+  --colorPurple: 176 131 240;
+  --colorPink: 226 117 173;
+  --colorOrange: 240 136 62;
+  --colorRed: 229 83 75;
+
+  --accent-coral: 244 112 103;
+  --accent-pink: 226 117 173;
+
+  --buttonPrimary: 83 155 245;
+  --buttonPrimaryHover: 108 168 247;
+  --buttonSecondary: 176 131 240;
+  --buttonSecondaryHover: 193 152 243;
+  --buttonTertiary: 229 83 75;
+  --buttonTertiaryHover: 244 112 103;
+  --buttonActive: 65 124 197;
+
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.42;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.64;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.5;
+
+  --playerBgPrimary: 28 33 40;
+  --playerBgSecondary: 34 39 46;
+  --playerAccent: 83 155 245;
+
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+
+  --vinylDark: 45 51 59;
+  --vinylMid: 36 41 48;
+  --vinylDeep: 30 34 40;
+  --vinylBg: 24 28 33;
+}
+
+
+/* ===== ONE DARK ===== */
+[data-theme="onedark"] {
+  --bgNav: 40 44 52;
+  --borderNavs: 62 68 81;
+  --bgBreadcrumbs: 44 49 58;
+
+  --bgLists: #21252b;
+  --RGBA_bgLists: 33 37 43;
+
+  --bgBody: 40 44 52;
+  --bgOthers: 33 37 43;
+  --bgCard: 47 52 61;
+  --bgCardHeader: 53 58 68;
+  --bgPopups: 53 59 69;
+  --bgButtons: 62 68 81;
+  --bgHovers: 62 68 81;
+
+  --textPrimary: 171 178 191;
+  --textSecondary: 130 137 151;
+  --textOthers: 92 99 112;
+
+  --borderPrimary: 62 68 81;
+  --borderSubtle: 51 56 67;
+  --borderSecondary: 76 83 98;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 97 175 239;
+
+  --colorPurple: 198 120 221;
+  --colorPink: 212 122 180;
+  --colorOrange: 209 154 102;
+  --colorRed: 224 108 117;
+
+  --accent-coral: 224 108 117;
+  --accent-pink: 212 122 180;
+
+  --buttonPrimary: 97 175 239;
+  --buttonPrimaryHover: 126 192 245;
+  --buttonSecondary: 198 120 221;
+  --buttonSecondaryHover: 213 148 231;
+  --buttonTertiary: 224 108 117;
+  --buttonTertiaryHover: 232 138 145;
+  --buttonActive: 74 140 207;
+
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.42;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.64;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.5;
+
+  --playerBgPrimary: 30 33 40;
+  --playerBgSecondary: 37 41 50;
+  --playerAccent: 97 175 239;
+
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+
+  --vinylDark: 47 52 61;
+  --vinylMid: 39 43 51;
+  --vinylDeep: 32 36 43;
+  --vinylBg: 27 30 37;
+}
+
+
+/* ===== CATPPUCCIN MOCHA ===== */
+[data-theme="mocha"] {
+  --bgNav: 30 30 46;
+  --borderNavs: 69 71 90;
+  --bgBreadcrumbs: 49 50 68;
+
+  --bgLists: #181825;
+  --RGBA_bgLists: 24 24 37;
+
+  --bgBody: 30 30 46;
+  --bgOthers: 24 24 37;
+  --bgCard: 49 50 68;
+  --bgCardHeader: 57 58 78;
+  --bgPopups: 57 58 78;
+  --bgButtons: 69 71 90;
+  --bgHovers: 62 63 84;
+
+  --textPrimary: 205 214 244;
+  --textSecondary: 166 173 200;
+  --textOthers: 127 132 156;
+
+  --borderPrimary: 69 71 90;
+  --borderSubtle: 49 50 68;
+  --borderSecondary: 88 91 112;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 137 180 250;
+
+  --colorPurple: 203 166 247;
+  --colorPink: 245 194 231;
+  --colorOrange: 250 179 135;
+  --colorRed: 243 139 168;
+
+  --accent-coral: 250 179 135;
+  --accent-pink: 245 194 231;
+
+  --buttonPrimary: 203 166 247;
+  --buttonPrimaryHover: 218 187 250;
+  --buttonSecondary: 137 180 250;
+  --buttonSecondaryHover: 160 196 252;
+  --buttonTertiary: 243 139 168;
+  --buttonTertiaryHover: 247 164 188;
+  --buttonActive: 173 139 219;
+
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.44;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.66;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.52;
+
+  --playerBgPrimary: 24 24 37;
+  --playerBgSecondary: 30 30 46;
+  --playerAccent: 203 166 247;
+
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+
+  --vinylDark: 49 50 68;
+  --vinylMid: 41 42 58;
+  --vinylDeep: 34 35 49;
+  --vinylBg: 26 26 40;
+}
+
+
+/* ===== TOKYO NIGHT ===== */
+[data-theme="tokyonight"] {
+  --bgNav: 36 40 59;
+  --borderNavs: 59 66 97;
+  --bgBreadcrumbs: 41 46 66;
+
+  --bgLists: #1f2335;
+  --RGBA_bgLists: 31 35 53;
+
+  --bgBody: 36 40 59;
+  --bgOthers: 31 35 53;
+  --bgCard: 44 49 71;
+  --bgCardHeader: 49 55 79;
+  --bgPopups: 49 55 79;
+  --bgButtons: 56 63 90;
+  --bgHovers: 56 63 90;
+
+  --textPrimary: 192 202 245;
+  --textSecondary: 169 177 214;
+  --textOthers: 120 128 165;
+
+  --borderPrimary: 59 66 97;
+  --borderSubtle: 46 51 74;
+  --borderSecondary: 73 81 114;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 122 162 247;
+
+  --colorPurple: 187 154 247;
+  --colorPink: 240 118 176;
+  --colorOrange: 255 158 100;
+  --colorRed: 247 118 142;
+
+  --accent-coral: 255 158 100;
+  --accent-pink: 240 118 176;
+
+  --buttonPrimary: 122 162 247;
+  --buttonPrimaryHover: 148 181 250;
+  --buttonSecondary: 187 154 247;
+  --buttonSecondaryHover: 203 175 250;
+  --buttonTertiary: 247 118 142;
+  --buttonTertiaryHover: 250 146 164;
+  --buttonActive: 98 136 210;
+
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.44;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.66;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.52;
+
+  --playerBgPrimary: 27 30 46;
+  --playerBgSecondary: 33 37 55;
+  --playerAccent: 122 162 247;
+
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+
+  --vinylDark: 44 49 71;
+  --vinylMid: 37 41 60;
+  --vinylDeep: 30 34 50;
+  --vinylBg: 24 27 41;
+}
+
+
+/* ===== ROSÉ PINE MOON ===== */
+[data-theme="moon"] {
+  --bgNav: 35 33 54;
+  --borderNavs: 68 63 96;
+  --bgBreadcrumbs: 42 39 63;
+
+  --bgLists: #1f1d30;
+  --RGBA_bgLists: 31 29 48;
+
+  --bgBody: 35 33 54;
+  --bgOthers: 31 29 48;
+  --bgCard: 42 39 63;
+  --bgCardHeader: 48 44 71;
+  --bgPopups: 48 44 71;
+  --bgButtons: 57 53 82;
+  --bgHovers: 57 53 82;
+
+  --textPrimary: 224 222 244;
+  --textSecondary: 144 140 170;
+  --textOthers: 110 106 134;
+
+  --borderPrimary: 68 63 96;
+  --borderSubtle: 57 53 82;
+  --borderSecondary: 84 78 117;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 196 167 231;
+
+  --colorPurple: 196 167 231;
+  --colorPink: 235 188 186;
+  --colorOrange: 246 193 119;
+  --colorRed: 235 111 146;
+
+  --accent-coral: 235 111 146;
+  --accent-pink: 235 188 186;
+
+  --buttonPrimary: 196 167 231;
+  --buttonPrimaryHover: 212 187 238;
+  --buttonSecondary: 235 111 146;
+  --buttonSecondaryHover: 240 140 170;
+  --buttonTertiary: 246 193 119;
+  --buttonTertiaryHover: 249 206 145;
+  --buttonActive: 166 137 205;
+
+  --shadowPrimary: 0 0 0;
+  --shadowPrimaryAlpha: 0.44;
+  --shadowHeavy: 0 0 0;
+  --shadowHeavyAlpha: 0.66;
+  --overlayBg: 0 0 0;
+  --overlayAlpha: 0.5;
+
+  --playerBgPrimary: 28 26 44;
+  --playerBgSecondary: 34 32 52;
+  --playerAccent: 235 111 146;
+
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+
+  --vinylDark: 42 39 63;
+  --vinylMid: 35 32 53;
+  --vinylDeep: 28 26 43;
+  --vinylBg: 23 21 36;
+}
+
+
+/* ===== COOL LIGHT ===== */
+[data-theme="light"] {
+  --bgNav: 246 248 250;
+  --borderNavs: 208 215 222;
+  --bgBreadcrumbs: 255 255 255;
+
+  --bgLists: #eef1f5;
+  --RGBA_bgLists: 238 241 245;
+
+  --bgBody: 238 241 245;
+  --bgOthers: 246 248 250;
+  --bgCard: 255 255 255;
+  --bgCardHeader: 246 248 250;
+  --bgPopups: 255 255 255;
+  --bgButtons: 226 232 240;
+  --bgHovers: 241 244 248;
+
+  --textPrimary: 31 41 55;
+  --textSecondary: 75 85 99;
+  --textOthers: 107 114 128;
+
+  --borderPrimary: 209 216 226;
+  --borderSubtle: 229 233 240;
+  --borderSecondary: 196 205 216;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 9 105 218;
+
+  --colorPurple: 130 80 223;
+  --colorPink: 191 83 152;
+  --colorOrange: 234 88 12;
+  --colorRed: 207 34 46;
+
+  --accent-coral: 234 88 12;
+  --accent-pink: 191 83 152;
+
+  --buttonPrimary: 9 105 218;
+  --buttonPrimaryHover: 8 88 186;
+  --buttonSecondary: 130 80 223;
+  --buttonSecondaryHover: 110 68 194;
+  --buttonTertiary: 234 88 12;
+  --buttonTertiaryHover: 200 72 10;
+  --buttonActive: 5 80 170;
+
+  --shadowPrimary: 30 41 59;
+  --shadowPrimaryAlpha: 0.08;
+  --shadowHeavy: 30 41 59;
+  --shadowHeavyAlpha: 0.16;
+  --overlayBg: 15 23 42;
+  --overlayAlpha: 0.32;
+
+  --playerBgPrimary: 255 255 255;
+  --playerBgSecondary: 243 246 250;
+  --playerAccent: 9 105 218;
+
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+
+  --vinylDark: 226 232 240;
+  --vinylMid: 209 216 226;
+  --vinylDeep: 190 199 212;
+  --vinylBg: 240 243 247;
+}
+
+
+/* ===== BLOOM ===== */
+[data-theme="bloom"] {
+  --bgNav: 247 245 252;
+  --borderNavs: 219 213 234;
+  --bgBreadcrumbs: 255 255 255;
+
+  --bgLists: #f1edf9;
+  --RGBA_bgLists: 241 237 249;
+
+  --bgBody: 241 238 248;
+  --bgOthers: 247 245 252;
+  --bgCard: 255 255 255;
+  --bgCardHeader: 247 245 252;
+  --bgPopups: 255 255 255;
+  --bgButtons: 231 226 244;
+  --bgHovers: 243 240 250;
+
+  --textPrimary: 50 42 70;
+  --textSecondary: 99 90 122;
+  --textOthers: 140 132 160;
+
+  --borderPrimary: 219 213 234;
+  --borderSubtle: 234 230 245;
+  --borderSecondary: 205 197 228;
+  --borderHover: var(--borderBlue);
+  --borderActive: var(--borderBlue);
+  --borderBlue: 124 92 220;
+
+  --colorPurple: 139 105 224;
+  --colorPink: 214 105 180;
+  --colorOrange: 240 138 93;
+  --colorRed: 217 91 108;
+
+  --accent-coral: 240 138 93;
+  --accent-pink: 214 105 180;
+
+  --buttonPrimary: 139 105 224;
+  --buttonPrimaryHover: 120 88 205;
+  --buttonSecondary: 214 105 180;
+  --buttonSecondaryHover: 196 88 162;
+  --buttonTertiary: 240 138 93;
+  --buttonTertiaryHover: 224 116 72;
+  --buttonActive: 112 84 192;
+
+  --shadowPrimary: 60 48 90;
+  --shadowPrimaryAlpha: 0.08;
+  --shadowHeavy: 60 48 90;
+  --shadowHeavyAlpha: 0.15;
+  --overlayBg: 60 48 90;
+  --overlayAlpha: 0.28;
+
+  --playerBgPrimary: 255 255 255;
+  --playerBgSecondary: 246 243 251;
+  --playerAccent: 139 105 224;
+
+  --gradientAccent: linear-gradient(135deg, rgba(var(--colorPurple)), rgba(var(--colorPink)));
+  --gradientPlayer: linear-gradient(135deg, rgba(var(--playerBgPrimary)), rgba(var(--playerBgSecondary)));
+
+  --vinylDark: 231 226 244;
+  --vinylMid: 219 213 234;
+  --vinylDeep: 202 194 226;
+  --vinylBg: 244 241 250;
+}

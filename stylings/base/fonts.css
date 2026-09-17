@@ -1,0 +1,120 @@
+
+
+
+
+
+/*==================================*/
+/* F O N T  F A M I L Y  S E T U P  */
+/* =================================*/
+@font-face {
+  font-family: "WF Visual Sans Text";
+  src: url("https://assets.website-files.com/6491b4dd238fa881faab3d5c/65258e6f9f50f2d876a4f384_WFVisualSans-RegularText.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "WF Visual Sans Text";
+  src: url("https://assets.website-files.com/6491b4dd238fa881faab3d5c/65258e6ffaf4654a99eceefd_WFVisualSans-SemiBoldText.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "WF Visual Sans";
+  src: url("https://assets.website-files.com/6491b4dd238fa881faab3d5c/65258e6fd096dfcb63d84a7d_WFVisualSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "WF Visual Sans";
+  src: url("https://assets.website-files.com/6491b4dd238fa881faab3d5c/65258e6fb4479820549d1044_WFVisualSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "WF Visual Sans";
+  src: url("https://assets.website-files.com/6491b4dd238fa881faab3d5c/65258e6f74892e61c00dc42e_WFVisualSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Font Families */
+  --font-text: "WF Visual Sans Text", sans-serif;
+  --font-headings: "WF Visual Sans", sans-serif;
+  --font-mono: Inconsolata, monospace;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+
+  /* Heading Sizes */
+  --h1: 2.5rem;
+  --h2: 3rem;
+  --h3: 1.75rem;
+  --h4: 1.5rem;
+
+  /* Font Weights */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+}
+
+body,
+html {
+  font-family: var(--font-text) !important;
+  font-size: var(--text-md);
+  font-weight: var(--weight-normal);
+}
+
+h1,
+.h1 {
+  font-family: var(--font-headings);
+  font-size: var(--h1);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+}
+
+h2,
+.h2 {
+  font-family: var(--font-headings);
+  font-size: var(--h2);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+}
+
+h3,
+.h3 {
+  font-family: var(--font-headings);
+  font-size: var(--h3);
+  font-weight: var(--weight-semibold);
+  line-height: 1.0;
+}
+
+h4,
+.h4 {
+  font-family: var(--font-headings);
+  font-size: var(--h4);
+  font-weight: var(--weight-semibold);
+  line-height: 1.0;
+}
+
+
+p {
+  font-variation-settings: "opsz" 16, "wght" 400;
+}
