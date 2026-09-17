@@ -1,0 +1,51 @@
+/* ============================================================================
+   navbars/albums.css
+   Sticky album-tabs navbar (artist page)
+   ============================================================================ */
+
+
+/* ===== 1. ALBUM TABS BAR ===== */
+[data-area="albums"] {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 110;
+  display: flex;
+  gap: .5rem;
+  overflow-x: auto;
+  padding: .75rem 1rem;
+  margin-bottom: .8rem;
+  background: rgba(var(--bgNav) / 0.75);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-bottom: 1px solid rgba(var(--borderSubtle) / 1);
+  scrollbar-width: none;
+  border-radius: 15px 15px 0 0;
+}
+
+[data-area="albums"]::-webkit-scrollbar {
+  display: none;
+}
+
+[data-area="albums"] .albumTab {
+  flex-shrink: 0;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: rgba(var(--bgCard) / 0.2);
+  color: rgba(var(--textSecondary) / 1);
+  padding: .45rem .95rem;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: all .45s ease;
+}
+
+[data-area="albums"] .albumTab:hover {
+  color: rgba(var(--borderBlue) / 1);
+  background: rgba(var(--bgBody) / 0.14);
+  border-color: rgba(var(--borderBlue));
+}
+
+[data-area="albums"] .albumTab.active {
+  color: rgba(var(--textPrimary) / 1);
+  background: rgba(var(--bgPopups) / 1);
+  font-weight: 700;
+}
