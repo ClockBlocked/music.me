@@ -1,0 +1,1128 @@
+
+
+/* ===== 404 PAGE ===== */
+[data-page="404"] {
+  text-align: center;
+
+  .wrap {
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .code {
+    font-size: 4.5rem;
+    line-height: 1;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: rgba(var(--colorOrange));
+  }
+
+  .title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .desc {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: rgba(var(--textSecondary));
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .home,
+  .back {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+  }
+
+  .home {
+    background: linear-gradient(135deg, rgba(var(--colorOrange)), rgba(var(--colorPink)));
+  }
+
+  .back {
+    background: rgba(var(--bgPopups));
+    border: 1px solid rgba(var(--borderSubtle) / 0.3);
+    color: inherit;
+  }
+
+  .note {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(var(--textSecondary));
+  }
+}
+
+
+
+
+
+
+
+
+
+/* =============================================================
+   0. STICKY STACK — BREADCRUMBS BAR
+   ============================================================= */
+/*
+  The top nav is fixed at top: 0 with height 3.5rem (existing).
+  We make the breadcrumbs sticky at 3.5rem with z-index 40.
+  The album tabs bar (below) is sticky at 3.5rem with z-index 50.
+  Because both are sticky at the same offset, the tabs bar covers
+  the breadcrumbs as it reaches the pin point — replacing it.
+
+  NOTE: If your app styles [data-navbar="breadcrumbs"] elsewhere,
+  make sure nothing overrides position/overflow/background here.
+*/
+
+[data-navbar="breadcrumbs"] {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 40;
+  background: rgb(var(--bgBody));
+}
+
+/* =============================================================
+   1. ARTIST PAGE SHELL
+   ============================================================= */
+
+[data-page="artist"] {
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --pad-x: clamp(1rem, 3vw, 2.5rem);
+  --gap: clamp(0.85rem, 1.6vw, 1.25rem);
+  --easing: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  padding: clamp(1.25rem, 2.5vw, 2rem) var(--pad-x) clamp(3rem, 6vw, 5rem);
+  background:
+    radial-gradient(ellipse 60% 55% at 85% -6%, rgba(var(--colorPurple) / 0.14), transparent 60%),
+    radial-gradient(ellipse 50% 45% at -5% 40%, rgba(var(--colorPurple) / 0.06), transparent 58%),
+    rgb(var(--bgBody));
+  color: rgb(var(--textPrimary));
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-page="artist"] *,
+[data-page="artist"] *::before,
+[data-page="artist"] *::after {
+  box-sizing: border-box;
+}
+
+[data-page="artist"] button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+[data-page="artist"] .artist-shell {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+[data-page="artist"] .artist-missing {
+  padding: 4rem 1rem;
+  text-align: center;
+  color: rgba(var(--textSecondary) / 1);
+}
+
+/* =============================================================
+   2. HEADER  (kicker + artist name + heart)
+   ============================================================= */
+
+[data-page="artist"] .artist-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0 0.15rem;
+}
+
+[data-page="artist"] .artist-header-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+[data-page="artist"] .artist-header-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(var(--colorPurple));
+  font-size: 0.68rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+[data-page="artist"] .artist-header-kicker::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgb(var(--colorPurple));
+  box-shadow: 0 0 12px rgba(var(--colorPurple) / 0.7);
+}
+
+[data-page="artist"] .artist-name {
+  margin: 0;
+  font-size: clamp(1.6rem, 1rem + 3vw, 3rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: rgb(var(--textPrimary));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-page="artist"] .artist-heart {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 999px;
+  background: rgba(var(--bgButtons) / 0.35);
+  color: rgba(var(--textSecondary) / 1);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s var(--easing);
+}
+
+[data-page="artist"] .artist-heart:hover {
+  color: rgba(var(--colorRed) / 1);
+  background: rgba(var(--bgButtons) / 0.7);
+  border-color: rgba(var(--colorRed) / 0.4);
+  transform: translateY(-1px);
+}
+
+[data-page="artist"] .artist-heart.favorited {
+  color: rgba(var(--colorRed) / 1);
+  background: rgba(var(--colorRed) / 0.12);
+  border-color: rgba(var(--colorRed) / 0.45);
+}
+
+/* =============================================================
+   3. SENTINEL  (invisible; used by JS to know when tabs pin)
+   ============================================================= */
+
+[data-page="artist"] .albumTabsSentinel {
+  height: 1px;
+  margin: -1px 0 0 0;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* =============================================================
+   4. ALBUM TABS BAR  — sticky at 3.5rem, z-index 50
+   ============================================================= */
+
+[data-page="artist"] .albumTabsBar {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 50;
+
+  /* at-rest state: rounded top card header, shares edge with heroBody */
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  background: rgba(var(--bgCard) / 0.72);
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-bottom: 0;
+  padding: 0.5rem 0.5rem;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    border-radius 0.25s ease;
+}
+
+/* the scrollable pill row */
+[data-page="artist"] .albumTabs-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding: 0.15rem 0.15rem;
+}
+
+[data-page="artist"] .albumTabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* individual pill */
+[data-page="artist"] .albumTab {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  max-width: 240px;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 999px;
+  background: rgba(var(--bgButtons) / 0.32);
+  color: rgba(var(--textSecondary) / 1);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s var(--easing);
+}
+
+[data-page="artist"] .albumTab:hover {
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--bgButtons) / 0.6);
+  border-color: rgba(var(--borderPrimary) / 1);
+}
+
+[data-page="artist"] .albumTab.active {
+  color: rgb(var(--textPrimary));
+  background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.24), rgba(var(--colorPurple) / 0.08));
+  border-color: rgba(var(--colorPurple) / 0.55);
+  box-shadow: 0 6px 20px rgba(var(--colorPurple) / 0.18);
+}
+
+/* pinned state: flat top, glassy extended background, hairline bottom */
+[data-page="artist"] .albumTabsBar.is-pinned {
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+}
+
+[data-page="artist"] .albumTabsBar.is-pinned::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: rgba(var(--bgBody) / 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(var(--borderSubtle) / 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =============================================================
+   5. HERO BODY  — the card under the tabs
+   ============================================================= */
+
+[data-page="artist"] .artist-heroBody {
+  position: relative;
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  background:
+    linear-gradient(145deg, rgba(var(--bgCard) / 0.62), rgba(var(--bgOthers) / 0.32));
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-top: 0;
+  padding: clamp(0.85rem, 1.5vw, 1.15rem);
+  box-shadow:
+    inset 0 1px 0 rgba(var(--textPrimary) / 0.04),
+    0 14px 40px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+}
+
+/* the grid inside the card */
+[data-page="artist"] .hero-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  min-width: 0;
+}
+
+[data-page="artist"] .hero-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+[data-page="artist"] .hero-right {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* desktop: cover+meta left, songs right */
+@media (min-width: 900px) {
+  [data-page="artist"] .hero-stage {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+  }
+}
+
+/* =============================================================
+   6. HERO COVER
+   ============================================================= */
+
+[data-page="artist"] .hero-cover {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: rgb(var(--bgOthers));
+  aspect-ratio: 1 / 1;
+  box-shadow:
+    inset 0 1px 0 rgba(var(--textPrimary) / 0.06),
+    0 12px 32px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+}
+
+[data-page="artist"] .hero-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 900ms var(--easing);
+}
+
+[data-page="artist"] .hero-cover:hover img {
+  transform: scale(1.035);
+}
+
+[data-page="artist"] .hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.28) 34%,
+      rgba(0, 0, 0, 0.02) 68%,
+      transparent 100%
+    ),
+    linear-gradient(135deg, rgba(var(--colorPurple) / 0.12), transparent 58%);
+}
+
+[data-page="artist"] .hero-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: clamp(0.9rem, 1.8vw, 1.35rem);
+}
+
+[data-page="artist"] .album-meta {
+  min-width: 0;
+  max-width: 78%;
+  pointer-events: none;
+}
+
+[data-page="artist"] .album-title {
+  margin: 0;
+  font-size: clamp(1.35rem, 1rem + 2.4vw, 2.35rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.96;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.98);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.45),
+    0 12px 30px rgba(0, 0, 0, 0.55);
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+[data-page="artist"] .track-count {
+  display: inline-block;
+  margin-top: 0.55rem;
+  padding: 0.24rem 0.7rem;
+  border: 1px solid rgba(var(--colorPurple) / 0.55);
+  border-radius: 999px;
+  background: rgba(var(--colorPurple) / 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* the shuffle FAB */
+[data-page="artist"] .play-all {
+  pointer-events: auto;
+  position: relative;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  padding: 0 0.95rem 0 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(var(--colorPurple));
+  color: #fff;
+  box-shadow:
+    0 10px 28px rgba(var(--colorPurple) / 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.16);
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(0.25rem) scale(0.9);
+  transform-origin: bottom right;
+  transition:
+    opacity 0.28s var(--easing),
+    transform 0.36s var(--easing),
+    width 0.4s var(--easing),
+    background-color 0.2s ease;
+}
+
+[data-page="artist"] .play-all svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}
+
+[data-page="artist"] .play-all .shuffle-text {
+  max-width: 0;
+  opacity: 0;
+  margin-left: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transform: translateX(-0.2rem);
+  transition:
+    max-width 0.35s var(--easing),
+    opacity 0.22s ease,
+    margin-left 0.3s var(--easing),
+    transform 0.3s var(--easing);
+}
+
+[data-page="artist"] .hero-cover:hover .play-all,
+[data-page="artist"] .play-all:focus-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+[data-page="artist"] .play-all:hover {
+  width: 8.6rem;
+  background: rgb(var(--colorPurple));
+}
+
+[data-page="artist"] .play-all:hover .shuffle-text {
+  max-width: 5rem;
+  opacity: 1;
+  margin-left: 0.45rem;
+  transform: translateX(0);
+}
+
+/* =============================================================
+   7. META SUMMARY  — two bento nodes
+   ============================================================= */
+
+[data-page="artist"] .hero-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  [data-page="artist"] .hero-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+[data-page="artist"] .bento-meta-node {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, rgba(var(--bgCard) / 0.7), rgba(var(--bgOthers) / 0.35));
+  box-shadow: inset 0 1px 0 rgba(var(--textPrimary) / 0.05);
+  overflow: hidden;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s var(--easing);
+}
+
+[data-page="artist"] .bento-meta-node::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 100% 0%, rgba(var(--colorPurple) / 0.12), transparent 55%);
+}
+
+[data-page="artist"] .bento-meta-node:hover {
+  border-color: rgba(var(--colorPurple) / 0.4);
+  transform: translateY(-1px);
+}
+
+/* --- editorial brief -------------------------------------------------- */
+[data-page="artist"] [data-list="editorial-brief"] {
+  justify-content: space-between;
+}
+
+[data-page="artist"] .brief-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+[data-page="artist"] .brief-mono {
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: rgb(var(--textPrimary));
+  font-variant-numeric: tabular-nums;
+}
+
+[data-page="artist"] .brief-heading {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(var(--colorPurple) / 0.4);
+  border-radius: 999px;
+  background: rgba(var(--colorPurple) / 0.12);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--colorPurple));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+[data-page="artist"] .brief-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: rgba(var(--textSecondary) / 1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+[data-page="artist"] .brief-anchor::after {
+  content: "↗";
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+[data-page="artist"] .brief-anchor:hover {
+  color: rgb(var(--textPrimary));
+  border-color: rgba(var(--textPrimary) / 0.7);
+}
+
+/* --- utility hub ------------------------------------------------------ */
+[data-page="artist"] [data-list="utility-hub"] {
+  gap: 0.85rem;
+}
+
+[data-page="artist"] .hub-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(var(--colorPurple) / 0.5);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.2), rgba(var(--colorPurple) / 0.06));
+  color: rgb(var(--textPrimary));
+  font-size: 0.74rem;
+  font-weight: 700;
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    transform 0.22s var(--easing);
+}
+
+[data-page="artist"] .hub-pill-btn:hover {
+  border-color: rgba(var(--colorPurple) / 0.8);
+  transform: translateY(-1px);
+}
+
+[data-page="artist"] .hub-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+[data-page="artist"] .hub-group-title {
+  margin: 0;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(var(--textOthers) / 1);
+}
+
+[data-page="artist"] .hub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+[data-page="artist"] .hub-link-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.85rem;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 999px;
+  background: rgba(var(--bgButtons) / 0.35);
+  color: rgba(var(--textSecondary) / 1);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+[data-page="artist"] .hub-link-item:hover {
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--bgButtons) / 0.8);
+  border-color: rgba(var(--borderPrimary) / 1);
+}
+
+/* =============================================================
+   8. SONG LIST
+   ============================================================= */
+
+[data-page="artist"] [data-list="songs"][data-type="album"] {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 14px;
+  background: rgba(var(--RGBA_bgLists) / 0.35);
+  overflow: hidden;
+  transition: opacity 0.4s ease;
+}
+
+[data-page="artist"] [data-list="songs"] .body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* desktop: internal scroll so the hero stays a clean unit */
+@media (min-width: 900px) {
+  [data-page="artist"] [data-list="songs"] .body {
+    max-height: 560px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--textOthers) / 0.28) transparent;
+  }
+
+  [data-page="artist"] [data-list="songs"] .body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  [data-page="artist"] [data-list="songs"] .body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  [data-page="artist"] [data-list="songs"] .body::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(var(--textOthers) / 0.28);
+  }
+}
+
+/* ── song row ────────────────────────────────────────────────────── */
+
+[data-page="artist"] .songItem {
+  --row-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+[data-page="artist"] .songItem + .songItem {
+  border-top: 1px solid rgba(var(--borderSubtle) / 0.35);
+}
+
+[data-page="artist"] .songItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: rgb(var(--colorPurple));
+  transform: scaleY(0);
+  transform-origin: center;
+  opacity: 0;
+  transition: transform 0.28s var(--easing), opacity 0.28s ease;
+}
+
+[data-page="artist"] .songItem:hover {
+  background: rgba(var(--bgButtons) / 0.3);
+}
+
+[data-page="artist"] .songItem:hover::before {
+  transform: scaleY(1);
+  opacity: 0.4;
+}
+
+[data-page="artist"] .songItem.playing {
+  background: linear-gradient(90deg, rgba(var(--colorPurple) / 0.14), rgba(var(--colorPurple) / 0.02));
+}
+
+[data-page="artist"] .songItem.playing::before {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+[data-page="artist"] .songItem.playing .center .title span {
+  color: rgb(var(--colorPurple));
+}
+
+/* left — index / play toggle */
+[data-page="artist"] .songItem .left {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+[data-page="artist"] .songItem .left .trackNum,
+[data-page="artist"] .songItem .left .play {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.24s ease, transform 0.3s var(--row-bounce);
+}
+
+[data-page="artist"] .songItem .left .trackNum {
+  color: rgba(var(--textSecondary) / 0.6);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-page="artist"] .songItem .left .play {
+  color: rgb(var(--colorPurple));
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+[data-page="artist"] .songItem .left .play svg {
+  width: 18px;
+  height: 18px;
+}
+
+[data-page="artist"] .songItem:hover .left .trackNum {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+[data-page="artist"] .songItem:hover .left .play {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* center — title */
+[data-page="artist"] .songItem .center {
+  min-width: 0;
+}
+
+[data-page="artist"] .songItem .center .title span {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgb(var(--textPrimary));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+/* right — meta + actions */
+[data-page="artist"] .songItem .right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+[data-page="artist"] .songItem .right .time {
+  width: 2.6rem;
+  text-align: right;
+  font-size: 0.74rem;
+  color: rgba(var(--textSecondary) / 1);
+  font-variant-numeric: tabular-nums;
+}
+
+[data-page="artist"] .songItem .right :is(.heartOLD, .downloadBtn, .moreMenu) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(var(--textSecondary) / 1);
+  opacity: 0;
+  transform: translateX(4px) scale(0.9);
+  pointer-events: none;
+  transition:
+    opacity 0.24s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.32s var(--row-bounce);
+}
+
+[data-page="artist"] .songItem .right :is(.heartOLD, .downloadBtn, .moreMenu) svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+[data-page="artist"] .songItem .right :is(.heartOLD, .downloadBtn, .moreMenu):hover {
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--bgButtons) / 0.7);
+}
+
+[data-page="artist"] .songItem .right .heartOLD.favorited {
+  color: rgba(var(--colorRed) / 1);
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+[data-page="artist"] .songItem:hover .right :is(.heartOLD, .downloadBtn, .moreMenu),
+[data-page="artist"] .songItem .right :is(.heartOLD, .downloadBtn, .moreMenu):focus-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+}
+
+[data-page="artist"] .songItem .right :is(.heartOLD, .downloadBtn, .moreMenu):active {
+  transform: translateX(0) scale(0.82);
+  transition-duration: 0.12s;
+}
+
+/* =============================================================
+   9. SIMILAR ARTISTS  (full width below hero)
+   ============================================================= */
+
+[data-page="artist"] [data-area="similar"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: clamp(0.75rem, 2vw, 1.5rem);
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  border-top: 1px solid rgba(var(--borderSubtle) / 1);
+}
+
+[data-page="artist"] .similar-artists-title {
+  margin: 0;
+  padding-left: 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(var(--textSecondary) / 1);
+}
+
+[data-page="artist"] .marquee-container {
+  overflow: hidden;
+  padding-block: 0.4rem;
+  mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+}
+
+[data-page="artist"] .marquee-track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+  will-change: transform;
+}
+
+[data-page="artist"] .marquee-track.marquee-right {
+  animation-direction: reverse;
+}
+
+[data-page="artist"] .marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+[data-page="artist"] .artist-name-pill {
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: rgba(var(--textSecondary) / 1);
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  background: rgba(var(--bgButtons) / 0.25);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s var(--easing);
+}
+
+[data-page="artist"] .artist-name-pill:hover {
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--bgButtons) / 0.7);
+  border-color: rgba(var(--borderPrimary) / 1);
+  transform: translateY(-1px);
+}
+
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* =============================================================
+   10. RESPONSIVE TWEAKS
+   ============================================================= */
+
+@media (max-width: 480px) {
+  [data-page="artist"] {
+    --pad-x: 0.9rem;
+  }
+
+  [data-page="artist"] .artist-name {
+    font-size: clamp(1.4rem, 1rem + 3vw, 1.75rem);
+  }
+
+  [data-page="artist"] .artist-heart {
+    width: 38px;
+    height: 38px;
+  }
+
+  [data-page="artist"] .albumTab {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.78rem;
+    max-width: 200px;
+  }
+
+  [data-page="artist"] .hero-cover {
+    border-radius: 16px;
+  }
+
+  [data-page="artist"] .play-all {
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+
+  /* song rows: always-visible actions, hide duration */
+  [data-page="artist"] .songItem {
+    gap: 0.55rem;
+    padding: 0.6rem 0.7rem;
+  }
+
+  [data-page="artist"] .songItem .right .time {
+    display: none;
+  }
+
+  [data-page="artist"] .songItem .right .heartOLD {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  [data-page="artist"] .songItem .right :is(.downloadBtn, .moreMenu) {
+    opacity: 0.65;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+/* =============================================================
+   11. REDUCED MOTION
+   ============================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-page="artist"] *,
+  [data-page="artist"] *::before,
+  [data-page="artist"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-page="artist"] .marquee-track {
+    animation: none !important;
+  }
+}

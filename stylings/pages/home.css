@@ -1,0 +1,1805 @@
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
+
+
+:root {
+--redLight: #f58a8a;
+--red: #f37373;
+--redDeep: #f15b5b;
+--redDeeper: #ef4444;
+}
+
+/* ============================================================================
+   pages/home.css — MyBeats Home v2 (bento dashboard)
+   Uses global theme variables only (no scoped overrides)
+   ============================================================================ */
+
+/* ---- Page shell ---- */
+.hp {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(124, 58, 237, 0.08), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(167, 139, 250, 0.05), transparent 30%),
+    rgb(var(--bgBody));
+  color: rgb(var(--textPrimary));
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Reset (scoped) ---- */
+.hp, .hp *, .hp *::before, .hp *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.hp button, .hp input, .hp textarea, .hp select {
+  font: inherit;
+}
+
+.hp button {
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hp img {
+  display: block;
+  max-width: 100%;
+}
+
+.hp a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hp ul, .hp ol {
+  list-style: none;
+}
+
+/* ---- Layout ---- */
+.hp .pageSection {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 3vw, 3rem);
+}
+
+.container {
+  background: transparent;
+}
+
+.hp .container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ---- Page Header ---- */
+.hp .pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top; 2cm;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.hp .pageHeaderContent {
+  min-width: 0;
+}
+
+.hp .pageKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(var(--colorPurple));
+  font-size: 0.7rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hp .pageKicker::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgb(var(--colorPurple));
+  box-shadow: 0 0 12px rgba(var(--colorPurple) / 0.7);
+}
+
+.hp .pageTitle {
+  margin-top: 0.65rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  color: rgb(var(--textPrimary));
+}
+
+.hp .pageDescription {
+  max-width: 580px;
+  margin-top: 0.75rem;
+  color: rgba(var(--textSecondary) / 1);
+  font-size: 0.95rem;
+}
+
+.hp .headerAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0 1rem;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 999px;
+  background: rgba(var(--bgButtons) / 0.4);
+  color: rgba(var(--textSecondary) / 1);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+
+.hp .headerAction:hover {
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--bgButtons) / 0.8);
+  border-color: rgba(var(--borderPrimary) / 1);
+}
+
+/* ---- Bento Grid ---- */
+.hp .bentoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .hp .bentoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .hp .bentoGrid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: minmax(500px, auto) minmax(300px, auto);
+  }
+}
+
+/* ---- Music Card ---- */
+.hp .musicCard {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(145deg,
+      rgba(var(--bgCard) / 0.6),
+      rgba(var(--bgOthers) / 0.3));
+  box-shadow: 0 15px 45px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+  isolation: isolate;
+}
+
+.hp .musicCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(var(--textPrimary) / 0.035), transparent 40%);
+  z-index: -1;
+}
+
+.hp .musicCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 78px;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(var(--borderSubtle) / 0.8);
+  background: rgba(var(--bgCard) / 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.hp .cardHeading {
+  min-width: 0;
+}
+
+.hp .cardKicker {
+  color: rgb(var(--colorPurple));
+  font-size: 0.65rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.hp .cardTitle {
+  margin-top: 0.35rem;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: rgb(var(--textPrimary));
+}
+
+.hp .cardAction {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: rgba(var(--textSecondary) / 1);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.hp .cardAction:hover {
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--bgButtons) / 0.8);
+  border-color: rgba(var(--borderPrimary) / 1);
+}
+
+.hp .cardContent {
+  min-height: 0;
+}
+
+/* ---- Recently Played ---- */
+.hp .recentlyPlayed {
+  grid-column: 1 / -1;
+  height: clamp(450px, 65vh, 700px);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .hp .recentlyPlayed {
+    grid-column: span 3;
+  }
+}
+
+.hp .recentlyPlayed .cardContent {
+  flex: 1;
+  overflow: hidden;
+}
+
+.hp .songList {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--textOthers) / 0.2) transparent;
+}
+
+.hp .songList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hp .songList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hp .songList::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(var(--textOthers) / 0.2);
+}
+
+/* ---- Song Row ---- */
+.hp .song {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 68px;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(var(--borderSubtle) / 0.5);
+  transition: background-color 0.22s ease;
+}
+
+.hp .song:last-child {
+  border-bottom: 0;
+}
+
+.hp .song::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(var(--colorPurple) / 0.13), transparent 70%);
+  transition: opacity 0.22s ease;
+}
+
+.hp .song:hover {
+  background: rgba(var(--bgButtons) / 0.3);
+}
+
+.hp .song:hover::before {
+  opacity: 1;
+}
+
+.hp .songArtwork {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 0.7rem;
+  background: rgba(var(--bgOthers) / 1);
+  box-shadow: 0 5px 15px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+  z-index: 1;
+}
+
+.hp .songArtwork img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.22s ease;
+}
+
+.hp .song:hover .songArtwork img {
+  transform: scale(1.06);
+}
+
+.hp .songArtworkOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(var(--overlayBg) / 0.45);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.hp .song:hover .songArtworkOverlay {
+  opacity: 1;
+}
+
+.hp .playIcon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(var(--textPrimary) / 0.92);
+  color: rgb(var(--bgBody));
+}
+
+.hp .songInformation {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hp .songArtist,
+.hp .songTitle {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.hp .songArtist {
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.72rem;
+  line-height: 1.1rem;
+  font-weight: 500;
+}
+
+.hp .songTitle {
+  margin-top: 0.1rem;
+  color: rgba(var(--textPrimary) / 0.94);
+  font-size: 0.86rem;
+  line-height: 1.2rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.hp .songMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.1rem;
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.65rem;
+}
+
+.hp .songDuration {
+  white-space: nowrap;
+}
+
+.hp .songActions {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hp .songAction {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: rgba(var(--textOthers) / 1);
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.hp .songAction:hover {
+  background: rgba(var(--bgButtons) / 0.8);
+  color: rgb(var(--textPrimary));
+}
+
+.hp .songAction:active {
+  transform: scale(0.9);
+}
+
+.hp .songAction.is-favorite {
+  color: var(--redLight);
+}
+
+/* ---- Currently Playing ---- */
+.hp .song.is-playing {
+  background: linear-gradient(90deg, rgba(var(--colorPurple) / 0.14), rgba(var(--colorPurple) / 0.025));
+}
+
+.hp .song.is-playing::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 4px;
+  background: rgb(var(--colorPurple));
+  box-shadow: 0 0 10px rgba(var(--colorPurple) / 0.5);
+}
+
+.hp .song.is-playing .songTitle {
+  color: rgb(var(--colorPurple));
+}
+
+.hp .song.is-playing .songArtist {
+  color: rgba(var(--colorPurple) / 0.65);
+}
+
+/* ---- Releases Card ---- */
+.hp .releasesCard {
+  grid-column: 1 / -1;
+  min-height: 500px;
+}
+
+@media (min-width: 1024px) {
+  .hp .releasesCard {
+    grid-column: span 3;
+  }
+}
+
+.hp .releaseFeature {
+  position: relative;
+  min-height: 422px;
+  height: calc(100% - 78px);
+  overflow: hidden;
+}
+
+.hp .releaseBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.82;
+  transition: transform 600ms ease;
+}
+
+.hp .releasesCard:hover .releaseBackground {
+  transform: scale(1.035);
+}
+
+.hp .releaseFeature::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    transparent 15%,
+    rgba(var(--bgBody) / 0.15) 35%,
+    rgba(var(--bgBody) / 0.92) 100%);
+  z-index: 1;
+}
+
+.hp .releaseInfo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.5rem;
+  z-index: 2;
+}
+
+.hp .releaseLabel {
+  color: rgb(var(--colorPurple));
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hp .releaseTitle {
+  margin-top: 0.35rem;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.05;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  color: rgb(var(--textPrimary));
+}
+
+.hp .releaseArtist {
+  margin-top: 0.35rem;
+  color: rgba(var(--textSecondary) / 1);
+  font-size: 0.85rem;
+}
+
+.hp .releaseControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.hp .primaryPlay {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgb(var(--textPrimary));
+  color: rgb(var(--bgBody));
+  box-shadow: 0 8px 25px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+  transition: transform 0.15s ease;
+}
+
+.hp .primaryPlay:hover {
+  transform: scale(1.06);
+}
+
+.hp .secondaryControl {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 50%;
+  background: rgba(var(--bgButtons) / 0.6);
+  color: rgb(var(--textPrimary));
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hp .secondaryControl:hover {
+  background: rgba(var(--bgButtons) / 1);
+  border-color: rgba(var(--borderPrimary) / 1);
+}
+
+/* ---- Most Played ---- */
+.hp .mostPlayed {
+  grid-column: 1 / -1;
+  min-height: 300px;
+}
+
+@media (min-width: 1024px) {
+  .hp .mostPlayed {
+    grid-column: span 2;
+  }
+}
+
+.hp .rankList {
+  padding: 0.5rem;
+}
+
+.hp .rankItem {
+  display: grid;
+  grid-template-columns: 30px 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 68px;
+  padding: 0.45rem 0.5rem;
+  border-radius: 0.75rem;
+  transition: background-color 0.22s ease;
+}
+
+.hp .rankItem:hover {
+  background: rgba(var(--bgButtons) / 0.4);
+}
+
+.hp .rankNumber {
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.hp .rankArtwork {
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 0.65rem;
+  background: rgba(var(--bgOthers) / 1);
+}
+
+.hp .rankArtwork img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hp .rankInformation {
+  min-width: 0;
+}
+
+.hp .rankTitle {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(var(--textPrimary));
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.hp .rankSubtitle {
+  display: block;
+  margin-top: 0.1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.68rem;
+}
+
+.hp .rankCount {
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+/* ---- Library Card ---- */
+.hp .libraryCard {
+  grid-column: 1 / -1;
+  min-height: 300px;
+}
+
+@media (min-width: 1024px) {
+  .hp .libraryCard {
+    grid-column: span 2;
+  }
+}
+
+.hp .libraryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  padding: 0.75rem;
+}
+
+.hp .libraryItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 105px;
+  padding: 0.85rem;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 0.75rem;
+  background: rgba(var(--bgButtons) / 0.3);
+  transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease;
+}
+
+.hp .libraryItem:hover {
+  transform: translateY(-2px);
+  background: rgba(var(--bgButtons) / 0.6);
+  border-color: rgba(var(--borderPrimary) / 1);
+}
+
+.hp .libraryIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: auto;
+  border-radius: 0.65rem;
+  background: rgba(var(--colorPurple) / 0.1);
+  color: rgb(var(--colorPurple));
+}
+
+.hp .libraryName {
+  margin-top: 0.75rem;
+  color: rgb(var(--textPrimary));
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.hp .libraryCount {
+  margin-top: 0.1rem;
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.65rem;
+}
+
+/* ---- Favorites Card ---- */
+.hp .favoritesCard {
+  grid-column: 1 / -1;
+  min-height: 300px;
+}
+
+@media (min-width: 1024px) {
+  .hp .favoritesCard {
+    grid-column: span 2;
+  }
+}
+
+.hp .favoriteContent {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 78px);
+  min-height: 220px;
+  padding: 1rem;
+}
+
+.hp .favoriteHero {
+  position: relative;
+  flex: 1;
+  min-height: 150px;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.2), rgba(var(--bgCard) / 0.8));
+}
+
+.hp .favoriteHero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(var(--bgBody) / 0.85));
+}
+
+.hp .favoriteArtwork {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+}
+
+.hp .favoriteInfo {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+}
+
+.hp .favoriteTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(var(--textPrimary));
+}
+
+.hp .favoriteSubtitle {
+  margin-top: 0.15rem;
+  color: rgba(var(--textSecondary) / 1);
+  font-size: 0.7rem;
+}
+
+/* ---- Empty state ---- */
+.hp .hp-empty {
+  padding: 2rem 1.25rem;
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ---- Live update animations ---- */
+.hp .song {
+  will-change: transform;
+}
+
+.hp .song-enter {
+  animation: hpSongIn 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hpSongIn {
+  from { opacity: 0; transform: translateY(-16px) scale(0.97); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hp .song-exit {
+  animation: hpSongOut 280ms ease both;
+}
+
+@keyframes hpSongOut {
+  to { opacity: 0; transform: translateX(24px); }
+}
+
+.hp .song-bump {
+  animation: hpSongBump 900ms ease;
+}
+
+@keyframes hpSongBump {
+  0%   { background: rgba(var(--colorPurple) / 0.22); }
+  100% { background: transparent; }
+}
+
+.hp .songAction.heart-pop {
+  animation: hpHeartPop 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes hpHeartPop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+.hp .hp-swap {
+  animation: hpSwap 420ms ease;
+}
+
+@keyframes hpSwap {
+  from { opacity: 0.15; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hp .rankItem.rank-shift {
+  transition: transform 350ms ease;
+}
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 699px) {
+  .hp .pageHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hp .headerAction {
+    width: 100%;
+  }
+
+  .hp .song {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    gap: 0.65rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .hp .songArtwork {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hp .songAction {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hp .songAction.favorite {
+    display: none;
+  }
+
+  .hp .songMeta {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hp .recentlyPlayed {
+    border-top-left-radius: 2rem;
+  }
+
+  .hp .releasesCard {
+    border-top-right-radius: 2rem;
+  }
+
+  .hp .mostPlayed {
+    border-bottom-left-radius: 2rem;
+  }
+
+  .hp .favoritesCard {
+    border-bottom-right-radius: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp, .hp *, .hp *::before, .hp *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+
+
+
+
+
+
+
+.section-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 1.75rem;
+    position: relative;
+
+  padding: 0.35rem;
+}
+
+.section-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 10px;
+    opacity: 0.72;
+}
+
+.section-title {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+    font-size: clamp(14px, 3.5vw, 18px);
+    
+    letter-spacing: 0.08em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(190, 140, 255, 0.92);
+    filter: drop-shadow(0 0 5px rgba(175, 100, 255, 0.6))
+            drop-shadow(0 0 20px rgba(150, 70, 255, 0.22));
+    line-height: 1.3;
+    padding: 0 2px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+[data-card]:hover .section-title {
+  color: rgba(160, 90, 255, 0.85);
+}
+
+
+.section-title-notes {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    /*flex-shrink: 0;*/
+  flex: 1;
+    margin-left: 10px;
+    opacity: 0.6;
+}
+
+.section-title-divider {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        rgba(160, 90, 255, 0.45),
+        rgba(160, 90, 255, 0.08) 60%,
+        transparent
+    );
+    margin-left: 12px;
+    min-width: 20px;
+}
+
+/* Optional: if you keep the action button, place it after the divider */
+.cardAction {
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+
+/* ============================================================
+   CARD FOCUS — clicked card brightens, siblings dim
+   ============================================================ */
+
+.hp .musicCard[data-card] {
+  /* keeps the brighten/dim + existing hover border animation smooth */
+  transition:
+    filter 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 600ms ease-in-out,
+    box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: filter;
+}
+
+/* when ANY card is focused, dim every card */
+.hp .bentoGrid.has-card-focus .musicCard[data-card] {
+  filter: brightness(0.52) saturate(0.85);
+}
+
+/* …except the focused one, which pops */
+.hp .bentoGrid.has-card-focus .musicCard[data-card].is-card-focused {
+  filter: brightness(1.18) saturate(1.06);
+  border-color: rgba(160, 90, 255, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(160, 90, 255, 0.25),
+    0 18px 55px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha)),
+    0 0 42px rgba(160, 90, 255, 0.18);
+}
+
+/* optional: slightly dim the whole "Genres" marquee band too,
+   since it is NOT a .musicCard and would otherwise stay full‑bright */
+.hp .bentoGrid.has-card-focus .homeGenres {
+  filter: brightness(0.6) saturate(0.9);
+  transition: filter 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* keep reduced-motion users happy (overrides the 380ms above) */
+@media (prefers-reduced-motion: reduce) {
+  .hp .musicCard[data-card],
+  .hp .bentoGrid.has-card-focus .homeGenres {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Gentle bobbing / floating animation for the decorative notes */
+@keyframes note-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-4px) rotate(-3deg);
+    opacity: 1;
+  }
+}
+
+/* Apply to all SVGs inside the note container */
+.section-title-notes svg {
+  animation: note-float 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Optional: add staggered delays so notes don’t move in sync */
+.section-title-notes svg:nth-child(1) {
+  animation-delay: 0s;
+}
+.section-title-notes svg:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.section-title-notes svg:nth-child(3) {
+  animation-delay: 1s;
+}
+.section-title-notes svg:nth-child(4) {
+  animation-delay: 1.5s;
+}
+/* Add more if you have more notes */
+
+
+
+
+
+.mb-context-menu {
+  position: fixed;
+  z-index: 99999;
+  min-width: 12⅗0px;
+  background: rgb(var(--bgPopups));
+  border: 1px solid rgb(var(--borderPrimary));
+  border-radius: 12px;
+  padding: 0.375rem;
+  box-shadow: 0 8px 32px rgb(var(--shadowHeavy) / var(--shadowHeavyAlpha));
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.mb-ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 0.425rem;
+  padding: 0.325rem 0.45rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: rgb(var(--textPrimary));
+  font-size: 0.575rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.mb-ctx-item:hover {
+  background: rgb(var(--bgButtons));
+}
+
+.mb-ctx-item svg {
+  color: rgb(var(--textSecondary));
+  flex-shrink: 0;
+}
+
+.mb-ctx-divider {
+  height: 1px;
+  background: rgb(var(--borderSubtle));
+  margin: 0.25rem 0.5rem;
+}
+
+
+
+/* ============================================================================
+   HOME — DISCOVER / GENRES / COLLECTIONS
+   ============================================================================ */
+
+/* ---------------------------------------------------------------
+   DISCOVER CARD
+   --------------------------------------------------------------- */
+.hp .discoverCard {
+  grid-column: 1 / -1;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .hp .discoverCard {
+    grid-column: span 3;
+  }
+}
+
+.hp .discoverNav {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.hp .discoverNav .cardAction {
+  margin-left: 0;
+}
+
+.hp .discoverNav .cardAction[disabled] {
+  opacity: 0.26;
+  cursor: default;
+  pointer-events: none;
+}
+
+.hp .discoverCounter {
+  min-width: 46px;
+  margin-right: 0.35rem;
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.hp .discoverViewport {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.hp .discoverTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hp .discoverArtist {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.hp .discoverArtistHead {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.hp .discoverArtistArt {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  background: rgba(var(--bgOthers) / 1);
+  box-shadow: 0 8px 22px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
+}
+
+.hp .discoverArtistArt img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hp .discoverArtistMeta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hp .discoverArtistName {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgb(var(--textPrimary));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hp .discoverArtistGenre {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--colorPurple));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hp .discoverArtistOpen {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  color: rgba(var(--textSecondary) / 1);
+  background: transparent;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.hp .discoverArtistOpen:hover {
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--bgButtons) / 0.8);
+  border-color: rgba(var(--borderPrimary) / 1);
+  transform: translateX(2px);
+}
+
+.hp .discoverSongList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.hp .discoverSong {
+  display: grid;
+  grid-template-columns: 22px 40px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  background: rgba(var(--bgButtons) / 0.22);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hp .discoverSong:hover {
+  background: rgba(var(--bgButtons) / 0.55);
+  border-color: rgba(var(--borderSubtle) / 1);
+  transform: translateX(2px);
+}
+
+.hp .discoverSongIndex {
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.hp .discoverSongArt {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 0.55rem;
+  background: rgba(var(--bgOthers) / 1);
+}
+
+.hp .discoverSongArt img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hp .discoverSongInfo {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.hp .discoverSongTitle {
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: rgb(var(--textPrimary));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hp .discoverSongAlbum {
+  font-size: 0.66rem;
+  color: rgba(var(--textOthers) / 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hp .discoverSongPlay {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: rgb(var(--textPrimary));
+  background: rgba(var(--textPrimary) / 0.1);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.hp .discoverSong:hover .discoverSongPlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hp .discoverSong.is-playing {
+  background: linear-gradient(90deg, rgba(var(--colorPurple) / 0.16), rgba(var(--colorPurple) / 0.03));
+  border-color: rgba(var(--colorPurple) / 0.35);
+}
+
+.hp .discoverSong.is-playing .discoverSongTitle {
+  color: rgb(var(--colorPurple));
+}
+
+.hp .discoverSong.is-playing .discoverSongIndex {
+  color: rgb(var(--colorPurple));
+}
+
+@media (max-width: 699px) {
+  .hp .discoverSong {
+    grid-template-columns: 18px 36px minmax(0, 1fr) 26px;
+    gap: 0.55rem;
+  }
+  .hp .discoverSongArt {
+    width: 36px;
+    height: 36px;
+  }
+  .hp .discoverCounter {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   GENRES — continuous marquee band (no musicCard wrapper)
+   --------------------------------------------------------------- */
+.hp .homeGenres {
+  grid-column: 1 / -1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.35rem 0 0.5rem;
+}
+
+.hp .homeGenres .section-title-wrap {
+  margin-bottom: 0.75rem;
+  padding-left: 0.35rem;
+}
+
+.hp .genreMarquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.5rem 0 0.75rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+}
+
+.hp .genreMarqueeTrack {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  animation: genreMarqueeScroll 70s linear infinite;
+  will-change: transform;
+}
+
+.hp .genreMarquee:hover .genreMarqueeTrack,
+.hp .genreMarquee.has-focus .genreMarqueeTrack {
+  animation-play-state: paused;
+}
+
+@keyframes genreMarqueeScroll {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.hp .genreTile {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex: 0 0 auto;
+  width: 216px;
+  margin-right: 0.85rem;
+  padding: 0.55rem 1rem 0.55rem 0.55rem;
+  border: 1px solid rgba(var(--borderSubtle) / 1);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgba(var(--bgCard) / 0.7), rgba(var(--bgOthers) / 0.35));
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              background 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.hp .genreTile:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--colorPurple) / 0.5);
+  background: linear-gradient(145deg, rgba(var(--bgCard) / 0.95), rgba(var(--bgOthers) / 0.5));
+}
+
+.hp .genreTile.is-focused {
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(var(--colorPurple) / 0.95);
+  background: linear-gradient(145deg, rgba(var(--colorPurple) / 0.22), rgba(var(--bgCard) / 0.85));
+  box-shadow: 0 0 0 1px rgba(var(--colorPurple) / 0.35),
+              0 10px 30px rgba(var(--colorPurple) / 0.22);
+}
+
+.hp .genreTileArt {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.25), rgba(var(--bgOthers) / 1));
+}
+
+.hp .genreTileArt img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hp .genreTileBody {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.hp .genreTileName {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgb(var(--textPrimary));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hp .genreTileCount {
+  display: block;
+  font-size: 0.66rem;
+  color: rgba(var(--textOthers) / 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hp .genreTile.is-focused .genreTileCount {
+  color: rgba(var(--colorPurple) / 0.9);
+}
+
+/* ---------------------------------------------------------------
+   COLLECTIONS CARD  (playlists styled like Favorites album cards)
+   --------------------------------------------------------------- */
+.hp .collectionsCard {
+  grid-column: 1 / -1;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .hp .collectionsCard {
+    grid-column: span 3;
+  }
+}
+
+.hp .collectionsCard .cardContent {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--textOthers) / 0.2) transparent;
+}
+
+.hp .collectionsCard .cardContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hp .collectionsCard .cardContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hp .collectionsCard .cardContent::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(var(--textOthers) / 0.2);
+}
+
+.hp .collectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.hp .collection-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 26px;
+  background: rgba(var(--bgOthers) / 0.55);
+  box-shadow: 0 10px 30px rgba(var(--shadowPrimary) / 0.2);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hp .collection-card:hover {
+  transform: translateY(-4px);
+}
+
+.hp .collection-card .imgBx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hp .collection-card .imgBx > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.hp .collection-card:hover .imgBx > img {
+  transform: scale(1.04);
+}
+
+.hp .collection-card .collectionMosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--bgOthers) / 1);
+}
+
+.hp .collection-card .collectionMosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.hp .collection-card:hover .collectionMosaic img {
+  transform: scale(1.04);
+}
+
+.hp .collection-card .collectionEmpty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: rgba(var(--textOthers) / 1);
+  background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.2), rgba(var(--bgCard) / 0.7));
+}
+
+/* Glass content overlay (matches Favorites album cards) */
+.hp .collection-card .content {
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  transition: bottom 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0.3s;
+}
+
+.hp .collection-card:hover .content,
+.hp .collection-card.active .content {
+  bottom: 0;
+  transition-delay: 0s;
+}
+
+.hp .collection-card .contentBx h3 {
+  margin: 0 0 5px;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s, transform 0.5s;
+  transition-delay: 0.2s;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hp .collection-card:hover .contentBx h3,
+.hp .collection-card.active .contentBx h3 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hp .collection-card .contentBx h3 span {
+  font-size: 10.5px;
+  font-weight: 300;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hp .collection-card .sci {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  margin: 5px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hp .collection-card .sci li {
+  margin: 0;
+  transform: translateY(40px);
+  opacity: 0;
+  pointer-events: auto;
+  transition: transform 0.5s, opacity 0.5s;
+  transition-delay: calc(0.15s * var(--i));
+}
+
+.hp .collection-card:hover .sci li,
+.hp .collection-card.active .sci li {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hp .collection-card .icon-btn {
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.hp .collection-card .icon-btn:hover {
+  color: #fff;
+  transform: scale(1.15);
+}
+
+@media (max-width: 699px) {
+  .hp .collectionGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  .hp .collection-card .content {
+    height: 86px;
+    bottom: -86px;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Reduced-motion safety for the new pieces
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hp .genreMarqueeTrack {
+    animation: none !important;
+    transform: translateX(0) !important;
+  }
+  .hp .discoverTrack {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+/**
+JavaScript:
+https://mybeats.cloud/modules/global.js
+https://mybeats.cloud/modules/background.js
+https://mybeats.cloud/modules/FavoritesPlaylists.js
+https://mybeats.cloud/modules/builder.js
+https://mybeats.cloud/modules/hearts.js
+https://mybeats.cloud/modules/icons.js
+https://mybeats.cloud/modules/layoutsjs
+https://mybeats.cloud/modules/players.js
+https://mybeats.cloud/modules/progress.js
+https://mybeats.cloud/modules/theming.js
+https://mybeats.cloud/modules/utilities.js
+
+
+CSS:
+https://mybeats.cloud/dev/CoPilot/base/icons.css
+https://mybeats.cloud/dev/CoPilot/base/setup.css
+https://mybeats.cloud/dev/CoPilot/base/images.css
+https://mybeats.cloud/dev/CoPilot/base/lists.css
+https://mybeats.cloud/dev/CoPilot/base/themes.css
+
+https://mybeats.cloud/dev/CoPilot/pages/home.css
+https://mybeats.cloud/dev/CoPilot/pages/artists.css
+https://mybeats.cloud/dev/CoPilot/pages/favorites.css
+https://mybeats.cloud/dev/CoPilot/pages/playlists.css
+https://mybeats.cloud/dev/CoPilot/pages/library.css
+
+https://mybeats.cloud/dev/CoPilot/navbars/top.css
+https://mybeats.cloud/dev/CoPilot/navbars/breadcrumbs.css
+https://mybeats.cloud/dev/CoPilot/navbars/albume.css
+
+https://mybeats.cloud/dev/CoPilot/overlays/dialogs.css
+https://mybeats.cloud/dev/CoPilot/overlays/dropDowns.css
+https://mybeats.cloud/dev/CoPilot/overlays/popOvers.css
+https://mybeats.cloud/dev/CoPilot/overlays/modals.css
+https://mybeats.cloud/dev/CoPilot/overlays/search.css
+https://mybeats.cloud/dev/CoPilot/overlays/toasts.css
+https://mybeats.cloud/dev/CoPilot/overlays/toolTips.css
+
+https://mybeats.cloud/dev/CoPilot/players/drawer.css
+https://mybeats.cloud/dev/CoPilot/players/floating.css
+
+**/
