@@ -1,21 +1,24 @@
-/* ==================== 6. BOOT : INITIALIZER ==================== */
-/* Boots the app: prefs, MyBeats runtime, popups, favorites, offline cache,
-   media session, persistence, library load, pagesActions & delegated handlers. */
-//  Initializers
+
+
+
+
+
 jQuery(function ($) {
+
+  // ////////////////////////////////////////////////////////////////////////
+  // Core singletons
+  // ////////////////////////////////////////////////////////////////////////
   Prefs.init();
 
   window.colorExtractor = new ColorExtractor();
   window.state = new PlayerState();
   window.audioPlayer = new AudioEngine(window.state);
 
-
   window.MyBeats.createRuntime({
-    state:          window.state,
-    audioPlayer:    window.audioPlayer,
-    favoritesStore: window.favoritesPlaylists
+    state: window.state,
+    audioPlayer: window.audioPlayer,
+    favoritesStore: window.favoritesPlaylists,
   }).boot();
-
 
   window.popups = new PopupsManager({ ui: null });
   window.favoritesPlaylists = new FavoritesPlaylistsManager(window.state);
@@ -23,7 +26,10 @@ jQuery(function ($) {
   window.contextMenu = new ContextMenu();
   window.offlineCache = new OfflineCache(window.state);
 
-  window.saveToLibraryDrawer = window.saveToLibraryDrawer || { refreshSavedBadges: () => {}, badgeRows: () => {} };
+  window.saveToLibraryDrawer = window.saveToLibraryDrawer || {
+    refreshSavedBadges: () => {},
+    badgeRows: () => {},
+  };
   window.saveDrawer = window.saveToLibraryDrawer;
 
   window.persistence = new PersistenceManager(window.state, window.audioPlayer);
@@ -36,6 +42,7 @@ jQuery(function ($) {
   window.deletePlaylist = (id) => window.favoritesPlaylists.deletePlaylist(id);
   window.addSongToPlaylist = (plId, songId) => window.favoritesPlaylists.addSongToPlaylist(plId, songId);
   window.toggleFavAndReRender = (id) => window.uiManager.toggleFavAndReRender(id);
+
   window.openMoreMenu = (event, type, id) => {
     if (type === "album") window.contextMenu.show(event.clientX, event.clientY, { albumId: id });
     else if (type === "artist") window.contextMenu.show(event.clientX, event.clientY, { artistId: id });
@@ -43,38 +50,48 @@ jQuery(function ($) {
   };
 
 
-function loadLibrary() {
-  let jsonUrl;
-  try {
-    jsonUrl = new URL("https://clockblocked.github.io/music.me/source/library.json", window.__MYBEATS_BASE__).href;
-  } catch {
-    jsonUrl = "https://clockblocked.github.io/music.me/source/library.json";
-  }
 
-  const candidates = [
-    jsonUrl,
-//    "https://mybeats.cloud/source/library.json",
-//    "/library.json",
-    "https://clockblocked.github.io/music.me/source/library.json"
-  ].filter((v, i, a) => v && a.indexOf(v) === i);
-
-  return tryNext(0);
-
-  function tryNext(i) {
-    if (i >= candidates.length) {
-      return $.Deferred().reject({ status: 404, statusText: "Not Found" }).promise();
+   
+  // ////////////////////////////////////////////////////////////////////////
+  // Library loading
+  // ////////////////////////////////////////////////////////////////////////
+  function loadLibrary() {
+    let jsonUrl;
+    try {
+      jsonUrl = new URL("https://mybeats.cloud/source/library.json", window.__MYBEATS_BASE__).href;
+    } catch {
+      jsonUrl = "https://mybeats.cloud/source/library.json";
     }
-    const url = candidates[i];
-    return $.ajax({ url, dataType: "json", cache: true })
-      .then(metadata => metadata)
-      .catch(err => {
-        if (err && err.status === 404) return tryNext(i + 1);
-        throw new Error(`Failed to fetch ${url} (${err && err.status ? err.status : "network"})`);
-      });
-  }
-}
 
-  
+    const candidates = [
+      jsonUrl,
+      "https://mybeats.cloud/source/library.json",
+      "/library.json",
+      "./library.json",
+    ].filter((v, i, a) => v && a.indexOf(v) === i);
+
+    return tryNext(0);
+
+    function tryNext(index) {
+      if (index >= candidates.length) {
+        return $.Deferred().reject({ status: 404, statusText: "Not Found" }).promise();
+      }
+      const url = candidates[index];
+      return $.ajax({ url, dataType: "json", cache: true })
+        .then((metadata) => metadata)
+        .catch((err) => {
+          if (err && err.status === 404) return tryNext(index + 1);
+          throw new Error(`Failed to fetch ${url} (${err && err.status ? err.status : "network"})`);
+        });
+    }
+  }
+
+
+
+
+  // ////////////////////////////////////////////////////////////////////////
+  // Metadata enrichment + UI boot
+  // ////////////////////////////////////////////////////////////////////////
   loadLibrary()
     .then((metadata) => {
       for (const artist of metadata) {
@@ -83,6 +100,7 @@ function loadLibrary() {
           artist.imageUrl = firstAlbum?.coverUrl || "";
         }
         if (!artist.similar) artist.similar = [];
+
         for (const album of artist.albums || []) {
           if (!album.coverUrl) album.coverUrl = "";
           for (const song of album.songs || []) {
@@ -111,6 +129,12 @@ function loadLibrary() {
       document.body.appendChild(errDiv);
     });
 
+
+   
+
+  // ////////////////////////////////////////////////////////////////////////
+  // Page-level actions
+  // ////////////////////////////////////////////////////////////////////////
   window.pagesActions = {
     buildSongs() {
       const state = window.uiManager?.state || window.state;
@@ -130,21 +154,27 @@ function loadLibrary() {
         )
       );
     },
+
     playQueue(queue, index = 0, label = "", source = null) {
       if (!queue.length || !window.uiManager?.audioPlayer) return;
       const safeIndex = Math.max(0, Math.min(index, queue.length - 1));
       window.uiManager.audioPlayer.playSong(queue[safeIndex], queue, true, source);
       if (label) (window.uiManager?.state || window.state)?.showToast?.(label);
     },
+
     playSong(songId, source = null) {
       const state = window.uiManager?.state || window.state;
       const song = state?.getSongById?.(songId);
-      if (song && window.uiManager?.audioPlayer) window.uiManager.audioPlayer.playSong(song, null, true, source);
+      if (song && window.uiManager?.audioPlayer) {
+        window.uiManager.audioPlayer.playSong(song, null, true, source);
+      }
     },
+
     shuffleAll() {
       const songs = IdUtils.sample(this.buildSongs(), this.buildSongs().length);
       this.playQueue(songs, 0, "Shuffling your whole library", "home");
     },
+
     playGenre(genre) {
       const genreSongs = this.buildSongs().filter(
         (song) => String(song.genre).toLowerCase() === String(genre).toLowerCase()
@@ -154,6 +184,7 @@ function loadLibrary() {
       this.playSong(pick.id, "home");
       (window.uiManager?.state || window.state)?.showToast?.(`Playing ${genre}`);
     },
+
     playMood(mood) {
       const moodMap = {
         chill: ["pop", "indie", "acoustic", "r&b", "soul"],
@@ -164,17 +195,19 @@ function loadLibrary() {
       };
       const tags = moodMap[mood] || [];
       const allSongs = this.buildSongs();
-      const filtered = allSongs.filter((song) => tags.some((tag) => String(song.genre).toLowerCase().includes(tag)));
-      const queue = IdUtils.sample(
-        filtered.length ? filtered : allSongs,
-        Math.min(12, (filtered.length ? filtered : allSongs).length)
+      const filtered = allSongs.filter((song) =>
+        tags.some((tag) => String(song.genre).toLowerCase().includes(tag))
       );
+      const pool = filtered.length ? filtered : allSongs;
+      const queue = IdUtils.sample(pool, Math.min(12, pool.length));
       this.playQueue(queue, 0, `${mood.charAt(0).toUpperCase() + mood.slice(1)} mix loaded`, "home");
     },
+
     openStatsDashboard() {
       if (!window.uiManager || !window.state) return;
       window.state.modalOpen(window.uiManager.homePage.statsDashboard());
     },
+
     goHome() {
       const state = window.uiManager?.state || window.state;
       if (state) {
@@ -182,11 +215,15 @@ function loadLibrary() {
         window.uiManager?.navigate("home");
       }
     },
+
     playAlbum(artistId, albumId) {
       const state = window.uiManager?.state || window.state;
       const queue = Utils.albumQueue(state, artistId, albumId);
-      if (queue.length) window.uiManager.audioPlayer.playSong(queue[0], queue, true, "album");
+      if (queue.length) {
+        window.uiManager.audioPlayer.playSong(queue[0], queue, true, "album");
+      }
     },
+
     shuffleAlbum(artistId, albumId) {
       const state = window.uiManager?.state || window.state;
       const queue = Utils.albumQueue(state, artistId, albumId);
@@ -197,7 +234,12 @@ function loadLibrary() {
     },
   };
 
-  // Global share/offline handlers [ delegated ]  andOr  Dynamic content
+
+
+   
+  // ////////////////////////////////////////////////////////////////////////
+  // Global delegated handlers â€” share + offline toggle
+  // ////////////////////////////////////////////////////////////////////////
   $(document).on("click", async function (e) {
     const shareAnchor = e.target.closest("#bento-album-share");
     if (shareAnchor) {
@@ -209,24 +251,28 @@ function loadLibrary() {
         url: window.location.href,
       };
       try {
-        if (navigator.share) await navigator.share(shareMeta);
-        else {
+        if (navigator.share) {
+          await navigator.share(shareMeta);
+        } else {
           await navigator.clipboard.writeText(window.location.href);
-          if (window.uiManager?.state?.showToast)
+          if (window.uiManager?.state?.showToast) {
             window.uiManager.state.showToast("Share path copied to device clipboard!");
-          else if (window.state?.showToast) window.state.showToast("Share path copied to device clipboard!");
+          } else if (window.state?.showToast) {
+            window.state.showToast("Share path copied to device clipboard!");
+          }
         }
       } catch (err) {
         console.warn("Media runtime share actions terminated cleanly:", err);
       }
     }
+
     const offlineBtn = e.target.closest("#bento-offline-toggle");
     if (offlineBtn) {
       e.preventDefault();
       offlineBtn.classList.toggle("is-cached-locally");
       const indicatorText = offlineBtn.querySelector(".hub-btn-txt");
       if (offlineBtn.classList.contains("is-cached-locally")) {
-        indicatorText.textContent = "Saved Offline ✓";
+        indicatorText.textContent = "Saved Offline âœ“";
         offlineBtn.style.borderColor = "rgba(var(--colorPurple), 0.8)";
       } else {
         indicatorText.textContent = "Listen Offline";
@@ -235,16 +281,3 @@ function loadLibrary() {
     }
   });
 });
-
-/*≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
-       Copyright  ©   2 0 2 6 
-  Use it for your personal projects,
-      or your businsss projects,
-  or whatever you find it useful for!
-
-
-       William Cole Hanson
-    ——————————————————————————
-      Chevrolay@Outlook.com
-         m.me/Chevrolay
-≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈*/
