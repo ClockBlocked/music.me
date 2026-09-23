@@ -1,30 +1,51 @@
-/* ==================== 2. INTERACTIONS : interactions ==================== */
-/* Includes: PopupsManager, PopupsBase, PopupsModal, PopupsDropdown, PopupsPopover, PopupsTooltip, PopupsToast, HeartStore, HeartButton, HeartButtonManager, FavoritesPlaylistsManager */
-/* ==================== 2. INTERACTIONS ==================== */
+
+
+
+
+
 class PopupsManager {
   constructor({ ui = null, container = document.body } = {}) {
     this.ui = ui;
-    this.container = typeof container === "string" ? document.querySelector(container) : container;
+    this.container =
+      typeof container === "string" ? document.querySelector(container) : container;
     if (!this.container) this.container = document.body;
+
     this.active = new Set();
     this.stack = [];
-    this._keyHandler = (e) => this._onKeyDown(e);
-    this._resizeHandler = () => this._repositionPopups();
-    this._tooltipEnterHandler = (e) => this._onTooltipEnter(e);
-    document.addEventListener("keydown", this._keyHandler, true);
-    window.addEventListener("resize", this._resizeHandler);
-    this._ensureToastContainer();
+
+    this.keyHandler = (e) => this.onKeyDown(e);
+    this.resizeHandler = () => this.repositionPopups();
+    this.tooltipEnterHandler = (e) => this.onTooltipEnter(e);
+
+    document.addEventListener("keydown", this.keyHandler, true);
+    window.addEventListener("resize", this.resizeHandler);
+
+    this.ensureToastContainer();
+
     this.notificationHistory = [];
     this.enableTooltips();
   }
-  static _esc(text = "") {
+
+  // ----------------------------------------------
+  // Escaping helpers
+  // ----------------------------------------------
+  static escapeText(text = "") {
     return Utils.esc(text);
   }
-  static _escAttr(text = "") {
-    return String(text).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
+  static escapeAttr(text = "") {
+    return String(text)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
+
+  // ----------------------------------------------
+  // Icon library (only what popups need)
+  // ----------------------------------------------
   static get icons() {
     const svg = (attrs, content) => `<svg ${attrs}>${content}</svg>`;
+
     return {
       close(size = 16) {
         return svg(
@@ -112,61 +133,82 @@ class PopupsManager {
       },
     };
   }
+
+  // ----------------------------------------------
+  // Registration
+  // ----------------------------------------------
   register(popup) {
     if (this.destroyed) return;
     this.active.add(popup);
     this.stack.push(popup);
   }
+
   unregister(popup) {
     if (this.destroyed) return;
     this.active.delete(popup);
     const idx = this.stack.indexOf(popup);
     if (idx >= 0) this.stack.splice(idx, 1);
   }
+
+  // ----------------------------------------------
+  // Closing
+  // ----------------------------------------------
   closeType(type) {
-    [...this.stack].reverse().forEach((p) => {
-      if (p.type === type && p.isOpen) p.hide();
+    [...this.stack].reverse().forEach((popup) => {
+      if (popup.type === type && popup.isOpen) popup.hide();
     });
   }
+
   closeAll() {
-    [...this.stack].reverse().forEach((p) => {
-      if (p.isOpen) p.hide();
+    [...this.stack].reverse().forEach((popup) => {
+      if (popup.isOpen) popup.hide();
     });
   }
+
   cleanup() {
     this.closeAll();
   }
+
   destroy() {
     this.cleanup();
     this.destroyed = true;
-    document.removeEventListener("keydown", this._keyHandler, true);
-    window.removeEventListener("resize", this._resizeHandler);
-    document.removeEventListener("mouseenter", this._tooltipEnterHandler, true);
+    document.removeEventListener("keydown", this.keyHandler, true);
+    window.removeEventListener("resize", this.resizeHandler);
+    document.removeEventListener("mouseenter", this.tooltipEnterHandler, true);
   }
-  _onKeyDown(e) {
+
+  // ----------------------------------------------
+  // Keyboard / resize
+  // ----------------------------------------------
+  onKeyDown(e) {
     if (e.key !== "Escape") return;
+
     for (let i = this.stack.length - 1; i >= 0; i--) {
-      const p = this.stack[i];
-      if (p.isOpen && p.type !== "toast" && p.closable !== false) {
+      const popup = this.stack[i];
+      if (popup.isOpen && popup.type !== "toast" && popup.closable !== false) {
         e.preventDefault();
         e.stopPropagation();
-        p.hide();
+        popup.hide();
         break;
       }
     }
   }
-  _repositionPopups() {
-    this.active.forEach((p) => {
-      if (p.isOpen && typeof p.reposition === "function") p.reposition();
+
+  repositionPopups() {
+    this.active.forEach((popup) => {
+      if (popup.isOpen && typeof popup.reposition === "function") popup.reposition();
     });
   }
-  _updateToastStack() {
-    if (!this._toastContainer) return;
-    const toasts = this._toastContainer.querySelectorAll(".popups-toast");
+
+  updateToastStack() {
+    if (!this.toastContainer) return;
+    const toasts = this.toastContainer.querySelectorAll(".popups-toast");
     toasts.forEach((toast, idx) => toast.setAttribute("data-stack-idx", idx));
   }
-  _ensureToastContainer() {
-    if (this._toastContainer) return this._toastContainer;
+
+  ensureToastContainer() {
+    if (this.toastContainer) return this.toastContainer;
+
     let el = document.getElementById("popups-toast-container");
     if (!el) {
       el = document.createElement("div");
@@ -174,16 +216,22 @@ class PopupsManager {
       el.className = "popups-toast-container";
       document.body.appendChild(el);
     }
-    this._toastContainer = el;
+
+    this.toastContainer = el;
     el.addEventListener("mouseenter", () => el.classList.add("popups-stack-expanded"));
     el.addEventListener("mouseleave", () => el.classList.remove("popups-stack-expanded"));
     return el;
   }
+
+  // ----------------------------------------------
+  // Factories
+  // ----------------------------------------------
   modal(options) {
-    const p = new PopupsModal(this, options);
-    p.show();
-    return p;
+    const popup = new PopupsModal(this, options);
+    popup.show();
+    return popup;
   }
+
   dialog(options) {
     const {
       title = "",
@@ -195,11 +243,12 @@ class PopupsManager {
       onCancel,
       size = "sm",
     } = options;
-    const p = new PopupsModal(this, {
+
+    const popup = new PopupsModal(this, {
       title,
       size,
       closable: false,
-      content: `<p class="popups-dialog-message">${PopupsManager._esc(message)}</p>`,
+      content: `<p class="popups-dialog-message">${PopupsManager.escapeText(message)}</p>`,
       actions: [
         { label: cancelLabel, action: "cancel", type: "secondary" },
         { label: confirmLabel, action: "confirm", type: dangerous ? "danger" : "primary" },
@@ -212,52 +261,68 @@ class PopupsManager {
         onCancel && onCancel();
       },
     });
-    p.show();
-    return p;
+
+    popup.show();
+    return popup;
   }
+
   dropdown(options) {
-    const p = new PopupsDropdown(this, options);
-    p.show();
-    return p;
+    const popup = new PopupsDropdown(this, options);
+    popup.show();
+    return popup;
   }
+
   popover(options) {
-    const p = new PopupsPopover(this, options);
-    p.show();
-    return p;
+    const popup = new PopupsPopover(this, options);
+    popup.show();
+    return popup;
   }
+
   tooltip(target, text) {
     const options = target instanceof HTMLElement ? { target, text } : target;
-    const p = new PopupsTooltip(this, options);
-    p.show();
-    return p;
+    const popup = new PopupsTooltip(this, options);
+    popup.show();
+    return popup;
   }
+
   enableTooltips(selector = "[data-tooltip]") {
-    this._tooltipSelector = selector;
-    document.addEventListener("mouseenter", this._tooltipEnterHandler, true);
+    this.tooltipSelector = selector;
+    document.addEventListener("mouseenter", this.tooltipEnterHandler, true);
   }
-  _onTooltipEnter(e) {
-    const target = e.target.closest && e.target.closest(this._tooltipSelector);
-    if (!target || target._popupsTooltip) return;
+
+  onTooltipEnter(e) {
+    const target = e.target.closest && e.target.closest(this.tooltipSelector);
+    if (!target || target.popupsTooltip) return;
+
     const text = target.dataset.tooltip;
     if (!text || !text.trim()) return;
+
     const tip = new PopupsTooltip(this, { target, text });
-    target._popupsTooltip = tip;
-    tip._enterTimer = setTimeout(() => {
-      tip._enterTimer = null;
+    target.popupsTooltip = tip;
+
+    tip.enterTimer = setTimeout(() => {
+      tip.enterTimer = null;
       tip.show();
     }, 250);
+
     const removeListeners = () => {
-      clearTimeout(tip._enterTimer);
-      tip._enterTimer = null;
+      clearTimeout(tip.enterTimer);
+      tip.enterTimer = null;
       tip.hide();
       target.removeEventListener("mouseleave", onLeave);
       target.removeEventListener("mousedown", onLeave);
-      target._popupsTooltip = null;
+      target.popupsTooltip = null;
     };
+
     const onLeave = () => removeListeners();
+
     target.addEventListener("mouseleave", onLeave, { once: true });
     target.addEventListener("mousedown", onLeave, { once: true });
   }
+
+  // ----------------------------------------------
+  // Toast
+  // ----------------------------------------------
   toast(options) {
     this.notificationHistory.unshift({
       id: Date.now() + Math.random(),
@@ -266,25 +331,35 @@ class PopupsManager {
       message: options.message || "",
       timestamp: new Date().toISOString(),
     });
+
     if (this.notificationHistory.length > 50) this.notificationHistory.length = 50;
-    const p = new PopupsToast(this, options);
-    p.show();
-    return p;
+
+    const popup = new PopupsToast(this, options);
+    popup.show();
+    return popup;
   }
+
+  // ----------------------------------------------
+  // Notification panel
+  // ----------------------------------------------
   showNotificationPanel(anchorEl) {
     if (!anchorEl || !this.notificationHistory.length) return;
+
     const pageSize = 8;
     let currentOffset = 0;
+
     const buildList = (notifications) => {
-      if (!notifications.length) return `<div class="notifications-empty">No notifications yet</div>`;
+      if (!notifications.length) {
+        return `<div class="notifications-empty">No notifications yet</div>`;
+      }
       return notifications
         .map(
           (n) => `
         <div class="notification-item notification-${n.type}">
           <span class="notification-icon">${PopupsManager.icons[n.type] ? PopupsManager.icons[n.type](16) : PopupsManager.icons.info(16)}</span>
           <div class="notification-content">
-            ${n.title ? `<div class="notification-title">${PopupsManager._esc(n.title)}</div>` : ""}
-            <div class="notification-message">${PopupsManager._esc(n.message)}</div>
+            ${n.title ? `<div class="notification-title">${PopupsManager.escapeText(n.title)}</div>` : ""}
+            <div class="notification-message">${PopupsManager.escapeText(n.message)}</div>
           </div>
           <div class="notification-time">${new Date(n.timestamp).toLocaleTimeString()}</div>
         </div>
@@ -292,69 +367,93 @@ class PopupsManager {
         )
         .join("");
     };
+
     const initialSlice = this.notificationHistory.slice(0, pageSize);
     const hasMore = this.notificationHistory.length > pageSize;
-    const renderContent = (notifications, hasMore) => `
+
+    const renderContent = (notifications, showMore) => `
       <div class="notifications-popover-wrapper">
         <div class="notifications-header"><h3>Notifications</h3></div>
         <div class="notifications-list">${buildList(notifications)}</div>
-        ${hasMore ? `<div class="notifications-load-more"><button class="load-more-btn" data-action="load-more">Load earlier</button><div class="load-more-spinner" style="display:none;"><span class="spinner"></span>Loading…</div></div>` : ""}
+        ${showMore ? `<div class="notifications-load-more"><button class="load-more-btn" data-action="load-more">Load earlier</button><div class="load-more-spinner" style="display:none;"><span class="spinner"></span>Loading…</div></div>` : ""}
       </div>
     `;
+
     const popover = this.popover({
       content: renderContent(initialSlice, hasMore),
       persistentActions: ["load-more"],
       onAction: (action) => {
-        if (action === "load-more") {
-          const loadMoreBtn = popover.el.querySelector(".load-more-btn");
-          const spinner = popover.el.querySelector(".load-more-spinner");
-          if (loadMoreBtn && spinner) {
-            loadMoreBtn.style.display = "none";
-            spinner.style.display = "flex";
-            setTimeout(() => {
-              currentOffset += pageSize;
-              const allCurrent = this.notificationHistory.slice(0, currentOffset + pageSize);
-              const stillHasMore = this.notificationHistory.length > currentOffset + pageSize;
-              const listEl = popover.el.querySelector(".notifications-list");
-              if (listEl) listEl.innerHTML = buildList(allCurrent);
-              const loadMoreSection = popover.el.querySelector(".notifications-load-more");
-              if (loadMoreSection) {
-                if (stillHasMore) {
-                  loadMoreSection.innerHTML = `<button class="load-more-btn" data-action="load-more">Load earlier</button><div class="load-more-spinner" style="display:none;"><span class="spinner"></span>Loading…</div>`;
-                } else loadMoreSection.remove();
+        if (action !== "load-more") return;
+
+        const loadMoreBtn = popover.el.querySelector(".load-more-btn");
+        const spinner = popover.el.querySelector(".load-more-spinner");
+
+        if (loadMoreBtn && spinner) {
+          loadMoreBtn.style.display = "none";
+          spinner.style.display = "flex";
+
+          setTimeout(() => {
+            currentOffset += pageSize;
+            const allCurrent = this.notificationHistory.slice(0, currentOffset + pageSize);
+            const stillHasMore = this.notificationHistory.length > currentOffset + pageSize;
+
+            const listEl = popover.el.querySelector(".notifications-list");
+            if (listEl) listEl.innerHTML = buildList(allCurrent);
+
+            const loadMoreSection = popover.el.querySelector(".notifications-load-more");
+            if (loadMoreSection) {
+              if (stillHasMore) {
+                loadMoreSection.innerHTML = `<button class="load-more-btn" data-action="load-more">Load earlier</button><div class="load-more-spinner" style="display:none;"><span class="spinner"></span>Loading…</div>`;
+              } else {
+                loadMoreSection.remove();
               }
-            }, 1500);
-          }
+            }
+          }, 1500);
         }
       },
     });
+
     const rect = anchorEl.getBoundingClientRect();
     const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const offsetLeft = 7 * rootFontSize;
     let left = rect.left + rect.width / 2 - offsetLeft;
+
     const popoverWidth = popover.el.offsetWidth;
-    if (left + popoverWidth > window.innerWidth - 12) left = window.innerWidth - 12 - popoverWidth;
+    if (left + popoverWidth > window.innerWidth - 12) {
+      left = window.innerWidth - 12 - popoverWidth;
+    }
     if (left < 12) left = 12;
+
     popover.el.style.left = `${left}px`;
     popover.el.style.top = `${rect.bottom + 8}px`;
   }
+
+  // ----------------------------------------------
+  // Song menu
+  // ----------------------------------------------
   showSongMenu(songId, event) {
     const state = this.ui && this.ui.state;
     const song = state && typeof state.getSongById === "function" && state.getSongById(songId);
     if (!song) return null;
+
     const isFav =
       this.ui &&
       this.ui.favorites &&
       typeof this.ui.favorites.isSongFavorite === "function" &&
       this.ui.favorites.isSongFavorite(songId);
+
     const isCached =
-      window.offlineCache && typeof window.offlineCache.isCached === "function" && window.offlineCache.isCached(song);
+      window.offlineCache &&
+      typeof window.offlineCache.isCached === "function" &&
+      window.offlineCache.isCached(song);
+
     const dataAttr = (data) => {
       if (!data) return "";
       return Object.entries(data)
-        .map(([k, v]) => `data-${k}="${PopupsManager._escAttr(v)}"`)
+        .map(([key, value]) => `data-${key}="${PopupsManager.escapeAttr(value)}"`)
         .join(" ");
     };
+
     return this.dropdown({
       triggerEvent: event,
       header: { title: song.title, subtitle: song.artist || "" },
@@ -392,47 +491,63 @@ class PopupsManager {
         ],
       ],
       itemExtraData: dataAttr,
-      onAction: (action, item) => {
-        if (action === "add-fav" && this.ui && this.ui.favorites) this.ui.favorites.toggleSong(song);
-        else if (action === "add-playlist") {
-          if (window.favoritesPlaylists && typeof window.favoritesPlaylists.addToPlaylistModal === "function")
+      onAction: (action) => {
+        if (action === "add-fav" && this.ui && this.ui.favorites) {
+          this.ui.favorites.toggleSong(song);
+        } else if (action === "add-playlist") {
+          if (window.favoritesPlaylists && typeof window.favoritesPlaylists.addToPlaylistModal === "function") {
             window.favoritesPlaylists.addToPlaylistModal(song);
+          }
         } else if (action === "view-artist") {
           if (this.ui && typeof this.ui.navigate === "function") this.ui.navigate("artist", song.artistId);
         } else if (action === "view-album") {
-          if (this.ui && typeof this.ui.navigate === "function")
+          if (this.ui && typeof this.ui.navigate === "function") {
             this.ui.navigate("artist", song.artistId, song.albumId);
+          }
         } else if (action === "copy-link") {
           const url = `${window.location.origin}/artist/${song.artistId}/album/${song.albumId}?song=${song.id}`;
-          if (navigator.clipboard && navigator.clipboard.writeText)
-            navigator.clipboard.writeText(url).then(() => this.toast({ message: "Link copied to clipboard" }));
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+              .writeText(url)
+              .then(() => this.toast({ message: "Link copied to clipboard" }));
+          }
         } else if (action === "offline-toggle") {
           if (!window.offlineCache) return;
           if (window.offlineCache.isCached && window.offlineCache.isCached(song)) {
             if (window.offlineCache.removeSong) window.offlineCache.removeSong(song);
-          } else if (window.offlineCache.cacheSong) window.offlineCache.cacheSong(song);
+          } else if (window.offlineCache.cacheSong) {
+            window.offlineCache.cacheSong(song);
+          }
         }
       },
     });
   }
+
+  // ----------------------------------------------
+  // Artist popover
+  // ----------------------------------------------
   showArtistPopover(artistId, event) {
     const state = this.ui && this.ui.state;
-    const artist = state && typeof state.getArtistById === "function" && state.getArtistById(artistId);
+    const artist =
+      state && typeof state.getArtistById === "function" && state.getArtistById(artistId);
     if (!artist) return null;
+
     const albums = artist.albums && artist.albums.length ? artist.albums.length : 0;
     const listeners = artist.monthlyListeners || "24.5K";
-    const topPlays = artist.topSong && artist.topSong.plays ? artist.topSong.plays : "12.3K";
+    const topPlays =
+      artist.topSong && artist.topSong.plays ? artist.topSong.plays : "12.3K";
+
     const content = `
       <div class="popover-gradient-border"></div>
       <div class="popover-content">
         <div class="popover-header">
           <div class="popover-avatar-wrapper">
-            <img src="${PopupsManager._escAttr(artist.imageUrl)}" class="popover-avatar" alt="${PopupsManager._escAttr(artist.artist)}">
+            <img src="${PopupsManager.escapeAttr(artist.imageUrl)}" class="popover-avatar" alt="${PopupsManager.escapeAttr(artist.artist)}">
             <div class="popover-avatar-glow"></div>
           </div>
           <div class="popover-title-section">
-            <h3 class="popover-artist-name">${PopupsManager._esc(artist.artist)}</h3>
-            <span class="popover-genre-badge">${PopupsManager._esc(artist.genre || "Artist")}</span>
+            <h3 class="popover-artist-name">${PopupsManager.escapeText(artist.artist)}</h3>
+            <span class="popover-genre-badge">${PopupsManager.escapeText(artist.genre || "Artist")}</span>
           </div>
         </div>
         <div class="popover-stats">
@@ -452,6 +567,7 @@ class PopupsManager {
         </div>
       </div>
     `;
+
     return this.popover({
       triggerEvent: event,
       variant: "artist",
@@ -459,13 +575,15 @@ class PopupsManager {
       content,
       onAction: (action) => {
         if (navigator.vibrate && typeof navigator.vibrate === "function") navigator.vibrate(20);
+
         if (action === "go-artist") {
           if (this.ui && typeof this.ui.navigate === "function") this.ui.navigate("artist", artistId);
         } else if (action === "play-top") {
           if (artist.albums && artist.albums.length) {
             const queue = Utils.albumQueue(state, artist.id, artist.albums[0].id);
-            if (queue && queue.length && this.ui && this.ui.audioPlayer)
+            if (queue && queue.length && this.ui && this.ui.audioPlayer) {
               this.ui.audioPlayer.playSong(queue[0], queue, true, "album");
+            }
           }
         }
       },
@@ -473,6 +591,9 @@ class PopupsManager {
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// PopupsBase — abstract base for all popups
+// ////////////////////////////////////////////////////////////////////////
 class PopupsBase {
   constructor(manager, options = {}) {
     this.manager = manager;
@@ -483,22 +604,30 @@ class PopupsBase {
     this.isOpen = false;
     this.destroyed = false;
   }
+
   render() {
     return document.createElement("div");
   }
+
   show() {
     if (this.destroyed) return;
+
     this.el = this.render();
     if (!this.el) return;
+
     this.manager.container.appendChild(this.el);
     this.attachEvents();
+
     this.isOpen = true;
     this.manager.register(this);
+
     requestAnimationFrame(() => this.el.classList.add("popups-open"));
   }
+
   hide() {
     if (!this.isOpen || this.destroyed) return;
     this.isOpen = false;
+
     if (this.options.onClose && typeof this.options.onClose === "function") {
       try {
         this.options.onClose(this);
@@ -506,84 +635,116 @@ class PopupsBase {
         console.error(e);
       }
     }
+
     if (this.el) this.el.classList.remove("popups-open");
     setTimeout(() => this.destroy(), 220);
   }
+
   destroy() {
     if (this.destroyed) return;
+
     this.beforeDestroy && this.beforeDestroy();
     this.detachEvents && this.detachEvents();
+
     if (this.el && this.el.parentNode) this.el.parentNode.removeChild(this.el);
+
     this.destroyed = true;
     this.manager.unregister(this);
     this.el = null;
   }
+
   attachEvents() {}
   detachEvents() {}
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// PopupsModal — centered modal dialog
+// ////////////////////////////////////////////////////////////////////////
 class PopupsModal extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
     this.type = "modal";
     this.closable = options.closable !== false;
   }
+
   render() {
     const overlay = document.createElement("div");
     overlay.className = "popups-overlay";
     overlay.setAttribute("role", "presentation");
+
     const size = this.options.size || "md";
     const closable = this.closable;
     const actions = Array.isArray(this.options.actions) ? this.options.actions : [];
+
     const actionButtons = actions
-      .map((a, idx) => {
-        const action = a.action !== undefined ? a.action : String(idx);
-        return `<button class="popups-btn popups-btn-${a.type || "secondary"}" data-action="${PopupsManager._escAttr(action)}" type="button">${PopupsManager._esc(a.label || "")}</button>`;
+      .map((action, idx) => {
+        const actionName = action.action !== undefined ? action.action : String(idx);
+        return `<button class="popups-btn popups-btn-${action.type || "secondary"}" data-action="${PopupsManager.escapeAttr(actionName)}" type="button">${PopupsManager.escapeText(action.label || "")}</button>`;
       })
       .join("");
+
     overlay.innerHTML = `
       <div class="popups-modal popups-size-${size} popups-surface" role="dialog" aria-modal="true">
-        ${this.options.title ? `<div class="popups-modal-header"><h3 class="popups-modal-title">${PopupsManager._esc(this.options.title)}</h3>${closable ? `<button class="popups-close-btn" data-action="close" aria-label="Close">${PopupsManager.icons.close(18)}</button>` : ""}</div>` : closable ? `<button class="popups-close-btn popups-close-float" data-action="close" aria-label="Close">${PopupsManager.icons.close(18)}</button>` : ""}
+        ${
+          this.options.title
+            ? `<div class="popups-modal-header"><h3 class="popups-modal-title">${PopupsManager.escapeText(this.options.title)}</h3>${closable ? `<button class="popups-close-btn" data-action="close" aria-label="Close">${PopupsManager.icons.close(18)}</button>` : ""}</div>`
+            : closable
+              ? `<button class="popups-close-btn popups-close-float" data-action="close" aria-label="Close">${PopupsManager.icons.close(18)}</button>`
+              : ""
+        }
         <div class="popups-modal-body"></div>
         ${actionButtons ? `<div class="popups-modal-footer">${actionButtons}</div>` : ""}
       </div>
     `;
+
     const body = overlay.querySelector(".popups-modal-body");
     const content = this.options.content;
+
     if (content instanceof HTMLElement) body.appendChild(content);
     else if (content != null) body.innerHTML = String(content);
+
     return overlay;
   }
+
   attachEvents() {
-    this._backdropMouseDown = (e) => {
+    this.backdropMouseDown = (e) => {
       if (e.target === this.el) {
         e.preventDefault();
-        this._bounce();
+        this.bounce();
       }
     };
-    this._onClick = (e) => {
+
+    this.onClick = (e) => {
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
+
       const action = btn.dataset.action;
       if (action === "close") {
         this.hide();
         return;
       }
-      if (this.options.onAction && typeof this.options.onAction === "function") this.options.onAction(action, this);
+
+      if (this.options.onAction && typeof this.options.onAction === "function") {
+        this.options.onAction(action, this);
+      }
       if (this.options.autoClose !== false) this.hide();
     };
-    this.el.addEventListener("mousedown", this._backdropMouseDown);
-    this.el.addEventListener("click", this._onClick);
+
+    this.el.addEventListener("mousedown", this.backdropMouseDown);
+    this.el.addEventListener("click", this.onClick);
   }
+
   detachEvents() {
     if (this.el) {
-      this.el.removeEventListener("mousedown", this._backdropMouseDown);
-      this.el.removeEventListener("click", this._onClick);
+      this.el.removeEventListener("mousedown", this.backdropMouseDown);
+      this.el.removeEventListener("click", this.onClick);
     }
   }
-  _bounce() {
+
+  bounce() {
     const inner = this.el && this.el.querySelector(".popups-modal, .popups-dialog");
     if (!inner) return;
+
     inner.classList.remove("popups-bounce");
     void inner.offsetWidth;
     inner.classList.add("popups-bounce");
@@ -591,99 +752,127 @@ class PopupsModal extends PopupsBase {
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// PopupsDropdown — context-menu style dropdown
+// ////////////////////////////////////////////////////////////////////////
 class PopupsDropdown extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
     this.type = "dropdown";
   }
+
   render() {
     const el = document.createElement("div");
     el.className = "song menu";
     el.setAttribute("role", "menu");
     el.setAttribute("data-popup", "dropdown");
+
     const header = this.options.header;
     const groups = Array.isArray(this.options.groups) ? this.options.groups : [];
     const extras = this.options.itemExtraData || (() => "");
+
     const html = [];
+
     if (header) {
       html.push(
-        `<div class="header"><span class="title">${PopupsManager._esc(header.title || "")}</span><span class="subtitle">${PopupsManager._esc(header.subtitle || "")}</span></div><div class="divider"></div>`
+        `<div class="header"><span class="title">${PopupsManager.escapeText(header.title || "")}</span><span class="subtitle">${PopupsManager.escapeText(header.subtitle || "")}</span></div><div class="divider"></div>`
       );
     }
+
     let groupIndex = 0;
     groups.forEach((group) => {
       if (!Array.isArray(group) || group.length === 0) return;
       if (groupIndex > 0) html.push('<div class="divider"></div>');
       groupIndex += 1;
+
       html.push('<div class="group">');
       group.forEach((item) => {
         const extra = typeof extras === "function" ? extras(item.data) : extras;
         html.push(`
-          <button class="option" data-action="${PopupsManager._escAttr(item.action)}" ${item.style ? `style="${PopupsManager._escAttr(item.style)}"` : ""} ${extra} type="button">
+          <button class="option" data-action="${PopupsManager.escapeAttr(item.action)}" ${item.style ? `style="${PopupsManager.escapeAttr(item.style)}"` : ""} ${extra} type="button">
             ${item.iconHTML ? `<span class="icon">${item.iconHTML}</span>` : ""}
-            <span class="label">${PopupsManager._esc(item.label || item.action)}</span>
+            <span class="label">${PopupsManager.escapeText(item.label || item.action)}</span>
           </button>
         `);
       });
       html.push("</div>");
     });
+
     el.innerHTML = html.join("");
     return el;
   }
+
   show() {
     super.show();
     const e = this.options.triggerEvent;
     if (e && typeof e.clientX === "number") this.positionAt(e.clientX, e.clientY);
     else if (this.options.rect) this.positionAtRect(this.options.rect);
   }
+
   positionAt(x, y) {
     const pad = 12;
     this.el.style.setProperty("--popups-x", `${x}px`);
     this.el.style.setProperty("--popups-y", `${y}px`);
     this.el.style.left = `${x}px`;
     this.el.style.top = `${y}px`;
+
     requestAnimationFrame(() => {
       const rect = this.el.getBoundingClientRect();
-      let left = x,
-        top = y;
+      let left = x;
+      let top = y;
+
       if (rect.right > window.innerWidth - pad) left = window.innerWidth - rect.width - pad;
       if (left < pad) left = pad;
       if (rect.bottom > window.innerHeight - pad) top = window.innerHeight - rect.height - pad;
       if (top < pad) top = pad;
+
       this.el.style.left = `${left}px`;
       this.el.style.top = `${top}px`;
     });
   }
+
   positionAtRect(rect) {
     this.positionAt(rect.left, rect.bottom + 6);
   }
+
   attachEvents() {
-    this._itemClick = (e) => {
+    this.onItemClick = (e) => {
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
+
       e.stopPropagation();
+
       const action = btn.dataset.action;
-      const item = this._findItem(action);
-      if (this.options.onAction && typeof this.options.onAction === "function") this.options.onAction(action, item);
-      else if (item && typeof item.onClick === "function") item.onClick(action, item);
+      const item = this.findItem(action);
+
+      if (this.options.onAction && typeof this.options.onAction === "function") {
+        this.options.onAction(action, item);
+      } else if (item && typeof item.onClick === "function") {
+        item.onClick(action, item);
+      }
+
       this.hide();
     };
-    this.el.addEventListener("click", this._itemClick);
+
+    this.el.addEventListener("click", this.onItemClick);
+
     setTimeout(() => {
-      this._outsideClick = (e) => {
+      this.outsideClick = (e) => {
         if (!this.el.contains(e.target)) this.hide();
       };
-      document.addEventListener("click", this._outsideClick, { once: true });
+      document.addEventListener("click", this.outsideClick, { once: true });
     }, 0);
   }
+
   detachEvents() {
-    if (this.el) this.el.removeEventListener("click", this._itemClick);
-    if (this._outsideClick) {
-      document.removeEventListener("click", this._outsideClick);
-      this._outsideClick = null;
+    if (this.el) this.el.removeEventListener("click", this.onItemClick);
+    if (this.outsideClick) {
+      document.removeEventListener("click", this.outsideClick);
+      this.outsideClick = null;
     }
   }
-  _findItem(action) {
+
+  findItem(action) {
     const groups = Array.isArray(this.options.groups) ? this.options.groups : [];
     for (const group of groups) {
       if (!Array.isArray(group)) continue;
@@ -695,11 +884,15 @@ class PopupsDropdown extends PopupsBase {
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// PopupsPopover — free-floating popover
+// ////////////////////////////////////////////////////////////////////////
 class PopupsPopover extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
     this.type = "popover";
   }
+
   render() {
     const el = document.createElement("div");
     const size = this.options.size || "md";
@@ -708,56 +901,74 @@ class PopupsPopover extends PopupsBase {
     el.innerHTML = `<div class="popups-popover-inner">${this.options.content || ""}</div>`;
     return el;
   }
+
   show() {
     super.show();
+
     const e = this.options.triggerEvent;
     if (e && typeof e.clientX === "number") this.positionAt(e.clientX, e.clientY);
     else if (this.options.x != null && this.options.y != null) this.positionAt(this.options.x, this.options.y);
   }
+
   positionAt(x, y) {
     const pad = 20;
     this.el.style.left = `${x}px`;
     this.el.style.top = `${y}px`;
+
     requestAnimationFrame(() => {
       const rect = this.el.getBoundingClientRect();
-      let left = x,
-        top = y;
+      let left = x;
+      let top = y;
+
       if (rect.right > window.innerWidth - pad) left = window.innerWidth - rect.width - pad;
       if (left < pad) left = pad;
       if (rect.bottom > window.innerHeight - pad) top = window.innerHeight - rect.height - pad;
       if (top < pad) top = pad;
+
       this.el.style.left = `${left}px`;
       this.el.style.top = `${top}px`;
     });
   }
+
   attachEvents() {
-    this._onClick = (e) => {
+    this.onClick = (e) => {
       e.stopPropagation();
+
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
+
       const action = btn.dataset.action;
-      if (this.options.onAction && typeof this.options.onAction === "function")
+      if (this.options.onAction && typeof this.options.onAction === "function") {
         this.options.onAction(action, btn.dataset, this);
-      if (!this.options.persistentActions || !this.options.persistentActions.includes(action)) this.hide();
+      }
+
+      if (!this.options.persistentActions || !this.options.persistentActions.includes(action)) {
+        this.hide();
+      }
     };
-    this.el.addEventListener("click", this._onClick);
+
+    this.el.addEventListener("click", this.onClick);
+
     setTimeout(() => {
-      this._outsideClick = (e) => {
+      this.outsideClick = (e) => {
         if (!this.el.contains(e.target)) this.hide();
       };
-      window.addEventListener("click", this._outsideClick, { once: true });
+      window.addEventListener("click", this.outsideClick, { once: true });
     }, 10);
   }
+
   detachEvents() {
-    if (this.el) this.el.removeEventListener("click", this._onClick);
-    if (this._outsideClick) {
-      window.removeEventListener("click", this._outsideClick);
-      this._outsideClick = null;
+    if (this.el) this.el.removeEventListener("click", this.onClick);
+    if (this.outsideClick) {
+      window.removeEventListener("click", this.outsideClick);
+      this.outsideClick = null;
     }
   }
+
   hide() {
     if (!this.isOpen || this.destroyed) return;
     this.isOpen = false;
+
     if (this.options.onClose && typeof this.options.onClose === "function") {
       try {
         this.options.onClose(this);
@@ -765,11 +976,15 @@ class PopupsPopover extends PopupsBase {
         console.error(e);
       }
     }
+
     if (this.el) this.el.style.animation = "popoverFadeOut 0.2s ease forwards";
     setTimeout(() => this.destroy(), 200);
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// PopupsTooltip — hover tooltip
+// ////////////////////////////////////////////////////////////////////////
 class PopupsTooltip extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -777,41 +992,57 @@ class PopupsTooltip extends PopupsBase {
     this.target = options.target;
     this.text = options.text || "";
   }
+
   render() {
     const el = document.createElement("div");
     el.className = "popups-tooltip";
     el.textContent = this.text;
     return el;
   }
+
   show() {
     if (this.destroyed || !this.target || !this.target.isConnected) return;
+
     document.body.appendChild(this.el);
     this.position();
+
     this.isOpen = true;
     this.manager.register(this);
     requestAnimationFrame(() => this.el.classList.add("popups-open"));
   }
+
   position() {
     if (!this.target || !this.el) return;
+
     const rect = this.target.getBoundingClientRect();
     const tipRect = this.el.getBoundingClientRect();
     const pad = 8;
+
     let top = rect.top - tipRect.height - 6;
     let left = rect.left + rect.width / 2 - tipRect.width / 2;
+
     if (top < pad) top = rect.bottom + 6;
     if (left < pad) left = pad;
-    if (left + tipRect.width > window.innerWidth - pad) left = window.innerWidth - tipRect.width - pad;
+    if (left + tipRect.width > window.innerWidth - pad) {
+      left = window.innerWidth - tipRect.width - pad;
+    }
+
     this.el.style.top = `${top}px`;
     this.el.style.left = `${left}px`;
   }
+
   hide() {
     if (!this.isOpen || this.destroyed) return;
     this.isOpen = false;
+
     if (this.el) this.el.classList.remove("popups-open");
     setTimeout(() => this.destroy(), 160);
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// PopupsToast — stacked toast notifications
+// ////////////////////////////////////////////////////////////////////////
 class PopupsToast extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -822,47 +1053,63 @@ class PopupsToast extends PopupsBase {
     this.dragStartX = 0;
     this.dragging = false;
   }
+
   render() {
-    const type = ["info", "success", "warning", "error"].includes(this.options.type) ? this.options.type : "info";
+    const type = ["info", "success", "warning", "error"].includes(this.options.type)
+      ? this.options.type
+      : "info";
     const iconMap = { info: "info", success: "success", warning: "warning", error: "error" };
+
     const el = document.createElement("div");
     el.className = `popups-toast popups-toast-${type}`;
     el.setAttribute("role", "status");
     el.setAttribute("aria-live", "polite");
+
     const hasUndo = this.options.onUndo && typeof this.options.onUndo === "function";
+
     el.innerHTML = `
       <div class="popups-toast-progress"><div class="popups-toast-progress-fill"></div></div>
       <button class="popups-toast-close" aria-label="Close">${PopupsManager.icons.close(14)}</button>
       <div class="popups-toast-icon">${PopupsManager.icons[iconMap[type]](18)}</div>
       <div class="popups-toast-body">
-        ${this.options.title ? `<div class="popups-toast-title">${PopupsManager._esc(this.options.title)}</div>` : ""}
-        ${this.options.message ? `<div class="popups-toast-message">${PopupsManager._esc(this.options.message)}</div>` : ""}
+        ${this.options.title ? `<div class="popups-toast-title">${PopupsManager.escapeText(this.options.title)}</div>` : ""}
+        ${this.options.message ? `<div class="popups-toast-message">${PopupsManager.escapeText(this.options.message)}</div>` : ""}
       </div>
       ${hasUndo ? `<button class="popups-toast-undo" aria-label="Undo">${PopupsManager.icons.undo(14)}<span>Undo</span></button>` : ""}
     `;
-    this._fill = el.querySelector(".popups-toast-progress-fill");
+
+    this.fill = el.querySelector(".popups-toast-progress-fill");
     return el;
   }
+
   show() {
     if (this.destroyed) return;
+
     this.el = this.render();
-    const container = this.manager._ensureToastContainer();
+    const container = this.manager.ensureToastContainer();
     container.insertBefore(this.el, container.firstChild);
-    this.manager._updateToastStack();
+
+    this.manager.updateToastStack();
     this.attachEvents();
+
     this.isOpen = true;
     this.manager.register(this);
     requestAnimationFrame(() => this.el.classList.add("popups-open"));
-    this._lastTick = performance.now();
-    this._tick();
+
+    this.lastTick = performance.now();
+    this.tick();
   }
+
   hide(direction = null) {
     if (!this.isOpen || this.destroyed) return;
     this.isOpen = false;
-    cancelAnimationFrame(this._raf);
+
+    cancelAnimationFrame(this.raf);
+
     if (direction === "left") this.el.classList.add("popups-toast-out-left");
     else if (direction === "right") this.el.classList.add("popups-toast-out-right");
     else this.el.classList.add("popups-toast-fade-out");
+
     if (this.options.onClose && typeof this.options.onClose === "function") {
       setTimeout(() => {
         try {
@@ -872,54 +1119,69 @@ class PopupsToast extends PopupsBase {
         }
       }, 250);
     }
+
     setTimeout(() => {
       this.destroy();
-      this.manager._updateToastStack();
+      this.manager.updateToastStack();
     }, 350);
   }
+
   attachEvents() {
     const closeBtn = this.el.querySelector(".popups-toast-close");
     const undoBtn = this.el.querySelector(".popups-toast-undo");
-    this._onClose = () => this.hide();
-    closeBtn && closeBtn.addEventListener("click", this._onClose);
+
+    this.onClose = () => this.hide();
+    closeBtn && closeBtn.addEventListener("click", this.onClose);
+
     if (undoBtn) {
-      this._onUndo = (e) => {
+      this.onUndo = (e) => {
         e.stopPropagation();
         if (this.options.onUndo) this.options.onUndo(this);
         this.hide();
       };
-      undoBtn.addEventListener("click", this._onUndo);
+      undoBtn.addEventListener("click", this.onUndo);
     }
-    this._onEnter = () => {
+
+    this.onEnter = () => {
       this.paused = true;
     };
-    this._onLeave = () => {
+
+    this.onLeave = () => {
       this.paused = false;
-      this._lastTick = performance.now();
+      this.lastTick = performance.now();
     };
-    this.el.addEventListener("mouseenter", this._onEnter);
-    this.el.addEventListener("mouseleave", this._onLeave);
-    this._onPointerDown = (e) => {
+
+    this.el.addEventListener("mouseenter", this.onEnter);
+    this.el.addEventListener("mouseleave", this.onLeave);
+
+    this.onPointerDown = (e) => {
       if (e.target.closest(".popups-toast-close, .popups-toast-undo")) return;
+
       this.dragging = true;
       this.dragStartX = e.clientX;
       this.el.classList.add("popups-toast-dragging");
       this.el.style.transition = "none";
+
       if (e.target.setPointerCapture) e.target.setPointerCapture(e.pointerId);
     };
-    this._onPointerMove = (e) => {
+
+    this.onPointerMove = (e) => {
       if (!this.dragging) return;
+
       const dx = e.clientX - this.dragStartX;
-      const scale = this._getStackScale();
+      const scale = this.getStackScale();
       this.el.style.transform = `translate3d(${dx}px, 0, 0) scale(${scale})`;
     };
-    this._onPointerUp = (e) => {
+
+    this.onPointerUp = (e) => {
       if (!this.dragging) return;
       this.dragging = false;
+
       const dx = e.clientX - this.dragStartX;
       this.el.classList.remove("popups-toast-dragging");
       this.el.style.transition = "";
       this.el.style.transform = "";
+
       if (dx > 100) {
         this.el.classList.add("popups-toast-out-right");
         setTimeout(() => this.destroy(), 350);
@@ -928,104 +1190,124 @@ class PopupsToast extends PopupsBase {
         setTimeout(() => this.destroy(), 350);
       }
     };
-    this.el.addEventListener("pointerdown", this._onPointerDown);
-    this.el.addEventListener("pointermove", this._onPointerMove);
-    this.el.addEventListener("pointerup", this._onPointerUp);
-    this.el.addEventListener("pointercancel", this._onPointerUp);
+
+    this.el.addEventListener("pointerdown", this.onPointerDown);
+    this.el.addEventListener("pointermove", this.onPointerMove);
+    this.el.addEventListener("pointerup", this.onPointerUp);
+    this.el.addEventListener("pointercancel", this.onPointerUp);
   }
+
   detachEvents() {
     if (!this.el) return;
+
     const closeBtn = this.el.querySelector(".popups-toast-close");
     const undoBtn = this.el.querySelector(".popups-toast-undo");
-    closeBtn && closeBtn.removeEventListener("click", this._onClose);
-    undoBtn && undoBtn.removeEventListener("click", this._onUndo);
-    this.el.removeEventListener("mouseenter", this._onEnter);
-    this.el.removeEventListener("mouseleave", this._onLeave);
-    this.el.removeEventListener("pointerdown", this._onPointerDown);
-    this.el.removeEventListener("pointermove", this._onPointerMove);
-    this.el.removeEventListener("pointerup", this._onPointerUp);
-    this.el.removeEventListener("pointercancel", this._onPointerUp);
+
+    closeBtn && closeBtn.removeEventListener("click", this.onClose);
+    undoBtn && undoBtn.removeEventListener("click", this.onUndo);
+
+    this.el.removeEventListener("mouseenter", this.onEnter);
+    this.el.removeEventListener("mouseleave", this.onLeave);
+    this.el.removeEventListener("pointerdown", this.onPointerDown);
+    this.el.removeEventListener("pointermove", this.onPointerMove);
+    this.el.removeEventListener("pointerup", this.onPointerUp);
+    this.el.removeEventListener("pointercancel", this.onPointerUp);
   }
-  _getStackScale() {
+
+  getStackScale() {
     const idx = Number(this.el.getAttribute("data-stack-idx")) || 0;
     if (idx === 0) return 1;
     if (idx === 1) return 0.96;
     if (idx === 2) return 0.92;
     return 0.88;
   }
-  _tick() {
+
+  tick() {
     if (this.destroyed || !this.isOpen) return;
+
     const now = performance.now();
+
     if (!this.paused) {
-      const dt = now - this._lastTick;
+      const dt = now - this.lastTick;
       this.remaining -= dt;
+
       const pct = Math.max(0, (this.remaining / this.duration) * 100);
-      if (this._fill) this._fill.style.width = `${pct}%`;
+      if (this.fill) this.fill.style.width = `${pct}%`;
+
       if (this.remaining <= 0) {
         this.hide();
         return;
       }
     }
-    this._lastTick = now;
-    this._raf = requestAnimationFrame(() => this._tick());
+
+    this.lastTick = now;
+    this.raf = requestAnimationFrame(() => this.tick());
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// HeartStore — bridges FavoritesPlaylistsManager to heart UI
+// ////////////////////////////////////////////////////////////////////////
 class HeartStore {
   constructor(favoritesPlaylists, state) {
     this.fav = favoritesPlaylists;
     this.state = state;
-    this._localOverrides = new Map();
+    this.localOverrides = new Map();
   }
-  _key(type, id) {
+
+  makeKey(type, id) {
     return `${type}:${id}`;
   }
+
   is(type, id) {
-    const override = this._localOverrides.get(this._key(type, id));
+    const override = this.localOverrides.get(this.makeKey(type, id));
     if (override !== undefined) return override;
-    const f = this.fav;
+
+    const fav = this.fav;
     switch (type) {
-      case "song":
-        return f.isSong(id);
-      case "artist":
-        return f.isArtist(id);
-      case "album":
-        return f.isAlbum(id);
-      case "playlist":
-        return typeof f.isPlaylist === "function" ? f.isPlaylist(id) : false;
-      default:
-        return false;
+      case "song":     return fav.isSong(id);
+      case "artist":   return fav.isArtist(id);
+      case "album":    return fav.isAlbum(id);
+      case "playlist": return typeof fav.isPlaylist === "function" ? fav.isPlaylist(id) : false;
+      default:         return false;
     }
   }
+
   setOverride(type, id, value) {
-    this._localOverrides.set(this._key(type, id), value);
+    this.localOverrides.set(this.makeKey(type, id), value);
   }
+
   clearOverride(type, id) {
-    this._localOverrides.delete(this._key(type, id));
+    this.localOverrides.delete(this.makeKey(type, id));
   }
+
   async set(type, id, value) {
     if (this.is(type, id) === value) return;
     this.clearOverride(type, id);
-    const f = this.fav;
+
+    const fav = this.fav;
     switch (type) {
       case "song": {
         const song = this.state.getSongById(id);
-        if (song) await Promise.resolve(f.toggleSong(song));
+        if (song) await Promise.resolve(fav.toggleSong(song));
         break;
       }
       case "artist":
-        await Promise.resolve(f.toggleArtist(id));
+        await Promise.resolve(fav.toggleArtist(id));
         break;
       case "album":
-        await Promise.resolve(f.toggleAlbum(id));
+        await Promise.resolve(fav.toggleAlbum(id));
         break;
       case "playlist":
-        if (typeof f.togglePlaylist === "function") await Promise.resolve(f.togglePlaylist(id));
+        if (typeof fav.togglePlaylist === "function") await Promise.resolve(fav.togglePlaylist(id));
         break;
     }
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// HeartButton — individual heart icon instance
+// ////////////////////////////////////////////////////////////////////////
 class HeartButton {
   constructor(el, type, id, manager) {
     this.el = el;
@@ -1034,37 +1316,49 @@ class HeartButton {
     this.manager = manager;
     this.isHovering = false;
     this.phase = null;
-    this._timer = null;
-    this._onEnter = () => {
+    this.timer = null;
+
+    this.onEnter = () => {
       this.isHovering = true;
       this.render();
     };
-    this._onLeave = () => {
+
+    this.onLeave = () => {
       this.isHovering = false;
       this.render();
     };
-    this._onClick = (e) => this._handleClick(e);
-    el.addEventListener("mouseenter", this._onEnter);
-    el.addEventListener("mouseleave", this._onLeave);
-    el.addEventListener("click", this._onClick);
+
+    this.onClick = (e) => this.handleClick(e);
+
+    el.addEventListener("mouseenter", this.onEnter);
+    el.addEventListener("mouseleave", this.onLeave);
+    el.addEventListener("click", this.onClick);
     el.classList.add("heart-bound");
+
     this.render();
   }
+
   get liked() {
     return this.manager.store.is(this.type, this.id);
   }
-  _icon() {
+
+  getIcon() {
     if (this.phase === "error") return PopupsManager.icons.heart(20, true);
     if (this.phase === "confirm") return PopupsManager.icons.heart(20, true);
-    if (this.liked) return this.isHovering ? PopupsManager.icons.heart(20, true) : PopupsManager.icons.heart(18, true);
+    if (this.liked) {
+      return this.isHovering ? PopupsManager.icons.heart(20, true) : PopupsManager.icons.heart(18, true);
+    }
     return this.isHovering ? PopupsManager.icons.heart(20, false) : PopupsManager.icons.heart(18, false);
   }
+
   render() {
     if (!this.el.isConnected) {
       this.destroy();
       return;
     }
-    this.el.innerHTML = this._icon();
+
+    this.el.innerHTML = this.getIcon();
+
     const liked = this.liked;
     this.el.classList.toggle("favorited", liked);
     this.el.classList.toggle("is-favorite", liked);
@@ -1072,11 +1366,15 @@ class HeartButton {
     this.el.setAttribute("aria-pressed", String(liked));
     this.el.setAttribute("title", liked ? "Remove from favorites" : "Add to favorites");
   }
-  async _handleClick(e) {
+
+  async handleClick(e) {
     e.stopPropagation();
     e.preventDefault();
+
     if (this.phase === "confirm" || this.phase === "error") return;
+
     const wasLiked = this.liked;
+
     try {
       if (wasLiked) {
         await this.manager.store.set(this.type, this.id, false);
@@ -1085,9 +1383,10 @@ class HeartButton {
       } else {
         this.phase = "confirm";
         this.render();
+
         await this.manager.store.set(this.type, this.id, true);
-        clearTimeout(this._timer);
-        this._timer = setTimeout(() => {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
           this.phase = null;
           this.render();
         }, 3000);
@@ -1096,48 +1395,62 @@ class HeartButton {
       this.manager.store.setOverride(this.type, this.id, wasLiked);
       this.phase = "error";
       this.render();
-      clearTimeout(this._timer);
-      this._timer = setTimeout(() => {
+
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
         this.phase = null;
         this.render();
       }, 4000);
     }
   }
+
   sync() {
     if (this.phase === "confirm" || this.phase === "error") return;
     this.render();
   }
+
   destroy() {
-    clearTimeout(this._timer);
-    this._timer = null;
-    this.el.removeEventListener("mouseenter", this._onEnter);
-    this.el.removeEventListener("mouseleave", this._onLeave);
-    this.el.removeEventListener("click", this._onClick);
+    clearTimeout(this.timer);
+    this.timer = null;
+
+    this.el.removeEventListener("mouseenter", this.onEnter);
+    this.el.removeEventListener("mouseleave", this.onLeave);
+    this.el.removeEventListener("click", this.onClick);
     this.el.classList.remove("heart-bound");
-    this.manager._instances.delete(this.el);
+
+    this.manager.instances.delete(this.el);
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// HeartButtonManager — tracks all hearts on the page
+// ////////////////////////////////////////////////////////////////////////
 class HeartButtonManager {
   constructor(favoritesPlaylists, state) {
     this.store = new HeartStore(favoritesPlaylists, state);
-    this._instances = new Map();
+    this.instances = new Map();
+
     window.addEventListener("mybeats:favorites-changed", (e) => {
       const { type, id } = e.detail || {};
-      if (type && id != null) this._syncEntity(type, String(id));
-      else this._syncAll();
+      if (type && id != null) this.syncEntity(type, String(id));
+      else this.syncAll();
     });
-    this._observer = new MutationObserver((mutations) => {
+
+    this.observer = new MutationObserver((mutations) => {
       for (const m of mutations) {
         for (const node of m.addedNodes) {
           if (node.nodeType === 1) this.bindAll(node);
         }
       }
     });
-    const startObserving = () => this._observer.observe(document.body, { childList: true, subtree: true });
+
+    const startObserving = () =>
+      this.observer.observe(document.body, { childList: true, subtree: true });
+
     if (document.body) startObserving();
     else document.addEventListener("DOMContentLoaded", startObserving, { once: true });
   }
+
   static describe(el) {
     const d = el.dataset || {};
     if (d.heartType && d.heartId) return { type: d.heartType, id: d.heartId };
@@ -1147,6 +1460,7 @@ class HeartButtonManager {
     if (d.action === "toggle-favorite-album" && d.albumId) return { type: "album", id: d.albumId };
     return null;
   }
+
   static get SELECTOR() {
     return [
       "[data-heart-type][data-heart-id]",
@@ -1156,15 +1470,20 @@ class HeartButtonManager {
       '[data-action="toggle-favorite-album"][data-album-id]',
     ].join(",");
   }
+
   bindAll(root = document) {
-    if (root instanceof HTMLElement && root.matches?.(HeartButtonManager.SELECTOR)) this._bindOne(root);
+    if (root instanceof HTMLElement && root.matches?.(HeartButtonManager.SELECTOR)) {
+      this.bindOne(root);
+    }
     const els = root.querySelectorAll ? root.querySelectorAll(HeartButtonManager.SELECTOR) : [];
-    els.forEach((el) => this._bindOne(el));
+    els.forEach((el) => this.bindOne(el));
   }
-  _bindOne(el) {
+
+  bindOne(el) {
     const info = HeartButtonManager.describe(el);
     if (!info || info.id == null || info.id === "") return;
-    const existing = this._instances.get(el);
+
+    const existing = this.instances.get(el);
     if (existing) {
       if (existing.type === info.type && existing.id === String(info.id)) {
         existing.sync();
@@ -1172,64 +1491,91 @@ class HeartButtonManager {
       }
       existing.destroy();
     }
-    this._instances.set(el, new HeartButton(el, info.type, info.id, this));
+
+    this.instances.set(el, new HeartButton(el, info.type, info.id, this));
   }
-  _syncEntity(type, id) {
-    for (const hb of this._instances.values()) {
+
+  syncEntity(type, id) {
+    for (const hb of this.instances.values()) {
       if (hb.type === type && hb.id === id) hb.sync();
     }
   }
-  _syncAll() {
-    for (const hb of this._instances.values()) hb.sync();
+
+  syncAll() {
+    for (const hb of this.instances.values()) hb.sync();
   }
+
   async toggle(type, id) {
     const sid = String(id);
     const next = !this.store.is(type, sid);
     await this.store.set(type, sid, next);
   }
+
   notify(type, id) {
-    window.dispatchEvent(new CustomEvent("mybeats:favorites-changed", { detail: { type: type, id: String(id) } }));
+    window.dispatchEvent(
+      new CustomEvent("mybeats:favorites-changed", { detail: { type, id: String(id) } })
+    );
   }
+
   prune() {
-    for (const hb of [...this._instances.values()]) {
+    for (const hb of [...this.instances.values()]) {
       if (!hb.el.isConnected) hb.destroy();
     }
   }
+
   destroy() {
-    this._observer.disconnect();
-    for (const hb of [...this._instances.values()]) hb.destroy();
-    this._instances.clear();
+    this.observer.disconnect();
+    for (const hb of [...this.instances.values()]) hb.destroy();
+    this.instances.clear();
   }
+
   async set(type, id, value) {
     await this.store.set(type, id, value);
     this.notify(type, id);
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// FavoritesPlaylistsManager — favorites + playlists data manager
+// ////////////////////////////////////////////////////////////////////////
 class FavoritesPlaylistsManager {
   constructor(state) {
     this.state = state;
   }
+
   get popups() {
     return window.popups || null;
   }
+
   get ui() {
     return window.uiManager || null;
   }
-  _toast(options) {
+
+  toast(options) {
     const popups = this.popups;
     if (!popups) return;
-    popups.toast({ type: options.type || "info", message: options.message, duration: 6000, onUndo: options.onUndo });
+    popups.toast({
+      type: options.type || "info",
+      message: options.message,
+      duration: 6000,
+      onUndo: options.onUndo,
+    });
   }
+
+  // ----------------------------------------------
+  // Songs
+  // ----------------------------------------------
   isSong(id) {
     return this.state.favoriteSongs.some((sid) => String(sid) === String(id));
   }
+
   toggleSong(song) {
     const id = String(song.id);
     const idx = this.state.favoriteSongs.findIndex((sid) => String(sid) === id);
+
     if (idx >= 0) {
       this.state.favoriteSongs.splice(idx, 1);
-      this._toast({
+      this.toast({
         message: `Removed "${song.title}" from favorites`,
         onUndo: () => {
           if (!this.isSong(id)) {
@@ -1242,7 +1588,7 @@ class FavoritesPlaylistsManager {
       });
     } else {
       this.state.favoriteSongs.push(id);
-      this._toast({
+      this.toast({
         message: `Added "${song.title}" to favorites`,
         onUndo: () => {
           const i = this.state.favoriteSongs.findIndex((sid) => String(sid) === id);
@@ -1255,21 +1601,30 @@ class FavoritesPlaylistsManager {
         },
       });
     }
+
     this.state.persist();
     if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-    window.dispatchEvent(new CustomEvent("mybeats:favorites-changed", { detail: { type: "song", id: id } }));
+    window.dispatchEvent(
+      new CustomEvent("mybeats:favorites-changed", { detail: { type: "song", id } })
+    );
   }
+
+  // ----------------------------------------------
+  // Artists
+  // ----------------------------------------------
   isArtist(id) {
     return this.state.favoriteArtists.some((aid) => String(aid) === String(id));
   }
+
   toggleArtist(id) {
     const sid = String(id);
     const idx = this.state.favoriteArtists.findIndex((aid) => String(aid) === sid);
     const artist = this.state.getArtistById(id);
     const name = artist?.artist || "Artist";
+
     if (idx >= 0) {
       this.state.favoriteArtists.splice(idx, 1);
-      this._toast({
+      this.toast({
         message: `Removed ${name} from favorite artists`,
         onUndo: () => {
           if (!this.isArtist(id)) {
@@ -1281,7 +1636,7 @@ class FavoritesPlaylistsManager {
       });
     } else {
       this.state.favoriteArtists.push(sid);
-      this._toast({
+      this.toast({
         message: `Added ${name} to favorite artists`,
         onUndo: () => {
           const i = this.state.favoriteArtists.findIndex((aid) => String(aid) === sid);
@@ -1293,21 +1648,30 @@ class FavoritesPlaylistsManager {
         },
       });
     }
+
     this.state.persist();
-    window.dispatchEvent(new CustomEvent("mybeats:favorites-changed", { detail: { type: "artist", id: sid } }));
+    window.dispatchEvent(
+      new CustomEvent("mybeats:favorites-changed", { detail: { type: "artist", id: sid } })
+    );
     this.ui?.render();
   }
+
+  // ----------------------------------------------
+  // Albums
+  // ----------------------------------------------
   isAlbum(id) {
     return this.state.favoriteAlbums.some((aid) => String(aid) === String(id));
   }
+
   toggleAlbum(id) {
     const sid = String(id);
     const idx = this.state.favoriteAlbums.findIndex((aid) => String(aid) === sid);
     const album = this.state.getAlbumById(id);
     const name = album?.album || "Album";
+
     if (idx >= 0) {
       this.state.favoriteAlbums.splice(idx, 1);
-      this._toast({
+      this.toast({
         message: `Removed ${name} from favorite albums`,
         onUndo: () => {
           if (!this.isAlbum(id)) {
@@ -1320,7 +1684,7 @@ class FavoritesPlaylistsManager {
       });
     } else {
       this.state.favoriteAlbums.push(sid);
-      this._toast({
+      this.toast({
         message: `Added ${name} to favorite albums`,
         onUndo: () => {
           const i = this.state.favoriteAlbums.findIndex((aid) => String(aid) === sid);
@@ -1333,22 +1697,31 @@ class FavoritesPlaylistsManager {
         },
       });
     }
+
     this.state.persist();
     if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-    window.dispatchEvent(new CustomEvent("mybeats:favorites-changed", { detail: { type: "album", id: sid } }));
+    window.dispatchEvent(
+      new CustomEvent("mybeats:favorites-changed", { detail: { type: "album", id: sid } })
+    );
   }
+
+  // ----------------------------------------------
+  // Playlists — favorites
+  // ----------------------------------------------
   isPlaylist(id) {
     return (this.state.favoritePlaylists || []).some((pid) => String(pid) === String(id));
   }
+
   togglePlaylist(id) {
     const pid = String(id);
     this.state.favoritePlaylists = this.state.favoritePlaylists || [];
     const idx = this.state.favoritePlaylists.findIndex((x) => String(x) === pid);
-    const pl = this.getPlaylist(pid);
-    const name = pl?.name || "Playlist";
+    const playlist = this.getPlaylist(pid);
+    const name = playlist?.name || "Playlist";
+
     if (idx >= 0) {
       this.state.favoritePlaylists.splice(idx, 1);
-      this._toast({
+      this.toast({
         message: `Removed ${name} from favorites`,
         onUndo: () => {
           if (!this.isPlaylist(pid)) {
@@ -1360,7 +1733,7 @@ class FavoritesPlaylistsManager {
       });
     } else {
       this.state.favoritePlaylists.push(pid);
-      this._toast({
+      this.toast({
         message: `Added ${name} to favorites`,
         onUndo: () => {
           const i = this.state.favoritePlaylists.findIndex((x) => String(x) === pid);
@@ -1372,13 +1745,21 @@ class FavoritesPlaylistsManager {
         },
       });
     }
+
     this.state.persist();
-    window.dispatchEvent(new CustomEvent("mybeats:favorites-changed", { detail: { type: "playlist", id: pid } }));
+    window.dispatchEvent(
+      new CustomEvent("mybeats:favorites-changed", { detail: { type: "playlist", id: pid } })
+    );
   }
+
+  // ----------------------------------------------
+  // Playlists — CRUD
+  // ----------------------------------------------
   getPlaylist(id) {
     const sid = String(id);
     return this.state.playlists.find((p) => String(p.id) === sid);
   }
+
   createPlaylist({ name, description = "", tags = [] } = {}) {
     const playlist = {
       id: Utils.newId("pl"),
@@ -1391,76 +1772,96 @@ class FavoritesPlaylistsManager {
     this.state.persist();
     return playlist;
   }
+
   renamePlaylist(id, newName) {
-    const pl = this.getPlaylist(id);
-    if (!pl || !newName.trim()) return false;
-    pl.name = newName.trim();
+    const playlist = this.getPlaylist(id);
+    if (!playlist || !newName.trim()) return false;
+    playlist.name = newName.trim();
     this.state.persist();
     return true;
   }
+
   updateDesc(id, description) {
-    const pl = this.getPlaylist(id);
-    if (!pl) return false;
-    pl.description = description;
+    const playlist = this.getPlaylist(id);
+    if (!playlist) return false;
+    playlist.description = description;
     this.state.persist();
     return true;
   }
+
   updateTags(id, tags) {
-    const pl = this.getPlaylist(id);
-    if (!pl) return false;
-    pl.tags = Array.isArray(tags) ? tags : [];
+    const playlist = this.getPlaylist(id);
+    if (!playlist) return false;
+    playlist.tags = Array.isArray(tags) ? tags : [];
     this.state.persist();
     return true;
   }
+
   deletePlaylist(id) {
-    const pl = this.getPlaylist(id);
-    if (!pl) return false;
-    const name = pl.name;
-    this.state.playlists = this.state.playlists.filter((p) => String(p.id) !== String(id));
+    const playlist = this.getPlaylist(id);
+    if (!playlist) return false;
+
+    const name = playlist.name;
+    this.state.playlists = this.state.playlists.filter(
+      (p) => String(p.id) !== String(id)
+    );
     this.state.persist();
+
     if (this.popups) this.popups.toast({ type: "success", message: `Playlist "${name}" deleted` });
     return true;
   }
+
   reorderSongs(id, newOrder) {
-    const pl = this.getPlaylist(id);
-    if (!pl || !Array.isArray(newOrder)) return false;
-    pl.songs = newOrder.map((sid) => String(sid));
+    const playlist = this.getPlaylist(id);
+    if (!playlist || !Array.isArray(newOrder)) return false;
+    playlist.songs = newOrder.map((sid) => String(sid));
     this.state.persist();
     return true;
   }
+
   removeSongFromPlaylist(playlistId, songId) {
-    const pl = this.getPlaylist(playlistId);
-    if (!pl) return false;
+    const playlist = this.getPlaylist(playlistId);
+    if (!playlist) return false;
+
     const sid = String(songId);
-    const before = [...pl.songs];
+    const before = [...playlist.songs];
     const song = this.state.getSongById(sid);
-    pl.songs = pl.songs.filter((id) => String(id) !== sid);
+
+    playlist.songs = playlist.songs.filter((id) => String(id) !== sid);
     this.state.persist();
+
     if (song) {
-      this._toast({
-        message: `Removed "${song.title}" from ${pl.name}`,
+      this.toast({
+        message: `Removed "${song.title}" from ${playlist.name}`,
         onUndo: () => {
-          pl.songs = before;
+          playlist.songs = before;
           this.state.persist();
-          if (this.ui?.state?.currentPage === "editPlaylist" && this.ui.state.editingPlaylistId === playlistId)
+          if (
+            this.ui?.state?.currentPage === "editPlaylist" &&
+            this.ui.state.editingPlaylistId === playlistId
+          ) {
             this.ui.render();
+          }
         },
       });
     }
     return true;
   }
+
   addSongToPlaylist(playlistId, songId) {
-    const pl = this.getPlaylist(playlistId);
+    const playlist = this.getPlaylist(playlistId);
     const sid = String(songId);
-    if (!pl || pl.songs.some((id) => String(id) === sid)) return false;
+    if (!playlist || playlist.songs.some((id) => String(id) === sid)) return false;
+
     const song = this.state.getSongById(sid);
-    pl.songs.push(sid);
+    playlist.songs.push(sid);
     this.state.persist();
+
     if (song) {
-      this._toast({
-        message: `Added "${song.title}" to ${pl.name}`,
+      this.toast({
+        message: `Added "${song.title}" to ${playlist.name}`,
         onUndo: () => {
-          pl.songs = pl.songs.filter((id) => String(id) !== sid);
+          playlist.songs = playlist.songs.filter((id) => String(id) !== sid);
           this.state.persist();
           this.ui?.render();
         },
@@ -1468,26 +1869,32 @@ class FavoritesPlaylistsManager {
     }
     return true;
   }
+
+  // ----------------------------------------------
+  // Playlist UI helpers
+  // ----------------------------------------------
   openModal() {
     const popups = this.popups;
     if (!popups) return;
+
     const content = document.createElement("div");
     content.className = "popups-playlist-list";
+
     content.innerHTML = this.state.playlists.length
       ? this.state.playlists
           .map(
-            (pl) => `
-      <div class="popups-playlist-row" data-action="view" data-id="${Utils.esc(pl.id)}">
-        <div class="popups-playlist-cover">${this._coverPreview(pl, 40)}</div>
+            (playlist) => `
+      <div class="popups-playlist-row" data-action="view" data-id="${Utils.esc(playlist.id)}">
+        <div class="popups-playlist-cover">${this.coverPreview(playlist, 40)}</div>
         <div class="popups-playlist-info">
-          <p class="popups-playlist-name">${Utils.esc(pl.name)}</p>
-          <p class="popups-playlist-meta">${pl.songs.length} songs</p>
+          <p class="popups-playlist-name">${Utils.esc(playlist.name)}</p>
+          <p class="popups-playlist-meta">${playlist.songs.length} songs</p>
         </div>
         <div class="popups-playlist-actions">
-          <button class="popups-icon-btn" data-action="edit" data-id="${Utils.esc(pl.id)}" title="Edit">
+          <button class="popups-icon-btn" data-action="edit" data-id="${Utils.esc(playlist.id)}" title="Edit">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
           </button>
-          <button class="popups-icon-btn popups-danger" data-action="delete" data-id="${Utils.esc(pl.id)}" title="Delete">
+          <button class="popups-icon-btn popups-danger" data-action="delete" data-id="${Utils.esc(playlist.id)}" title="Delete">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
           </button>
         </div>
@@ -1496,6 +1903,7 @@ class FavoritesPlaylistsManager {
           )
           .join("")
       : `<p class="popups-empty">No playlists yet.</p>`;
+
     const modal = popups.modal({
       title: "Your Playlists",
       size: "md",
@@ -1506,12 +1914,15 @@ class FavoritesPlaylistsManager {
         if (action === "create") this.createNewPlaylist();
       },
     });
+
     content.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
       e.stopPropagation();
+
       const id = btn.dataset.id;
       const action = btn.dataset.action;
+
       if (action === "view") {
         modal.hide();
         this.ui?.navigate("playlists");
@@ -1522,20 +1933,25 @@ class FavoritesPlaylistsManager {
         this.editPlaylist(id);
       } else if (action === "delete") {
         modal.hide();
-        this._confirmDelete(id);
+        this.confirmDelete(id);
       }
     });
   }
-  _coverPreview(pl, size = 40) {
+
+  coverPreview(playlist, size = 40) {
     const state = this.state;
-    const songs = pl.songs
+    const songs = playlist.songs
       .map((sid) => state.getSongById(sid))
       .filter(Boolean)
       .slice(0, 4);
-    if (!songs.length)
-      return `<div class="popups-cover-empty" style="width:${size}px;height:${size}px">${this._playlistIcon(Math.round(size * 0.5))}</div>`;
-    if (songs.length === 1)
+
+    if (!songs.length) {
+      return `<div class="popups-cover-empty" style="width:${size}px;height:${size}px">${this.playlistIcon(Math.round(size * 0.5))}</div>`;
+    }
+    if (songs.length === 1) {
       return `<img src="${songs[0].coverUrl}" width="${size}" height="${size}" class="popups-cover-img">`;
+    }
+
     return `
       <div class="popups-cover-mosaic" style="width:${size}px;height:${size}px">
         ${Array.from({ length: 4 })
@@ -1548,21 +1964,24 @@ class FavoritesPlaylistsManager {
       </div>
     `;
   }
-  _playlistIcon(size = 24) {
+
+  playlistIcon(size = 24) {
     return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l10 9-10 9-10-9 10-9z"/></svg>`;
   }
-  _confirmDelete(id) {
-    const pl = this.getPlaylist(id);
-    if (!pl) return;
+
+  confirmDelete(id) {
+    const playlist = this.getPlaylist(id);
+    if (!playlist) return;
+
     this.popups.dialog({
       title: "Delete Playlist?",
-      message: `Are you sure you want to delete "${pl.name}"? This cannot be undone.`,
+      message: `Are you sure you want to delete "${playlist.name}"? This cannot be undone.`,
       dangerous: true,
       confirmLabel: "Delete",
       cancelLabel: "Cancel",
       onConfirm: () => {
         this.deletePlaylist(id);
-        if (this.state.selectedPlaylistName === pl.name) {
+        if (this.state.selectedPlaylistName === playlist.name) {
           this.state.selectedPlaylistName = null;
           this.state.selectedPlaylistId = null;
         }
@@ -1570,9 +1989,11 @@ class FavoritesPlaylistsManager {
       },
     });
   }
+
   createNewPlaylist() {
     const popups = this.popups;
     if (!popups) return;
+
     const wrap = document.createElement("div");
     wrap.className = "popups-form";
     wrap.innerHTML = `
@@ -1590,9 +2011,11 @@ class FavoritesPlaylistsManager {
         <div class="popups-tag-list" id="new-pl-tag-list"></div>
       </div>
     `;
+
     const tagInput = wrap.querySelector("#new-pl-tags");
     const tagList = wrap.querySelector("#new-pl-tag-list");
     const tags = [];
+
     const renderTags = () => {
       tagList.innerHTML = tags
         .map(
@@ -1605,30 +2028,35 @@ class FavoritesPlaylistsManager {
         )
         .join("");
     };
+
     tagInput.addEventListener("keydown", (e) => {
       if (e.key !== "Enter") return;
       e.preventDefault();
+
       const raw = tagInput.value.trim();
       if (!raw) return;
-      const vals = raw
-        .split(/[,;]/)
-        .map((s) => s.trim())
-        .filter(Boolean);
-      vals.forEach((v) => {
-        if (!tags.includes(v) && tags.length < 8) tags.push(v);
+
+      const vals = raw.split(/[,;]/).map((s) => s.trim()).filter(Boolean);
+      vals.forEach((value) => {
+        if (!tags.includes(value) && tags.length < 8) tags.push(value);
       });
+
       tagInput.value = "";
       renderTags();
     });
+
     tagList.addEventListener("click", (e) => {
       const btn = e.target.closest(".popups-tag-remove");
       if (!btn) return;
-      const t = btn.dataset.tag;
-      const i = tags.indexOf(t);
+
+      const tag = btn.dataset.tag;
+      const i = tags.indexOf(tag);
       if (i >= 0) tags.splice(i, 1);
       renderTags();
     });
+
     const nameInput = wrap.querySelector("#new-pl-name");
+
     const modal = popups.modal({
       title: "Create Playlist",
       size: "sm",
@@ -1640,11 +2068,13 @@ class FavoritesPlaylistsManager {
       ],
       onAction: (action, popup) => {
         if (action !== "create") return;
+
         const name = nameInput.value.trim();
         if (!name) {
           popups.toast({ type: "warning", message: "Please enter a playlist name" });
           return;
         }
+
         const description = wrap.querySelector("#new-pl-desc").value.trim();
         this.createPlaylist({ name, description, tags: [...tags] });
         popups.toast({ type: "success", message: `Playlist "${name}" created` });
@@ -1652,8 +2082,10 @@ class FavoritesPlaylistsManager {
         popup.hide();
       },
     });
+
     setTimeout(() => nameInput.focus(), 50);
   }
+
   editPlaylist(id) {
     if (!this.ui) return;
     this.state.editingPlaylistId = id;
@@ -1661,9 +2093,11 @@ class FavoritesPlaylistsManager {
     this.ui.navigate("editPlaylist");
     history.pushState(null, "", `/playlist/${id}/edit`);
   }
+
   addToPlaylistModal(song) {
     const popups = this.popups;
     if (!popups) return;
+
     if (!this.state.playlists.length) {
       popups.modal({
         title: "Add to Playlist",
@@ -1676,8 +2110,10 @@ class FavoritesPlaylistsManager {
       });
       return;
     }
+
     const content = document.createElement("div");
     content.className = "popups-add-to-playlist";
+
     const songHeader = song
       ? `
       <div class="popups-song-context">
@@ -1689,21 +2125,24 @@ class FavoritesPlaylistsManager {
       </div>
     `
       : "";
+
     const list = this.state.playlists
       .map(
-        (pl) => `
-      <button class="popups-playlist-row" data-action="add" data-id="${Utils.esc(pl.id)}">
-        <div class="popups-playlist-cover">${this._coverPreview(pl, 44)}</div>
+        (playlist) => `
+      <button class="popups-playlist-row" data-action="add" data-id="${Utils.esc(playlist.id)}">
+        <div class="popups-playlist-cover">${this.coverPreview(playlist, 44)}</div>
         <div class="popups-playlist-info">
-          <p class="popups-playlist-name">${Utils.esc(pl.name)}</p>
-          <p class="popups-playlist-meta">${pl.songs.length} songs</p>
+          <p class="popups-playlist-name">${Utils.esc(playlist.name)}</p>
+          <p class="popups-playlist-meta">${playlist.songs.length} songs</p>
         </div>
-        ${pl.songs.some((sid) => String(sid) === String(song?.id)) ? `<span class="popups-in-list-badge">In playlist</span>` : ""}
+        ${playlist.songs.some((sid) => String(sid) === String(song?.id)) ? `<span class="popups-in-list-badge">In playlist</span>` : ""}
       </button>
     `
       )
       .join("");
+
     content.innerHTML = songHeader + `<div class="popups-playlist-list">${list}</div>`;
+
     const modal = popups.modal({
       title: song ? `Add to Playlist` : "Select Playlist",
       size: "sm",
@@ -1717,24 +2156,32 @@ class FavoritesPlaylistsManager {
         }
       },
     });
+
     content.addEventListener("click", (e) => {
       const btn = e.target.closest('[data-action="add"]');
       if (!btn) return;
       e.stopPropagation();
+
       const plId = btn.dataset.id;
-      const pl = this.getPlaylist(plId);
-      if (!pl || !song) return;
-      if (pl.songs.some((sid) => String(sid) === String(song.id))) {
-        popups.toast({ type: "warning", message: `"${song.title}" is already in ${pl.name}` });
+      const playlist = this.getPlaylist(plId);
+      if (!playlist || !song) return;
+
+      if (playlist.songs.some((sid) => String(sid) === String(song.id))) {
+        popups.toast({
+          type: "warning",
+          message: `"${song.title}" is already in ${playlist.name}`,
+        });
         return;
       }
+
       this.addSongToPlaylist(plId, song.id);
       modal.hide();
     });
   }
 }
 
-/*============= GLOBAL REGISTRY (window) =============*/
+
+
 window.PopupsManager = PopupsManager;
 window.PopupsBase = PopupsBase;
 window.PopupsModal = PopupsModal;
