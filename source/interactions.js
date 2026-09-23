@@ -436,12 +436,17 @@ class PopupsManager {
     const song = state && typeof state.getSongById === "function" && state.getSongById(songId);
     if (!song) return null;
 
-    const isFav =
-      this.ui &&
+const getIsFav = () =>
+  Boolean(
+    this.ui &&
       this.ui.favorites &&
-      typeof this.ui.favorites.isSongFavorite === "function" &&
-      this.ui.favorites.isSongFavorite(songId);
+      typeof this.ui.favorites.isSong === "function" &&
+      this.ui.favorites.isSong(songId)
+  );
 
+const isFav = getIsFav();
+
+    
     const isCached =
       window.offlineCache &&
       typeof window.offlineCache.isCached === "function" &&
@@ -454,7 +459,7 @@ class PopupsManager {
         .join(" ");
     };
 
-    return this.dropdown({
+  const dropdown = this.dropdown({
       triggerEvent: event,
       header: { title: song.title, subtitle: song.artist || "" },
       groups: [
@@ -519,8 +524,64 @@ class PopupsManager {
             window.offlineCache.cacheSong(song);
           }
         }
-      },
-    });
+      },    });
+
+    const updateFavoriteOption = () => {
+      if (!dropdown.el || !dropdown.isOpen) return;
+
+      const favoriteButton = dropdown.el.querySelector(
+        '[data-action="add-fav"]'
+      );
+
+      if (!favoriteButton) return;
+
+      const isFavorite = getIsFav();
+      const label = favoriteButton.querySelector(".label");
+      const icon = favoriteButton.querySelector(".icon");
+
+      if (label) {
+        label.textContent = isFavorite
+          ? "Remove from Favorites"
+          : "Add to Favorites";
+      }
+
+      if (icon) {
+        icon.innerHTML = PopupsManager.icons.heart(16, isFavorite);
+      }
+
+      favoriteButton.style.color = isFavorite
+        ? "rgb(var(--colorPink))"
+        : "";
+
+      favoriteButton.setAttribute("aria-pressed", String(isFavorite));
+    };
+
+    const onFavoritesChanged = (event) => {
+      const detail = event.detail || {};
+
+      if (
+        String(detail.type) === "song" &&
+        String(detail.id) === String(songId)
+      ) {
+        updateFavoriteOption();
+      }
+    };
+
+    window.addEventListener(
+      "mybeats:favorites-changed",
+      onFavoritesChanged
+    );
+
+    dropdown.beforeDestroy = () => {
+      window.removeEventListener(
+        "mybeats:favorites-changed",
+        onFavoritesChanged
+      );
+    };
+
+    updateFavoriteOption();
+
+    return dropdown;
   }
 
   // ----------------------------------------------
