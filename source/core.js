@@ -1,19 +1,24 @@
-/* ==================== 1. CORE : core ==================== */
-/* Includes: Config, Utils, Prefs, IdUtils, ColorExtractor, Spinner, SearchUtils, PersistenceManager, NProgress, Icons, __MYBEATS_BASE__ */
+
+
+
+
+
 (function () {
-  const s = document.currentScript;
-  window.__MYBEATS_BASE__ = window.__MYBEATS_BASE__ || (s && s.src ? s.src : window.location.href);
+  const script = document.currentScript;
+  window.__MYBEATS_BASE__ =
+    window.__MYBEATS_BASE__ ||
+    (script && script.src ? script.src : window.location.href);
 })();
 
-
-
-
-/* ==================== 1. CORE ==================== */
+// ////////////////////////////////////////////////////////////////////////
+// Config
+// ////////////////////////////////////////////////////////////////////////
 const Config = {
   IMAGE_BASE: {
     artist:
-      "https://raw.githubusercontent.com/ClockBlocked/beats/refs/heads/ClockBlocked-patch-1/content/artistPortraits/",
-    album: "https://raw.githubusercontent.com/ClockBlocked/beats/refs/heads/ClockBlocked-patch-1/content/albumCovers/",
+      "https://mybeats.cloud/content/artistPortraits/",
+    album:
+      "https://mybeats.cloud/content/albumCovers/",
   },
   FAVOURITES: {
     favSongs: "Songs",
@@ -28,6 +33,9 @@ const Config = {
   VOLUME: { default: 1 },
 };
 
+// ////////////////////////////////////////////////////////////////////////
+// Utils
+// ////////////////////////////////////////////////////////////////////////
 class Utils {
   static slug(name) {
     return name
@@ -37,33 +45,46 @@ class Utils {
           .trim() || "default"
       : "default";
   }
+
   static clamp(val, min, max) {
     return Math.min(max, Math.max(min, val));
   }
+
   static shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
+    const shuffled = [...arr];
+    for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    return a;
+    return shuffled;
   }
-  static fmtTime(s) {
-    if (!s || !isFinite(s)) return "0:00";
-    const m = Math.floor(s / 60);
-    const sec = Math.floor(s % 60);
-    return `${m}:${sec.toString().padStart(2, "0")}`;
+
+  static fmtTime(seconds) {
+    if (!seconds || !isFinite(seconds)) return "0:00";
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${minutes}:${secs.toString().padStart(2, "0")}`;
   }
+
   static id(val) {
     return val == null ? "" : String(val);
   }
+
   static newId(prefix = "id") {
-    if (typeof crypto !== "undefined" && crypto.randomUUID) return `${prefix}_${crypto.randomUUID()}`;
+    if (typeof crypto !== "undefined" && crypto.randomUUID) {
+      return `${prefix}_${crypto.randomUUID()}`;
+    }
     return `${prefix}_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
   }
+
   static esc(str = "") {
-    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
+
   static fmtDuration(raw) {
     if (raw === null || raw === undefined || raw === "") return "";
     if (typeof raw === "string") {
@@ -77,12 +98,13 @@ class Utils {
     if (!Number.isFinite(raw) || raw <= 0) return String(raw);
     return Utils.fmtTime(raw);
   }
+
   static albumQueue(state, artistId, albumId) {
     const artist = state.getArtistById(artistId);
     const album = artist?.albums.find((a) => Utils.id(a.id) === Utils.id(albumId));
     if (!artist || !album) return [];
-    return album.songs.map((s) => ({
-      ...s,
+    return album.songs.map((song) => ({
+      ...song,
       artistId: artist.id,
       albumId: album.id,
       artist: artist.artist,
@@ -93,9 +115,13 @@ class Utils {
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// Prefs
+// ////////////////////////////////////////////////////////////////////////
 class Prefs {
   static KEY = "mybeats.prefs.v1";
-  static _cache = null;
+  static prefCache = null;
+
   static THEMES = {
     dark: {
       label: "Dark",
@@ -136,90 +162,117 @@ class Prefs {
   static DEFAULT_THEME = "dark";
   static DEFAULT_LIGHT = "light";
 
-  static _read() {
-    if (Prefs._cache) return Prefs._cache;
+  static loadPrefs() {
+    if (Prefs.prefCache) return Prefs.prefCache;
     try {
       const raw = localStorage.getItem(Prefs.KEY);
-      Prefs._cache = raw ? JSON.parse(raw) : {};
+      Prefs.prefCache = raw ? JSON.parse(raw) : {};
     } catch {
-      Prefs._cache = {};
+      Prefs.prefCache = {};
     }
-    return Prefs._cache;
+    return Prefs.prefCache;
   }
-  static _write(data) {
-    Prefs._cache = data;
+
+  static savePrefs(prefs) {
+    Prefs.prefCache = prefs;
     try {
-      localStorage.setItem(Prefs.KEY, JSON.stringify(data));
+      localStorage.setItem(Prefs.KEY, JSON.stringify(prefs));
     } catch {}
   }
+
   static get(key, fallback = null) {
-    const data = Prefs._read();
-    return key in data ? data[key] : fallback;
+    const prefs = Prefs.loadPrefs();
+    return key in prefs ? prefs[key] : fallback;
   }
+
   static set(key, value) {
-    const data = Prefs._read();
-    data[key] = value;
-    Prefs._write(data);
+    const prefs = Prefs.loadPrefs();
+    prefs[key] = value;
+    Prefs.savePrefs(prefs);
   }
+
   static isValidTheme(name) {
     return !!Prefs.THEMES[name];
   }
+
   static theme() {
     const saved = Prefs.get("theme", null);
     return Prefs.isValidTheme(saved) ? saved : Prefs.DEFAULT_THEME;
   }
+
   static listThemes() {
-    return Object.entries(Prefs.THEMES).map(([key, cfg]) => ({ key, ...cfg }));
+    return Object.entries(Prefs.THEMES).map(([key, config]) => ({ key, ...config }));
   }
+
   static applyTheme(name, { persist = true } = {}) {
     if (!Prefs.isValidTheme(name)) name = Prefs.DEFAULT_THEME;
-    const cfg = Prefs.THEMES[name];
+    const config = Prefs.THEMES[name];
+
     document.documentElement.setAttribute("data-theme", name);
-    document.body.classList.toggle("dark", cfg.dark);
-    document.querySelectorAll(".theme-toggle-btn").forEach((b) => b.classList.toggle("dark", cfg.dark));
+    document.body.classList.toggle("dark", config.dark);
+    document
+      .querySelectorAll(".theme-toggle-btn")
+      .forEach((button) => button.classList.toggle("dark", config.dark));
+
     if (persist) {
       Prefs.set("theme", name);
-      if (cfg.dark) Prefs.set("lastDarkTheme", name);
+      if (config.dark) Prefs.set("lastDarkTheme", name);
       else Prefs.set("lastLightTheme", name);
       try {
-        localStorage.setItem("theme", cfg.dark ? "dark" : "light");
+        localStorage.setItem("theme", config.dark ? "dark" : "light");
       } catch {}
     }
-    window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: name, dark: cfg.dark } }));
+
+    window.dispatchEvent(
+      new CustomEvent("themechange", { detail: { theme: name, dark: config.dark } })
+    );
   }
+
   static nextToggle() {
     const current = Prefs.theme();
-    const cfg = Prefs.THEMES[current];
-    if (cfg.dark) {
+    const config = Prefs.THEMES[current];
+    if (config.dark) {
       const lastLight = Prefs.get("lastLightTheme", null);
-      return Prefs.isValidTheme(lastLight) && !Prefs.THEMES[lastLight].dark ? lastLight : Prefs.DEFAULT_LIGHT;
+      return Prefs.isValidTheme(lastLight) && !Prefs.THEMES[lastLight].dark
+        ? lastLight
+        : Prefs.DEFAULT_LIGHT;
     }
     const lastDark = Prefs.get("lastDarkTheme", null);
-    return Prefs.isValidTheme(lastDark) && Prefs.THEMES[lastDark].dark ? lastDark : Prefs.DEFAULT_THEME;
+    return Prefs.isValidTheme(lastDark) && Prefs.THEMES[lastDark].dark
+      ? lastDark
+      : Prefs.DEFAULT_THEME;
   }
+
   static init() {
     const savedTheme = Prefs.get("theme", null);
     const theme = Prefs.isValidTheme(savedTheme) ? savedTheme : Prefs.DEFAULT_THEME;
     document.documentElement.setAttribute("data-theme", theme);
     Prefs.set("theme", theme);
+
     const savedAccent = Prefs.get("accent", "coral");
     document.documentElement.setAttribute("data-accent", savedAccent);
     Prefs.set("accent", savedAccent);
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// IdUtils
+// ////////////////////////////////////////////////////////////////////////
 class IdUtils {
-  static norm(v) {
-    return Utils.id(v);
+  static norm(value) {
+    return Utils.id(value);
   }
-  static sample(arr, n) {
-    return Utils.shuffle(arr).slice(0, n);
+
+  static sample(arr, count) {
+    return Utils.shuffle(arr).slice(0, count);
   }
+
   static hslToRgb(hslString) {
     // Accepts "h s% l%" or {h,s,l} or "h s l"
     let h, s, l;
+
     if (typeof hslString === "string") {
-      const parts = hslString.split(" ").map((p) => parseFloat(p));
+      const parts = hslString.split(" ").map((part) => parseFloat(part));
       h = parts[0];
       s = parts[1];
       l = parts[2];
@@ -230,12 +283,15 @@ class IdUtils {
     } else {
       return { r: 255, g: 107, b: 107 };
     }
+
     h = ((h % 360) + 360) % 360;
     s = s / 100;
     l = l / 100;
+
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
     const m = l - c / 2;
+
     let r, g, b;
     if (h < 60) [r, g, b] = [c, x, 0];
     else if (h < 120) [r, g, b] = [x, c, 0];
@@ -243,15 +299,23 @@ class IdUtils {
     else if (h < 240) [r, g, b] = [0, x, c];
     else if (h < 300) [r, g, b] = [x, 0, c];
     else [r, g, b] = [c, 0, x];
-    return { r: Math.round((r + m) * 255), g: Math.round((g + m) * 255), b: Math.round((b + m) * 255) };
+
+    return {
+      r: Math.round((r + m) * 255),
+      g: Math.round((g + m) * 255),
+      b: Math.round((b + m) * 255),
+    };
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// ColorExtractor
+// ////////////////////////////////////////////////////////////////////////
 class ColorExtractor {
   constructor(options = {}) {
     this.cache = new Map();
     this.defaultColors = { primary: "20 20 40", secondary: "28 32 52", accent: "220 38 38" };
-    this.opts = {
+    this.settings = {
       sampleRate: 10,
       skipThreshold: 30,
       whiteThreshold: 225,
@@ -260,13 +324,15 @@ class ColorExtractor {
       ...options,
     };
   }
+
   async extract(imageUrl) {
     if (!imageUrl) return { ...this.defaultColors };
     if (this.cache.has(imageUrl)) return this.cache.get(imageUrl);
+
     try {
-      const img = await this._loadImg(imageUrl);
-      const pixels = this._getPixels(img);
-      const colors = this._domColors(pixels);
+      const img = await this.loadImage(imageUrl);
+      const pixels = this.getPixels(img);
+      const colors = this.dominantColors(pixels);
       this.cache.set(imageUrl, colors);
       return colors;
     } catch (err) {
@@ -274,6 +340,7 @@ class ColorExtractor {
       return { ...this.defaultColors };
     }
   }
+
   applyPlayer(colors) {
     const root = document.documentElement;
     root.style.setProperty("--borderPrimary", colors.primary);
@@ -283,12 +350,14 @@ class ColorExtractor {
       "--player-gradient",
       `linear-gradient(135deg, rgb(var(--player-primary)), rgb(var(--player-secondary)))`
     );
-    root.style.setProperty("--player-glow", this._toRGBA(colors.accent, 0.25));
-    root.style.setProperty("--player-glow-strong", this._toRGBA(colors.accent, 0.5));
-    root.style.setProperty("--player-tint", this._mixBlack(colors.primary, 0.65));
+    root.style.setProperty("--player-glow", this.toRgba(colors.accent, 0.25));
+    root.style.setProperty("--player-glow-strong", this.toRgba(colors.accent, 0.5));
+    root.style.setProperty("--player-tint", this.mixBlack(colors.primary, 0.65));
+
     window.dispatchEvent(new CustomEvent("themechange", { detail: { ...colors } }));
   }
-  _loadImg(url) {
+
+  loadImage(url) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.crossOrigin = "Anonymous";
@@ -297,10 +366,12 @@ class ColorExtractor {
       img.src = url;
     });
   }
-  _getPixels(img) {
+
+  getPixels(img) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     const maxSize = 100;
+
     let { width, height } = img;
     if (width > height) {
       height = (height / width) * maxSize;
@@ -309,55 +380,89 @@ class ColorExtractor {
       width = (width / height) * maxSize;
       height = maxSize;
     }
+
     canvas.width = Math.max(1, Math.floor(width));
     canvas.height = Math.max(1, Math.floor(height));
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     return ctx.getImageData(0, 0, canvas.width, canvas.height).data;
   }
-  _domColors(pixelData) {
+
+  dominantColors(pixelData) {
     const colorMap = new Map();
-    for (let i = 0; i < pixelData.length; i += this.opts.sampleRate * 4) {
-      const r = pixelData[i],
-        g = pixelData[i + 1],
-        b = pixelData[i + 2],
-        a = pixelData[i + 3];
+
+    for (let i = 0; i < pixelData.length; i += this.settings.sampleRate * 4) {
+      const r = pixelData[i];
+      const g = pixelData[i + 1];
+      const b = pixelData[i + 2];
+      const a = pixelData[i + 3];
+
       if (a < 128) continue;
+
       const brightness = (r + g + b) / 3;
-      if (brightness < this.opts.skipThreshold || brightness > this.opts.whiteThreshold) continue;
-      const key = `${Math.floor(r / this.opts.colorQuantize)},${Math.floor(g / this.opts.colorQuantize)},${Math.floor(b / this.opts.colorQuantize)}`;
-      colorMap.set(key, (colorMap.get(key) || 0) + 1);
+      if (brightness < this.settings.skipThreshold || brightness > this.settings.whiteThreshold) continue;
+
+      const colorKey = `${Math.floor(r / this.settings.colorQuantize)},${Math.floor(g / this.settings.colorQuantize)},${Math.floor(b / this.settings.colorQuantize)}`;
+      colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
     }
-    const sorted = [...colorMap.entries()].sort((a, b) => b[1] - a[1]).slice(0, this.opts.dominantColorCount);
-    const palette = sorted.map(([key]) => {
-      const [r, g, b] = key.split(",").map((v) => parseInt(v) * this.opts.colorQuantize);
+
+    const sorted = [...colorMap.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, this.settings.dominantColorCount);
+
+    const palette = sorted.map(([colorKey]) => {
+      const [r, g, b] = colorKey
+        .split(",")
+        .map((part) => parseInt(part) * this.settings.colorQuantize);
       return { r, g, b };
     });
-    return this._buildScheme(palette);
+
+    return this.buildScheme(palette);
   }
-  _buildScheme(palette) {
+
+  buildScheme(palette) {
     if (!palette.length) return { ...this.defaultColors };
-    const hslPalette = palette.map((c) => this._rgbToHsl(c));
-    const primaryHSL = { h: hslPalette[0].h, s: Math.min(hslPalette[0].s, 40), l: Math.max(hslPalette[0].l, 80) };
-    const secondaryHSL = { h: hslPalette[0].h, s: Math.min(hslPalette[0].s, 30), l: Math.min(hslPalette[0].l, 70) };
+
+    const hslPalette = palette.map((color) => this.rgbToHsl(color));
+
+    const primaryHSL = {
+      h: hslPalette[0].h,
+      s: Math.min(hslPalette[0].s, 40),
+      l: Math.max(hslPalette[0].l, 80),
+    };
+    const secondaryHSL = {
+      h: hslPalette[0].h,
+      s: Math.min(hslPalette[0].s, 30),
+      l: Math.min(hslPalette[0].l, 70),
+    };
+
     const vibrant = hslPalette.reduce((a, b) => (a.s > b.s ? a : b));
-    const accentHSL = { h: vibrant.h, s: Math.min(vibrant.s + 20, 100), l: Math.round((45 + 55) / 2) };
+    const accentHSL = {
+      h: vibrant.h,
+      s: Math.min(vibrant.s + 20, 100),
+      l: Math.round((45 + 55) / 2),
+    };
+
     return {
-      primary: this._hslToRGBString(primaryHSL),
-      secondary: this._hslToRGBString(secondaryHSL),
-      accent: this._hslToRGBString(accentHSL),
+      primary: this.hslToRgbString(primaryHSL),
+      secondary: this.hslToRgbString(secondaryHSL),
+      accent: this.hslToRgbString(accentHSL),
     };
   }
-  _hslToRGBString({ h, s, l }) {
-    const rgb = this._hslToRgb(h, s, l);
+
+  hslToRgbString({ h, s, l }) {
+    const rgb = this.hslToRgb(h, s, l);
     return `${rgb.r} ${rgb.g} ${rgb.b}`;
   }
-  _hslToRgb(h, s, l) {
+
+  hslToRgb(h, s, l) {
     h = ((h % 360) + 360) % 360;
     s /= 100;
     l /= 100;
+
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
     const m = l - c / 2;
+
     let r, g, b;
     if (h < 60) [r, g, b] = [c, x, 0];
     else if (h < 120) [r, g, b] = [x, c, 0];
@@ -365,17 +470,24 @@ class ColorExtractor {
     else if (h < 240) [r, g, b] = [0, x, c];
     else if (h < 300) [r, g, b] = [x, 0, c];
     else [r, g, b] = [c, 0, x];
-    return { r: Math.round((r + m) * 255), g: Math.round((g + m) * 255), b: Math.round((b + m) * 255) };
+
+    return {
+      r: Math.round((r + m) * 255),
+      g: Math.round((g + m) * 255),
+      b: Math.round((b + m) * 255),
+    };
   }
-  _rgbToHsl({ r, g, b }) {
+
+  rgbToHsl({ r, g, b }) {
     r /= 255;
     g /= 255;
     b /= 255;
-    const max = Math.max(r, g, b),
-      min = Math.min(r, g, b);
-    let h,
-      s,
-      l = (max + min) / 2;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s;
+    const l = (max + min) / 2;
+
     if (max !== min) {
       const d = max - min;
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
@@ -393,22 +505,33 @@ class ColorExtractor {
     } else {
       h = s = 0;
     }
-    return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+
+    return {
+      h: Math.round(h * 360),
+      s: Math.round(s * 100),
+      l: Math.round(l * 100),
+    };
   }
-  _mixBlack(rgbString, ratio) {
+
+  mixBlack(rgbString, ratio) {
     const [r, g, b] = rgbString.split(" ").map(Number);
     if (isNaN(r)) return rgbString;
     return `${Math.round(r * (1 - ratio))} ${Math.round(g * (1 - ratio))} ${Math.round(b * (1 - ratio))}`;
   }
-  _toRGBA(rgbString, alpha) {
+
+  toRgba(rgbString, alpha) {
     const [r, g, b] = rgbString.split(" ").map(Number);
     if (isNaN(r)) return `rgba(0,0,0,${alpha})`;
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// Spinner
+// ////////////////////////////////////////////////////////////////////////
 class Spinner {
   static #CSS_INJECTED = false;
+
   static #injectStyles() {
     if (Spinner.#CSS_INJECTED) return;
     const style = document.createElement("style");
@@ -429,6 +552,7 @@ class Spinner {
     document.head.appendChild(style);
     Spinner.#CSS_INJECTED = true;
   }
+
   constructor({ type = "page", container } = {}) {
     Spinner.#injectStyles();
     this.type = type;
@@ -436,50 +560,67 @@ class Spinner {
     this.el = null;
     this.#build();
   }
+
   #build() {
     if (this.type === "page" || this.type === "area") this.#buildOverlay();
     else if (this.type === "inline") this.#buildInline();
     else throw new Error(`Unknown spinner type: ${this.type}`);
     this.el.classList.add("hide");
   }
+
   #buildOverlay() {
     const overlay = document.createElement("div");
     overlay.classList.add("spnr-overlay");
     overlay.classList.add(this.type === "page" ? "spnr-overlay--page" : "spnr-overlay--area");
+
     const circle = document.createElement("div");
     circle.classList.add("spnr-circle");
     overlay.appendChild(circle);
-    if (this.type === "page") document.body.appendChild(overlay);
-    else {
+
+    if (this.type === "page") {
+      document.body.appendChild(overlay);
+    } else {
       if (!this.container) throw new Error('"area" spinner requires a container element.');
-      if (window.getComputedStyle(this.container).position === "static") this.container.style.position = "relative";
+      if (window.getComputedStyle(this.container).position === "static") {
+        this.container.style.position = "relative";
+      }
       this.container.appendChild(overlay);
     }
+
     this.el = overlay;
   }
+
   #buildInline() {
     if (!this.container) throw new Error('"inline" spinner requires a container element.');
-    if (window.getComputedStyle(this.container).position === "static") this.container.style.position = "relative";
+    if (window.getComputedStyle(this.container).position === "static") {
+      this.container.style.position = "relative";
+    }
+
     const inline = document.createElement("span");
     inline.classList.add("spnr-inline");
+
     const circle = document.createElement("div");
     circle.classList.add("spnr-circle");
     inline.appendChild(circle);
+
     this.container.appendChild(inline);
     this.el = inline;
   }
+
   show() {
     if (!this.el) return;
     this.el.classList.remove("hide");
     this.el.classList.add("show");
     this.container?.setAttribute?.("aria-busy", "true");
   }
+
   hide() {
     if (!this.el) return;
     this.el.classList.remove("show");
     this.el.classList.add("hide");
     this.container?.removeAttribute?.("aria-busy");
   }
+
   remove() {
     if (this.el) {
       this.el.remove();
@@ -488,13 +629,18 @@ class Spinner {
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// SearchUtils
+// ////////////////////////////////////////////////////////////////////////
 class SearchUtils {
   static recentKey = "mybeats.recentSearches";
   static maxRecent = 10;
+
   static fuzzy(text, query) {
     if (!text || !query) return false;
     return text.toLowerCase().includes(query.toLowerCase());
   }
+
   static getRecent() {
     try {
       const raw = localStorage.getItem(this.recentKey);
@@ -503,6 +649,7 @@ class SearchUtils {
       return [];
     }
   }
+
   static addRecent(query) {
     if (!query || query.trim() === "") return;
     const recent = this.getRecent();
@@ -514,6 +661,7 @@ class SearchUtils {
       localStorage.setItem(this.recentKey, JSON.stringify(trimmed));
     } catch {}
   }
+
   static clearRecent() {
     try {
       localStorage.removeItem(this.recentKey);
@@ -521,6 +669,9 @@ class SearchUtils {
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// PersistenceManager
+// ////////////////////////////////////////////////////////////////////////
 class PersistenceManager {
   static STORAGE_KEYS = {
     LAST_SONG: "mybeats_last_song",
@@ -535,62 +686,86 @@ class PersistenceManager {
     SHUFFLED: "mybeats_shuffled",
     RECENTLY_PLAYED: "mybeats_recently_played",
   };
+
   constructor(state, audioPlayer) {
     this.state = state;
     this.audioPlayer = audioPlayer;
     this.saveThrottle = null;
     this.lastSavedTime = 0;
-    this._restored = false;
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => this.restore());
-    else setTimeout(() => this.restore(), 50);
+    this.hasRestored = false;
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => this.restore());
+    } else {
+      setTimeout(() => this.restore(), 50);
+    }
     this.bind();
   }
+
+  // ----------------------------------------------
+  // Lifecycle
+  // ----------------------------------------------
   restore() {
-    if (this._restored) return;
-    this._restored = true;
+    if (this.hasRestored) return;
+    this.hasRestored = true;
+
     try {
       const vol = localStorage.getItem(PersistenceManager.STORAGE_KEYS.VOLUME);
       if (vol !== null) {
         this.state.volume = parseFloat(vol);
         this.audioPlayer.setVolume(this.state.volume);
       }
+
       const muted = localStorage.getItem(PersistenceManager.STORAGE_KEYS.MUTED);
       if (muted !== null) {
         this.state.isMuted = muted === "true";
         if (this.state.isMuted) this.audioPlayer.audio.volume = 0;
         else this.audioPlayer.audio.volume = this.state.volume;
       }
+
       const rate = localStorage.getItem(PersistenceManager.STORAGE_KEYS.PLAYBACK_RATE);
       if (rate !== null) {
         this.state.playbackRate = parseFloat(rate);
         this.audioPlayer.audio.playbackRate = this.state.playbackRate;
       }
+
       const repeat = localStorage.getItem(PersistenceManager.STORAGE_KEYS.REPEAT_MODE);
       if (repeat !== null) this.state.repeatMode = repeat;
+
       const shuffled = localStorage.getItem(PersistenceManager.STORAGE_KEYS.SHUFFLED);
       if (shuffled !== null) this.state.isShuffled = shuffled === "true";
+
       const savedQueue = localStorage.getItem(PersistenceManager.STORAGE_KEYS.QUEUE);
       const savedIdx = localStorage.getItem(PersistenceManager.STORAGE_KEYS.QUEUE_INDEX);
       const lastSong = localStorage.getItem(PersistenceManager.STORAGE_KEYS.LAST_SONG);
+
       if (savedQueue && savedIdx !== null && lastSong) {
         const queue = JSON.parse(savedQueue);
         const song = JSON.parse(lastSong);
         const idx = parseInt(savedIdx, 10);
+
         if (queue.length && idx >= 0 && idx < queue.length && song.id == queue[idx]?.id) {
           this.state.queue = queue;
           this.state.queueIndex = idx;
           this.state.currentSong = song;
-          const savedTime = parseFloat(localStorage.getItem(PersistenceManager.STORAGE_KEYS.CURRENT_TIME) || "0");
-          const wasPlaying = localStorage.getItem(PersistenceManager.STORAGE_KEYS.IS_PLAYING) === "true";
+
+          const savedTime = parseFloat(
+            localStorage.getItem(PersistenceManager.STORAGE_KEYS.CURRENT_TIME) || "0"
+          );
+          const wasPlaying =
+            localStorage.getItem(PersistenceManager.STORAGE_KEYS.IS_PLAYING) === "true";
+
           this.audioPlayer.restorePlaybackState(song, queue, savedTime, wasPlaying);
         }
       }
+
       const recent = localStorage.getItem(PersistenceManager.STORAGE_KEYS.RECENTLY_PLAYED);
       if (recent) {
         try {
           this.state.recentlyPlayed = JSON.parse(recent);
         } catch (e) {}
       }
+
       if (window.uiManager) {
         if (this.state.isDrawerOpen) window.uiManager.updateFullPlayer();
         window.uiManager.updateMiniPlayer();
@@ -599,10 +774,13 @@ class PersistenceManager {
       console.warn("[Persistence] Restore error:", e);
     }
   }
+
   bind() {
     const audio = this.audioPlayer.audio;
+
     audio.addEventListener("play", () => this.save());
     audio.addEventListener("pause", () => this.save());
+
     audio.addEventListener("timeupdate", () => {
       const now = Date.now();
       if (now - this.lastSavedTime > 2000) {
@@ -610,10 +788,13 @@ class PersistenceManager {
         this.saveTime();
       }
     });
+
     window.addEventListener("beforeunload", () => this.save(true));
+
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "hidden") this.save(true);
     });
+
     this.wrap("playSong", () => this.save());
     this.wrap("skipForward", () => this.save());
     this.wrap("skipBack", () => this.save());
@@ -622,6 +803,7 @@ class PersistenceManager {
     this.wrap("cycleRepeat", () => this.saveMode());
     this.wrap("toggleShuffle", () => this.saveMode());
   }
+
   wrap(methodName, afterHook) {
     const original = this.audioPlayer[methodName];
     if (typeof original !== "function") return;
@@ -631,18 +813,36 @@ class PersistenceManager {
       return result;
     };
   }
+
+  // ----------------------------------------------
+  // Save
+  // ----------------------------------------------
   save(immediate = false) {
     if (!this.state.currentSong) return;
+
     const doSave = () => {
       try {
-        localStorage.setItem(PersistenceManager.STORAGE_KEYS.LAST_SONG, JSON.stringify(this.state.currentSong));
-        localStorage.setItem(PersistenceManager.STORAGE_KEYS.QUEUE, JSON.stringify(this.state.queue));
-        localStorage.setItem(PersistenceManager.STORAGE_KEYS.QUEUE_INDEX, this.state.queueIndex.toString());
-        localStorage.setItem(PersistenceManager.STORAGE_KEYS.IS_PLAYING, this.state.isPlaying.toString());
+        localStorage.setItem(
+          PersistenceManager.STORAGE_KEYS.LAST_SONG,
+          JSON.stringify(this.state.currentSong)
+        );
+        localStorage.setItem(
+          PersistenceManager.STORAGE_KEYS.QUEUE,
+          JSON.stringify(this.state.queue)
+        );
+        localStorage.setItem(
+          PersistenceManager.STORAGE_KEYS.QUEUE_INDEX,
+          this.state.queueIndex.toString()
+        );
+        localStorage.setItem(
+          PersistenceManager.STORAGE_KEYS.IS_PLAYING,
+          this.state.isPlaying.toString()
+        );
         localStorage.setItem(
           PersistenceManager.STORAGE_KEYS.RECENTLY_PLAYED,
           JSON.stringify(this.state.recentlyPlayed)
         );
+
         this.saveTime();
         this.saveVolume();
         this.saveMode();
@@ -650,27 +850,54 @@ class PersistenceManager {
         console.warn("[Persistence] Save failed:", e);
       }
     };
-    if (immediate) doSave();
-    else {
+
+    if (immediate) {
+      doSave();
+    } else {
       clearTimeout(this.saveThrottle);
       this.saveThrottle = setTimeout(doSave, 200);
     }
   }
+
   saveTime() {
-    if (this.audioPlayer.audio)
-      localStorage.setItem(PersistenceManager.STORAGE_KEYS.CURRENT_TIME, this.audioPlayer.audio.currentTime.toString());
+    if (this.audioPlayer.audio) {
+      localStorage.setItem(
+        PersistenceManager.STORAGE_KEYS.CURRENT_TIME,
+        this.audioPlayer.audio.currentTime.toString()
+      );
+    }
   }
+
   saveVolume() {
-    localStorage.setItem(PersistenceManager.STORAGE_KEYS.VOLUME, this.state.volume.toString());
-    localStorage.setItem(PersistenceManager.STORAGE_KEYS.MUTED, this.state.isMuted.toString());
-    localStorage.setItem(PersistenceManager.STORAGE_KEYS.PLAYBACK_RATE, this.state.playbackRate.toString());
+    localStorage.setItem(
+      PersistenceManager.STORAGE_KEYS.VOLUME,
+      this.state.volume.toString()
+    );
+    localStorage.setItem(
+      PersistenceManager.STORAGE_KEYS.MUTED,
+      this.state.isMuted.toString()
+    );
+    localStorage.setItem(
+      PersistenceManager.STORAGE_KEYS.PLAYBACK_RATE,
+      this.state.playbackRate.toString()
+    );
   }
+
   saveMode() {
-    localStorage.setItem(PersistenceManager.STORAGE_KEYS.REPEAT_MODE, this.state.repeatMode);
-    localStorage.setItem(PersistenceManager.STORAGE_KEYS.SHUFFLED, this.state.isShuffled.toString());
+    localStorage.setItem(
+      PersistenceManager.STORAGE_KEYS.REPEAT_MODE,
+      this.state.repeatMode
+    );
+    localStorage.setItem(
+      PersistenceManager.STORAGE_KEYS.SHUFFLED,
+      this.state.isShuffled.toString()
+    );
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// NProgress
+// ////////////////////////////////////////////////////////////////////////
 class NProgress {
   static settings = {
     minimum: 0.08,
@@ -691,45 +918,64 @@ class NProgress {
   static pending = [];
   static initial = 0;
   static current = 0;
+
   static configure(options) {
-    for (let key in options) {
-      if (options[key] !== undefined && this.settings.hasOwnProperty(key)) this.settings[key] = options[key];
+    for (const key in options) {
+      if (options[key] !== undefined && this.settings.hasOwnProperty(key)) {
+        this.settings[key] = options[key];
+      }
     }
     return this;
   }
+
   static set(n) {
     const started = this.isStarted();
     n = this.clamp(n, this.settings.minimum, 1);
     this.status = n === 1 ? null : n;
+
     const progress = this.render(!started);
     const bar = progress.querySelector(this.settings.barSelector);
     const speed = this.settings.speed;
     const ease = this.settings.easing;
+
     progress.offsetWidth;
+
     this.queue(
       function (next) {
-        if (this.settings.positionUsing === "") this.settings.positionUsing = this.getPositioningCSS();
+        if (this.settings.positionUsing === "") {
+          this.settings.positionUsing = this.getPositioningCSS();
+        }
         this.css(bar, this.barPositionCSS(n, speed, ease));
+
         if (n === 1) {
           this.css(progress, { transition: "none", opacity: 1 });
           progress.offsetWidth;
           setTimeout(() => {
-            this.css(progress, { transition: "all " + speed + "ms linear", opacity: 0 });
+            this.css(progress, {
+              transition: "all " + speed + "ms linear",
+              opacity: 0,
+            });
             setTimeout(() => {
               this.remove();
               next();
             }, speed);
           }, speed);
-        } else setTimeout(next, speed);
+        } else {
+          setTimeout(next, speed);
+        }
       }.bind(this)
     );
+
     return this;
   }
+
   static isStarted() {
     return typeof this.status === "number";
   }
+
   static start() {
     if (!this.status) this.set(0);
+
     const work = () => {
       setTimeout(() => {
         if (!this.status) return;
@@ -737,64 +983,92 @@ class NProgress {
         work();
       }, this.settings.trickleSpeed);
     };
+
     if (this.settings.trickle) work();
     return this;
   }
+
   static done(force) {
     if (!force && !this.status) return this;
     return this.inc(0.3 + 0.5 * Math.random()).set(1);
   }
+
   static inc(amount) {
     let n = this.status;
     if (!n) return this.start();
-    if (typeof amount !== "number") amount = (1 - n) * this.clamp(Math.random() * n, 0.1, 0.95);
+    if (typeof amount !== "number") {
+      amount = (1 - n) * this.clamp(Math.random() * n, 0.1, 0.95);
+    }
     n = this.clamp(n + amount, 0, 0.994);
     return this.set(n);
   }
+
   static trickle() {
     return this.inc(Math.random() * this.settings.trickleRate);
   }
+
   static promise($promise) {
     if (!$promise || $promise.state() === "resolved") return this;
+
     if (this.current === 0) this.start();
     this.initial++;
     this.current++;
+
     $promise.always(() => {
       this.current--;
       if (this.current === 0) {
         this.initial = 0;
         this.done();
-      } else this.set((this.initial - this.current) / this.initial);
+      } else {
+        this.set((this.initial - this.current) / this.initial);
+      }
     });
+
     return this;
   }
+
   static render(fromStart) {
     if (this.isRendered()) return document.getElementById("nprogress");
+
     this.addClass(document.documentElement, "nprogress-busy");
+
     const progress = document.createElement("div");
     progress.id = "nprogress";
     progress.innerHTML = this.settings.template;
+
     const bar = progress.querySelector(this.settings.barSelector);
     const perc = fromStart ? "-100" : this.toBarPerc(this.status || 0);
     const parent = document.querySelector(this.settings.parent);
-    this.css(bar, { transition: "all 0 linear", transform: "translate3d(" + perc + "%,0,0)" });
+
+    this.css(bar, {
+      transition: "all 0 linear",
+      transform: "translate3d(" + perc + "%,0,0)",
+    });
+
     if (!this.settings.showSpinner) {
       const spinner = progress.querySelector(this.settings.spinnerSelector);
       spinner && this.removeElement(spinner);
     }
-    if (parent != document.body) this.addClass(parent, "nprogress-custom-parent");
+
+    if (parent != document.body) {
+      this.addClass(parent, "nprogress-custom-parent");
+    }
+
     parent.appendChild(progress);
     return progress;
   }
+
   static remove() {
     this.removeClass(document.documentElement, "nprogress-busy");
     this.removeClass(document.querySelector(this.settings.parent), "nprogress-custom-parent");
     const progress = document.getElementById("nprogress");
     progress && this.removeElement(progress);
   }
+
   static isRendered() {
     return !!document.getElementById("nprogress");
   }
+
   static getPositioningCSS() {
     const bodyStyle = document.body.style;
     const vendorPrefix =
@@ -807,89 +1081,119 @@ class NProgress {
             : "OTransform" in bodyStyle
               ? "O"
               : "";
+
     if (vendorPrefix + "Perspective" in bodyStyle) return "translate3d";
     else if (vendorPrefix + "Transform" in bodyStyle) return "translate";
     else return "margin";
   }
+
   static clamp(n, min, max) {
     return n < min ? min : n > max ? max : n;
   }
+
   static toBarPerc(n) {
     return (-1 + n) * 100;
   }
+
   static barPositionCSS(n, speed, ease) {
     let barCSS;
-    if (this.settings.positionUsing === "translate3d")
+    if (this.settings.positionUsing === "translate3d") {
       barCSS = { transform: "translate3d(" + this.toBarPerc(n) + "%,0,0)" };
-    else if (this.settings.positionUsing === "translate")
+    } else if (this.settings.positionUsing === "translate") {
       barCSS = { transform: "translate(" + this.toBarPerc(n) + "%,0)" };
-    else barCSS = { "margin-left": this.toBarPerc(n) + "%" };
+    } else {
+      barCSS = { "margin-left": this.toBarPerc(n) + "%" };
+    }
     barCSS.transition = "all " + speed + "ms " + ease;
     return barCSS;
   }
+
   static queue(fn) {
     const next = () => {
       const current = this.pending.shift();
       if (current) current(next);
     };
+
     this.pending.push(fn);
     if (this.pending.length == 1) next();
   }
+
   static css(element, properties) {
     const cssPrefixes = ["Webkit", "O", "Moz", "ms"];
     const cssProps = {};
+
     const camelCase = (string) =>
-      string.replace(/^-ms-/, "ms-").replace(/-([\da-z])/gi, (match, letter) => letter.toUpperCase());
+      string.replace(/^-ms-/, "ms-").replace(/-([\da-z])/gi, (match, letter) =>
+        letter.toUpperCase()
+      );
+
     const getVendorProp = (name) => {
       const style = document.body.style;
       if (name in style) return name;
-      let i = cssPrefixes.length,
-        capName = name.charAt(0).toUpperCase() + name.slice(1),
-        vendorName;
+
+      let i = cssPrefixes.length;
+      const capName = name.charAt(0).toUpperCase() + name.slice(1);
+      let vendorName;
       while (i--) {
         vendorName = cssPrefixes[i] + capName;
         if (vendorName in style) return vendorName;
       }
+
       return name;
     };
+
     const getStyleProp = (name) => {
       name = camelCase(name);
       return cssProps[name] || (cssProps[name] = getVendorProp(name));
     };
+
     const applyCss = (element, prop, value) => {
       prop = getStyleProp(prop);
       element.style[prop] = value;
     };
+
     if (arguments.length == 2) {
-      for (let prop in properties) {
+      for (const prop in properties) {
         const value = properties[prop];
-        if (value !== undefined && properties.hasOwnProperty(prop)) applyCss(element, prop, value);
+        if (value !== undefined && properties.hasOwnProperty(prop)) {
+          applyCss(element, prop, value);
+        }
       }
-    } else applyCss(element, arguments[1], arguments[2]);
+    } else {
+      applyCss(element, arguments[1], arguments[2]);
+    }
   }
+
   static hasClass(element, name) {
     const list = typeof element == "string" ? element : this.classList(element);
     return list.indexOf(" " + name + " ") >= 0;
   }
+
   static addClass(element, name) {
     const oldList = this.classList(element);
     const newList = oldList + name;
     if (this.hasClass(oldList, name)) return;
     element.className = newList.substring(1);
   }
+
   static removeClass(element, name) {
     const oldList = this.classList(element);
     const newList = oldList.replace(" " + name + " ", " ");
     element.className = newList.substring(1, newList.length - 1);
   }
+
   static classList(element) {
     return (" " + (element.className || "") + " ").replace(/\s+/gi, " ");
   }
+
   static removeElement(element) {
     element && element.parentNode && element.parentNode.removeChild(element);
   }
 }
 
+// ////////////////////////////////////////////////////////////////////////
+// Icons
+// ////////////////////////////////////////////////////////////////////////
 const Icons = {
   general: {
     close: (size = 16) =>
@@ -945,7 +1249,8 @@ const Icons = {
   },
 };
 
-/*============= GLOBAL REGISTRY (window) =============*/
+
+
 window.Config = Config;
 window.Utils = Utils;
 window.Prefs = Prefs;
