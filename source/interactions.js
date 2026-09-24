@@ -459,9 +459,15 @@ const isFav = getIsFav();
         .join(" ");
     };
 
-  const dropdown = this.dropdown({
+    const dropdown = this.dropdown({
       triggerEvent: event,
-      header: { title: song.title, subtitle: song.artist || "" },
+      header: { 
+        title: song.title, 
+        subtitle: song.artist || ""
+      },
+
+      persistentActions: ["add-fav"],
+
       groups: [
         [
           {
@@ -470,10 +476,18 @@ const isFav = getIsFav();
             iconHTML: PopupsManager.icons.heart(16, isFav),
             style: isFav ? "color:rgb(var(--colorPink))" : "",
           },
-          { action: "add-playlist", label: "Add to Playlist", iconHTML: PopupsManager.icons.playlistAdd(16) },
+          {
+            action: "add-playlist",
+            label: "Add to Playlist",
+            iconHTML: PopupsManager.icons.playlistAdd(16),
+          },
         ],
         [
-          { action: "copy-link", label: "Copy link", iconHTML: PopupsManager.icons.link(16) },
+          {
+            action: "copy-link",
+            label: "Copy link",
+            iconHTML: PopupsManager.icons.link(16),
+          },
           {
             action: "offline-toggle",
             label: isCached ? "Remove offline copy" : "Cache for offline",
@@ -491,10 +505,14 @@ const isFav = getIsFav();
             action: "view-album",
             label: "View Album",
             iconHTML: PopupsManager.icons.album(16),
-            data: { artistId: song.artistId, albumId: song.albumId },
+            data: {
+              artistId: song.artistId,
+              albumId: song.albumId,
+            },
           },
         ],
       ],
+      
       itemExtraData: dataAttr,
       onAction: (action) => {
         if (action === "add-fav" && this.ui && this.ui.favorites) {
@@ -767,33 +785,49 @@ class PopupsModal extends PopupsBase {
     return overlay;
   }
 
-  attachEvents() {
-    this.backdropMouseDown = (e) => {
-      if (e.target === this.el) {
-        e.preventDefault();
-        this.bounce();
-      }
+attachEvents() {
+  this.onItemClick = (e) => {
+    const btn = e.target.closest("[data-action]");
+    if (!btn) return;
+
+    e.stopPropagation();
+
+    const action = btn.dataset.action;
+    const item = this.findItem(action);
+
+    if (this.options.onAction && typeof this.options.onAction === "function") {
+      this.options.onAction(action, item);
+    } else if (item && typeof item.onClick === "function") {
+      item.onClick(action, item);
+    }
+
+    const persistentActions = Array.isArray(this.options.persistentActions)
+      ? this.options.persistentActions
+      : [];
+
+    if (!persistentActions.includes(action)) {
+      this.hide();
+    }
+  };
+
+  this.backdropMouseDown = (e) => {
+    if (e.target === this.el) {
+      e.preventDefault();
+      this.bounce();
+    }
+  };
+
+  this.el.addEventListener("mousedown", this.backdropMouseDown);
+  this.el.addEventListener("click", this.onItemClick);
+
+  setTimeout(() => {
+    this.outsideClick = (e) => {
+      if (!this.el.contains(e.target)) this.hide();
     };
 
-    this.onClick = (e) => {
-      const btn = e.target.closest("[data-action]");
-      if (!btn) return;
-
-      const action = btn.dataset.action;
-      if (action === "close") {
-        this.hide();
-        return;
-      }
-
-      if (this.options.onAction && typeof this.options.onAction === "function") {
-        this.options.onAction(action, this);
-      }
-      if (this.options.autoClose !== false) this.hide();
-    };
-
-    this.el.addEventListener("mousedown", this.backdropMouseDown);
-    this.el.addEventListener("click", this.onClick);
-  }
+    document.addEventListener("click", this.outsideClick, { once: true });
+  }, 0);
+}
 
   detachEvents() {
     if (this.el) {
