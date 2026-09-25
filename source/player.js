@@ -1,7 +1,9 @@
 
 
-// const AUDIO_CDN_BASE = 'https://'
 
+
+
+const AUDIO_CDN_BASE = "https://pub-54216af4fb1549ff95a6cb5f8d63fe2d.r2.dev";
 
 class PlayerState {
   constructor() {
