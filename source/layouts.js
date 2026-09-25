@@ -2181,7 +2181,7 @@ class Playlists {
           <h1 class="pageTitle">${viewing || "Playlists"}</h1>
           ${
             !viewing
-              ? `<button class="action-btn primary" style="width: auto; padding: 0 1rem; border-radius: 999px; font-weight: 600;" onclick="window.uiManager.showSpinner(); setTimeout(() => { document.getElementById('create-playlist-modal')?.classList.remove('hidden'); window.uiManager.hideSpinner(); }, window.uiManager.fragmentLoadDelay);">+ New</button>`
+              ? `<button class="action-btn primary" style="width: auto; padding: 0 1rem; border-radius: 999px; font-weight: 600;" onclick="window.uiManager.playlistsPage.openCreateModal()">+ New</button>`
               : `<button class="action-btn" style="width: auto; padding: 0 1rem; border-radius: 999px; font-weight: 600;" onclick="window.uiManager.playlistsPage.viewPlaylist(null)">&larr; Back</button>`
           }
         </header>
@@ -2189,6 +2189,25 @@ class Playlists {
       </div>
     `;
   }
+  openCreateModal() {
+  const btn = document.querySelector('[data-page="playlists"] .action-btn.primary');
+  const sp = new Spinner({
+    container: btn || document.querySelector('[data-page="playlists"]'),
+    blur: 8,
+    dim: 0.4,
+    size: 20,
+    minDuration: 400,
+    delay: 80,
+  });
+  sp.show();
+
+  setTimeout(() => {
+    const modal = document.getElementById("create-playlist-modal");
+    modal?.classList.remove("hidden");
+    sp.hide();
+    setTimeout(() => sp.remove(), 400);
+  }, this.ui.fragmentLoadDelay || 800);
+}
 
   playlistsGrid() {
     const state = this.ui.state;
@@ -2419,7 +2438,13 @@ class Artists {
           ${[...artists, ...artists]
             .map(
               (artist) =>
-                `<span class="artist-name-pill animate-fadeIn" data-artist-id="${Utils.esc(artist.id)}" data-artist-name="${Utils.esc(artist.artist)}" onclick="window.uiManager.showSpinner(); setTimeout(() => { window.uiManager.contentEvents.showArtistPopover('${Utils.esc(artist.id)}', event); window.uiManager.hideSpinner(); }, window.uiManager.popoverDelay);">${Utils.esc(artist.artist)}</span>`
+                `
+              <span class="artist-name-pill animate-fadeIn"
+                    data-artist-id="${Utils.esc(artist.id)}"
+                    data-artist-name="${Utils.esc(artist.artist)}">
+                        ${Utils.esc(artist.artist)}
+              </span>                
+                `
             )
             .join("")}
         </div>
@@ -2443,11 +2468,48 @@ class Artists {
     else if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
   }
 
+
+afterRender() {
+  this.watchAlbumTabsPin();
+  this.bindAlbumTabsClick();
+  this.bindSimilarPills();
+}
+bindSimilarPills() {
+  const root = this.getRoot();
+  if (!root || root.similarBound) return;
+  root.similarBound = true;
+
+  root.addEventListener("click", (e) => {
+    const pill = e.target.closest(".artist-name-pill[data-artist-id]");
+    if (!pill) return;
+    const artistId = pill.dataset.artistId;
+    if (!artistId) return;
+
+    const sp = new Spinner({
+      container: pill,
+      blur: 8,
+      dim: 0.4,
+      size: 18,
+      minDuration: 250,
+      delay: 60,
+    });
+    sp.show();
+
+    setTimeout(() => {
+      window.uiManager?.contentEvents?.showArtistPopover(artistId, e);
+      sp.hide();
+      setTimeout(() => sp.remove(), 300);
+    }, window.uiManager?.popoverDelay || 400);
+  });
+}
+
+
+
+/**
   afterRender() {
     this.watchAlbumTabsPin();
     this.bindAlbumTabsClick();
   }
-
   bindAlbumTabsClick() {
     const root = this.getRoot();
     if (!root) return;
@@ -2486,7 +2548,47 @@ class Artists {
       }, 40);
     });
   }
+**/
 
+
+bindAlbumTabsClick() {
+  const root = this.getRoot();
+  if (!root) return;
+
+  const bar = root.querySelector(".albumTabsBar");
+  if (!bar || bar.bound) return;
+  bar.bound = true;
+
+  bar.addEventListener("click", (e) => {
+    const tab = e.target.closest(".albumTab");
+    if (!tab) return;
+
+    const artistId = tab.dataset.artistId;
+    const albumId = tab.dataset.albumId;
+    if (!artistId || !albumId) return;
+
+    bar.querySelectorAll(".albumTab.active").forEach((t) => {
+      t.classList.remove("active");
+      t.setAttribute("aria-pressed", "false");
+    });
+    tab.classList.add("active");
+    tab.setAttribute("aria-pressed", "true");
+
+    try {
+      window.uiManager?.navigator?.switchAlbum(artistId, albumId);
+    } catch (err) {
+      console.warn("[Artists] Album switch failed:", err);
+      return;
+    }
+
+    setTimeout(() => {
+      this.watchAlbumTabsPin();
+      this.scrollHeroIntoView();
+    }, 40);
+  });
+}
+
+  
   scrollHeroIntoView() {
     const root = this.getRoot();
     if (!root) return;
