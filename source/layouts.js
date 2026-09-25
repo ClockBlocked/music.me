@@ -22,9 +22,6 @@ class Home {
     this.bindLiveUpdates();
   }
 
-  // ----------------------------------------------
-  // Data builders
-  // ----------------------------------------------
   buildSongs(state) {
     return state.enrichedLibrary.flatMap((artist) =>
       artist.albums.flatMap((album) =>
@@ -41,7 +38,6 @@ class Home {
       )
     );
   }
-
   buildAlbums(state) {
     return state.enrichedLibrary.flatMap((artist) =>
       artist.albums.map((album) => ({
@@ -57,7 +53,6 @@ class Home {
       }))
     );
   }
-
   buildGenres(state) {
     let songs = [];
     try {
@@ -93,14 +88,12 @@ class Home {
     if (!albums.length) return null;
     return this.shuffle(albums)[0];
   }
-
   getRecent(state) {
     return (state.recentlyPlayed || [])
       .slice(0, this.recentLimit)
       .map((song) => state.getSongById(song.id) || song)
       .filter(Boolean);
   }
-
   getMostPlayed(state) {
     const songs =
       typeof state.getMostPlayed === "function" ? state.getMostPlayed(this.mostPlayedLimit) : [];
@@ -109,7 +102,6 @@ class Home {
       plays: state.getPlayCount ? state.getPlayCount(song.id) : 0,
     }));
   }
-
   getCounts(state) {
     return {
       songs: this.buildSongs(state).length,
@@ -118,7 +110,6 @@ class Home {
       playlists: (state.playlists || []).length,
     };
   }
-
   getFavSummary(state) {
     const songCount = (state.favoriteSongs || []).length;
     const albumCount = (state.favoriteAlbums || []).length;
@@ -139,9 +130,6 @@ class Home {
     return { songCount, albumCount, artistCount, coverUrl };
   }
 
-  // ----------------------------------------------
-  // Small helpers
-  // ----------------------------------------------
   esc(text) {
     return Utils.esc(text);
   }
@@ -149,27 +137,21 @@ class Home {
   iconChevronLeft(size = 16) {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   }
-
   iconChevronRight(size = 16) {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   }
-
   iconShuffle(size = 16) {
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h2.2c1.1 0 2.1.55 2.7 1.47L10.1 10l2.2 3.53c.6.92 1.6 1.47 2.7 1.47H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15h2.2c1.1 0 2.1-.55 2.7-1.47l.9-1.43" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.1 5H17M15.1 15H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14.4 3.4 16.6 5l-2.2 1.6M14.4 13.4 16.6 15l-2.2 1.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   }
-
   sectionIconDiscover() {
     return `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><path d="M12.9 7.1 11.4 11.4 7.1 12.9 8.6 8.6z" stroke="rgba(190,140,255,0.82)" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
   }
-
   sectionIconCollections() {
     return `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="6.5" width="11" height="11" rx="2.6" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><path d="M6 4.4h8.4A3.1 3.1 0 0 1 17.5 7.5V15" stroke="rgba(190,140,255,0.82)" stroke-width="1.2" stroke-linecap="round"/></svg>`;
   }
-
   sectionIconGenres() {
     return `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><rect x="11.1" y="2.5" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><rect x="2.5" y="11.1" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><rect x="11.1" y="11.1" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/></svg>`;
   }
-
   musicNoteSvg(type) {
     const color = "rgba(190,140,255,0.85)";
 
@@ -188,9 +170,6 @@ class Home {
     return "";
   }
 
-  // ----------------------------------------------
-  // Section chrome
-  // ----------------------------------------------
   sectionTitle({ icon, title, notes = [], action = "" }) {
     return `
       <div class="section-title-wrap">
@@ -205,7 +184,6 @@ class Home {
   actionButton(action, label) {
     return `<button type="button" class="cardAction" aria-label="${label}" data-action="${action}">${Icons.general.arrowRight(16)}</button>`;
   }
-
   emptyNote(text) {
     return `<div class="hp-empty">${this.esc(text)}</div>`;
   }
@@ -223,6 +201,9 @@ class Home {
     `;
   }
 
+
+
+  
   // ----------------------------------------------
   // Discover
   // ----------------------------------------------
@@ -266,7 +247,6 @@ class Home {
 
     return this.discoverCache;
   }
-
   discoverSongRow(song, index) {
     const isPlaying = String(this.ui.state.currentSong?.id) === String(song.id);
     const title = this.esc(song.title || "Unknown Title");
@@ -281,7 +261,6 @@ class Home {
       </button>
     `;
   }
-
   discoverArtistCard(artist) {
     const name = this.esc(artist.artistName);
     return `
@@ -295,7 +274,6 @@ class Home {
       </div>
     `;
   }
-
   discoverNav(index, total) {
     return `
       <div class="discoverNav">
@@ -339,7 +317,6 @@ class Home {
     this.discoverIndex = next;
     this.syncDiscover();
   }
-
   syncDiscover() {
     if (!this.isActive()) return;
     const root = this.getRoot();
@@ -363,7 +340,6 @@ class Home {
     const counter = root.querySelector("[data-discover-counter]");
     if (counter) counter.textContent = `${index + 1} / ${total}`;
   }
-
   rebuildDiscoverCard() {
     if (!this.isActive()) return;
     const root = this.getRoot();
@@ -397,6 +373,8 @@ class Home {
     this.syncNowPlaying();
   }
 
+
+  
   // ----------------------------------------------
   // Genres
   // ----------------------------------------------
@@ -410,7 +388,6 @@ class Home {
       </button>
     `;
   }
-
   renderGenres(state) {
     const genres = this.buildGenres(state).slice(0, this.genreLimit);
     if (!genres.length) return "";
@@ -429,7 +406,6 @@ class Home {
       </section>
     `;
   }
-
   syncGenreFocus() {
     const root = this.getRoot();
     if (!root) return;
@@ -446,13 +422,11 @@ class Home {
       tile.setAttribute("aria-pressed", isFocus ? "true" : "false");
     });
   }
-
   clearGenreFocus() {
     if (!this.focusedGenre) return;
     this.focusedGenre = null;
     this.syncGenreFocus();
   }
-
   openGenre(name) {
     if (!name) return;
 
@@ -467,6 +441,8 @@ class Home {
     this.ui.navigate("library");
   }
 
+
+  
   // ----------------------------------------------
   // Collections
   // ----------------------------------------------
@@ -507,7 +483,6 @@ class Home {
       </div>
     `;
   }
-
   collectionsInner(state) {
     const playlists = (state.playlists || []).filter((p) => p && p.name);
     if (!playlists.length) {
@@ -515,7 +490,6 @@ class Home {
     }
     return `<div class="collectionGrid">${playlists.map((pl, i) => this.collectionCard(pl, i, state)).join("")}</div>`;
   }
-
   renderCollections(state) {
     return `
       <article class="musicCard collectionsCard" data-card="collections">
@@ -529,7 +503,6 @@ class Home {
       </article>
     `;
   }
-
   syncCollections() {
     if (!this.isActive()) return;
     const root = this.getRoot();
@@ -544,6 +517,8 @@ class Home {
     wrap.classList.add("hp-swap");
   }
 
+
+  
   // ----------------------------------------------
   // Rows / cards
   // ----------------------------------------------
@@ -570,7 +545,6 @@ class Home {
       </article>
     `;
   }
-
   rankRow(entry, index) {
     const song = entry.song;
     const isPlaying = String(this.ui.state.currentSong?.id) === String(song.id);
@@ -587,6 +561,8 @@ class Home {
     `;
   }
 
+
+  
   // ----------------------------------------------
   // Section renderers
   // ----------------------------------------------
@@ -603,7 +579,6 @@ class Home {
       </article>
     `;
   }
-
   renderNewRelease(release) {
     if (!release) return "";
 
@@ -633,7 +608,6 @@ class Home {
       </article>
     `;
   }
-
   renderMostPlayed(mostPlayed) {
     return `
       <article class="musicCard mostPlayed" data-card="most-played">
@@ -647,7 +621,6 @@ class Home {
       </article>
     `;
   }
-
   renderLibraryCard(counts) {
     const items = [
       { key: "songs",     label: "Songs",     count: counts.songs,     icon: Icons.general.musicNote(18) },
@@ -679,6 +652,8 @@ class Home {
     `;
   }
 
+
+  
   // ----------------------------------------------
   // Favorites card
   // ----------------------------------------------
@@ -715,6 +690,8 @@ class Home {
     `;
   }
 
+
+  
   // ----------------------------------------------
   // Main render
   // ----------------------------------------------
@@ -749,6 +726,8 @@ class Home {
     return html;
   }
 
+
+  
   // ----------------------------------------------
   // Binding
   // ----------------------------------------------
@@ -757,11 +736,9 @@ class Home {
     if (root) this.bindEvents(root);
     else if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
   }
-
   getRoot() {
     return document.querySelector('[data-page="home"].hp');
   }
-
   bindEvents(root) {
     if (!root.homeCardFocusBound) {
       root.homeCardFocusBound = true;
@@ -1008,7 +985,6 @@ class Home {
       }, 60);
     });
   }
-
   hydrateRow(row) {
     const songId = row.dataset.songId;
 
@@ -1025,6 +1001,10 @@ class Home {
     }
   }
 
+
+
+
+  
   // ----------------------------------------------
   // Live updates
   // ----------------------------------------------
@@ -1045,7 +1025,6 @@ class Home {
       if (this.isActive()) this.syncCollections();
     });
   }
-
   isActive() {
     return this.ui.state.currentPage === "home" && !!this.getRoot();
   }
@@ -1106,7 +1085,6 @@ class Home {
       setTimeout(() => row.remove(), 400);
     });
   }
-
   syncNowPlaying() {
     if (!this.isActive()) return;
     const root = this.getRoot();
@@ -1123,7 +1101,6 @@ class Home {
       .querySelectorAll(`.song${sel}, .rankItem${sel}, .discoverSong${sel}`)
       .forEach((el) => el.classList.add("is-playing"));
   }
-
   syncFavorites() {
     if (!this.isActive()) return;
     const root = this.getRoot();
@@ -1135,7 +1112,6 @@ class Home {
     void card.offsetWidth;
     card.classList.add("hp-swap");
   }
-
   syncMostPlayed() {
     if (!this.isActive()) return;
 
@@ -1178,7 +1154,6 @@ class Home {
     card.classList.add("is-card-focused");
     grid.classList.add("has-card-focus");
   }
-
   clearCardFocus() {
     const root = this.getRoot();
     if (!root) return;
@@ -1190,6 +1165,11 @@ class Home {
     grid.querySelectorAll(".musicCard.is-card-focused").forEach((c) => c.classList.remove("is-card-focused"));
   }
 }
+
+
+
+
+
 
 // ////////////////////////////////////////////////////////////////////////
 // Library - browse page with views, filters, sort
