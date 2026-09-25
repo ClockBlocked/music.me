@@ -2460,7 +2460,7 @@ class UIManager {
 
     coverSpinner?.show();
     songsSpinner?.show();
-    songsArea?.classList.add("isLoading");
+//    songsArea?.classList.add("isLoading");
 
     setTimeout(() => {
       if (coverContainer && album.coverUrl) {
@@ -2482,7 +2482,7 @@ class UIManager {
             ${album.songs.map((song, i) => this.artistPage.createSongRow(song, i, artist, album)).join("")}
           </div>
         `;
-        songsArea?.classList.remove("isLoading");
+//        songsArea?.classList.remove("isLoading");
         this.contentEvents.attachContentEvents();
       }
 
