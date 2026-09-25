@@ -488,7 +488,6 @@ const MEDIA_SESSION_DEFAULT_SEEK_OFFSET = 10;
 const MEDIA_SESSION_POSITION_THROTTLE_MS = 1000;
 // ─────────────────────────────────────────────┘
 
-
 class MediaSessionManager {
   constructor(state, audioPlayer) {
     this.state = state;
@@ -785,6 +784,9 @@ class MediaSessionManager {
     this.clearMetadata();
   }
 }
+////////////////////////////////////////////////////////////////
+
+
 
 
 
