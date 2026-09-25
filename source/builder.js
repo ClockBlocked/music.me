@@ -2762,6 +2762,379 @@ class ContextMenu {
 
 
 
+
+class Spinner {
+  static defaults = {
+    type: "area",        // "area" | "page" | "fullscreen"
+    container: null,
+    label: "",
+    blur: 14,
+    dim: 0.55,
+    size: 38,
+    accent: "",
+    delay: 0,
+    minDuration: 350,
+    autoHideAfter: 0,
+    zIndex: 9999999999999,
+  };
+
+  static registry = new Set();
+
+  static _stylesInjected = false;
+  static injectStyles() {
+    if (Spinner._stylesInjected) return;
+    if (document.getElementById("mb-spinner-styles")) {
+      Spinner._stylesInjected = true;
+      return;
+    }
+
+    const style = document.createElement("style");
+    style.id = "mb-spinner-styles";
+    style.textContent = `
+.mb-spinner-static { position: relative !important; }
+
+.mb-spinner-overlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: inherit;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: var(--mb-spinner-z, 20);
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+
+.mb-spinner-overlay[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  cursor: progress;
+  transition: opacity .3s ease, visibility 0s;
+}
+
+.mb-spinner-overlay[data-mb-spinner="fullscreen"] {
+  position: fixed;
+  z-index: 9999;
+}
+
+/* The scrim does the heavy lifting: backdrop-filter blurs everything
+   painted behind it — i.e. the container's own content. */
+.mb-spinner-scrim {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(10, 11, 15, var(--mb-spinner-dim, .55));
+  -webkit-backdrop-filter: blur(var(--mb-spinner-blur, 14px)) saturate(120%);
+  backdrop-filter: blur(var(--mb-spinner-blur, 14px)) saturate(120%);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .mb-spinner-scrim {
+    background: rgba(10, 11, 15, calc(var(--mb-spinner-dim, .55) + .35));
+  }
+}
+
+/* Sticky so the ring stays on screen even inside very tall containers
+   (long song lists) instead of centring 2000px below the fold. */
+.mb-spinner-box {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 4px;
+  pointer-events: none;
+}
+
+.mb-spinner-ring {
+  width: var(--mb-spinner-size, 38px);
+  height: var(--mb-spinner-size, 38px);
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, .16);
+  border-top-color: var(--mb-spinner-accent, var(--accent, #1db954));
+  animation: mb-spinner-rotate .85s linear infinite;
+}
+
+.mb-spinner-label {
+  font-size: .85rem;
+  letter-spacing: .02em;
+  opacity: .85;
+  color: inherit;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@keyframes mb-spinner-rotate { to { transform: rotate(1turn); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-spinner-overlay { transition: none; }
+  .mb-spinner-ring { animation-duration: 1.8s; }
+}
+    `;
+    document.head.appendChild(style);
+    Spinner._stylesInjected = true;
+  }
+
+  constructor(options = {}) {
+    const o = { ...Spinner.defaults, ...options };
+
+    this.type       = o.type;
+    this.container  = o.container;
+    this.label      = o.label;
+    this.blur       = o.blur;
+    this.dim        = o.dim;
+    this.size       = o.size;
+    this.accent     = o.accent;
+    this.delay      = o.delay;
+    this.minDuration = o.minDuration;
+    this.autoHideAfter = o.autoHideAfter;
+    this.zIndex     = o.zIndex;
+
+    this.el    = null;
+    this.host  = null;
+    this.visible = false;
+
+    this._showTimer = null;
+    this._hideTimer = null;
+    this._autoTimer = null;
+    this._shownAt = 0;
+    this._forcedFullscreen = false;
+    this._addedStaticClass = false;
+  }
+  resolveHost() {
+    if (this.type === "fullscreen") return document.body;
+
+    if (this.type === "page") {
+      const main = document.getElementById("main-content");
+      const parent = main?.parentElement;
+      if (parent && parent !== document.body && parent !== document.documentElement) {
+        return parent;
+      }
+      // #main-content is a direct child of <body> — fall back to fixed.
+      this._forcedFullscreen = true;
+      return document.body;
+    }
+
+    let host = this.container;
+    if (typeof host === "string") host = document.querySelector(host);
+    return host || document.body;
+  }
+
+  mount() {
+    if (this.el && this.el.isConnected) return this.el;
+
+    const host = this.resolveHost();
+    if (!host) return null;
+
+    Spinner.injectStyles();
+
+    const computed = window.getComputedStyle(host);
+    if (computed.position === "static") {
+      host.classList.add("mb-spinner-static");
+      this._addedStaticClass = true;
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "mb-spinner-overlay";
+    overlay.dataset.mbSpinner = this._forcedFullscreen ? "fullscreen" : this.type;
+    overlay.dataset.visible = "false";
+    overlay.setAttribute("role", "status");
+    overlay.setAttribute("aria-live", "polite");
+    overlay.setAttribute("aria-busy", "false");
+
+    overlay.style.setProperty("--mb-spinner-blur", `${this.blur}px`);
+    overlay.style.setProperty("--mb-spinner-dim", String(this.dim));
+    overlay.style.setProperty("--mb-spinner-size", `${this.size}px`);
+    if (this.accent) overlay.style.setProperty("--mb-spinner-accent", this.accent);
+    overlay.style.zIndex = String(this.zIndex);
+
+    const scrim = document.createElement("div");
+    scrim.className = "mb-spinner-scrim";
+
+    const box = document.createElement("div");
+    box.className = "mb-spinner-box";
+
+    const ring = document.createElement("div");
+    ring.className = "mb-spinner-ring";
+    ring.setAttribute("aria-hidden", "true");
+    box.appendChild(ring);
+
+    if (this.label) {
+      const label = document.createElement("span");
+      label.className = "mb-spinner-label";
+      label.textContent = this.label;
+      box.appendChild(label);
+    }
+
+    overlay.append(scrim, box);
+    host.appendChild(overlay);
+
+    this.el = overlay;
+    this.host = host;
+    return overlay;
+  }
+  show() {
+    Spinner.registry.add(this);
+
+    // A pending hide is cancelled by a new show.
+    if (this._hideTimer) {
+      clearTimeout(this._hideTimer);
+      this._hideTimer = null;
+    }
+
+    if (this.visible) return this;      // already on screen
+    if (this._showTimer) return this;   // already queued
+
+    const reveal = () => {
+      this._showTimer = null;
+
+      const el = this.mount();
+      if (!el) return;
+
+      this.visible = true;
+      this._shownAt = performance.now();
+
+      requestAnimationFrame(() => {
+        el.dataset.visible = "true";
+        el.setAttribute("aria-busy", "true");
+      });
+
+      if (this.autoHideAfter > 0) {
+        clearTimeout(this._autoTimer);
+        this._autoTimer = setTimeout(() => this.hide(), this.autoHideAfter);
+      }
+    };
+
+    if (this.delay > 0) this._showTimer = setTimeout(reveal, this.delay);
+    else reveal();
+
+    return this;
+  }
+  hide(options = {}) {
+    const immediate = options.immediate === true;
+
+    if (this._showTimer) { clearTimeout(this._showTimer); this._showTimer = null; }
+    if (this._hideTimer) { clearTimeout(this._hideTimer); this._hideTimer = null; }
+    if (this._autoTimer) { clearTimeout(this._autoTimer); this._autoTimer = null; }
+
+    if (!this.visible) return this;
+
+    const elapsed = performance.now() - this._shownAt;
+    const wait = immediate ? 0 : Math.max(0, this.minDuration - elapsed);
+
+    const conceal = () => {
+      this._hideTimer = null;
+      this.visible = false;
+      if (!this.el) return;
+      this.el.dataset.visible = "false";
+      this.el.setAttribute("aria-busy", "false");
+    };
+
+    if (wait > 0) this._hideTimer = setTimeout(conceal, wait);
+    else conceal();
+
+    return this;
+  }
+  remove() {
+    if (this._showTimer) { clearTimeout(this._showTimer); this._showTimer = null; }
+    if (this._hideTimer) { clearTimeout(this._hideTimer); this._hideTimer = null; }
+    if (this._autoTimer) { clearTimeout(this._autoTimer); this._autoTimer = null; }
+
+    this.visible = false;
+
+    const el = this.el;
+    this.el = null;
+
+    if (el) {
+      el.dataset.visible = "false";
+      el.setAttribute("aria-busy", "false");
+      setTimeout(() => el.remove(), 320); // let the fade finish
+    }
+
+    if (this._addedStaticClass && this.host) {
+      this.host.classList.remove("mb-spinner-static");
+    }
+    this._addedStaticClass = false;
+    this.host = null;
+
+    Spinner.registry.delete(this);
+    return this;
+  }
+  destroy() { return this.remove(); }
+
+  setLabel(text) {
+    this.label = text || "";
+    if (!this.el) return this;
+
+    const box = this.el.querySelector(".mb-spinner-box");
+    let label = this.el.querySelector(".mb-spinner-label");
+
+    if (!this.label) { label?.remove(); return this; }
+
+    if (!label) {
+      label = document.createElement("span");
+      label.className = "mb-spinner-label";
+      box?.appendChild(label);
+    }
+    label.textContent = this.label;
+    return this;
+  }
+
+  static showIn(containers, options = {}) {
+    const list = (Array.isArray(containers) ? containers : [containers])
+      .filter(Boolean)
+      .map((c) => (typeof c === "string" ? document.querySelector(c) : c))
+      .filter(Boolean);
+
+    const spinners = list.map((c) => new Spinner({ ...options, container: c }).show());
+
+    return {
+      spinners,
+      get visible() { return spinners.some((s) => s.visible); },
+      hide(opts) { spinners.forEach((s) => s.hide(opts)); return this; },
+      remove() { spinners.forEach((s) => s.remove()); return this; },
+      setLabel(text) { spinners.forEach((s) => s.setLabel(text)); return this; },
+      /** Re-attach a spinner whose host markup was replaced. */
+      remount() {
+        spinners.forEach((s) => {
+          if (!s.el || !s.el.isConnected) {
+            s.el = null;
+            s.mount();
+            if (s.visible && s.el) s.el.dataset.visible = "true";
+          }
+        });
+        return this;
+      },
+    };
+  }
+  static hideAll(options) {
+    [...Spinner.registry].forEach((s) => s.hide(options));
+  }
+  static removeAll() {
+    [...Spinner.registry].forEach((s) => s.remove());
+    Spinner.registry.clear();
+  }
+
+  static pruneDetached() {
+    [...Spinner.registry].forEach((s) => {
+      if (s.el && !s.el.isConnected) s.remove();
+    });
+  }
+}
+
+
+
+
+
+
+
+window.Spinner = Spinner;
+
 window.AppRouter = AppRouter;
 window.AppListeners = AppListeners;
 window.ContentEvents = ContentEvents;
