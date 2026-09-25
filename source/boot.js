@@ -1,27 +1,13 @@
-
-
-
-
-
 jQuery(function ($) {
 
-  // ////////////////////////////////////////////////////////////////////////
-  // Core singletons
-  // ////////////////////////////////////////////////////////////////////////
   Prefs.init();
 
   window.colorExtractor = new ColorExtractor();
   window.state = new PlayerState();
   window.audioPlayer = new AudioEngine(window.state);
 
-  window.MyBeats.createRuntime({
-    state: window.state,
-    audioPlayer: window.audioPlayer,
-    favoritesStore: window.favoritesPlaylists,
-  }).boot();
-
-  window.popups = new PopupsManager({ ui: null });
   window.favoritesPlaylists = new FavoritesPlaylistsManager(window.state);
+  window.popups = new PopupsManager({ ui: null });
   window.heartManager = new HeartButtonManager(window.favoritesPlaylists, window.state);
   window.contextMenu = new ContextMenu();
   window.offlineCache = new OfflineCache(window.state);
@@ -36,12 +22,18 @@ jQuery(function ($) {
   window.mediaSessionManager = new MediaSessionManager(window.state, window.audioPlayer);
   window.audioPlayer.setMediaSessionManager(window.mediaSessionManager);
 
+  window.MyBeats.createRuntime({
+    state: window.state,
+    audioPlayer: window.audioPlayer,
+    favoritesStore: window.favoritesPlaylists,
+  }).boot();
+
   window.closeModal = () => window.popups?.closeType("modal");
   window.createNewPlaylist = () => window.favoritesPlaylists.createNewPlaylist();
   window.renamePlaylist = (id) => window.favoritesPlaylists.renamePlaylist(id);
   window.deletePlaylist = (id) => window.favoritesPlaylists.deletePlaylist(id);
   window.addSongToPlaylist = (plId, songId) => window.favoritesPlaylists.addSongToPlaylist(plId, songId);
-  window.toggleFavAndReRender = (id) => window.uiManager.toggleFavAndReRender(id);
+  window.toggleFavAndReRender = (id) => window.uiManager?.toggleFavAndReRender(id);
 
   window.openMoreMenu = (event, type, id) => {
     if (type === "album") window.contextMenu.show(event.clientX, event.clientY, { albumId: id });
@@ -49,12 +41,6 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
-
-
-   
-  // ////////////////////////////////////////////////////////////////////////
-  // Library loading
-  // ////////////////////////////////////////////////////////////////////////
   function loadLibrary() {
     let jsonUrl;
     try {
@@ -66,8 +52,6 @@ jQuery(function ($) {
     const candidates = [
       jsonUrl,
       "https://clockblocked.github.io/music.me/source/library.json",
-//      "/library.json",
-//      "./library.json",
     ].filter((v, i, a) => v && a.indexOf(v) === i);
 
     return tryNext(0);
@@ -86,12 +70,6 @@ jQuery(function ($) {
     }
   }
 
-
-
-
-  // ////////////////////////////////////////////////////////////////////////
-  // Metadata enrichment + UI boot
-  // ////////////////////////////////////////////////////////////////////////
   loadLibrary()
     .then((metadata) => {
       for (const artist of metadata) {
@@ -119,7 +97,6 @@ jQuery(function ($) {
       window.uiManager = new UIManager(window.state, window.audioPlayer, window.favoritesPlaylists);
       window.popups.ui = window.uiManager;
       window.heartManager.store.state = window.state;
-      window.uiManager.render();
     })
     .catch((err) => {
       console.error("Initialization failed:", err);
@@ -129,12 +106,6 @@ jQuery(function ($) {
       document.body.appendChild(errDiv);
     });
 
-
-   
-
-  // ////////////////////////////////////////////////////////////////////////
-  // Page-level actions
-  // ////////////////////////////////////////////////////////////////////////
   window.pagesActions = {
     buildSongs() {
       const state = window.uiManager?.state || window.state;
@@ -171,8 +142,10 @@ jQuery(function ($) {
     },
 
     shuffleAll() {
-      const songs = IdUtils.sample(this.buildSongs(), this.buildSongs().length);
-      this.playQueue(songs, 0, "Shuffling your whole library", "home");
+      const songs = this.buildSongs();
+      if (!songs.length) return;
+      const shuffled = IdUtils.sample(songs, songs.length);
+      this.playQueue(shuffled, 0, "Shuffling your whole library", "home");
     },
 
     playGenre(genre) {
@@ -210,10 +183,9 @@ jQuery(function ($) {
 
     goHome() {
       const state = window.uiManager?.state || window.state;
-      if (state) {
-        state.is404 = false;
-        window.uiManager?.navigate("home");
-      }
+      if (!state) return;
+      state.is404 = false;
+      window.uiManager?.navigate("home");
     },
 
     playAlbum(artistId, albumId) {
@@ -234,12 +206,6 @@ jQuery(function ($) {
     },
   };
 
-
-
-   
-  // ////////////////////////////////////////////////////////////////////////
-  // Global delegated handlers â€” share + offline toggle
-  // ////////////////////////////////////////////////////////////////////////
   $(document).on("click", async function (e) {
     const shareAnchor = e.target.closest("#bento-album-share");
     if (shareAnchor) {
@@ -272,7 +238,7 @@ jQuery(function ($) {
       offlineBtn.classList.toggle("is-cached-locally");
       const indicatorText = offlineBtn.querySelector(".hub-btn-txt");
       if (offlineBtn.classList.contains("is-cached-locally")) {
-        indicatorText.textContent = "Saved Offline âœ“";
+        indicatorText.textContent = "Saved Offline ✓";
         offlineBtn.style.borderColor = "rgba(var(--colorPurple), 0.8)";
       } else {
         indicatorText.textContent = "Listen Offline";
