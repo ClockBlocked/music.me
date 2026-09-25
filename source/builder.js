@@ -1963,9 +1963,9 @@ class UIManager {
 
     Object.assign(this.main.style, {
       transition: "opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease",
-      opacity: "0",
+//      opacity: "0",
       transform: "translateY(10px)",
-      filter: "blur(8px)",
+//      filter: "blur(8px)",
     });
 
     this.routes();
@@ -1990,9 +1990,9 @@ class UIManager {
         this.ensureSpinner();
 
         Object.assign(this.main.style, {
-          opacity: "1",
+//          opacity: "1",
           transform: "translateY(0)",
-          filter: "blur(0px)",
+ //         filter: "blur(0px)",
         });
 
         setTimeout(() => {
