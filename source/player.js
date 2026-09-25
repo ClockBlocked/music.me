@@ -154,8 +154,6 @@ class PlayerState {
 }
 
 
-
-
 class AudioEngine {
   constructor(state) {
     this.state = state;
@@ -471,10 +469,10 @@ class AudioEngine {
 }
 
 
-// ////////////////////////////////////////////////////////////////////////
-// MediaSessionManager â€” OS media controls + lock screen artwork
-// ////////////////////////////////////////////////////////////////////////
 
+//////////////////////   Android Media Session API  /////
+/////////////////////////////////////////////////////////
+// ┌─ I N D E X ──────────── • • •
 const MEDIA_SESSION_LOG_PREFIX = "[MediaSession]";
 const MEDIA_SESSION_ARTWORK_SIZES = [
   "96x96",
@@ -486,6 +484,8 @@ const MEDIA_SESSION_ARTWORK_SIZES = [
 ];
 const MEDIA_SESSION_DEFAULT_SEEK_OFFSET = 10;
 const MEDIA_SESSION_POSITION_THROTTLE_MS = 1000;
+// ─────────────────────────────────────────────┘
+
 
 class MediaSessionManager {
   constructor(state, audioPlayer) {
@@ -551,9 +551,88 @@ class MediaSessionManager {
     document.addEventListener("visibilitychange", this.onVisibilityChange);
   }
 
-  // ----------------------------------------------
-  // Metadata
-  // ----------------------------------------------
+  
+// ────────────   U P D A T E R S   ────────── • • •
+  updatePlaybackState() {
+    if (!this.supported) return;
+    navigator.mediaSession.playbackState = this.audio.paused ? "paused" : "playing";
+  }
+  updatePositionState() {
+    if (!this.supported) return;
+    if (!("setPositionState" in navigator.mediaSession)) return;
+
+    const duration = this.audio.duration;
+    const position = this.audio.currentTime;
+    const rate = this.audio.playbackRate;
+
+    if (!this.isValidPosition(duration, position, rate)) return;
+
+    try {
+      navigator.mediaSession.setPositionState({
+        duration,
+        playbackRate: rate,
+        position: Math.min(position, duration),
+      });
+    } catch (err) {
+      console.warn(`${MEDIA_SESSION_LOG_PREFIX} setPositionState failed:`, err);
+    }
+  }
+  seekTo(position) {
+    const duration = this.audio.duration;
+    if (!Number.isFinite(duration)) return;
+    this.audio.currentTime = Math.min(duration, Math.max(0, position));
+  }
+
+
+// ────────────   M E T A D A T A   ────────── • • •
+  buildArtwork(coverUrl) {
+    if (!coverUrl) return [];
+
+    let fileName = coverUrl.split("/").pop().split("?")[0].split("#")[0];
+    if (!fileName) return [];
+
+    fileName = fileName.replace(/\.jpg$/i, ".jpeg");
+    const type = this.detectMimeType(fileName);
+
+    return MEDIA_SESSION_ARTWORK_SIZES
+      .map((size) => {
+        const dimension = size.split("x")[0];
+        const sizedPath = `https://clockblocked.github.io/music.me/content/albumCovers/${dimension}/${fileName}`;
+
+        let absoluteUrl;
+        try {
+          absoluteUrl = new URL(sizedPath, document.baseURI).href;
+        } catch {
+          return null;
+        }
+
+        const protocol = new URL(absoluteUrl).protocol;
+        if (protocol !== "http:" && protocol !== "https:") return null;
+
+        const entry = { src: absoluteUrl, sizes: size };
+        if (type) entry.type = type;
+        return entry;
+      })
+      .filter(Boolean);
+  }
+  buildMetadata(song) {
+    return {
+      title: song.title || song.name || "Unknown Title",
+      artist: song.artist || song.artistName || "Unknown Artist",
+      album: song.album || song.albumName || "",
+      artwork: this.buildArtwork(song.coverUrl),
+    };
+  }
+  reapplyMetadata() {
+    if (!this.supported || !this.pendingMetadata) return;
+    if (navigator.mediaSession.metadata) return;
+
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata(this.pendingMetadata);
+    } catch (err) {
+      console.warn(`${MEDIA_SESSION_LOG_PREFIX} Re-apply failed:`, err);
+    }
+  } 
   updateMetadata(songData) {
     if (!this.supported) return;
 
@@ -588,7 +667,6 @@ class MediaSessionManager {
     this.updatePlaybackState();
     this.updatePositionState();
   }
-
   clearMetadata() {
     if (!this.supported) return;
 
@@ -605,64 +683,44 @@ class MediaSessionManager {
     }
   }
 
-  // ----------------------------------------------
-  // State push
-  // ----------------------------------------------
-  updatePlaybackState() {
-    if (!this.supported) return;
-    navigator.mediaSession.playbackState = this.audio.paused ? "paused" : "playing";
+
+// ──────────────   S E T U P    ──────────── • • •
+  isSupported() {
+    return (
+      typeof navigator !== "undefined" &&
+      "mediaSession" in navigator &&
+      typeof window !== "undefined" &&
+      typeof window.MediaMetadata === "function"
+    );
+  }
+  isValidPosition(duration, position, rate) {
+    return (
+      Number.isFinite(duration) &&
+      duration > 0 &&
+      Number.isFinite(position) &&
+      position >= 0 &&
+      Number.isFinite(rate) &&
+      rate > 0
+    );
+  }
+  detectMimeType(url) {
+    const path = url.split("?")[0].split("#")[0].toLowerCase();
+
+    if (path.endsWith(".jpg") || path.endsWith(".jpeg")) return "image/jpeg";
+    if (path.endsWith(".png")) return "image/png";
+    if (path.endsWith(".webp")) return "image/webp";
+    if (path.endsWith(".avif")) return "image/avif";
+    if (path.endsWith(".gif")) return "image/gif";
+    if (path.endsWith(".svg")) return "image/svg+xml";
+
+    return null;
+  }
+  resolveSong(song) {
+    if (song.title && song.artist && song.coverUrl) return song;
+    const enriched = this.state?.getSongById?.(song.id);
+    return enriched ? { ...song, ...enriched } : song;
   }
 
-  updatePositionState() {
-    if (!this.supported) return;
-    if (!("setPositionState" in navigator.mediaSession)) return;
-
-    const duration = this.audio.duration;
-    const position = this.audio.currentTime;
-    const rate = this.audio.playbackRate;
-
-    if (!this.isValidPosition(duration, position, rate)) return;
-
-    try {
-      navigator.mediaSession.setPositionState({
-        duration,
-        playbackRate: rate,
-        position: Math.min(position, duration),
-      });
-    } catch (err) {
-      console.warn(`${MEDIA_SESSION_LOG_PREFIX} setPositionState failed:`, err);
-    }
-  }
-
-  // ----------------------------------------------
-  // Cleanup
-  // ----------------------------------------------
-  destroy() {
-    if (!this.supported) return;
-
-    this.detachAudio();
-    document.removeEventListener("visibilitychange", this.onVisibilityChange);
-    this.clearMetadata();
-  }
-
-  // ----------------------------------------------
-  // Audio event wiring
-  // ----------------------------------------------
-  attachAudio() {
-    for (const [eventName, handler] of this.audioListeners) {
-      this.audio.addEventListener(eventName, handler);
-    }
-  }
-
-  detachAudio() {
-    for (const [eventName, handler] of this.audioListeners) {
-      this.audio.removeEventListener(eventName, handler);
-    }
-  }
-
-  // ----------------------------------------------
-  // OS-level action handlers
-  // ----------------------------------------------
   setupActions() {
     const ms = navigator.mediaSession;
     if (!ms) return;
@@ -706,114 +764,28 @@ class MediaSessionManager {
       this.clearMetadata();
     });
   }
-
-  // ----------------------------------------------
-  // Metadata helpers
-  // ----------------------------------------------
-  resolveSong(song) {
-    if (song.title && song.artist && song.coverUrl) return song;
-    const enriched = this.state?.getSongById?.(song.id);
-    return enriched ? { ...song, ...enriched } : song;
-  }
-
-  buildMetadata(song) {
-    return {
-      title: song.title || song.name || "Unknown Title",
-      artist: song.artist || song.artistName || "Unknown Artist",
-      album: song.album || song.albumName || "",
-      artwork: this.buildArtwork(song.coverUrl),
-    };
-  }
-
-  reapplyMetadata() {
-    if (!this.supported || !this.pendingMetadata) return;
-    if (navigator.mediaSession.metadata) return;
-
-    try {
-      navigator.mediaSession.metadata = new MediaMetadata(this.pendingMetadata);
-    } catch (err) {
-      console.warn(`${MEDIA_SESSION_LOG_PREFIX} Re-apply failed:`, err);
+  attachAudio() {
+    for (const [eventName, handler] of this.audioListeners) {
+      this.audio.addEventListener(eventName, handler);
     }
   }
-
-  buildArtwork(coverUrl) {
-    if (!coverUrl) return [];
-
-    let fileName = coverUrl.split("/").pop().split("?")[0].split("#")[0];
-    if (!fileName) return [];
-
-    fileName = fileName.replace(/\.jpg$/i, ".jpeg");
-    const type = this.detectMimeType(fileName);
-
-    return MEDIA_SESSION_ARTWORK_SIZES
-      .map((size) => {
-        const dimension = size.split("x")[0];
-        const sizedPath = `/content/albumCovers/${dimension}/${fileName}`;
-
-        let absoluteUrl;
-        try {
-          absoluteUrl = new URL(sizedPath, document.baseURI).href;
-        } catch {
-          return null;
-        }
-
-        const protocol = new URL(absoluteUrl).protocol;
-        if (protocol !== "http:" && protocol !== "https:") return null;
-
-        const entry = { src: absoluteUrl, sizes: size };
-        if (type) entry.type = type;
-        return entry;
-      })
-      .filter(Boolean);
+  
+  detachAudio() {
+    for (const [eventName, handler] of this.audioListeners) {
+      this.audio.removeEventListener(eventName, handler);
+    }
   }
+  destroy() {
+    if (!this.supported) return;
 
-  detectMimeType(url) {
-    const path = url.split("?")[0].split("#")[0].toLowerCase();
-
-    if (path.endsWith(".jpg") || path.endsWith(".jpeg")) return "image/jpeg";
-    if (path.endsWith(".png")) return "image/png";
-    if (path.endsWith(".webp")) return "image/webp";
-    if (path.endsWith(".avif")) return "image/avif";
-    if (path.endsWith(".gif")) return "image/gif";
-    if (path.endsWith(".svg")) return "image/svg+xml";
-
-    return null;
-  }
-
-  // ----------------------------------------------
-  // Validation / internals
-  // ----------------------------------------------
-  isSupported() {
-    return (
-      typeof navigator !== "undefined" &&
-      "mediaSession" in navigator &&
-      typeof window !== "undefined" &&
-      typeof window.MediaMetadata === "function"
-    );
-  }
-
-  isValidPosition(duration, position, rate) {
-    return (
-      Number.isFinite(duration) &&
-      duration > 0 &&
-      Number.isFinite(position) &&
-      position >= 0 &&
-      Number.isFinite(rate) &&
-      rate > 0
-    );
-  }
-
-  seekTo(position) {
-    const duration = this.audio.duration;
-    if (!Number.isFinite(duration)) return;
-    this.audio.currentTime = Math.min(duration, Math.max(0, position));
+    this.detachAudio();
+    document.removeEventListener("visibilitychange", this.onVisibilityChange);
+    this.clearMetadata();
   }
 }
 
 
-/*â‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆ
-   M i N i  &  F U L L:  M U S I C  P L A Y E R S
-â‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆâ‰ˆ*/
+
 class PlayerManager {
   constructor(ui) {
     this.ui = ui;
