@@ -528,7 +528,7 @@ popover.el.style.top = `${rect.bottom + 8}px`;
             action: "add-fav",
             label: isFav ? "Remove from Favorites" : "Add to Favorites",
             iconHTML: Popups.icons.heart(16, isFav),
-            style: isFav ? "color:rgb(var(--colorPink))" : ""
+            style: isFav ? "color:rgb(var(--colorPink)); fill: rgb(var(--colorPink))" : ""
           },
           {
             action: "add-playlist",
