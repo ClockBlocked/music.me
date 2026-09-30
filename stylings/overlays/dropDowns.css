@@ -109,7 +109,7 @@
 
 .context-menu-item {
   display: flex;
-  align-items: center;
+/*  align-items: center; */
   gap: 12px;
   width: 100%;
   min-height: var(--menu-item-min-height);
@@ -233,7 +233,7 @@
 
 .mb-ctx-item {
   display: flex;
-  align-items: center;
+/*  align-items: center; */
   gap: 0.625rem;
   width: 100%;
   min-height: var(--mb-item-min-height);
