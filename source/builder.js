@@ -1704,9 +1704,9 @@ class ContextMenu {
         items += `
         <span class="dropdownHeader">Song Options</span>
         <div class="mb-ctx-divider"></div>
-          <button class="mb-ctx-item" data-ctx="play-song" data-id="${data.songId}"><i class='fad fa-circle-play'></i> Play</button>
+          <button class="mb-ctx-item" data-ctx="play-song" data-id="${data.songId}"><i class='faudsb fa-circle-play'></i> Play</button>
           <button class="mb-ctx-item" data-ctx="fav-song" data-id="${data.songId}"><i class="fa-solid fa-heart ${isFav ? "liked-icon" : "not-liked-icon"}"></i> ${isFav ? "Remove from Favorites" : "Add to Favorites"}</button>
-          <button class="mb-ctx-item" data-ctx="add-playlist" data-id="${data.songId}"><i class='fad fa-album-collection-circle-plus'></i> Add to Playlist</button>
+          <button class="mb-ctx-item" data-ctx="add-playlist" data-id="${data.songId}"><i class='faudsb fa-album-collection-circle-plus'></i> Add to Playlist</button>
         `;
       }
     }
@@ -1714,17 +1714,17 @@ class ContextMenu {
       items += `
         <span class="dropdownHeader">Album Options</span>
         <div class="mb-ctx-divider"></div>      
-        <button class="mb-ctx-item" data-ctx="play-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-circle-play'></i> Play Album</button>
-        <button class="mb-ctx-item" data-ctx="shuffle-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-shuffle'></i> Shuffle Album</button>
-        <button class="mb-ctx-item" data-ctx="view-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-album-circle-user'></i> View Album</button>
+        <button class="mb-ctx-item" data-ctx="play-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='faudsb fa-circle-play'></i> Play Album</button>
+        <button class="mb-ctx-item" data-ctx="shuffle-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='faudsb fa-shuffle'></i> Shuffle Album</button>
+        <button class="mb-ctx-item" data-ctx="view-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='faudsb fa-album-circle-user'></i> View Album</button>
       `;
     }
     if (data.artistId && !data.albumId) {
       items += `
         <span class="dropdownHeader">Artist Options</span>
         <div class="mb-ctx-divider"></div>
-        <button class="mb-ctx-item" data-ctx="view-artist" data-artist="${data.artistId}"><i class='fad fa-square-user'></i> View Artist</button>
-        <button class="mb-ctx-item" data-ctx="play-artist" data-artist="${data.artistId}"><i class='fad fa-circle-play'></i> Play Artist</button>
+        <button class="mb-ctx-item" data-ctx="view-artist" data-artist="${data.artistId}"><i class='faudsb fa-square-user'></i> View Artist</button>
+        <button class="mb-ctx-item" data-ctx="play-artist" data-artist="${data.artistId}"><i class='faudsb fa-circle-play'></i> Play Artist</button>
         <button class="mb-ctx-item" data-ctx="fav-artist" data-artist="${data.artistId}"><i class="fa-solid fa-heart not-liked-icon"></i> Favorite Artist</button>
       `;
     }
@@ -1732,9 +1732,9 @@ class ContextMenu {
       items += `
         <span class="dropdownHeader">Playlist Options</span>
         <div class="mb-ctx-divider"></div>
-        <button class="mb-ctx-item" data-ctx="play-playlist" data-playlist="${data.playlistId}"><i class='fad fa-circle-play'></i> Play Playlist</button>
-        <button class="mb-ctx-item" data-ctx="shuffle-playlist" data-playlist="${data.playlistId}"><i class='fad fa-shuffle'></i> Shuffle Playlist</button>
-        <button class="mb-ctx-item" data-ctx="edit-playlist" data-playlist="${data.playlistId}"><i class='fad fa-file-pen'></i> Edit Playlist</button>
+        <button class="mb-ctx-item" data-ctx="play-playlist" data-playlist="${data.playlistId}"><i class='faudsb fa-circle-play'></i> Play Playlist</button>
+        <button class="mb-ctx-item" data-ctx="shuffle-playlist" data-playlist="${data.playlistId}"><i class='faudsb fa-shuffle'></i> Shuffle Playlist</button>
+        <button class="mb-ctx-item" data-ctx="edit-playlist" data-playlist="${data.playlistId}"><i class='faudsb fa-file-pen'></i> Edit Playlist</button>
       `;
     }
     if (!items) return;
