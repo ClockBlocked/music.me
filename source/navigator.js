@@ -267,6 +267,7 @@ class Spinner {
   }
 }
 
+
 class AppNavigator {
   static PAGE_SPINNER = {
     type: "page",
@@ -324,6 +325,9 @@ class AppNavigator {
         return id ? `/playlist/${id}/edit/` : "/playlists/";
       }
 
+      case "createPlaylist":
+        return "/playlists/new/";
+
       case "artist": {
         const artistId = opts.artistId;
         if (!artistId) return "/home/";
@@ -352,13 +356,16 @@ class AppNavigator {
     return "/library/";
   }
 
-  
-  goHome()              { return this.go("home"); }
-  goLibrary(opts = {})  { return this.go("library", opts); }
-  goFavorites(tab)      { return this.go("favorites", { tab }); }
-  goPlaylists()         { return this.go("playlists"); }
-  goPlaylist(id)        { return this.go("playlist", { id }); }
-  goEditPlaylist(id)    { return this.go("editPlaylist", { id }); }
+  // ---------------------------------------------------------------
+  // Convenience navigators
+  // ---------------------------------------------------------------
+  goHome()                    { return this.go("home"); }
+  goLibrary(opts = {})        { return this.go("library", opts); }
+  goFavorites(tab)            { return this.go("favorites", { tab }); }
+  goPlaylists()               { return this.go("playlists"); }
+  goPlaylist(id)              { return this.go("playlist", { id }); }
+  goEditPlaylist(id)          { return this.go("editPlaylist", { id }); }
+  goCreatePlaylist()          { return this.go("createPlaylist"); }
   goArtist(artistId, albumId) { return this.go("artist", { artistId, albumId }); }
 
   go(page, opts = {}) {
@@ -509,6 +516,16 @@ class AppNavigator {
     }
     const album = opts.albumId ? state.getAlbumById(opts.albumId) : null;
 
+    // Leaving the create page without committing → drop the draft
+    if (state.currentPage === "createPlaylist" && page !== "createPlaylist") {
+      state.draftPlaylist = null;
+    }
+
+    // Entering the create page → make sure a draft exists
+    if (page === "createPlaylist" && !state.draftPlaylist) {
+      ui.createPlaylistPage?.reset?.();
+    }
+
     // State mutations
     state.currentPage = page;
     state.artistId = resolvedArtistId;
@@ -516,11 +533,14 @@ class AppNavigator {
     state.selectedAlbumId = opts.albumId || null;
     state.selectedAlbumName = album?.album || null;
     state.isSearchOpen = false;
-    state.isCreatingPlaylist = false;
+    state.isCreatingPlaylist = page === "createPlaylist";
 
     // Page-specific state
     if (page !== "playlists" && page !== "editPlaylist") {
       state.selectedPlaylistName = null;
+    }
+    if (page !== "editPlaylist") {
+      state.editingPlaylistId = null;
     }
 
     // URL
@@ -528,11 +548,13 @@ class AppNavigator {
       ...opts,
       artistId: resolvedArtistId,
       albumId: opts.albumId || null,
+      id: opts.id || state.editingPlaylistId,
     });
     this._push(url, {
       page,
       artistId: resolvedArtistId,
       albumId: opts.albumId || null,
+      id: opts.id || state.editingPlaylistId || null,
     });
 
     // Chrome
@@ -544,7 +566,6 @@ class AppNavigator {
     ui.render();
   }
 
-  
   _normalize(path) {
     if (!path) return "/";
     const stripped = path.replace(/\/+$/, "");
@@ -557,7 +578,8 @@ class AppNavigator {
     const hasSearch = !!window.location.search;
     if (current === target && !hasSearch) return;
     history.pushState(stateObj, "", url);
-  } 
+  }
+
   syncFromUrl() {
     const parts = window.location.pathname.split("/").filter((p) => p);
     const params = new URLSearchParams(window.location.search);
@@ -601,7 +623,14 @@ class AppNavigator {
           break;
 
         case "playlists":
-          state.currentPage = "playlists";
+          if (parts[1] === "new") {
+            state.currentPage = "createPlaylist";
+            state.isCreatingPlaylist = true;
+            // Ensure a fresh draft exists if the user hit /playlists/new directly
+            this.ui.createPlaylistPage?.reset?.();
+          } else {
+            state.currentPage = "playlists";
+          }
           break;
 
         case "artist":
@@ -641,6 +670,7 @@ class AppNavigator {
     }
     if (deepLinkSong) state.pendingDeepLinkSong = deepLinkSong;
   }
+
   _parseArtist(parts, deepLinkSong) {
     const state = this.state;
     if (!parts[1]) { state.currentPage = "404"; return; }
@@ -662,6 +692,7 @@ class AppNavigator {
 
     if (deepLinkSong) state.pendingDeepLinkSong = deepLinkSong;
   }
+
   _parseLibrary(parts) {
     const library = this.ui.libraryPage;
     if (!library) return;
@@ -717,6 +748,7 @@ class AppNavigator {
       library.view = a;
     }
   }
+
   _parseDiscover(parts) {
     const library = this.ui.libraryPage;
     if (!library) return;
@@ -735,19 +767,21 @@ class AppNavigator {
     else if (a === "genres") library.view = "genres";
   }
 
-
   onPopState() {
     this.syncFromUrl();
   }
 
-
-  
-
   updateActiveNav() {
     document.querySelectorAll("nav .link[data-nav]").forEach((link) => {
-      link.classList.toggle("active", link.dataset.nav === this.state.currentPage);
+      const isPlaylistsArea =
+        this.state.currentPage === "createPlaylist" ||
+        this.state.currentPage === "editPlaylist" ||
+        this.state.currentPage === "playlist";
+      const target = isPlaylistsArea ? "playlists" : this.state.currentPage;
+      link.classList.toggle("active", link.dataset.nav === target);
     });
   }
+
   updateTitle() {
     const state = this.state;
     const page = state.currentPage;
@@ -765,6 +799,7 @@ class AppNavigator {
       editPlaylist: state.selectedPlaylistName
         ? `MyBeats — Edit: ${state.selectedPlaylistName}`
         : "MyBeats — Playlists",
+      createPlaylist: "MyBeats — New Playlist",
       artist: artist
         ? album
           ? `MyBeats — ${artist.artist} / ${album.album}`
@@ -774,6 +809,7 @@ class AppNavigator {
 
     document.title = titles[page] ?? "MyBeats";
   }
+
   updateBreadcrumbs() {
     const container = document.getElementById("breadcrumb-items");
     if (!container) return;
@@ -806,6 +842,7 @@ class AppNavigator {
       })
       .join("");
   }
+
   getBreadcrumbs() {
     const crumbs = [];
     const state = this.state;
@@ -836,7 +873,8 @@ class AppNavigator {
     } else if (page === "playlists") {
       crumbs.push("Library", "Playlists");
       if (state.selectedPlaylistName) crumbs.push(state.selectedPlaylistName);
-      if (state.isCreatingPlaylist) crumbs.push("Create");
+    } else if (page === "createPlaylist") {
+      crumbs.push("Library", "Playlists", "New");
     } else if (page === "editPlaylist") {
       crumbs.push("Library", "Playlists");
       if (state.selectedPlaylistName) crumbs.push(state.selectedPlaylistName);
@@ -849,6 +887,7 @@ class AppNavigator {
 
     return crumbs;
   }
+
   toggleBreadcrumb() {
     const nav = document.querySelector('[data-navbar="breadcrumbs"]');
     if (!nav) return;
@@ -856,14 +895,14 @@ class AppNavigator {
     nav.classList.toggle("hide", this._breadcrumbHidden);
   }
 
-
-  
   setUrl(page, artistId, albumId) {
     this._push(this.pathFor(page, { artistId, albumId }));
   }
+
   normalizePath(path) { return this._normalize(path); }
   handlePopState()    { return this.onPopState(); }
   syncWithUrl()       { return this.syncFromUrl(); }
+
   goTo(page, artistId, albumId) {
     return this.go(page, { artistId, albumId });
   }
