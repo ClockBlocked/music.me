@@ -1625,7 +1625,7 @@ class PlayerManager {
       state.playlists.push({
         id: Utils.newId("pl"),
         name,
-        description: "",
+        description: "Up Next Queue songlist saved as a playlist to listen later.",
         tags: [],
         songs: remaining.map((s) => Utils.id(s.id)),
       });
