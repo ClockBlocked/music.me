@@ -2132,7 +2132,7 @@ class Favorites {
 
     if (tab === "songs") {
       const songIds = state.favoriteSongs;
-      if (!songIds.length) return this.emptyState("ðŸŽµ", "No favorite songs yet", "Tap the heart on any track to save it.");
+      if (!songIds.length) return this.emptyState("<i class='fa-fad fa-hearts'></i>", "No favorite songs yet", "Tap the heart on any track to save it.");
       return this.renderSongCards(songIds.map((id) => state.getSongById(id)).filter(Boolean));
     }
 
