@@ -1632,7 +1632,7 @@ class PlayerManager {
 
       state.persist();
       state.modalClose();
-      state.showToast(`Playlist "${name}" created`);
+      state.showToast(`Playlist <b>${name}</b> created`);
     });
   }
 
