@@ -1,10 +1,455 @@
 
 
 
+// ////////////////////////////////////////////////////////////////////////
+// Page Rendering
+// ////////////////////////////////////////////////////////////////////////
+class UIManager {
+  constructor(state, audioPlayer, favorites) {
+    this.state = state;
+    this.audioPlayer = audioPlayer;
+    this.favorites = favorites;
 
+    this.isTransitioning = false;
+    this.isBreadcrumbHidden = false;
+
+    this.state.favoritesTab = "songs";
+    this.state.selectedPlaylistName = null;
+    this.state.isCreatingPlaylist = false;
+
+    this.skipProgress = false;
+    this.fragmentLoadDelay = 1500;
+    this.popoverDelay = 400;
+
+    this.favTabLoading = false;
+    this.artistTabLoading = false;
+
+    // Navigation is now delegated entirely to AppNavigator
+    this.navigator = new AppNavigator(this);
+
+    this.player = new PlayerManager(this);
+    this.search = new Search(this);
+    this.contentEvents = new ContentEvents(this);
+    this.homePage = new Home(this);
+    this.libraryPage = new Library(this);
+    this.favoritesPage = new Favorites(this);
+    this.playlistsPage = new Playlists(this);
+    this.editPlaylistPage = new EditPlaylist(this);
+    this.createPlaylistPage = new CreatePlaylist(this);   // <- NEW
+    this.artistPage = new Artists(this);
+    this.errorPage = new Error404(this);
+
+    this.init();
+
+    window.NProgress?.configure({
+      showSpinner: true,
+      speed: 300,
+      trickleSpeed: 600,
+    });
+  }
+
+  // ----------------------------------------------
+  // Init / navigation
+  // ----------------------------------------------
+  init() {
+    this.render = this.render.bind(this);
+    this.navigate = this.navigate.bind(this);
+    this.handlePopState = this.handlePopState.bind(this);
+
+    AppListeners.bindAll(this);
+    this.navigator.syncFromUrl();
+    window.addEventListener("popstate", this.handlePopState);
+  }
+
+  /**
+   * Public API used by inline handlers and other classes.
+   * Positional signature kept for backward compatibility.
+   */
+  navigate(page, artistId = null, albumId = null) {
+    if (!this.skipProgress && window.NProgress) NProgress.start();
+    this.skipProgress = false;
+    return this.navigator.go(page, { artistId, albumId });
+  }
+
+  handlePopState() {
+    this.navigator.onPopState();
+  }
+
+  editPlaylist(playlistId) {
+    const playlist = this.state.playlists.find((p) => String(p.id) === String(playlistId));
+    this.state.editingPlaylistId = playlistId;
+    this.state.selectedPlaylistName = playlist?.name || null;
+    return this.navigator.goEditPlaylist(playlistId);
+  }
+
+  // NEW — enters the full-page create flow with a fresh draft.
+  createPlaylist() {
+    this.createPlaylistPage.reset();
+    this.state.selectedPlaylistName = null;
+    return this.navigator.goCreatePlaylist?.() ?? this.navigator.go("createPlaylist");
+  }
+
+  // ----------------------------------------------
+  // Render
+  // ----------------------------------------------
+  render() {
+    this.main = document.getElementById("main-content");
+    this.scrollToTop();
+
+    if (this.isTransitioning) {
+      if (this.transitionStart && Date.now() - this.transitionStart > 2000) {
+        console.warn("[UIManager] Transition timeout — forcing reset");
+        this.isTransitioning = false;
+      } else {
+        return;
+      }
+    }
+
+    this.isTransitioning = true;
+    this.transitionStart = Date.now();
+
+    Object.assign(this.main.style, {
+      transition: "opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease",
+      transform: "translateY(10px)",
+    });
+
+    this.routes();
+    this.player.renderMiniPlayer();
+  }
+
+  routes() {
+    const pageMap = {
+      home: () => this.homePage.render(),
+      library: () => this.libraryPage.render(),
+      favorites: () => this.favoritesPage.render(),
+      playlists: () => this.playlistsPage.render(),
+      editPlaylist: () => this.editPlaylistPage.render(),
+      createPlaylist: () => this.createPlaylistPage.render(),   // <- NEW
+      artist: () => this.artistPage.render(),
+      404: () => this.errorPage.render(),
+    };
+
+    setTimeout(() => {
+      try {
+        this.main.innerHTML =
+          (pageMap[this.state.currentPage] ?? (() => "<div>Not found</div>"))();
+
+        Object.assign(this.main.style, { transform: "translateY(0)" });
+
+        setTimeout(() => {
+          this.main.style.transition = "";
+          this.isTransitioning = false;
+        }, 300);
+
+        this.contentEvents.attachContentEvents();
+        Spinner.pruneDetached();
+        if (window.NProgress && NProgress.status !== null) NProgress.done();
+        this.autoPlayDeepLink();
+      } catch (err) {
+        console.error("[UIManager] Page render error:", err);
+        this.isTransitioning = false;
+        if (window.NProgress && NProgress.status !== null) NProgress.done();
+      }
+    }, 300);
+  }
+
+  // ----------------------------------------------
+  // Content factories
+  // ----------------------------------------------
+  scrollSection(title, cards) {
+    return `<section data-area="scroll" class="section container"><h2 class="section-header">${title}</h2><div class="scroll-row">${cards.join("")}</div></section>`;
+  }
+
+  albumCard(artistId, artistName, albumId, albumName, coverUrl, index = 0) {
+    const album = this.state.getAlbumById(albumId);
+    const isFav = albumId && this.favorites.isAlbum(albumId);
+    const songCount = album?.songs?.length || 0;
+
+    return `
+<div class="card animate-fadeInUp" style="--d: ${index * 50}ms" data-artist-id="${artistId}" data-album-id="${albumId}">
+  <div class="imgBx"><img src="${coverUrl}" alt="${Utils.esc(albumName)}" loading="lazy"></div>
+  <div class="content">
+    <div class="contentBx"><h3>${albumName}<br><span>${artistName} • ${songCount} song${songCount === 1 ? "" : "s"}</span></h3></div>
+    <ul class="sci">
+      <li style="--i:1"><a href="#" data-hover-action="play-album" data-artist-id="${artistId}" data-album-id="${albumId}" title="Play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path opacity=".4" fill="currentColor" d="M48 256a208 208 0 1 0 416 0 208 208 0 1 0 -416 0zm128-88c0-8.7 4.7-16.7 12.3-20.9s16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5S176 352.7 176 344l0-176z"/><path fill="currentColor" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM212.5 147.5c-7.4-4.5-16.7-4.7-24.3-.5S176 159.3 176 168l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88zM298 256l-74 45.2 0-90.4 74 45.2z"/></svg></a></li>
+      <li style="--i:2"><a href="#" data-hover-action="shuffle-album" data-artist-id="${artistId}" data-album-id="${albumId}" title="Shuffle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M425 31l80 80c9.4 9.4 9.4 24.6 0 33.9l-80 80c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l39-39-74.1 0c-15.1 0-29.3 7.1-38.4 19.2l-33.6 44.8-30-40 25.2-33.6C297.3 118.2 325.8 104 356 104l74.1 0-39-39c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0zM194 336l-25.2 33.6C150.7 393.8 122.2 408 92 408l-68 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l68 0c15.1 0 29.3-7.1 38.4-19.2L164 296 194 336zm197-49c9.4-9.4 24.6-9.4 33.9 0l80 80c9.4 9.4 9.4 24.6 0 33.9l-80 80c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l39-39-74.1 0c-30.2 0-58.7-14.2-76.8-38.4L130.4 171.2C121.3 159.1 107.1 152 92 152l-68 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l68 0c30.2 0 58.7 14.2 76.8 38.4L317.6 340.8c9.1 12.1 23.3 19.2 38.4 19.2l74.1 0-39-39c-9.4-9.4-9.4-24.6 0-33.9z"/></svg></a></li>
+      <li style="--i:3"><a href="#" class="${isFav ? "favorited" : ""}" data-hover-action="favorite-album" data-album-id="${albumId}" title="Favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path opacity=".4" fill="currentColor" d="M48 256a208 208 0 1 0 416 0 208 208 0 1 0 -416 0zm96-21.3c0-32.4 26.3-58.7 58.7-58.7 18.5 0 35.9 8.7 46.9 23.5l6.4 8.5 6.4-8.5c11.1-14.8 28.5-23.5 46.9-23.5 32.4 0 58.7 26.3 58.7 58.7l0 5.3c0 49.1-65.8 98.1-96.5 118.3-9.5 6.2-21.5 6.2-30.9 0-30.7-20.2-96.5-69.3-96.5-118.3l0-5.3z"/><path fill="currentColor" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-6.4-312.5c-11.1-14.8-28.5-23.5-46.9-23.5-32.4 0-58.7 26.3-58.7 58.7l0 5.3c0 49.1 65.8 98.1 96.5 118.3 9.5 6.2 21.5 6.2 30.9 0 30.7-20.2 96.5-69.3 96.5-118.3l0-5.3c0-32.4-26.3-58.7-58.7-58.7-18.5 0-35.9 8.7-46.9 23.5l-6.4 8.5-6.4-8.5z"/></svg></a></li>
+      <li style="--i:4"><a href="#" data-hover-action="album-playlist" data-artist-id="${artistId}" data-album-id="${albumId}" title="Add to playlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path opacity=".4" fill="currentColor" d="M64 240l261.8 0c-14.7 9.8-28 21.5-39.4 34.9-9.7-1.9-19.9-2.9-30.4-2.9-63.1 0-114.3 35.8-114.3 80 0 41 44.1 74.8 100.8 79.5 1.8 11.2 4.7 22.1 8.4 32.5L96 464 64 240z"/><path fill="currentColor" d="M152 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l208 0c13.3 0 24-10.7 24-24S373.3 0 360 0L152 0zM104 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l304 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L104 96zM484.3 208.6C475.1 198 461.9 192 448 192L64 192c-13.9 0-27.1 6-36.3 16.6S14.5 233 16.5 246.8l32 224C51.9 494.4 72.1 512 96 512l180 0c-10.5-14.6-19-30.7-25.1-48L96 464 64 240 325.8 240c30.4-20.2 66.9-32 106.2-32 20.3 0 39.8 3.1 58.1 8.9-1.6-3-3.6-5.8-5.8-8.4zM256 272c-63.1 0-114.3 35.8-114.3 80 0 41 44.1 74.8 100.8 79.5-1.7-10.2-2.6-20.7-2.6-31.5 0-9.5 .7-18.8 2-27.8-10.7-3.6-18-11.3-18-20.2 0-11.7 12.9-21.4 29.3-22.3 7.9-20.2 19.2-38.7 33.1-54.8-9.7-1.9-19.9-2.9-30.4-2.9zM432 544a144 144 0 1 0 0-288 144 144 0 1 0 0 288zm16-208l0 48 48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-48 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48-48 0c-8.8 0-16-7.2-16-16s7.2-16 16-16l48 0 0-48c0-8.8 7.2-16 16-16s16 7.2 16 16l48 0 0-48c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></a></li>
+    </ul>
+  </div>
+</div>
+    `;
+  }
+
+  artistCard(artist, index = 0) {
+    const isFav = this.favorites.isArtist(artist.id);
+    const albumCount = artist.albums?.length || 0;
+
+    return `
+<div class="card animate-fadeInUp" style="--d: ${index * 60}ms" data-artist-id="${artist.id}">
+  <div class="imgBx"><img src="${artist.imageUrl}" alt="${Utils.esc(artist.artist)}" loading="lazy"></div>
+  <div class="content">
+    <div class="contentBx"><h3>${artist.artist}<br><span>${artist.genre || "Artist"} • ${albumCount} album${albumCount === 1 ? "" : "s"}</span></h3></div>
+    <ul class="sci">
+      <li style="--i:1"><a href="#" data-hover-action="view-artist" data-artist-id="${artist.id}" title="View">${Icons.general.eye(16)}</a></li>
+      <li style="--i:2"><a href="#" data-hover-action="play-artist" data-artist-id="${artist.id}" title="Play top">${Icons.player.play(16)}</a></li>
+      <li style="--i:3"><a href="#" class="${isFav ? "favorited" : ""}" data-hover-action="favorite-artist" data-artist-id="${artist.id}" title="Favorite">${Icons.general.heart(16, isFav)}</a></li>
+    </ul>
+  </div>
+</div>
+    `;
+  }
+
+  recentCard(song, index = 0) {
+    return `
+      <div data-card="album" class="card animate-fadeInUp" style="--w: 140px; --d: ${index * 50}ms">
+        <div class="art-wrap" data-song-id="${song.id}" data-play-source="home">
+          <img src="${song.coverUrl}" alt="${Utils.esc(song.title)}" loading="lazy">
+          <div class="art-overlay"><span class="play-glyph">${Icons.player.play(16)}</span></div>
+        </div>
+        <div class="card-info"><p class="primary">${song.title}</p><p class="secondary">${song.artist}</p></div>
+      </div>
+    `;
+  }
+
+  songRow(song, index, showDuration = true) {
+    const artistId = song.artistId;
+    const albumId = song.albumId;
+    return `
+      <div class="song-row animate-fadeInUp" style="--d: ${index * 25}ms">
+        <button class="main" data-song-id="${song.id}">
+          <img src="${song.coverUrl}" class="cover">
+          <div class="info">
+            <p class="title">${song.title}</p>
+            <p class="sub">${this.artistNameTooltip(artistId)} • <span class="album-link" data-artist-id="${artistId}" data-album-id="${albumId}" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}', '${albumId}')">${song.album}</span></p>
+          </div>
+        </button>
+        <button class="downloadBtn" data-action="download-song" data-song-id="${song.id}" data-song-title="${song.title}" data-song-thumbnail="${song.coverUrl}" title="Download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
+        ${showDuration ? `<span class="time">${song.duration}</span>` : ""}
+        <button class="heart ${this.favorites.isSong(song.id) ? "favorited" : ""}" data-fav-song="${song.id}">${this.likeStatus("song", this.favorites.isSong(song.id), false, null)}</button>
+      </div>
+    `;
+  }
+
+  artistNameTooltip(artistId, displayText = null) {
+    const artist = this.state.getArtistById(artistId);
+    if (!artist) return displayText || "Unknown";
+    const name = artist.artist;
+    const text = displayText || name;
+    return `
+    <div class="tooltip-wrapper" tabindex="0" role="button">
+      <span class="text">${text}
+        <span class="popup" role="tooltip" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}')">View Artist</span>
+      </span>
+    </div>
+    `;
+  }
+
+  autoPlayDeepLink() {
+    const songId = this.state.pendingDeepLinkSong;
+    if (!songId) return;
+    this.state.pendingDeepLinkSong = null;
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("song");
+    history.replaceState(null, "", url.pathname + (url.search ? url.search : "") + url.hash);
+
+    if (this.state.currentPage !== "artist") return;
+    const song = this.state.getSongById(songId);
+    if (!song) return;
+
+    const queue = Utils.albumQueue(this.state, song.artistId, song.albumId);
+    const startSong = queue.find((s) => Utils.id(s.id) === Utils.id(songId)) || song;
+    this.audioPlayer.playSong(startSong, queue.length ? queue : null, true, "album");
+  }
+
+  // ----------------------------------------------
+  // Theme / settings
+  // ----------------------------------------------
+  toggleTheme() { Prefs.applyTheme(Prefs.nextToggle()); }
+
+  showSettingsModal() {
+    const popups = window.popups;
+    if (!popups) return;
+
+    const currentTheme = Prefs.theme();
+    const darkThemes = Prefs.listThemes().filter((t) => t.dark);
+    const lightThemes = Prefs.listThemes().filter((t) => !t.dark);
+
+    const themeCard = ({ key, label, preview }) => `
+      <button type="button" class="popups-theme-card ${key === currentTheme ? "active" : ""}"
+              data-theme-option="${key}" role="radio" aria-checked="${key === currentTheme}" aria-label="${label} theme">
+        <span class="popups-theme-preview" style="--preview-bg:${preview.bg};--preview-card:${preview.card};--preview-text:${preview.text};--preview-accent:${preview.accent};">
+          <span class="popups-theme-preview-bar"></span>
+          <span class="popups-theme-preview-body"><span class="popups-theme-preview-chip"></span><span class="popups-theme-preview-line"></span></span>
+          <span class="popups-theme-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </span>
+        <span class="popups-theme-name">${label}</span>
+      </button>
+    `;
+
+    const content = document.createElement("div");
+    content.className = "popups-settings";
+    content.innerHTML = `
+      <section class="popups-settings-section">
+        <p class="popups-settings-label">Color scheme — Dark</p>
+        <div class="popups-theme-grid" role="radiogroup" aria-label="Dark color schemes">${darkThemes.map(themeCard).join("")}</div>
+      </section>
+      <section class="popups-settings-section">
+        <p class="popups-settings-label">Color scheme — Light</p>
+        <div class="popups-theme-grid" role="radiogroup" aria-label="Light color schemes">${lightThemes.map(themeCard).join("")}</div>
+      </section>
+      <section class="popups-settings-section">
+        <p class="popups-settings-label">Playback</p>
+        <label class="popups-toggle"><input type="checkbox" id="pref-fade" ${Prefs.get("fadeTransitions") ? "checked" : ""}><span>Fade transitions between tracks</span></label>
+        <label class="popups-toggle"><input type="checkbox" id="pref-radio" ${Prefs.get("radioAutoplay") ? "checked" : ""}><span>Radio autoplay when queue ends</span></label>
+      </section>
+    `;
+
+    popups.modal({
+      title: "Settings", size: "md", content, closable: true, autoClose: false,
+      onClose: () => {
+        document.documentElement.classList.remove("modal-open");
+        document.body.classList.remove("modal-open");
+      },
+    });
+
+    document.documentElement.classList.add("modal-open");
+    document.body.classList.add("modal-open");
+
+    const setActiveCard = (activeEl) => {
+      content.querySelectorAll(".popups-theme-card").forEach((el) => {
+        const on = el === activeEl;
+        el.classList.toggle("active", on);
+        el.setAttribute("aria-checked", String(on));
+      });
+    };
+
+    content.querySelectorAll(".popups-theme-card").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const next = btn.dataset.themeOption;
+        if (!next || !Prefs.isValidTheme(next)) return;
+        Prefs.applyTheme(next);
+        setActiveCard(btn);
+        popups.toast({ message: `Theme: ${Prefs.THEMES[next].label}` });
+      });
+    });
+
+    content.querySelector("#pref-fade")?.addEventListener("change", (e) => {
+      Prefs.set("fadeTransitions", e.target.checked);
+      popups.toast({ message: e.target.checked ? "Fade transitions on" : "Fade transitions off" });
+    });
+
+    content.querySelector("#pref-radio")?.addEventListener("change", (e) => {
+      Prefs.set("radioAutoplay", e.target.checked);
+      popups.toast({ message: e.target.checked ? "Radio autoplay on" : "Radio autoplay off" });
+    });
+
+    setTimeout(() => {
+      content.querySelector(".popups-theme-card.active, .popups-theme-card, input, button")?.focus();
+    }, 50);
+  }
+
+  // ----------------------------------------------
+  // Passthroughs / delegators
+  // ----------------------------------------------
+  openSearch()  { this.search.openSearch(); }
+  closeSearch() { this.search.closeSearch(); }
+  showArtistPopover(artistId, event) { this.contentEvents.showArtistPopover(artistId, event); }
+  closePlayerDrawer() { this.player.closeDrawer(); }
+  openPlayerDrawer()  { this.player.openDrawer(); }
+  updateMiniPlayer()  { this.player.renderMiniPlayer(); }
+  updateProgressOnly() { this.player.updateProgressOnly(); }
+
+  updateFullPlayer() {
+    const drawer = document.getElementById("full-player-drawer");
+    if (drawer) this.player.softUpdateDrawer(drawer);
+    else if (this.state.isDrawerOpen) this.player.renderFullPlayer();
+  }
+
+  showShortcutsHelp() {
+    const shortcuts = [
+      ["Space", "Play / Pause"], ["←", "Previous track"], ["→", "Next track"],
+      ["↑", "Volume up"], ["↓", "Volume down"], ["M", "Mute"],
+      ["L", "Favorite current song"], ["S", "Shuffle"], ["R", "Cycle repeat mode"],
+      ["Q", "Up Next queue"], ["Ctrl/⌘ + K", "Search"], ["?", "This help"], ["Esc", "Close dialogs"],
+    ];
+    this.state.modalOpen(`
+      <div data-modal="shortcuts" class="shortcuts-help">
+        <div class="head">
+          <h2 class="title">Keyboard Shortcuts</h2>
+          <button onclick="window.closeModal()" class="close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        </div>
+        <div data-list="shortcuts" class="grid">
+          ${shortcuts.map(([key, description]) => `
+            <div class="row"><span class="desc">${description}</span><kbd class="kbd">${key}</kbd></div>
+          `).join("")}
+        </div>
+      </div>
+    `);
+  }
+
+  // ----------------------------------------------
+  // Scrolling / refresh
+  // ----------------------------------------------
+  scrollToTop(duration = 500) {
+    const startY = window.scrollY;
+    const startTime = performance.now();
+    const ease = (t) => 1 - Math.pow(1 - t, 4);
+    const step = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      window.scrollTo(0, startY * (1 - ease(progress)));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  refreshArtistContent(artistId, albumId) {
+    return this.navigator.goArtist(artistId, albumId);
+  }
+
+  refreshFavoritesContent(tab) {
+    if (this.favTabLoading) return;
+    const favContainer = document.getElementById("favorites-content");
+    if (!favContainer) return;
+
+    this.favTabLoading = true;
+    const spinner = new Spinner({ container: favContainer, delay: 120, minDuration: 300 });
+    spinner.show();
+
+    this.state.favoritesTab = tab;
+    history.pushState(null, "", `/favorites/${tab}`);
+    this.navigator.updateBreadcrumbs();
+
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.tab === tab);
+    });
+
+    setTimeout(() => {
+      favContainer.innerHTML = this.favoritesPage.tabContent(tab);
+      this.contentEvents.attachContentEvents();
+      spinner.hide();
+      setTimeout(() => spinner.remove(), 400);
+      this.favTabLoading = false;
+    }, 600);
+  }
+
+  async toggleFavAndReRender(songId) {
+    await window.heartManager?.toggle("song", songId);
+  }
+
+  likeStatus(type, isFavorite, isHovered, tempState) {
+    if (tempState === "error" || tempState === "exclamation") return `<i class="fa-solid fa-heart-circle-exclamation error-icon"></i>`;
+    if (tempState === "check" || tempState === "confirm") return `<i class="fa-solid fa-heart-circle-check confirm-icon"></i>`;
+    if (isFavorite) return isHovered ? `<i class="fa-solid fa-heart-circle-minus hover-liked-icon"></i>` : `<i class="fa-solid fa-heart liked-icon"></i>`;
+    return isHovered ? `<i class="fa-solid fa-heart-circle-plus hover-not-liked-icon"></i>` : `<i class="fa-solid fa-heart not-liked-icon"></i>`;
+  }
+}
 
 // ////////////////////////////////////////////////////////////////////////
-// AppListeners — global / static / init bindings collected in one place
+// Event Listeners
 // ////////////////////////////////////////////////////////////////////////
 class AppListeners {
   static global(ui) {
@@ -170,7 +615,7 @@ class AppListeners {
 }
 
 // ////////////////////////////////////////////////////////////////////////
-// ContentEvents — binds behaviour to dynamically rendered content
+// Binders
 // ////////////////////////////////////////////////////////////////////////
 class ContentEvents {
   constructor(ui) {
@@ -649,7 +1094,7 @@ class ContentEvents {
 }
 
 // ////////////////////////////////////////////////////////////////////////
-// OfflineCache — service worker cache status + UI badges
+// Service worker coche
 // ////////////////////////////////////////////////////////////////////////
 class OfflineCache {
   constructor(state) {
@@ -763,7 +1208,7 @@ class OfflineCache {
 }
 
 // ////////////////////////////////////////////////////////////////////////
-// Search — top-bar search overlay + dropdown results
+// Top-bar search overlay + dropdown results
 // ////////////////////////////////////////////////////////////////////////
 class Search {
   constructor(ui) {
@@ -1123,449 +1568,7 @@ class Search {
 }
 
 // ////////////////////////////////////////////////////////////////////////
-// UIManager — page rendering + orchestrates sub-managers
-// ////////////////////////////////////////////////////////////////////////
-class UIManager {
-  constructor(state, audioPlayer, favorites) {
-    this.state = state;
-    this.audioPlayer = audioPlayer;
-    this.favorites = favorites;
-
-    this.isTransitioning = false;
-    this.isBreadcrumbHidden = false;
-
-    this.state.favoritesTab = "songs";
-    this.state.selectedPlaylistName = null;
-    this.state.isCreatingPlaylist = false;
-
-    this.skipProgress = false;
-    this.fragmentLoadDelay = 1500;
-    this.popoverDelay = 400;
-
-    this.favTabLoading = false;
-    this.artistTabLoading = false;
-
-    // Navigation is now delegated entirely to AppNavigator
-    this.navigator = new AppNavigator(this);
-
-    this.player = new PlayerManager(this);
-    this.search = new Search(this);
-    this.contentEvents = new ContentEvents(this);
-    this.homePage = new Home(this);
-    this.libraryPage = new Library(this);
-    this.favoritesPage = new Favorites(this);
-    this.playlistsPage = new Playlists(this);
-    this.editPlaylistPage = new EditPlaylist(this);
-    this.artistPage = new Artists(this);
-    this.errorPage = new Error404(this);
-
-    this.init();
-
-    window.NProgress?.configure({
-      showSpinner: true,
-      speed: 300,
-      trickleSpeed: 600,
-    });
-  }
-
-  // ----------------------------------------------
-  // Init / navigation
-  // ----------------------------------------------
-  init() {
-    this.render = this.render.bind(this);
-    this.navigate = this.navigate.bind(this);
-    this.handlePopState = this.handlePopState.bind(this);
-
-    AppListeners.bindAll(this);
-    this.navigator.syncFromUrl();
-    window.addEventListener("popstate", this.handlePopState);
-  }
-
-  /**
-   * Public API used by inline handlers and other classes.
-   * Positional signature kept for backward compatibility.
-   */
-  navigate(page, artistId = null, albumId = null) {
-    if (!this.skipProgress && window.NProgress) NProgress.start();
-    this.skipProgress = false;
-    return this.navigator.go(page, { artistId, albumId });
-  }
-
-  handlePopState() {
-    this.navigator.onPopState();
-  }
-
-  editPlaylist(playlistId) {
-    const playlist = this.state.playlists.find((p) => String(p.id) === String(playlistId));
-    this.state.editingPlaylistId = playlistId;
-    this.state.selectedPlaylistName = playlist?.name || null;
-    return this.navigator.goEditPlaylist(playlistId);
-  }
-
-  // ----------------------------------------------
-  // Render
-  // ----------------------------------------------
-  render() {
-    this.main = document.getElementById("main-content");
-    this.scrollToTop();
-
-    if (this.isTransitioning) {
-      if (this.transitionStart && Date.now() - this.transitionStart > 2000) {
-        console.warn("[UIManager] Transition timeout — forcing reset");
-        this.isTransitioning = false;
-      } else {
-        return;
-      }
-    }
-
-    this.isTransitioning = true;
-    this.transitionStart = Date.now();
-
-    Object.assign(this.main.style, {
-      transition: "opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease",
-      transform: "translateY(10px)",
-    });
-
-    this.routes();
-    this.player.renderMiniPlayer();
-  }
-
-  routes() {
-    const pageMap = {
-      home: () => this.homePage.render(),
-      library: () => this.libraryPage.render(),
-      favorites: () => this.favoritesPage.render(),
-      playlists: () => this.playlistsPage.render(),
-      editPlaylist: () => this.editPlaylistPage.render(),
-      artist: () => this.artistPage.render(),
-      404: () => this.errorPage.render(),
-    };
-
-    setTimeout(() => {
-      try {
-        this.main.innerHTML =
-          (pageMap[this.state.currentPage] ?? (() => "<div>Not found</div>"))();
-
-        Object.assign(this.main.style, { transform: "translateY(0)" });
-
-        setTimeout(() => {
-          this.main.style.transition = "";
-          this.isTransitioning = false;
-        }, 300);
-
-        this.contentEvents.attachContentEvents();
-        Spinner.pruneDetached();
-        if (window.NProgress && NProgress.status !== null) NProgress.done();
-        this.autoPlayDeepLink();
-      } catch (err) {
-        console.error("[UIManager] Page render error:", err);
-        this.isTransitioning = false;
-        if (window.NProgress && NProgress.status !== null) NProgress.done();
-      }
-    }, 300);
-  }
-
-  // ----------------------------------------------
-  // Content factories
-  // ----------------------------------------------
-  scrollSection(title, cards) {
-    return `<section data-area="scroll" class="section container"><h2 class="section-header">${title}</h2><div class="scroll-row">${cards.join("")}</div></section>`;
-  }
-
-  albumCard(artistId, artistName, albumId, albumName, coverUrl, index = 0) {
-    const album = this.state.getAlbumById(albumId);
-    const isFav = albumId && this.favorites.isAlbum(albumId);
-    const songCount = album?.songs?.length || 0;
-
-    return `
-<div class="card animate-fadeInUp" style="--d: ${index * 50}ms" data-artist-id="${artistId}" data-album-id="${albumId}">
-  <div class="imgBx"><img src="${coverUrl}" alt="${Utils.esc(albumName)}" loading="lazy"></div>
-  <div class="content">
-    <div class="contentBx"><h3>${albumName}<br><span>${artistName} • ${songCount} song${songCount === 1 ? "" : "s"}</span></h3></div>
-    <ul class="sci">
-      <li style="--i:1"><a href="#" data-hover-action="play-album" data-artist-id="${artistId}" data-album-id="${albumId}" title="Play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path opacity=".4" fill="currentColor" d="M48 256a208 208 0 1 0 416 0 208 208 0 1 0 -416 0zm128-88c0-8.7 4.7-16.7 12.3-20.9s16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5S176 352.7 176 344l0-176z"/><path fill="currentColor" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM212.5 147.5c-7.4-4.5-16.7-4.7-24.3-.5S176 159.3 176 168l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88zM298 256l-74 45.2 0-90.4 74 45.2z"/></svg></a></li>
-      <li style="--i:2"><a href="#" data-hover-action="shuffle-album" data-artist-id="${artistId}" data-album-id="${albumId}" title="Shuffle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M425 31l80 80c9.4 9.4 9.4 24.6 0 33.9l-80 80c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l39-39-74.1 0c-15.1 0-29.3 7.1-38.4 19.2l-33.6 44.8-30-40 25.2-33.6C297.3 118.2 325.8 104 356 104l74.1 0-39-39c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0zM194 336l-25.2 33.6C150.7 393.8 122.2 408 92 408l-68 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l68 0c15.1 0 29.3-7.1 38.4-19.2L164 296 194 336zm197-49c9.4-9.4 24.6-9.4 33.9 0l80 80c9.4 9.4 9.4 24.6 0 33.9l-80 80c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l39-39-74.1 0c-30.2 0-58.7-14.2-76.8-38.4L130.4 171.2C121.3 159.1 107.1 152 92 152l-68 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l68 0c30.2 0 58.7 14.2 76.8 38.4L317.6 340.8c9.1 12.1 23.3 19.2 38.4 19.2l74.1 0-39-39c-9.4-9.4-9.4-24.6 0-33.9z"/></svg></a></li>
-      <li style="--i:3"><a href="#" class="${isFav ? "favorited" : ""}" data-hover-action="favorite-album" data-album-id="${albumId}" title="Favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path opacity=".4" fill="currentColor" d="M48 256a208 208 0 1 0 416 0 208 208 0 1 0 -416 0zm96-21.3c0-32.4 26.3-58.7 58.7-58.7 18.5 0 35.9 8.7 46.9 23.5l6.4 8.5 6.4-8.5c11.1-14.8 28.5-23.5 46.9-23.5 32.4 0 58.7 26.3 58.7 58.7l0 5.3c0 49.1-65.8 98.1-96.5 118.3-9.5 6.2-21.5 6.2-30.9 0-30.7-20.2-96.5-69.3-96.5-118.3l0-5.3z"/><path fill="currentColor" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-6.4-312.5c-11.1-14.8-28.5-23.5-46.9-23.5-32.4 0-58.7 26.3-58.7 58.7l0 5.3c0 49.1 65.8 98.1 96.5 118.3 9.5 6.2 21.5 6.2 30.9 0 30.7-20.2 96.5-69.3 96.5-118.3l0-5.3c0-32.4-26.3-58.7-58.7-58.7-18.5 0-35.9 8.7-46.9 23.5l-6.4 8.5-6.4-8.5z"/></svg></a></li>
-      <li style="--i:4"><a href="#" data-hover-action="album-playlist" data-artist-id="${artistId}" data-album-id="${albumId}" title="Add to playlist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path opacity=".4" fill="currentColor" d="M64 240l261.8 0c-14.7 9.8-28 21.5-39.4 34.9-9.7-1.9-19.9-2.9-30.4-2.9-63.1 0-114.3 35.8-114.3 80 0 41 44.1 74.8 100.8 79.5 1.8 11.2 4.7 22.1 8.4 32.5L96 464 64 240z"/><path fill="currentColor" d="M152 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l208 0c13.3 0 24-10.7 24-24S373.3 0 360 0L152 0zM104 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l304 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L104 96zM484.3 208.6C475.1 198 461.9 192 448 192L64 192c-13.9 0-27.1 6-36.3 16.6S14.5 233 16.5 246.8l32 224C51.9 494.4 72.1 512 96 512l180 0c-10.5-14.6-19-30.7-25.1-48L96 464 64 240 325.8 240c30.4-20.2 66.9-32 106.2-32 20.3 0 39.8 3.1 58.1 8.9-1.6-3-3.6-5.8-5.8-8.4zM256 272c-63.1 0-114.3 35.8-114.3 80 0 41 44.1 74.8 100.8 79.5-1.7-10.2-2.6-20.7-2.6-31.5 0-9.5 .7-18.8 2-27.8-10.7-3.6-18-11.3-18-20.2 0-11.7 12.9-21.4 29.3-22.3 7.9-20.2 19.2-38.7 33.1-54.8-9.7-1.9-19.9-2.9-30.4-2.9zM432 544a144 144 0 1 0 0-288 144 144 0 1 0 0 288zm16-208l0 48 48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-48 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48-48 0c-8.8 0-16-7.2-16-16s7.2-16 16-16l48 0 0-48c0-8.8 7.2-16 16-16s16 7.2 16 16l48 0 0-48c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg></a></li>
-    </ul>
-  </div>
-</div>
-    `;
-  }
-
-  artistCard(artist, index = 0) {
-    const isFav = this.favorites.isArtist(artist.id);
-    const albumCount = artist.albums?.length || 0;
-
-    return `
-<div class="card animate-fadeInUp" style="--d: ${index * 60}ms" data-artist-id="${artist.id}">
-  <div class="imgBx"><img src="${artist.imageUrl}" alt="${Utils.esc(artist.artist)}" loading="lazy"></div>
-  <div class="content">
-    <div class="contentBx"><h3>${artist.artist}<br><span>${artist.genre || "Artist"} • ${albumCount} album${albumCount === 1 ? "" : "s"}</span></h3></div>
-    <ul class="sci">
-      <li style="--i:1"><a href="#" data-hover-action="view-artist" data-artist-id="${artist.id}" title="View">${Icons.general.eye(16)}</a></li>
-      <li style="--i:2"><a href="#" data-hover-action="play-artist" data-artist-id="${artist.id}" title="Play top">${Icons.player.play(16)}</a></li>
-      <li style="--i:3"><a href="#" class="${isFav ? "favorited" : ""}" data-hover-action="favorite-artist" data-artist-id="${artist.id}" title="Favorite">${Icons.general.heart(16, isFav)}</a></li>
-    </ul>
-  </div>
-</div>
-    `;
-  }
-
-  recentCard(song, index = 0) {
-    return `
-      <div data-card="album" class="card animate-fadeInUp" style="--w: 140px; --d: ${index * 50}ms">
-        <div class="art-wrap" data-song-id="${song.id}" data-play-source="home">
-          <img src="${song.coverUrl}" alt="${Utils.esc(song.title)}" loading="lazy">
-          <div class="art-overlay"><span class="play-glyph">${Icons.player.play(16)}</span></div>
-        </div>
-        <div class="card-info"><p class="primary">${song.title}</p><p class="secondary">${song.artist}</p></div>
-      </div>
-    `;
-  }
-
-  songRow(song, index, showDuration = true) {
-    const artistId = song.artistId;
-    const albumId = song.albumId;
-    return `
-      <div class="song-row animate-fadeInUp" style="--d: ${index * 25}ms">
-        <button class="main" data-song-id="${song.id}">
-          <img src="${song.coverUrl}" class="cover">
-          <div class="info">
-            <p class="title">${song.title}</p>
-            <p class="sub">${this.artistNameTooltip(artistId)} • <span class="album-link" data-artist-id="${artistId}" data-album-id="${albumId}" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}', '${albumId}')">${song.album}</span></p>
-          </div>
-        </button>
-        <button class="downloadBtn" data-action="download-song" data-song-id="${song.id}" data-song-title="${song.title}" data-song-thumbnail="${song.coverUrl}" title="Download">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        </button>
-        ${showDuration ? `<span class="time">${song.duration}</span>` : ""}
-        <button class="heart ${this.favorites.isSong(song.id) ? "favorited" : ""}" data-fav-song="${song.id}">${this.likeStatus("song", this.favorites.isSong(song.id), false, null)}</button>
-      </div>
-    `;
-  }
-
-  artistNameTooltip(artistId, displayText = null) {
-    const artist = this.state.getArtistById(artistId);
-    if (!artist) return displayText || "Unknown";
-    const name = artist.artist;
-    const text = displayText || name;
-    return `
-    <div class="tooltip-wrapper" tabindex="0" role="button">
-      <span class="text">${text}
-        <span class="popup" role="tooltip" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}')">View Artist</span>
-      </span>
-    </div>
-    `;
-  }
-
-  autoPlayDeepLink() {
-    const songId = this.state.pendingDeepLinkSong;
-    if (!songId) return;
-    this.state.pendingDeepLinkSong = null;
-
-    const url = new URL(window.location.href);
-    url.searchParams.delete("song");
-    history.replaceState(null, "", url.pathname + (url.search ? url.search : "") + url.hash);
-
-    if (this.state.currentPage !== "artist") return;
-    const song = this.state.getSongById(songId);
-    if (!song) return;
-
-    const queue = Utils.albumQueue(this.state, song.artistId, song.albumId);
-    const startSong = queue.find((s) => Utils.id(s.id) === Utils.id(songId)) || song;
-    this.audioPlayer.playSong(startSong, queue.length ? queue : null, true, "album");
-  }
-
-  // ----------------------------------------------
-  // Theme / settings
-  // ----------------------------------------------
-  toggleTheme() { Prefs.applyTheme(Prefs.nextToggle()); }
-
-  showSettingsModal() {
-    const popups = window.popups;
-    if (!popups) return;
-
-    const currentTheme = Prefs.theme();
-    const darkThemes = Prefs.listThemes().filter((t) => t.dark);
-    const lightThemes = Prefs.listThemes().filter((t) => !t.dark);
-
-    const themeCard = ({ key, label, preview }) => `
-      <button type="button" class="popups-theme-card ${key === currentTheme ? "active" : ""}"
-              data-theme-option="${key}" role="radio" aria-checked="${key === currentTheme}" aria-label="${label} theme">
-        <span class="popups-theme-preview" style="--preview-bg:${preview.bg};--preview-card:${preview.card};--preview-text:${preview.text};--preview-accent:${preview.accent};">
-          <span class="popups-theme-preview-bar"></span>
-          <span class="popups-theme-preview-body"><span class="popups-theme-preview-chip"></span><span class="popups-theme-preview-line"></span></span>
-          <span class="popups-theme-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        </span>
-        <span class="popups-theme-name">${label}</span>
-      </button>
-    `;
-
-    const content = document.createElement("div");
-    content.className = "popups-settings";
-    content.innerHTML = `
-      <section class="popups-settings-section">
-        <p class="popups-settings-label">Color scheme — Dark</p>
-        <div class="popups-theme-grid" role="radiogroup" aria-label="Dark color schemes">${darkThemes.map(themeCard).join("")}</div>
-      </section>
-      <section class="popups-settings-section">
-        <p class="popups-settings-label">Color scheme — Light</p>
-        <div class="popups-theme-grid" role="radiogroup" aria-label="Light color schemes">${lightThemes.map(themeCard).join("")}</div>
-      </section>
-      <section class="popups-settings-section">
-        <p class="popups-settings-label">Playback</p>
-        <label class="popups-toggle"><input type="checkbox" id="pref-fade" ${Prefs.get("fadeTransitions") ? "checked" : ""}><span>Fade transitions between tracks</span></label>
-        <label class="popups-toggle"><input type="checkbox" id="pref-radio" ${Prefs.get("radioAutoplay") ? "checked" : ""}><span>Radio autoplay when queue ends</span></label>
-      </section>
-    `;
-
-    popups.modal({
-      title: "Settings", size: "md", content, closable: true, autoClose: false,
-      onClose: () => {
-        document.documentElement.classList.remove("modal-open");
-        document.body.classList.remove("modal-open");
-      },
-    });
-
-    document.documentElement.classList.add("modal-open");
-    document.body.classList.add("modal-open");
-
-    const setActiveCard = (activeEl) => {
-      content.querySelectorAll(".popups-theme-card").forEach((el) => {
-        const on = el === activeEl;
-        el.classList.toggle("active", on);
-        el.setAttribute("aria-checked", String(on));
-      });
-    };
-
-    content.querySelectorAll(".popups-theme-card").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const next = btn.dataset.themeOption;
-        if (!next || !Prefs.isValidTheme(next)) return;
-        Prefs.applyTheme(next);
-        setActiveCard(btn);
-        popups.toast({ message: `Theme: ${Prefs.THEMES[next].label}` });
-      });
-    });
-
-    content.querySelector("#pref-fade")?.addEventListener("change", (e) => {
-      Prefs.set("fadeTransitions", e.target.checked);
-      popups.toast({ message: e.target.checked ? "Fade transitions on" : "Fade transitions off" });
-    });
-
-    content.querySelector("#pref-radio")?.addEventListener("change", (e) => {
-      Prefs.set("radioAutoplay", e.target.checked);
-      popups.toast({ message: e.target.checked ? "Radio autoplay on" : "Radio autoplay off" });
-    });
-
-    setTimeout(() => {
-      content.querySelector(".popups-theme-card.active, .popups-theme-card, input, button")?.focus();
-    }, 50);
-  }
-
-  // ----------------------------------------------
-  // Passthroughs / delegators
-  // ----------------------------------------------
-  openSearch()  { this.search.openSearch(); }
-  closeSearch() { this.search.closeSearch(); }
-  showArtistPopover(artistId, event) { this.contentEvents.showArtistPopover(artistId, event); }
-  closePlayerDrawer() { this.player.closeDrawer(); }
-  openPlayerDrawer()  { this.player.openDrawer(); }
-  updateMiniPlayer()  { this.player.renderMiniPlayer(); }
-  updateProgressOnly() { this.player.updateProgressOnly(); }
-
-  updateFullPlayer() {
-    const drawer = document.getElementById("full-player-drawer");
-    if (drawer) this.player.softUpdateDrawer(drawer);
-    else if (this.state.isDrawerOpen) this.player.renderFullPlayer();
-  }
-
-  showShortcutsHelp() {
-    const shortcuts = [
-      ["Space", "Play / Pause"], ["←", "Previous track"], ["→", "Next track"],
-      ["↑", "Volume up"], ["↓", "Volume down"], ["M", "Mute"],
-      ["L", "Favorite current song"], ["S", "Shuffle"], ["R", "Cycle repeat mode"],
-      ["Q", "Up Next queue"], ["Ctrl/⌘ + K", "Search"], ["?", "This help"], ["Esc", "Close dialogs"],
-    ];
-    this.state.modalOpen(`
-      <div data-modal="shortcuts" class="shortcuts-help">
-        <div class="head">
-          <h2 class="title">Keyboard Shortcuts</h2>
-          <button onclick="window.closeModal()" class="close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
-        </div>
-        <div data-list="shortcuts" class="grid">
-          ${shortcuts.map(([key, description]) => `
-            <div class="row"><span class="desc">${description}</span><kbd class="kbd">${key}</kbd></div>
-          `).join("")}
-        </div>
-      </div>
-    `);
-  }
-
-  // ----------------------------------------------
-  // Scrolling / refresh
-  // ----------------------------------------------
-  scrollToTop(duration = 500) {
-    const startY = window.scrollY;
-    const startTime = performance.now();
-    const ease = (t) => 1 - Math.pow(1 - t, 4);
-    const step = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      window.scrollTo(0, startY * (1 - ease(progress)));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
-  /**
-   * Legacy wrapper. All real work is now done by AppNavigator.switchAlbum.
-   * Kept because inline handlers and older call sites may still reference it.
-   */
-  refreshArtistContent(artistId, albumId) {
-    return this.navigator.goArtist(artistId, albumId);
-  }
-
-  refreshFavoritesContent(tab) {
-    if (this.favTabLoading) return;
-    const favContainer = document.getElementById("favorites-content");
-    if (!favContainer) return;
-
-    this.favTabLoading = true;
-    const spinner = new Spinner({ container: favContainer, delay: 120, minDuration: 300 });
-    spinner.show();
-
-    this.state.favoritesTab = tab;
-    history.pushState(null, "", `/favorites/${tab}`);
-    this.navigator.updateBreadcrumbs();
-
-    document.querySelectorAll(".tab-btn").forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.tab === tab);
-    });
-
-    setTimeout(() => {
-      favContainer.innerHTML = this.favoritesPage.tabContent(tab);
-      this.contentEvents.attachContentEvents();
-      spinner.hide();
-      setTimeout(() => spinner.remove(), 400);
-      this.favTabLoading = false;
-    }, 600);
-  }
-
-  async toggleFavAndReRender(songId) {
-    await window.heartManager?.toggle("song", songId);
-  }
-
-  likeStatus(type, isFavorite, isHovered, tempState) {
-    if (tempState === "error" || tempState === "exclamation") return `<i class="fa-solid fa-heart-circle-exclamation error-icon"></i>`;
-    if (tempState === "check" || tempState === "confirm") return `<i class="fa-solid fa-heart-circle-check confirm-icon"></i>`;
-    if (isFavorite) return isHovered ? `<i class="fa-solid fa-heart-circle-minus hover-liked-icon"></i>` : `<i class="fa-solid fa-heart liked-icon"></i>`;
-    return isHovered ? `<i class="fa-solid fa-heart-circle-plus hover-not-liked-icon"></i>` : `<i class="fa-solid fa-heart not-liked-icon"></i>`;
-  }
-}
-
-// ////////////////////////////////////////////////////////////////////////
-// ContextMenu — right-click / long-press actions
+// Right-click / long-press actions
 // ////////////////////////////////////////////////////////////////////////
 class ContextMenu {
   constructor() { this.el = null; this.init(); }
