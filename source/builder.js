@@ -1702,23 +1702,27 @@ class ContextMenu {
       if (song) {
         const isFav = window.uiManager.favorites.isSong(data.songId);
         items += `
+        <span class="dropdownHeader">Song Options</span>
+        <div class="mb-ctx-divider"></div>
           <button class="mb-ctx-item" data-ctx="play-song" data-id="${data.songId}"><i class='fad fa-circle-play'></i> Play</button>
           <button class="mb-ctx-item" data-ctx="fav-song" data-id="${data.songId}"><i class="fa-solid fa-heart ${isFav ? "liked-icon" : "not-liked-icon"}"></i> ${isFav ? "Remove from Favorites" : "Add to Favorites"}</button>
           <button class="mb-ctx-item" data-ctx="add-playlist" data-id="${data.songId}"><i class='fad fa-album-collection-circle-plus'></i> Add to Playlist</button>
-          <div class="mb-ctx-divider"></div>
         `;
       }
     }
     if (data.albumId && data.artistId) {
       items += `
+        <span class="dropdownHeader">Album Options</span>
+        <div class="mb-ctx-divider"></div>      
         <button class="mb-ctx-item" data-ctx="play-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-circle-play'></i> Play Album</button>
         <button class="mb-ctx-item" data-ctx="shuffle-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-shuffle'></i> Shuffle Album</button>
         <button class="mb-ctx-item" data-ctx="view-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-album-circle-user'></i> View Album</button>
-        <div class="mb-ctx-divider"></div>
       `;
     }
     if (data.artistId && !data.albumId) {
       items += `
+        <span class="dropdownHeader">Artist Options</span>
+        <div class="mb-ctx-divider"></div>
         <button class="mb-ctx-item" data-ctx="view-artist" data-artist="${data.artistId}"><i class='fad fa-square-user'></i> View Artist</button>
         <button class="mb-ctx-item" data-ctx="play-artist" data-artist="${data.artistId}"><i class='fad fa-circle-play'></i> Play Artist</button>
         <button class="mb-ctx-item" data-ctx="fav-artist" data-artist="${data.artistId}"><i class="fa-solid fa-heart not-liked-icon"></i> Favorite Artist</button>
@@ -1726,6 +1730,8 @@ class ContextMenu {
     }
     if (data.playlistId) {
       items += `
+        <span class="dropdownHeader">Playlist Options</span>
+        <div class="mb-ctx-divider"></div>
         <button class="mb-ctx-item" data-ctx="play-playlist" data-playlist="${data.playlistId}"><i class='fad fa-circle-play'></i> Play Playlist</button>
         <button class="mb-ctx-item" data-ctx="shuffle-playlist" data-playlist="${data.playlistId}"><i class='fad fa-shuffle'></i> Shuffle Playlist</button>
         <button class="mb-ctx-item" data-ctx="edit-playlist" data-playlist="${data.playlistId}"><i class='fad fa-file-pen'></i> Edit Playlist</button>
