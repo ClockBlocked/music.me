@@ -1669,16 +1669,29 @@ class Search {
 // Right-click / long-press actions
 // ////////////////////////////////////////////////////////////////////////
 class ContextMenu {
-  constructor() { this.el = null; this.init(); }
+  constructor() {
+    this.el = null;
+    this.init();
+  }
 
   init() {
     document.addEventListener("click", () => this.hide());
-    document.addEventListener("scroll", () => this.hide(), true);
+
+    document.addEventListener("scroll", (e) => {
+      if (this.el && this.el.contains(e.target)) return;
+      this.hide();
+    }, true);
+
     window.addEventListener("resize", () => this.hide());
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") this.hide();
+    });
   }
 
   show(x, y, data) {
     this.hide();
+
     const menu = document.createElement("div");
     menu.id = "mybeats-context-menu";
     menu.className = "mb-context-menu";
@@ -1724,12 +1737,23 @@ class ContextMenu {
     document.body.appendChild(menu);
     this.el = menu;
 
-    const rect = menu.getBoundingClientRect();
-    let posX = x, posY = y;
-    if (posX + rect.width > window.innerWidth) posX = window.innerWidth - rect.width - 8;
-    if (posY + rect.height > window.innerHeight) posY = window.innerHeight - rect.height - 8;
+    const margin = 8;
+    const w = menu.offsetWidth;
+    const h = menu.offsetHeight;
+    let posX = x;
+    let posY = y;
+
+    if (posX + w > window.innerWidth - margin) posX = window.innerWidth - w - margin;
+    if (posY + h > window.innerHeight - margin) posY = window.innerHeight - h - margin;
+    if (posX < margin) posX = margin;
+    if (posY < margin) posY = margin;
+
     menu.style.left = posX + "px";
     menu.style.top = posY + "px";
+
+    requestAnimationFrame(() => {
+      if (this.el === menu) menu.classList.add("mb-context-menu-visible");
+    });
 
     menu.querySelectorAll(".mb-ctx-item").forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -1760,7 +1784,17 @@ class ContextMenu {
     });
   }
 
-  hide() { if (this.el) { this.el.remove(); this.el = null; } }
+  hide() {
+    if (!this.el) return;
+    const el = this.el;
+    this.el = null;
+
+    el.classList.remove("mb-context-menu-visible");
+
+    const done = () => el.remove();
+    el.addEventListener("transitionend", done, { once: true });
+    setTimeout(done, 250);
+  }
 }
 
 window.AppListeners = AppListeners;
