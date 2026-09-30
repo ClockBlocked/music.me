@@ -1088,56 +1088,9 @@
 
 
 
-.mb-context-menu {
-  position: fixed;
-  z-index: 99999;
-  min-width: 12⅗0px;
-  background: rgb(var(--bgPopups));
-  border: 1px solid rgb(var(--borderPrimary));
-  border-radius: 12px;
-  padding: 0.375rem;
-  box-shadow: 0 8px 32px rgb(var(--shadowHeavy) / var(--shadowHeavyAlpha));
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-}
-
-.mb-ctx-item {
-  display: flex;
-  align-items: center;
-  gap: 0.425rem;
-  padding: 0.325rem 0.45rem;
-  border-radius: 8px;
-  border: none;
-  background: transparent;
-  color: rgb(var(--textPrimary));
-  font-size: 0.575rem;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s ease;
-}
-
-.mb-ctx-item:hover {
-  background: rgb(var(--bgButtons));
-}
-
-.mb-ctx-item svg {
-  color: rgb(var(--textSecondary));
-  flex-shrink: 0;
-}
-
-.mb-ctx-divider {
-  height: 1px;
-  background: rgb(var(--borderSubtle));
-  margin: 0.25rem 0.5rem;
-}
-
-
-
 /* ============================================================================
    HOME — DISCOVER / GENRES / COLLECTIONS
    ============================================================================ */
-
 /* ---------------------------------------------------------------
    DISCOVER CARD
    --------------------------------------------------------------- */
