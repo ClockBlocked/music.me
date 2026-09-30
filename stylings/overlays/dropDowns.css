@@ -1,90 +1,162 @@
-/* ============================================================================
-   overlays/dropDowns.css
-   Dropdown surfaces — song context menu (Copy link / offline toggle / etc.)
-   ============================================================================ */
 
 
-/* ===== 1. SONG CONTEXT MENU ===== */
+
+
 .song-context-menu {
+  --menu-padding: 8px;
+  --menu-radius: 12px;
+  --menu-item-radius: 8px;
+  --menu-item-min-height: 40px;
+  --menu-item-padding-y: 10px;
+  --menu-item-padding-x: 12px;
+  --menu-icon-size: 18px;
+  --menu-font-size: 13px;
+
   position: fixed;
   z-index: 10001;
-  min-width: 220px;
-  padding: 6px;
-  border-radius: 14px;
+  box-sizing: border-box;
+
+  width: max-content;
+  min-width: 240px;
+  max-width: min(320px, calc(100vw - 24px));
+  max-height: min(420px, calc(100vh - 24px));
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  padding: var(--menu-padding);
+  border-radius: var(--menu-radius);
   background: rgba(var(--bgPopups) / 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(var(--borderSubtle) / 0.4);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(var(--borderSubtle) / 0.45);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+
   opacity: 0;
-  transform: scale(0.94) translateY(-4px);
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.96) translateY(-4px);
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease,
+    visibility 0s linear 0.16s;
+
+  scrollbar-width: thin;
+  will-change: opacity, transform;
 }
 
 .song-context-menu.context-menu-visible {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   transform: scale(1) translateY(0);
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease,
+    visibility 0s;
+}
+
+.song-context-menu *,
+.song-context-menu *::before,
+.song-context-menu *::after {
+  box-sizing: border-box;
 }
 
 .context-menu-header {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 8px 10px;
+  gap: 3px;
+  min-width: 0;
+  padding: 10px 12px 8px;
 }
 
 .context-menu-song-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: rgba(var(--textPrimary));
-  white-space: nowrap;
+  max-width: 100%;
   overflow: hidden;
+  color: rgba(var(--textPrimary));
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
   text-overflow: ellipsis;
-  max-width: 240px;
+  white-space: nowrap;
 }
 
 .context-menu-song-artist {
-  font-size: 11px;
-  color: rgba(var(--textSecondary));
-  white-space: nowrap;
+  max-width: 100%;
   overflow: hidden;
+  color: rgba(var(--textSecondary));
+  font-size: 12px;
+  line-height: 1.3;
   text-overflow: ellipsis;
-  max-width: 240px;
+  white-space: nowrap;
 }
 
 .context-menu-divider {
   height: 1px;
-  margin: 4px 6px;
+  margin: 6px 4px;
   background: rgba(var(--borderSubtle) / 0.35);
 }
 
 .context-menu-group {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .context-menu-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
-  padding: 9px 10px;
+  min-height: var(--menu-item-min-height);
+  padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
   border: none;
-  border-radius: 9px;
+  border-radius: var(--menu-item-radius);
   background: transparent;
   color: rgba(var(--textPrimary));
-  font-size: 13px;
+  font: inherit;
+  font-size: var(--menu-font-size);
+  line-height: 1.2;
   text-align: left;
   cursor: pointer;
-  transition: background 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .context-menu-item:hover {
   background: rgba(var(--bgButtons));
 }
 
+.context-menu-item:focus-visible {
+  outline: 2px solid rgba(var(--textPrimary) / 0.35);
+  outline-offset: -2px;
+}
+
+.context-menu-item:disabled,
+.context-menu-item.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 .context-menu-icon {
   display: inline-flex;
+  flex: 0 0 var(--menu-icon-size);
+  align-items: center;
+  justify-content: center;
+  width: var(--menu-icon-size);
+  height: var(--menu-icon-size);
   color: rgba(var(--textSecondary));
-  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+.context-menu-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.context-menu-item:hover .context-menu-icon {
+  color: rgba(var(--textPrimary));
 }
