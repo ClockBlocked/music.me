@@ -85,7 +85,8 @@
   white-space: nowrap;
 }
 
-.context-menu-song-artist {
+.context-menu-song-artist,
+.dropdownHeader {
   max-width: 100%;
   overflow: hidden;
   color: rgba(var(--textSecondary));
