@@ -1689,33 +1689,33 @@ class ContextMenu {
       if (song) {
         const isFav = window.uiManager.favorites.isSong(data.songId);
         items += `
-          <button class="mb-ctx-item" data-ctx="play-song" data-id="${data.songId}">${Icons.player.play(16)} Play</button>
+          <button class="mb-ctx-item" data-ctx="play-song" data-id="${data.songId}"><i class='fad fa-circle-play'></i> Play</button>
           <button class="mb-ctx-item" data-ctx="fav-song" data-id="${data.songId}"><i class="fa-solid fa-heart ${isFav ? "liked-icon" : "not-liked-icon"}"></i> ${isFav ? "Remove from Favorites" : "Add to Favorites"}</button>
-          <button class="mb-ctx-item" data-ctx="add-playlist" data-id="${data.songId}">${Icons.general.playlistAdd(16)} Add to Playlist</button>
+          <button class="mb-ctx-item" data-ctx="add-playlist" data-id="${data.songId}"><i class='fad fa-album-collection-circle-plus'></i> Add to Playlist</button>
           <div class="mb-ctx-divider"></div>
         `;
       }
     }
     if (data.albumId && data.artistId) {
       items += `
-        <button class="mb-ctx-item" data-ctx="play-album" data-artist="${data.artistId}" data-album="${data.albumId}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21"/></svg> Play Album</button>
-        <button class="mb-ctx-item" data-ctx="shuffle-album" data-artist="${data.artistId}" data-album="${data.albumId}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg> Shuffle Album</button>
-        <button class="mb-ctx-item" data-ctx="view-album" data-artist="${data.artistId}" data-album="${data.albumId}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> View Album</button>
+        <button class="mb-ctx-item" data-ctx="play-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-circle-play'></i> Play Album</button>
+        <button class="mb-ctx-item" data-ctx="shuffle-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-shuffle'></i> Shuffle Album</button>
+        <button class="mb-ctx-item" data-ctx="view-album" data-artist="${data.artistId}" data-album="${data.albumId}"><i class='fad fa-album-circle-user'></i> View Album</button>
         <div class="mb-ctx-divider"></div>
       `;
     }
     if (data.artistId && !data.albumId) {
       items += `
-        <button class="mb-ctx-item" data-ctx="view-artist" data-artist="${data.artistId}">${Icons.general.artist(16)} View Artist</button>
-        <button class="mb-ctx-item" data-ctx="play-artist" data-artist="${data.artistId}">${Icons.player.play(16)} Play Artist</button>
+        <button class="mb-ctx-item" data-ctx="view-artist" data-artist="${data.artistId}"><i class='fad fa-square-user'></i> View Artist</button>
+        <button class="mb-ctx-item" data-ctx="play-artist" data-artist="${data.artistId}"><i class='fad fa-circle-play'></i> Play Artist</button>
         <button class="mb-ctx-item" data-ctx="fav-artist" data-artist="${data.artistId}"><i class="fa-solid fa-heart not-liked-icon"></i> Favorite Artist</button>
       `;
     }
     if (data.playlistId) {
       items += `
-        <button class="mb-ctx-item" data-ctx="play-playlist" data-playlist="${data.playlistId}">${Icons.player.play(16)} Play Playlist</button>
-        <button class="mb-ctx-item" data-ctx="shuffle-playlist" data-playlist="${data.playlistId}">${Icons.player.shuffle(16)} Shuffle Playlist</button>
-        <button class="mb-ctx-item" data-ctx="edit-playlist" data-playlist="${data.playlistId}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit Playlist</button>
+        <button class="mb-ctx-item" data-ctx="play-playlist" data-playlist="${data.playlistId}"><i class='fad fa-circle-play'></i> Play Playlist</button>
+        <button class="mb-ctx-item" data-ctx="shuffle-playlist" data-playlist="${data.playlistId}"><i class='fad fa-shuffle'></i> Shuffle Playlist</button>
+        <button class="mb-ctx-item" data-ctx="edit-playlist" data-playlist="${data.playlistId}"><i class='fad fa-file-pen'></i> Edit Playlist</button>
       `;
     }
     if (!items) return;
