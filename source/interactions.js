@@ -845,6 +845,17 @@ attachEvents() {
     inner.classList.add("popups-bounce");
     setTimeout(() => inner.classList.remove("popups-bounce"), 300);
   }
+
+  findItem(action) {
+    const groups = Array.isArray(this.options.groups) ? this.options.groups : [];
+    for (const group of groups) {
+      if (!Array.isArray(group)) continue;
+      for (const item of group) {
+        if (String(item.action) === String(action)) return item;
+      }
+    }
+    return null;
+  }
 }
 
 // ////////////////////////////////////////////////////////////////////////
