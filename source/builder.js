@@ -82,7 +82,6 @@ class UIManager {
     return this.navigator.goEditPlaylist(playlistId);
   }
 
-  // NEW — enters the full-page create flow with a fresh draft.
   createPlaylist() {
     this.createPlaylistPage.reset();
     this.state.selectedPlaylistName = null;
@@ -632,26 +631,88 @@ class ContentEvents {
 
   attachHeartEvents() { window.heartManager?.bindAll(document); }
 
-  attachEditPlaylistEvents() {
+  // ---------------------------------------------------------------
+  // Playlist editor (shared by edit + create pages)
+  // ---------------------------------------------------------------
+  attachPlaylistEditorEvents(pageKey) {
     const state = this.ui.state;
-    const id = state.editingPlaylistId;
-    const playlist = state.playlists.find((p) => String(p.id) === String(id));
+    const isCreate = pageKey === "createPlaylist";
+
+    const playlist = isCreate
+      ? state.draftPlaylist
+      : state.playlists.find((p) => String(p.id) === String(state.editingPlaylistId));
     if (!playlist) return;
 
-    const nameInput = document.getElementById("edit-pl-name");
-    const descInput = document.getElementById("edit-pl-desc");
-    const tagWrap = document.getElementById("edit-pl-tags");
+    const id = isCreate ? null : state.editingPlaylistId;
+    const root = document.querySelector(
+      `[data-page="${isCreate ? "create-playlist" : "edit-playlist"}"]`
+    );
+    if (!root) return;
+
+    // ---- persistence helpers -------------------------------------
+    const commitField = (field, value) => {
+      if (isCreate) {
+        playlist[field] = value;
+        return;
+      }
+      if (field === "name") window.favoritesPlaylists.renamePlaylist(id, value);
+      else if (field === "description") window.favoritesPlaylists.updateDesc(id, value);
+      else playlist[field] = value;
+    };
+
+    const commitTags = (tags) => {
+      if (isCreate) { playlist.tags = tags; return; }
+      window.favoritesPlaylists.updateTags(id, tags);
+    };
+
+    const commitOrder = (songs) => {
+      if (isCreate) { playlist.songs = songs; this.ui.render(); return; }
+      window.favoritesPlaylists.reorderSongs(id, songs);
+      this.ui.render();
+    };
+
+    const removeAt = (index) => {
+      const songId = playlist.songs[index];
+      const song = state.getSongById(songId);
+      if (isCreate) {
+        const next = [...playlist.songs];
+        next.splice(index, 1);
+        playlist.songs = next;
+        this.ui.render();
+        return;
+      }
+      if (song) {
+        window.favoritesPlaylists.removeSongFromPlaylist(id, songId);
+      } else {
+        const next = [...playlist.songs];
+        next.splice(index, 1);
+        window.favoritesPlaylists.reorderSongs(id, next);
+        this.ui.render();
+      }
+    };
+
+    // ---- field bindings ------------------------------------------
+    const nameInput = root.querySelector("#edit-pl-name, #create-pl-name");
+    const descInput = root.querySelector("#edit-pl-desc, #create-pl-desc");
+    const tagWrap   = root.querySelector("#edit-pl-tags, #create-pl-tags");
+    const list      = root.querySelector("#edit-playlist-songs, #create-playlist-songs");
 
     if (nameInput) {
-      nameInput.addEventListener("change", () => {
-        window.favoritesPlaylists.renamePlaylist(id, nameInput.value);
+      nameInput.addEventListener("input", () => {
+        playlist.name = nameInput.value;
+        if (isCreate) {
+          const doneBtn = root.querySelector(".edit-playlist-done");
+          if (doneBtn) doneBtn.disabled = !nameInput.value.trim();
+        }
       });
+      nameInput.addEventListener("change", () => commitField("name", nameInput.value));
     }
+
     if (descInput) {
-      descInput.addEventListener("change", () => {
-        window.favoritesPlaylists.updateDesc(id, descInput.value);
-      });
+      descInput.addEventListener("input", () => { playlist.description = descInput.value; });
+      descInput.addEventListener("change", () => commitField("description", descInput.value));
     }
+
     if (tagWrap) {
       const input = tagWrap.querySelector(".edit-playlist-tag-input");
       input?.addEventListener("keydown", (e) => {
@@ -660,12 +721,12 @@ class ContentEvents {
         const raw = input.value.trim();
         if (!raw) return;
         const vals = raw.split(/[,;]/).map((s) => s.trim()).filter(Boolean);
-        const tags = playlist.tags || [];
+        const tags = [...(playlist.tags || [])];
         vals.forEach((value) => {
           if (!tags.includes(value) && tags.length < 8) tags.push(value);
         });
         input.value = "";
-        window.favoritesPlaylists.updateTags(id, tags);
+        commitTags(tags);
         this.ui.render();
       });
       tagWrap.addEventListener("click", (e) => {
@@ -673,32 +734,77 @@ class ContentEvents {
         if (!btn) return;
         const tag = btn.dataset.tag;
         const tags = (playlist.tags || []).filter((t) => t !== tag);
-        window.favoritesPlaylists.updateTags(id, tags);
+        commitTags(tags);
         this.ui.render();
       });
     }
 
-    document.querySelectorAll('[data-page="edit-playlist"] [data-action]').forEach((btn) => {
+    // ---- toolbar actions ----------------------------------------
+    root.querySelectorAll("[data-action]").forEach((btn) => {
+      // Skip song-level actions; handled below
+      if (btn.dataset.action === "remove-song") return;
+
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
         const action = btn.dataset.action;
-        if (action === "back" || action === "done") {
-          this.ui.navigate("playlists");
-        } else if (action === "delete-playlist") {
-          window.favoritesPlaylists._confirmDelete(id);
-        } else if (action === "shuffle-play") {
-          const queue = state.buildPlaylistQueue(id);
-          if (queue.length) {
-            const shuffled = Utils.shuffle(queue);
-            this.ui.audioPlayer.playSong(shuffled[0], shuffled, true, "playlist");
+
+        switch (action) {
+          case "back":
+            state.draftPlaylist = null;
+            this.ui.navigate("playlists");
+            break;
+
+          case "done":
+            this.ui.navigate("playlists");
+            break;
+
+          case "create": {
+            const draft = state.draftPlaylist;
+            if (!draft || !draft.name.trim()) return;
+            const newId = (crypto?.randomUUID?.() ?? `pl_${Date.now()}`);
+            state.playlists.unshift({
+              id: newId,
+              name: draft.name.trim(),
+              description: (draft.description || "").trim(),
+              tags: [...(draft.tags || [])],
+              songs: [...draft.songs],
+              coverUrl: draft.coverUrl || null,
+            });
+            state.persist?.();
+            state.draftPlaylist = null;
+            state.selectedPlaylistName = null;
+            state.showToast?.("Playlist created");
+            this.ui.navigate("playlists");
+            break;
           }
-        } else if (action === "add-songs") {
-          this.ui.navigate("library");
+
+          case "delete-playlist":
+            window.favoritesPlaylists._confirmDelete(id);
+            break;
+
+          case "shuffle-play": {
+            const queue = isCreate
+              ? (playlist.songs || []).map((sid) => state.getSongById(sid)).filter(Boolean)
+              : state.buildPlaylistQueue(id);
+            if (queue.length) {
+              const shuffled = Utils.shuffle(queue);
+              this.ui.audioPlayer.playSong(shuffled[0], shuffled, true, "playlist");
+            }
+            break;
+          }
+
+          case "add-songs":
+            this.ui.navigate("library");
+            break;
+
+          case "change-cover":
+            // Hook for future cover upload; no-op for now.
+            break;
         }
       });
     });
 
-    const list = document.getElementById("edit-playlist-songs");
+    // ---- drag to reorder ----------------------------------------
     if (list) {
       let dragIdx = null;
       list.querySelectorAll(".edit-playlist-song-row").forEach((row) => {
@@ -710,13 +816,15 @@ class ContentEvents {
         });
         row.addEventListener("dragend", () => {
           row.classList.remove("dragging");
-          list.querySelectorAll(".edit-playlist-song-row").forEach((r) => r.classList.remove("drop-target"));
+          list.querySelectorAll(".edit-playlist-song-row")
+              .forEach((r) => r.classList.remove("drop-target"));
           dragIdx = null;
         });
         row.addEventListener("dragover", (e) => {
           e.preventDefault();
           e.dataTransfer.dropEffect = "move";
-          list.querySelectorAll(".edit-playlist-song-row").forEach((r) => r.classList.remove("drop-target"));
+          list.querySelectorAll(".edit-playlist-song-row")
+              .forEach((r) => r.classList.remove("drop-target"));
           row.classList.add("drop-target");
         });
         row.addEventListener("drop", (e) => {
@@ -726,24 +834,15 @@ class ContentEvents {
           const newOrder = [...playlist.songs];
           const [moved] = newOrder.splice(dragIdx, 1);
           newOrder.splice(targetIdx, 0, moved);
-          window.favoritesPlaylists.reorderSongs(id, newOrder);
-          this.ui.render();
+          commitOrder(newOrder);
         });
       });
+
       list.addEventListener("click", (e) => {
         const btn = e.target.closest('[data-action="remove-song"]');
         if (!btn) return;
-        const index = parseInt(btn.dataset.index, 10);
-        const songId = playlist.songs[index];
-        const song = state.getSongById(songId);
-        if (song) {
-          window.favoritesPlaylists.removeSongFromPlaylist(id, songId);
-        } else {
-          const newOrder = [...playlist.songs];
-          newOrder.splice(index, 1);
-          window.favoritesPlaylists.reorderSongs(id, newOrder);
-          this.ui.render();
-        }
+        e.stopPropagation();
+        removeAt(parseInt(btn.dataset.index, 10));
       });
     }
   }
@@ -921,10 +1020,7 @@ class ContentEvents {
       const createPlBtn = document.getElementById("create-playlist-btn");
       if (createPlBtn && !createPlBtn._hasListener) {
         createPlBtn._hasListener = true;
-        createPlBtn.addEventListener("click", () => {
-          window.favoritesPlaylists.createNewPlaylist();
-          this.ui.render();
-        });
+        createPlBtn.addEventListener("click", () => this.ui.createPlaylist());
       }
 
       document.querySelectorAll(".playlist-name-input, .playlist-description-input").forEach((el) => {
@@ -1003,7 +1099,9 @@ class ContentEvents {
     }
 
     if (this.ui.state.currentPage === "editPlaylist") {
-      this.attachEditPlaylistEvents();
+      this.attachPlaylistEditorEvents("editPlaylist");
+    } else if (this.ui.state.currentPage === "createPlaylist") {
+      this.attachPlaylistEditorEvents("createPlaylist");
     }
 
     document.querySelectorAll("[data-hover-action]").forEach((btn) => {
