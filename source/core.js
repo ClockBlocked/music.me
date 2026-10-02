@@ -109,8 +109,8 @@ class Utils {
       albumId: album.id,
       artist: artist.artist,
       album: album.album,
-      coverUrl: album.coverUrl,
-      artistImageUrl: artist.imageUrl,
+      artwork: album.artwork,
+      portrait: artist.portrait,
     }));
   }
 }
