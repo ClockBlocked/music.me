@@ -74,7 +74,7 @@ class PlayerState {
             albumId: album.id,
             artist: artist.artist,
             album: album.album,
-            coverUrl: album.coverUrl,
+            artwork: album.artwork,
           };
         }
       }
@@ -107,7 +107,7 @@ class PlayerState {
             albumId: album.id,
             artist: artist.artist,
             album: album.album,
-            coverUrl: album.coverUrl,
+            artwork: album.artwork,
           });
         }
       }
@@ -586,10 +586,10 @@ class MediaSessionManager {
 
 
 // ────────────   M E T A D A T A   ────────── • • •
-  buildArtwork(coverUrl) {
-    if (!coverUrl) return [];
+  imageCompiler(artwork) {
+    if (!artwork) return [];
 
-    let fileName = coverUrl.split("/").pop().split("?")[0].split("#")[0];
+    let fileName = artwork.split("/").pop().split("?")[0].split("#")[0];
     if (!fileName) return [];
 
     fileName = fileName.replace(/\.jpg$/i, ".jpeg");
@@ -621,7 +621,7 @@ class MediaSessionManager {
       title: song.title || song.name || "Unknown Title",
       artist: song.artist || song.artistName || "Unknown Artist",
       album: song.album || song.albumName || "",
-      artwork: this.buildArtwork(song.coverUrl),
+      artwork: this.imageCompiler(song.artwork),
     };
   }
   reapplyMetadata() {
@@ -717,7 +717,7 @@ class MediaSessionManager {
     return null;
   }
   resolveSong(song) {
-    if (song.title && song.artist && song.coverUrl) return song;
+    if (song.title && song.artist && song.artwork) return song;
     const enriched = this.state?.getSongById?.(song.id);
     return enriched ? { ...song, ...enriched } : song;
   }
@@ -986,7 +986,7 @@ class PlayerManager {
     const skipSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20" height="20"><path opacity=".4" fill="currentColor" d="M0 72L0 440c0 14.7 8.1 28.2 21 35.2s28.7 6.3 41-1.8l258-169.6 0-95.7-258-169.6c-12.3-8.1-28-8.8-41-1.8S0 57.3 0 72z"/><path fill="currentColor" d="M352 32l0 0c17.7 0 32 14.3 32 32l0 384c0 17.7-14.3 32-32 32l0 0c-17.7 0-32-14.3-32-32l0-384c0-17.7 14.3-32 32-32z"/></svg>`;
 
     const defaultCover = Config.DEFAULT_COVER;
-    const coverUrl = currentSong ? currentSong.coverUrl : defaultCover;
+    const artwork = currentSong ? currentSong.artwork : defaultCover;
     const title = currentSong ? currentSong.title : "MyBeats";
     const artistDisplay = currentSong ? this.ui.artistNameTooltip(currentSong.artistId) : "Music";
     const isFav = currentSong ? this.ui.favorites.isSong(currentSong.id) : false;
@@ -996,7 +996,7 @@ class PlayerManager {
         <div class="mini-player-inner" id="open-drawer">
           <div class="track"><div class="mini-progress" id="mini-progress" style="width: ${progress}%;"></div></div>
           <div class="bar">
-            <div class="mini-cover cover"><img src="${coverUrl}" class="mini-cover-img" onerror="this.style.display='none'"></div>
+            <div class="mini-cover cover"><img src="${artwork}" class="mini-cover-img" onerror="this.style.display='none'"></div>
             <div class="info">
               <p class="title">${title}</p>
               <p class="sub">${artistDisplay}</p>
@@ -1054,7 +1054,7 @@ class PlayerManager {
       const oldImg = oldDrawer.querySelector(".album-art");
       if (oldImg) {
         const currentSrc = oldImg.getAttribute("src");
-        if (currentSrc === song.coverUrl) {
+        if (currentSrc === song.artwork) {
           this.softUpdateDrawer(oldDrawer);
           this.attachFullPlayerEvents();
           return;
@@ -1067,7 +1067,7 @@ class PlayerManager {
     const defaultCover = Config.DEFAULT_COVER;
     const title = song ? song.title : "MyBeats";
     const artistDisplay = song ? this.ui.artistNameTooltip(song.artistId) : "Music";
-    const coverUrl = song ? song.coverUrl : defaultCover;
+    const artwork = song ? song.artwork : defaultCover;
     const progress = song && state.duration ? (state.currentTime / state.duration) * 100 : 0;
     const isPlaying = song ? state.isPlaying : false;
     const isFav = song ? this.ui.favorites.isSong(song.id) : false;
@@ -1089,7 +1089,7 @@ class PlayerManager {
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
             </button>
           </div>
-          <div class="album-art-wrapper" id="album-wrapper"><img src="${coverUrl}" alt="${title}" class="album-art"></div>
+          <div class="album-art-wrapper" id="album-wrapper"><img src="${artwork}" alt="${title}" class="album-art"></div>
           <div class="meta">
             <h1 class="title">${title}</h1>
             <p class="sub">${artistDisplay}</p>
@@ -1517,7 +1517,7 @@ class PlayerManager {
 
       item.innerHTML = `
         <span class="queue-drag-handle" title="Drag to reorder">${Icons.general.dragHandle(14)}</span>
-        <img src="${song.coverUrl}" class="queue-item-thumb">
+        <img src="${song.artwork}" class="queue-item-thumb">
         <div class="queue-item-info"><div class="queue-item-title">${song.title}</div><div class="queue-item-artist">${song.artist}</div></div>
         ${indicator}
         <button class="queue-item-remove" title="Remove from queue">${Icons.general.close(12)}</button>
