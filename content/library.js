@@ -1,4 +1,4 @@
-[
+window.catalogue = [
   {
     "artist": "The Weeknd",
     "id": 6363,
@@ -1486,4 +1486,4 @@
       "3054"
     ]
   }
-]
+];
