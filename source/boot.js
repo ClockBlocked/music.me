@@ -137,7 +137,7 @@ jQuery(function ($) {
         song._artistId   = artist.id;
         song._albumName  = album.album;
         song._albumId    = album.id;
-        song.downloadPath =
+        song.source =
           `/content/audio/${artist.id}/${album.id}/${song.id}?title=${encodeURIComponent(song.title ?? "")}`;
       }
     }
