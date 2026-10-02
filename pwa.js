@@ -2,13 +2,13 @@
   'use strict';
 
   const CFG = {
-    swPath: '/sw.js',
+    swPath: '/music.me/serviceWorker.js',
     syncTag: 'content-sync',
-    whatsNewUrl: '/?page=whats-new',
+    whatsNewUrl: 'https://clockblocked.github.io/music.me/?page=whats-new',
     checkThrottleMs: 10 * 60 * 1000,
     periodicSyncIntervalMs: 6 * 60 * 60 * 1000,
     widgetTag: 'now-playing',
-    fallbackAlbumArt: '/app/manifest/android/192.png'
+    fallbackAlbumArt: 'https://clockblocked.github.io/music.me/manifest/android/192.png'
   };
 
   let lastCheck = 0;
@@ -25,7 +25,7 @@
 
   async function registerServiceWorker() {
     try {
-      swRegistration = await navigator.serviceWorker.register(CFG.swPath);
+      swRegistration = await navigator.serviceWorker.register(CFG.swPath, { scope: '/music.me/' });
 
       if (swRegistration.waiting && navigator.serviceWorker.controller) {
         showAppUpdateToast(swRegistration);
@@ -50,7 +50,9 @@
 
       await registerPeriodicSync(swRegistration);
       scheduleUpdateCheck(true);
-    } catch (err) {}
+    } catch (err) {
+      console.warn("SW Registration Failed:", err);
+    }
   }
 
   async function registerPeriodicSync(reg) {
@@ -110,7 +112,7 @@
       try {
         const url = new URL(img.src);
         if (url.origin !== window.location.origin) return;
-        if (!url.pathname.startsWith('/content/')) return;
+        if (!url.pathname.includes('/content/')) return;
         url.searchParams.set('sync', stamp);
         img.src = url.toString();
       } catch (err) {}
@@ -285,18 +287,18 @@
     const style = document.createElement('style');
     style.id = 'pwa-styles';
     style.textContent = [
-      '.pwa-toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translate(-50%,120%);width:min(92vw,420px);background:rgba(18,20,28,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px 18px;z-index:2147483000;box-shadow:0 18px 50px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .3s ease;opacity:0;color:#f3f4f8;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}',
+      '.pwa-toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translate(-50%,120%);width:min(92vw,420px);background:rgba(45, 51, 59, 0.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(173, 186, 199, 0.15);border-radius:18px;padding:16px 18px;z-index:2147483000;box-shadow:0 18px 50px rgba(0,0,0,.55);transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .3s ease;opacity:0;color:#cdd9e5;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}',
       '.pwa-toast.pwa-visible{transform:translate(-50%,0);opacity:1}',
-      '.pwa-toast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#f4726a 0%,#ec4899 100%)}',
+      '.pwa-toast::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;border-radius:18px 18px 0 0;background:linear-gradient(135deg,#f47067 0%,#d96c75 100%)}',
       '.pwa-toast-title{font-weight:700;font-size:15px;letter-spacing:.2px;margin-bottom:4px}',
-      '.pwa-toast-body{font-size:13.5px;line-height:1.45;color:rgba(243,244,248,.78)}',
+      '.pwa-toast-body{font-size:13.5px;line-height:1.45;color:#768390}',
       '.pwa-toast-actions{display:flex;gap:10px;margin-top:12px}',
       '.pwa-btn{flex:1;border:0;cursor:pointer;font-weight:600;font-size:13px;padding:9px 14px;border-radius:12px;transition:transform .15s ease,filter .2s ease,background .2s ease}',
       '.pwa-btn:active{transform:scale(.96)}',
-      '.pwa-btn-primary{background:linear-gradient(135deg,#f4726a 0%,#ec4899 100%);color:#fff}',
+      '.pwa-btn-primary{background:linear-gradient(135deg,#f47067 0%,#d96c75 100%);color:#fff}',
       '.pwa-btn-primary:hover{filter:brightness(1.08)}',
-      '.pwa-btn-ghost{background:rgba(255,255,255,.08);color:rgba(243,244,248,.85)}',
-      '.pwa-btn-ghost:hover{background:rgba(255,255,255,.14)}'
+      '.pwa-btn-ghost{background:rgba(173,186,199,.08);color:#adbac7}',
+      '.pwa-btn-ghost:hover{background:rgba(173,186,199,.14)}'
     ].join('\n');
     document.head.appendChild(style);
   }
