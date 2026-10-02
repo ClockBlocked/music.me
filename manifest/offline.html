@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#22272e">
+<title>MyBeats Music — Offline</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #22272e; /* GitHub Dark Dimmed Background */
+    background-image:
+      radial-gradient(ellipse 80% 55% at 50% -10%, rgba(244,112,103,.1), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 110%, rgba(244,112,103,.05), transparent 60%);
+    color: #adbac7; /* GitHub Dark Dimmed Text */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 24px;
+    text-align: center;
+  }
+  .card { 
+    max-width: 380px; 
+    width: 100%; 
+    background: rgba(45, 51, 59, 0.6); /* Glassmorphism Panel */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(173, 186, 199, 0.1);
+    border-radius: 24px;
+    padding: 40px 24px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+  }
+  .logo {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    background: linear-gradient(135deg, #f47067 0%, #d96c75 100%); /* Subtle red accents */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 28px;
+  }
+  .badge {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 22px;
+    border-radius: 24px;
+    background: rgba(45, 51, 59, 0.8);
+    border: 1px solid rgba(173, 186, 199, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+  }
+  .badge svg { width: 40px; height: 40px; stroke: url(#mbGrad); }
+  h1 { font-size: 21px; font-weight: 700; margin-bottom: 10px; color: #cdd9e5; }
+  p { font-size: 14.5px; line-height: 1.6; color: #768390; margin-bottom: 26px; }
+  .retry {
+    display: inline-block;
+    border: 1px solid rgba(244, 112, 103, 0.2);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14.5px;
+    color: #cdd9e5;
+    padding: 13px 34px;
+    border-radius: 999px;
+    background: rgba(244, 112, 103, 0.1);
+    transition: all .2s ease;
+  }
+  .retry:hover { 
+    background: rgba(244, 112, 103, 0.2); 
+    border-color: rgba(244, 112, 103, 0.4);
+    color: #ffffff;
+  }
+  .retry:active { transform: scale(.96); }
+  .hint { margin-top: 20px; font-size: 12.5px; color: #535e69; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">MyBeats</div>
+    <div class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <defs>
+          <linearGradient id="mbGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f47067"/>
+            <stop offset="100%" stop-color="#d96c75"/>
+          </linearGradient>
+        </defs>
+        <path d="M9 18V6l10-2v11"/>
+        <circle cx="6.5" cy="18" r="2.5"/>
+        <circle cx="16.5" cy="15" r="2.5"/>
+      </svg>
+    </div>
+    <h1>You're offline</h1>
+    <p>No connection right now. Pages and artwork you've already loaded are still available from cache — reconnect to sync the latest music.</p>
+    <button class="retry" id="retryBtn" type="button">Try again</button>
+    <div class="hint">We'll automatically retry when you're back online.</div>
+  </div>
+  <script>
+    document.getElementById('retryBtn').addEventListener('click', function () {
+      window.location.reload();
+    });
+    window.addEventListener('online', function () {
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>
