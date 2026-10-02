@@ -1,8 +1,8 @@
 /**
  *
 
-song.source URL = https://clockblocked.github.io/music.me/content/audio...
-.../ARTIST_ID/ALBUM_ID/SONG_ID?title=SONG_TITLE" + . webm || .mp3
+song.source URL ="https://clockblocked.github.io/music.me/content/audio...
+".../ARTIST_ID/ALBUM_ID/SONG_ID?title=SONG_TITLE" + ". webm || .mp3"
 
 
 
