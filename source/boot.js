@@ -41,6 +41,8 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
+  
+/****
   function loadLibrary() {
     let jsonUrl;
     try {
@@ -69,7 +71,6 @@ jQuery(function ($) {
         });
     }
   }
-
   loadLibrary()
     .then((metadata) => {
       for (const artist of metadata) {
@@ -105,7 +106,54 @@ jQuery(function ($) {
       errDiv.textContent = `Initialization failed:\n${err.message}\n\nStack:\n${err.stack || ""}`;
       document.body.appendChild(errDiv);
     });
+****/
 
+
+
+
+
+(function initLibrary() {
+  const metadata = window.catalogue;
+
+  if (!metadata || !Array.isArray(metadata)) {
+    const err = new Error(
+      "window.catalogue is missing. Load library.js BEFORE boot.js."
+    );
+    console.error("Initialization failed:", err);
+    const errDiv = document.createElement("div");
+    errDiv.style.cssText =
+      "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
+    errDiv.textContent = `Initialization failed:\n${err.message}`;
+    document.body.appendChild(errDiv);
+    return;
+  }
+
+  for (const artist of metadata) {
+    if (!artist.similar) artist.similar = [];
+
+    for (const album of artist.albums || []) {
+      for (const song of album.songs || []) {
+        song._artistName = artist.artist;
+        song._artistId   = artist.id;
+        song._albumName  = album.album;
+        song._albumId    = album.id;
+        song.downloadPath =
+          `/content/audio/${artist.id}/${album.id}/${song.id}?title=${encodeURIComponent(song.title ?? "")}`;
+      }
+    }
+  }
+
+  window.metadata = metadata;
+  window.state.enrichedLibrary = metadata;
+
+  window.uiManager = new UIManager(window.state, window.audioPlayer, window.favoritesPlaylists);
+  window.popups.ui = window.uiManager;
+  window.heartManager.store.state = window.state;
+})();
+
+  
+
+  
   window.pagesActions = {
     buildSongs() {
       const state = window.uiManager?.state || window.state;
@@ -114,13 +162,20 @@ jQuery(function ($) {
         artist.albums.flatMap((album) =>
           album.songs.map((song) => ({
             ...song,
+            // ------------------ unique identifiers
             artistId: artist.id,
             albumId: album.id,
+            
+            // ------------------ for displaying actual names
             artist: artist.artist,
             album: album.album,
-            coverUrl: album.coverUrl,
-            artistImageUrl: artist.imageUrl,
-            genre: artist.genre || "",
+
+            // ------------------ Artist / Album images
+            artwork: album.artwork,
+            portrait: artist.portrait,
+
+            // ------------------ miscellaneous
+            genre: artist.genre || "Unknown",
           }))
         )
       );
@@ -205,6 +260,8 @@ jQuery(function ($) {
       }
     },
   };
+
+  
 
   $(document).on("click", async function (e) {
     const shareAnchor = e.target.closest("#bento-album-share");
