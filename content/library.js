@@ -1,7 +1,12 @@
 /**
  *
- *  Updated on:
- *  10.02.2026
+
+song.source URL = https://clockblocked.github.io/music.me/content/audio...
+.../ARTIST_ID/ALBUM_ID/SONG_ID?title=SONG_TITLE" + . webm || .mp3
+
+
+
+
  *
  **/
 window.catalogue = [
