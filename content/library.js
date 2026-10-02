@@ -178,7 +178,7 @@ window.catalogue = [
             "trackNumber": 18
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/starboy.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/starboy.jpg",
         "sold": "2x Platinum"
       },
       {
@@ -313,7 +313,7 @@ window.catalogue = [
             "trackNumber": 14
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/afterhours.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/afterhours.jpg",
         "sold": "3x Platinum"
       },
       {
@@ -448,11 +448,11 @@ window.catalogue = [
             "trackNumber": 14
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/beautybehindthemadness.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/beautybehindthemadness.jpg",
         "sold": "6x Platinum"
       }
     ],
-    "portrait": "https://mybeats.cloud/content/artistPortraits/theweeknd.jpg",
+    "portrait": "https://clockblocked.github.io/music.me/content/artistPortraits/theweeknd.jpg",
     "similar": []
   },
   {
@@ -583,7 +583,7 @@ window.catalogue = [
             "trackNumber": 13
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/fearless.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/fearless.jpg",
         "sold": "Diamond"
       },
       {
@@ -709,7 +709,7 @@ window.catalogue = [
             "trackNumber": 13
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/1989.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/1989.jpg",
         "sold": "9x Platinum"
       },
       {
@@ -862,7 +862,7 @@ window.catalogue = [
             "trackNumber": 16
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/red.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/red.jpg",
         "sold": "7x Platinum"
       },
       {
@@ -1006,7 +1006,7 @@ window.catalogue = [
             "trackNumber": 15
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/reputation.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/reputation.jpg",
         "sold": "3x Platinum"
       },
       {
@@ -1177,7 +1177,7 @@ window.catalogue = [
             "trackNumber": 18
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/lover.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/lover.jpg",
         "sold": "3x Platinum"
       },
       {
@@ -1330,7 +1330,7 @@ window.catalogue = [
             "trackNumber": 16
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/folklore.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/folklore.jpg",
         "sold": "2x Platinum"
       },
       {
@@ -1474,11 +1474,11 @@ window.catalogue = [
             "trackNumber": 15
           }
         ],
-        "artwork": "https://mybeats.cloud/content/albumCovers/evermore.jpg",
+        "artwork": "https://clockblocked.github.io/music.me/content/albumCovers/evermore.jpg",
         "sold": "Platinum"
       }
     ],
-    "portrait": "https://mybeats.cloud/content/artistPortraits/taylorswift.jpg",
+    "portrait": "https://clockblocked.github.io/music.me/content/artistPortraits/taylorswift.jpg",
     "similar": [
       "6308",
       "5381",
