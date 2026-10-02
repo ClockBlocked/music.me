@@ -2,66 +2,186 @@
   "name": "MyBeats Music",
   "short_name": "MyBeats",
   "description": "Stream & Share",
-  "start_url": "/",
+  "start_url": "https://clockblocked.github.io/music.me/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
-  "background_color": "#12141c",
-  "theme_color": "#12141c",
+  "display_override": [
+    "standalone",
+    "window-controls-overlay"
+  ],
+  "background_color": "#22272e",
+  "theme_color": "#22272e",
   "orientation": "portrait-primary",
-  "scope": "/",
-  "id": "/",
-  "categories": ["music", "entertainment"],
+  "scope": "/music.me/",
+  "id": "10221983",
+  "categories": [
+    "music",
+    "entertainment"
+  ],
   "lang": "en",
   "dir": "ltr",
   "icons": [
-    { "src": "/manifest/android/72.png", "sizes": "72x72", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/manifest/android/96.png", "sizes": "96x96", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/manifest/android/128.png", "sizes": "128x128", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/manifest/android/144.png", "sizes": "144x144", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/manifest/android/152.png", "sizes": "152x152", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/manifest/android/192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/manifest/android/384.png", "sizes": "384x384", "type": "image/png", "purpose": "any" },
-    { "src": "/manifest/android/512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/72.webp",
+      "sizes": "72x72",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/96.webp",
+      "sizes": "96x96",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/128.webp",
+      "sizes": "128x128",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/144.png",
+      "sizes": "144x144",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/152.png",
+      "sizes": "152x152",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/192.png",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/384.png",
+      "sizes": "384x384",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/android/512.png",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
   ],
   "screenshots": [
-    { "src": "/manifest/screenshots/home.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide" },
-    { "src": "/manifest/screenshots/mobile.png", "sizes": "750x1334", "type": "image/png", "form_factor": "narrow" }
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/screenshots/01.webp",
+      "sizes": "720x1192",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Discover Page"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/screenshots/02.webp",
+      "sizes": "720x1175",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Artist Ed Sheeran's Page"
+    },
+    {
+      "src": "https://clockblocked.github.io/music.me/manifest/screenshots/03.webp",
+      "sizes": "720x1359",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Discover New Music"
+    }
   ],
   "shortcuts": [
     {
       "name": "Now Playing",
       "short_name": "Playing",
       "description": "Resume current playback",
-      "url": "/?page=player",
-      "icons": [{ "src": "/manifest/icons/playing-96.png", "sizes": "96x96", "type": "image/png" }, { "src": "/manifest/icons/playing-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "https://clockblocked.github.io/music.me/?page=player",
+      "icons": [
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/playing-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/playing-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Library",
       "short_name": "Library",
       "description": "Browse your music library",
-      "url": "/?page=library",
-      "icons": [{ "src": "/manifest/icons/library-96.png", "sizes": "96x96", "type": "image/png" }, { "src": "/manifest/icons/library-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "https://clockblocked.github.io/music.me/?page=library",
+      "icons": [
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/library-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/library-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Favorites",
       "short_name": "Favorites",
       "description": "Your favorite songs",
-      "url": "/?page=favorites",
-      "icons": [{ "src": "/manifest/icons/favorites-96.png", "sizes": "96x96", "type": "image/png" }, { "src": "/manifest/icons/favorites-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "https://clockblocked.github.io/music.me/?page=favorites",
+      "icons": [
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/favorites-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/favorites-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Playlists",
       "short_name": "Playlists",
       "description": "Your playlists",
-      "url": "/?page=playlists",
-      "icons": [{ "src": "/manifest/icons/playlists-96.png", "sizes": "96x96", "type": "image/png" }, { "src": "/manifest/icons/playlists-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "https://clockblocked.github.io/music.me/?page=playlists",
+      "icons": [
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/playlists-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/playlists-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Search",
       "short_name": "Search",
       "description": "Search artists, albums and songs",
-      "url": "/?page=search",
-      "icons": [{ "src": "/manifest/icons/search-96.png", "sizes": "96x96", "type": "image/png" }, { "src": "/manifest/icons/search-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "https://clockblocked.github.io/music.me/?page=search",
+      "icons": [
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/search-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/icons/search-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ],
   "widgets": [
@@ -71,16 +191,22 @@
       "description": "Shows and controls the currently playing track",
       "tag": "mybeats-now-playing",
       "template": "now-playing",
-      "ms_ac_template": "/widgets/now-playing.json",
-      "data": "/widgets/now-playing-data.json",
+      "ms_ac_template": "https://clockblocked.github.io/music.me/app/widgets/now-playing.json",
+      "data": "https://clockblocked.github.io/music.me/app/widgets/now-playing-data.json",
       "type": "application/json",
       "auth": false,
       "update": 900,
-      "icons": [{ "src": "/manifest/android/192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "https://clockblocked.github.io/music.me/manifest/android/192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ],
   "share_target": {
-    "action": "/share-target/",
+    "action": "https://clockblocked.github.io/music.me/share-target/",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {
@@ -90,13 +216,20 @@
     }
   },
   "protocol_handlers": [
-    { "protocol": "web+mybeats", "url": "/?q=%s" }
+    {
+      "protocol": "web+mybeats",
+      "url": "https://clockblocked.github.io/music.me/?q=%s"
+    }
   ],
   "handle_links": "preferred",
   "launch_handler": {
-    "client_mode": ["focus-existing", "auto"]
+    "client_mode": [
+      "focus-existing",
+      "auto"
+    ]
   },
-  "edge_side_panel": { "preferred_width": 400 },
-  "related_applications": [],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
   "prefer_related_applications": false
 }
