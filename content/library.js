@@ -1,9 +1,13 @@
 /**
  *
 
+[1]
 song.source URL ="https://clockblocked.github.io/music.me/content/audio...
 ".../ARTIST_ID/ALBUM_ID/SONG_ID?title=SONG_TITLE" + ". webm || .mp3"
 
+
+[2]
+video = YouTube Video ID --- Found in the video's URL
 
 
 
