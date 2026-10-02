@@ -1,3 +1,9 @@
+/**
+*
+*  Updated on:
+*  10.02.2026
+*
+**/
 window.catalogue = [
   {
     "artist": "The Weeknd",
