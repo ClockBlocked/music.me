@@ -424,48 +424,67 @@ class AppNavigator {
     }, AppNavigator.ALBUM_SWAP_MS);
   }
 
-  _swapArtistSections(artist, album) {
-    const ui = this.ui;
-    const artistPage = ui.artistPage;
+_swapArtistSections(artist, album) {
+  const ui = this.ui;
+  const artistPage = ui.artistPage;
 
-    // Cover
-    const coverEl = document.querySelector(".hero-cover");
-    if (coverEl && album.coverUrl) {
-      const img = coverEl.querySelector("img");
-      if (img) img.src = album.coverUrl;
+  // Cover - force image reload
+  const coverEl = document.querySelector(".hero-cover");
+  if (coverEl && album.coverUrl) {
+    const img = coverEl.querySelector("img");
+    if (img) {
+      // Create a new image to preload and ensure it displays
+      const newImg = new Image();
+      newImg.onload = () => {
+        img.src = album.coverUrl;
+      };
+      newImg.src = album.coverUrl;
     }
-
-    // Songs list
-    const songsEl = document.querySelector('[data-list="songs"]');
-    if (songsEl && artistPage?.createSongRow) {
-      songsEl.innerHTML = `
-        <div class="header">
-          <div class="left">
-            <span class="badge">${album.certification || "Double Platinum"}</span>
-            <span class="year">${album.year || "2024"}</span>
-          </div>
-          <span class="hint">Double-click</span>
-        </div>
-        <div class="body">
-          ${album.songs.map((song, i) => artistPage.createSongRow(song, i, artist, album)).join("")}
-        </div>
-      `;
-    }
-
-    // About section (if it exists)
-    const aboutEl = document.querySelector('[data-page="artist"] [data-area="about"]');
-    if (aboutEl && artistPage?.aboutSection) {
-      aboutEl.innerHTML = artistPage.aboutSection(artist, album);
-      aboutEl.querySelectorAll(".tab").forEach((btn) => {
-        btn.classList.toggle("active", IdUtils.norm(btn.dataset.albumId) === IdUtils.norm(album.id));
-      });
-    }
-
-    ui.contentEvents?.attachContentEvents?.();
-    window.dispatchEvent(new CustomEvent("mybeats:album-swapped", {
-      detail: { artistId: artist.id, albumId: album.id },
-    }));
   }
+
+  // Songs list
+  const songsEl = document.querySelector('[data-list="songs"]');
+  if (songsEl && artistPage?.createSongRow) {
+    songsEl.innerHTML = `
+      <div class="header">
+        <div class="left">
+          <span class="badge">${album.certification || "Double Platinum"}</span>
+          <span class="year">${album.year || "2024"}</span>
+        </div>
+        <span class="hint">Double-click</span>
+      </div>
+      <div class="body">
+        ${album.songs.map((song, i) => artistPage.createSongRow(song, i, artist, album)).join("")}
+      </div>
+    `;
+  }
+
+  // About section (if it exists) - only update if method exists
+  const aboutEl = document.querySelector('[data-page="artist"] [data-area="about"]');
+  if (aboutEl && artistPage?.aboutSection) {
+    aboutEl.innerHTML = artistPage.aboutSection(artist, album);
+    aboutEl.querySelectorAll(".tab").forEach((btn) => {
+      btn.classList.toggle("active", IdUtils.norm(btn.dataset.albumId) === IdUtils.norm(album.id));
+    });
+  }
+
+  // Update the hero overlay title
+  const heroOverlay = document.querySelector(".hero-overlay .album-title");
+  if (heroOverlay) {
+    heroOverlay.textContent = album.album;
+  }
+
+  // Update track count
+  const trackCount = document.querySelector(".hero-overlay .track-count");
+  if (trackCount) {
+    trackCount.textContent = `${album.songs.length} track${album.songs.length === 1 ? "" : "s"}`;
+  }
+
+  ui.contentEvents?.attachContentEvents?.();
+  window.dispatchEvent(new CustomEvent("mybeats:album-swapped", {
+    detail: { artistId: artist.id, albumId: album.id },
+  }));
+}
 
   _pageTransition(page, opts = {}) {
     if (this._navigating) return;
