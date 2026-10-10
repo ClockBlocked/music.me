@@ -2,7 +2,6 @@
 
 
 
-
 (function () {
   const script = document.currentScript;
   window.__MYBEATS_BASE__ =
@@ -10,15 +9,10 @@
     (script && script.src ? script.src : window.location.href);
 })();
 
-// ////////////////////////////////////////////////////////////////////////
-// Config
-// ////////////////////////////////////////////////////////////////////////
 const Config = {
   IMAGE_BASE: {
-    artist:
-      "https://mybeats.cloud/content/artistPortraits/",
-    album:
-      "https://mybeats.cloud/content/albumCovers/",
+    artist: "https://mybeats.cloud/content/artistPortraits/",
+    album: "https://mybeats.cloud/content/albumCovers/",
   },
   FAVOURITES: {
     favSongs: "Songs",
@@ -33,17 +27,14 @@ const Config = {
   VOLUME: { default: 1 },
 };
 
-// ////////////////////////////////////////////////////////////////////////
-// Utils
-// ////////////////////////////////////////////////////////////////////////
 class Utils {
   static slug(name) {
-    return name
-      ? name
-          .replace(/[^a-zA-Z0-9]/g, "")
-          .toLowerCase()
-          .trim() || "default"
-      : "default";
+    return (
+      name
+        ?.replace(/[^a-zA-Z0-9]/g, "")
+        .toLowerCase()
+        .trim() || "default"
+    );
   }
 
   static clamp(val, min, max) {
@@ -113,11 +104,16 @@ class Utils {
       portrait: artist.portrait,
     }));
   }
+
+  static normalizeId(value) {
+    return Utils.id(value);
+  }
+
+  static sample(arr, count) {
+    return Utils.shuffle(arr).slice(0, count);
+  }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// Prefs
-// ////////////////////////////////////////////////////////////////////////
 class Prefs {
   static KEY = "mybeats.prefs.v1";
   static prefCache = null;
@@ -255,44 +251,32 @@ class Prefs {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// IdUtils
-// ////////////////////////////////////////////////////////////////////////
-class IdUtils {
-  static norm(value) {
-    return Utils.id(value);
-  }
+class ColorMath {
+  static hslToRgb(input) {
+    let h;
+    let s;
+    let l;
 
-  static sample(arr, count) {
-    return Utils.shuffle(arr).slice(0, count);
-  }
-
-  static hslToRgb(hslString) {
-    // Accepts "h s% l%" or {h,s,l} or "h s l"
-    let h, s, l;
-
-    if (typeof hslString === "string") {
-      const parts = hslString.split(" ").map((part) => parseFloat(part));
-      h = parts[0];
-      s = parts[1];
-      l = parts[2];
-    } else if (hslString && typeof hslString === "object") {
-      h = hslString.h;
-      s = hslString.s;
-      l = hslString.l;
+    if (typeof input === "string") {
+      const parts = input.split(" ").map((part) => parseFloat(part));
+      [h, s, l] = parts;
+    } else if (input && typeof input === "object") {
+      ({ h, s, l } = input);
     } else {
       return { r: 255, g: 107, b: 107 };
     }
 
     h = ((h % 360) + 360) % 360;
-    s = s / 100;
-    l = l / 100;
+    s /= 100;
+    l /= 100;
 
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
     const m = l - c / 2;
 
-    let r, g, b;
+    let r;
+    let g;
+    let b;
     if (h < 60) [r, g, b] = [c, x, 0];
     else if (h < 120) [r, g, b] = [x, c, 0];
     else if (h < 180) [r, g, b] = [0, c, x];
@@ -306,11 +290,49 @@ class IdUtils {
       b: Math.round((b + m) * 255),
     };
   }
+
+  static rgbToHsl({ r, g, b }) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h;
+    let s;
+    const l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+          break;
+        case g:
+          h = ((b - r) / d + 2) / 6;
+          break;
+        case b:
+          h = ((r - g) / d + 4) / 6;
+          break;
+      }
+    } else {
+      h = s = 0;
+    }
+
+    return {
+      h: Math.round(h * 360),
+      s: Math.round(s * 100),
+      l: Math.round(l * 100),
+    };
+  }
+
+  static hslToRgbString({ h, s, l }) {
+    const rgb = ColorMath.hslToRgb({ h, s, l });
+    return `${rgb.r} ${rgb.g} ${rgb.b}`;
+  }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// ColorExtractor
-// ////////////////////////////////////////////////////////////////////////
 class ColorExtractor {
   constructor(options = {}) {
     this.cache = new Map();
@@ -399,9 +421,15 @@ class ColorExtractor {
       if (a < 128) continue;
 
       const brightness = (r + g + b) / 3;
-      if (brightness < this.settings.skipThreshold || brightness > this.settings.whiteThreshold) continue;
+      if (
+        brightness < this.settings.skipThreshold ||
+        brightness > this.settings.whiteThreshold
+      ) {
+        continue;
+      }
 
-      const colorKey = `${Math.floor(r / this.settings.colorQuantize)},${Math.floor(g / this.settings.colorQuantize)},${Math.floor(b / this.settings.colorQuantize)}`;
+      const q = this.settings.colorQuantize;
+      const colorKey = `${Math.floor(r / q)},${Math.floor(g / q)},${Math.floor(b / q)}`;
       colorMap.set(colorKey, (colorMap.get(colorKey) || 0) + 1);
     }
 
@@ -410,9 +438,7 @@ class ColorExtractor {
       .slice(0, this.settings.dominantColorCount);
 
     const palette = sorted.map(([colorKey]) => {
-      const [r, g, b] = colorKey
-        .split(",")
-        .map((part) => parseInt(part) * this.settings.colorQuantize);
+      const [r, g, b] = colorKey.split(",").map((part) => parseInt(part) * this.settings.colorQuantize);
       return { r, g, b };
     });
 
@@ -422,7 +448,7 @@ class ColorExtractor {
   buildScheme(palette) {
     if (!palette.length) return { ...this.defaultColors };
 
-    const hslPalette = palette.map((color) => this.rgbToHsl(color));
+    const hslPalette = palette.map((color) => ColorMath.rgbToHsl(color));
 
     const primaryHSL = {
       h: hslPalette[0].h,
@@ -443,73 +469,9 @@ class ColorExtractor {
     };
 
     return {
-      primary: this.hslToRgbString(primaryHSL),
-      secondary: this.hslToRgbString(secondaryHSL),
-      accent: this.hslToRgbString(accentHSL),
-    };
-  }
-
-  hslToRgbString({ h, s, l }) {
-    const rgb = this.hslToRgb(h, s, l);
-    return `${rgb.r} ${rgb.g} ${rgb.b}`;
-  }
-
-  hslToRgb(h, s, l) {
-    h = ((h % 360) + 360) % 360;
-    s /= 100;
-    l /= 100;
-
-    const c = (1 - Math.abs(2 * l - 1)) * s;
-    const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-    const m = l - c / 2;
-
-    let r, g, b;
-    if (h < 60) [r, g, b] = [c, x, 0];
-    else if (h < 120) [r, g, b] = [x, c, 0];
-    else if (h < 180) [r, g, b] = [0, c, x];
-    else if (h < 240) [r, g, b] = [0, x, c];
-    else if (h < 300) [r, g, b] = [x, 0, c];
-    else [r, g, b] = [c, 0, x];
-
-    return {
-      r: Math.round((r + m) * 255),
-      g: Math.round((g + m) * 255),
-      b: Math.round((b + m) * 255),
-    };
-  }
-
-  rgbToHsl({ r, g, b }) {
-    r /= 255;
-    g /= 255;
-    b /= 255;
-
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    let h, s;
-    const l = (max + min) / 2;
-
-    if (max !== min) {
-      const d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      switch (max) {
-        case r:
-          h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
-          break;
-        case g:
-          h = ((b - r) / d + 2) / 6;
-          break;
-        case b:
-          h = ((r - g) / d + 4) / 6;
-          break;
-      }
-    } else {
-      h = s = 0;
-    }
-
-    return {
-      h: Math.round(h * 360),
-      s: Math.round(s * 100),
-      l: Math.round(l * 100),
+      primary: ColorMath.hslToRgbString(primaryHSL),
+      secondary: ColorMath.hslToRgbString(secondaryHSL),
+      accent: ColorMath.hslToRgbString(accentHSL),
     };
   }
 
@@ -526,9 +488,6 @@ class ColorExtractor {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// SearchUtils
-// ////////////////////////////////////////////////////////////////////////
 class SearchUtils {
   static recentKey = "mybeats.recentSearches";
   static maxRecent = 10;
@@ -566,9 +525,6 @@ class SearchUtils {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// PersistenceManager
-// ////////////////////////////////////////////////////////////////////////
 class PersistenceManager {
   static STORAGE_KEYS = {
     LAST_SONG: "mybeats_last_song",
@@ -599,42 +555,40 @@ class PersistenceManager {
     this.bind();
   }
 
-  // ----------------------------------------------
-  // Lifecycle
-  // ----------------------------------------------
   restore() {
     if (this.hasRestored) return;
     this.hasRestored = true;
 
+    const keys = PersistenceManager.STORAGE_KEYS;
+
     try {
-      const vol = localStorage.getItem(PersistenceManager.STORAGE_KEYS.VOLUME);
+      const vol = localStorage.getItem(keys.VOLUME);
       if (vol !== null) {
         this.state.volume = parseFloat(vol);
         this.audioPlayer.setVolume(this.state.volume);
       }
 
-      const muted = localStorage.getItem(PersistenceManager.STORAGE_KEYS.MUTED);
+      const muted = localStorage.getItem(keys.MUTED);
       if (muted !== null) {
         this.state.isMuted = muted === "true";
-        if (this.state.isMuted) this.audioPlayer.audio.volume = 0;
-        else this.audioPlayer.audio.volume = this.state.volume;
+        this.audioPlayer.audio.volume = this.state.isMuted ? 0 : this.state.volume;
       }
 
-      const rate = localStorage.getItem(PersistenceManager.STORAGE_KEYS.PLAYBACK_RATE);
+      const rate = localStorage.getItem(keys.PLAYBACK_RATE);
       if (rate !== null) {
         this.state.playbackRate = parseFloat(rate);
         this.audioPlayer.audio.playbackRate = this.state.playbackRate;
       }
 
-      const repeat = localStorage.getItem(PersistenceManager.STORAGE_KEYS.REPEAT_MODE);
+      const repeat = localStorage.getItem(keys.REPEAT_MODE);
       if (repeat !== null) this.state.repeatMode = repeat;
 
-      const shuffled = localStorage.getItem(PersistenceManager.STORAGE_KEYS.SHUFFLED);
+      const shuffled = localStorage.getItem(keys.SHUFFLED);
       if (shuffled !== null) this.state.isShuffled = shuffled === "true";
 
-      const savedQueue = localStorage.getItem(PersistenceManager.STORAGE_KEYS.QUEUE);
-      const savedIdx = localStorage.getItem(PersistenceManager.STORAGE_KEYS.QUEUE_INDEX);
-      const lastSong = localStorage.getItem(PersistenceManager.STORAGE_KEYS.LAST_SONG);
+      const savedQueue = localStorage.getItem(keys.QUEUE);
+      const savedIdx = localStorage.getItem(keys.QUEUE_INDEX);
+      const lastSong = localStorage.getItem(keys.LAST_SONG);
 
       if (savedQueue && savedIdx !== null && lastSong) {
         const queue = JSON.parse(savedQueue);
@@ -646,21 +600,18 @@ class PersistenceManager {
           this.state.queueIndex = idx;
           this.state.currentSong = song;
 
-          const savedTime = parseFloat(
-            localStorage.getItem(PersistenceManager.STORAGE_KEYS.CURRENT_TIME) || "0"
-          );
-          const wasPlaying =
-            localStorage.getItem(PersistenceManager.STORAGE_KEYS.IS_PLAYING) === "true";
+          const savedTime = parseFloat(localStorage.getItem(keys.CURRENT_TIME) || "0");
+          const wasPlaying = localStorage.getItem(keys.IS_PLAYING) === "true";
 
           this.audioPlayer.restorePlaybackState(song, queue, savedTime, wasPlaying);
         }
       }
 
-      const recent = localStorage.getItem(PersistenceManager.STORAGE_KEYS.RECENTLY_PLAYED);
+      const recent = localStorage.getItem(keys.RECENTLY_PLAYED);
       if (recent) {
         try {
           this.state.recentlyPlayed = JSON.parse(recent);
-        } catch (e) {}
+        } catch {}
       }
 
       if (window.uiManager) {
@@ -711,34 +662,17 @@ class PersistenceManager {
     };
   }
 
-  // ----------------------------------------------
-  // Save
-  // ----------------------------------------------
   save(immediate = false) {
     if (!this.state.currentSong) return;
 
     const doSave = () => {
+      const keys = PersistenceManager.STORAGE_KEYS;
       try {
-        localStorage.setItem(
-          PersistenceManager.STORAGE_KEYS.LAST_SONG,
-          JSON.stringify(this.state.currentSong)
-        );
-        localStorage.setItem(
-          PersistenceManager.STORAGE_KEYS.QUEUE,
-          JSON.stringify(this.state.queue)
-        );
-        localStorage.setItem(
-          PersistenceManager.STORAGE_KEYS.QUEUE_INDEX,
-          this.state.queueIndex.toString()
-        );
-        localStorage.setItem(
-          PersistenceManager.STORAGE_KEYS.IS_PLAYING,
-          this.state.isPlaying.toString()
-        );
-        localStorage.setItem(
-          PersistenceManager.STORAGE_KEYS.RECENTLY_PLAYED,
-          JSON.stringify(this.state.recentlyPlayed)
-        );
+        localStorage.setItem(keys.LAST_SONG, JSON.stringify(this.state.currentSong));
+        localStorage.setItem(keys.QUEUE, JSON.stringify(this.state.queue));
+        localStorage.setItem(keys.QUEUE_INDEX, this.state.queueIndex.toString());
+        localStorage.setItem(keys.IS_PLAYING, this.state.isPlaying.toString());
+        localStorage.setItem(keys.RECENTLY_PLAYED, JSON.stringify(this.state.recentlyPlayed));
 
         this.saveTime();
         this.saveVolume();
@@ -766,35 +700,19 @@ class PersistenceManager {
   }
 
   saveVolume() {
-    localStorage.setItem(
-      PersistenceManager.STORAGE_KEYS.VOLUME,
-      this.state.volume.toString()
-    );
-    localStorage.setItem(
-      PersistenceManager.STORAGE_KEYS.MUTED,
-      this.state.isMuted.toString()
-    );
-    localStorage.setItem(
-      PersistenceManager.STORAGE_KEYS.PLAYBACK_RATE,
-      this.state.playbackRate.toString()
-    );
+    const keys = PersistenceManager.STORAGE_KEYS;
+    localStorage.setItem(keys.VOLUME, this.state.volume.toString());
+    localStorage.setItem(keys.MUTED, this.state.isMuted.toString());
+    localStorage.setItem(keys.PLAYBACK_RATE, this.state.playbackRate.toString());
   }
 
   saveMode() {
-    localStorage.setItem(
-      PersistenceManager.STORAGE_KEYS.REPEAT_MODE,
-      this.state.repeatMode
-    );
-    localStorage.setItem(
-      PersistenceManager.STORAGE_KEYS.SHUFFLED,
-      this.state.isShuffled.toString()
-    );
+    const keys = PersistenceManager.STORAGE_KEYS;
+    localStorage.setItem(keys.REPEAT_MODE, this.state.repeatMode);
+    localStorage.setItem(keys.SHUFFLED, this.state.isShuffled.toString());
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// NProgress
-// ////////////////////////////////////////////////////////////////////////
 class NProgress {
   static settings = {
     minimum: 0.08,
@@ -818,7 +736,7 @@ class NProgress {
 
   static configure(options) {
     for (const key in options) {
-      if (options[key] !== undefined && this.settings.hasOwnProperty(key)) {
+      if (options[key] !== undefined && Object.prototype.hasOwnProperty.call(this.settings, key)) {
         this.settings[key] = options[key];
       }
     }
@@ -981,7 +899,7 @@ class NProgress {
 
     if (vendorPrefix + "Perspective" in bodyStyle) return "translate3d";
     else if (vendorPrefix + "Transform" in bodyStyle) return "translate";
-    else return "margin";
+    return "margin";
   }
 
   static clamp(n, min, max) {
@@ -1052,7 +970,7 @@ class NProgress {
     if (arguments.length == 2) {
       for (const prop in properties) {
         const value = properties[prop];
-        if (value !== undefined && properties.hasOwnProperty(prop)) {
+        if (value !== undefined && Object.prototype.hasOwnProperty.call(properties, prop)) {
           applyCss(element, prop, value);
         }
       }
@@ -1088,9 +1006,6 @@ class NProgress {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// Icons
-// ////////////////////////////////////////////////////////////////////////
 const Icons = {
   general: {
     close: (size = 16) =>
@@ -1146,14 +1061,16 @@ const Icons = {
   },
 };
 
-
-
 window.Config = Config;
 window.Utils = Utils;
 window.Prefs = Prefs;
-window.IdUtils = IdUtils;
+window.IdUtils = {
+  norm: Utils.normalizeId,
+  sample: Utils.sample,
+  hslToRgb: ColorMath.hslToRgb,
+};
+window.ColorMath = ColorMath;
 window.ColorExtractor = ColorExtractor;
-// window.Spinner = Spinner;
 window.SearchUtils = SearchUtils;
 window.PersistenceManager = PersistenceManager;
 window.NProgress = NProgress;
