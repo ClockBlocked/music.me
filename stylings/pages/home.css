@@ -162,6 +162,8 @@
   gap: 1rem;
 }
 
+
+/******
 @media (min-width: 700px) {
   .hp .bentoGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -174,6 +176,23 @@
     grid-template-rows: minmax(500px, auto) minmax(300px, auto);
   }
 }
+*********/
+
+
+  @media (min-width: 768px) {
+    .hp .bentoGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hp .bentoGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+
+
 
 /* ---- Music Card ---- */
 .hp .musicCard {
