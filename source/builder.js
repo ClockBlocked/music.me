@@ -1,9 +1,3 @@
-
-
-
-// ////////////////////////////////////////////////////////////////////////
-// Page Rendering
-// ////////////////////////////////////////////////////////////////////////
 class UIManager {
   constructor(state, audioPlayer, favorites) {
     this.state = state;
@@ -24,9 +18,7 @@ class UIManager {
     this.favTabLoading = false;
     this.artistTabLoading = false;
 
-    // Navigation is now delegated entirely to AppNavigator
     this.navigator = new AppNavigator(this);
-
     this.player = new PlayerManager(this);
     this.search = new Search(this);
     this.contentEvents = new ContentEvents(this);
@@ -35,7 +27,7 @@ class UIManager {
     this.favoritesPage = new Favorites(this);
     this.playlistsPage = new Playlists(this);
     this.editPlaylistPage = new EditPlaylist(this);
-    this.createPlaylistPage = new CreatePlaylist(this);   // <- NEW
+    this.createPlaylistPage = new CreatePlaylist(this);
     this.artistPage = new Artists(this);
     this.errorPage = new Error404(this);
 
@@ -48,9 +40,6 @@ class UIManager {
     });
   }
 
-  // ----------------------------------------------
-  // Init / navigation
-  // ----------------------------------------------
   init() {
     this.render = this.render.bind(this);
     this.navigate = this.navigate.bind(this);
@@ -61,10 +50,6 @@ class UIManager {
     window.addEventListener("popstate", this.handlePopState);
   }
 
-  /**
-   * Public API used by inline handlers and other classes.
-   * Positional signature kept for backward compatibility.
-   */
   navigate(page, artistId = null, albumId = null) {
     if (!this.skipProgress && window.NProgress) NProgress.start();
     this.skipProgress = false;
@@ -88,9 +73,6 @@ class UIManager {
     return this.navigator.goCreatePlaylist?.() ?? this.navigator.go("createPlaylist");
   }
 
-  // ----------------------------------------------
-  // Render
-  // ----------------------------------------------
   render() {
     this.main = document.getElementById("main-content");
     this.scrollToTop();
@@ -123,7 +105,7 @@ class UIManager {
       favorites: () => this.favoritesPage.render(),
       playlists: () => this.playlistsPage.render(),
       editPlaylist: () => this.editPlaylistPage.render(),
-      createPlaylist: () => this.createPlaylistPage.render(),   // <- NEW
+      createPlaylist: () => this.createPlaylistPage.render(),
       artist: () => this.artistPage.render(),
       404: () => this.errorPage.render(),
     };
@@ -152,9 +134,6 @@ class UIManager {
     }, 300);
   }
 
-  // ----------------------------------------------
-  // Content factories
-  // ----------------------------------------------
   scrollSection(title, cards) {
     return `<section data-area="scroll" class="section container"><h2 class="section-header">${title}</h2><div class="scroll-row">${cards.join("")}</div></section>`;
   }
@@ -264,10 +243,9 @@ class UIManager {
     this.audioPlayer.playSong(startSong, queue.length ? queue : null, true, "album");
   }
 
-  // ----------------------------------------------
-  // Theme / settings
-  // ----------------------------------------------
-  toggleTheme() { Prefs.applyTheme(Prefs.nextToggle()); }
+  toggleTheme() {
+    Prefs.applyTheme(Prefs.nextToggle());
+  }
 
   showSettingsModal() {
     const popups = window.popups;
@@ -308,7 +286,11 @@ class UIManager {
     `;
 
     popups.modal({
-      title: "Settings", size: "md", content, closable: true, autoClose: false,
+      title: "Settings",
+      size: "md",
+      content,
+      closable: true,
+      autoClose: false,
       onClose: () => {
         document.documentElement.classList.remove("modal-open");
         document.body.classList.remove("modal-open");
@@ -338,29 +320,46 @@ class UIManager {
 
     content.querySelector("#pref-fade")?.addEventListener("change", (e) => {
       Prefs.set("fadeTransitions", e.target.checked);
-      popups.toast({ message: e.target.checked ? "Fade transitions on" : "Fade transitions off" });
+      popups.toast({
+        message: e.target.checked ? "Fade transitions on" : "Fade transitions off",
+      });
     });
 
     content.querySelector("#pref-radio")?.addEventListener("change", (e) => {
       Prefs.set("radioAutoplay", e.target.checked);
-      popups.toast({ message: e.target.checked ? "Radio autoplay on" : "Radio autoplay off" });
+      popups.toast({
+        message: e.target.checked ? "Radio autoplay on" : "Radio autoplay off",
+      });
     });
 
     setTimeout(() => {
-      content.querySelector(".popups-theme-card.active, .popups-theme-card, input, button")?.focus();
+      content
+        .querySelector(".popups-theme-card.active, .popups-theme-card, input, button")
+        ?.focus();
     }, 50);
   }
 
-  // ----------------------------------------------
-  // Passthroughs / delegators
-  // ----------------------------------------------
-  openSearch()  { this.search.openSearch(); }
-  closeSearch() { this.search.closeSearch(); }
-  showArtistPopover(artistId, event) { this.contentEvents.showArtistPopover(artistId, event); }
-  closePlayerDrawer() { this.player.closeDrawer(); }
-  openPlayerDrawer()  { this.player.openDrawer(); }
-  updateMiniPlayer()  { this.player.renderMiniPlayer(); }
-  updateProgressOnly() { this.player.updateProgressOnly(); }
+  openSearch() {
+    this.search.openSearch();
+  }
+  closeSearch() {
+    this.search.closeSearch();
+  }
+  showArtistPopover(artistId, event) {
+    this.contentEvents.showArtistPopover(artistId, event);
+  }
+  closePlayerDrawer() {
+    this.player.closeDrawer();
+  }
+  openPlayerDrawer() {
+    this.player.openDrawer();
+  }
+  updateMiniPlayer() {
+    this.player.renderMiniPlayer();
+  }
+  updateProgressOnly() {
+    this.player.updateProgressOnly();
+  }
 
   updateFullPlayer() {
     const drawer = document.getElementById("full-player-drawer");
@@ -370,10 +369,19 @@ class UIManager {
 
   showShortcutsHelp() {
     const shortcuts = [
-      ["Space", "Play / Pause"], ["←", "Previous track"], ["→", "Next track"],
-      ["↑", "Volume up"], ["↓", "Volume down"], ["M", "Mute"],
-      ["L", "Favorite current song"], ["S", "Shuffle"], ["R", "Cycle repeat mode"],
-      ["Q", "Up Next queue"], ["Ctrl/⌘ + K", "Search"], ["?", "This help"], ["Esc", "Close dialogs"],
+      ["Space", "Play / Pause"],
+      ["←", "Previous track"],
+      ["→", "Next track"],
+      ["↑", "Volume up"],
+      ["↓", "Volume down"],
+      ["M", "Mute"],
+      ["L", "Favorite current song"],
+      ["S", "Shuffle"],
+      ["R", "Cycle repeat mode"],
+      ["Q", "Up Next queue"],
+      ["Ctrl/⌘ + K", "Search"],
+      ["?", "This help"],
+      ["Esc", "Close dialogs"],
     ];
     this.state.modalOpen(`
       <div data-modal="shortcuts" class="shortcuts-help">
@@ -382,17 +390,18 @@ class UIManager {
           <button onclick="window.closeModal()" class="close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
         </div>
         <div data-list="shortcuts" class="grid">
-          ${shortcuts.map(([key, description]) => `
+          ${shortcuts
+            .map(
+              ([key, description]) => `
             <div class="row"><span class="desc">${description}</span><kbd class="kbd">${key}</kbd></div>
-          `).join("")}
+          `
+            )
+            .join("")}
         </div>
       </div>
     `);
   }
 
-  // ----------------------------------------------
-  // Scrolling / refresh
-  // ----------------------------------------------
   scrollToTop(duration = 500) {
     const startY = window.scrollY;
     const startTime = performance.now();
@@ -440,16 +449,23 @@ class UIManager {
   }
 
   likeStatus(type, isFavorite, isHovered, tempState) {
-    if (tempState === "error" || tempState === "exclamation") return `<i class="fa-solid fa-heart-circle-exclamation error-icon"></i>`;
-    if (tempState === "check" || tempState === "confirm") return `<i class="fa-solid fa-heart-circle-check confirm-icon"></i>`;
-    if (isFavorite) return isHovered ? `<i class="fa-solid fa-heart-circle-minus hover-liked-icon"></i>` : `<i class="fa-solid fa-heart liked-icon"></i>`;
-    return isHovered ? `<i class="fa-solid fa-heart-circle-plus hover-not-liked-icon"></i>` : `<i class="fa-solid fa-heart not-liked-icon"></i>`;
+    if (tempState === "error" || tempState === "exclamation") {
+      return `<i class="fa-solid fa-heart-circle-exclamation error-icon"></i>`;
+    }
+    if (tempState === "check" || tempState === "confirm") {
+      return `<i class="fa-solid fa-heart-circle-check confirm-icon"></i>`;
+    }
+    if (isFavorite) {
+      return isHovered
+        ? `<i class="fa-solid fa-heart-circle-minus hover-liked-icon"></i>`
+        : `<i class="fa-solid fa-heart liked-icon"></i>`;
+    }
+    return isHovered
+      ? `<i class="fa-solid fa-heart-circle-plus hover-not-liked-icon"></i>`
+      : `<i class="fa-solid fa-heart not-liked-icon"></i>`;
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// Event Listeners
-// ////////////////////////////////////////////////////////////////////////
 class AppListeners {
   static global(ui) {
     return [
@@ -469,7 +485,12 @@ class AppListeners {
           if (!target) return;
           const { artistId, albumId, songId, playlistId } = target.dataset;
           if (window.contextMenu?.show) {
-            window.contextMenu.show(e.clientX, e.clientY, { artistId, albumId, songId, playlistId });
+            window.contextMenu.show(e.clientX, e.clientY, {
+              artistId,
+              albumId,
+              songId,
+              playlistId,
+            });
           }
         },
       },
@@ -488,18 +509,45 @@ class AppListeners {
           if (e.ctrlKey || e.metaKey || e.altKey) return;
 
           switch (e.code) {
-            case "Space":      e.preventDefault(); ui.audioPlayer.togglePlay(); break;
-            case "ArrowLeft":  e.preventDefault(); ui.audioPlayer.skipBack(); break;
-            case "ArrowRight": e.preventDefault(); ui.audioPlayer.skipForward(); break;
-            case "ArrowUp":    e.preventDefault(); ui.audioPlayer.setVolume(ui.state.volume + 0.05); break;
-            case "ArrowDown":  e.preventDefault(); ui.audioPlayer.setVolume(ui.state.volume - 0.05); break;
-            case "KeyM":       ui.audioPlayer.toggleMute(); break;
-            case "KeyL":       if (ui.state.currentSong) ui.toggleFavAndReRender(ui.state.currentSong.id); break;
-            case "KeyS":       ui.audioPlayer.toggleShuffle(); break;
-            case "KeyR":       ui.audioPlayer.cycleRepeat(); break;
+            case "Space":
+              e.preventDefault();
+              ui.audioPlayer.togglePlay();
+              break;
+            case "ArrowLeft":
+              e.preventDefault();
+              ui.audioPlayer.skipBack();
+              break;
+            case "ArrowRight":
+              e.preventDefault();
+              ui.audioPlayer.skipForward();
+              break;
+            case "ArrowUp":
+              e.preventDefault();
+              ui.audioPlayer.setVolume(ui.state.volume + 0.05);
+              break;
+            case "ArrowDown":
+              e.preventDefault();
+              ui.audioPlayer.setVolume(ui.state.volume - 0.05);
+              break;
+            case "KeyM":
+              ui.audioPlayer.toggleMute();
+              break;
+            case "KeyL":
+              if (ui.state.currentSong) ui.toggleFavAndReRender(ui.state.currentSong.id);
+              break;
+            case "KeyS":
+              ui.audioPlayer.toggleShuffle();
+              break;
+            case "KeyR":
+              ui.audioPlayer.cycleRepeat();
+              break;
             case "KeyQ":
-              if (!ui.state.isDrawerOpen) { ui.openPlayerDrawer(); ui.player.openQueue(); }
-              else ui.player.toggleQueue();
+              if (!ui.state.isDrawerOpen) {
+                ui.openPlayerDrawer();
+                ui.player.openQueue();
+              } else {
+                ui.player.toggleQueue();
+              }
               break;
             case "Escape":
               if (ui.state.isDrawerOpen) ui.closePlayerDrawer();
@@ -522,11 +570,7 @@ class AppListeners {
 
   static init(ui) {
     return [
-      {
-        el: window,
-        type: "popstate",
-        handler: () => ui.navigator.onPopState(),
-      },
+      { el: window, type: "popstate", handler: () => ui.navigator.onPopState() },
       {
         el: document.getElementById("breadcrumb-toggle"),
         type: "click",
@@ -585,13 +629,20 @@ class AppListeners {
         },
       },
       {
-        immediate: () => { Prefs.applyTheme(Prefs.theme(), { persist: false }); },
+        immediate: () => {
+          Prefs.applyTheme(Prefs.theme(), { persist: false });
+        },
       },
     ];
   }
 
-  static add(ui) { return []; }
-  static remove(ui) { return []; }
+  static add(ui) {
+    return [];
+  }
+
+  static remove(ui) {
+    return [];
+  }
 
   static bindAll(ui) {
     const bindList = [];
@@ -613,9 +664,6 @@ class AppListeners {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// Binders
-// ////////////////////////////////////////////////////////////////////////
 class ContentEvents {
   constructor(ui) {
     this.ui = ui;
@@ -623,17 +671,26 @@ class ContentEvents {
     this.popups.ui = ui;
   }
 
-  esc(text = "") { return Utils.esc(text); }
+  esc(text = "") {
+    return Utils.esc(text);
+  }
 
   setupHeartButton(btn, type, id) {
     window.heartManager?.bindAll(btn?.parentElement || document);
   }
 
-  attachHeartEvents() { window.heartManager?.bindAll(document); }
+  attachHeartEvents() {
+    window.heartManager?.bindAll(document);
+  }
 
-  // ---------------------------------------------------------------
-  // Playlist editor (shared by edit + create pages)
-  // ---------------------------------------------------------------
+  showArtistPopover(artistId, event) {
+    return this.popups.showArtistPopover(artistId, event);
+  }
+
+  showSongMenu(songId, event) {
+    return this.popups.showSongMenu(songId, event);
+  }
+
   attachPlaylistEditorEvents(pageKey) {
     const state = this.ui.state;
     const isCreate = pageKey === "createPlaylist";
@@ -649,7 +706,6 @@ class ContentEvents {
     );
     if (!root) return;
 
-    // ---- persistence helpers -------------------------------------
     const commitField = (field, value) => {
       if (isCreate) {
         playlist[field] = value;
@@ -661,12 +717,19 @@ class ContentEvents {
     };
 
     const commitTags = (tags) => {
-      if (isCreate) { playlist.tags = tags; return; }
+      if (isCreate) {
+        playlist.tags = tags;
+        return;
+      }
       window.favoritesPlaylists.updateTags(id, tags);
     };
 
     const commitOrder = (songs) => {
-      if (isCreate) { playlist.songs = songs; this.ui.render(); return; }
+      if (isCreate) {
+        playlist.songs = songs;
+        this.ui.render();
+        return;
+      }
       window.favoritesPlaylists.reorderSongs(id, songs);
       this.ui.render();
     };
@@ -691,11 +754,10 @@ class ContentEvents {
       }
     };
 
-    // ---- field bindings ------------------------------------------
     const nameInput = root.querySelector("#edit-pl-name, #create-pl-name");
     const descInput = root.querySelector("#edit-pl-desc, #create-pl-desc");
-    const tagWrap   = root.querySelector("#edit-pl-tags, #create-pl-tags");
-    const list      = root.querySelector("#edit-playlist-songs, #create-playlist-songs");
+    const tagWrap = root.querySelector("#edit-pl-tags, #create-pl-tags");
+    const list = root.querySelector("#edit-playlist-songs, #create-playlist-songs");
 
     if (nameInput) {
       nameInput.addEventListener("input", () => {
@@ -709,7 +771,9 @@ class ContentEvents {
     }
 
     if (descInput) {
-      descInput.addEventListener("input", () => { playlist.description = descInput.value; });
+      descInput.addEventListener("input", () => {
+        playlist.description = descInput.value;
+      });
       descInput.addEventListener("change", () => commitField("description", descInput.value));
     }
 
@@ -720,7 +784,10 @@ class ContentEvents {
         e.preventDefault();
         const raw = input.value.trim();
         if (!raw) return;
-        const vals = raw.split(/[,;]/).map((s) => s.trim()).filter(Boolean);
+        const vals = raw
+          .split(/[,;]/)
+          .map((s) => s.trim())
+          .filter(Boolean);
         const tags = [...(playlist.tags || [])];
         vals.forEach((value) => {
           if (!tags.includes(value) && tags.length < 8) tags.push(value);
@@ -739,9 +806,7 @@ class ContentEvents {
       });
     }
 
-    // ---- toolbar actions ----------------------------------------
     root.querySelectorAll("[data-action]").forEach((btn) => {
-      // Skip song-level actions; handled below
       if (btn.dataset.action === "remove-song") return;
 
       btn.addEventListener("click", (e) => {
@@ -753,15 +818,13 @@ class ContentEvents {
             state.draftPlaylist = null;
             this.ui.navigate("playlists");
             break;
-
           case "done":
             this.ui.navigate("playlists");
             break;
-
           case "create": {
             const draft = state.draftPlaylist;
             if (!draft || !draft.name.trim()) return;
-            const newId = (crypto?.randomUUID?.() ?? `pl_${Date.now()}`);
+            const newId = crypto?.randomUUID?.() ?? `pl_${Date.now()}`;
             state.playlists.unshift({
               id: newId,
               name: draft.name.trim(),
@@ -777,11 +840,9 @@ class ContentEvents {
             this.ui.navigate("playlists");
             break;
           }
-
           case "delete-playlist":
             window.favoritesPlaylists._confirmDelete(id);
             break;
-
           case "shuffle-play": {
             const queue = isCreate
               ? (playlist.songs || []).map((sid) => state.getSongById(sid)).filter(Boolean)
@@ -792,19 +853,15 @@ class ContentEvents {
             }
             break;
           }
-
           case "add-songs":
             this.ui.navigate("library");
             break;
-
           case "change-cover":
-            // Hook for future cover upload; no-op for now.
             break;
         }
       });
     });
 
-    // ---- drag to reorder ----------------------------------------
     if (list) {
       let dragIdx = null;
       list.querySelectorAll(".edit-playlist-song-row").forEach((row) => {
@@ -812,19 +869,23 @@ class ContentEvents {
           dragIdx = parseInt(row.dataset.index, 10);
           row.classList.add("dragging");
           e.dataTransfer.effectAllowed = "move";
-          try { e.dataTransfer.setData("text/plain", String(dragIdx)); } catch {}
+          try {
+            e.dataTransfer.setData("text/plain", String(dragIdx));
+          } catch {}
         });
         row.addEventListener("dragend", () => {
           row.classList.remove("dragging");
-          list.querySelectorAll(".edit-playlist-song-row")
-              .forEach((r) => r.classList.remove("drop-target"));
+          list
+            .querySelectorAll(".edit-playlist-song-row")
+            .forEach((r) => r.classList.remove("drop-target"));
           dragIdx = null;
         });
         row.addEventListener("dragover", (e) => {
           e.preventDefault();
           e.dataTransfer.dropEffect = "move";
-          list.querySelectorAll(".edit-playlist-song-row")
-              .forEach((r) => r.classList.remove("drop-target"));
+          list
+            .querySelectorAll(".edit-playlist-song-row")
+            .forEach((r) => r.classList.remove("drop-target"));
           row.classList.add("drop-target");
         });
         row.addEventListener("drop", (e) => {
@@ -846,9 +907,6 @@ class ContentEvents {
       });
     }
   }
-
-  showArtistPopover(artistId, event) { return this.popups.showArtistPopover(artistId, event); }
-  showSongMenu(songId, event) { return this.popups.showSongMenu(songId, event); }
 
   attachContentEvents() {
     window.heartManager?.prune();
@@ -898,9 +956,13 @@ class ContentEvents {
         const startIndex = currentQueue.length;
         this.ui.state.queue = [...currentQueue, ...queue];
         if (this.ui.state.currentSong && startIndex === currentQueue.length) {
-          this.ui.state.queueIndex = this.ui.state.queue.findIndex((s) => s.id == this.ui.state.currentSong.id);
+          this.ui.state.queueIndex = this.ui.state.queue.findIndex(
+            (s) => s.id == this.ui.state.currentSong.id
+          );
         }
-        this.ui.state.showToast(`Added ${queue.length} song${queue.length === 1 ? "" : "s"} to queue`);
+        this.ui.state.showToast(
+          `Added ${queue.length} song${queue.length === 1 ? "" : "s"} to queue`
+        );
       });
     });
 
@@ -917,7 +979,9 @@ class ContentEvents {
           if (queue.length) {
             this.ui.audioPlayer.playSong(
               queue.find((s) => IdUtils.norm(s.id) === IdUtils.norm(songId)),
-              queue, true, "album"
+              queue,
+              true,
+              "album"
             );
             return;
           }
@@ -925,7 +989,8 @@ class ContentEvents {
         if (el.dataset.playlistId) {
           const queue = this.ui.state.buildPlaylistQueue(el.dataset.playlistId);
           if (queue.length) {
-            const startSong = queue.find((s) => IdUtils.norm(s.id) === IdUtils.norm(songId)) || queue[0];
+            const startSong =
+              queue.find((s) => IdUtils.norm(s.id) === IdUtils.norm(songId)) || queue[0];
             this.ui.audioPlayer.playSong(startSong, queue, true, "playlist");
             return;
           }
@@ -963,7 +1028,9 @@ class ContentEvents {
       if (el._plViewBound) return;
       el._plViewBound = true;
       el.addEventListener("click", () => {
-        const playlist = this.ui.state.playlists.find((p) => p.name === el.dataset.playlistView);
+        const playlist = this.ui.state.playlists.find(
+          (p) => p.name === el.dataset.playlistView
+        );
         if (!playlist) return;
         this.ui.navigator.goPlaylist(playlist.id);
       });
@@ -1023,21 +1090,27 @@ class ContentEvents {
         createPlBtn.addEventListener("click", () => this.ui.createPlaylist());
       }
 
-      document.querySelectorAll(".playlist-name-input, .playlist-description-input").forEach((el) => {
-        el.addEventListener("input", (e) => {
-          const playlist = this.ui.state.playlists.find((p) => p.id === e.target.dataset.playlistId);
-          if (playlist) {
-            playlist[e.target.dataset.field] = e.target.value;
-            this.ui.state.persist();
-          }
+      document
+        .querySelectorAll(".playlist-name-input, .playlist-description-input")
+        .forEach((el) => {
+          el.addEventListener("input", (e) => {
+            const playlist = this.ui.state.playlists.find(
+              (p) => p.id === e.target.dataset.playlistId
+            );
+            if (playlist) {
+              playlist[e.target.dataset.field] = e.target.value;
+              this.ui.state.persist();
+            }
+          });
         });
-      });
 
       document.querySelectorAll(".tag-input").forEach((input) => {
         input.addEventListener("keydown", (e) => {
           if (e.key !== "Enter" || !e.target.value.trim()) return;
           e.preventDefault();
-          const playlist = this.ui.state.playlists.find((p) => p.id === e.target.dataset.playlistId);
+          const playlist = this.ui.state.playlists.find(
+            (p) => p.id === e.target.dataset.playlistId
+          );
           if (!playlist) return;
           const newTag = e.target.value.trim();
           if (!playlist.tags) playlist.tags = [];
@@ -1048,7 +1121,11 @@ class ContentEvents {
           const chip = document.createElement("span");
           chip.className = "tag-chip animate-fadeIn";
           chip.style.background = "rgba(var(--bg-interactive))";
-          const safeTag = newTag.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+          const safeTag = newTag
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
           chip.innerHTML = `${safeTag} <button class="remove-tag-btn" data-tag="${safeTag}">×</button>`;
           e.target.closest(".tags-container").insertBefore(chip, e.target);
           chip.querySelector(".remove-tag-btn").addEventListener("click", (ce) => {
@@ -1077,9 +1154,13 @@ class ContentEvents {
       document.querySelectorAll(".remove-from-playlist-btn").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           e.stopPropagation();
-          const playlist = this.ui.state.playlists.find((p) => p.id === btn.dataset.playlistId);
+          const playlist = this.ui.state.playlists.find(
+            (p) => p.id === btn.dataset.playlistId
+          );
           if (playlist) {
-            playlist.songs = playlist.songs.filter((sid) => String(sid) !== String(btn.dataset.songId));
+            playlist.songs = playlist.songs.filter(
+              (sid) => String(sid) !== String(btn.dataset.songId)
+            );
             this.ui.state.persist();
             btn.closest(".song-row").remove();
           }
@@ -1089,11 +1170,16 @@ class ContentEvents {
       document.querySelectorAll(".share-playlist-btn").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           e.stopPropagation();
-          const playlist = this.ui.state.playlists.find((p) => p.id === btn.dataset.playlistId);
+          const playlist = this.ui.state.playlists.find(
+            (p) => p.id === btn.dataset.playlistId
+          );
           if (!playlist) return;
           const shareText = `Playlist: ${playlist.name}\n${playlist.songs.length} songs\n${playlist.description || ""}`;
           if (navigator.share) navigator.share({ title: playlist.name, text: shareText });
-          else navigator.clipboard?.writeText(shareText).then(() => this.ui.state.showToast("Playlist copied to clipboard"));
+          else
+            navigator.clipboard
+              ?.writeText(shareText)
+              .then(() => this.ui.state.showToast("Playlist copied to clipboard"));
         });
       });
     }
@@ -1135,7 +1221,9 @@ class ContentEvents {
             if (firstSong) window.favoritesPlaylists?.addToPlaylistModal?.(firstSong);
             break;
           }
-          case "view-artist": this.ui.navigate("artist", artistId); break;
+          case "view-artist":
+            this.ui.navigate("artist", artistId);
+            break;
           case "play-artist": {
             const artist = state.getArtistById(artistId);
             if (artist?.albums?.length) {
@@ -1161,14 +1249,20 @@ class ContentEvents {
             }
             break;
           }
-          case "edit-playlist": this.ui.editPlaylist(playlistId); break;
+          case "edit-playlist":
+            this.ui.editPlaylist(playlistId);
+            break;
           case "share-playlist": {
-            const playlist = state.playlists.find((p) => String(p.id) === String(playlistId));
+            const playlist = state.playlists.find(
+              (p) => String(p.id) === String(playlistId)
+            );
             if (!playlist) return;
             const shareText = `Playlist: ${playlist.name}\n${playlist.songs.length} songs\n${playlist.description || ""}`;
             if (navigator.share) navigator.share({ title: playlist.name, text: shareText });
             else if (navigator.clipboard?.writeText) {
-              navigator.clipboard.writeText(shareText).then(() => state.showToast("Playlist copied to clipboard"));
+              navigator.clipboard
+                .writeText(shareText)
+                .then(() => state.showToast("Playlist copied to clipboard"));
             }
             break;
           }
@@ -1191,9 +1285,6 @@ class ContentEvents {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// Service worker coche
-// ////////////////////////////////////////////////////////////////////////
 class OfflineCache {
   constructor(state) {
     this.state = state;
@@ -1204,8 +1295,11 @@ class OfflineCache {
 
   normalizeUrl(song) {
     if (!song?.downloadPath) return "";
-    try { return new URL(song.downloadPath, window.location.origin).href; }
-    catch (e) { return song.downloadPath; }
+    try {
+      return new URL(song.downloadPath, window.location.origin).href;
+    } catch (e) {
+      return song.downloadPath;
+    }
   }
 
   isCached(song) {
@@ -1244,7 +1338,8 @@ class OfflineCache {
       }
     };
     if (navigator.serviceWorker?.controller) send();
-    else if (navigator.serviceWorker?.ready) navigator.serviceWorker.ready.then(send).catch(() => {});
+    else if (navigator.serviceWorker?.ready)
+      navigator.serviceWorker.ready.then(send).catch(() => {});
   }
 
   cacheSong(song) {
@@ -1253,8 +1348,14 @@ class OfflineCache {
       this.state.showToast("Offline caching unavailable");
       return;
     }
-    if (this.isCached(song)) { this.state.showToast("Already available offline"); return; }
-    navigator.serviceWorker.controller.postMessage({ type: "CACHE_SONG", url: this.normalizeUrl(song) });
+    if (this.isCached(song)) {
+      this.state.showToast("Already available offline");
+      return;
+    }
+    navigator.serviceWorker.controller.postMessage({
+      type: "CACHE_SONG",
+      url: this.normalizeUrl(song),
+    });
     this.state.showToast("Caching song for offline…");
   }
 
@@ -1275,7 +1376,10 @@ class OfflineCache {
       request.onsuccess = () => {
         try {
           const db = request.result;
-          if (!db.objectStoreNames.contains("songs")) { db.close(); return; }
+          if (!db.objectStoreNames.contains("songs")) {
+            db.close();
+            return;
+          }
           const tx = db.transaction("songs", "readwrite");
           tx.objectStore("songs").delete(url);
           tx.oncomplete = () => db.close();
@@ -1305,9 +1409,6 @@ class OfflineCache {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// Top-bar search overlay + dropdown results
-// ////////////////////////////////////////////////////////////////////////
 class Search {
   constructor(ui) {
     this.ui = ui;
@@ -1325,8 +1426,11 @@ class Search {
     if (searchBar) {
       searchBar.classList.remove("hidden");
       searchBar.style.opacity = "0";
-      requestAnimationFrame(() => { searchBar.style.opacity = "1"; });
-      if (window.innerWidth > 768) setTimeout(() => document.getElementById("search-input")?.focus(), 150);
+      requestAnimationFrame(() => {
+        searchBar.style.opacity = "1";
+      });
+      if (window.innerWidth > 768)
+        setTimeout(() => document.getElementById("search-input")?.focus(), 150);
     }
     this.resetResults();
     this.bindKeyboard();
@@ -1354,7 +1458,8 @@ class Search {
     if (!el) {
       el = document.createElement("div");
       el.id = "search-results-container";
-      const host = document.querySelector("#search-bar .panel") || document.getElementById("search-bar");
+      const host =
+        document.querySelector("#search-bar .panel") || document.getElementById("search-bar");
       host?.appendChild(el);
     }
     return el;
@@ -1362,7 +1467,10 @@ class Search {
 
   resetResults() {
     const el = document.getElementById("search-results-container");
-    if (el) { el.className = "results hidden"; el.innerHTML = ""; }
+    if (el) {
+      el.className = "results hidden";
+      el.innerHTML = "";
+    }
     this.activeIndex = -1;
     this.lastQueue = null;
   }
@@ -1372,7 +1480,10 @@ class Search {
     const query = (this.ui.state.searchQuery || "").trim();
     const el = this.getResultsEl();
     if (!el) return;
-    if (!query) { this.resetResults(); return; }
+    if (!query) {
+      this.resetResults();
+      return;
+    }
     el.className = "srResults";
     el.innerHTML = this.renderDropdown();
     this.activeIndex = -1;
@@ -1390,8 +1501,17 @@ class Search {
       return t.includes(lower) ? 1 : 0;
     };
 
-    const songHits = state.getAllSongs()
-      .map((song) => ({ kind: "song", ref: song, sc: Math.max(score(song.title), score(song.artist) * 0.65, score(song.album) * 0.65) }))
+    const songHits = state
+      .getAllSongs()
+      .map((song) => ({
+        kind: "song",
+        ref: song,
+        sc: Math.max(
+          score(song.title),
+          score(song.artist) * 0.65,
+          score(song.album) * 0.65
+        ),
+      }))
       .filter((h) => h.sc > 0)
       .sort((a, b) => b.sc - a.sc);
 
@@ -1408,8 +1528,12 @@ class Search {
           albumHits.push({
             kind: "album",
             ref: {
-              artistId: a.id, albumId: alb.id, artistName: a.artist, albumName: alb.album,
-              coverUrl: alb.coverUrl, year: alb.year || "",
+              artistId: a.id,
+              albumId: alb.id,
+              artistName: a.artist,
+              albumName: alb.album,
+              coverUrl: alb.coverUrl,
+              year: alb.year || "",
               songCount: alb.songs ? alb.songs.length : 0,
             },
             sc,
@@ -1424,7 +1548,10 @@ class Search {
       .filter((h) => h.sc > 0)
       .sort((a, b) => b.sc - a.sc);
 
-    const top = [artistHits[0], songHits[0], albumHits[0], playlistHits[0]].filter(Boolean).sort((a, b) => b.sc - a.sc)[0] || null;
+    const top =
+      [artistHits[0], songHits[0], albumHits[0], playlistHits[0]]
+        .filter(Boolean)
+        .sort((a, b) => b.sc - a.sc)[0] || null;
     const without = (list) => list.filter((h) => !top || h.ref !== top.ref);
 
     return {
@@ -1436,19 +1563,28 @@ class Search {
     };
   }
 
-  escapeText(text) { return Utils.esc(text == null ? "" : String(text)); }
+  escapeText(text) {
+    return Utils.esc(text == null ? "" : String(text));
+  }
 
   highlightText(text, query) {
     const escaped = this.escapeText(text);
     const needle = this.escapeText(query.trim());
     if (!needle) return escaped;
-    const rx = new RegExp("(" + needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig");
+    const rx = new RegExp(
+      "(" + needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")",
+      "ig"
+    );
     return escaped.replace(rx, '<mark class="sr-hl">$1</mark>');
   }
 
   renderHero(top, query) {
     const kindLabel = { song: "Song", artist: "Artist", album: "Album", playlist: "Playlist" };
-    let art = "", title = "", sub = "", attrs = "", playBtn = "";
+    let art = "";
+    let title = "";
+    let sub = "";
+    let attrs = "";
+    let playBtn = "";
 
     if (top.kind === "song") {
       const s = top.ref;
@@ -1556,14 +1692,31 @@ class Search {
       `;
     }
 
-    const section = (label, inner) => `<section class="srSection"><h4 class="srLabel">${label}</h4>${inner}</section>`;
+    const section = (label, inner) =>
+      `<section class="srSection"><h4 class="srLabel">${label}</h4>${inner}</section>`;
 
     let html = "";
     if (top) html += this.renderHero(top, query);
-    if (songs.length) html += section("Songs", `<div class="srRows">${songs.map((h, i) => this.songRow(h.ref, i, query)).join("")}</div>`);
-    if (albums.length) html += section("Albums", `<div class="srCards">${albums.map((h, i) => this.albumCard(h.ref, i, query)).join("")}</div>`);
-    if (artists.length) html += section("Artists", `<div class="srCards">${artists.map((h, i) => this.artistCard(h.ref, i, query)).join("")}</div>`);
-    if (playlists.length) html += section("Playlists", `<div class="srRows">${playlists.map((h, i) => this.playlistRow(h.ref, i, query)).join("")}</div>`);
+    if (songs.length)
+      html += section(
+        "Songs",
+        `<div class="srRows">${songs.map((h, i) => this.songRow(h.ref, i, query)).join("")}</div>`
+      );
+    if (albums.length)
+      html += section(
+        "Albums",
+        `<div class="srCards">${albums.map((h, i) => this.albumCard(h.ref, i, query)).join("")}</div>`
+      );
+    if (artists.length)
+      html += section(
+        "Artists",
+        `<div class="srCards">${artists.map((h, i) => this.artistCard(h.ref, i, query)).join("")}</div>`
+      );
+    if (playlists.length)
+      html += section(
+        "Playlists",
+        `<div class="srRows">${playlists.map((h, i) => this.playlistRow(h.ref, i, query)).join("")}</div>`
+      );
 
     html += `
       <div class="srFoot">
@@ -1583,7 +1736,12 @@ class Search {
     if (d.srSong) {
       const song = ui.state.getSongById(d.srSong);
       if (song) {
-        ui.audioPlayer.playSong(song, this.lastQueue && this.lastQueue.length ? this.lastQueue : null, true, "search");
+        ui.audioPlayer.playSong(
+          song,
+          this.lastQueue && this.lastQueue.length ? this.lastQueue : null,
+          true,
+          "search"
+        );
       }
       this.closeSearch();
       return;
@@ -1605,7 +1763,9 @@ class Search {
       return;
     }
     if (d.srPlaylist) {
-      const playlist = (ui.state.playlists || []).find((p) => String(p.id) === String(d.srPlaylist));
+      const playlist = (ui.state.playlists || []).find(
+        (p) => String(p.id) === String(d.srPlaylist)
+      );
       if (playlist) ui.navigator.goPlaylist(playlist.id);
       this.closeSearch();
     }
@@ -1623,7 +1783,11 @@ class Search {
           return;
         }
         const play = e.target.closest("[data-sr-play]");
-        if (play) { e.stopPropagation(); this.activateItem(play, true); return; }
+        if (play) {
+          e.stopPropagation();
+          this.activateItem(play, true);
+          return;
+        }
         const item = e.target.closest("[data-sr-item]");
         if (item) {
           if (e.target.closest("[data-fav-song]")) return;
@@ -1631,9 +1795,9 @@ class Search {
         }
       });
     }
-    container.querySelectorAll("[data-fav-song]").forEach((btn) =>
-      this.ui.contentEvents.setupHeartButton(btn, "song", btn.dataset.favSong)
-    );
+    container
+      .querySelectorAll("[data-fav-song]")
+      .forEach((btn) => this.ui.contentEvents.setupHeartButton(btn, "song", btn.dataset.favSong));
   }
 
   bindKeyboard() {
@@ -1648,9 +1812,10 @@ class Search {
       if (e.key === "ArrowDown" || e.key === "ArrowUp") {
         if (!items.length) return;
         e.preventDefault();
-        this.activeIndex = e.key === "ArrowDown"
-          ? (this.activeIndex + 1) % items.length
-          : (this.activeIndex - 1 + items.length) % items.length;
+        this.activeIndex =
+          e.key === "ArrowDown"
+            ? (this.activeIndex + 1) % items.length
+            : (this.activeIndex - 1 + items.length) % items.length;
         items.forEach((el, i) => el.classList.toggle("sr-active", i === this.activeIndex));
         items[this.activeIndex].scrollIntoView?.({ block: "nearest" });
       } else if (e.key === "Enter") {
@@ -1660,14 +1825,8 @@ class Search {
       }
     });
   }
-
-  attachCategoryCollapse() {}
-  attachSearchDropdownEvents() {}
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// Right-click / long-press actions
-// ////////////////////////////////////////////////////////////////////////
 class ContextMenu {
   constructor() {
     this.el = null;
@@ -1677,10 +1836,14 @@ class ContextMenu {
   init() {
     document.addEventListener("click", () => this.hide());
 
-    document.addEventListener("scroll", (e) => {
-      if (this.el && this.el.contains(e.target)) return;
-      this.hide();
-    }, true);
+    document.addEventListener(
+      "scroll",
+      (e) => {
+        if (this.el && this.el.contains(e.target)) return;
+        this.hide();
+      },
+      true
+    );
 
     window.addEventListener("resize", () => this.hide());
 
@@ -1772,18 +1935,67 @@ class ContextMenu {
         const state = window.uiManager?.state;
 
         switch (action) {
-          case "play-song": { const song = state?.getSongById(id); if (song) window.uiManager.audioPlayer.playSong(song, null, true, "context"); break; }
-          case "fav-song": { const song = state?.getSongById(id); if (song) window.uiManager.favorites.toggleSong(song); break; }
-          case "add-playlist": { const song = state?.getSongById(id); if (song) window.favoritesPlaylists?.addToPlaylistModal?.(song); break; }
-          case "play-album": { const q = Utils.albumQueue(state, artistId, albumId); if (q.length) window.uiManager.audioPlayer.playSong(q[0], q, true, "album"); break; }
-          case "shuffle-album": { const q = Utils.albumQueue(state, artistId, albumId); if (q.length) { const sh = Utils.shuffle(q); window.uiManager.audioPlayer.playSong(sh[0], sh, true, "album"); } break; }
-          case "view-album": window.uiManager.navigate("artist", artistId, albumId); break;
-          case "view-artist": window.uiManager.navigate("artist", artistId); break;
-          case "play-artist": { const artist = state?.getArtistById(artistId); if (artist?.albums?.length) { const q = Utils.albumQueue(state, artistId, artist.albums[0].id); if (q.length) window.uiManager.audioPlayer.playSong(q[0], q, true, "album"); } break; }
-          case "fav-artist": window.favoritesPlaylists?.toggleArtist?.(artistId); break;
-          case "play-playlist": { const q = state?.buildPlaylistQueue(playlistId); if (q?.length) window.uiManager.audioPlayer.playSong(q[0], q, true, "playlist"); break; }
-          case "shuffle-playlist": { const q = state?.buildPlaylistQueue(playlistId); if (q?.length) { const sh = Utils.shuffle(q); window.uiManager.audioPlayer.playSong(sh[0], sh, true, "playlist"); } break; }
-          case "edit-playlist": window.uiManager.editPlaylist(playlistId); break;
+          case "play-song": {
+            const song = state?.getSongById(id);
+            if (song) window.uiManager.audioPlayer.playSong(song, null, true, "context");
+            break;
+          }
+          case "fav-song": {
+            const song = state?.getSongById(id);
+            if (song) window.uiManager.favorites.toggleSong(song);
+            break;
+          }
+          case "add-playlist": {
+            const song = state?.getSongById(id);
+            if (song) window.favoritesPlaylists?.addToPlaylistModal?.(song);
+            break;
+          }
+          case "play-album": {
+            const q = Utils.albumQueue(state, artistId, albumId);
+            if (q.length) window.uiManager.audioPlayer.playSong(q[0], q, true, "album");
+            break;
+          }
+          case "shuffle-album": {
+            const q = Utils.albumQueue(state, artistId, albumId);
+            if (q.length) {
+              const sh = Utils.shuffle(q);
+              window.uiManager.audioPlayer.playSong(sh[0], sh, true, "album");
+            }
+            break;
+          }
+          case "view-album":
+            window.uiManager.navigate("artist", artistId, albumId);
+            break;
+          case "view-artist":
+            window.uiManager.navigate("artist", artistId);
+            break;
+          case "play-artist": {
+            const artist = state?.getArtistById(artistId);
+            if (artist?.albums?.length) {
+              const q = Utils.albumQueue(state, artistId, artist.albums[0].id);
+              if (q.length) window.uiManager.audioPlayer.playSong(q[0], q, true, "album");
+            }
+            break;
+          }
+          case "fav-artist":
+            window.favoritesPlaylists?.toggleArtist?.(artistId);
+            break;
+          case "play-playlist": {
+            const q = state?.buildPlaylistQueue(playlistId);
+            if (q?.length) window.uiManager.audioPlayer.playSong(q[0], q, true, "playlist");
+            break;
+          }
+          case "shuffle-playlist": {
+            const q = state?.buildPlaylistQueue(playlistId);
+            if (q?.length) {
+              const sh = Utils.shuffle(q);
+              window.uiManager.audioPlayer.playSong(sh[0], sh, true, "playlist");
+            }
+            break;
+          }
+          case "edit-playlist":
+            window.uiManager.editPlaylist(playlistId);
+            break;
         }
         this.hide();
       });
