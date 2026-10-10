@@ -208,7 +208,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/starboy.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/starboy.webp",
         sold: "2x Platinum",
       },
       {
@@ -358,7 +358,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/afterhours.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/afterhours.webp",
         sold: "3x Platinum",
       },
       {
@@ -508,12 +508,12 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/beautybehindthemadness.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/beautybehindthemadness.webp",
         sold: "6x Platinum",
       },
     ],
     portrait:
-      "https://clockblocked.github.io/music.me/content/artistPortraits/theweeknd.jpg",
+      "https://clockblocked.github.io/music.me/content/artistPortraits/theweeknd.webp",
     similar: [],
   },
   {
@@ -658,7 +658,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/fearless.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/fearless.webp",
         sold: "Diamond",
       },
       {
@@ -798,7 +798,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/1989.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/1989.webp",
         sold: "9x Platinum",
       },
       {
@@ -968,7 +968,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/red.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/red.webp",
         sold: "7x Platinum",
       },
       {
@@ -1128,7 +1128,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/reputation.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/reputation.webp",
         sold: "3x Platinum",
       },
       {
@@ -1318,7 +1318,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/lover.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/lover.webp",
         sold: "3x Platinum",
       },
       {
@@ -1488,7 +1488,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/folklore.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/folklore.webp",
         sold: "2x Platinum",
       },
       {
@@ -1648,12 +1648,12 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/evermore.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/evermore.webp",
         sold: "Platinum",
       },
     ],
     portrait:
-      "https://clockblocked.github.io/music.me/content/artistPortraits/taylorswift.jpg",
+      "https://clockblocked.github.io/music.me/content/artistPortraits/taylorswift.webp",
     similar: [
       "6308",
       "5381",
@@ -1789,7 +1789,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/starsdance.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/starsdance.webp",
         sold: "Platinum",
       },
       {
@@ -1949,7 +1949,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/foryou.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/foryou.webp",
         sold: "Platinum",
       },
       {
@@ -2069,12 +2069,12 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/revival.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/revival.webp",
         sold: "2x Platinum",
       },
     ],
     portrait:
-      "https://clockblocked.github.io/music.me/content/artistPortraits/selenagomez.jpg",
+      "https://clockblocked.github.io/music.me/content/artistPortraits/selenagomez.webp",
     similar: [
       "6308",
       "3729",
@@ -2251,7 +2251,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/thefame.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/thefame.webp",
         sold: "6x Platinum",
       },
       {
@@ -2341,7 +2341,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/thefamemonster.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/thefamemonster.webp",
         sold: "5x Platinum",
       },
       {
@@ -2491,12 +2491,12 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/bornthisway.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/bornthisway.webp",
         sold: "4x Platinum",
       },
     ],
     portrait:
-      "https://clockblocked.github.io/music.me/content/artistPortraits/ladygaga.jpg",
+      "https://clockblocked.github.io/music.me/content/artistPortraits/ladygaga.webp",
     similar: ["3054", "9055", "1117", "6308", "4590", "2679", "7645", "4686"],
     similarUnresolved: [
       "Miley Cyrus",
@@ -2608,7 +2608,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/8247.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/8247.webp",
         sold: "Gold",
       },
       {
@@ -2778,7 +2778,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/regionalatbest.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/regionalatbest.webp",
         sold: "",
       },
       {
@@ -2908,7 +2908,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/vessel.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/vessel.webp",
         sold: "Gold",
       },
       {
@@ -3058,7 +3058,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/blurryface.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/blurryface.webp",
         sold: "6x Platinum",
       },
       {
@@ -3218,7 +3218,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/trench.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/trench.webp",
         sold: "Platinum",
       },
       {
@@ -3318,12 +3318,12 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/scaledandicy.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/scaledandicy.webp",
         sold: "Platinum",
       },
     ],
     portrait:
-      "https://clockblocked.github.io/music.me/content/artistPortraits/twentyonepilots.jpg",
+      "https://clockblocked.github.io/music.me/content/artistPortraits/twentyonepilots.webp",
     similar: ["8718", "5900", "7742", "2679"],
     similarUnresolved: [
       "FUN",
@@ -3450,7 +3450,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/popular.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/popular.webp",
         sold: "",
       },
       {
@@ -3490,7 +3490,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/songsaboutjane.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/songsaboutjane.webp",
         sold: "5x Platinum",
       },
       {
@@ -3680,7 +3680,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/itwontbesoonbeforelong.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/itwontbesoonbeforelong.webp",
         sold: "2x Platinum",
       },
       {
@@ -3800,7 +3800,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/v.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/v.webp",
         sold: "3x Platinum",
       },
       {
@@ -3910,7 +3910,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/redpillblues.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/redpillblues.webp",
         sold: "Platinum",
       },
       {
@@ -4040,12 +4040,12 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/jordi.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/jordi.webp",
         sold: "Gold",
       },
     ],
     portrait:
-      "https://clockblocked.github.io/music.me/content/artistPortraits/maroon5.jpg",
+      "https://clockblocked.github.io/music.me/content/artistPortraits/maroon5.webp",
     similar: ["8099", "4507", "6488", "8718", "5900", "2679", "7742"],
     similarUnresolved: [
       "Green Day",
@@ -4190,7 +4190,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/musicofthesun.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/musicofthesun.webp",
         sold: "Gold",
       },
       {
@@ -4292,7 +4292,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/agirllikeme.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/agirllikeme.webp",
         sold: "2x Platinum",
       },
       {
@@ -4422,7 +4422,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/goodgirlgonebad.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/goodgirlgonebad.webp",
         sold: "7x Platinum",
       },
       {
@@ -4562,7 +4562,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/ratedr.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/ratedr.webp",
         sold: "2x Platinum",
       },
       {
@@ -4682,7 +4682,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/loud.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/loud.webp",
         sold: "5x Platinum",
       },
       {
@@ -4714,12 +4714,12 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://clockblocked.github.io/music.me/content/albumCovers/talkthattalk.jpg",
+          "https://clockblocked.github.io/music.me/content/albumCovers/talkthattalk.webp",
         sold: "Platinum",
       },
     ],
     portrait:
-      "https://clockblocked.github.io/music.me/content/artistPortraits/rihanna.jpg",
+      "https://clockblocked.github.io/music.me/content/artistPortraits/rihanna.webp",
     similar: ["1850", "4383", "7556", "3616", "6308", "5381", "4686"],
     similarUnresolved: [
       "Beyoncé",
@@ -4867,7 +4867,7 @@ window.catalogue = [
             trackNumber: 12,
           },
         ],
-        artwork: "https://mybeats.cloud/content/albumCovers/oneoftheboys.jpg",
+        artwork: "https://mybeats.cloud/content/albumCovers/oneoftheboys.webp",
         sold: "Platinum",
       },
       {
@@ -4996,7 +4996,7 @@ window.catalogue = [
             trackNumber: 12,
           },
         ],
-        artwork: "https://mybeats.cloud/content/albumCovers/teenagedream.jpg",
+        artwork: "https://mybeats.cloud/content/albumCovers/teenagedream.webp",
         sold: "Diamond",
       },
       {
@@ -5135,11 +5135,11 @@ window.catalogue = [
             trackNumber: 13,
           },
         ],
-        artwork: "https://mybeats.cloud/content/albumCovers/prism.jpg",
+        artwork: "https://mybeats.cloud/content/albumCovers/prism.webp",
         sold: "Platinum",
       },
     ],
-    portrait: "https://mybeats.cloud/content/artistPortraits/katyperry.jpg",
+    portrait: "https://mybeats.cloud/content/artistPortraits/katyperry.webp",
     similar: ["7556", "2679", "6308", "4686", "5381"],
     similarUnresolved: [
       "Beyoncé",
@@ -5270,7 +5270,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://mybeats.cloud/content/albumCovers/inthelonelyhour.jpg",
+          "https://mybeats.cloud/content/albumCovers/inthelonelyhour.webp",
         sold: "5x Platinum",
       },
       {
@@ -5380,7 +5380,7 @@ window.catalogue = [
           },
         ],
         artwork:
-          "https://mybeats.cloud/content/albumCovers/thethrillofitall.jpg",
+          "https://mybeats.cloud/content/albumCovers/thethrillofitall.webp",
         sold: "Platinum",
       },
       {
@@ -5499,7 +5499,7 @@ window.catalogue = [
             trackNumber: 11,
           },
         ],
-        artwork: "https://mybeats.cloud/content/albumCovers/lovegoes.jpg",
+        artwork: "https://mybeats.cloud/content/albumCovers/lovegoes.webp",
         sold: "Gold",
       },
       {
@@ -5638,11 +5638,11 @@ window.catalogue = [
             trackNumber: 13,
           },
         ],
-        artwork: "https://mybeats.cloud/content/albumCovers/gloria.jpg",
+        artwork: "https://mybeats.cloud/content/albumCovers/gloria.webp",
         sold: "Gold",
       },
     ],
-    portrait: "https://mybeats.cloud/content/artistPortraits/samsmith.jpg",
+    portrait: "https://mybeats.cloud/content/artistPortraits/samsmith.webp",
     similar: ["4383", "5900", "6488", "6308", "2130", "8718", "9417"],
     similarUnresolved: [
       "Charlie Puth",
