@@ -1,0 +1,114 @@
+{
+  "id": "7042",
+  "artistId": "2130",
+  "title": "Doo-Wops & Hooligans",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2130/albums/7042/artwork-160.jpg",
+    "320": "/content/artists/2130/albums/7042/artwork-320.jpg",
+    "640": "/content/artists/2130/albums/7042/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729900",
+      "title": "Grenade",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729900?title=Grenade",
+      "sources": []
+    },
+    {
+      "id": "729901",
+      "title": "Just the Way You Are",
+      "duration": "3:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729901?title=Just%20the%20Way%20You%20Are",
+      "sources": []
+    },
+    {
+      "id": "729902",
+      "title": "Our First Time",
+      "duration": "4:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729902?title=Our%20First%20Time",
+      "sources": []
+    },
+    {
+      "id": "729903",
+      "title": "Runaway Baby",
+      "duration": "2:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729903?title=Runaway%20Baby",
+      "sources": []
+    },
+    {
+      "id": "729904",
+      "title": "The Lazy Song",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729904?title=The%20Lazy%20Song",
+      "sources": []
+    },
+    {
+      "id": "729905",
+      "title": "Marry You",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729905?title=Marry%20You",
+      "sources": []
+    },
+    {
+      "id": "729906",
+      "title": "Talking to the Moon",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729906?title=Talking%20to%20the%20Moon",
+      "sources": []
+    },
+    {
+      "id": "729907",
+      "title": "Liquor Store Blues",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729907?title=Liquor%20Store%20Blues",
+      "sources": []
+    },
+    {
+      "id": "729908",
+      "title": "Count on Me",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729908?title=Count%20on%20Me",
+      "sources": []
+    },
+    {
+      "id": "729909",
+      "title": "The Other Side",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7042/songs/729909?title=The%20Other%20Side",
+      "sources": []
+    }
+  ]
+}

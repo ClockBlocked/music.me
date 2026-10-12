@@ -1,0 +1,28 @@
+{
+  "artistId": "3054",
+  "name": "Flume",
+  "albums": [
+    {
+      "id": "9221",
+      "title": "Flume",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/3054/albums/9221/artwork-160.jpg",
+        "320": "/content/artists/3054/albums/9221/artwork-320.jpg",
+        "640": "/content/artists/3054/albums/9221/artwork-640.jpg"
+      },
+      "songCount": 15
+    },
+    {
+      "id": "9222",
+      "title": "Skin",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/3054/albums/9222/artwork-160.jpg",
+        "320": "/content/artists/3054/albums/9222/artwork-320.jpg",
+        "640": "/content/artists/3054/albums/9222/artwork-640.jpg"
+      },
+      "songCount": 5
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "id": "1484",
+  "artistId": "1850",
+  "title": "Prism",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1850/albums/1484/artwork-160.jpg",
+    "320": "/content/artists/1850/albums/1484/artwork-320.jpg",
+    "640": "/content/artists/1850/albums/1484/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6586162",
+      "title": "Roar",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586162?title=Roar",
+      "sources": []
+    },
+    {
+      "id": "6586163",
+      "title": "Legendary Lovers",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586163?title=Legendary%20Lovers",
+      "sources": []
+    },
+    {
+      "id": "6586164",
+      "title": "Birthday",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586164?title=Birthday",
+      "sources": []
+    },
+    {
+      "id": "6586165",
+      "title": "Walking on Air",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586165?title=Walking%20on%20Air",
+      "sources": []
+    },
+    {
+      "id": "6586166",
+      "title": "Unconditionally",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586166?title=Unconditionally",
+      "sources": []
+    },
+    {
+      "id": "6586167",
+      "title": "Dark Horse",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586167?title=Dark%20Horse",
+      "sources": []
+    },
+    {
+      "id": "6586168",
+      "title": "This Is How We Do",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586168?title=This%20Is%20How%20We%20Do",
+      "sources": []
+    },
+    {
+      "id": "6586169",
+      "title": "International Smile",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586169?title=International%20Smile",
+      "sources": []
+    },
+    {
+      "id": "6586170",
+      "title": "Ghost",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586170?title=Ghost",
+      "sources": []
+    },
+    {
+      "id": "6586171",
+      "title": "Love Me",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586171?title=Love%20Me",
+      "sources": []
+    },
+    {
+      "id": "6586172",
+      "title": "This Moment",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586172?title=This%20Moment",
+      "sources": []
+    },
+    {
+      "id": "6586173",
+      "title": "Double Rainbow",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586173?title=Double%20Rainbow",
+      "sources": []
+    },
+    {
+      "id": "6586174",
+      "title": "By the Grace of God",
+      "duration": "4:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1484/songs/6586174?title=By%20the%20Grace%20of%20God",
+      "sources": []
+    }
+  ]
+}

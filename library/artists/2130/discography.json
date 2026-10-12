@@ -1,0 +1,50 @@
+{
+  "artistId": "2130",
+  "name": "Bruno Mars",
+  "albums": [
+    {
+      "id": "7042",
+      "title": "Doo-Wops & Hooligans",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2130/albums/7042/artwork-160.jpg",
+        "320": "/content/artists/2130/albums/7042/artwork-320.jpg",
+        "640": "/content/artists/2130/albums/7042/artwork-640.jpg"
+      },
+      "songCount": 10
+    },
+    {
+      "id": "7043",
+      "title": "Unorthodox Jukebox",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2130/albums/7043/artwork-160.jpg",
+        "320": "/content/artists/2130/albums/7043/artwork-320.jpg",
+        "640": "/content/artists/2130/albums/7043/artwork-640.jpg"
+      },
+      "songCount": 10
+    },
+    {
+      "id": "7044",
+      "title": "24K Magic",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2130/albums/7044/artwork-160.jpg",
+        "320": "/content/artists/2130/albums/7044/artwork-320.jpg",
+        "640": "/content/artists/2130/albums/7044/artwork-640.jpg"
+      },
+      "songCount": 9
+    },
+    {
+      "id": "7045",
+      "title": "An Evening with Silk Sonic",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2130/albums/7045/artwork-160.jpg",
+        "320": "/content/artists/2130/albums/7045/artwork-320.jpg",
+        "640": "/content/artists/2130/albums/7045/artwork-640.jpg"
+      },
+      "songCount": 9
+    }
+  ]
+}

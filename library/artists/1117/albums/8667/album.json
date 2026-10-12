@@ -1,0 +1,144 @@
+{
+  "id": "8667",
+  "artistId": "1117",
+  "title": "Can't Take Me Home",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1117/albums/8667/artwork-160.jpg",
+    "320": "/content/artists/1117/albums/8667/artwork-320.jpg",
+    "640": "/content/artists/1117/albums/8667/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729673",
+      "title": "Split Personality",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729673?title=Split%20Personality",
+      "sources": []
+    },
+    {
+      "id": "729674",
+      "title": "Hell Wit Ya",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729674?title=Hell%20Wit%20Ya",
+      "sources": []
+    },
+    {
+      "id": "729675",
+      "title": "Most Girls",
+      "duration": "4:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729675?title=Most%20Girls",
+      "sources": []
+    },
+    {
+      "id": "729676",
+      "title": "There You Go",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729676?title=There%20You%20Go",
+      "sources": []
+    },
+    {
+      "id": "729677",
+      "title": "You Make Me Sick",
+      "duration": "4:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729677?title=You%20Make%20Me%20Sick",
+      "sources": []
+    },
+    {
+      "id": "729678",
+      "title": "Let Me Let You Know",
+      "duration": "4:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729678?title=Let%20Me%20Let%20You%20Know",
+      "sources": []
+    },
+    {
+      "id": "729679",
+      "title": "Love Is Such a Crazy Thing",
+      "duration": "5:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729679?title=Love%20Is%20Such%20a%20Crazy%20Thing",
+      "sources": []
+    },
+    {
+      "id": "729680",
+      "title": "Private Show",
+      "duration": "4:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729680?title=Private%20Show",
+      "sources": []
+    },
+    {
+      "id": "729681",
+      "title": "Can't Take Me Home",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729681?title=Can%27t%20Take%20Me%20Home",
+      "sources": []
+    },
+    {
+      "id": "729682",
+      "title": "Stop Falling",
+      "duration": "5:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729682?title=Stop%20Falling",
+      "sources": []
+    },
+    {
+      "id": "729683",
+      "title": "Do What U Do",
+      "duration": "3:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729683?title=Do%20What%20U%20Do",
+      "sources": []
+    },
+    {
+      "id": "729684",
+      "title": "Hiccup",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729684?title=Hiccup",
+      "sources": []
+    },
+    {
+      "id": "729685",
+      "title": "Is It Love",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8667/songs/729685?title=Is%20It%20Love",
+      "sources": []
+    }
+  ]
+}

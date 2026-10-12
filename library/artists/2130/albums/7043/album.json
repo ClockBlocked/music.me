@@ -1,0 +1,114 @@
+{
+  "id": "7043",
+  "artistId": "2130",
+  "title": "Unorthodox Jukebox",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2130/albums/7043/artwork-160.jpg",
+    "320": "/content/artists/2130/albums/7043/artwork-320.jpg",
+    "640": "/content/artists/2130/albums/7043/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729910",
+      "title": "Young Girls",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729910?title=Young%20Girls",
+      "sources": []
+    },
+    {
+      "id": "729911",
+      "title": "Locked Out of Heaven",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729911?title=Locked%20Out%20of%20Heaven",
+      "sources": []
+    },
+    {
+      "id": "729912",
+      "title": "Gorilla",
+      "duration": "4:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729912?title=Gorilla",
+      "sources": []
+    },
+    {
+      "id": "729913",
+      "title": "Treasure",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729913?title=Treasure",
+      "sources": []
+    },
+    {
+      "id": "729914",
+      "title": "Moonshine",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729914?title=Moonshine",
+      "sources": []
+    },
+    {
+      "id": "729915",
+      "title": "When I Was Your Man",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729915?title=When%20I%20Was%20Your%20Man",
+      "sources": []
+    },
+    {
+      "id": "729916",
+      "title": "Natalie",
+      "duration": "3:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729916?title=Natalie",
+      "sources": []
+    },
+    {
+      "id": "729917",
+      "title": "Show Me",
+      "duration": "3:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729917?title=Show%20Me",
+      "sources": []
+    },
+    {
+      "id": "729918",
+      "title": "Money Make Her Smile",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729918?title=Money%20Make%20Her%20Smile",
+      "sources": []
+    },
+    {
+      "id": "729919",
+      "title": "If I Knew",
+      "duration": "2:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7043/songs/729919?title=If%20I%20Knew",
+      "sources": []
+    }
+  ]
+}

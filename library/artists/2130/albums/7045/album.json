@@ -1,0 +1,104 @@
+{
+  "id": "7045",
+  "artistId": "2130",
+  "title": "An Evening with Silk Sonic",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2130/albums/7045/artwork-160.jpg",
+    "320": "/content/artists/2130/albums/7045/artwork-320.jpg",
+    "640": "/content/artists/2130/albums/7045/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729929",
+      "title": "Silk Sonic Intro",
+      "duration": "1:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729929?title=Silk%20Sonic%20Intro",
+      "sources": []
+    },
+    {
+      "id": "729930",
+      "title": "Leave the Door Open",
+      "duration": "4:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729930?title=Leave%20the%20Door%20Open",
+      "sources": []
+    },
+    {
+      "id": "729931",
+      "title": "Fly As Me",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729931?title=Fly%20As%20Me",
+      "sources": []
+    },
+    {
+      "id": "729932",
+      "title": "After Last Night",
+      "duration": "4:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729932?title=After%20Last%20Night",
+      "sources": []
+    },
+    {
+      "id": "729933",
+      "title": "Smokin Out the Window",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729933?title=Smokin%20Out%20the%20Window",
+      "sources": []
+    },
+    {
+      "id": "729934",
+      "title": "Put On a Smile",
+      "duration": "4:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729934?title=Put%20On%20a%20Smile",
+      "sources": []
+    },
+    {
+      "id": "729935",
+      "title": "777",
+      "duration": "2:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729935?title=777",
+      "sources": []
+    },
+    {
+      "id": "729936",
+      "title": "Skate",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729936?title=Skate",
+      "sources": []
+    },
+    {
+      "id": "729937",
+      "title": "Blast Off",
+      "duration": "4:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7045/songs/729937?title=Blast%20Off",
+      "sources": []
+    }
+  ]
+}

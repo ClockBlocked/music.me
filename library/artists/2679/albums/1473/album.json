@@ -1,0 +1,144 @@
+{
+  "id": "1473",
+  "artistId": "2679",
+  "title": "Gloria",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2679/albums/1473/artwork-160.jpg",
+    "320": "/content/artists/2679/albums/1473/artwork-320.jpg",
+    "640": "/content/artists/2679/albums/1473/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729504",
+      "title": "Love Me More",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729504?title=Love%20Me%20More",
+      "sources": []
+    },
+    {
+      "id": "729505",
+      "title": "No God",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729505?title=No%20God",
+      "sources": []
+    },
+    {
+      "id": "729506",
+      "title": "Hurting Interlude",
+      "duration": "0:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729506?title=Hurting%20Interlude",
+      "sources": []
+    },
+    {
+      "id": "729507",
+      "title": "Lose You",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729507?title=Lose%20You",
+      "sources": []
+    },
+    {
+      "id": "729508",
+      "title": "Perfect",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729508?title=Perfect",
+      "sources": []
+    },
+    {
+      "id": "729509",
+      "title": "Unholy",
+      "duration": "2:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729509?title=Unholy",
+      "sources": []
+    },
+    {
+      "id": "729510",
+      "title": "How to Cry",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729510?title=How%20to%20Cry",
+      "sources": []
+    },
+    {
+      "id": "729511",
+      "title": "Six Shots",
+      "duration": "2:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729511?title=Six%20Shots",
+      "sources": []
+    },
+    {
+      "id": "729512",
+      "title": "Gimme",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729512?title=Gimme",
+      "sources": []
+    },
+    {
+      "id": "729513",
+      "title": "Dorothy's Interlude",
+      "duration": "0:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729513?title=Dorothy%27s%20Interlude",
+      "sources": []
+    },
+    {
+      "id": "729514",
+      "title": "I'm Not Here to Make Friends",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729514?title=I%27m%20Not%20Here%20to%20Make%20Friends",
+      "sources": []
+    },
+    {
+      "id": "729515",
+      "title": "Gloria",
+      "duration": "1:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729515?title=Gloria",
+      "sources": []
+    },
+    {
+      "id": "729516",
+      "title": "Who We Love",
+      "duration": "2:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1473/songs/729516?title=Who%20We%20Love",
+      "sources": []
+    }
+  ]
+}

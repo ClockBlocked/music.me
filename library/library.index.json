@@ -1,0 +1,215 @@
+{
+  "version": 2,
+  "artists": [
+    {
+      "id": "1117",
+      "name": "Pink",
+      "genre": "Pop",
+      "albumCount": 6
+    },
+    {
+      "id": "1850",
+      "name": "Katy Perry",
+      "genre": "Pop",
+      "albumCount": 3
+    },
+    {
+      "id": "2130",
+      "name": "Bruno Mars",
+      "genre": "Pop",
+      "albumCount": 4
+    },
+    {
+      "id": "2679",
+      "name": "Sam Smith",
+      "genre": "Pop",
+      "albumCount": 4
+    },
+    {
+      "id": "3054",
+      "name": "Flume",
+      "genre": "Electronic",
+      "albumCount": 2
+    },
+    {
+      "id": "3616",
+      "name": "Britney Spears",
+      "genre": "Pop",
+      "albumCount": 7
+    },
+    {
+      "id": "3729",
+      "name": "Avril Lavigne",
+      "genre": "Pop Rock",
+      "albumCount": 7
+    },
+    {
+      "id": "4294",
+      "name": "Jason Derulo",
+      "genre": "Pop",
+      "albumCount": 5
+    },
+    {
+      "id": "4295",
+      "name": "Taylor Swift",
+      "genre": "Pop",
+      "albumCount": 7
+    },
+    {
+      "id": "4383",
+      "name": "Adele",
+      "genre": "Pop",
+      "albumCount": 4
+    },
+    {
+      "id": "4403",
+      "name": "Bebe Rexha",
+      "genre": "Pop",
+      "albumCount": 2
+    },
+    {
+      "id": "4507",
+      "name": "Thomas Rhett",
+      "genre": "Country",
+      "albumCount": 5
+    },
+    {
+      "id": "4590",
+      "name": "Fifth Harmony",
+      "genre": "Pop",
+      "albumCount": 3
+    },
+    {
+      "id": "4637",
+      "name": "Louis Tomlinson",
+      "genre": "Pop",
+      "albumCount": 2
+    },
+    {
+      "id": "4686",
+      "name": "Rihanna",
+      "genre": "Pop, R&B",
+      "albumCount": 6
+    },
+    {
+      "id": "5381",
+      "name": "Selena Gomez",
+      "genre": "Pop",
+      "albumCount": 3
+    },
+    {
+      "id": "5900",
+      "name": "Ed Sheeran",
+      "genre": "Pop",
+      "albumCount": 3
+    },
+    {
+      "id": "6308",
+      "name": "Ariana Grande",
+      "genre": "Pop",
+      "albumCount": 6
+    },
+    {
+      "id": "6363",
+      "name": "The Weeknd",
+      "genre": "Unknown",
+      "albumCount": 3
+    },
+    {
+      "id": "6488",
+      "name": "John Legend",
+      "genre": "R&B",
+      "albumCount": 6
+    },
+    {
+      "id": "6613",
+      "name": "Post Malone",
+      "genre": "Hip-Hop/Rap",
+      "albumCount": 4
+    },
+    {
+      "id": "7556",
+      "name": "Lady GaGa",
+      "genre": "Pop",
+      "albumCount": 4
+    },
+    {
+      "id": "7645",
+      "name": "Demi Lovato",
+      "genre": "Pop",
+      "albumCount": 6
+    },
+    {
+      "id": "7742",
+      "name": "Nick Jonas",
+      "genre": "Pop",
+      "albumCount": 3
+    },
+    {
+      "id": "7917",
+      "name": "Charlie Puth",
+      "genre": "Pop",
+      "albumCount": 3
+    },
+    {
+      "id": "8058",
+      "name": "Sia",
+      "genre": "Pop",
+      "albumCount": 2
+    },
+    {
+      "id": "8099",
+      "name": "NF",
+      "genre": "Hip-Hop/Rap",
+      "albumCount": 5
+    },
+    {
+      "id": "8247",
+      "name": "Twenty One Pilots",
+      "genre": "Pop-alternative",
+      "albumCount": 6
+    },
+    {
+      "id": "8361",
+      "name": "Kesha",
+      "genre": "Pop",
+      "albumCount": 4
+    },
+    {
+      "id": "8718",
+      "name": "Justin Bieber",
+      "genre": "Pop",
+      "albumCount": 6
+    },
+    {
+      "id": "9055",
+      "name": "Halsey",
+      "genre": "Pop",
+      "albumCount": 4
+    },
+    {
+      "id": "9085",
+      "name": "Lorde",
+      "genre": "Pop",
+      "albumCount": 2
+    },
+    {
+      "id": "9417",
+      "name": "Ellie Goulding",
+      "genre": "Pop",
+      "albumCount": 4
+    },
+    {
+      "id": "9489",
+      "name": "Akon",
+      "genre": "R&B",
+      "albumCount": 4
+    },
+    {
+      "id": "9938",
+      "name": "Maroon 5",
+      "genre": "Pop-alternative",
+      "albumCount": 6
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "3054",
+  "name": "Flume",
+  "genre": "Electronic",
+  "portrait": {
+    "160": "/content/artists/3054/portrait-160.jpg",
+    "320": "/content/artists/3054/portrait-320.jpg",
+    "640": "/content/artists/3054/portrait-640.jpg"
+  },
+  "similar": [
+    "9055",
+    "9417"
+  ]
+}

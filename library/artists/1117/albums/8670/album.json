@@ -1,0 +1,144 @@
+{
+  "id": "8670",
+  "artistId": "1117",
+  "title": "I'm Not Dead",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1117/albums/8670/artwork-160.jpg",
+    "320": "/content/artists/1117/albums/8670/artwork-320.jpg",
+    "640": "/content/artists/1117/albums/8670/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729713",
+      "title": "Stupid Girls",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729713?title=Stupid%20Girls",
+      "sources": []
+    },
+    {
+      "id": "729714",
+      "title": "Who Knew",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729714?title=Who%20Knew",
+      "sources": []
+    },
+    {
+      "id": "729715",
+      "title": "Long Way to Happy",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729715?title=Long%20Way%20to%20Happy",
+      "sources": []
+    },
+    {
+      "id": "729716",
+      "title": "Nobody Knows",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729716?title=Nobody%20Knows",
+      "sources": []
+    },
+    {
+      "id": "729717",
+      "title": "Dear Mr. President",
+      "duration": "4:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729717?title=Dear%20Mr.%20President",
+      "sources": []
+    },
+    {
+      "id": "729718",
+      "title": "I'm Not Dead",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729718?title=I%27m%20Not%20Dead",
+      "sources": []
+    },
+    {
+      "id": "729719",
+      "title": "'Cuz I Can",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729719?title=%27Cuz%20I%20Can",
+      "sources": []
+    },
+    {
+      "id": "729720",
+      "title": "Leave Me Alone (I'm Lonely)",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729720?title=Leave%20Me%20Alone%20%28I%27m%20Lonely%29",
+      "sources": []
+    },
+    {
+      "id": "729721",
+      "title": "U + Ur Hand",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729721?title=U%20+%20Ur%20Hand",
+      "sources": []
+    },
+    {
+      "id": "729722",
+      "title": "Runaway",
+      "duration": "4:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729722?title=Runaway",
+      "sources": []
+    },
+    {
+      "id": "729723",
+      "title": "The One That Got Away",
+      "duration": "4:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729723?title=The%20One%20That%20Got%20Away",
+      "sources": []
+    },
+    {
+      "id": "729724",
+      "title": "I Got Money Now",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729724?title=I%20Got%20Money%20Now",
+      "sources": []
+    },
+    {
+      "id": "729725",
+      "title": "Conversations with My 13 Year Old Self",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8670/songs/729725?title=Conversations%20with%20My%2013%20Year%20Old%20Self",
+      "sources": []
+    }
+  ]
+}

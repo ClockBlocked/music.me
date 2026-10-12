@@ -1,0 +1,39 @@
+{
+  "artistId": "1850",
+  "name": "Katy Perry",
+  "albums": [
+    {
+      "id": "1482",
+      "title": "One of the Boys",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1850/albums/1482/artwork-160.jpg",
+        "320": "/content/artists/1850/albums/1482/artwork-320.jpg",
+        "640": "/content/artists/1850/albums/1482/artwork-640.jpg"
+      },
+      "songCount": 12
+    },
+    {
+      "id": "1483",
+      "title": "Teenage Dream",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1850/albums/1483/artwork-160.jpg",
+        "320": "/content/artists/1850/albums/1483/artwork-320.jpg",
+        "640": "/content/artists/1850/albums/1483/artwork-640.jpg"
+      },
+      "songCount": 12
+    },
+    {
+      "id": "1484",
+      "title": "Prism",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1850/albums/1484/artwork-160.jpg",
+        "320": "/content/artists/1850/albums/1484/artwork-320.jpg",
+        "640": "/content/artists/1850/albums/1484/artwork-640.jpg"
+      },
+      "songCount": 13
+    }
+  ]
+}

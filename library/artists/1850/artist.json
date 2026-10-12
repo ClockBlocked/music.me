@@ -1,0 +1,30 @@
+{
+  "id": "1850",
+  "name": "Katy Perry",
+  "genre": "Pop",
+  "portrait": {
+    "160": "/content/artists/1850/portrait-160.jpg",
+    "320": "/content/artists/1850/portrait-320.jpg",
+    "640": "/content/artists/1850/portrait-640.jpg"
+  },
+  "similar": [
+    "Beyoncé",
+    "1850",
+    "4383",
+    "7556",
+    "Nicki Minaj",
+    "Shakira",
+    "3616",
+    "6308",
+    "Jennifer Lopez",
+    "Ciara",
+    "Kesha",
+    "Christina Aguilera",
+    "5381",
+    "7645",
+    "Miley Cyrus",
+    "Madonna",
+    "4295",
+    "Sia"
+  ]
+}

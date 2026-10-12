@@ -1,0 +1,27 @@
+{
+  "id": "2679",
+  "name": "Sam Smith",
+  "genre": "Pop",
+  "portrait": {
+    "160": "/content/artists/2679/portrait-160.jpg",
+    "320": "/content/artists/2679/portrait-320.jpg",
+    "640": "/content/artists/2679/portrait-640.jpg"
+  },
+  "similar": [
+    "4383",
+    "5900",
+    "John Legend",
+    "6308",
+    "2130",
+    "Charlie Puth",
+    "Shawn Mendes",
+    "Justin Timberlake",
+    "8718",
+    "Halsey",
+    "9417",
+    "Jessie J",
+    "Khalid",
+    "Lewis Capaldi",
+    "1117"
+  ]
+}

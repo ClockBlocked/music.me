@@ -1,0 +1,134 @@
+{
+  "id": "1483",
+  "artistId": "1850",
+  "title": "Teenage Dream",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1850/albums/1483/artwork-160.jpg",
+    "320": "/content/artists/1850/albums/1483/artwork-320.jpg",
+    "640": "/content/artists/1850/albums/1483/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6586150",
+      "title": "Teenage Dream",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586150?title=Teenage%20Dream",
+      "sources": []
+    },
+    {
+      "id": "6586151",
+      "title": "Last Friday Night (T.G.I.F.)",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586151?title=Last%20Friday%20Night%20%28T.G.I.F.%29",
+      "sources": []
+    },
+    {
+      "id": "6586152",
+      "title": "California Gurls",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586152?title=California%20Gurls",
+      "sources": []
+    },
+    {
+      "id": "6586153",
+      "title": "Firework",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586153?title=Firework",
+      "sources": []
+    },
+    {
+      "id": "6586154",
+      "title": "Peacock",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586154?title=Peacock",
+      "sources": []
+    },
+    {
+      "id": "6586155",
+      "title": "Circle the Drain",
+      "duration": "4:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586155?title=Circle%20the%20Drain",
+      "sources": []
+    },
+    {
+      "id": "6586156",
+      "title": "The One That Got Away",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586156?title=The%20One%20That%20Got%20Away",
+      "sources": []
+    },
+    {
+      "id": "6586157",
+      "title": "E.T.",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586157?title=E.T.",
+      "sources": []
+    },
+    {
+      "id": "6586158",
+      "title": "Who Am I Living For?",
+      "duration": "4:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586158?title=Who%20Am%20I%20Living%20For%3F",
+      "sources": []
+    },
+    {
+      "id": "6586159",
+      "title": "Pearl",
+      "duration": "4:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586159?title=Pearl",
+      "sources": []
+    },
+    {
+      "id": "6586160",
+      "title": "Hummingbird Heartbeat",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586160?title=Hummingbird%20Heartbeat",
+      "sources": []
+    },
+    {
+      "id": "6586161",
+      "title": "Not Like the Movies",
+      "duration": "4:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1483/songs/6586161?title=Not%20Like%20the%20Movies",
+      "sources": []
+    }
+  ]
+}

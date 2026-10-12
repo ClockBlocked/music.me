@@ -1,0 +1,134 @@
+{
+  "id": "1482",
+  "artistId": "1850",
+  "title": "One of the Boys",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1850/albums/1482/artwork-160.jpg",
+    "320": "/content/artists/1850/albums/1482/artwork-320.jpg",
+    "640": "/content/artists/1850/albums/1482/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6586138",
+      "title": "One of the Boys",
+      "duration": "4:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586138?title=One%20of%20the%20Boys",
+      "sources": []
+    },
+    {
+      "id": "6586139",
+      "title": "I Kissed a Girl",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586139?title=I%20Kissed%20a%20Girl",
+      "sources": []
+    },
+    {
+      "id": "6586140",
+      "title": "Waking Up in Vegas",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586140?title=Waking%20Up%20in%20Vegas",
+      "sources": []
+    },
+    {
+      "id": "6586141",
+      "title": "Thinking of You",
+      "duration": "4:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586141?title=Thinking%20of%20You",
+      "sources": []
+    },
+    {
+      "id": "6586142",
+      "title": "Mannequin",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586142?title=Mannequin",
+      "sources": []
+    },
+    {
+      "id": "6586143",
+      "title": "Ur So Gay",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586143?title=Ur%20So%20Gay",
+      "sources": []
+    },
+    {
+      "id": "6586144",
+      "title": "Hot n Cold",
+      "duration": "3:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586144?title=Hot%20n%20Cold",
+      "sources": []
+    },
+    {
+      "id": "6586145",
+      "title": "If You Can Afford Me",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586145?title=If%20You%20Can%20Afford%20Me",
+      "sources": []
+    },
+    {
+      "id": "6586146",
+      "title": "Lost",
+      "duration": "4:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586146?title=Lost",
+      "sources": []
+    },
+    {
+      "id": "6586147",
+      "title": "Self Inflicted",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586147?title=Self%20Inflicted",
+      "sources": []
+    },
+    {
+      "id": "6586148",
+      "title": "I'm Still Breathing",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586148?title=I%27m%20Still%20Breathing",
+      "sources": []
+    },
+    {
+      "id": "6586149",
+      "title": "Fingerprints",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1850/albums/1482/songs/6586149?title=Fingerprints",
+      "sources": []
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "8669",
+  "artistId": "1117",
+  "title": "Try This",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1117/albums/8669/artwork-160.jpg",
+    "320": "/content/artists/1117/albums/8669/artwork-320.jpg",
+    "640": "/content/artists/1117/albums/8669/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729699",
+      "title": "Trouble",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729699?title=Trouble",
+      "sources": []
+    },
+    {
+      "id": "729700",
+      "title": "God Is a DJ",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729700?title=God%20Is%20a%20DJ",
+      "sources": []
+    },
+    {
+      "id": "729701",
+      "title": "Last to Know",
+      "duration": "4:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729701?title=Last%20to%20Know",
+      "sources": []
+    },
+    {
+      "id": "729702",
+      "title": "Tonight's the Night",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729702?title=Tonight%27s%20the%20Night",
+      "sources": []
+    },
+    {
+      "id": "729703",
+      "title": "Oh My God",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729703?title=Oh%20My%20God",
+      "sources": []
+    },
+    {
+      "id": "729704",
+      "title": "Catch Me While I'm Sleeping",
+      "duration": "5:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729704?title=Catch%20Me%20While%20I%27m%20Sleeping",
+      "sources": []
+    },
+    {
+      "id": "729705",
+      "title": "Waiting for Love",
+      "duration": "5:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729705?title=Waiting%20for%20Love",
+      "sources": []
+    },
+    {
+      "id": "729706",
+      "title": "Save My Life",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729706?title=Save%20My%20Life",
+      "sources": []
+    },
+    {
+      "id": "729707",
+      "title": "Try Too Hard",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729707?title=Try%20Too%20Hard",
+      "sources": []
+    },
+    {
+      "id": "729708",
+      "title": "Humble Neighborhoods",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729708?title=Humble%20Neighborhoods",
+      "sources": []
+    },
+    {
+      "id": "729709",
+      "title": "Walk Away",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729709?title=Walk%20Away",
+      "sources": []
+    },
+    {
+      "id": "729710",
+      "title": "Unwind",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729710?title=Unwind",
+      "sources": []
+    },
+    {
+      "id": "729711",
+      "title": "Love Song",
+      "duration": "2:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729711?title=Love%20Song",
+      "sources": []
+    },
+    {
+      "id": "729712",
+      "title": "Hooker",
+      "duration": "3:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8669/songs/729712?title=Hooker",
+      "sources": []
+    }
+  ]
+}

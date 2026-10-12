@@ -1,0 +1,27 @@
+{
+  "id": "1117",
+  "name": "Pink",
+  "genre": "Pop",
+  "portrait": {
+    "160": "/content/artists/1117/portrait-160.jpg",
+    "320": "/content/artists/1117/portrait-320.jpg",
+    "640": "/content/artists/1117/portrait-640.jpg"
+  },
+  "similar": [
+    "Kelly Clarkson",
+    "Christina Aguilera",
+    "7556",
+    "1850",
+    "3616",
+    "Avril Lavigne",
+    "Gwen Stefani",
+    "Alicia Keys",
+    "Miley Cyrus",
+    "Shakira",
+    "Kesha",
+    "Jessie J",
+    "4686",
+    "4295",
+    "7645"
+  ]
+}

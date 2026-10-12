@@ -1,0 +1,104 @@
+{
+  "id": "7044",
+  "artistId": "2130",
+  "title": "24K Magic",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2130/albums/7044/artwork-160.jpg",
+    "320": "/content/artists/2130/albums/7044/artwork-320.jpg",
+    "640": "/content/artists/2130/albums/7044/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729920",
+      "title": "24K Magic",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729920?title=24K%20Magic",
+      "sources": []
+    },
+    {
+      "id": "729921",
+      "title": "Chunky",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729921?title=Chunky",
+      "sources": []
+    },
+    {
+      "id": "729922",
+      "title": "Perm",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729922?title=Perm",
+      "sources": []
+    },
+    {
+      "id": "729923",
+      "title": "That's What I Like",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729923?title=That%27s%20What%20I%20Like",
+      "sources": []
+    },
+    {
+      "id": "729924",
+      "title": "Versace on the Floor",
+      "duration": "4:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729924?title=Versace%20on%20the%20Floor",
+      "sources": []
+    },
+    {
+      "id": "729925",
+      "title": "Straight Up & Down",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729925?title=Straight%20Up%20%26%20Down",
+      "sources": []
+    },
+    {
+      "id": "729926",
+      "title": "Calling All My Lovelies",
+      "duration": "4:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729926?title=Calling%20All%20My%20Lovelies",
+      "sources": []
+    },
+    {
+      "id": "729927",
+      "title": "Finesse",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729927?title=Finesse",
+      "sources": []
+    },
+    {
+      "id": "729928",
+      "title": "Too Good to Say Goodbye",
+      "duration": "4:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2130/albums/7044/songs/729928?title=Too%20Good%20to%20Say%20Goodbye",
+      "sources": []
+    }
+  ]
+}

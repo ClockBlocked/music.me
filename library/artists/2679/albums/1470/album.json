@@ -1,0 +1,114 @@
+{
+  "id": "1470",
+  "artistId": "2679",
+  "title": "In the Lonely Hour",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2679/albums/1470/artwork-160.jpg",
+    "320": "/content/artists/2679/albums/1470/artwork-320.jpg",
+    "640": "/content/artists/2679/albums/1470/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729473",
+      "title": "Money on My Mind",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729473?title=Money%20on%20My%20Mind",
+      "sources": []
+    },
+    {
+      "id": "729474",
+      "title": "Good Thing",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729474?title=Good%20Thing",
+      "sources": []
+    },
+    {
+      "id": "729475",
+      "title": "Stay with Me",
+      "duration": "2:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729475?title=Stay%20with%20Me",
+      "sources": []
+    },
+    {
+      "id": "729476",
+      "title": "Leave Your Lover",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729476?title=Leave%20Your%20Lover",
+      "sources": []
+    },
+    {
+      "id": "729477",
+      "title": "I'm Not the Only One",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729477?title=I%27m%20Not%20the%20Only%20One",
+      "sources": []
+    },
+    {
+      "id": "729478",
+      "title": "I've Told You Now",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729478?title=I%27ve%20Told%20You%20Now",
+      "sources": []
+    },
+    {
+      "id": "729479",
+      "title": "Like I Can",
+      "duration": "2:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729479?title=Like%20I%20Can",
+      "sources": []
+    },
+    {
+      "id": "729480",
+      "title": "Life Support",
+      "duration": "2:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729480?title=Life%20Support",
+      "sources": []
+    },
+    {
+      "id": "729481",
+      "title": "Not in That Way",
+      "duration": "2:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729481?title=Not%20in%20That%20Way",
+      "sources": []
+    },
+    {
+      "id": "729482",
+      "title": "Lay Me Down",
+      "duration": "4:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1470/songs/729482?title=Lay%20Me%20Down",
+      "sources": []
+    }
+  ]
+}

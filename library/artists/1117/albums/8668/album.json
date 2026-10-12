@@ -1,0 +1,144 @@
+{
+  "id": "8668",
+  "artistId": "1117",
+  "title": "Missundaztood",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1117/albums/8668/artwork-160.jpg",
+    "320": "/content/artists/1117/albums/8668/artwork-320.jpg",
+    "640": "/content/artists/1117/albums/8668/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729686",
+      "title": "M!ssundaztood",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729686?title=M!ssundaztood",
+      "sources": []
+    },
+    {
+      "id": "729687",
+      "title": "Don't Let Me Get Me",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729687?title=Don%27t%20Let%20Me%20Get%20Me",
+      "sources": []
+    },
+    {
+      "id": "729688",
+      "title": "Just Like a Pill",
+      "duration": "3:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729688?title=Just%20Like%20a%20Pill",
+      "sources": []
+    },
+    {
+      "id": "729689",
+      "title": "Get the Party Started",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729689?title=Get%20the%20Party%20Started",
+      "sources": []
+    },
+    {
+      "id": "729690",
+      "title": "Respect",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729690?title=Respect",
+      "sources": []
+    },
+    {
+      "id": "729691",
+      "title": "18 Wheeler",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729691?title=18%20Wheeler",
+      "sources": []
+    },
+    {
+      "id": "729692",
+      "title": "Family Portrait",
+      "duration": "4:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729692?title=Family%20Portrait",
+      "sources": []
+    },
+    {
+      "id": "729693",
+      "title": "Misery",
+      "duration": "4:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729693?title=Misery",
+      "sources": []
+    },
+    {
+      "id": "729694",
+      "title": "Dear Diary",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729694?title=Dear%20Diary",
+      "sources": []
+    },
+    {
+      "id": "729695",
+      "title": "Eventually",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729695?title=Eventually",
+      "sources": []
+    },
+    {
+      "id": "729696",
+      "title": "Numb",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729696?title=Numb",
+      "sources": []
+    },
+    {
+      "id": "729697",
+      "title": "Gone to California",
+      "duration": "4:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729697?title=Gone%20to%20California",
+      "sources": []
+    },
+    {
+      "id": "729698",
+      "title": "My Vietnam",
+      "duration": "5:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8668/songs/729698?title=My%20Vietnam",
+      "sources": []
+    }
+  ]
+}

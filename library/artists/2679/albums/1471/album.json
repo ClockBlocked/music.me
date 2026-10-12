@@ -1,0 +1,114 @@
+{
+  "id": "1471",
+  "artistId": "2679",
+  "title": "The Thrill of It All",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2679/albums/1471/artwork-160.jpg",
+    "320": "/content/artists/2679/albums/1471/artwork-320.jpg",
+    "640": "/content/artists/2679/albums/1471/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729483",
+      "title": "Too Good at Goodbyes",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729483?title=Too%20Good%20at%20Goodbyes",
+      "sources": []
+    },
+    {
+      "id": "729484",
+      "title": "Say It First",
+      "duration": "4:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729484?title=Say%20It%20First",
+      "sources": []
+    },
+    {
+      "id": "729485",
+      "title": "One Last Song",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729485?title=One%20Last%20Song",
+      "sources": []
+    },
+    {
+      "id": "729486",
+      "title": "Midnight Train",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729486?title=Midnight%20Train",
+      "sources": []
+    },
+    {
+      "id": "729487",
+      "title": "Burning",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729487?title=Burning",
+      "sources": []
+    },
+    {
+      "id": "729488",
+      "title": "Him",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729488?title=Him",
+      "sources": []
+    },
+    {
+      "id": "729489",
+      "title": "Baby, You Make Me Crazy",
+      "duration": "3:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729489?title=Baby,%20You%20Make%20Me%20Crazy",
+      "sources": []
+    },
+    {
+      "id": "729490",
+      "title": "No Peace",
+      "duration": "4:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729490?title=No%20Peace",
+      "sources": []
+    },
+    {
+      "id": "729491",
+      "title": "Palace",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729491?title=Palace",
+      "sources": []
+    },
+    {
+      "id": "729492",
+      "title": "Pray",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1471/songs/729492?title=Pray",
+      "sources": []
+    }
+  ]
+}

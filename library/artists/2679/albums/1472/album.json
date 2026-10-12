@@ -1,0 +1,124 @@
+{
+  "id": "1472",
+  "artistId": "2679",
+  "title": "Love Goes",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/2679/albums/1472/artwork-160.jpg",
+    "320": "/content/artists/2679/albums/1472/artwork-320.jpg",
+    "640": "/content/artists/2679/albums/1472/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729493",
+      "title": "Young",
+      "duration": "2:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729493?title=Young",
+      "sources": []
+    },
+    {
+      "id": "729494",
+      "title": "Diamonds",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729494?title=Diamonds",
+      "sources": []
+    },
+    {
+      "id": "729495",
+      "title": "Another One",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729495?title=Another%20One",
+      "sources": []
+    },
+    {
+      "id": "729496",
+      "title": "My Oasis",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729496?title=My%20Oasis",
+      "sources": []
+    },
+    {
+      "id": "729497",
+      "title": "So Serious",
+      "duration": "2:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729497?title=So%20Serious",
+      "sources": []
+    },
+    {
+      "id": "729498",
+      "title": "Dance (â€˜Til You Love Someone Else)",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729498?title=Dance%20%28â€˜Til%20You%20Love%20Someone%20Else%29",
+      "sources": []
+    },
+    {
+      "id": "729499",
+      "title": "For the Lover That I Lost",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729499?title=For%20the%20Lover%20That%20I%20Lost",
+      "sources": []
+    },
+    {
+      "id": "729500",
+      "title": "Breaking Hearts",
+      "duration": "2:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729500?title=Breaking%20Hearts",
+      "sources": []
+    },
+    {
+      "id": "729501",
+      "title": "Forgive Myself",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729501?title=Forgive%20Myself",
+      "sources": []
+    },
+    {
+      "id": "729502",
+      "title": "Love Goes",
+      "duration": "4:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729502?title=Love%20Goes",
+      "sources": []
+    },
+    {
+      "id": "729503",
+      "title": "Kids Again",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/2679/albums/1472/songs/729503?title=Kids%20Again",
+      "sources": []
+    }
+  ]
+}

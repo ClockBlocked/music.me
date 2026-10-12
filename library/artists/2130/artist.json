@@ -1,0 +1,27 @@
+{
+  "id": "2130",
+  "name": "Bruno Mars",
+  "genre": "Pop",
+  "portrait": {
+    "160": "/content/artists/2130/portrait-160.jpg",
+    "320": "/content/artists/2130/portrait-320.jpg",
+    "640": "/content/artists/2130/portrait-640.jpg"
+  },
+  "similar": [
+    "Justin Timberlake",
+    "5900",
+    "4383",
+    "9338",
+    "2679",
+    "John Legend",
+    "6308",
+    "Charlie Puth",
+    "Pharrell Williams",
+    "4294",
+    "6363",
+    "Shawn Mendes",
+    "Adam Levine",
+    "Chris Brown",
+    "7742"
+  ]
+}

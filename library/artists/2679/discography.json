@@ -1,0 +1,50 @@
+{
+  "artistId": "2679",
+  "name": "Sam Smith",
+  "albums": [
+    {
+      "id": "1470",
+      "title": "In the Lonely Hour",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2679/albums/1470/artwork-160.jpg",
+        "320": "/content/artists/2679/albums/1470/artwork-320.jpg",
+        "640": "/content/artists/2679/albums/1470/artwork-640.jpg"
+      },
+      "songCount": 10
+    },
+    {
+      "id": "1471",
+      "title": "The Thrill of It All",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2679/albums/1471/artwork-160.jpg",
+        "320": "/content/artists/2679/albums/1471/artwork-320.jpg",
+        "640": "/content/artists/2679/albums/1471/artwork-640.jpg"
+      },
+      "songCount": 10
+    },
+    {
+      "id": "1472",
+      "title": "Love Goes",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2679/albums/1472/artwork-160.jpg",
+        "320": "/content/artists/2679/albums/1472/artwork-320.jpg",
+        "640": "/content/artists/2679/albums/1472/artwork-640.jpg"
+      },
+      "songCount": 11
+    },
+    {
+      "id": "1473",
+      "title": "Gloria",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/2679/albums/1473/artwork-160.jpg",
+        "320": "/content/artists/2679/albums/1473/artwork-320.jpg",
+        "640": "/content/artists/2679/albums/1473/artwork-640.jpg"
+      },
+      "songCount": 13
+    }
+  ]
+}

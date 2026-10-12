@@ -1,0 +1,164 @@
+{
+  "id": "9221",
+  "artistId": "3054",
+  "title": "Flume",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/3054/albums/9221/artwork-160.jpg",
+    "320": "/content/artists/3054/albums/9221/artwork-320.jpg",
+    "640": "/content/artists/3054/albums/9221/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "730288",
+      "title": "Sintra",
+      "duration": "2:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730288?title=Sintra",
+      "sources": []
+    },
+    {
+      "id": "730289",
+      "title": "Holdin On",
+      "duration": "2:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730289?title=Holdin%20On",
+      "sources": []
+    },
+    {
+      "id": "730290",
+      "title": "Left Alone (feat. Chet Faker)",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730290?title=Left%20Alone%20%28feat.%20Chet%20Faker%29",
+      "sources": []
+    },
+    {
+      "id": "730291",
+      "title": "Sleepless (feat. Jezzabell Doran)",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730291?title=Sleepless%20%28feat.%20Jezzabell%20Doran%29",
+      "sources": []
+    },
+    {
+      "id": "730292",
+      "title": "On Top (feat. T.Shirt)",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730292?title=On%20Top%20%28feat.%20T.Shirt%29",
+      "sources": []
+    },
+    {
+      "id": "730293",
+      "title": "Stay Close",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730293?title=Stay%20Close",
+      "sources": []
+    },
+    {
+      "id": "730294",
+      "title": "Insane (feat. Moon Holiday)",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730294?title=Insane%20%28feat.%20Moon%20Holiday%29",
+      "sources": []
+    },
+    {
+      "id": "730295",
+      "title": "Change",
+      "duration": "2:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730295?title=Change",
+      "sources": []
+    },
+    {
+      "id": "730296",
+      "title": "Ezra",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730296?title=Ezra",
+      "sources": []
+    },
+    {
+      "id": "730297",
+      "title": "More Than You Thought",
+      "duration": "4:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730297?title=More%20Than%20You%20Thought",
+      "sources": []
+    },
+    {
+      "id": "730298",
+      "title": "Space Cadet",
+      "duration": "2:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730298?title=Space%20Cadet",
+      "sources": []
+    },
+    {
+      "id": "730299",
+      "title": "Bring You Down (feat. George Maple)",
+      "duration": "4:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730299?title=Bring%20You%20Down%20%28feat.%20George%20Maple%29",
+      "sources": []
+    },
+    {
+      "id": "730300",
+      "title": "Warm Thoughts",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730300?title=Warm%20Thoughts",
+      "sources": []
+    },
+    {
+      "id": "730301",
+      "title": "What You Need",
+      "duration": "4:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730301?title=What%20You%20Need",
+      "sources": []
+    },
+    {
+      "id": "730302",
+      "title": "Star Eyes",
+      "duration": "2:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/3054/albums/9221/songs/730302?title=Star%20Eyes",
+      "sources": []
+    }
+  ]
+}

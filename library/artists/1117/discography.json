@@ -1,0 +1,72 @@
+{
+  "artistId": "1117",
+  "name": "Pink",
+  "albums": [
+    {
+      "id": "8667",
+      "title": "Can't Take Me Home",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1117/albums/8667/artwork-160.jpg",
+        "320": "/content/artists/1117/albums/8667/artwork-320.jpg",
+        "640": "/content/artists/1117/albums/8667/artwork-640.jpg"
+      },
+      "songCount": 13
+    },
+    {
+      "id": "8668",
+      "title": "Missundaztood",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1117/albums/8668/artwork-160.jpg",
+        "320": "/content/artists/1117/albums/8668/artwork-320.jpg",
+        "640": "/content/artists/1117/albums/8668/artwork-640.jpg"
+      },
+      "songCount": 13
+    },
+    {
+      "id": "8669",
+      "title": "Try This",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1117/albums/8669/artwork-160.jpg",
+        "320": "/content/artists/1117/albums/8669/artwork-320.jpg",
+        "640": "/content/artists/1117/albums/8669/artwork-640.jpg"
+      },
+      "songCount": 14
+    },
+    {
+      "id": "8670",
+      "title": "I'm Not Dead",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1117/albums/8670/artwork-160.jpg",
+        "320": "/content/artists/1117/albums/8670/artwork-320.jpg",
+        "640": "/content/artists/1117/albums/8670/artwork-640.jpg"
+      },
+      "songCount": 13
+    },
+    {
+      "id": "8671",
+      "title": "Funhouse",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1117/albums/8671/artwork-160.jpg",
+        "320": "/content/artists/1117/albums/8671/artwork-320.jpg",
+        "640": "/content/artists/1117/albums/8671/artwork-640.jpg"
+      },
+      "songCount": 13
+    },
+    {
+      "id": "8672",
+      "title": "The Truth About Love",
+      "year": "2024",
+      "artwork": {
+        "160": "/content/artists/1117/albums/8672/artwork-160.jpg",
+        "320": "/content/artists/1117/albums/8672/artwork-320.jpg",
+        "640": "/content/artists/1117/albums/8672/artwork-640.jpg"
+      },
+      "songCount": 13
+    }
+  ]
+}

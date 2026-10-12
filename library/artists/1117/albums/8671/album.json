@@ -1,0 +1,144 @@
+{
+  "id": "8671",
+  "artistId": "1117",
+  "title": "Funhouse",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/content/artists/1117/albums/8671/artwork-160.jpg",
+    "320": "/content/artists/1117/albums/8671/artwork-320.jpg",
+    "640": "/content/artists/1117/albums/8671/artwork-640.jpg"
+  },
+  "songs": [
+    {
+      "id": "729726",
+      "title": "So What",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729726?title=So%20What",
+      "sources": []
+    },
+    {
+      "id": "729727",
+      "title": "Sober",
+      "duration": "4:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729727?title=Sober",
+      "sources": []
+    },
+    {
+      "id": "729728",
+      "title": "I Don't Believe You",
+      "duration": "4:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729728?title=I%20Don%27t%20Believe%20You",
+      "sources": []
+    },
+    {
+      "id": "729729",
+      "title": "One Foot Wrong",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729729?title=One%20Foot%20Wrong",
+      "sources": []
+    },
+    {
+      "id": "729730",
+      "title": "Please Don't Leave Me",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729730?title=Please%20Don%27t%20Leave%20Me",
+      "sources": []
+    },
+    {
+      "id": "729731",
+      "title": "Bad Influence",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729731?title=Bad%20Influence",
+      "sources": []
+    },
+    {
+      "id": "729732",
+      "title": "Funhouse",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729732?title=Funhouse",
+      "sources": []
+    },
+    {
+      "id": "729733",
+      "title": "Crystal Ball",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729733?title=Crystal%20Ball",
+      "sources": []
+    },
+    {
+      "id": "729734",
+      "title": "Mean",
+      "duration": "4:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729734?title=Mean",
+      "sources": []
+    },
+    {
+      "id": "729735",
+      "title": "It's All Your Fault",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729735?title=It%27s%20All%20Your%20Fault",
+      "sources": []
+    },
+    {
+      "id": "729736",
+      "title": "Ave Mary A",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729736?title=Ave%20Mary%20A",
+      "sources": []
+    },
+    {
+      "id": "729737",
+      "title": "Glitter in the Air",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729737?title=Glitter%20in%20the%20Air",
+      "sources": []
+    },
+    {
+      "id": "729738",
+      "title": "This Is How It Goes Down",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 0,
+      "source": "https://clockblocked.github.io/content/artists/1117/albums/8671/songs/729738?title=This%20Is%20How%20It%20Goes%20Down",
+      "sources": []
+    }
+  ]
+}
