@@ -1,8 +1,10 @@
 (async function initLibrary() {
   if (!window.MusicStore || !window.MusicStore.index) {
     const errDiv = document.createElement("div");
-    errDiv.style.cssText = "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
-    errDiv.textContent = "Initialization failed:\nwindow.MusicStore.index is missing. Ensure the index is loaded before boot.js.";
+    errDiv.style.cssText =
+      "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
+    errDiv.textContent =
+      "Initialization failed:\nwindow.MusicStore.index is missing. Ensure the index is loaded before boot.js.";
     document.body.appendChild(errDiv);
     return;
   }
@@ -13,7 +15,7 @@
 
   // In-flight promise caches so concurrent callers share one fetch.
   const _artistInflight = new Map();
-  const _albumInflight  = new Map();
+  const _albumInflight = new Map();
 
   const json = async (url) => {
     const r = await fetch(url, { cache: "default" });
@@ -30,7 +32,7 @@
     const id = String(artistId);
 
     if (window.MusicStore.artists[id]) return window.MusicStore.artists[id];
-    if (_artistInflight.has(id))     return _artistInflight.get(id);
+    if (_artistInflight.has(id)) return _artistInflight.get(id);
 
     const promise = (async () => {
       const base = `/content/artists/${id}`;
@@ -88,7 +90,9 @@
       const album = await json(url);
 
       // Make sure we have the artist record for names/genre/portrait.
-      const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
+      const artist = await window.MusicStore.loadArtist(artistId).catch(
+        () => null,
+      );
 
       const record = {
         ...album,
@@ -136,11 +140,14 @@
   window.metadata = window.MusicStore.index;
   window.state.enrichedLibrary = window.MusicStore.index;
 
-  window.uiManager = new UIManager(window.state, window.audioPlayer, window.favoritesPlaylists);
+  window.uiManager = new UIManager(
+    window.state,
+    window.audioPlayer,
+    window.favoritesPlaylists,
+  );
   window.popups.ui = window.uiManager;
   window.heartManager.store.state = window.state;
 })();
-
 
 // ------------------------------------------------------------------
 // URL helpers for the new shapes
@@ -148,20 +155,27 @@
 function artworkUrl(artwork, size = 320) {
   if (!artwork) return "";
   if (typeof artwork === "string") return artwork;
-  return artwork[size] || artwork["320"] || artwork["640"] || artwork["160"] || "";
+  return (
+    artwork[size] || artwork["320"] || artwork["640"] || artwork["160"] || ""
+  );
 }
 
 function portraitUrl(portrait, size = 160) {
   if (!portrait) return "";
   if (typeof portrait === "string") return portrait;
-  return portrait[size] || portrait["160"] || portrait["320"] || portrait["640"] || "";
+  return (
+    portrait[size] ||
+    portrait["160"] ||
+    portrait["320"] ||
+    portrait["640"] ||
+    ""
+  );
 }
 
 function pickSource(sources) {
   if (!sources || !sources.length) return "";
   return sources[0].src || "";
 }
-
 
 // ------------------------------------------------------------------
 // pagesActions (unchanged signatures + new helpers)
@@ -179,10 +193,11 @@ window.pagesActions = {
 
   getArtistById(id) {
     const sid = String(id);
-    if (window.MusicStore?.artists?.[sid]) return window.MusicStore.artists[sid];
+    if (window.MusicStore?.artists?.[sid])
+      return window.MusicStore.artists[sid];
     return (
       window.MusicStore?.index?.find(
-        (a) => String(a.id) === sid || a.artist === sid
+        (a) => String(a.id) === sid || a.artist === sid,
       ) || null
     );
   },
