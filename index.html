@@ -1971,17 +1971,30 @@ button {
 
 
 <script>
-  fetch("https://clockblocked.github.io/music.me/library/library.index.json")
-    .then(r => r.json())
-    .then(data => {
+  (async function bootstrap() {
+    try {
+      console.log("[bootstrap] fetching library.index.json");
+      const r = await fetch("https://clockblocked.github.io/music.me/library/library.index.json");
+      if (!r.ok) throw new Error(`HTTP ${r.status} for library.index.json`);
+      const data = await r.json();
       window.MusicStore = window.MusicStore || {};
-      window.MusicStore.index = data.artists;
+      window.MusicStore.index = data.artists || [];
+      console.log("[bootstrap] index loaded:", window.MusicStore.index.length, "artists");
+
       const s = document.createElement("script");
       s.src = "https://clockblocked.github.io/music.me/source/boot.js";
+      s.onerror = () => console.error("[bootstrap] boot.js failed to load");
+      s.onload = () => console.log("[bootstrap] boot.js loaded");
       document.body.appendChild(s);
-    });
+    } catch (e) {
+      console.error("[bootstrap] failed:", e);
+      const d = document.createElement("div");
+      d.style.cssText = "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
+      d.textContent = "Bootstrap failed:\n" + e.message;
+      document.body.appendChild(d);
+    }
+  })();
 </script>
-
 
 
   
