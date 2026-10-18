@@ -1,8 +1,3 @@
-
-
-
-
-
 const AUDIO_CDN_BASE = "https://pub-54216af4fb1549ff95a6cb5f8d63fe2d.r2.dev";
 
 class PlayerState {
@@ -61,58 +56,25 @@ class PlayerState {
     this.lastVolume = 1;
   }
 
-  
   getSongById(id) {
-    const sid = String(id);
-    for (const artist of this.enrichedLibrary) {
-      for (const album of artist.albums) {
-        const song = album.songs.find((s) => String(s.id) === sid);
-        if (song) {
-          return {
-            ...song,
-            artistId: artist.id,
-            albumId: album.id,
-            artist: artist.artist,
-            album: album.album,
-            artwork: album.artwork,
-          };
-        }
-      }
-    }
-    return null;
+    if (!window.MusicStore) return null;
+    return window.MusicStore.songCache.get(String(id)) || null;
   }
 
   getArtistById(id) {
+    if (!window.MusicStore) return null;
     const sid = String(id);
-    return this.enrichedLibrary.find((a) => String(a.id) === sid || a.artist === sid) || null;
+    return window.MusicStore.artists[sid] || window.MusicStore.indexById?.get(sid) || null;
   }
 
   getAlbumById(id) {
-    const sid = String(id);
-    for (const artist of this.enrichedLibrary) {
-      const album = artist.albums.find((a) => String(a.id) === sid);
-      if (album) return { ...album, artistId: artist.id, artistName: artist.artist };
-    }
-    return null;
+    if (!window.MusicStore) return null;
+    return window.MusicStore.albumCache.get(String(id)) || null;
   }
 
   getAllSongs() {
-    const songs = [];
-    for (const artist of this.enrichedLibrary) {
-      for (const album of artist.albums) {
-        for (const song of album.songs) {
-          songs.push({
-            ...song,
-            artistId: artist.id,
-            albumId: album.id,
-            artist: artist.artist,
-            album: album.album,
-            artwork: album.artwork,
-          });
-        }
-      }
-    }
-    return songs;
+    if (!window.MusicStore) return [];
+    return Array.from(window.MusicStore.songCache.values());
   }
 
   buildPlaylistQueue(playlistId) {
@@ -121,8 +83,6 @@ class PlayerState {
     return playlist.songs.map((id) => this.getSongById(id)).filter(Boolean);
   }
 
-
-  
   getPlayCount(songId) {
     return this.playCounts.get(String(songId)) || 0;
   }
@@ -132,8 +92,6 @@ class PlayerState {
     return entries.map(([id]) => this.getSongById(id)).filter(Boolean);
   }
 
-
-  
   formatTime(seconds) {
     return Utils.fmtTime(seconds);
   }
@@ -154,7 +112,6 @@ class PlayerState {
     window.popups?.closeType("modal");
   }
 }
-
 
 class AudioEngine {
   constructor(state) {
@@ -177,8 +134,6 @@ class AudioEngine {
     this.init();
   }
 
-
-  
   init() {
     this.audio.addEventListener("loadstart", () => {
       this.state.duration = 0;
@@ -231,8 +186,6 @@ class AudioEngine {
     });
   }
 
-
-  
   on(event, cb) {
     if (!this.listeners[event]) this.listeners[event] = [];
     this.listeners[event].push(cb);
@@ -252,8 +205,6 @@ class AudioEngine {
     this.mediaSessionManager = manager;
   }
 
-
-  
   playSong(song, queue = null, autoplay = true, source = null) {
     if (!song) return;
 
@@ -270,16 +221,16 @@ class AudioEngine {
     this.state.audioError = null;
     this.state.duration = 0;
 
-    const songId = song.id;
-    if (!songId) {
-      console.error("Cannot build audio URL: song has no id.");
+    const sources = Array.isArray(song.sources) ? song.sources : [];
+    this.sourceCandidates = sources.map((s) => s && s.src).filter(Boolean);
+
+    if (!this.sourceCandidates.length) {
+      console.error("Cannot play song: no sources available.");
+      this.state.audioError = song.id || null;
+      this.emit("error");
       return;
     }
 
-    this.sourceCandidates = [
-      `${AUDIO_CDN_BASE}/${songId}.mp3`,
-      `${AUDIO_CDN_BASE}/${songId}.mp3`,
-    ];
     this.sourceIndex = 0;
     this.autoplayPending = !!autoplay;
 
@@ -405,9 +356,6 @@ class AudioEngine {
     }
   }
 
-  // ----------------------------------------------
-  // Tracking
-  // ----------------------------------------------
   trackRecently(song) {
     const id = song.id;
     const existing = this.state.recentlyPlayed.find((s) => String(s.id) === String(id));
@@ -429,30 +377,49 @@ class AudioEngine {
     window.dispatchEvent(new CustomEvent("mybeats:play-counts"));
   }
 
-  restorePlaybackState(song, queue, time, wasPlaying) {
-    this.state.currentSong = song;
-    this.state.queue = queue;
-    this.state.queueIndex = queue.findIndex((s) => String(s.id) === String(song.id));
+  async restorePlaybackState(song, queue, time, wasPlaying) {
+    if (!song) return;
 
-    const songId = song.id;
-    this.sourceCandidates = songId
-      ? [`${AUDIO_CDN_BASE}/${songId}.mp3`, `${AUDIO_CDN_BASE}/${songId}.webm`]
-      : [];
+    let hydrated = window.MusicStore?.songCache?.get(String(song.id)) || null;
+    if (!hydrated && song.artistId && song.albumId) {
+      await window.MusicStore.loadAlbum(song.artistId, song.albumId).catch(() => null);
+      hydrated = window.MusicStore?.songCache?.get(String(song.id)) || null;
+    }
+
+    const record = hydrated || song;
+    const sources = Array.isArray(record.sources) ? record.sources : [];
+    this.sourceCandidates = sources.map((s) => s && s.src).filter(Boolean);
     this.sourceIndex = 0;
+
+    this.state.currentSong = record;
+    this.state.queue = queue || [record];
+    this.state.queueIndex = (this.state.queue || []).findIndex(
+      (s) => String(s.id) === String(record.id)
+    );
+    if (this.state.queueIndex < 0) this.state.queueIndex = 0;
+
     this.autoplayPending = !!wasPlaying;
 
-    this.audio.src = this.sourceCandidates[0] || "";
+    if (!this.sourceCandidates.length) {
+      this.state.audioError = record.id || null;
+      return;
+    }
+
+    this.audio.src = this.sourceCandidates[0];
     this.audio.load();
-    if (time) this.audio.currentTime = time;
+    if (time) {
+      const applySeek = () => {
+        try { this.audio.currentTime = time; } catch (e) {}
+        this.audio.removeEventListener("loadedmetadata", applySeek);
+      };
+      this.audio.addEventListener("loadedmetadata", applySeek);
+    }
     if (wasPlaying) this.audio.play().catch(() => {});
 
-    const enriched = this.state.getSongById(song.id) || song;
+    const enriched = this.state.getSongById(record.id) || record;
     this.mediaSessionManager?.updateMetadata(enriched);
   }
 
-  // ----------------------------------------------
-  // Live audio wrappers
-  // ----------------------------------------------
   get currentTime() {
     return this.audio.currentTime;
   }
@@ -470,23 +437,13 @@ class AudioEngine {
   }
 }
 
-
-
-//////////////////////   Android Media Session API  /////
-/////////////////////////////////////////////////////////
-// ┌─ I N D E X ──────────── • • •
+// ////////////////////////////////////////////////////////////////////////
+// Android Media Session API
+// ////////////////////////////////////////////////////////////////////////
 const MEDIA_SESSION_LOG_PREFIX = "[MediaSession]";
-const MEDIA_SESSION_ARTWORK_SIZES = [
-  "96x96",
-  "128x128",
-  "192x192",
-  "256x256",
-  "384x384",
-  "512x512",
-];
+const MEDIA_SESSION_ARTWORK_SIZES = ["160", "320", "640"];
 const MEDIA_SESSION_DEFAULT_SEEK_OFFSET = 10;
 const MEDIA_SESSION_POSITION_THROTTLE_MS = 1000;
-// ─────────────────────────────────────────────┘
 
 class MediaSessionManager {
   constructor(state, audioPlayer) {
@@ -552,8 +509,6 @@ class MediaSessionManager {
     document.addEventListener("visibilitychange", this.onVisibilityChange);
   }
 
-  
-// ────────────   U P D A T E R S   ────────── • • •
   updatePlaybackState() {
     if (!this.supported) return;
     navigator.mediaSession.playbackState = this.audio.paused ? "paused" : "playing";
@@ -584,37 +539,15 @@ class MediaSessionManager {
     this.audio.currentTime = Math.min(duration, Math.max(0, position));
   }
 
-
-// ────────────   M E T A D A T A   ────────── • • •
   imageCompiler(artwork) {
     if (!artwork) return [];
+    if (typeof artwork !== "object") return [];
 
-    let fileName = artwork.split("/").pop().split("?")[0].split("#")[0];
-    if (!fileName) return [];
-
-    fileName = fileName.replace(/\.jpg$/i, ".jpeg");
-    const type = this.detectMimeType(fileName);
-
-    return MEDIA_SESSION_ARTWORK_SIZES
-      .map((size) => {
-        const dimension = size.split("x")[0];
-        const sizedPath = `https://clockblocked.github.io/music.me/content/albumCovers/${dimension}/${fileName}`;
-
-        let absoluteUrl;
-        try {
-          absoluteUrl = new URL(sizedPath, document.baseURI).href;
-        } catch {
-          return null;
-        }
-
-        const protocol = new URL(absoluteUrl).protocol;
-        if (protocol !== "http:" && protocol !== "https:") return null;
-
-        const entry = { src: absoluteUrl, sizes: size };
-        if (type) entry.type = type;
-        return entry;
-      })
-      .filter(Boolean);
+    return MEDIA_SESSION_ARTWORK_SIZES.map((size) => {
+      const src = artwork[size];
+      if (!src) return null;
+      return { src, sizes: `${size}x${size}` };
+    }).filter(Boolean);
   }
   buildMetadata(song) {
     return {
@@ -633,7 +566,7 @@ class MediaSessionManager {
     } catch (err) {
       console.warn(`${MEDIA_SESSION_LOG_PREFIX} Re-apply failed:`, err);
     }
-  } 
+  }
   updateMetadata(songData) {
     if (!this.supported) return;
 
@@ -684,8 +617,6 @@ class MediaSessionManager {
     }
   }
 
-
-// ──────────────   S E T U P    ──────────── • • •
   isSupported() {
     return (
       typeof navigator !== "undefined" &&
@@ -770,7 +701,7 @@ class MediaSessionManager {
       this.audio.addEventListener(eventName, handler);
     }
   }
-  
+
   detachAudio() {
     for (const [eventName, handler] of this.audioListeners) {
       this.audio.removeEventListener(eventName, handler);
@@ -784,11 +715,6 @@ class MediaSessionManager {
     this.clearMetadata();
   }
 }
-////////////////////////////////////////////////////////////////
-
-
-
-
 
 class PlayerManager {
   constructor(ui) {
@@ -801,9 +727,6 @@ class PlayerManager {
     this.videoKeyBound = false;
   }
 
-  // ----------------------------------------------
-  // Init / audio event wiring
-  // ----------------------------------------------
   bindAudioEvents() {
     if (this.eventsBound) return;
 
@@ -861,9 +784,6 @@ class PlayerManager {
     this.updateProgressOnly();
   }
 
-  // ----------------------------------------------
-  // Progress + play-state UI
-  // ----------------------------------------------
   setPlayingUI(isPlaying) {
     const playSVG = Icons.player.play(22);
     const pauseSVG = Icons.player.pause(22);
@@ -944,9 +864,6 @@ class PlayerManager {
     });
   }
 
-  // ----------------------------------------------
-  // Drawer lifecycle
-  // ----------------------------------------------
   openDrawer() {
     this.ui.state.isDrawerOpen = true;
     document.getElementById("player-drawer-overlay").classList.add("open");
@@ -969,9 +886,6 @@ class PlayerManager {
     }
   }
 
-  // ----------------------------------------------
-  // Mini player
-  // ----------------------------------------------
   renderMiniPlayer() {
     this.bindAudioEvents();
 
@@ -986,7 +900,7 @@ class PlayerManager {
     const skipSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20" height="20"><path opacity=".4" fill="currentColor" d="M0 72L0 440c0 14.7 8.1 28.2 21 35.2s28.7 6.3 41-1.8l258-169.6 0-95.7-258-169.6c-12.3-8.1-28-8.8-41-1.8S0 57.3 0 72z"/><path fill="currentColor" d="M352 32l0 0c17.7 0 32 14.3 32 32l0 384c0 17.7-14.3 32-32 32l0 0c-17.7 0-32-14.3-32-32l0-384c0-17.7 14.3-32 32-32z"/></svg>`;
 
     const defaultCover = Config.DEFAULT_COVER;
-    const artwork = currentSong ? currentSong.artwork : defaultCover;
+    const artwork = currentSong ? currentSong.coverUrl || defaultCover : defaultCover;
     const title = currentSong ? currentSong.title : "MyBeats";
     const artistDisplay = currentSong ? this.ui.artistNameTooltip(currentSong.artistId) : "Music";
     const isFav = currentSong ? this.ui.favorites.isSong(currentSong.id) : false;
@@ -1042,9 +956,6 @@ class PlayerManager {
     if (this.coverBufferVisible) this.showCoverBuffer();
   }
 
-  // ----------------------------------------------
-  // Full player
-  // ----------------------------------------------
   renderFullPlayer() {
     const oldDrawer = document.getElementById("full-player-drawer");
     const state = this.ui.state;
@@ -1054,7 +965,7 @@ class PlayerManager {
       const oldImg = oldDrawer.querySelector(".album-art");
       if (oldImg) {
         const currentSrc = oldImg.getAttribute("src");
-        if (currentSrc === song.artwork) {
+        if (currentSrc === song.coverUrl) {
           this.softUpdateDrawer(oldDrawer);
           this.attachFullPlayerEvents();
           return;
@@ -1067,7 +978,7 @@ class PlayerManager {
     const defaultCover = Config.DEFAULT_COVER;
     const title = song ? song.title : "MyBeats";
     const artistDisplay = song ? this.ui.artistNameTooltip(song.artistId) : "Music";
-    const artwork = song ? song.artwork : defaultCover;
+    const artwork = song ? song.coverUrl || defaultCover : defaultCover;
     const progress = song && state.duration ? (state.currentTime / state.duration) * 100 : 0;
     const isPlaying = song ? state.isPlaying : false;
     const isFav = song ? this.ui.favorites.isSong(song.id) : false;
@@ -1201,9 +1112,6 @@ class PlayerManager {
     }
   }
 
-  // ----------------------------------------------
-  // Full player events
-  // ----------------------------------------------
   attachFullPlayerEvents() {
     const song = this.ui.state.currentSong;
 
@@ -1303,9 +1211,6 @@ class PlayerManager {
     this.updateSleepBadge();
   }
 
-  // ----------------------------------------------
-  // Video controls
-  // ----------------------------------------------
   attachVideoControls() {
     const drawer = document.getElementById("full-player-drawer");
     if (!drawer) return;
@@ -1483,9 +1388,6 @@ class PlayerManager {
     });
   }
 
-  // ----------------------------------------------
-  // Queue
-  // ----------------------------------------------
   renderQueueList() {
     const list = document.getElementById("queue-list");
     if (!list) return;
@@ -1515,9 +1417,11 @@ class PlayerManager {
           ? `<div class="now-playing-indicator"><div class="bar-anim"></div><div class="bar-anim"></div><div class="bar-anim"></div></div>`
           : `<span class="num">${idx + 1}</span>`;
 
+      const cover = song.coverUrl || Config.DEFAULT_COVER;
+
       item.innerHTML = `
         <span class="queue-drag-handle" title="Drag to reorder">${Icons.general.dragHandle(14)}</span>
-        <img src="${song.artwork}" class="queue-item-thumb">
+        <img src="${cover}" class="queue-item-thumb">
         <div class="queue-item-info"><div class="queue-item-title">${song.title}</div><div class="queue-item-artist">${song.artist}</div></div>
         ${indicator}
         <button class="queue-item-remove" title="Remove from queue">${Icons.general.close(12)}</button>
@@ -1654,9 +1558,6 @@ class PlayerManager {
     document.getElementById("queue-modal")?.classList.remove("open");
   }
 
-  // ----------------------------------------------
-  // Drawer extras
-  // ----------------------------------------------
   toggleLyrics() {
     this.ui.state.isLyricsOpen = !this.ui.state.isLyricsOpen;
     document
@@ -1693,9 +1594,6 @@ class PlayerManager {
     }
   }
 
-  // ----------------------------------------------
-  // Sleep timer
-  // ----------------------------------------------
   toggleSleepTimer() {
     this.openSleepMenu();
   }
@@ -1827,9 +1725,6 @@ class PlayerManager {
       : Utils.fmtTime(Math.ceil(remaining / 1000));
   }
 
-  // ----------------------------------------------
-  // Visualizer
-  // ----------------------------------------------
   setupVisualizer() {
     const canvas = document.getElementById("visualizer");
     if (!canvas) return;
@@ -1968,8 +1863,6 @@ class PlayerManager {
     observer.observe(document.body, { childList: true, subtree: true });
   }
 }
-
-
 
 window.AUDIO_CDN_BASE = AUDIO_CDN_BASE;
 window.PlayerState = PlayerState;
