@@ -1,11 +1,6 @@
-
-
-
-
-
 class Spinner {
   static defaults = {
-    type: "area",       // "area" | "page" | "fullscreen"
+    type: "area",
     container: null,
     label: "",
     blur: 14,
@@ -267,17 +262,7 @@ class Spinner {
   }
 }
 
-
 class AppNavigator {
-  static PAGE_SPINNER = {
-    type: "page",
-    blur: 22,
-    dim: 0.6,
-    minDuration: 900,
-    delay: 60,
-    size: 40,
-  };
-
   static ALBUM_SPINNER = {
     blur: 16,
     dim: 0.55,
@@ -287,13 +272,11 @@ class AppNavigator {
   };
 
   static ALBUM_SWAP_MS = 900;
-  static ARTIST_SWAP_MS = 1200;
 
   constructor(ui) {
     this.ui = ui;
     this.state = ui.state;
 
-    this._activeSpinner = null;
     this._activeGroup = null;
     this._navigating = false;
     this._breadcrumbHidden = false;
@@ -356,9 +339,9 @@ class AppNavigator {
     return "/library/";
   }
 
-  // ---------------------------------------------------------------
+  // ----------------------------------------------
   // Convenience navigators
-  // ---------------------------------------------------------------
+  // ----------------------------------------------
   goHome()                    { return this.go("home"); }
   goLibrary(opts = {})        { return this.go("library", opts); }
   goFavorites(tab)            { return this.go("favorites", { tab }); }
@@ -369,7 +352,6 @@ class AppNavigator {
   goArtist(artistId, albumId) { return this.go("artist", { artistId, albumId }); }
 
   go(page, opts = {}) {
-    // Click on an album tab while already on that artist's page → targeted swap
     if (
       page === "artist" &&
       this.state.currentPage === "artist" &&
@@ -378,33 +360,28 @@ class AppNavigator {
     ) {
       return this.switchAlbum(opts.artistId, opts.albumId);
     }
-
-    // All other transitions are whole-page
-    return this._pageTransition(page, opts);
+    return this._commit(page, opts);
   }
 
-  switchAlbum(artistId, albumId) {
+  async switchAlbum(artistId, albumId) {
     const state = this.state;
     const ui = this.ui;
 
-    const artist = state.getArtistById(artistId);
+    const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
     if (!artist) return;
 
-    const album = artist.albums.find((a) => IdUtils.norm(a.id) === IdUtils.norm(albumId));
+    const album = await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null);
     if (!album) return;
 
-    // Update URL + state silently
     this._push(this.pathFor("artist", { artistId, albumId }), {
       page: "artist", artistId, albumId,
     });
     state.selectedAlbumId = albumId;
     state.selectedAlbumName = album.album;
 
-    // Update chrome immediately
     this.updateTitle();
     this.updateBreadcrumbs();
 
-    // Targeted spinners on just the sections we're about to replace
     const coverEl = document.querySelector(".hero-cover");
     const songsEl = document.querySelector('[data-list="songs"]');
     const aboutEl = document.querySelector('[data-page="artist"] [data-area="about"]');
@@ -415,40 +392,36 @@ class AppNavigator {
     });
     this._activeGroup = group;
 
-    // Swap content after the spinner has been visible
     setTimeout(() => {
       this._swapArtistSections(artist, album);
       group.hide();
       setTimeout(() => group.remove(), 400);
       if (this._activeGroup === group) this._activeGroup = null;
-    }, AppNavigator.ALBUM_SWAP_MS);
+    }, 60);
   }
 
-_swapArtistSections(artist, album) {
-  const ui = this.ui;
-  const artistPage = ui.artistPage;
+  _swapArtistSections(artist, album) {
+    const ui = this.ui;
+    const artistPage = ui.artistPage;
 
-  // Cover - force image reload
-  const coverEl = document.querySelector(".hero-cover");
-  if (coverEl && album.coverUrl) {
-    const img = coverEl.querySelector("img");
-    if (img) {
-      // Create a new image to preload and ensure it displays
-      const newImg = new Image();
-      newImg.onload = () => {
-        img.src = album.coverUrl;
-      };
-      newImg.src = album.coverUrl;
+    const coverEl = document.querySelector(".hero-cover");
+    if (coverEl && album.coverUrl) {
+      const img = coverEl.querySelector("img");
+      if (img) {
+        const newImg = new Image();
+        newImg.onload = () => {
+          img.src = album.coverUrl;
+        };
+        newImg.src = album.coverUrl;
+      }
     }
-  }
 
-  // Songs list
-  const songsEl = document.querySelector('[data-list="songs"]');
-  if (songsEl && artistPage?.createSongRow) {
-    songsEl.innerHTML = `
+    const songsEl = document.querySelector('[data-list="songs"]');
+    if (songsEl && artistPage?.createSongRow) {
+      songsEl.innerHTML = `
       <div class="header">
         <div class="left">
-          <span class="badge">${album.certification || "Double Platinum"}</span>
+          <span class="badge">${album.sold || "Double Platinum"}</span>
           <span class="year">${album.year || "2024"}</span>
         </div>
         <span class="hint">Double-click</span>
@@ -457,104 +430,80 @@ _swapArtistSections(artist, album) {
         ${album.songs.map((song, i) => artistPage.createSongRow(song, i, artist, album)).join("")}
       </div>
     `;
-  }
+    }
 
-  // About section (if it exists) - only update if method exists
-  const aboutEl = document.querySelector('[data-page="artist"] [data-area="about"]');
-  if (aboutEl && artistPage?.aboutSection) {
-    aboutEl.innerHTML = artistPage.aboutSection(artist, album);
-    aboutEl.querySelectorAll(".tab").forEach((btn) => {
-      btn.classList.toggle("active", IdUtils.norm(btn.dataset.albumId) === IdUtils.norm(album.id));
-    });
-  }
+    const aboutEl = document.querySelector('[data-page="artist"] [data-area="about"]');
+    if (aboutEl && artistPage?.aboutSection) {
+      aboutEl.innerHTML = artistPage.aboutSection(artist, album);
+      aboutEl.querySelectorAll(".tab").forEach((btn) => {
+        btn.classList.toggle("active", IdUtils.norm(btn.dataset.albumId) === IdUtils.norm(album.id));
+      });
+    }
 
-  // Update the hero overlay title
-  const heroOverlay = document.querySelector(".hero-overlay .album-title");
-  if (heroOverlay) {
-    heroOverlay.textContent = album.album;
-  }
+    const heroOverlay = document.querySelector(".hero-overlay .album-title");
+    if (heroOverlay) {
+      heroOverlay.textContent = album.album;
+    }
 
-  // Update track count
-  const trackCount = document.querySelector(".hero-overlay .track-count");
-  if (trackCount) {
-    trackCount.textContent = `${album.songs.length} track${album.songs.length === 1 ? "" : "s"}`;
-  }
+    const trackCount = document.querySelector(".hero-overlay .track-count");
+    if (trackCount) {
+      trackCount.textContent = `${album.songs.length} track${album.songs.length === 1 ? "" : "s"}`;
+    }
 
-  ui.contentEvents?.attachContentEvents?.();
-  window.dispatchEvent(new CustomEvent("mybeats:album-swapped", {
-    detail: { artistId: artist.id, albumId: album.id },
-  }));
-}
+    ui.contentEvents?.attachContentEvents?.();
+    window.dispatchEvent(new CustomEvent("mybeats:album-swapped", {
+      detail: { artistId: artist.id, albumId: album.id },
+    }));
+  }
 
   _pageTransition(page, opts = {}) {
     if (this._navigating) return;
-
-    // Per-page-type spinner timing
-    const isArtistNav = page === "artist";
-    const config = { ...AppNavigator.PAGE_SPINNER };
-    const delay = isArtistNav ? AppNavigator.ARTIST_SWAP_MS : 0;
-
-    // For instant transitions (home, library, favorites, etc.), no spinner
-    if (!isArtistNav) {
-      return this._commit(page, opts);
-    }
-
-    this._navigating = true;
-    const sp = new Spinner({
-      ...config,
-      label: "Loading artist…",
-    });
-    this._activeSpinner = sp;
-    sp.show();
-
-    setTimeout(() => {
-      this._commit(page, opts);
-      sp.hide();
-      setTimeout(() => sp.remove(), 400);
-      if (this._activeSpinner === sp) this._activeSpinner = null;
-      this._navigating = false;
-    }, delay);
+    return this._commit(page, opts);
   }
 
-  _commit(page, opts = {}) {
+  async _commit(page, opts = {}) {
     const state = this.state;
     const ui = this.ui;
 
-    // Drawer cleanup
     if (state.isDrawerOpen) ui.closePlayerDrawer?.();
 
-    // Resolve artist / album for title
     let artist = null;
     let resolvedArtistId = opts.artistId || null;
     if (resolvedArtistId) {
       artist = state.getArtistById(resolvedArtistId);
       if (!artist) {
-        artist = state.enrichedLibrary.find((a) => a.artist === resolvedArtistId);
+        artist = (window.MusicStore?.index || []).find(
+          (a) => String(a.artist) === String(resolvedArtistId)
+        );
         if (artist) resolvedArtistId = artist.id;
       }
     }
-    const album = opts.albumId ? state.getAlbumById(opts.albumId) : null;
 
-    // Leaving the create page without committing → drop the draft
+    let album = null;
+    let resolvedAlbumId = opts.albumId || null;
+    if (resolvedAlbumId) {
+      album = state.getAlbumById(resolvedAlbumId);
+      if (album && artist && String(album.artistId) !== String(resolvedArtistId)) {
+        album = null;
+      }
+    }
+
     if (state.currentPage === "createPlaylist" && page !== "createPlaylist") {
       state.draftPlaylist = null;
     }
 
-    // Entering the create page → make sure a draft exists
     if (page === "createPlaylist" && !state.draftPlaylist) {
       ui.createPlaylistPage?.reset?.();
     }
 
-    // State mutations
     state.currentPage = page;
     state.artistId = resolvedArtistId;
     state.artistPageName = artist?.artist || null;
-    state.selectedAlbumId = opts.albumId || null;
+    state.selectedAlbumId = resolvedAlbumId;
     state.selectedAlbumName = album?.album || null;
     state.isSearchOpen = false;
     state.isCreatingPlaylist = page === "createPlaylist";
 
-    // Page-specific state
     if (page !== "playlists" && page !== "editPlaylist") {
       state.selectedPlaylistName = null;
     }
@@ -562,26 +511,23 @@ _swapArtistSections(artist, album) {
       state.editingPlaylistId = null;
     }
 
-    // URL
     const url = this.pathFor(page, {
       ...opts,
       artistId: resolvedArtistId,
-      albumId: opts.albumId || null,
+      albumId: resolvedAlbumId,
       id: opts.id || state.editingPlaylistId,
     });
     this._push(url, {
       page,
       artistId: resolvedArtistId,
-      albumId: opts.albumId || null,
+      albumId: resolvedAlbumId,
       id: opts.id || state.editingPlaylistId || null,
     });
 
-    // Chrome
     this.updateTitle();
     this.updateActiveNav();
     this.updateBreadcrumbs();
 
-    // Render
     ui.render();
   }
 
@@ -599,7 +545,7 @@ _swapArtistSections(artist, album) {
     history.pushState(stateObj, "", url);
   }
 
-  syncFromUrl() {
+  async syncFromUrl() {
     const parts = window.location.pathname.split("/").filter((p) => p);
     const params = new URLSearchParams(window.location.search);
     const deepLinkSong = params.get("song");
@@ -608,7 +554,6 @@ _swapArtistSections(artist, album) {
     state.pendingDeepLinkSong = null;
     state.editingPlaylistId = null;
 
-    // Reset to safe defaults
     state.selectedPlaylistName = null;
     state.selectedPlaylistId = null;
     state.isCreatingPlaylist = false;
@@ -645,7 +590,6 @@ _swapArtistSections(artist, album) {
           if (parts[1] === "new") {
             state.currentPage = "createPlaylist";
             state.isCreatingPlaylist = true;
-            // Ensure a fresh draft exists if the user hit /playlists/new directly
             this.ui.createPlaylistPage?.reset?.();
           } else {
             state.currentPage = "playlists";
@@ -653,7 +597,7 @@ _swapArtistSections(artist, album) {
           break;
 
         case "artist":
-          this._parseArtist(parts, deepLinkSong);
+          await this._parseArtist(parts, deepLinkSong);
           break;
 
         default:
@@ -690,12 +634,12 @@ _swapArtistSections(artist, album) {
     if (deepLinkSong) state.pendingDeepLinkSong = deepLinkSong;
   }
 
-  _parseArtist(parts, deepLinkSong) {
+  async _parseArtist(parts, deepLinkSong) {
     const state = this.state;
     if (!parts[1]) { state.currentPage = "404"; return; }
 
     const artistId = parts[1];
-    const artist = state.getArtistById(artistId);
+    const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
     if (!artist) { state.currentPage = "404"; return; }
 
     state.currentPage = "artist";
@@ -706,7 +650,7 @@ _swapArtistSections(artist, album) {
       const albumId = parts[3];
       const album = artist.albums.find((a) => IdUtils.norm(a.id) === IdUtils.norm(albumId));
       state.selectedAlbumId = album ? albumId : null;
-      state.selectedAlbumName = album?.album || null;
+      state.selectedAlbumName = album?.title || album?.album || null;
     }
 
     if (deepLinkSong) state.pendingDeepLinkSong = deepLinkSong;
