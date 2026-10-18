@@ -41,145 +41,207 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
-  
-/****
-  function loadLibrary() {
-    let jsonUrl;
-    try {
-      jsonUrl = new URL("https://clockblocked.github.io/music.me/source/library.json", window.__MYBEATS_BASE__).href;
-    } catch {
-      jsonUrl = "https://clockblocked.github.io/music.me/source/library.json";
-    }
-
-    const candidates = [
-      jsonUrl,
-      "https://clockblocked.github.io/music.me/source/library.json",
-    ].filter((v, i, a) => v && a.indexOf(v) === i);
-
-    return tryNext(0);
-
-    function tryNext(index) {
-      if (index >= candidates.length) {
-        return $.Deferred().reject({ status: 404, statusText: "Not Found" }).promise();
-      }
-      const url = candidates[index];
-      return $.ajax({ url, dataType: "json", cache: true })
-        .then((metadata) => metadata)
-        .catch((err) => {
-          if (err && err.status === 404) return tryNext(index + 1);
-          throw new Error(`Failed to fetch ${url} (${err && err.status ? err.status : "network"})`);
-        });
-    }
-  }
-  loadLibrary()
-    .then((metadata) => {
-      for (const artist of metadata) {
-        if (!artist.imageUrl) {
-          const firstAlbum = artist.albums?.[0];
-          artist.imageUrl = firstAlbum?.coverUrl || "";
-        }
-        if (!artist.similar) artist.similar = [];
-
-        for (const album of artist.albums || []) {
-          if (!album.coverUrl) album.coverUrl = "";
-          for (const song of album.songs || []) {
-            song._artistName = artist.artist;
-            song._artistId = artist.id;
-            song._albumName = album.album;
-            song._albumId = album.id;
-            song.downloadPath = `/api/song/${artist.id}/${album.id}/${song.id}?title=${encodeURIComponent(song.title ?? "")}`;
-          }
-        }
-      }
-
-      window.metadata = metadata;
-      window.state.enrichedLibrary = metadata;
-
-      window.uiManager = new UIManager(window.state, window.audioPlayer, window.favoritesPlaylists);
-      window.popups.ui = window.uiManager;
-      window.heartManager.store.state = window.state;
-    })
-    .catch((err) => {
-      console.error("Initialization failed:", err);
-      const errDiv = document.createElement("div");
-      errDiv.style.cssText = "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
-      errDiv.textContent = `Initialization failed:\n${err.message}\n\nStack:\n${err.stack || ""}`;
-      document.body.appendChild(errDiv);
-    });
-****/
-
-
 
 
 
 (function initLibrary() {
-  const metadata = window.catalogue;
-
-  if (!metadata || !Array.isArray(metadata)) {
-    const err = new Error(
-      "window.catalogue is missing. Load library.js BEFORE boot.js."
-    );
-    console.error("Initialization failed:", err);
+  if (!window.MusicStore || !window.MusicStore.index) {
     const errDiv = document.createElement("div");
-    errDiv.style.cssText =
-      "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
-    errDiv.textContent = `Initialization failed:\n${err.message}`;
+    errDiv.style.cssText = "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
+    errDiv.textContent = "Initialization failed:\nwindow.MusicStore.index is missing. Ensure the index is loaded before boot.js.";
     document.body.appendChild(errDiv);
     return;
   }
 
-  for (const artist of metadata) {
-    if (!artist.similar) artist.similar = [];
+  window.MusicStore.artists = window.MusicStore.artists || {};
+  window.MusicStore.songCache = new Map();
+  window.MusicStore.albumCache = new Map();
 
-    for (const album of artist.albums || []) {
-      for (const song of album.songs || []) {
-        song._artistName = artist.artist;
-        song._artistId   = artist.id;
-        song._albumName  = album.album;
-        song._albumId    = album.id;
-        song.source =
-          `/content/audio/${artist.id}/${album.id}/${song.id}?title=${encodeURIComponent(song.title ?? "")}`;
+  const _artistInflight = new Map();
+  const _albumInflight = new Map();
+
+  const json = async (url) => {
+    const r = await fetch(url, { cache: "default" });
+    if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+    return r.json();
+  };
+
+  window.MusicStore.loadArtist = async function (artistId) {
+    const id = String(artistId);
+    if (window.MusicStore.artists[id]) return window.MusicStore.artists[id];
+    if (_artistInflight.has(id)) return _artistInflight.get(id);
+
+    const promise = (async () => {
+      const base = `/library/artists/${id}`;
+      const [artist, discography] = await Promise.all([
+        json(`${base}/artist.json`),
+        json(`${base}/discography.json`).catch(() => ({ albums: [] })),
+      ]);
+
+      const merged = {
+        ...artist,
+        id: artist.id ?? id,
+        artist: artist.name ?? artist.artist ?? "",
+        albums: discography.albums || [],
+      };
+
+      for (const a of merged.albums) {
+        const aid = String(a.id);
+        if (!window.MusicStore.albumCache.has(aid)) {
+          window.MusicStore.albumCache.set(aid, {
+            id: a.id,
+            title: a.title ?? a.album ?? "",
+            year: a.year,
+            artwork: a.artwork,
+            artistId: merged.id,
+            artistName: merged.artist,
+            songCount: a.songCount,
+            _discographyOnly: true,
+          });
+        }
       }
+
+      window.MusicStore.artists[id] = merged;
+      _artistInflight.delete(id);
+      return merged;
+    })();
+
+    _artistInflight.set(id, promise);
+    return promise;
+  };
+
+  window.MusicStore.loadAlbum = async function (artistId, albumId) {
+    const aid = String(albumId);
+    const cached = window.MusicStore.albumCache.get(aid);
+    if (cached && !cached._discographyOnly) return cached;
+    if (_albumInflight.has(aid)) return _albumInflight.get(aid);
+
+    const promise = (async () => {
+      const url = `/library/artists/${artistId}/albums/${aid}/album.json`;
+      const album = await json(url);
+      const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
+
+      const record = {
+        ...album,
+        id: album.id ?? aid,
+        artistId: album.artistId ?? artistId,
+        artistName: artist?.artist ?? "",
+        title: album.title ?? album.album ?? "",
+        _discographyOnly: false,
+      };
+
+      window.MusicStore.albumCache.set(aid, record);
+
+      for (const song of record.songs || []) {
+        const sources = song.sources || [];
+        window.MusicStore.songCache.set(String(song.id), {
+          ...song,
+          artistId: record.artistId,
+          albumId: record.id,
+          artist: record.artistName,
+          album: record.title,
+          artwork: record.artwork,
+          portrait: artist?.portrait,
+          genre: artist?.genre || "Unknown",
+          source: sources[0]?.src || "",
+          sources,
+        });
+      }
+
+      _albumInflight.delete(aid);
+      return record;
+    })();
+
+    _albumInflight.set(aid, promise);
+    return promise;
+  };
+
+  window.MusicStore.prefetchAlbums = function (artistId, albumIds) {
+    for (const id of albumIds) {
+      window.MusicStore.loadAlbum(artistId, id).catch(() => {});
     }
+  };
+
+  window.MusicStore.loadAllSongs = async function (onProgress) {
+    const artists = window.MusicStore.index || [];
+    const total = artists.length;
+    let done = 0;
+    for (const a of artists) {
+      try {
+        const artist = await window.MusicStore.loadArtist(a.id);
+        for (const album of artist.albums || []) {
+          try { await window.MusicStore.loadAlbum(a.id, album.id); } catch (e) {}
+        }
+      } catch (e) {}
+      done++;
+      if (onProgress) onProgress(done, total);
+    }
+  };
+
+  function artworkUrl(artwork, size = 320) {
+    if (!artwork) return "";
+    if (typeof artwork === "string") return artwork;
+    return artwork[size] || artwork["320"] || artwork["640"] || artwork["160"] || "";
   }
 
-  window.metadata = metadata;
-  window.state.enrichedLibrary = metadata;
+  function portraitUrl(portrait, size = 160) {
+    if (!portrait) return "";
+    if (typeof portrait === "string") return portrait;
+    return portrait[size] || portrait["160"] || portrait["320"] || portrait["640"] || "";
+  }
+
+  function pickSource(sources) {
+    if (!sources || !sources.length) return "";
+    return sources[0].src || "";
+  }
+
+  window.metadata = window.MusicStore.index;
+  window.state.enrichedLibrary = window.MusicStore.index;
+
+  window.state.getSongById = (id) => window.MusicStore.songCache.get(String(id)) || null;
+  window.state.getAlbumById = (id) => window.MusicStore.albumCache.get(String(id)) || null;
+  window.state.getArtistById = (id) => {
+    const sid = String(id);
+    if (window.MusicStore.artists[sid]) return window.MusicStore.artists[sid];
+    return window.MusicStore.index.find((a) => String(a.id) === sid || a.artist === sid) || null;
+  };
 
   window.uiManager = new UIManager(window.state, window.audioPlayer, window.favoritesPlaylists);
   window.popups.ui = window.uiManager;
   window.heartManager.store.state = window.state;
-})();
 
-  
-
-  
   window.pagesActions = {
     buildSongs() {
-      const state = window.uiManager?.state || window.state;
-      if (!state?.enrichedLibrary) return [];
-      return state.enrichedLibrary.flatMap((artist) =>
-        artist.albums.flatMap((album) =>
-          album.songs.map((song) => ({
-            ...song,
-            // ------------------ unique identifiers
-            artistId: artist.id,
-            albumId: album.id,
-            
-            // ------------------ for displaying actual names
-            artist: artist.artist,
-            album: album.album,
-
-            // ------------------ Artist / Album images
-            artwork: album.artwork,
-            portrait: artist.portrait,
-
-            // ------------------ miscellaneous
-            genre: artist.genre || "Unknown",
-          }))
-        )
-      );
+      if (!window.MusicStore?.songCache) return [];
+      return Array.from(window.MusicStore.songCache.values());
     },
+
+    getSongById(id) {
+      if (!window.MusicStore?.songCache) return null;
+      return window.MusicStore.songCache.get(String(id)) || null;
+    },
+
+    getArtistById(id) {
+      const sid = String(id);
+      if (window.MusicStore?.artists?.[sid]) return window.MusicStore.artists[sid];
+      return window.MusicStore?.index?.find(
+        (a) => String(a.id) === sid || a.artist === sid
+      ) || null;
+    },
+
+    getAlbumById(id) {
+      if (!window.MusicStore?.albumCache) return null;
+      return window.MusicStore.albumCache.get(String(id)) || null;
+    },
+
+    getAllSongs() {
+      if (!window.MusicStore?.songCache) return [];
+      return Array.from(window.MusicStore.songCache.values());
+    },
+
+    artworkUrl,
+    portraitUrl,
+    pickSource,
 
     playQueue(queue, index = 0, label = "", source = null) {
       if (!queue.length || !window.uiManager?.audioPlayer) return;
@@ -196,14 +258,16 @@ jQuery(function ($) {
       }
     },
 
-    shuffleAll() {
+    async shuffleAll() {
+      await window.MusicStore.loadAllSongs();
       const songs = this.buildSongs();
       if (!songs.length) return;
       const shuffled = IdUtils.sample(songs, songs.length);
       this.playQueue(shuffled, 0, "Shuffling your whole library", "home");
     },
 
-    playGenre(genre) {
+    async playGenre(genre) {
+      await window.MusicStore.loadAllSongs();
       const genreSongs = this.buildSongs().filter(
         (song) => String(song.genre).toLowerCase() === String(genre).toLowerCase()
       );
@@ -213,7 +277,8 @@ jQuery(function ($) {
       (window.uiManager?.state || window.state)?.showToast?.(`Playing ${genre}`);
     },
 
-    playMood(mood) {
+    async playMood(mood) {
+      await window.MusicStore.loadAllSongs();
       const moodMap = {
         chill: ["pop", "indie", "acoustic", "r&b", "soul"],
         energy: ["dance", "electronic", "edm", "hip hop", "rock", "pop"],
@@ -243,23 +308,32 @@ jQuery(function ($) {
       window.uiManager?.navigate("home");
     },
 
-    playAlbum(artistId, albumId) {
-      const state = window.uiManager?.state || window.state;
-      const queue = Utils.albumQueue(state, artistId, albumId);
-      if (queue.length) {
+    async playAlbum(artistId, albumId) {
+      const album = await window.MusicStore.loadAlbum(artistId, albumId);
+      const queue = (album.songs || [])
+        .map((s) => window.MusicStore.songCache.get(String(s.id)))
+        .filter(Boolean);
+      if (queue.length && window.uiManager?.audioPlayer) {
         window.uiManager.audioPlayer.playSong(queue[0], queue, true, "album");
       }
     },
 
-    shuffleAlbum(artistId, albumId) {
-      const state = window.uiManager?.state || window.state;
-      const queue = Utils.albumQueue(state, artistId, albumId);
-      if (queue.length) {
+    async shuffleAlbum(artistId, albumId) {
+      const album = await window.MusicStore.loadAlbum(artistId, albumId);
+      const queue = (album.songs || [])
+        .map((s) => window.MusicStore.songCache.get(String(s.id)))
+        .filter(Boolean);
+      if (queue.length && window.uiManager?.audioPlayer) {
         const shuffled = Utils.shuffle(queue);
         window.uiManager.audioPlayer.playSong(shuffled[0], shuffled, true, "album");
       }
     },
   };
+})();
+
+
+
+
 
   
 
