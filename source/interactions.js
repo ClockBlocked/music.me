@@ -1,8 +1,3 @@
-
-
-
-
-
 class PopupsManager {
   constructor({ ui = null, container = document.body } = {}) {
     this.ui = ui;
@@ -41,7 +36,7 @@ class PopupsManager {
   }
 
   // ----------------------------------------------
-  // Icon library (only what popups need)
+  // Icon library
   // ----------------------------------------------
   static get icons() {
     const svg = (attrs, content) => `<svg ${attrs}>${content}</svg>`;
@@ -436,17 +431,16 @@ class PopupsManager {
     const song = state && typeof state.getSongById === "function" && state.getSongById(songId);
     if (!song) return null;
 
-const getIsFav = () =>
-  Boolean(
-    this.ui &&
-      this.ui.favorites &&
-      typeof this.ui.favorites.isSong === "function" &&
-      this.ui.favorites.isSong(songId)
-  );
+    const getIsFav = () =>
+      Boolean(
+        this.ui &&
+          this.ui.favorites &&
+          typeof this.ui.favorites.isSong === "function" &&
+          this.ui.favorites.isSong(songId)
+      );
 
-const isFav = getIsFav();
+    const isFav = getIsFav();
 
-    
     const isCached =
       window.offlineCache &&
       typeof window.offlineCache.isCached === "function" &&
@@ -461,9 +455,9 @@ const isFav = getIsFav();
 
     const dropdown = this.dropdown({
       triggerEvent: event,
-      header: { 
-        title: song.title, 
-        subtitle: song.artist || ""
+      header: {
+        title: song.title,
+        subtitle: song.artist || "",
       },
 
       persistentActions: ["add-fav"],
@@ -512,7 +506,7 @@ const isFav = getIsFav();
           },
         ],
       ],
-      
+
       itemExtraData: dataAttr,
       onAction: (action) => {
         if (action === "add-fav" && this.ui && this.ui.favorites) {
@@ -542,15 +536,13 @@ const isFav = getIsFav();
             window.offlineCache.cacheSong(song);
           }
         }
-      },    });
+      },
+    });
 
     const updateFavoriteOption = () => {
       if (!dropdown.el || !dropdown.isOpen) return;
 
-      const favoriteButton = dropdown.el.querySelector(
-        '[data-action="add-fav"]'
-      );
-
+      const favoriteButton = dropdown.el.querySelector('[data-action="add-fav"]');
       if (!favoriteButton) return;
 
       const isFavorite = getIsFav();
@@ -558,43 +550,28 @@ const isFav = getIsFav();
       const icon = favoriteButton.querySelector(".icon");
 
       if (label) {
-        label.textContent = isFavorite
-          ? "Remove from Favorites"
-          : "Add to Favorites";
+        label.textContent = isFavorite ? "Remove from Favorites" : "Add to Favorites";
       }
 
       if (icon) {
         icon.innerHTML = PopupsManager.icons.heart(16, isFavorite);
       }
 
-      favoriteButton.style.color = isFavorite
-        ? "rgb(var(--colorPink))"
-        : "";
-
+      favoriteButton.style.color = isFavorite ? "rgb(var(--colorPink))" : "";
       favoriteButton.setAttribute("aria-pressed", String(isFavorite));
     };
 
     const onFavoritesChanged = (event) => {
       const detail = event.detail || {};
-
-      if (
-        String(detail.type) === "song" &&
-        String(detail.id) === String(songId)
-      ) {
+      if (String(detail.type) === "song" && String(detail.id) === String(songId)) {
         updateFavoriteOption();
       }
     };
 
-    window.addEventListener(
-      "mybeats:favorites-changed",
-      onFavoritesChanged
-    );
+    window.addEventListener("mybeats:favorites-changed", onFavoritesChanged);
 
     dropdown.beforeDestroy = () => {
-      window.removeEventListener(
-        "mybeats:favorites-changed",
-        onFavoritesChanged
-      );
+      window.removeEventListener("mybeats:favorites-changed", onFavoritesChanged);
     };
 
     updateFavoriteOption();
@@ -605,13 +582,14 @@ const isFav = getIsFav();
   // ----------------------------------------------
   // Artist popover
   // ----------------------------------------------
-  showArtistPopover(artistId, event) {
+  async showArtistPopover(artistId, event) {
     const state = this.ui && this.ui.state;
-    const artist =
-      state && typeof state.getArtistById === "function" && state.getArtistById(artistId);
+    if (!state) return null;
+
+    const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
     if (!artist) return null;
 
-    const albums = artist.albums && artist.albums.length ? artist.albums.length : 0;
+    const albumCount = (artist.albums || []).length;
     const listeners = artist.monthlyListeners || "24.5K";
     const topPlays =
       artist.topSong && artist.topSong.plays ? artist.topSong.plays : "12.3K";
@@ -621,7 +599,7 @@ const isFav = getIsFav();
       <div class="popover-content">
         <div class="popover-header">
           <div class="popover-avatar-wrapper">
-            <img src="${PopupsManager.escapeAttr(artist.imageUrl)}" class="popover-avatar" alt="${PopupsManager.escapeAttr(artist.artist)}">
+            <img src="${PopupsManager.escapeAttr(artist.imageUrl || "")}" class="popover-avatar" alt="${PopupsManager.escapeAttr(artist.artist)}">
             <div class="popover-avatar-glow"></div>
           </div>
           <div class="popover-title-section">
@@ -630,7 +608,7 @@ const isFav = getIsFav();
           </div>
         </div>
         <div class="popover-stats">
-          <div class="popover-stat"><span class="popover-stat-value">${albums}</span><span class="popover-stat-label">Albums</span></div>
+          <div class="popover-stat"><span class="popover-stat-value">${albumCount}</span><span class="popover-stat-label">Albums</span></div>
           <div class="popover-stat-divider"></div>
           <div class="popover-stat"><span class="popover-stat-value">${listeners}</span><span class="popover-stat-label">Listeners</span></div>
           <div class="popover-stat-divider"></div>
@@ -652,17 +630,17 @@ const isFav = getIsFav();
       variant: "artist",
       size: "artist",
       content,
-      onAction: (action) => {
+      onAction: async (action) => {
         if (navigator.vibrate && typeof navigator.vibrate === "function") navigator.vibrate(20);
 
         if (action === "go-artist") {
           if (this.ui && typeof this.ui.navigate === "function") this.ui.navigate("artist", artistId);
         } else if (action === "play-top") {
-          if (artist.albums && artist.albums.length) {
-            const queue = Utils.albumQueue(state, artist.id, artist.albums[0].id);
-            if (queue && queue.length && this.ui && this.ui.audioPlayer) {
-              this.ui.audioPlayer.playSong(queue[0], queue, true, "album");
-            }
+          const firstAlbum = (artist.albums || [])[0];
+          if (!firstAlbum) return;
+          const queue = await Utils.albumQueue(artist.id, firstAlbum.id);
+          if (queue.length && this.ui && this.ui.audioPlayer) {
+            this.ui.audioPlayer.playSong(queue[0], queue, true, "album");
           }
         }
       },
@@ -670,9 +648,6 @@ const isFav = getIsFav();
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// PopupsBase — abstract base for all popups
-// ////////////////////////////////////////////////////////////////////////
 class PopupsBase {
   constructor(manager, options = {}) {
     this.manager = manager;
@@ -736,9 +711,6 @@ class PopupsBase {
   detachEvents() {}
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// PopupsModal — centered modal dialog
-// ////////////////////////////////////////////////////////////////////////
 class PopupsModal extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -785,49 +757,49 @@ class PopupsModal extends PopupsBase {
     return overlay;
   }
 
-attachEvents() {
-  this.onItemClick = (e) => {
-    const btn = e.target.closest("[data-action]");
-    if (!btn) return;
+  attachEvents() {
+    this.onItemClick = (e) => {
+      const btn = e.target.closest("[data-action]");
+      if (!btn) return;
 
-    e.stopPropagation();
+      e.stopPropagation();
 
-    const action = btn.dataset.action;
-    const item = this.findItem(action);
+      const action = btn.dataset.action;
+      const item = this.findItem(action);
 
-    if (this.options.onAction && typeof this.options.onAction === "function") {
-      this.options.onAction(action, item);
-    } else if (item && typeof item.onClick === "function") {
-      item.onClick(action, item);
-    }
+      if (this.options.onAction && typeof this.options.onAction === "function") {
+        this.options.onAction(action, item);
+      } else if (item && typeof item.onClick === "function") {
+        item.onClick(action, item);
+      }
 
-    const persistentActions = Array.isArray(this.options.persistentActions)
-      ? this.options.persistentActions
-      : [];
+      const persistentActions = Array.isArray(this.options.persistentActions)
+        ? this.options.persistentActions
+        : [];
 
-    if (!persistentActions.includes(action)) {
-      this.hide();
-    }
-  };
-
-  this.backdropMouseDown = (e) => {
-    if (e.target === this.el) {
-      e.preventDefault();
-      this.bounce();
-    }
-  };
-
-  this.el.addEventListener("mousedown", this.backdropMouseDown);
-  this.el.addEventListener("click", this.onItemClick);
-
-  setTimeout(() => {
-    this.outsideClick = (e) => {
-      if (!this.el.contains(e.target)) this.hide();
+      if (!persistentActions.includes(action)) {
+        this.hide();
+      }
     };
 
-    document.addEventListener("click", this.outsideClick, { once: true });
-  }, 0);
-}
+    this.backdropMouseDown = (e) => {
+      if (e.target === this.el) {
+        e.preventDefault();
+        this.bounce();
+      }
+    };
+
+    this.el.addEventListener("mousedown", this.backdropMouseDown);
+    this.el.addEventListener("click", this.onItemClick);
+
+    setTimeout(() => {
+      this.outsideClick = (e) => {
+        if (!this.el.contains(e.target)) this.hide();
+      };
+
+      document.addEventListener("click", this.outsideClick, { once: true });
+    }, 0);
+  }
 
   detachEvents() {
     if (this.el) {
@@ -858,9 +830,6 @@ attachEvents() {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// PopupsDropdown — context-menu style dropdown
-// ////////////////////////////////////////////////////////////////////////
 class PopupsDropdown extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -990,9 +959,6 @@ class PopupsDropdown extends PopupsBase {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// PopupsPopover — free-floating popover
-// ////////////////////////////////////////////////////////////////////////
 class PopupsPopover extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -1088,9 +1054,6 @@ class PopupsPopover extends PopupsBase {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// PopupsTooltip — hover tooltip
-// ////////////////////////////////////////////////////////////////////////
 class PopupsTooltip extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -1146,9 +1109,6 @@ class PopupsTooltip extends PopupsBase {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// PopupsToast — stacked toast notifications
-// ////////////////////////////////////////////////////////////////////////
 class PopupsToast extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -1351,9 +1311,6 @@ class PopupsToast extends PopupsBase {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// HeartStore — bridges FavoritesPlaylistsManager to heart UI
-// ////////////////////////////////////////////////////////////////////////
 class HeartStore {
   constructor(favoritesPlaylists, state) {
     this.fav = favoritesPlaylists;
@@ -1411,9 +1368,6 @@ class HeartStore {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// HeartButton — individual heart icon instance
-// ////////////////////////////////////////////////////////////////////////
 class HeartButton {
   constructor(el, type, id, manager) {
     this.el = el;
@@ -1528,9 +1482,6 @@ class HeartButton {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// HeartButtonManager — tracks all hearts on the page
-// ////////////////////////////////////////////////////////////////////////
 class HeartButtonManager {
   constructor(favoritesPlaylists, state) {
     this.store = new HeartStore(favoritesPlaylists, state);
@@ -1641,9 +1592,6 @@ class HeartButtonManager {
   }
 }
 
-// ////////////////////////////////////////////////////////////////////////
-// FavoritesPlaylistsManager — favorites + playlists data manager
-// ////////////////////////////////////////////////////////////////////////
 class FavoritesPlaylistsManager {
   constructor(state) {
     this.state = state;
@@ -1812,7 +1760,7 @@ class FavoritesPlaylistsManager {
   }
 
   // ----------------------------------------------
-  // Playlists — favorites
+  // Playlists - favorites
   // ----------------------------------------------
   isPlaylist(id) {
     return (this.state.favoritePlaylists || []).some((pid) => String(pid) === String(id));
@@ -1859,7 +1807,7 @@ class FavoritesPlaylistsManager {
   }
 
   // ----------------------------------------------
-  // Playlists — CRUD
+  // Playlists - CRUD
   // ----------------------------------------------
   getPlaylist(id) {
     const sid = String(id);
@@ -1908,9 +1856,7 @@ class FavoritesPlaylistsManager {
     if (!playlist) return false;
 
     const name = playlist.name;
-    this.state.playlists = this.state.playlists.filter(
-      (p) => String(p.id) !== String(id)
-    );
+    this.state.playlists = this.state.playlists.filter((p) => String(p.id) !== String(id));
     this.state.persist();
 
     if (this.popups) this.popups.toast({ type: "success", message: `Playlist "${name}" deleted` });
@@ -2285,8 +2231,6 @@ class FavoritesPlaylistsManager {
     });
   }
 }
-
-
 
 window.PopupsManager = PopupsManager;
 window.PopupsBase = PopupsBase;
