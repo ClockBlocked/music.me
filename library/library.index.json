@@ -5,211 +5,211 @@
       "id": "1117",
       "artist": "Pink",
       "genre": "Pop",
-      "albums": 6
+      "albumCount": 6
     },
     {
       "id": "1850",
       "artist": "Katy Perry",
       "genre": "Pop",
-      "albums": 3
+      "albumCount": 3
     },
     {
       "id": "2130",
       "artist": "Bruno Mars",
       "genre": "Pop",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "2679",
       "artist": "Sam Smith",
       "genre": "Pop",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "3054",
       "artist": "Flume",
       "genre": "Electronic",
-      "albums": 2
+      "albumCount": 2
     },
     {
       "id": "3616",
       "artist": "Britney Spears",
       "genre": "Pop",
-      "albums": 7
+      "albumCount": 7
     },
     {
       "id": "3729",
       "artist": "Avril Lavigne",
       "genre": "Pop Rock",
-      "albums": 7
+      "albumCount": 7
     },
     {
       "id": "4294",
       "artist": "Jason Derulo",
       "genre": "Pop",
-      "albums": 5
+      "albumCount": 5
     },
     {
       "id": "4295",
       "artist": "Taylor Swift",
       "genre": "Pop",
-      "albums": 7
+      "albumCount": 7
     },
     {
       "id": "4383",
       "artist": "Adele",
       "genre": "Pop",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "4403",
       "artist": "Bebe Rexha",
       "genre": "Pop",
-      "albums": 2
+      "albumCount": 2
     },
     {
       "id": "4507",
       "artist": "Thomas Rhett",
       "genre": "Country",
-      "albums": 5
+      "albumCount": 5
     },
     {
       "id": "4590",
       "artist": "Fifth Harmony",
       "genre": "Pop",
-      "albums": 3
+      "albumCount": 3
     },
     {
       "id": "4637",
       "artist": "Louis Tomlinson",
       "genre": "Pop",
-      "albums": 2
+      "albumCount": 2
     },
     {
       "id": "4686",
       "artist": "Rihanna",
       "genre": "Pop, R&B",
-      "albums": 6
+      "albumCount": 6
     },
     {
       "id": "5381",
       "artist": "Selena Gomez",
       "genre": "Pop",
-      "albums": 3
+      "albumCount": 3
     },
     {
       "id": "5900",
       "artist": "Ed Sheeran",
       "genre": "Pop",
-      "albums": 3
+      "albumCount": 3
     },
     {
       "id": "6308",
       "artist": "Ariana Grande",
       "genre": "Pop",
-      "albums": 6
+      "albumCount": 6
     },
     {
       "id": "6363",
       "artist": "The Weeknd",
       "genre": "Unknown",
-      "albums": 3
+      "albumCount": 3
     },
     {
       "id": "6488",
       "artist": "John Legend",
       "genre": "R&B",
-      "albums": 6
+      "albumCount": 6
     },
     {
       "id": "6613",
       "artist": "Post Malone",
       "genre": "Hip-Hop/Rap",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "7556",
       "artist": "Lady GaGa",
       "genre": "Pop",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "7645",
       "artist": "Demi Lovato",
       "genre": "Pop",
-      "albums": 6
+      "albumCount": 6
     },
     {
       "id": "7742",
       "artist": "Nick Jonas",
       "genre": "Pop",
-      "albums": 3
+      "albumCount": 3
     },
     {
       "id": "7917",
       "artist": "Charlie Puth",
       "genre": "Pop",
-      "albums": 3
+      "albumCount": 3
     },
     {
       "id": "8058",
       "artist": "Sia",
       "genre": "Pop",
-      "albums": 2
+      "albumCount": 2
     },
     {
       "id": "8099",
       "artist": "NF",
       "genre": "Hip-Hop/Rap",
-      "albums": 5
+      "albumCount": 5
     },
     {
       "id": "8247",
       "artist": "Twenty One Pilots",
       "genre": "Pop-alternative",
-      "albums": 6
+      "albumCount": 6
     },
     {
       "id": "8361",
       "artist": "Kesha",
       "genre": "Pop",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "8718",
       "artist": "Justin Bieber",
       "genre": "Pop",
-      "albums": 6
+      "albumCount": 6
     },
     {
       "id": "9055",
       "artist": "Halsey",
       "genre": "Pop",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "9085",
       "artist": "Lorde",
       "genre": "Pop",
-      "albums": 2
+      "albumCount": 2
     },
     {
       "id": "9417",
       "artist": "Ellie Goulding",
       "genre": "Pop",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "9489",
       "artist": "Akon",
       "genre": "R&B",
-      "albums": 4
+      "albumCount": 4
     },
     {
       "id": "9938",
       "artist": "Maroon 5",
       "genre": "Pop-alternative",
-      "albums": 6
+      "albumCount": 6
     }
   ]
 }
