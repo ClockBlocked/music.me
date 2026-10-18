@@ -70,140 +70,145 @@ genreTile(genre) {
   `;
 }
 
-async bootstrap() {
-  if (this._bootstrapPromise) return this._bootstrapPromise;
-  this._bootstrapPromise = (async () => {
-    try {
-      await Promise.all([
-        this.bootstrapNewRelease(),
-        this.bootstrapDiscover(),
-        this.bootstrapRecent(),
-        this.bootstrapMostPlayed(),
-        this.bootstrapFavorites(),
-      ]);
-    } catch (e) {
-      console.error("[Home.bootstrap] error:", e);
-    } finally {
-      this._bootstrapPromise = null;
-    }
-  })();
-  return this._bootstrapPromise;
-}
+  async bootstrap() {
+    if (this._bootstrapPromise) return this._bootstrapPromise;
 
-async bootstrapNewRelease() {
-  if (this._featuredRelease) return;
-  const index = window.MusicStore?.index || [];
-  if (!index.length) return;
+    this._bootstrapPromise = (async () => {
+      try {
+        await Promise.all([
+          this.bootstrapNewRelease(),
+          this.bootstrapDiscover(),
+          this.bootstrapRecent(),
+          this.bootstrapMostPlayed(),
+          this.bootstrapFavorites(),
+        ]);
+      } catch (e) {
+        console.error("[Home.bootstrap] error:", e);
+      } finally {
+        this._bootstrapPromise = null;
+      }
+      this.refreshLoadedCards();
+    })();
 
-  const pick = this.shuffle(index)[0];
-  const artist = await window.MusicStore.loadArtist(pick.id).catch(() => null);
-  if (!artist?.albums?.length) return;
+    return this._bootstrapPromise;
+  }
 
-  const albumStub = this.shuffle(artist.albums)[0];
-  const album = await window.MusicStore.loadAlbum(artist.id, albumStub.id).catch(() => null);
-  if (!album) return;
+  refreshLoadedCards() {
+    this.patchCard("releases",     this.renderNewRelease(this._featuredRelease));
+    this.patchCard("discover",     this.renderDiscover(this.ui.state));
+    this.patchCard("recents",      this.renderRecentlyPlayed(this.getRecent(this.ui.state)));
+    this.patchCard("most-played",  this.renderMostPlayed(this.getMostPlayed(this.ui.state)));
+    this.patchCard("favorites",    this.renderFavoritesCard());
+  }
 
-  this._featuredRelease = {
-    artistId: artist.id,
-    artistName: artist.artist,
-    albumId: album.id,
-    albumName: album.title,
-    coverUrl: album.coverUrl,
-  };
-  this.patchCard("releases", this.renderNewRelease(this._featuredRelease));
-}
+  async bootstrapNewRelease() {
+    if (this._featuredRelease) return;
+    const index = window.MusicStore?.index || [];
+    if (!index.length) return;
 
-async bootstrapDiscover() {
-  if (Array.isArray(this.discoverCache) && this.discoverCache.length) return;
-  const index = window.MusicStore?.index || [];
-  if (!index.length) return;
+    const pick = this.shuffle(index)[0];
+    const artist = await window.MusicStore.loadArtist(pick.id).catch(() => null);
+    if (!artist?.albums?.length) return;
 
-  const picked = this.shuffle(index).slice(0, this.discoverArtistLimit);
-  const artists = await Promise.all(
-    picked.map((a) => window.MusicStore.loadArtist(a.id).catch(() => null))
-  );
-
-  const loaded = await Promise.all(artists.map(async (artist) => {
-    if (!artist?.albums?.length) return null;
     const albumStub = this.shuffle(artist.albums)[0];
     const album = await window.MusicStore.loadAlbum(artist.id, albumStub.id).catch(() => null);
-    if (!album?.songs?.length) return null;
-    return {
+    if (!album) return;
+
+    this._featuredRelease = {
       artistId: artist.id,
       artistName: artist.artist,
-      genre: artist.genre,
-      imageUrl: artist.imageUrl,
-      songs: this.shuffle(album.songs).slice(0, this.discoverSongsPerArtist),
+      albumId: album.id,
+      albumName: album.title,
+      coverUrl: album.coverUrl,
     };
-  }));
-
-  this.discoverCache = loaded.filter(Boolean);
-  this.discoverIndex = 0;
-  this.patchCard("discover", this.renderDiscover(this.ui.state));
-}
-
-async bootstrapRecent() {
-  const recent = (this.ui.state.recentlyPlayed || []).slice(0, this.recentLimit);
-  if (!recent.length) return;
-
-  const toLoad = new Map();
-  for (const ref of recent) {
-    if (window.MusicStore.songCache.has(String(ref.id))) continue;
-    if (ref.artistId && ref.albumId) {
-      toLoad.set(`${ref.artistId}/${ref.albumId}`, { a: ref.artistId, al: ref.albumId });
-    }
   }
-  await Promise.all(Array.from(toLoad.values()).map(({ a, al }) =>
-    window.MusicStore.loadAlbum(a, al).catch(() => null)
-  ));
-  this.patchCard("recents", this.renderRecentlyPlayed(this.getRecent(this.ui.state)));
-}
 
-async bootstrapMostPlayed() {
-  const entries = this.getMostPlayed(this.ui.state);
-  if (!entries.length) return;
+  async bootstrapDiscover() {
+    if (Array.isArray(this.discoverCache) && this.discoverCache.length) return;
+    const index = window.MusicStore?.index || [];
+    if (!index.length) return;
 
-  const toLoad = new Map();
-  for (const { song } of entries) {
-    if (!song) continue;
-    if (window.MusicStore.songCache.has(String(song.id))) continue;
-    if (song.artistId && song.albumId) {
-      toLoad.set(`${song.artistId}/${song.albumId}`, { a: song.artistId, al: song.albumId });
-    }
+    const picked = this.shuffle(index).slice(0, this.discoverArtistLimit);
+    const artists = await Promise.all(
+      picked.map((a) => window.MusicStore.loadArtist(a.id).catch(() => null))
+    );
+
+    const loaded = await Promise.all(artists.map(async (artist) => {
+      if (!artist?.albums?.length) return null;
+      const albumStub = this.shuffle(artist.albums)[0];
+      const album = await window.MusicStore.loadAlbum(artist.id, albumStub.id).catch(() => null);
+      if (!album?.songs?.length) return null;
+      return {
+        artistId: artist.id,
+        artistName: artist.artist,
+        genre: artist.genre,
+        imageUrl: artist.imageUrl,
+        songs: this.shuffle(album.songs).slice(0, this.discoverSongsPerArtist),
+      };
+    }));
+
+    this.discoverCache = loaded.filter(Boolean);
+    this.discoverIndex = 0;
   }
-  await Promise.all(Array.from(toLoad.values()).map(({ a, al }) =>
-    window.MusicStore.loadAlbum(a, al).catch(() => null)
-  ));
-  this.patchCard("most-played", this.renderMostPlayed(this.getMostPlayed(this.ui.state)));
-}
 
-async bootstrapFavorites() {
-  const state = this.ui.state;
-  const ids = [
-    ...(state.favoriteSongs || []),
-    ...(state.favoriteAlbums || []),
-  ];
-  if (!ids.length) return;
+  async bootstrapRecent() {
+    const recent = (this.ui.state.recentlyPlayed || []).slice(0, this.recentLimit);
+    if (!recent.length) return;
 
-  // Nothing to fetch directly — favorite entries get resolved via caches.
-  // If any favorites store artistId/albumId, fetch them:
-  const toLoad = new Map();
-  const resolve = (arr) => {
-    for (const f of arr || []) {
-      if (typeof f === "object" && f.artistId && f.albumId &&
-          !window.MusicStore.songCache.has(String(f.id))) {
-        toLoad.set(`${f.artistId}/${f.albumId}`, { a: f.artistId, al: f.albumId });
+    const toLoad = new Map();
+    for (const ref of recent) {
+      if (window.MusicStore.songCache.has(String(ref.id))) continue;
+      if (ref.artistId && ref.albumId) {
+        toLoad.set(`${ref.artistId}/${ref.albumId}`, { a: ref.artistId, al: ref.albumId });
       }
     }
-  };
-  resolve(state.favoriteSongs);
-  resolve(state.favoriteAlbums);
+    await Promise.all(
+      Array.from(toLoad.values()).map(({ a, al }) =>
+        window.MusicStore.loadAlbum(a, al).catch(() => null)
+      )
+    );
+  }
 
-  await Promise.all(Array.from(toLoad.values()).map(({ a, al }) =>
-    window.MusicStore.loadAlbum(a, al).catch(() => null)
-  ));
-  this.patchCard("favorites", this.renderFavoritesCard());
-}
+  async bootstrapMostPlayed() {
+    const entries = this.getMostPlayed(this.ui.state);
+    if (!entries.length) return;
+
+    const toLoad = new Map();
+    for (const { song } of entries) {
+      if (!song) continue;
+      if (window.MusicStore.songCache.has(String(song.id))) continue;
+      if (song.artistId && song.albumId) {
+        toLoad.set(`${song.artistId}/${song.albumId}`, { a: song.artistId, al: song.albumId });
+      }
+    }
+    await Promise.all(
+      Array.from(toLoad.values()).map(({ a, al }) =>
+        window.MusicStore.loadAlbum(a, al).catch(() => null)
+      )
+    );
+  }
+
+  async bootstrapFavorites() {
+    const state = this.ui.state;
+    const toLoad = new Map();
+    const scan = (arr) => {
+      for (const f of arr || []) {
+        if (typeof f === "object" && f.artistId && f.albumId &&
+            !window.MusicStore.songCache.has(String(f.id))) {
+          toLoad.set(`${f.artistId}/${f.albumId}`, { a: f.artistId, al: f.albumId });
+        }
+      }
+    };
+    scan(state.favoriteSongs);
+    scan(state.favoriteAlbums);
+    if (!toLoad.size) return;
+
+    await Promise.all(
+      Array.from(toLoad.values()).map(({ a, al }) =>
+        window.MusicStore.loadAlbum(a, al).catch(() => null)
+      )
+    );
+  }
 
 patchCard(cardKey, html) {
   if (!this.isActive()) {
@@ -1098,6 +1103,8 @@ patchCard(cardKey, html) {
         } catch {}
       }, 60);
     });
+
+  this.bootstrap();
   }
   hydrateRow(row) {
     const songId = row.dataset.songId;
