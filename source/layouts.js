@@ -1,8 +1,3 @@
-
-
-
-
-
 // /////////////////////////////////////////////////
 // Home Page
 // /////////////////////////////////////////////////
@@ -20,55 +15,54 @@ class Home {
     this.bindLiveUpdates();
   }
 
+  buildSongs(state) {
+    return window.pagesActions?.buildSongs() || [];
+  }
 
-buildSongs(state) {
-  return window.pagesActions?.buildSongs() || [];
-}
+  buildAlbums(state) {
+    return window.pagesActions?.buildAlbums() || [];
+  }
 
-buildAlbums(state) {
-  return window.pagesActions?.buildAlbums() || [];
-}
+  buildGenres(state) {
+    const index = window.MusicStore?.index || [];
+    const map = new Map();
+    index.forEach((entry) => {
+      const name = (entry.genre || "").trim();
+      if (!name) return;
+      if (!map.has(name)) map.set(name, { name, count: 0, coverUrl: "" });
+      map.get(name).count += 1;
+    });
+    return [...map.values()].sort((a, b) => b.count - a.count);
+  }
 
-buildGenres(state) {
-  const index = window.MusicStore?.index || [];
-  const map = new Map();
-  index.forEach((entry) => {
-    const name = (entry.genre || "").trim();
-    if (!name) return;
-    if (!map.has(name)) map.set(name, { name, count: 0, coverUrl: "" });
-    map.get(name).count += 1;
-  });
-  return [...map.values()].sort((a, b) => b.count - a.count);
-}
+  pickFeatured(state) {
+    return this._featuredRelease || null;
+  }
 
-pickFeatured(state) {
-  return this._featuredRelease || null;
-}
+  getCounts(state) {
+    const index = window.MusicStore?.index || [];
+    return {
+      songs: window.MusicStore?.songCache?.size || 0,
+      albums: Array.from(window.MusicStore?.albumCache?.values() || []).filter((a) => !a._discographyOnly).length,
+      artists: index.length,
+      playlists: (state.playlists || []).length,
+    };
+  }
 
-getCounts(state) {
-  const index = window.MusicStore?.index || [];
-  return {
-    songs: window.MusicStore?.songCache?.size || 0,
-    albums: index.reduce((sum, e) => sum + (e.albumCount || 0), 0),
-    artists: index.length,
-    playlists: (state.playlists || []).length,
-  };
-}
+  getDiscoverArtists(state) {
+    return this.discoverCache || [];
+  }
 
-getDiscoverArtists(state) {
-  return this.discoverCache || [];
-}
-
-genreTile(genre) {
-  const name = this.esc(genre.name);
-  const count = genre.count;
-  return `
-    <button type="button" class="genreTile" data-genre="${name}" aria-label="Genre ${name}">
-      <span class="genreTileArt" aria-hidden="true">${genre.coverUrl ? `<img src="${this.esc(genre.coverUrl)}" alt="" loading="lazy">` : ""}</span>
-      <span class="genreTileBody"><span class="genreTileName">${name}</span><span class="genreTileCount">${count} artist${count === 1 ? "" : "s"}</span></span>
-    </button>
-  `;
-}
+  genreTile(genre) {
+    const name = this.esc(genre.name);
+    const count = genre.count;
+    return `
+      <button type="button" class="genreTile" data-genre="${name}" aria-label="Genre ${name}">
+        <span class="genreTileArt" aria-hidden="true">${genre.coverUrl ? `<img src="${this.esc(genre.coverUrl)}" alt="" loading="lazy">` : ""}</span>
+        <span class="genreTileBody"><span class="genreTileName">${name}</span><span class="genreTileCount">${count} artist${count === 1 ? "" : "s"}</span></span>
+      </button>
+    `;
+  }
 
   async bootstrap() {
     if (this._bootstrapPromise) return this._bootstrapPromise;
@@ -118,7 +112,7 @@ genreTile(genre) {
       artistId: artist.id,
       artistName: artist.artist,
       albumId: album.id,
-      albumName: album.title,
+      albumName: album.album,
       coverUrl: album.coverUrl,
     };
   }
@@ -210,47 +204,40 @@ genreTile(genre) {
     );
   }
 
-patchCard(cardKey, html) {
-  if (!this.isActive()) {
-    // Not on home page — cache the result so next render picks it up.
-    return;
-  }
-  const root = this.getRoot();
-  if (!root) return;
-  const grid = root.querySelector(".bentoGrid");
-  if (!grid) return;
-
-  const existing = grid.querySelector(`[data-card="${cardKey}"]`);
-  if (!html) { existing?.remove(); return; }
-
-  const tpl = document.createElement("template");
-  tpl.innerHTML = html.trim();
-  const fresh = tpl.content.firstElementChild;
-  if (!fresh) return;
-
-  if (existing) {
-    existing.replaceWith(fresh);
-  } else {
-    const ORDER = ["releases", "recents", "most-played", "library", "favorites", "discover", "collections", "genres"];
-    const idx = ORDER.indexOf(cardKey);
-    let inserted = false;
-    for (const child of grid.children) {
-      if (ORDER.indexOf(child.dataset.card) > idx) {
-        grid.insertBefore(fresh, child);
-        inserted = true;
-        break;
-      }
+  patchCard(cardKey, html) {
+    if (!this.isActive()) {
+      return;
     }
-    if (!inserted) grid.appendChild(fresh);
+    const root = this.getRoot();
+    if (!root) return;
+    const grid = root.querySelector(".bentoGrid");
+    if (!grid) return;
+
+    const existing = grid.querySelector(`[data-card="${cardKey}"]`);
+    if (!html) { existing?.remove(); return; }
+
+    const tpl = document.createElement("template");
+    tpl.innerHTML = html.trim();
+    const fresh = tpl.content.firstElementChild;
+    if (!fresh) return;
+
+    if (existing) {
+      existing.replaceWith(fresh);
+    } else {
+      const ORDER = ["releases", "recents", "most-played", "library", "favorites", "discover", "collections", "genres"];
+      const idx = ORDER.indexOf(cardKey);
+      let inserted = false;
+      for (const child of grid.children) {
+        if (ORDER.indexOf(child.dataset.card) > idx) {
+          grid.insertBefore(fresh, child);
+          inserted = true;
+          break;
+        }
+      }
+      if (!inserted) grid.appendChild(fresh);
+    }
+    this.syncNowPlaying();
   }
-  this.syncNowPlaying();
-}
-
-
-
-
-
-  
 
   shuffle(arr) {
     const a = [...arr];
@@ -260,7 +247,6 @@ patchCard(cardKey, html) {
     }
     return a;
   }
-
 
   getRecent(state) {
     return (state.recentlyPlayed || [])
@@ -368,9 +354,6 @@ patchCard(cardKey, html) {
     `;
   }
 
-
-
-  
   // ----------------------------------------------
   // Discover
   // ----------------------------------------------
@@ -501,8 +484,6 @@ patchCard(cardKey, html) {
     this.syncNowPlaying();
   }
 
-
-  
   // ----------------------------------------------
   // Genres
   // ----------------------------------------------
@@ -560,8 +541,6 @@ patchCard(cardKey, html) {
     this.ui.navigate("library");
   }
 
-
-  
   // ----------------------------------------------
   // Collections
   // ----------------------------------------------
@@ -636,8 +615,6 @@ patchCard(cardKey, html) {
     wrap.classList.add("hp-swap");
   }
 
-
-  
   // ----------------------------------------------
   // Rows / cards
   // ----------------------------------------------
@@ -680,8 +657,6 @@ patchCard(cardKey, html) {
     `;
   }
 
-
-  
   // ----------------------------------------------
   // Section renderers
   // ----------------------------------------------
@@ -771,8 +746,6 @@ patchCard(cardKey, html) {
     `;
   }
 
-
-  
   // ----------------------------------------------
   // Favorites card
   // ----------------------------------------------
@@ -809,8 +782,6 @@ patchCard(cardKey, html) {
     `;
   }
 
-
-  
   // ----------------------------------------------
   // Main render
   // ----------------------------------------------
@@ -845,8 +816,6 @@ patchCard(cardKey, html) {
     return html;
   }
 
-
-  
   // ----------------------------------------------
   // Binding
   // ----------------------------------------------
@@ -1104,7 +1073,7 @@ patchCard(cardKey, html) {
       }, 60);
     });
 
-  this.bootstrap();
+    this.bootstrap();
   }
   hydrateRow(row) {
     const songId = row.dataset.songId;
@@ -1122,10 +1091,6 @@ patchCard(cardKey, html) {
     }
   }
 
-
-
-
-  
   // ----------------------------------------------
   // Live updates
   // ----------------------------------------------
@@ -1287,10 +1252,6 @@ patchCard(cardKey, html) {
   }
 }
 
-
-
-
-
 // /////////////////////////////////////////////////
 // Library Page
 // /////////////////////////////////////////////////
@@ -1302,72 +1263,79 @@ class Library {
     this.sort = "recent";
     this.mode = "grid";
     this.query = "";
+    this._loadedAll = false;
+    this._loadingPromise = null;
   }
 
   // ----------------------------------------------
   // Data builders
   // ----------------------------------------------
   allSongs(state) {
-    return state.enrichedLibrary.flatMap((artist) =>
-      artist.albums.flatMap((album) =>
-        album.songs.map((song) => ({
-          ...song,
-          artistId: artist.id,
-          albumId: album.id,
-          artist: artist.artist,
-          album: album.album,
-          coverUrl: album.coverUrl,
-          genre: artist.genre || "",
-          year: album.year || "",
-        }))
-      )
-    );
+    if (!window.MusicStore) return [];
+    return Array.from(window.MusicStore.songCache.values());
   }
 
   allAlbums(state) {
-    return state.enrichedLibrary.flatMap((artist) =>
-      artist.albums.map((album) => {
-        const totalSeconds = album.songs.reduce((sum, song) => {
-          const parts = String(song.duration || "0:0").split(":");
-          return sum + (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
-        }, 0);
+    if (!window.MusicStore) return [];
+    const albums = [];
+    for (const album of window.MusicStore.albumCache.values()) {
+      if (album._discographyOnly) continue;
+      const totalSeconds = (album.songs || []).reduce((sum, song) => {
+        const parts = String(song.duration || "0:0").split(":");
+        return sum + (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
+      }, 0);
 
-        const plays = album.songs.reduce(
-          (sum, song) => sum + (state.getPlayCount ? state.getPlayCount(song.id) : 0),
-          0
-        );
+      const plays = (album.songs || []).reduce(
+        (sum, song) => sum + (state.getPlayCount ? state.getPlayCount(song.id) : 0),
+        0
+      );
 
-        return {
-          artistId: artist.id,
-          artistName: artist.artist,
-          albumId: album.id,
-          albumName: album.album,
-          coverUrl: album.coverUrl,
-          genre: artist.genre || "",
-          year: album.year || "",
-          songs: album.songs,
-          songCount: album.songs.length,
-          totalSeconds,
-          plays,
-        };
-      })
-    );
+      albums.push({
+        artistId: album.artistId,
+        artistName: album.artistName,
+        albumId: album.id,
+        albumName: album.album,
+        coverUrl: album.coverUrl,
+        genre: (state.getArtistById?.(album.artistId)?.genre) || "",
+        year: album.year || "",
+        songs: album.songs || [],
+        songCount: (album.songs || []).length,
+        totalSeconds,
+        plays,
+      });
+    }
+    return albums;
   }
 
   allArtists(state) {
-    return state.enrichedLibrary.map((artist) => ({
-      id: artist.id,
-      name: artist.artist,
-      imageUrl: artist.imageUrl,
-      genre: artist.genre || "",
-      albumCount: artist.albums.length,
-      songCount: artist.albums.reduce((n, album) => n + album.songs.length, 0),
-      plays: artist.albums.reduce(
-        (n, album) =>
-          n + album.songs.reduce((m, song) => m + (state.getPlayCount ? state.getPlayCount(song.id) : 0), 0),
-        0
-      ),
-    }));
+    if (!window.MusicStore) return [];
+    const index = window.MusicStore.index || [];
+    return index.map((entry) => {
+      const full = window.MusicStore.artists[String(entry.id)];
+      const albumCount = (full?.albums && full.albums.length) || entry.albumCount || 0;
+      let songCount = 0;
+      if (full?.albums) {
+        songCount = full.albums.reduce((n, a) => n + (a.songCount || 0), 0);
+      }
+      return {
+        id: entry.id,
+        name: entry.artist,
+        imageUrl: full?.imageUrl || window.MusicStore.portraitUrl(full?.portrait) || "",
+        genre: entry.genre || "",
+        albumCount,
+        songCount,
+        plays: full?.albums
+          ? full.albums.reduce((sum, a) => {
+              const album = window.MusicStore.albumCache.get(String(a.id));
+              if (!album || album._discographyOnly) return sum;
+              return sum + (album.songs || []).reduce(
+                (m, song) => m + (state.getPlayCount ? state.getPlayCount(song.id) : 0),
+                0
+              );
+            }, 0)
+          : 0,
+      };
+    });
   }
 
   allGenres(state) {
@@ -1734,8 +1702,8 @@ class Library {
           </header>
           <div class="resultsHeader" id="browseResultsHeader"><div><h2 class="resultsTitle">${title}</h2><p class="resultsSubtitle">${sub}</p></div><span class="resultsCount" id="browseResultsCount">${this.countFor(this.view)}</span></div>
           <section class="dynamicContent" id="browseContent" aria-live="polite">
-            <div class="loadingLayer is-hidden" id="loadingLayer" aria-hidden="true"><div class="loadingContent"><div class="loadingSpinner" aria-hidden="true"></div><div><div class="loadingTitle">Searching your library...</div><p class="loadingDescription">Finding the music that matches your selection.</p></div></div></div>
-            <div class="contentSection" data-content-view="${this.view}">${this.contentFor(this.view)}</div>
+            <div class="loadingLayer" id="loadingLayer" aria-hidden="false"><div class="loadingContent"><div class="loadingSpinner" aria-hidden="true"></div><div><div class="loadingTitle">Loading library...</div><p class="loadingDescription">Fetching tracks from the server.</p></div></div></div>
+            <div class="contentSection" data-content-view="${this.view}"></div>
           </section>
         </div>
       </div>
@@ -1750,8 +1718,26 @@ class Library {
   // ----------------------------------------------
   bindWhenReady(attempts = 0) {
     const root = document.querySelector('[data-page="library"].bp');
-    if (root) this.bindEvents(root);
-    else if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
+    if (root) {
+      this.bindEvents(root);
+      this.hydrateAll(root);
+    } else if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
+  }
+
+  async hydrateAll(root) {
+    if (!root) return;
+    if (!this._loadingPromise) {
+      this._loadingPromise = (async () => {
+        if (!this._loadedAll) {
+          await window.MusicStore.loadAllSongs();
+          this._loadedAll = true;
+        }
+      })();
+    }
+    await this._loadingPromise;
+    const layer = root.querySelector("#loadingLayer");
+    layer?.classList.add("is-hidden");
+    this.refreshContent(false);
   }
 
   getRoot() {
@@ -1790,7 +1776,7 @@ class Library {
       setTimeout(() => {
         swap();
         layer?.classList.add("is-hidden");
-      }, 260);
+      }, 200);
     } else {
       swap();
     }
@@ -1813,10 +1799,10 @@ class Library {
     scope.querySelectorAll("[data-play-album]").forEach((el) => {
       if (el.paBound) return;
       el.paBound = true;
-      el.addEventListener("click", (e) => {
+      el.addEventListener("click", async (e) => {
         e.stopPropagation();
         const data = JSON.parse(el.dataset.playAlbum);
-        const queue = Utils.albumQueue(this.ui.state, data.artistId, data.albumId);
+        const queue = await Utils.albumQueue(data.artistId, data.albumId);
         if (queue.length) this.ui.audioPlayer.playSong(queue[0], queue, true, "album");
       });
     });
@@ -1824,16 +1810,18 @@ class Library {
     scope.querySelectorAll('[data-action="add-album-to-queue"]').forEach((el) => {
       if (el.aqBound) return;
       el.aqBound = true;
-      el.addEventListener("click", (e) => {
+      el.addEventListener("click", async (e) => {
         e.preventDefault();
         e.stopPropagation();
 
         const state = this.ui.state;
         const albumId = el.dataset.albumId;
-        const album = state.getAlbumById(albumId);
+        const stub = state.getAlbumById(albumId);
+        if (!stub) return;
+        const album = await window.MusicStore.loadAlbum(stub.artistId, albumId).catch(() => null);
         if (!album?.songs?.length) return;
 
-        const queue = Utils.albumQueue(state, album.artistId, albumId);
+        const queue = await Utils.albumQueue(stub.artistId, albumId);
         const currentQueue = state.queue || [];
         state.queue = [...currentQueue, ...queue];
 
@@ -1940,12 +1928,15 @@ class Library {
     });
   }
 
-  playArtist(artistId) {
+  async playArtist(artistId) {
     const state = this.ui.state;
-    const artist = state.getArtistById(artistId);
+    const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
     if (!artist) return;
 
-    const queue = artist.albums.flatMap((album) => album.songs.map((song) => state.getSongById(song.id)).filter(Boolean));
+    const queues = await Promise.all(
+      (artist.albums || []).map((album) => Utils.albumQueue(artistId, album.id))
+    );
+    const queue = queues.flat();
     if (queue.length) {
       this.ui.audioPlayer.playSong(queue[0], queue, true, "artist");
       state.showToast?.(`Playing ${artist.artist}`);
@@ -1958,7 +1949,7 @@ class Library {
 
     const ui = this.ui;
 
-    root.addEventListener("click", (e) => {
+    root.addEventListener("click", async (e) => {
       const tab = e.target.closest(".browseTab");
       if (tab) {
         e.stopPropagation();
@@ -2048,7 +2039,11 @@ class Library {
       if (songRow) {
         if (e.target.closest("button")) return;
         e.stopPropagation();
-        const song = ui.state.getSongById(songRow.dataset.songId);
+        let song = ui.state.getSongById(songRow.dataset.songId);
+        if (!song) {
+          await window.MusicStore.loadAlbum(songRow.dataset.artistId, songRow.dataset.albumId).catch(() => null);
+          song = ui.state.getSongById(songRow.dataset.songId);
+        }
         if (!song) return;
 
         const queue = [...root.querySelectorAll("tr[data-song-id]")]
@@ -2086,10 +2081,6 @@ class Library {
   destroy() {}
 }
 
-
-
-
-
 // /////////////////////////////////////////////////
 // Artist Pages
 // /////////////////////////////////////////////////
@@ -2102,42 +2093,33 @@ class Artists {
   }
 
   render() {
-    const state = this.ui.state;
-    const artistId = state.artistId;
-    if (!artistId) return `<div class="artist-missing">Artist not found</div>`;
-
-    const artist = state.getArtistById(artistId);
-    if (!artist) return `<div class="artist-missing">Artist not found</div>`;
-
-    const activeAlbumId = state.selectedAlbumId;
-    const activeAlbum = activeAlbumId
-      ? artist.albums.find((album) => IdUtils.norm(album.id) === IdUtils.norm(activeAlbumId))
-      : artist.albums[0];
-    if (!activeAlbum) return `<div class="artist-missing">Album not found</div>`;
-
-    const similarIds = artist.similar || [];
-    const similarArtists = similarIds.map((id) => state.getArtistById(id)).filter(Boolean);
-    const rows = [similarArtists.slice(0, 4), similarArtists.slice(4, 8), similarArtists.slice(8, 12)];
-
-    const html = `
+    this.bindWhenReady();
+    return `
       <div class="artist-page" data-page="artist">
         <div class="artist-shell">
-          ${this.renderHeader(artist)}
-          <div class="albumTabsSentinel" aria-hidden="true"></div>
-          ${this.renderAlbumTabs(artist, activeAlbum)}
-          <div class="artist-heroBody">
-            <div class="hero-stage">
-              <div class="hero-left">${this.renderHeroCover(artist, activeAlbum)}${this.renderMetaSummary(artist, activeAlbum)}</div>
-              <div class="hero-right">${this.renderSongsList(artist, activeAlbum)}</div>
-            </div>
-          </div>
-          ${similarIds.length ? this.similarMarquee(rows, artist.id) : ""}
+          <div class="artist-loading" style="padding: 4rem 1rem; text-align: center; opacity: 0.7;">Loading artist…</div>
         </div>
       </div>
     `;
+  }
 
-    this.bindWhenReady();
-    return html;
+  renderFull(artist, activeAlbum) {
+    const state = this.ui.state;
+    const similarIds = artist.similar || [];
+    const rows = [similarIds.slice(0, 4), similarIds.slice(4, 8), similarIds.slice(8, 12)];
+
+    return `
+      ${this.renderHeader(artist)}
+      <div class="albumTabsSentinel" aria-hidden="true"></div>
+      ${this.renderAlbumTabs(artist, activeAlbum)}
+      <div class="artist-heroBody">
+        <div class="hero-stage">
+          <div class="hero-left">${this.renderHeroCover(artist, activeAlbum)}${this.renderMetaSummary(artist, activeAlbum)}</div>
+          <div class="hero-right">${this.renderSongsList(artist, activeAlbum)}</div>
+        </div>
+      </div>
+      ${similarIds.length ? this.similarMarquee(rows, artist.id) : ""}
+    `;
   }
 
   renderHeader(artist) {
@@ -2155,10 +2137,10 @@ class Artists {
     return `
       <nav class="albumTabsBar" data-area="albums" aria-label="Albums">
         <div class="albumTabs-scroll">
-          ${artist.albums
+          ${(artist.albums || [])
             .map(
               (album) =>
-                `<button type="button" class="albumTab ${album.id === activeAlbum.id ? "active" : ""}" data-artist-id="${Utils.esc(artist.id)}" data-album-id="${Utils.esc(album.id)}" aria-pressed="${album.id === activeAlbum.id}">${Utils.esc(album.album)}</button>`
+                `<button type="button" class="albumTab ${album.id === activeAlbum.id ? "active" : ""}" data-artist-id="${Utils.esc(artist.id)}" data-album-id="${Utils.esc(album.id)}" aria-pressed="${album.id === activeAlbum.id}">${Utils.esc(album.title || album.album)}</button>`
             )
             .join("")}
         </div>
@@ -2188,7 +2170,7 @@ class Artists {
     return `
       <div data-area="meta-summary" class="hero-meta">
         <div data-list="editorial-brief" class="bento-meta-node">
-          <div class="brief-wrapper"><span class="brief-mono">${Utils.esc(activeAlbum.year || "2024")}</span><span class="brief-heading">${Utils.esc(activeAlbum.status || "Double Platinum")}</span></div>
+          <div class="brief-wrapper"><span class="brief-mono">${Utils.esc(activeAlbum.year || "2024")}</span><span class="brief-heading">${Utils.esc(activeAlbum.sold || "Double Platinum")}</span></div>
           <a href="#" class="brief-anchor" id="bento-album-share" data-album-title="${Utils.esc(activeAlbum.album)}">Share this album</a>
         </div>
         <div data-list="utility-hub" class="bento-meta-node">
@@ -2238,21 +2220,21 @@ class Artists {
       ["left", 35],
     ];
 
+    const renderPill = (entry) => {
+      const value = typeof entry === "string" ? entry : String(entry);
+      const label = Utils.esc(value);
+      return `
+        <span class="artist-name-pill animate-fadeIn"
+              data-artist-id="${Utils.esc(value)}"
+              data-artist-name="${label}">
+              ${label}
+        </span>`;
+    };
+
     const marquee = (artists, direction, duration) => `
       <div class="marquee-container">
         <div class="marquee-track marquee-${direction}" style="animation-duration: ${duration}s;">
-          ${[...artists, ...artists]
-            .map(
-              (artist) =>
-                `
-              <span class="artist-name-pill animate-fadeIn"
-                    data-artist-id="${Utils.esc(artist.id)}"
-                    data-artist-name="${Utils.esc(artist.artist)}">
-                        ${Utils.esc(artist.artist)}
-              </span>                
-                `
-            )
-            .join("")}
+          ${[...artists, ...artists].map(renderPill).join("")}
         </div>
       </div>
     `;
@@ -2265,57 +2247,86 @@ class Artists {
     `;
   }
 
-  // ----------------------------------------------
-  // Binding
-  // ----------------------------------------------
-  bindWhenReady(attempts = 0) {
+  async bindWhenReady(attempts = 0) {
     const root = document.querySelector('[data-page="artist"]');
-    if (root) this.afterRender();
-    else if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
+    if (!root) {
+      if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
+      return;
+    }
+
+    const shell = root.querySelector(".artist-shell");
+    if (!shell) return;
+
+    const state = this.ui.state;
+    const artistId = state.artistId;
+    if (!artistId) {
+      shell.innerHTML = `<div class="artist-missing">Artist not found</div>`;
+      return;
+    }
+
+    const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
+    if (!artist) {
+      shell.innerHTML = `<div class="artist-missing">Artist not found</div>`;
+      return;
+    }
+
+    let albumId = state.selectedAlbumId;
+    if (!albumId && artist.albums?.length) albumId = artist.albums[0].id;
+    if (!albumId) {
+      shell.innerHTML = `<div class="artist-missing">Album not found</div>`;
+      return;
+    }
+
+    const album = await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null);
+    if (!album) {
+      shell.innerHTML = `<div class="artist-missing">Album not found</div>`;
+      return;
+    }
+
+    state.selectedAlbumId = albumId;
+    state.selectedAlbumName = album.album;
+
+    shell.innerHTML = this.renderFull(artist, album);
+    this.afterRender();
+    this.ui.navigator.updateTitle();
+    this.ui.contentEvents?.attachContentEvents?.();
   }
 
-
-afterRender() {
-  this.watchAlbumTabsPin();
-  this.bindAlbumTabsClick();
-  this.bindSimilarPills();
-}
-bindSimilarPills() {
-  const root = this.getRoot();
-  if (!root || root.similarBound) return;
-  root.similarBound = true;
-
-  root.addEventListener("click", (e) => {
-    const pill = e.target.closest(".artist-name-pill[data-artist-id]");
-    if (!pill) return;
-    const artistId = pill.dataset.artistId;
-    if (!artistId) return;
-
-    const sp = new Spinner({
-      container: pill,
-      blur: 8,
-      dim: 0.4,
-      size: 18,
-      minDuration: 250,
-      delay: 60,
-    });
-    sp.show();
-
-    setTimeout(() => {
-      window.uiManager?.contentEvents?.showArtistPopover(artistId, e);
-      sp.hide();
-      setTimeout(() => sp.remove(), 300);
-    }, window.uiManager?.popoverDelay || 400);
-  });
-}
-
-
-
-/**
   afterRender() {
     this.watchAlbumTabsPin();
     this.bindAlbumTabsClick();
+    this.bindSimilarPills();
   }
+
+  bindSimilarPills() {
+    const root = this.getRoot();
+    if (!root || root.similarBound) return;
+    root.similarBound = true;
+
+    root.addEventListener("click", (e) => {
+      const pill = e.target.closest(".artist-name-pill[data-artist-id]");
+      if (!pill) return;
+      const artistId = pill.dataset.artistId;
+      if (!artistId) return;
+
+      const sp = new Spinner({
+        container: pill,
+        blur: 8,
+        dim: 0.4,
+        size: 18,
+        minDuration: 250,
+        delay: 60,
+      });
+      sp.show();
+
+      setTimeout(() => {
+        window.uiManager?.contentEvents?.showArtistPopover(artistId, e);
+        sp.hide();
+        setTimeout(() => sp.remove(), 300);
+      }, window.uiManager?.popoverDelay || 400);
+    });
+  }
+
   bindAlbumTabsClick() {
     const root = this.getRoot();
     if (!root) return;
@@ -2332,7 +2343,6 @@ bindSimilarPills() {
       const albumId = tab.dataset.albumId;
       if (!artistId || !albumId) return;
 
-      // Optimistic active state - feels responsive before refresh lands
       bar.querySelectorAll(".albumTab.active").forEach((t) => {
         t.classList.remove("active");
         t.setAttribute("aria-pressed", "false");
@@ -2340,61 +2350,20 @@ bindSimilarPills() {
       tab.classList.add("active");
       tab.setAttribute("aria-pressed", "true");
 
-      // Hand off to the app's existing content refresher
       try {
-        window.uiManager?.refreshArtistContent?.(artistId, albumId);
-      } catch {
+        window.uiManager?.navigator?.switchAlbum(artistId, albumId);
+      } catch (err) {
+        console.warn("[Artists] Album switch failed:", err);
         return;
       }
 
-      // After the new content is in the DOM, re-watch + scroll hero flush under pinned tabs
       setTimeout(() => {
         this.watchAlbumTabsPin();
         this.scrollHeroIntoView();
       }, 40);
     });
   }
-**/
 
-
-bindAlbumTabsClick() {
-  const root = this.getRoot();
-  if (!root) return;
-
-  const bar = root.querySelector(".albumTabsBar");
-  if (!bar || bar.bound) return;
-  bar.bound = true;
-
-  bar.addEventListener("click", (e) => {
-    const tab = e.target.closest(".albumTab");
-    if (!tab) return;
-
-    const artistId = tab.dataset.artistId;
-    const albumId = tab.dataset.albumId;
-    if (!artistId || !albumId) return;
-
-    bar.querySelectorAll(".albumTab.active").forEach((t) => {
-      t.classList.remove("active");
-      t.setAttribute("aria-pressed", "false");
-    });
-    tab.classList.add("active");
-    tab.setAttribute("aria-pressed", "true");
-
-    try {
-      window.uiManager?.navigator?.switchAlbum(artistId, albumId);
-    } catch (err) {
-      console.warn("[Artists] Album switch failed:", err);
-      return;
-    }
-
-    setTimeout(() => {
-      this.watchAlbumTabsPin();
-      this.scrollHeroIntoView();
-    }, 40);
-  });
-}
-
-  
   scrollHeroIntoView() {
     const root = this.getRoot();
     if (!root) return;
@@ -2414,7 +2383,6 @@ bindAlbumTabsClick() {
     const root = this.getRoot();
     if (!root) return;
 
-    // Cleanup previous binding
     if (this.tabsScrollHandler) {
       window.removeEventListener("scroll", this.tabsScrollHandler, true);
       this.tabsScrollHandler = null;
@@ -2447,7 +2415,6 @@ bindAlbumTabsClick() {
       this.tabsRaf = requestAnimationFrame(compute);
     };
 
-    // Reset then prime
     this.pinned = false;
     bar.classList.remove("is-pinned");
     compute();
@@ -2459,10 +2426,6 @@ bindAlbumTabsClick() {
     return document.querySelector('[data-page="artist"]');
   }
 }
-
-
-
-
 
 // /////////////////////////////////////////////////
 // Favorites Page
@@ -2557,7 +2520,7 @@ class Favorites {
           .map(
             (artist, i) => `
           <div class="ui-card" data-artist-id="${artist.id}" style="--d: ${i * 40}ms" onclick="window.uiManager.navigate('artist', '${artist.id}')">
-            <div class="ui-art-wrap" style="border-radius: 50%;"><img src="${artist.imageUrl}" loading="lazy" alt=""></div>
+            <div class="ui-art-wrap" style="border-radius: 50%;"><img src="${artist.imageUrl || ""}" loading="lazy" alt=""></div>
             <div class="ui-info" style="justify-content: center; text-align: center;">
               <div class="ui-text"><span class="ui-title">${artist.artist}</span><span class="ui-sub">${artist.genre || "Artist"}</span></div>
             </div>
@@ -2609,6 +2572,8 @@ class Favorites {
       { key: "playlists", label: "Playlists" },
     ];
 
+    this.bindWhenReady();
+
     return `
       <div data-page="favorites" class="page animate-fadeInUp">
         <header class="pageHeader">
@@ -2620,45 +2585,77 @@ class Favorites {
             )
             .join("")}</nav>
         </header>
-        <div id="favorites-content">${this.tabContent(state.favoritesTab)}</div>
+        <div id="favorites-content"><div style="padding: 4rem 0; text-align: center; opacity: 0.7;">Loading favorites…</div></div>
       </div>
     `;
   }
 
-  tabContent(tab) {
+  async bindWhenReady(attempts = 0) {
+    const root = document.querySelector('[data-page="favorites"]');
+    if (!root) {
+      if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
+      return;
+    }
+    const container = root.querySelector("#favorites-content");
+    if (!container) return;
+    container.innerHTML = await this.tabContent(this.ui.state.favoritesTab);
+    this.ui.contentEvents.attachContentEvents();
+  }
+
+  async tabContent(tab) {
     const state = this.ui.state;
 
     if (tab === "songs") {
-      const songIds = state.favoriteSongs;
-      if (!songIds.length) return this.emptyState("<i class='fad fa-hearts'></i>", "No favorite songs yet", "Tap the heart on any track to save it.");
-      return this.renderSongCards(songIds.map((id) => state.getSongById(id)).filter(Boolean));
+      const ids = state.favoriteSongs;
+      if (!ids.length) return this.emptyState("<i class='fad fa-hearts'></i>", "No favorite songs yet", "Tap the heart on any track to save it.");
+      const toLoad = new Set();
+      for (const id of ids) {
+        const song = state.getSongById(id);
+        if (!song) continue;
+        if (song.artistId && song.albumId) toLoad.add(`${song.artistId}/${song.albumId}`);
+      }
+      const missing = ids.filter((id) => !state.getSongById(id));
+      const hints = (window.MusicStore?.index || []);
+      if (missing.length) {
+        await Promise.all(
+          hints.map((entry) => window.MusicStore.loadArtist(entry.id).catch(() => null))
+        );
+      }
+      const songs = ids.map((id) => state.getSongById(id)).filter(Boolean);
+      return this.renderSongCards(songs);
     }
 
     if (tab === "artists") {
-      const artistIds = state.favoriteArtists;
-      if (!artistIds.length) return this.emptyState("ðŸŽ¤", "No favorite artists yet", "Save the artists you love most.");
-      return this.renderArtistCards(artistIds.map((id) => state.getArtistById(id)).filter(Boolean));
+      const ids = state.favoriteArtists;
+      if (!ids.length) return this.emptyState("🎤", "No favorite artists yet", "Save the artists you love most.");
+      await Promise.all(ids.map((id) => window.MusicStore.loadArtist(id).catch(() => null)));
+      const artists = ids.map((id) => state.getArtistById(id)).filter(Boolean);
+      return this.renderArtistCards(artists);
     }
 
     if (tab === "albums") {
-      const albumIds = state.favoriteAlbums;
-      if (!albumIds.length) return this.emptyState("ðŸ’¿", "No favorite albums yet", "Mark standout albums to keep them close.");
-      return this.renderAlbumCards(albumIds.map((id) => state.getAlbumById(id)).filter(Boolean));
+      const ids = state.favoriteAlbums;
+      if (!ids.length) return this.emptyState("💿", "No favorite albums yet", "Mark standout albums to keep them close.");
+      const albumCache = window.MusicStore.albumCache;
+      for (const id of ids) {
+        const cached = albumCache.get(String(id));
+        if (cached && cached._discographyOnly) {
+          await window.MusicStore.loadAlbum(cached.artistId, id).catch(() => null);
+        }
+      }
+      const albums = ids.map((id) => state.getAlbumById(id)).filter(Boolean);
+      return this.renderAlbumCards(albums);
     }
 
     if (tab === "playlists") {
       return state.playlists.length
         ? this.renderPlaylistCards(state.playlists)
-        : this.emptyState("ðŸ“š", "No playlists yet", "Create a playlist to curate your mood.");
+        : this.emptyState("📚", "No playlists yet", "Create a playlist to curate your mood.");
     }
 
     return "";
   }
 }
-
-
-
-
 
 // /////////////////////////////////////////////////
 // Playlists
@@ -2692,24 +2689,24 @@ class Playlists {
     `;
   }
   openCreateModal() {
-  const btn = document.querySelector('[data-page="playlists"] .action-btn.primary');
-  const sp = new Spinner({
-    container: btn || document.querySelector('[data-page="playlists"]'),
-    blur: 8,
-    dim: 0.4,
-    size: 20,
-    minDuration: 400,
-    delay: 80,
-  });
-  sp.show();
+    const btn = document.querySelector('[data-page="playlists"] .action-btn.primary');
+    const sp = new Spinner({
+      container: btn || document.querySelector('[data-page="playlists"]'),
+      blur: 8,
+      dim: 0.4,
+      size: 20,
+      minDuration: 400,
+      delay: 80,
+    });
+    sp.show();
 
-  setTimeout(() => {
-    const modal = document.getElementById("create-playlist-modal");
-    modal?.classList.remove("hidden");
-    sp.hide();
-    setTimeout(() => sp.remove(), 400);
-  }, this.ui.fragmentLoadDelay || 800);
-}
+    setTimeout(() => {
+      const modal = document.getElementById("create-playlist-modal");
+      modal?.classList.remove("hidden");
+      sp.hide();
+      setTimeout(() => sp.remove(), 400);
+    }, this.ui.fragmentLoadDelay || 800);
+  }
 
   playlistsGrid() {
     const state = this.ui.state;
@@ -2786,7 +2783,6 @@ class Playlists {
   }
 }
 
-
 // /////////////////////////////////////////////////
 // Create Playlist
 // /////////////////////////////////////////////////
@@ -2795,15 +2791,13 @@ class CreatePlaylist {
     this.ui = ui;
   }
 
-  // Build a fresh draft when entering the page.
-  // Call this from your router/manager before render (or rely on render() fallback).
   reset() {
     const count = (this.ui.state.playlists?.length || 0) + 1;
     this.ui.state.draftPlaylist = {
       name: `My Playlist #${count}`,
       description: "",
       tags: [],
-      songs: [], // array of song ids
+      songs: [],
     };
     return this.ui.state.draftPlaylist;
   }
@@ -2892,7 +2886,6 @@ class CreatePlaylist {
   }
 }
 
-
 // /////////////////////////////////////////////////
 // Edit Playlist
 // /////////////////////////////////////////////////
@@ -2938,7 +2931,7 @@ class EditPlaylist {
               <label>Tags</label>
               <div class="edit-playlist-tags" id="edit-pl-tags">
                 ${(playlist.tags || [])
-                  .map((tag) => `<span class="edit-playlist-tag" data-tag="${Utils.esc(tag)}">${Utils.esc(tag)}<button type="button" class="edit-playlist-tag-remove" data-tag="${Utils.esc(tag)}">Ã—</button></span>`)
+                  .map((tag) => `<span class="edit-playlist-tag" data-tag="${Utils.esc(tag)}">${Utils.esc(tag)}<button type="button" class="edit-playlist-tag-remove" data-tag="${Utils.esc(tag)}">×</button></span>`)
                   .join("")}
                 <input type="text" class="edit-playlist-tag-input" placeholder="Add tag + Enter" maxlength="20">
               </div>
@@ -2992,10 +2985,6 @@ class EditPlaylist {
   }
 }
 
-
-
-
-
 // /////////////////////////////////////////////////
 // Error 404 Page
 // /////////////////////////////////////////////////
@@ -3012,8 +3001,8 @@ class Error404 {
           <h1 class="title">Page Not Found</h1>
           <p class="desc">The page you're looking for doesn't exist or may have been moved.</p>
           <div class="actions">
-            <button onclick="window.pagesActions.goHome()" class="home">ðŸ  Take me Home</button>
-            <button onclick="window.history.back()" class="back">â†© Go Back</button>
+            <button onclick="window.pagesActions.goHome()" class="home">🏠 Take me Home</button>
+            <button onclick="window.history.back()" class="back">↩ Go Back</button>
           </div>
           <div class="note"><p>Error 404 - The requested resource could not be found.</p></div>
         </div>
@@ -3022,19 +3011,11 @@ class Error404 {
   }
 }
 
-
-
-
-
 window.Home = Home;
-
 window.Library = Library;
 window.Artists = Artists;
-
 window.Favorites = Favorites;
-
 window.Playlists = Playlists;
 window.CreatePlaylist = CreatePlaylist;
 window.EditPlaylist = EditPlaylist;
-
 window.Error404 = Error404;
