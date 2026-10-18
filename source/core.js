@@ -1,8 +1,3 @@
-
-
-
-
-
 (function () {
   const script = document.currentScript;
   window.__MYBEATS_BASE__ =
@@ -15,10 +10,8 @@
 // ////////////////////////////////////////////////////////////////////////
 const Config = {
   IMAGE_BASE: {
-    artist:
-      "https://mybeats.cloud/content/artistPortraits/",
-    album:
-      "https://mybeats.cloud/content/albumCovers/",
+    artist: "https://mybeats.cloud/content/artistPortraits/",
+    album: "https://mybeats.cloud/content/albumCovers/",
   },
   FAVOURITES: {
     favSongs: "Songs",
@@ -99,19 +92,13 @@ class Utils {
     return Utils.fmtTime(raw);
   }
 
-  static albumQueue(state, artistId, albumId) {
-    const artist = state.getArtistById(artistId);
-    const album = artist?.albums.find((a) => Utils.id(a.id) === Utils.id(albumId));
-    if (!artist || !album) return [];
-    return album.songs.map((song) => ({
-      ...song,
-      artistId: artist.id,
-      albumId: album.id,
-      artist: artist.artist,
-      album: album.album,
-      artwork: album.artwork,
-      portrait: artist.portrait,
-    }));
+  static async albumQueue(artistId, albumId) {
+    if (!window.MusicStore || !window.MusicStore.loadAlbum) return [];
+    const album = await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null);
+    if (!album) return [];
+    return (album.songs || [])
+      .map((song) => window.MusicStore.songCache.get(String(song.id)))
+      .filter(Boolean);
   }
 }
 
@@ -268,7 +255,6 @@ class IdUtils {
   }
 
   static hslToRgb(hslString) {
-    // Accepts "h s% l%" or {h,s,l} or "h s l"
     let h, s, l;
 
     if (typeof hslString === "string") {
@@ -599,9 +585,6 @@ class PersistenceManager {
     this.bind();
   }
 
-  // ----------------------------------------------
-  // Lifecycle
-  // ----------------------------------------------
   restore() {
     if (this.hasRestored) return;
     this.hasRestored = true;
@@ -711,9 +694,6 @@ class PersistenceManager {
     };
   }
 
-  // ----------------------------------------------
-  // Save
-  // ----------------------------------------------
   save(immediate = false) {
     if (!this.state.currentSong) return;
 
@@ -1146,14 +1126,11 @@ const Icons = {
   },
 };
 
-
-
 window.Config = Config;
 window.Utils = Utils;
 window.Prefs = Prefs;
 window.IdUtils = IdUtils;
 window.ColorExtractor = ColorExtractor;
-// window.Spinner = Spinner;
 window.SearchUtils = SearchUtils;
 window.PersistenceManager = PersistenceManager;
 window.NProgress = NProgress;
