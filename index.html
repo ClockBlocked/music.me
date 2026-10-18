@@ -1970,6 +1970,21 @@ button {
   </script>
 
 
+<script>
+  fetch("https://clockblocked.github.io/music.me/library/library.index.json")
+    .then(r => r.json())
+    .then(data => {
+      window.MusicStore = window.MusicStore || {};
+      window.MusicStore.index = data.artists;
+      const s = document.createElement("script");
+      s.src = "https://clockblocked.github.io/music.me/source/boot.js";
+      document.body.appendChild(s);
+    });
+</script>
+
+
+
+  
 
   <!--  jQuery 5.0.0  -->
 <script src="https://clockblocked.github.io/music.me/source/jQuery.js"></script>
@@ -1984,9 +1999,7 @@ button {
 <script src="https://clockblocked.github.io/music.me/source/player.js"></script>
 <script src="https://clockblocked.github.io/music.me/source/interactions.js"></script>
   
-<script src="https://clockblocked.github.io/music.me/library/library.index.json"></script>
   
-<script src="https://clockblocked.github.io/music.me/source/boot.js"></script>
   
 </body>
 </html>
