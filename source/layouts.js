@@ -20,57 +20,48 @@ class Home {
     this.bindLiveUpdates();
   }
 
-  buildSongs(state) {
-    return state.enrichedLibrary.flatMap((artist) =>
-      artist.albums.flatMap((album) =>
-        album.songs.map((song) => ({
-          ...song,
-          artistId: artist.id,
-          albumId: album.id,
-          artist: artist.artist,
-          album: album.album,
-          coverUrl: album.coverUrl,
-          artistImageUrl: artist.imageUrl,
-          genre: artist.genre || "",
-        }))
-      )
-    );
-  }
-  buildAlbums(state) {
-    return state.enrichedLibrary.flatMap((artist) =>
-      artist.albums.map((album) => ({
-        artistId: artist.id,
-        artistName: artist.artist,
-        albumId: album.id,
-        albumName: album.album,
-        coverUrl: album.coverUrl,
-        genre: artist.genre || "",
-        year: album.year || "2024",
-        songCount: album.songs.length,
-        songs: album.songs,
-      }))
-    );
-  }
-  buildGenres(state) {
-    let songs = [];
-    try {
-      songs = this.buildSongs(state);
-    } catch {
-      songs = [];
-    }
 
-    const map = new Map();
-    songs.forEach((song) => {
-      const name = (song.genre || "").trim();
-      if (!name) return;
-      if (!map.has(name)) map.set(name, { name, count: 0, coverUrl: song.coverUrl || "" });
-      const entry = map.get(name);
-      entry.count += 1;
-      if (!entry.coverUrl && song.coverUrl) entry.coverUrl = song.coverUrl;
-    });
+buildSongs(state) {
+  return window.pagesActions?.buildSongs() || [];
+}
 
-    return [...map.values()].sort((a, b) => b.count - a.count);
-  }
+buildAlbums(state) {
+  return window.pagesActions?.buildAlbums() || [];
+}
+
+buildGenres(state) {
+  const index = window.MusicStore?.index || [];
+  const map = new Map();
+  index.forEach((entry) => {
+    const name = (entry.genre || "").trim();
+    if (!name) return;
+    if (!map.has(name)) map.set(name, { name, count: 0, coverUrl: "" });
+    map.get(name).count += 1;
+  });
+  return [...map.values()].sort((a, b) => b.count - a.count);
+}
+
+pickFeatured(state) {
+  return this._featuredRelease || null;
+}
+
+getCounts(state) {
+  const index = window.MusicStore?.index || [];
+  return {
+    songs: window.MusicStore?.songCache?.size || 0,
+    albums: index.reduce((sum, e) => sum + (e.albumCount || 0), 0),
+    artists: index.length,
+    playlists: (state.playlists || []).length,
+  };
+}
+
+getDiscoverArtists(state) {
+  return this.discoverCache || [];
+}
+
+
+
+  
 
   shuffle(arr) {
     const a = [...arr];
@@ -81,11 +72,7 @@ class Home {
     return a;
   }
 
-  pickFeatured(state) {
-    const albums = this.buildAlbums(state).filter((album) => album.coverUrl);
-    if (!albums.length) return null;
-    return this.shuffle(albums)[0];
-  }
+
   getRecent(state) {
     return (state.recentlyPlayed || [])
       .slice(0, this.recentLimit)
@@ -100,14 +87,7 @@ class Home {
       plays: state.getPlayCount ? state.getPlayCount(song.id) : 0,
     }));
   }
-  getCounts(state) {
-    return {
-      songs: this.buildSongs(state).length,
-      albums: this.buildAlbums(state).length,
-      artists: state.enrichedLibrary.length,
-      playlists: (state.playlists || []).length,
-    };
-  }
+
   getFavSummary(state) {
     const songCount = (state.favoriteSongs || []).length;
     const albumCount = (state.favoriteAlbums || []).length;
@@ -205,46 +185,7 @@ class Home {
   // ----------------------------------------------
   // Discover
   // ----------------------------------------------
-  getDiscoverArtists(state) {
-    if (this.discoverCache && this.discoverCache.length) return this.discoverCache;
 
-    let songs = [];
-    try {
-      songs = this.buildSongs(state);
-    } catch {
-      songs = [];
-    }
-
-    const byArtist = new Map();
-    songs.forEach((song) => {
-      if (song == null || song.artistId == null) return;
-      const key = String(song.artistId);
-      if (!byArtist.has(key)) byArtist.set(key, []);
-      byArtist.get(key).push(song);
-    });
-
-    const pool = [...byArtist.values()].filter((list) => list.length > 0);
-    if (!pool.length) {
-      this.discoverCache = [];
-      return this.discoverCache;
-    }
-
-    const picked = this.shuffle(pool).slice(0, this.discoverArtistLimit);
-
-    this.discoverCache = picked.map((list) => {
-      const first = list[0];
-      const sample = this.shuffle(list).slice(0, this.discoverSongsPerArtist);
-      return {
-        artistId: first.artistId,
-        artistName: first.artist || "Unknown Artist",
-        genre: first.genre || "",
-        imageUrl: first.artistImageUrl || first.coverUrl || "",
-        songs: sample,
-      };
-    });
-
-    return this.discoverCache;
-  }
   discoverSongRow(song, index) {
     const isPlaying = String(this.ui.state.currentSong?.id) === String(song.id);
     const title = this.esc(song.title || "Unknown Title");
