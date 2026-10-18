@@ -43,7 +43,7 @@ jQuery(function ($) {
 
 
 
-
+/****
 (function initLibrary() {
   if (!window.MusicStore || !window.MusicStore.index) {
     const errDiv = document.createElement("div");
@@ -330,8 +330,271 @@ jQuery(function ($) {
     },
   };
 })();
+***/
 
 
+  (async function initLibrary() {
+  console.log("[initLibrary] starting");
+
+  if (!window.MusicStore || !window.MusicStore.index) {
+    const d = document.createElement("div");
+    d.style.cssText = "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
+    d.textContent = "Initialization failed:\nwindow.MusicStore.index is missing.";
+    document.body.appendChild(d);
+    return;
+  }
+
+  const BASE = "https://clockblocked.github.io/music.me";
+  const LIB = `${BASE}/library`;
+  const SZ = { cover: 320, portrait: 160 };
+
+  window.MusicStore.artists = {};
+  window.MusicStore.songCache = new Map();
+  window.MusicStore.albumCache = new Map();
+  window.MusicStore.indexById = new Map(
+    (window.MusicStore.index || []).map((a) => [String(a.id), a])
+  );
+
+  const _artistInflight = new Map();
+  const _albumInflight = new Map();
+
+  const json = async (url) => {
+    const r = await fetch(url, { cache: "default" });
+    if (!r.ok) throw new Error(`HTTP ${r.status}: ${url}`);
+    return r.json();
+  };
+
+  const artworkUrl = (artwork, size = SZ.cover) => {
+    if (!artwork) return "";
+    if (typeof artwork === "string") return artwork;
+    return artwork[size] || artwork["320"] || artwork["640"] || artwork["160"] || "";
+  };
+  const portraitUrl = (portrait, size = SZ.portrait) => {
+    if (!portrait) return "";
+    if (typeof portrait === "string") return portrait;
+    return portrait[size] || portrait["160"] || portrait["320"] || portrait["640"] || "";
+  };
+  window.MusicStore.artworkUrl = artworkUrl;
+  window.MusicStore.portraitUrl = portraitUrl;
+
+  window.MusicStore.loadArtist = async function (artistId) {
+    const id = String(artistId);
+    if (window.MusicStore.artists[id]) return window.MusicStore.artists[id];
+    if (_artistInflight.has(id)) return _artistInflight.get(id);
+
+    const promise = (async () => {
+      const [artist, disc] = await Promise.all([
+        json(`${LIB}/artists/${id}/artist.json`),
+        json(`${LIB}/artists/${id}/discography.json`).catch(() => ({ albums: [] })),
+      ]);
+
+      const merged = {
+        id: artist.id ?? id,
+        artist: artist.name ?? artist.artist ?? "",
+        genre: artist.genre ?? "Unknown",
+        portrait: artist.portrait ?? {},
+        imageUrl: portraitUrl(artist.portrait),
+        similar: artist.similar ?? [],
+        albums: disc.albums || [],
+      };
+
+      for (const a of merged.albums) {
+        const aid = String(a.id);
+        if (!window.MusicStore.albumCache.has(aid)) {
+          window.MusicStore.albumCache.set(aid, {
+            id: a.id,
+            album: a.title ?? a.album ?? "",
+            title: a.title ?? a.album ?? "",
+            year: a.year,
+            artwork: a.artwork,
+            coverUrl: artworkUrl(a.artwork),
+            artistId: merged.id,
+            artistName: merged.artist,
+            songCount: a.songCount,
+            songs: [],
+            _discographyOnly: true,
+          });
+        }
+      }
+      window.MusicStore.artists[id] = merged;
+      _artistInflight.delete(id);
+      return merged;
+    })();
+
+    _artistInflight.set(id, promise);
+    return promise;
+  };
+
+  window.MusicStore.loadAlbum = async function (artistId, albumId) {
+    const aid = String(albumId);
+    const cached = window.MusicStore.albumCache.get(aid);
+    if (cached && !cached._discographyOnly) return cached;
+    if (_albumInflight.has(aid)) return _albumInflight.get(aid);
+
+    const promise = (async () => {
+      const album = await json(`${LIB}/artists/${artistId}/albums/${aid}/album.json`);
+      const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
+
+      const record = {
+        id: album.id ?? aid,
+        album: album.title ?? album.album ?? "",
+        title: album.title ?? album.album ?? "",
+        artistId: album.artistId ?? artistId,
+        artistName: artist?.artist ?? "",
+        year: album.year,
+        artwork: album.artwork,
+        coverUrl: artworkUrl(album.artwork),
+        sold: album.sold,
+        songs: [],
+        _discographyOnly: false,
+      };
+
+      for (const song of album.songs || []) {
+        const sources = song.sources || [];
+        const enriched = {
+          ...song,
+          artistId: record.artistId,
+          albumId: record.id,
+          artist: record.artistName,
+          album: record.title,
+          artwork: record.artwork,
+          coverUrl: record.coverUrl,
+          portrait: artist?.portrait,
+          artistImageUrl: portraitUrl(artist?.portrait),
+          genre: artist?.genre || "Unknown",
+          source: sources[0]?.src || "",
+          sources,
+        };
+        window.MusicStore.songCache.set(String(song.id), enriched);
+        record.songs.push(enriched);
+      }
+
+      window.MusicStore.albumCache.set(aid, record);
+      _albumInflight.delete(aid);
+      return record;
+    })();
+
+    _albumInflight.set(aid, promise);
+    return promise;
+  };
+
+  window.MusicStore.loadAllSongs = async function (onProgress) {
+    const entries = window.MusicStore.index || [];
+    let done = 0;
+    for (const entry of entries) {
+      try {
+        const artist = await window.MusicStore.loadArtist(entry.id);
+        for (const a of artist.albums || []) {
+          try { await window.MusicStore.loadAlbum(entry.id, a.id); }
+          catch (e) { console.warn(`[loadAllSongs] album ${a.id}:`, e); }
+        }
+      } catch (e) {
+        console.warn(`[loadAllSongs] artist ${entry.id}:`, e);
+      }
+      done++;
+      if (onProgress) onProgress(done, entries.length);
+    }
+  };
+
+  window.state.getSongById = (id) => window.MusicStore.songCache.get(String(id)) || null;
+  window.state.getAlbumById = (id) => window.MusicStore.albumCache.get(String(id)) || null;
+  window.state.getArtistById = (id) => {
+    const sid = String(id);
+    return window.MusicStore.artists[sid] || window.MusicStore.indexById.get(sid) || null;
+  };
+
+  window.metadata = window.MusicStore.index;
+  window.state.enrichedLibrary = window.MusicStore.index;
+
+  console.log("[initLibrary] creating UIManager");
+  window.uiManager = new UIManager(window.state, window.audioPlayer, window.favoritesPlaylists);
+  window.popups.ui = window.uiManager;
+  window.heartManager.store.state = window.state;
+
+  window.pagesActions = {
+    buildSongs() {
+      return Array.from(window.MusicStore.songCache.values());
+    },
+    buildAlbums() {
+      return Array.from(window.MusicStore.albumCache.values()).filter((a) => !a._discographyOnly);
+    },
+    getSongById(id) { return window.MusicStore.songCache.get(String(id)) || null; },
+    getAlbumById(id) { return window.MusicStore.albumCache.get(String(id)) || null; },
+    getArtistById(id) {
+      const sid = String(id);
+      return window.MusicStore.artists[sid] || window.MusicStore.indexById.get(sid) || null;
+    },
+    artworkUrl,
+    portraitUrl,
+    pickSource(sources) { return sources?.[0]?.src || ""; },
+
+    playQueue(queue, index = 0, label = "", source = null) {
+      if (!queue.length || !window.uiManager?.audioPlayer) return;
+      const i = Math.max(0, Math.min(index, queue.length - 1));
+      window.uiManager.audioPlayer.playSong(queue[i], queue, true, source);
+      if (label) window.uiManager.state.showToast?.(label);
+    },
+    playSong(songId, source = null) {
+      const song = this.getSongById(songId);
+      if (song) window.uiManager?.audioPlayer?.playSong(song, null, true, source);
+    },
+    async shuffleAll() {
+      await window.MusicStore.loadAllSongs();
+      const songs = this.buildSongs();
+      if (!songs.length) return;
+      this.playQueue(IdUtils.sample(songs, songs.length), 0, "Shuffling your whole library", "home");
+    },
+    async playGenre(genre) {
+      await window.MusicStore.loadAllSongs();
+      const songs = this.buildSongs().filter(
+        (s) => String(s.genre).toLowerCase() === String(genre).toLowerCase()
+      );
+      if (!songs.length) return;
+      this.playSong(IdUtils.sample(songs, 1)[0].id, "home");
+      window.uiManager?.state.showToast?.(`Playing ${genre}`);
+    },
+    async playMood(mood) {
+      await window.MusicStore.loadAllSongs();
+      const map = {
+        chill: ["pop", "indie", "acoustic", "r&b", "soul"],
+        energy: ["dance", "electronic", "edm", "hip hop", "rock", "pop"],
+        focus: ["indie", "acoustic", "classical", "instrumental", "alternative"],
+        party: ["dance", "electronic", "club", "pop", "hip hop"],
+        romance: ["r&b", "soul", "ballad", "pop", "love"],
+      };
+      const tags = map[mood] || [];
+      const all = this.buildSongs();
+      const filtered = all.filter((s) => tags.some((t) => String(s.genre).toLowerCase().includes(t)));
+      const pool = filtered.length ? filtered : all;
+      this.playQueue(IdUtils.sample(pool, Math.min(12, pool.length)), 0,
+        `${mood[0].toUpperCase() + mood.slice(1)} mix loaded`, "home");
+    },
+    openStatsDashboard() {
+      if (window.uiManager && window.state)
+        window.state.modalOpen(window.uiManager.homePage.statsDashboard());
+    },
+    goHome() {
+      if (!window.state) return;
+      window.state.is404 = false;
+      window.uiManager?.navigate("home");
+    },
+    async playAlbum(artistId, albumId) {
+      const album = await window.MusicStore.loadAlbum(artistId, albumId);
+      const queue = (album.songs || []).map((s) => window.MusicStore.songCache.get(String(s.id))).filter(Boolean);
+      if (queue.length) window.uiManager.audioPlayer.playSong(queue[0], queue, true, "album");
+    },
+    async shuffleAlbum(artistId, albumId) {
+      const album = await window.MusicStore.loadAlbum(artistId, albumId);
+      const queue = (album.songs || []).map((s) => window.MusicStore.songCache.get(String(s.id))).filter(Boolean);
+      if (queue.length) {
+        const sh = Utils.shuffle(queue);
+        window.uiManager.audioPlayer.playSong(sh[0], sh, true, "album");
+      }
+    },
+  };
+
+  console.log("[initLibrary] ready");
+})();
 
 
 
