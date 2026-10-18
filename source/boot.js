@@ -72,7 +72,7 @@ jQuery(function ($) {
     if (_artistInflight.has(id)) return _artistInflight.get(id);
 
     const promise = (async () => {
-      const base = `/library/artists/${id}`;
+      const base = `/music.me/library/artists/${id}`;
       const [artist, discography] = await Promise.all([
         json(`${base}/artist.json`),
         json(`${base}/discography.json`).catch(() => ({ albums: [] })),
@@ -117,7 +117,7 @@ jQuery(function ($) {
     if (_albumInflight.has(aid)) return _albumInflight.get(aid);
 
     const promise = (async () => {
-      const url = `/library/artists/${artistId}/albums/${aid}/album.json`;
+      const url = `/music.me/library/artists/${artistId}/albums/${aid}/album.json`;
       const album = await json(url);
       const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
 
