@@ -1,0 +1,234 @@
+{
+  "id": "1440818584",
+  "artistId": "602767352",
+  "title": "Pure Heroine",
+  "year": "2013",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/602767352/albums/1440818584/artwork/160.jpg",
+    "320": "/library/artists/602767352/albums/1440818584/artwork/320.jpg",
+    "640": "/library/artists/602767352/albums/1440818584/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440818652",
+      "title": "Tennis Court",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818652.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818652.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818652.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818657",
+      "title": "400 Lux",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818657.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818657.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818657.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818664",
+      "title": "Royals",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818664.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818664.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818664.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818666",
+      "title": "Ribs",
+      "duration": "4:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818666.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818666.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818666.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818668",
+      "title": "Buzzcut Season",
+      "duration": "4:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818668.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818668.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818668.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818672",
+      "title": "Team",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818672.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818672.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818672.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818674",
+      "title": "Glory and Gore",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818674.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818674.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818674.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818676",
+      "title": "Still Sane",
+      "duration": "3:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818676.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818676.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818676.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818678",
+      "title": "White Teeth Teens",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818678.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818678.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818678.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440818801",
+      "title": "A World Alone",
+      "duration": "4:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818801.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818801.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1440818584/audio/1440818801.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

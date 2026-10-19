@@ -1,0 +1,366 @@
+{
+  "id": "1456176981",
+  "artistId": "549236696",
+  "title": "Rodeo",
+  "year": "2015",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/549236696/albums/1456176981/artwork/160.jpg",
+    "320": "/library/artists/549236696/albums/1456176981/artwork/320.jpg",
+    "640": "/library/artists/549236696/albums/1456176981/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1456176982",
+      "title": "Pornography",
+      "duration": "3:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456176982.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456176982.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456176982.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456176983",
+      "title": "Oh My Dis Side (feat. Quavo)",
+      "duration": "5:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456176983.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456176983.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456176983.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177227",
+      "title": "3500 (feat. Future & 2 Chainz)",
+      "duration": "7:41",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177227.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177227.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177227.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177228",
+      "title": "Wasted (feat. Juicy J)",
+      "duration": "3:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177228.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177228.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177228.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177229",
+      "title": "90210 (feat. Kacy Hill)",
+      "duration": "5:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177229.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177229.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177229.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177231",
+      "title": "Pray 4 Love (feat. The Weeknd)",
+      "duration": "5:07",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177231.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177231.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177231.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177232",
+      "title": "Nightcrawler (feat. Swae Lee & Chief Keef)",
+      "duration": "5:21",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177232.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177232.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177232.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177233",
+      "title": "Piss On Your Grave (feat. Kanye West)",
+      "duration": "2:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177233.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177233.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177233.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177234",
+      "title": "Antidote",
+      "duration": "4:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177234.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177234.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177234.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177236",
+      "title": "Impossible",
+      "duration": "4:02",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177236.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177236.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177236.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177237",
+      "title": "Maria I'm Drunk (feat. Justin Bieber & Young Thug)",
+      "duration": "5:49",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177237.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177237.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177237.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177238",
+      "title": "Flying High (feat. Toro y Moi)",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177238.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177238.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177238.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177239",
+      "title": "I Can Tell",
+      "duration": "3:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177239.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177239.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177239.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177240",
+      "title": "Apple Pie",
+      "duration": "3:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177240.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177240.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177240.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177241",
+      "title": "Ok Alright (feat. ScHoolboy Q)",
+      "duration": "6:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177241.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177241.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177241.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1456177242",
+      "title": "Never Catch Me",
+      "duration": "2:56",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 16,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177242.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177242.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1456176981/audio/1456177242.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "id": "1763919907",
+  "artistId": "549236696",
+  "title": "DAYS BEFORE RODEO",
+  "year": "2014",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/549236696/albums/1763919907/artwork/160.jpg",
+    "320": "/library/artists/549236696/albums/1763919907/artwork/320.jpg",
+    "640": "/library/artists/549236696/albums/1763919907/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1763919911",
+      "title": "Days Before Rodeo: The Prayer",
+      "duration": "3:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919911.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919911.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919911.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763919912",
+      "title": "Mamacita (feat. Rich Homie Quan & Young Thug)",
+      "duration": "4:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919912.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919912.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919912.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763919913",
+      "title": "Quintana Pt. 2",
+      "duration": "3:06",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919913.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919913.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919913.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763919914",
+      "title": "Drugs You Should Try It",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919914.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919914.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919914.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763919916",
+      "title": "Don't Play (feat. The 1975 & Big Sean)",
+      "duration": "4:45",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919916.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919916.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919916.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763919917",
+      "title": "Skyfall (feat. Young Thug)",
+      "duration": "5:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919917.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919917.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919917.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763919918",
+      "title": "Zombies",
+      "duration": "4:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919918.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919918.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763919918.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763920069",
+      "title": "Sloppy Toppy (feat. Migos & Peewee Longway)",
+      "duration": "4:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920069.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920069.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920069.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763920070",
+      "title": "Basement Freestyle",
+      "duration": "4:04",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920070.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920070.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920070.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763920071",
+      "title": "Backyard",
+      "duration": "4:30",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920071.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920071.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920071.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763920073",
+      "title": "Grey",
+      "duration": "3:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920073.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920073.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920073.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1763920075",
+      "title": "BACC (Bonus)",
+      "duration": "2:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920075.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920075.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1763919907/audio/1763920075.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

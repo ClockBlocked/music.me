@@ -1,0 +1,50 @@
+{
+  "artistId": "602767352",
+  "name": "Lorde",
+  "albums": [
+    {
+      "id": "1572940891",
+      "title": "Solar Power",
+      "year": "2021",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/602767352/albums/1572940891/artwork/160.jpg",
+        "320": "/library/artists/602767352/albums/1572940891/artwork/320.jpg",
+        "640": "/library/artists/602767352/albums/1572940891/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440818584",
+      "title": "Pure Heroine",
+      "year": "2013",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/602767352/albums/1440818584/artwork/160.jpg",
+        "320": "/library/artists/602767352/albums/1440818584/artwork/320.jpg",
+        "640": "/library/artists/602767352/albums/1440818584/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1429662346",
+      "title": "Melodrama",
+      "year": "2017",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/602767352/albums/1429662346/artwork/160.jpg",
+        "320": "/library/artists/602767352/albums/1429662346/artwork/320.jpg",
+        "640": "/library/artists/602767352/albums/1429662346/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1810905299",
+      "title": "Virgin",
+      "year": "2025",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/602767352/albums/1810905299/artwork/160.jpg",
+        "320": "/library/artists/602767352/albums/1810905299/artwork/320.jpg",
+        "640": "/library/artists/602767352/albums/1810905299/artwork/640.jpg"
+      }
+    }
+  ]
+}

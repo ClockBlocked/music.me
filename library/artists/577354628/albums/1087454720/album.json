@@ -1,0 +1,234 @@
+{
+  "id": "1087454720",
+  "artistId": "577354628",
+  "title": "7/27",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/577354628/albums/1087454720/artwork/160.jpg",
+    "320": "/library/artists/577354628/albums/1087454720/artwork/320.jpg",
+    "640": "/library/artists/577354628/albums/1087454720/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1087454867",
+      "title": "That’s My Girl",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454867.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454867.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454867.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454868",
+      "title": "Work from Home (feat. Ty Dolla $ign)",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454868.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454868.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454868.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454869",
+      "title": "The Life",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454869.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454869.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454869.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454870",
+      "title": "Write On Me",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454870.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454870.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454870.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454871",
+      "title": "I Lied",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454871.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454871.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454871.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454872",
+      "title": "All In My Head (Flex) [feat. Fetty Wap]",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454872.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454872.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454872.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454873",
+      "title": "Squeeze",
+      "duration": "3:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454873.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454873.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454873.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454874",
+      "title": "Gonna Get Better",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454874.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454874.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454874.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454875",
+      "title": "Scared of Happy",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454875.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454875.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454875.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087454876",
+      "title": "Not That Kinda Girl (feat. Missy Elliott)",
+      "duration": "3:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454876.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454876.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1087454720/audio/1087454876.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

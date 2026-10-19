@@ -1,0 +1,300 @@
+{
+  "id": "1440902652",
+  "artistId": "549236696",
+  "title": "Huncho Jack, Jack Huncho",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/549236696/albums/1440902652/artwork/160.jpg",
+    "320": "/library/artists/549236696/albums/1440902652/artwork/320.jpg",
+    "640": "/library/artists/549236696/albums/1440902652/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440902676",
+      "title": "Modern Slavery",
+      "duration": "2:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902676.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902676.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902676.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440902878",
+      "title": "Black & Chinese",
+      "duration": "2:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902878.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902878.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902878.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440902886",
+      "title": "Eye 2 Eye (feat. Takeoff)",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902886.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902886.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440902886.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903014",
+      "title": "Motorcycle Patches",
+      "duration": "3:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903014.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903014.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903014.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903020",
+      "title": "Huncho Jack",
+      "duration": "3:19",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903020.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903020.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903020.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903025",
+      "title": "Saint",
+      "duration": "2:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903025.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903025.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903025.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903036",
+      "title": "Go",
+      "duration": "2:36",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903036.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903036.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903036.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903133",
+      "title": "Dubai Shit (feat. Offset)",
+      "duration": "3:48",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903133.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903133.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903133.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903137",
+      "title": "Saint Laurent Mask",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903137.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903137.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903137.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903144",
+      "title": "Moon Rock",
+      "duration": "2:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903144.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903144.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903144.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903147",
+      "title": "How U Feel",
+      "duration": "3:25",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903147.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903147.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903147.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903149",
+      "title": "Where U From",
+      "duration": "4:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903149.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903149.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903149.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903155",
+      "title": "Best Man",
+      "duration": "4:26",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903155.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903155.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1440902652/audio/1440903155.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

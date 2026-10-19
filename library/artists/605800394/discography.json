@@ -1,0 +1,28 @@
+{
+  "artistId": "605800394",
+  "name": "SZA",
+  "albums": [
+    {
+      "id": "1239976329",
+      "title": "Ctrl",
+      "year": "2017",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/605800394/albums/1239976329/artwork/160.jpg",
+        "320": "/library/artists/605800394/albums/1239976329/artwork/320.jpg",
+        "640": "/library/artists/605800394/albums/1239976329/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440906927",
+      "title": "Black Panther: The Album",
+      "year": "2018",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/605800394/albums/1440906927/artwork/160.jpg",
+        "320": "/library/artists/605800394/albums/1440906927/artwork/320.jpg",
+        "640": "/library/artists/605800394/albums/1440906927/artwork/640.jpg"
+      }
+    }
+  ]
+}

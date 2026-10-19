@@ -1,0 +1,322 @@
+{
+  "id": "1150135681",
+  "artistId": "549236696",
+  "title": "Birds In The Trap Sing McKnight",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/549236696/albums/1150135681/artwork/160.jpg",
+    "320": "/library/artists/549236696/albums/1150135681/artwork/320.jpg",
+    "640": "/library/artists/549236696/albums/1150135681/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1150135699",
+      "title": "the ends",
+      "duration": "3:21",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135699.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135699.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135699.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135788",
+      "title": "way back",
+      "duration": "4:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135788.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135788.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135788.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135829",
+      "title": "coordinate",
+      "duration": "3:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135829.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135829.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135829.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135832",
+      "title": "through the late night",
+      "duration": "4:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135832.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135832.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135832.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135848",
+      "title": "beibs in the trap",
+      "duration": "3:33",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135848.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135848.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135848.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135880",
+      "title": "sdp interlude",
+      "duration": "3:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135880.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135880.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135880.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135919",
+      "title": "sweet sweet",
+      "duration": "3:42",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135919.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135919.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135919.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135920",
+      "title": "outside",
+      "duration": "2:56",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135920.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135920.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135920.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135924",
+      "title": "goosebumps",
+      "duration": "4:03",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135924.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135924.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135924.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135931",
+      "title": "first take",
+      "duration": "5:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135931.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135931.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135931.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135947",
+      "title": "pick up the phone (feat. Quavo)",
+      "duration": "4:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135947.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135947.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135947.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135948",
+      "title": "lose",
+      "duration": "3:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135948.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135948.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135948.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135949",
+      "title": "guidance",
+      "duration": "3:27",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135949.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135949.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135949.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1150135962",
+      "title": "wonderful",
+      "duration": "3:36",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135962.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135962.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/549236696/albums/1150135681/audio/1150135962.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

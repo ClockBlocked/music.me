@@ -1,0 +1,256 @@
+{
+  "id": "1429662346",
+  "artistId": "602767352",
+  "title": "Melodrama",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/602767352/albums/1429662346/artwork/160.jpg",
+    "320": "/library/artists/602767352/albums/1429662346/artwork/320.jpg",
+    "640": "/library/artists/602767352/albums/1429662346/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1429663163",
+      "title": "Green Light",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663163.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663163.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663163.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663164",
+      "title": "Sober",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663164.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663164.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663164.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663165",
+      "title": "Homemade Dynamite",
+      "duration": "3:09",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663165.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663165.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663165.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663166",
+      "title": "The Louvre",
+      "duration": "4:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663166.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663166.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663166.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663167",
+      "title": "Liability",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663167.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663167.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663167.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663168",
+      "title": "Hard Feelings/Loveless",
+      "duration": "6:07",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663168.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663168.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663168.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663172",
+      "title": "Sober II (Melodrama)",
+      "duration": "2:58",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663172.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663172.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663172.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663175",
+      "title": "Writer In the Dark",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663175.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663175.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663175.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663176",
+      "title": "Supercut",
+      "duration": "4:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663176.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663176.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663176.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663177",
+      "title": "Liability (Reprise)",
+      "duration": "2:16",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663177.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663177.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663177.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1429663179",
+      "title": "Perfect Places",
+      "duration": "3:41",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663179.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663179.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1429662346/audio/1429663179.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

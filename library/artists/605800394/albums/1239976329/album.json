@@ -1,0 +1,322 @@
+{
+  "id": "1239976329",
+  "artistId": "605800394",
+  "title": "Ctrl",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/605800394/albums/1239976329/artwork/160.jpg",
+    "320": "/library/artists/605800394/albums/1239976329/artwork/320.jpg",
+    "640": "/library/artists/605800394/albums/1239976329/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1239976602",
+      "title": "Supermodel",
+      "duration": "3:01",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976602.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976602.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976602.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976603",
+      "title": "Love Galore (feat. Travis Scott)",
+      "duration": "4:35",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976603.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976603.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976603.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976604",
+      "title": "Doves In The Wind (feat. Kendrick Lamar)",
+      "duration": "4:26",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976604.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976604.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976604.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976605",
+      "title": "Drew Barrymore",
+      "duration": "3:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976605.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976605.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976605.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976606",
+      "title": "Prom",
+      "duration": "3:16",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976606.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976606.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976606.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976607",
+      "title": "The Weekend",
+      "duration": "4:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976607.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976607.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976607.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976608",
+      "title": "Go Gina",
+      "duration": "2:41",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976608.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976608.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976608.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976609",
+      "title": "Garden (Say It Like Dat)",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976609.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976609.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976609.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976610",
+      "title": "Broken Clocks",
+      "duration": "3:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976610.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976610.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976610.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976611",
+      "title": "Anything",
+      "duration": "2:29",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976611.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976611.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976611.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976612",
+      "title": "Wavy (Interlude) [feat. James Fauntleroy]",
+      "duration": "1:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976612.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976612.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976612.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976613",
+      "title": "Normal Girl",
+      "duration": "4:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976613.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976613.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976613.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976614",
+      "title": "Pretty Little Birds (feat. Isaiah Rashad)",
+      "duration": "4:05",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976614.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976614.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976614.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1239976615",
+      "title": "20 Something",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976615.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976615.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1239976329/audio/1239976615.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

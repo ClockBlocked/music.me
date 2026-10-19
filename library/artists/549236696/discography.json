@@ -1,0 +1,50 @@
+{
+  "artistId": "549236696",
+  "name": "Travis Scott",
+  "albums": [
+    {
+      "id": "1150135681",
+      "title": "Birds In The Trap Sing McKnight",
+      "year": "2016",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/549236696/albums/1150135681/artwork/160.jpg",
+        "320": "/library/artists/549236696/albums/1150135681/artwork/320.jpg",
+        "640": "/library/artists/549236696/albums/1150135681/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1763919907",
+      "title": "DAYS BEFORE RODEO",
+      "year": "2014",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/549236696/albums/1763919907/artwork/160.jpg",
+        "320": "/library/artists/549236696/albums/1763919907/artwork/320.jpg",
+        "640": "/library/artists/549236696/albums/1763919907/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1456176981",
+      "title": "Rodeo",
+      "year": "2015",
+      "songCount": 16,
+      "artwork": {
+        "160": "/library/artists/549236696/albums/1456176981/artwork/160.jpg",
+        "320": "/library/artists/549236696/albums/1456176981/artwork/320.jpg",
+        "640": "/library/artists/549236696/albums/1456176981/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440902652",
+      "title": "Huncho Jack, Jack Huncho",
+      "year": "2017",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/549236696/albums/1440902652/artwork/160.jpg",
+        "320": "/library/artists/549236696/albums/1440902652/artwork/320.jpg",
+        "640": "/library/artists/549236696/albums/1440902652/artwork/640.jpg"
+      }
+    }
+  ]
+}

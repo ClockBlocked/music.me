@@ -1,0 +1,234 @@
+{
+  "id": "1268845546",
+  "artistId": "577354628",
+  "title": "Fifth Harmony",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/577354628/albums/1268845546/artwork/160.jpg",
+    "320": "/library/artists/577354628/albums/1268845546/artwork/320.jpg",
+    "640": "/library/artists/577354628/albums/1268845546/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1268845886",
+      "title": "Down (feat. Gucci Mane)",
+      "duration": "2:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845886.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845886.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845886.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845888",
+      "title": "He Like That",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845888.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845888.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845888.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845889",
+      "title": "Sauced Up",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845889.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845889.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845889.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845890",
+      "title": "Make You Mad",
+      "duration": "2:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845890.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845890.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845890.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845891",
+      "title": "Deliver",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845891.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845891.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845891.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845892",
+      "title": "Lonely Night",
+      "duration": "3:25",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845892.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845892.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845892.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845896",
+      "title": "Don't Say You Love Me",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845896.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845896.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845896.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845898",
+      "title": "Angel",
+      "duration": "3:09",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845898.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845898.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845898.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845899",
+      "title": "Messy",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845899.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845899.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845899.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1268845900",
+      "title": "Bridges",
+      "duration": "4:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845900.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845900.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/1268845546/audio/1268845900.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "id": "1810905299",
+  "artistId": "602767352",
+  "title": "Virgin",
+  "year": "2025",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/602767352/albums/1810905299/artwork/160.jpg",
+    "320": "/library/artists/602767352/albums/1810905299/artwork/320.jpg",
+    "640": "/library/artists/602767352/albums/1810905299/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1810905304",
+      "title": "Hammer",
+      "duration": "3:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905304.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905304.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905304.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905307",
+      "title": "What Was That",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905307.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905307.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905307.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905308",
+      "title": "Shapeshifter",
+      "duration": "4:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905308.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905308.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905308.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905309",
+      "title": "Man Of The Year",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905309.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905309.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905309.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905311",
+      "title": "Favourite Daughter",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905311.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905311.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905311.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905315",
+      "title": "Current Affairs",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905315.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905315.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905315.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905316",
+      "title": "Clearblue",
+      "duration": "1:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905316.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905316.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905316.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905317",
+      "title": "GRWM",
+      "duration": "2:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905317.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905317.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905317.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905891",
+      "title": "Broken Glass",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905891.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905891.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905891.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905892",
+      "title": "If She Could See Me Now",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905892.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905892.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905892.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1810905894",
+      "title": "David",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905894.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905894.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1810905299/audio/1810905894.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

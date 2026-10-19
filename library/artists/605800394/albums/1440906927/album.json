@@ -1,0 +1,322 @@
+{
+  "id": "1440906927",
+  "artistId": "605800394",
+  "title": "Black Panther: The Album",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/605800394/albums/1440906927/artwork/160.jpg",
+    "320": "/library/artists/605800394/albums/1440906927/artwork/320.jpg",
+    "640": "/library/artists/605800394/albums/1440906927/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440906932",
+      "title": "Black Panther",
+      "duration": "2:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440906932.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440906932.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440906932.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440906939",
+      "title": "All The Stars",
+      "duration": "3:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440906939.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440906939.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440906939.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907091",
+      "title": "X",
+      "duration": "4:27",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907091.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907091.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907091.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907094",
+      "title": "The Ways",
+      "duration": "3:58",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907094.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907094.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907094.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907097",
+      "title": "Opps",
+      "duration": "3:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907097.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907097.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907097.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907100",
+      "title": "I Am",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907100.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907100.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907100.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907103",
+      "title": "Paramedic!",
+      "duration": "3:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907103.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907103.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907103.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907106",
+      "title": "Bloody Waters",
+      "duration": "4:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907106.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907106.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907106.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907112",
+      "title": "King's Dead",
+      "duration": "3:45",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907112.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907112.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907112.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907114",
+      "title": "Redemption Interlude",
+      "duration": "1:25",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907114.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907114.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907114.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907115",
+      "title": "Redemption",
+      "duration": "3:42",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907115.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907115.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907115.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907119",
+      "title": "Seasons",
+      "duration": "4:02",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907119.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907119.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907119.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907183",
+      "title": "Big Shot",
+      "duration": "3:41",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907183.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907183.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907183.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440907186",
+      "title": "Pray For Me",
+      "duration": "3:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907186.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907186.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/605800394/albums/1440906927/audio/1440907186.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

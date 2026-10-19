@@ -1,0 +1,256 @@
+{
+  "id": "909764414",
+  "artistId": "577354628",
+  "title": "Reflection",
+  "year": "2015",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/577354628/albums/909764414/artwork/160.jpg",
+    "320": "/library/artists/577354628/albums/909764414/artwork/320.jpg",
+    "640": "/library/artists/577354628/albums/909764414/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "909764416",
+      "title": "Top Down",
+      "duration": "3:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764416.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764416.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764416.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764417",
+      "title": "Bo$$",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764417.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764417.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764417.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764418",
+      "title": "Sledgehammer",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764418.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764418.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764418.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764419",
+      "title": "Worth It (feat. Kid Ink)",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764419.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764419.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764419.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764420",
+      "title": "This Is How We Roll",
+      "duration": "4:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764420.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764420.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764420.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764431",
+      "title": "Everlasting Love",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764431.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764431.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764431.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764432",
+      "title": "Like Mariah (feat. Tyga)",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764432.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764432.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764432.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764433",
+      "title": "Them Girls Be Like",
+      "duration": "2:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764433.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764433.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764433.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764441",
+      "title": "Reflection",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764441.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764441.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764441.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764442",
+      "title": "Suga Mama",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764442.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764442.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764442.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "909764443",
+      "title": "We Know",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764443.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764443.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/577354628/albums/909764414/audio/909764443.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

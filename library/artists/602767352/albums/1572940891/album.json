@@ -1,0 +1,300 @@
+{
+  "id": "1572940891",
+  "artistId": "602767352",
+  "title": "Solar Power",
+  "year": "2021",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/602767352/albums/1572940891/artwork/160.jpg",
+    "320": "/library/artists/602767352/albums/1572940891/artwork/320.jpg",
+    "640": "/library/artists/602767352/albums/1572940891/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1572941106",
+      "title": "The Path",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941106.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941106.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941106.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941107",
+      "title": "Solar Power",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941107.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941107.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941107.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941108",
+      "title": "California",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941108.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941108.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941108.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941109",
+      "title": "Stoned at the Nail Salon",
+      "duration": "4:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941109.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941109.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941109.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941113",
+      "title": "Fallen Fruit",
+      "duration": "3:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941113.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941113.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941113.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941114",
+      "title": "Secrets from a Girl (Who's Seen it All)",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941114.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941114.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941114.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941115",
+      "title": "The Man with the Axe",
+      "duration": "4:15",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941115.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941115.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941115.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941118",
+      "title": "Dominoes",
+      "duration": "2:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941118.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941118.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941118.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941122",
+      "title": "Big Star",
+      "duration": "2:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941122.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941122.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941122.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941124",
+      "title": "Leader of a New Regime",
+      "duration": "1:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941124.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941124.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941124.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941127",
+      "title": "Mood Ring",
+      "duration": "3:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941127.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941127.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941127.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941128",
+      "title": "Oceanic Feeling",
+      "duration": "6:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941128.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941128.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941128.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1572941129",
+      "title": "Solar Power",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941129.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941129.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/602767352/albums/1572940891/audio/1572941129.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

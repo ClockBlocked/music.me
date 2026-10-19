@@ -1,0 +1,39 @@
+{
+  "artistId": "577354628",
+  "name": "Fifth Harmony",
+  "albums": [
+    {
+      "id": "1268845546",
+      "title": "Fifth Harmony",
+      "year": "2017",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/577354628/albums/1268845546/artwork/160.jpg",
+        "320": "/library/artists/577354628/albums/1268845546/artwork/320.jpg",
+        "640": "/library/artists/577354628/albums/1268845546/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "909764414",
+      "title": "Reflection",
+      "year": "2015",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/577354628/albums/909764414/artwork/160.jpg",
+        "320": "/library/artists/577354628/albums/909764414/artwork/320.jpg",
+        "640": "/library/artists/577354628/albums/909764414/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1087454720",
+      "title": "7/27",
+      "year": "2016",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/577354628/albums/1087454720/artwork/160.jpg",
+        "320": "/library/artists/577354628/albums/1087454720/artwork/320.jpg",
+        "640": "/library/artists/577354628/albums/1087454720/artwork/640.jpg"
+      }
+    }
+  ]
+}
