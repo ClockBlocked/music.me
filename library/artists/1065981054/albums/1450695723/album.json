@@ -1,0 +1,322 @@
+{
+  "id": "1450695723",
+  "artistId": "1065981054",
+  "title": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/1065981054/albums/1450695723/artwork/160.jpg",
+    "320": "/library/artists/1065981054/albums/1450695723/artwork/320.jpg",
+    "640": "/library/artists/1065981054/albums/1450695723/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1450695729",
+      "title": "!!!!!!!",
+      "duration": "0:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695729.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695729.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695729.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695739",
+      "title": "bad guy",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695739.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695739.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695739.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695742",
+      "title": "xanny",
+      "duration": "4:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695742.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695742.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695742.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695745",
+      "title": "you should see me in a crown",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695745.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695745.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695745.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695867",
+      "title": "all the good girls go to hell",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695867.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695867.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695867.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695871",
+      "title": "wish you were gay",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695871.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695871.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695871.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695872",
+      "title": "when the party's over",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695872.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695872.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695872.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695875",
+      "title": "8",
+      "duration": "2:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695875.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695875.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695875.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695877",
+      "title": "my strange addiction",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695877.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695877.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695877.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695881",
+      "title": "bury a friend",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695881.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695881.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695881.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695884",
+      "title": "ilomilo",
+      "duration": "2:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695884.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695884.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695884.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695888",
+      "title": "listen before i go",
+      "duration": "4:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695888.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695888.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695888.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450695895",
+      "title": "i love you",
+      "duration": "4:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695895.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695895.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450695895.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1450696020",
+      "title": "goodbye",
+      "duration": "1:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450696020.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450696020.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1450695723/audio/1450696020.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

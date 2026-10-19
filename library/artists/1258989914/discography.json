@@ -1,0 +1,28 @@
+{
+  "artistId": "1258989914",
+  "name": "Megan Thee Stallion",
+  "albums": [
+    {
+      "id": "1463027710",
+      "title": "Fever",
+      "year": "2019",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/1258989914/albums/1463027710/artwork/160.jpg",
+        "320": "/library/artists/1258989914/albums/1463027710/artwork/320.jpg",
+        "640": "/library/artists/1258989914/albums/1463027710/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1446318536",
+      "title": "Tina Snow",
+      "year": "2018",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/1258989914/albums/1446318536/artwork/160.jpg",
+        "320": "/library/artists/1258989914/albums/1446318536/artwork/320.jpg",
+        "640": "/library/artists/1258989914/albums/1446318536/artwork/640.jpg"
+      }
+    }
+  ]
+}

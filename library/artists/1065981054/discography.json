@@ -1,0 +1,39 @@
+{
+  "artistId": "1065981054",
+  "name": "Billie Eilish",
+  "albums": [
+    {
+      "id": "1450695723",
+      "title": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?",
+      "year": "2019",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/1065981054/albums/1450695723/artwork/160.jpg",
+        "320": "/library/artists/1065981054/albums/1450695723/artwork/320.jpg",
+        "640": "/library/artists/1065981054/albums/1450695723/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1564530719",
+      "title": "Happier Than Ever",
+      "year": "2021",
+      "songCount": 16,
+      "artwork": {
+        "160": "/library/artists/1065981054/albums/1564530719/artwork/160.jpg",
+        "320": "/library/artists/1065981054/albums/1564530719/artwork/320.jpg",
+        "640": "/library/artists/1065981054/albums/1564530719/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1739659134",
+      "title": "HIT ME HARD AND SOFT",
+      "year": "2024",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/1065981054/albums/1739659134/artwork/160.jpg",
+        "320": "/library/artists/1065981054/albums/1739659134/artwork/320.jpg",
+        "640": "/library/artists/1065981054/albums/1739659134/artwork/640.jpg"
+      }
+    }
+  ]
+}

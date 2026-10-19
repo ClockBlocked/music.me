@@ -1,0 +1,256 @@
+{
+  "id": "1739659134",
+  "artistId": "1065981054",
+  "title": "HIT ME HARD AND SOFT",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/1065981054/albums/1739659134/artwork/160.jpg",
+    "320": "/library/artists/1065981054/albums/1739659134/artwork/320.jpg",
+    "640": "/library/artists/1065981054/albums/1739659134/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1739659137",
+      "title": "SKINNY",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659137.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659137.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659137.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659140",
+      "title": "LUNCH",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659140.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659140.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659140.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659141",
+      "title": "CHIHIRO",
+      "duration": "5:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659141.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659141.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659141.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659142",
+      "title": "BIRDS OF A FEATHER",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659142.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659142.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659142.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659144",
+      "title": "WILDFLOWER",
+      "duration": "4:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659144.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659144.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659144.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659145",
+      "title": "THE GREATEST",
+      "duration": "4:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659145.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659145.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659145.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659149",
+      "title": "L’AMOUR DE MA VIE",
+      "duration": "5:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659149.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659149.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659149.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659150",
+      "title": "THE DINER",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659150.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659150.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659150.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659277",
+      "title": "BITTERSUITE",
+      "duration": "4:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659277.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659277.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659277.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659278",
+      "title": "BLUE",
+      "duration": "5:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659278.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659278.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659278.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1739659279",
+      "title": "HIT ME HARD AND SOFT",
+      "duration": "0:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659279.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659279.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1739659134/audio/1739659279.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

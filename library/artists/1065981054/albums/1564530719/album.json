@@ -1,0 +1,366 @@
+{
+  "id": "1564530719",
+  "artistId": "1065981054",
+  "title": "Happier Than Ever",
+  "year": "2021",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/1065981054/albums/1564530719/artwork/160.jpg",
+    "320": "/library/artists/1065981054/albums/1564530719/artwork/320.jpg",
+    "640": "/library/artists/1065981054/albums/1564530719/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1564530724",
+      "title": "Getting Older",
+      "duration": "4:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530724.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530724.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530724.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530936",
+      "title": "I Didn't Change My Number",
+      "duration": "2:38",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530936.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530936.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530936.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530941",
+      "title": "Billie Bossa Nova",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530941.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530941.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530941.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530943",
+      "title": "my future",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530943.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530943.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530943.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530949",
+      "title": "Oxytocin",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530949.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530949.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530949.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530953",
+      "title": "GOLDWING",
+      "duration": "2:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530953.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530953.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530953.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530954",
+      "title": "Lost Cause",
+      "duration": "3:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530954.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530954.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530954.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530955",
+      "title": "Halley's Comet",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530955.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530955.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530955.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530956",
+      "title": "Not My Responsibility",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530956.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530956.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530956.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530959",
+      "title": "OverHeated",
+      "duration": "3:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530959.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530959.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530959.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564530960",
+      "title": "Everybody Dies",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530960.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530960.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564530960.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564531176",
+      "title": "Your Power",
+      "duration": "4:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531176.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531176.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531176.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564531177",
+      "title": "NDA",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531177.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531177.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531177.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564531181",
+      "title": "Therefore I Am",
+      "duration": "2:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531181.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531181.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531181.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564531202",
+      "title": "Happier Than Ever",
+      "duration": "4:58",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531202.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531202.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531202.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1564531204",
+      "title": "Male Fantasy",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 16,
+      "sources": [
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531204.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531204.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1065981054/albums/1564530719/audio/1564531204.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

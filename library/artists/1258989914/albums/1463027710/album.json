@@ -1,0 +1,322 @@
+{
+  "id": "1463027710",
+  "artistId": "1258989914",
+  "title": "Fever",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/1258989914/albums/1463027710/artwork/160.jpg",
+    "320": "/library/artists/1258989914/albums/1463027710/artwork/320.jpg",
+    "640": "/library/artists/1258989914/albums/1463027710/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1463027711",
+      "title": "Realer",
+      "duration": "2:29",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027711.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027711.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027711.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027712",
+      "title": "Hood Rat Shit",
+      "duration": "3:01",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027712.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027712.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027712.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027713",
+      "title": "Pimpin",
+      "duration": "3:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027713.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027713.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027713.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027714",
+      "title": "Cash Shit (feat. DaBaby)",
+      "duration": "3:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027714.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027714.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027714.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027717",
+      "title": "W.A.B",
+      "duration": "2:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027717.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027717.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027717.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027718",
+      "title": "Best You Ever Had",
+      "duration": "2:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027718.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027718.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027718.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027719",
+      "title": "Simon Says (feat. Juicy J)",
+      "duration": "3:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027719.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027719.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027719.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027720",
+      "title": "Shake That",
+      "duration": "2:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027720.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027720.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027720.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027721",
+      "title": "Money Good",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027721.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027721.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027721.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027722",
+      "title": "Dance",
+      "duration": "2:56",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027722.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027722.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027722.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027723",
+      "title": "Ratchet",
+      "duration": "2:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027723.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027723.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027723.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027724",
+      "title": "Sex Talk",
+      "duration": "2:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027724.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027724.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027724.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027725",
+      "title": "Big Drank",
+      "duration": "3:27",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027725.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027725.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027725.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1463027816",
+      "title": "Running up Freestyle",
+      "duration": "2:04",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027816.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027816.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1258989914/albums/1463027710/audio/1463027816.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}
