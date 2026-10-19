@@ -1,0 +1,300 @@
+{
+  "id": "1616908862",
+  "artistId": "982612996",
+  "title": "All 4 Nothing",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/982612996/albums/1616908862/artwork/160.jpg",
+    "320": "/library/artists/982612996/albums/1616908862/artwork/320.jpg",
+    "640": "/library/artists/982612996/albums/1616908862/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1616908864",
+      "title": "26",
+      "duration": "2:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908864.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908864.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908864.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616908991",
+      "title": "Stranger",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908991.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908991.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908991.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616908993",
+      "title": "Kids Are Born Stars",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908993.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908993.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908993.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616908997",
+      "title": "Molly In Mexico",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908997.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908997.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616908997.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909002",
+      "title": "All 4 Nothing (I'm So In Love)",
+      "duration": "3:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909002.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909002.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909002.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909009",
+      "title": "Stay Together",
+      "duration": "2:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909009.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909009.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909009.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909015",
+      "title": "Summer Nights",
+      "duration": "2:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909015.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909015.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909015.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909199",
+      "title": "Time After Time",
+      "duration": "2:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909199.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909199.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909199.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909205",
+      "title": "Hey Ari",
+      "duration": "2:48",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909205.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909205.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909205.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909207",
+      "title": "Better Than This",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909207.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909207.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909207.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909209",
+      "title": "Bad Trip",
+      "duration": "2:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909209.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909209.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909209.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909219",
+      "title": "I (Don't) Have A Problem",
+      "duration": "2:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909219.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909219.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909219.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1616909221",
+      "title": "First Grade",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909221.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909221.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/982612996/albums/1616908862/audio/1616909221.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

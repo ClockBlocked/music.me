@@ -1,0 +1,300 @@
+{
+  "id": "1538003494",
+  "artistId": "1031397873",
+  "title": "Future Nostalgia",
+  "year": "2020",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/1031397873/albums/1538003494/artwork/160.jpg",
+    "320": "/library/artists/1031397873/albums/1538003494/artwork/320.jpg",
+    "640": "/library/artists/1031397873/albums/1538003494/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1538003626",
+      "title": "Future Nostalgia",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003626.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003626.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003626.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538003635",
+      "title": "Don't Start Now",
+      "duration": "3:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003635.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003635.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003635.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538003641",
+      "title": "Cool",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003641.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003641.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003641.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538003644",
+      "title": "Physical",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003644.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003644.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003644.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538003843",
+      "title": "Levitating",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003843.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003843.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003843.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538003849",
+      "title": "Pretty Please",
+      "duration": "3:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003849.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003849.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003849.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538003853",
+      "title": "Hallucinate",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003853.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003853.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538003853.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538004007",
+      "title": "Love Again",
+      "duration": "4:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004007.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004007.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004007.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538004012",
+      "title": "Break My Heart",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004012.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004012.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004012.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538004019",
+      "title": "Good In Bed",
+      "duration": "3:38",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004019.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004019.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004019.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538004026",
+      "title": "Boys Will Be Boys",
+      "duration": "2:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004026.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004026.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004026.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538004217",
+      "title": "Levitating (feat. DaBaby)",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004217.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004217.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004217.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1538004224",
+      "title": "Fever",
+      "duration": "2:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004224.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004224.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1538003494/audio/1538004224.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

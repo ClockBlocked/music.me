@@ -1,0 +1,256 @@
+{
+  "id": "1734980417",
+  "artistId": "1031397873",
+  "title": "Radical Optimism",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/1031397873/albums/1734980417/artwork/160.jpg",
+    "320": "/library/artists/1031397873/albums/1734980417/artwork/320.jpg",
+    "640": "/library/artists/1031397873/albums/1734980417/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1734980418",
+      "title": "End Of An Era",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980418.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980418.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980418.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980420",
+      "title": "Houdini",
+      "duration": "3:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980420.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980420.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980420.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980428",
+      "title": "Training Season",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980428.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980428.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980428.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980438",
+      "title": "These Walls",
+      "duration": "3:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980438.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980438.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980438.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980440",
+      "title": "Whatcha Doing",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980440.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980440.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980440.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980443",
+      "title": "French Exit",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980443.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980443.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980443.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980444",
+      "title": "Illusion",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980444.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980444.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980444.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980659",
+      "title": "Falling Forever",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980659.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980659.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980659.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980662",
+      "title": "Anything For Love",
+      "duration": "2:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980662.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980662.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980662.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980663",
+      "title": "Maria",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980663.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980663.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980663.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1734980667",
+      "title": "Happy For You",
+      "duration": "4:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980667.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980667.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1734980417/audio/1734980667.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

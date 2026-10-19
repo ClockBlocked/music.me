@@ -1,0 +1,278 @@
+{
+  "id": "1227678117",
+  "artistId": "1031397873",
+  "title": "Dua Lipa",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/1031397873/albums/1227678117/artwork/160.jpg",
+    "320": "/library/artists/1031397873/albums/1227678117/artwork/320.jpg",
+    "640": "/library/artists/1031397873/albums/1227678117/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1227678308",
+      "title": "Genesis",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678308.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678308.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678308.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678310",
+      "title": "Lost In Your Light (feat. Miguel)",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678310.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678310.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678310.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678491",
+      "title": "Hotter Than Hell",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678491.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678491.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678491.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678492",
+      "title": "Be the One",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678492.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678492.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678492.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678501",
+      "title": "IDGAF",
+      "duration": "3:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678501.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678501.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678501.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678648",
+      "title": "Blow Your Mind (Mwah)",
+      "duration": "2:58",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678648.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678648.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678648.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678694",
+      "title": "Garden",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678694.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678694.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678694.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678700",
+      "title": "No Goodbyes",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678700.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678700.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678700.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678701",
+      "title": "Thinking 'Bout You",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678701.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678701.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678701.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678702",
+      "title": "New Rules",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678702.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678702.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678702.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678703",
+      "title": "Begging",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678703.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678703.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678703.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1227678704",
+      "title": "Homesick",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678704.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678704.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/1031397873/albums/1227678117/audio/1227678704.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}
