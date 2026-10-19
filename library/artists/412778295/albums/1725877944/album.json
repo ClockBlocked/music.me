@@ -1,0 +1,300 @@
+{
+  "id": "1725877944",
+  "artistId": "412778295",
+  "title": "eternal sunshine",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/412778295/albums/1725877944/artwork/160.jpg",
+    "320": "/library/artists/412778295/albums/1725877944/artwork/320.jpg",
+    "640": "/library/artists/412778295/albums/1725877944/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1725877946",
+      "title": "intro (end of the world)",
+      "duration": "1:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877946.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877946.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877946.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725877947",
+      "title": "bye",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877947.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877947.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877947.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725877948",
+      "title": "don't wanna break up again",
+      "duration": "2:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877948.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877948.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877948.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725877958",
+      "title": "Saturn Returns Interlude",
+      "duration": "0:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877958.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877958.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877958.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725877964",
+      "title": "eternal sunshine",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877964.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877964.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877964.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725877965",
+      "title": "supernatural",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877965.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877965.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725877965.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725878238",
+      "title": "true story",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878238.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878238.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878238.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725878239",
+      "title": "the boy is mine",
+      "duration": "2:53",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878239.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878239.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878239.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725878240",
+      "title": "yes, and?",
+      "duration": "3:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878240.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878240.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878240.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725878242",
+      "title": "we can't be friends (wait for your love)",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878242.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878242.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878242.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725878245",
+      "title": "i wish i hated you",
+      "duration": "2:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878245.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878245.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878245.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725878247",
+      "title": "imperfect for you",
+      "duration": "3:02",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878247.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878247.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878247.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1725878248",
+      "title": "ordinary things (feat. Nonna)",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878248.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878248.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1725877944/audio/1725878248.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

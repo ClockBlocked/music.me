@@ -1,0 +1,278 @@
+{
+  "id": "1440825039",
+  "artistId": "412778295",
+  "title": "My Everything",
+  "year": "2014",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/412778295/albums/1440825039/artwork/160.jpg",
+    "320": "/library/artists/412778295/albums/1440825039/artwork/320.jpg",
+    "640": "/library/artists/412778295/albums/1440825039/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440825193",
+      "title": "Intro",
+      "duration": "1:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825193.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825193.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825193.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825196",
+      "title": "Problem (feat. Iggy Azalea)",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825196.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825196.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825196.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825201",
+      "title": "One Last Time",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825201.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825201.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825201.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825204",
+      "title": "Why Try",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825204.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825204.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825204.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825208",
+      "title": "Break Free (feat. Zedd)",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825208.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825208.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825208.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825210",
+      "title": "Best Mistake (feat. Big Sean)",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825210.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825210.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825210.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825212",
+      "title": "Be My Baby (feat. Cashmere Cat)",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825212.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825212.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825212.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825217",
+      "title": "Break Your Heart Right Back (feat. Childish Gambino)",
+      "duration": "4:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825217.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825217.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825217.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825283",
+      "title": "Love Me Harder",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825283.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825283.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825283.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825285",
+      "title": "Just a Little Bit of Your Heart",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825285.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825285.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825285.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825288",
+      "title": "Hands On Me (feat. A$AP Ferg)",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825288.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825288.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825288.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440825291",
+      "title": "My Everything",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825291.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825291.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440825039/audio/1440825291.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

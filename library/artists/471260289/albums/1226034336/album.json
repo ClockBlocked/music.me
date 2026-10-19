@@ -1,0 +1,234 @@
+{
+  "id": "1226034336",
+  "artistId": "471260289",
+  "title": "Harry Styles",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260289/albums/1226034336/artwork/160.jpg",
+    "320": "/library/artists/471260289/albums/1226034336/artwork/320.jpg",
+    "640": "/library/artists/471260289/albums/1226034336/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1226034389",
+      "title": "Meet Me in the Hallway",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034389.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034389.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034389.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226034393",
+      "title": "Sign of the Times",
+      "duration": "5:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034393.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034393.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034393.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226034395",
+      "title": "Carolina",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034395.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034395.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034395.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226034791",
+      "title": "Two Ghosts",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034791.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034791.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034791.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226034796",
+      "title": "Sweet Creature",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034796.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034796.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034796.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226034803",
+      "title": "Only Angel",
+      "duration": "4:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034803.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034803.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034803.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226034810",
+      "title": "Kiwi",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034810.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034810.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034810.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226034990",
+      "title": "Ever Since New York",
+      "duration": "4:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034990.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034990.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226034990.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226035034",
+      "title": "Woman",
+      "duration": "4:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226035034.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226035034.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226035034.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1226035038",
+      "title": "From the Dining Table",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226035038.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226035038.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1226034336/audio/1226035038.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

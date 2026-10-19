@@ -1,0 +1,344 @@
+{
+  "id": "1399202539",
+  "artistId": "412778295",
+  "title": "Sweetener",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/412778295/albums/1399202539/artwork/160.jpg",
+    "320": "/library/artists/412778295/albums/1399202539/artwork/320.jpg",
+    "640": "/library/artists/412778295/albums/1399202539/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1399202556",
+      "title": "raindrops (an angel cried)",
+      "duration": "0:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202556.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202556.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202556.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202557",
+      "title": "blazed (feat. Pharrell Williams)",
+      "duration": "3:16",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202557.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202557.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202557.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202558",
+      "title": "the light is coming (feat. Nicki Minaj)",
+      "duration": "3:48",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202558.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202558.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202558.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202953",
+      "title": "R.E.M",
+      "duration": "4:05",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202953.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202953.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202953.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202954",
+      "title": "God is a woman",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202954.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202954.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202954.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202955",
+      "title": "sweetener",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202955.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202955.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202955.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202956",
+      "title": "successful",
+      "duration": "3:47",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202956.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202956.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202956.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202957",
+      "title": "everytime",
+      "duration": "2:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202957.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202957.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202957.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202958",
+      "title": "breathin",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202958.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202958.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202958.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202959",
+      "title": "no tears left to cry",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202959.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202959.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202959.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202960",
+      "title": "borderline (feat. Missy Elliott)",
+      "duration": "2:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202960.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202960.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202960.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202961",
+      "title": "better off",
+      "duration": "2:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202961.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202961.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202961.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202962",
+      "title": "goodnight n go",
+      "duration": "3:09",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202962.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202962.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202962.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202963",
+      "title": "pete davidson",
+      "duration": "1:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202963.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202963.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202963.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1399202964",
+      "title": "get well soon",
+      "duration": "5:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202964.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202964.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1399202539/audio/1399202964.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

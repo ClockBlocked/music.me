@@ -1,0 +1,322 @@
+{
+  "id": "1651235620",
+  "artistId": "471260295",
+  "title": "Faith In the Future",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260295/albums/1651235620/artwork/160.jpg",
+    "320": "/library/artists/471260295/albums/1651235620/artwork/320.jpg",
+    "640": "/library/artists/471260295/albums/1651235620/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1651235621",
+      "title": "The Greatest",
+      "duration": "3:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235621.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235621.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235621.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235622",
+      "title": "Written All Over Your Face",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235622.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235622.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235622.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235623",
+      "title": "Bigger Than Me",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235623.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235623.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235623.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235624",
+      "title": "Lucky Again",
+      "duration": "3:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235624.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235624.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235624.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235625",
+      "title": "Face the Music",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235625.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235625.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235625.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235926",
+      "title": "Chicago",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235926.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235926.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235926.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235927",
+      "title": "Common People",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235927.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235927.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235927.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235928",
+      "title": "Out of My System",
+      "duration": "2:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235928.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235928.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235928.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235929",
+      "title": "Angels Fly",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235929.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235929.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235929.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235930",
+      "title": "Saturdays",
+      "duration": "4:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235930.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235930.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235930.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235931",
+      "title": "Silver Tongues",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235931.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235931.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235931.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235932",
+      "title": "She Is Beauty We Are World Class",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235932.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235932.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235932.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235933",
+      "title": "All This Time",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235933.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235933.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235933.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1651235934",
+      "title": "That's the Way Love Goes",
+      "duration": "2:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235934.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235934.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1651235620/audio/1651235934.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

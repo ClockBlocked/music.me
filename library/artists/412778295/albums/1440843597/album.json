@@ -1,0 +1,344 @@
+{
+  "id": "1440843597",
+  "artistId": "412778295",
+  "title": "Dangerous Woman",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/412778295/albums/1440843597/artwork/160.jpg",
+    "320": "/library/artists/412778295/albums/1440843597/artwork/320.jpg",
+    "640": "/library/artists/412778295/albums/1440843597/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440843781",
+      "title": "Moonlight",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843781.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843781.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843781.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440843916",
+      "title": "Dangerous Woman",
+      "duration": "3:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843916.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843916.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843916.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440843921",
+      "title": "Be Alright",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843921.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843921.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843921.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440843926",
+      "title": "Into You",
+      "duration": "4:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843926.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843926.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843926.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440843930",
+      "title": "Side To Side (feat. Nicki Minaj)",
+      "duration": "3:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843930.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843930.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843930.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440843933",
+      "title": "Let Me Love You (feat. Lil Wayne)",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843933.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843933.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843933.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440843937",
+      "title": "Greedy",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843937.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843937.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440843937.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844184",
+      "title": "Leave Me Lonely (feat. Macy Gray)",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844184.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844184.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844184.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844187",
+      "title": "Everyday (feat. Future)",
+      "duration": "3:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844187.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844187.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844187.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844194",
+      "title": "Sometimes",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844194.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844194.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844194.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844205",
+      "title": "I Don't Care",
+      "duration": "2:58",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844205.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844205.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844205.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844426",
+      "title": "Bad Decisions",
+      "duration": "3:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844426.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844426.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844426.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844433",
+      "title": "Touch It",
+      "duration": "4:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844433.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844433.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844433.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844441",
+      "title": "Knew Better / Forever Boy",
+      "duration": "4:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844441.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844441.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844441.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440844447",
+      "title": "Thinking Bout You",
+      "duration": "3:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844447.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844447.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440843597/audio/1440844447.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

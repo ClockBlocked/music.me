@@ -1,0 +1,300 @@
+{
+  "id": "1562792026",
+  "artistId": "466059563",
+  "title": "Better Mistakes",
+  "year": "2021",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/466059563/albums/1562792026/artwork/160.jpg",
+    "320": "/library/artists/466059563/albums/1562792026/artwork/320.jpg",
+    "640": "/library/artists/466059563/albums/1562792026/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1562792027",
+      "title": "Break My Heart Myself (feat. Travis Barker)",
+      "duration": "2:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792027.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792027.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792027.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792029",
+      "title": "Sabotage",
+      "duration": "2:56",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792029.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792029.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792029.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792031",
+      "title": "Trust Fall",
+      "duration": "2:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792031.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792031.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792031.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792032",
+      "title": "Better Mistakes",
+      "duration": "2:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792032.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792032.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792032.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792033",
+      "title": "Sacrifice",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792033.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792033.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792033.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792036",
+      "title": "My Dear Love (feat. Ty Dolla $ign & Trevor Daniel)",
+      "duration": "2:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792036.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792036.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792036.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792037",
+      "title": "Die For a Man (feat. Lil Uzi Vert)",
+      "duration": "2:47",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792037.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792037.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792037.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792038",
+      "title": "Baby, I'm Jealous (feat. Doja Cat)",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792038.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792038.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792038.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792039",
+      "title": "On The Go (feat. Pink Sweat$ & Lunay)",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792039.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792039.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792039.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792040",
+      "title": "Death Row",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792040.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792040.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792040.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792041",
+      "title": "Empty",
+      "duration": "2:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792041.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792041.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792041.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792042",
+      "title": "Amore (feat. Rick Ross)",
+      "duration": "2:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792042.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792042.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792042.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1562792043",
+      "title": "Mama",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792043.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792043.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1562792026/audio/1562792043.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

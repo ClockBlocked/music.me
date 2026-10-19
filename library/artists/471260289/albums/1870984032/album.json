@@ -1,0 +1,278 @@
+{
+  "id": "1870984032",
+  "artistId": "471260289",
+  "title": "Kiss All The Time. Disco, Occasionally.",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260289/albums/1870984032/artwork/160.jpg",
+    "320": "/library/artists/471260289/albums/1870984032/artwork/320.jpg",
+    "640": "/library/artists/471260289/albums/1870984032/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1870984033",
+      "title": "Aperture",
+      "duration": "5:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984033.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984033.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984033.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984036",
+      "title": "American Girls",
+      "duration": "3:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984036.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984036.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984036.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984038",
+      "title": "Ready, Steady, Go!",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984038.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984038.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984038.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984039",
+      "title": "Are You Listening Yet?",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984039.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984039.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984039.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984040",
+      "title": "Taste Back",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984040.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984040.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984040.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984042",
+      "title": "The Waiting Game",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984042.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984042.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984042.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984044",
+      "title": "Season 2 Weight Loss",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984044.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984044.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984044.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984045",
+      "title": "Coming Up Roses",
+      "duration": "4:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984045.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984045.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984045.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984047",
+      "title": "Pop",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984047.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984047.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984047.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984050",
+      "title": "Dance No More",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984050.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984050.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984050.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984051",
+      "title": "Paint By Numbers",
+      "duration": "2:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984051.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984051.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984051.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1870984054",
+      "title": "Carla's Song",
+      "duration": "4:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984054.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984054.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1870984032/audio/1870984054.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

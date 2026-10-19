@@ -1,0 +1,300 @@
+{
+  "id": "1891886535",
+  "artistId": "466059563",
+  "title": "DIRTY BLONDE",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/466059563/albums/1891886535/artwork/160.jpg",
+    "320": "/library/artists/466059563/albums/1891886535/artwork/320.jpg",
+    "640": "/library/artists/466059563/albums/1891886535/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1891886537",
+      "title": "Hysteria",
+      "duration": "2:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886537.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886537.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886537.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886540",
+      "title": "Tokyo",
+      "duration": "2:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886540.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886540.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886540.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886542",
+      "title": "New Religion",
+      "duration": "2:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886542.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886542.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886542.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886546",
+      "title": "$.H.I.T",
+      "duration": "2:06",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886546.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886546.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886546.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886547",
+      "title": "Çike Çike",
+      "duration": "2:19",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886547.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886547.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886547.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886550",
+      "title": "i like you better than me",
+      "duration": "2:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886550.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886550.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886550.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886551",
+      "title": "Drink And A Little Love",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886551.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886551.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886551.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886552",
+      "title": "One Day",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886552.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886552.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886552.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886764",
+      "title": "Time",
+      "duration": "2:47",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886764.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886764.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886764.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886766",
+      "title": "The Way I Want You",
+      "duration": "2:30",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886766.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886766.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886766.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886769",
+      "title": "Nobody's There",
+      "duration": "2:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886769.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886769.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886769.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886773",
+      "title": "Night Falls",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886773.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886773.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886773.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1891886776",
+      "title": "Sad Girls",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886776.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886776.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1891886535/audio/1891886776.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

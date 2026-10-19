@@ -1,0 +1,39 @@
+{
+  "artistId": "471260295",
+  "name": "Louis Tomlinson",
+  "albums": [
+    {
+      "id": "1482184174",
+      "title": "Walls",
+      "year": "2020",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/471260295/albums/1482184174/artwork/160.jpg",
+        "320": "/library/artists/471260295/albums/1482184174/artwork/320.jpg",
+        "640": "/library/artists/471260295/albums/1482184174/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1842408037",
+      "title": "How Did I Get Here?",
+      "year": "2026",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/471260295/albums/1842408037/artwork/160.jpg",
+        "320": "/library/artists/471260295/albums/1842408037/artwork/320.jpg",
+        "640": "/library/artists/471260295/albums/1842408037/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1651235620",
+      "title": "Faith In the Future",
+      "year": "2022",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/471260295/albums/1651235620/artwork/160.jpg",
+        "320": "/library/artists/471260295/albums/1651235620/artwork/320.jpg",
+        "640": "/library/artists/471260295/albums/1651235620/artwork/640.jpg"
+      }
+    }
+  ]
+}

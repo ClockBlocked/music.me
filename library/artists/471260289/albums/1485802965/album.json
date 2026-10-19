@@ -1,0 +1,278 @@
+{
+  "id": "1485802965",
+  "artistId": "471260289",
+  "title": "Fine Line",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260289/albums/1485802965/artwork/160.jpg",
+    "320": "/library/artists/471260289/albums/1485802965/artwork/320.jpg",
+    "640": "/library/artists/471260289/albums/1485802965/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1485802966",
+      "title": "Golden",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802966.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802966.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802966.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802967",
+      "title": "Watermelon Sugar",
+      "duration": "2:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802967.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802967.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802967.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802970",
+      "title": "Adore You",
+      "duration": "3:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802970.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802970.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802970.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802971",
+      "title": "Lights Up",
+      "duration": "2:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802971.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802971.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802971.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802974",
+      "title": "Cherry",
+      "duration": "4:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802974.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802974.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802974.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802975",
+      "title": "Falling",
+      "duration": "4:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802975.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802975.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802975.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802976",
+      "title": "To Be So Lonely",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802976.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802976.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802976.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802977",
+      "title": "She",
+      "duration": "6:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802977.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802977.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802977.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802979",
+      "title": "Sunflower, Vol. 6",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802979.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802979.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802979.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802980",
+      "title": "Canyon Moon",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802980.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802980.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802980.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802981",
+      "title": "Treat People With Kindness",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802981.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802981.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802981.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1485802982",
+      "title": "Fine Line",
+      "duration": "6:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802982.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802982.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1485802965/audio/1485802982.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

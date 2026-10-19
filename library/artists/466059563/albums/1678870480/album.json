@@ -1,0 +1,278 @@
+{
+  "id": "1678870480",
+  "artistId": "466059563",
+  "title": "Bebe",
+  "year": "2023",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/466059563/albums/1678870480/artwork/160.jpg",
+    "320": "/library/artists/466059563/albums/1678870480/artwork/320.jpg",
+    "640": "/library/artists/466059563/albums/1678870480/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1678870851",
+      "title": "Heart Wants What It Wants",
+      "duration": "3:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870851.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870851.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870851.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678870864",
+      "title": "Miracle Man",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870864.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870864.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870864.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678870870",
+      "title": "Satellite",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870870.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870870.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870870.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678870874",
+      "title": "When It Rains",
+      "duration": "2:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870874.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870874.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678870874.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871237",
+      "title": "Call On Me",
+      "duration": "2:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871237.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871237.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871237.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871244",
+      "title": "I'm Good (Blue)",
+      "duration": "2:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871244.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871244.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871244.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871251",
+      "title": "Visions (Don't Go)",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871251.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871251.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871251.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871258",
+      "title": "I'm Not High, I'm In Love",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871258.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871258.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871258.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871260",
+      "title": "Blue Moon",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871260.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871260.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871260.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871868",
+      "title": "Born Again",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871868.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871868.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871868.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871874",
+      "title": "I Am",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871874.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871874.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871874.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1678871883",
+      "title": "Seasons",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871883.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871883.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1678870480/audio/1678871883.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

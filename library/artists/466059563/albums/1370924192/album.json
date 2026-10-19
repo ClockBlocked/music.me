@@ -1,0 +1,322 @@
+{
+  "id": "1370924192",
+  "artistId": "466059563",
+  "title": "Expectations",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/466059563/albums/1370924192/artwork/160.jpg",
+    "320": "/library/artists/466059563/albums/1370924192/artwork/320.jpg",
+    "640": "/library/artists/466059563/albums/1370924192/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1370924882",
+      "title": "Ferrari",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370924882.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370924882.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370924882.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370924883",
+      "title": "I'm a Mess",
+      "duration": "3:15",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370924883.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370924883.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370924883.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925149",
+      "title": "2 Souls on Fire (feat. Quavo)",
+      "duration": "2:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925149.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925149.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925149.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925153",
+      "title": "Shining Star",
+      "duration": "3:06",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925153.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925153.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925153.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925154",
+      "title": "Knees",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925154.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925154.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925154.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925155",
+      "title": "I Got You",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925155.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925155.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925155.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925222",
+      "title": "Self Control",
+      "duration": "2:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925222.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925222.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925222.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925231",
+      "title": "Sad",
+      "duration": "3:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925231.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925231.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925231.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925236",
+      "title": "Mine",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925236.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925236.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925236.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925239",
+      "title": "Steady (feat. Tory Lanez)",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925239.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925239.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925239.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925366",
+      "title": "Don't Get Any Closer",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925366.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925366.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925366.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925367",
+      "title": "Grace",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925367.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925367.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925367.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925370",
+      "title": "Pillow",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925370.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925370.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925370.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1370925641",
+      "title": "Meant to Be",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925641.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925641.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/466059563/albums/1370924192/audio/1370925641.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

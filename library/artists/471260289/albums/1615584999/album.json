@@ -1,0 +1,300 @@
+{
+  "id": "1615584999",
+  "artistId": "471260289",
+  "title": "Harry's House",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260289/albums/1615584999/artwork/160.jpg",
+    "320": "/library/artists/471260289/albums/1615584999/artwork/320.jpg",
+    "640": "/library/artists/471260289/albums/1615584999/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1615585001",
+      "title": "Music For a Sushi Restaurant",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585001.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585001.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585001.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585006",
+      "title": "Late Night Talking",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585006.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585006.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585006.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585007",
+      "title": "Grapejuice",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585007.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585007.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585007.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585008",
+      "title": "As It Was",
+      "duration": "2:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585008.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585008.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585008.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585009",
+      "title": "Daylight",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585009.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585009.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585009.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585011",
+      "title": "Little Freak",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585011.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585011.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585011.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585012",
+      "title": "Matilda",
+      "duration": "4:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585012.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585012.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585012.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585091",
+      "title": "Cinema",
+      "duration": "4:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585091.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585091.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585091.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585098",
+      "title": "Daydreaming",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585098.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585098.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585098.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585099",
+      "title": "Keep Driving",
+      "duration": "2:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585099.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585099.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585099.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585100",
+      "title": "Satellite",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585100.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585100.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585100.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585101",
+      "title": "Boyfriends",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585101.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585101.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585101.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1615585102",
+      "title": "Love Of My Life",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585102.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585102.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260289/albums/1615584999/audio/1615585102.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

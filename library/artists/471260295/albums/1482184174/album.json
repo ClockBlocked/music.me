@@ -1,0 +1,278 @@
+{
+  "id": "1482184174",
+  "artistId": "471260295",
+  "title": "Walls",
+  "year": "2020",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260295/albums/1482184174/artwork/160.jpg",
+    "320": "/library/artists/471260295/albums/1482184174/artwork/320.jpg",
+    "640": "/library/artists/471260295/albums/1482184174/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1482184175",
+      "title": "Kill My Mind",
+      "duration": "3:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184175.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184175.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184175.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184176",
+      "title": "Don't Let It Break Your Heart",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184176.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184176.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184176.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184177",
+      "title": "Two of Us",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184177.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184177.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184177.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184178",
+      "title": "We Made It",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184178.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184178.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184178.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184179",
+      "title": "Too Young",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184179.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184179.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184179.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184180",
+      "title": "Walls",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184180.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184180.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184180.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184181",
+      "title": "Habit",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184181.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184181.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184181.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184182",
+      "title": "Always You",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184182.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184182.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184182.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184183",
+      "title": "Fearless",
+      "duration": "3:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184183.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184183.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184183.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184186",
+      "title": "Perfect Now",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184186.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184186.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184186.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184190",
+      "title": "Defenceless",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184190.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184190.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184190.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1482184410",
+      "title": "Only the Brave",
+      "duration": "1:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184410.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184410.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1482184174/audio/1482184410.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

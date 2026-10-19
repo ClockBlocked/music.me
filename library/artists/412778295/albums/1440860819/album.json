@@ -1,0 +1,300 @@
+{
+  "id": "1440860819",
+  "artistId": "412778295",
+  "title": "Yours Truly",
+  "year": "2013",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/412778295/albums/1440860819/artwork/160.jpg",
+    "320": "/library/artists/412778295/albums/1440860819/artwork/320.jpg",
+    "640": "/library/artists/412778295/albums/1440860819/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440860822",
+      "title": "Honeymoon Avenue",
+      "duration": "5:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860822.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860822.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860822.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440860823",
+      "title": "Baby I",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860823.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860823.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860823.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440860825",
+      "title": "Right There (feat. Big Sean)",
+      "duration": "4:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860825.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860825.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860825.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440860829",
+      "title": "Tattooed Heart",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860829.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860829.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860829.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440860830",
+      "title": "Lovin' It",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860830.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860830.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440860830.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861221",
+      "title": "Piano",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861221.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861221.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861221.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861222",
+      "title": "Daydreamin'",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861222.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861222.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861222.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861225",
+      "title": "The Way (feat. Mac Miller)",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861225.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861225.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861225.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861226",
+      "title": "You’ll Never Know",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861226.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861226.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861226.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861227",
+      "title": "Almost Is Never Enough",
+      "duration": "5:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861227.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861227.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861227.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861229",
+      "title": "Popular Song",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861229.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861229.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861229.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861232",
+      "title": "Better Left Unsaid",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861232.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861232.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861232.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440861233",
+      "title": "The Way (feat. Mac Miller) [Spanglish Version]",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861233.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861233.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1440860819/audio/1440861233.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "id": "1726293059",
+  "artistId": "412778295",
+  "title": "yes, and?",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/412778295/albums/1726293059/artwork/160.jpg",
+    "320": "/library/artists/412778295/albums/1726293059/artwork/320.jpg",
+    "640": "/library/artists/412778295/albums/1726293059/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1726293060",
+      "title": "yes, and?",
+      "duration": "3:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293060.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293060.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293060.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293062",
+      "title": "yes, and? (edit)",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293062.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293062.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293062.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293063",
+      "title": "yes, and? (extended mix)",
+      "duration": "5:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293063.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293063.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293063.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293064",
+      "title": "yes, and? (sped up)",
+      "duration": "3:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293064.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293064.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293064.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293068",
+      "title": "yes, and? (a cappella)",
+      "duration": "3:16",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293068.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293068.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293068.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293070",
+      "title": "yes, and? (slowed)",
+      "duration": "4:01",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293070.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293070.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293070.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293073",
+      "title": "yes, and? (instrumental)",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293073.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293073.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293073.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293074",
+      "title": "yes, and? (extended mix instrumental)",
+      "duration": "5:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293074.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293074.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293074.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293075",
+      "title": "yes, and?",
+      "duration": "4:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293075.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293075.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293075.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1726293137",
+      "title": "yes, and?",
+      "duration": "3:35",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293137.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293137.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1726293059/audio/1726293137.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

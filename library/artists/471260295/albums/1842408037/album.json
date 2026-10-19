@@ -1,0 +1,278 @@
+{
+  "id": "1842408037",
+  "artistId": "471260295",
+  "title": "How Did I Get Here?",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260295/albums/1842408037/artwork/160.jpg",
+    "320": "/library/artists/471260295/albums/1842408037/artwork/320.jpg",
+    "640": "/library/artists/471260295/albums/1842408037/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1842408038",
+      "title": "Lemonade",
+      "duration": "2:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408038.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408038.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408038.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408039",
+      "title": "On Fire",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408039.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408039.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408039.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408040",
+      "title": "Sunflowers",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408040.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408040.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408040.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408043",
+      "title": "Lazy",
+      "duration": "2:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408043.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408043.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408043.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408044",
+      "title": "Palaces",
+      "duration": "2:47",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408044.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408044.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408044.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408045",
+      "title": "Last Night",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408045.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408045.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408045.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408046",
+      "title": "Broken Bones",
+      "duration": "2:58",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408046.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408046.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408046.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408049",
+      "title": "Dark To Light",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408049.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408049.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408049.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408050",
+      "title": "Imposter",
+      "duration": "2:38",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408050.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408050.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408050.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408051",
+      "title": "Sanity",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408051.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408051.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408051.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408052",
+      "title": "Jump The Gun",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408052.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408052.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408052.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1842408053",
+      "title": "Lucid",
+      "duration": "4:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408053.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408053.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260295/albums/1842408037/audio/1842408053.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

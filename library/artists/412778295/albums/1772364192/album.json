@@ -1,0 +1,300 @@
+{
+  "id": "1772364192",
+  "artistId": "412778295",
+  "title": "Wicked: The Soundtrack",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/412778295/albums/1772364192/artwork/160.jpg",
+    "320": "/library/artists/412778295/albums/1772364192/artwork/320.jpg",
+    "640": "/library/artists/412778295/albums/1772364192/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1772364471",
+      "title": "No One Mourns the Wicked (feat. Andy Nyman, Courtney-Mae Briggs, Jeff Goldblum, Sharon D. Clarke & Jenna Boyd)",
+      "duration": "7:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364471.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364471.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364471.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364493",
+      "title": "Dear Old Shiz (feat. Ariana Grande)",
+      "duration": "1:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364493.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364493.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364493.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364495",
+      "title": "The Wizard And I (feat. Michelle Yeoh)",
+      "duration": "5:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364495.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364495.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364495.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364620",
+      "title": "What Is This Feeling?",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364620.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364620.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364620.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364624",
+      "title": "Something Bad (feat. Cynthia Erivo)",
+      "duration": "1:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364624.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364624.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364624.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364626",
+      "title": "Dancing Through Life (feat. Ariana Grande, Ethan Slater, Marissa Bode & Cynthia Erivo)",
+      "duration": "9:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364626.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364626.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364626.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364643",
+      "title": "Popular",
+      "duration": "4:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364643.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364643.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364643.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364772",
+      "title": "I’m Not That Girl",
+      "duration": "3:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364772.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364772.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364772.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364779",
+      "title": "One Short Day (feat. Michael McCorry Rose)",
+      "duration": "6:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364779.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364779.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364779.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364783",
+      "title": "A Sentimental Man",
+      "duration": "2:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364783.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364783.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364783.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772364795",
+      "title": "Defying Gravity (feat. Ariana Grande)",
+      "duration": "7:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364795.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364795.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772364795.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772365012",
+      "title": "Ozdust Duet (Bonus Track)",
+      "duration": "2:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772365012.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772365012.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772365012.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1772365017",
+      "title": "Commentary",
+      "duration": "0:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772365017.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772365017.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/412778295/albums/1772364192/audio/1772365017.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

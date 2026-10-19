@@ -1,0 +1,50 @@
+{
+  "artistId": "466059563",
+  "name": "Bebe Rexha",
+  "albums": [
+    {
+      "id": "1370924192",
+      "title": "Expectations",
+      "year": "2018",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/466059563/albums/1370924192/artwork/160.jpg",
+        "320": "/library/artists/466059563/albums/1370924192/artwork/320.jpg",
+        "640": "/library/artists/466059563/albums/1370924192/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1562792026",
+      "title": "Better Mistakes",
+      "year": "2021",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/466059563/albums/1562792026/artwork/160.jpg",
+        "320": "/library/artists/466059563/albums/1562792026/artwork/320.jpg",
+        "640": "/library/artists/466059563/albums/1562792026/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1678870480",
+      "title": "Bebe",
+      "year": "2023",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/466059563/albums/1678870480/artwork/160.jpg",
+        "320": "/library/artists/466059563/albums/1678870480/artwork/320.jpg",
+        "640": "/library/artists/466059563/albums/1678870480/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1891886535",
+      "title": "DIRTY BLONDE",
+      "year": "2026",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/466059563/albums/1891886535/artwork/160.jpg",
+        "320": "/library/artists/466059563/albums/1891886535/artwork/320.jpg",
+        "640": "/library/artists/466059563/albums/1891886535/artwork/640.jpg"
+      }
+    }
+  ]
+}

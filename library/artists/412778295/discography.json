@@ -1,0 +1,116 @@
+{
+  "artistId": "412778295",
+  "name": "Ariana Grande",
+  "albums": [
+    {
+      "id": "1450330588",
+      "title": "thank u, next",
+      "year": "2019",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1450330588/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1450330588/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1450330588/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1399202539",
+      "title": "Sweetener",
+      "year": "2018",
+      "songCount": 15,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1399202539/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1399202539/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1399202539/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1772364192",
+      "title": "Wicked: The Soundtrack",
+      "year": "2024",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1772364192/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1772364192/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1772364192/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1537476578",
+      "title": "Positions",
+      "year": "2020",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1537476578/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1537476578/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1537476578/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440843597",
+      "title": "Dangerous Woman",
+      "year": "2016",
+      "songCount": 15,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1440843597/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1440843597/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1440843597/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1895420989",
+      "title": "petal",
+      "year": "2026",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1895420989/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1895420989/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1895420989/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440860819",
+      "title": "Yours Truly",
+      "year": "2013",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1440860819/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1440860819/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1440860819/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1725877944",
+      "title": "eternal sunshine",
+      "year": "2024",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1725877944/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1725877944/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1725877944/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440825039",
+      "title": "My Everything",
+      "year": "2014",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1440825039/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1440825039/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1440825039/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1726293059",
+      "title": "yes, and?",
+      "year": "2024",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/412778295/albums/1726293059/artwork/160.jpg",
+        "320": "/library/artists/412778295/albums/1726293059/artwork/320.jpg",
+        "640": "/library/artists/412778295/albums/1726293059/artwork/640.jpg"
+      }
+    }
+  ]
+}
