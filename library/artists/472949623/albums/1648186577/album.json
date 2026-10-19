@@ -1,0 +1,322 @@
+{
+  "id": "1648186577",
+  "artistId": "472949623",
+  "title": "Lizzobangers",
+  "year": "2013",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/472949623/albums/1648186577/artwork/160.jpg",
+    "320": "/library/artists/472949623/albums/1648186577/artwork/320.jpg",
+    "640": "/library/artists/472949623/albums/1648186577/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1648186592",
+      "title": "Lizzie Borden",
+      "duration": "2:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186592.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186592.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186592.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186595",
+      "title": "W.E.R.K. Pt. II",
+      "duration": "3:05",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186595.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186595.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186595.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186598",
+      "title": "Wat U Mean",
+      "duration": "2:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186598.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186598.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186598.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186601",
+      "title": "T-Baby",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186601.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186601.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186601.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186604",
+      "title": "Be Still",
+      "duration": "2:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186604.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186604.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186604.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186820",
+      "title": "Faded",
+      "duration": "2:50",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186820.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186820.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186820.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186826",
+      "title": "Hot Dish",
+      "duration": "3:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186826.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186826.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186826.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186831",
+      "title": "Luv It",
+      "duration": "3:03",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186831.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186831.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186831.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186837",
+      "title": "Batches & Cookies (feat. Sophia Eris)",
+      "duration": "3:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186837.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186837.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186837.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648186841",
+      "title": "Pants vs. Dress",
+      "duration": "2:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186841.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186841.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648186841.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648187130",
+      "title": "Go",
+      "duration": "3:44",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187130.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187130.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187130.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648187139",
+      "title": "Bloodlines",
+      "duration": "3:44",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187139.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187139.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187139.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648187236",
+      "title": "Bus Passes and Happy Meals",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187236.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187236.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187236.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1648187243",
+      "title": "Paris",
+      "duration": "3:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187243.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187243.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1648186577/audio/1648187243.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

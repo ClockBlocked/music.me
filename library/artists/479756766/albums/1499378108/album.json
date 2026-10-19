@@ -1,0 +1,322 @@
+{
+  "id": "1499378108",
+  "artistId": "479756766",
+  "title": "After Hours",
+  "year": "2020",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/479756766/albums/1499378108/artwork/160.jpg",
+    "320": "/library/artists/479756766/albums/1499378108/artwork/320.jpg",
+    "640": "/library/artists/479756766/albums/1499378108/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1499378115",
+      "title": "Alone Again",
+      "duration": "4:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378115.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378115.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378115.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378125",
+      "title": "Too Late",
+      "duration": "3:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378125.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378125.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378125.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378134",
+      "title": "Hardest To Love",
+      "duration": "3:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378134.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378134.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378134.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378135",
+      "title": "Scared To Live",
+      "duration": "3:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378135.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378135.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378135.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378588",
+      "title": "Snowchild",
+      "duration": "4:07",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378588.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378588.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378588.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378596",
+      "title": "Escape From LA",
+      "duration": "5:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378596.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378596.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378596.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378597",
+      "title": "Heartless",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378597.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378597.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378597.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378601",
+      "title": "Faith",
+      "duration": "4:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378601.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378601.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378601.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378607",
+      "title": "Blinding Lights",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378607.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378607.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378607.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378612",
+      "title": "In Your Eyes",
+      "duration": "3:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378612.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378612.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378612.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378613",
+      "title": "Save Your Tears",
+      "duration": "3:35",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378613.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378613.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378613.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378614",
+      "title": "Repeat After Me (Interlude)",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378614.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378614.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378614.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378615",
+      "title": "After Hours",
+      "duration": "6:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378615.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378615.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378615.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1499378860",
+      "title": "Until I Bleed Out",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378860.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378860.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1499378108/audio/1499378860.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

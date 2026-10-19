@@ -1,0 +1,234 @@
+{
+  "id": "1440902723",
+  "artistId": "471260298",
+  "title": "Flicker",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260298/albums/1440902723/artwork/160.jpg",
+    "320": "/library/artists/471260298/albums/1440902723/artwork/320.jpg",
+    "640": "/library/artists/471260298/albums/1440902723/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440902727",
+      "title": "On the Loose",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902727.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902727.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902727.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440902728",
+      "title": "This Town",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902728.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902728.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902728.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440902730",
+      "title": "Seeing Blind",
+      "duration": "3:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902730.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902730.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902730.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440902734",
+      "title": "Slow Hands",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902734.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902734.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902734.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440902738",
+      "title": "Too Much to Ask",
+      "duration": "3:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902738.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902738.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440902738.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903071",
+      "title": "Paper Houses",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903071.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903071.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903071.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903072",
+      "title": "Since We're Alone",
+      "duration": "4:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903072.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903072.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903072.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903075",
+      "title": "Flicker",
+      "duration": "4:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903075.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903075.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903075.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903080",
+      "title": "Fire Away",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903080.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903080.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903080.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440903081",
+      "title": "You and Me",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903081.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903081.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1440902723/audio/1440903081.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "id": "1422667786",
+  "artistId": "479756766",
+  "title": "Kiss Land",
+  "year": "2013",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/479756766/albums/1422667786/artwork/160.jpg",
+    "320": "/library/artists/479756766/albums/1422667786/artwork/320.jpg",
+    "640": "/library/artists/479756766/albums/1422667786/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1422667802",
+      "title": "Professional",
+      "duration": "6:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667802.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667802.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667802.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422667804",
+      "title": "The Town",
+      "duration": "5:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667804.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667804.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667804.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422667809",
+      "title": "Adaptation",
+      "duration": "4:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667809.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667809.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667809.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422667810",
+      "title": "Love In The Sky",
+      "duration": "4:27",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667810.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667810.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422667810.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668471",
+      "title": "Belong To The World",
+      "duration": "5:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668471.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668471.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668471.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668473",
+      "title": "Live For (feat. Drake)",
+      "duration": "3:44",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668473.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668473.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668473.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668493",
+      "title": "Wanderlust",
+      "duration": "5:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668493.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668493.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668493.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668495",
+      "title": "Kiss Land",
+      "duration": "7:35",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668495.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668495.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668495.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668496",
+      "title": "Pretty",
+      "duration": "6:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668496.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668496.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668496.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668497",
+      "title": "Tears In The Rain",
+      "duration": "7:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668497.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668497.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668497.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668499",
+      "title": "Wanderlust (Pharrell Remix)",
+      "duration": "5:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668499.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668499.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668499.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422668500",
+      "title": "Odd Look (feat. The Weeknd)",
+      "duration": "4:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668500.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668500.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1422667786/audio/1422668500.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

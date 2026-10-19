@@ -1,0 +1,300 @@
+{
+  "id": "1440934527",
+  "artistId": "502541718",
+  "title": "Tangled Up",
+  "year": "2015",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/502541718/albums/1440934527/artwork/160.jpg",
+    "320": "/library/artists/502541718/albums/1440934527/artwork/320.jpg",
+    "640": "/library/artists/502541718/albums/1440934527/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440934756",
+      "title": "Anthem",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934756.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934756.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934756.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934773",
+      "title": "Crash and Burn",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934773.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934773.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934773.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934776",
+      "title": "South Side",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934776.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934776.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934776.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934778",
+      "title": "Die a Happy Man",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934778.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934778.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440934778.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935082",
+      "title": "Vacation",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935082.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935082.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935082.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935087",
+      "title": "Like It's the Last Time",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935087.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935087.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935087.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935093",
+      "title": "T-Shirt",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935093.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935093.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935093.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935098",
+      "title": "Single Girl",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935098.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935098.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935098.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935102",
+      "title": "The Day You Stop Lookin' Back",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935102.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935102.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935102.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935103",
+      "title": "Tangled",
+      "duration": "3:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935103.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935103.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935103.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935416",
+      "title": "Playing with Fire (feat. Jordin Sparks)",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935416.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935416.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935416.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935421",
+      "title": "I Feel Good (feat. LunchMoney Lewis)",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935421.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935421.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935421.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935422",
+      "title": "Learned It from the Radio",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935422.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935422.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934527/audio/1440935422.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

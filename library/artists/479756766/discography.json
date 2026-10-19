@@ -1,0 +1,72 @@
+{
+  "artistId": "479756766",
+  "name": "The Weeknd",
+  "albums": [
+    {
+      "id": "1499378108",
+      "title": "After Hours",
+      "year": "2020",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/479756766/albums/1499378108/artwork/160.jpg",
+        "320": "/library/artists/479756766/albums/1499378108/artwork/320.jpg",
+        "640": "/library/artists/479756766/albums/1499378108/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1603171516",
+      "title": "Dawn FM",
+      "year": "2022",
+      "songCount": 16,
+      "artwork": {
+        "160": "/library/artists/479756766/albums/1603171516/artwork/160.jpg",
+        "320": "/library/artists/479756766/albums/1603171516/artwork/320.jpg",
+        "640": "/library/artists/479756766/albums/1603171516/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440826239",
+      "title": "Beauty Behind the Madness",
+      "year": "2015",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/479756766/albums/1440826239/artwork/160.jpg",
+        "320": "/library/artists/479756766/albums/1440826239/artwork/320.jpg",
+        "640": "/library/artists/479756766/albums/1440826239/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1422667786",
+      "title": "Kiss Land",
+      "year": "2013",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/479756766/albums/1422667786/artwork/160.jpg",
+        "320": "/library/artists/479756766/albums/1422667786/artwork/320.jpg",
+        "640": "/library/artists/479756766/albums/1422667786/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1821496329",
+      "title": "The Weeknd Chill Sollos Focus Collection",
+      "year": "2022",
+      "songCount": 0,
+      "artwork": {
+        "160": "/library/artists/479756766/albums/1821496329/artwork/160.jpg",
+        "320": "/library/artists/479756766/albums/1821496329/artwork/320.jpg",
+        "640": "/library/artists/479756766/albums/1821496329/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1821490674",
+      "title": "The Weeknd Heightened Sollos Focus Collection",
+      "year": "2022",
+      "songCount": 0,
+      "artwork": {
+        "160": "/library/artists/479756766/albums/1821490674/artwork/160.jpg",
+        "320": "/library/artists/479756766/albums/1821490674/artwork/320.jpg",
+        "640": "/library/artists/479756766/albums/1821490674/artwork/640.jpg"
+      }
+    }
+  ]
+}

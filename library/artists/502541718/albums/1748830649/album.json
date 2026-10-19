@@ -1,0 +1,322 @@
+{
+  "id": "1748830649",
+  "artistId": "502541718",
+  "title": "About A Woman",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/502541718/albums/1748830649/artwork/160.jpg",
+    "320": "/library/artists/502541718/albums/1748830649/artwork/320.jpg",
+    "640": "/library/artists/502541718/albums/1748830649/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1748830656",
+      "title": "Fool",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830656.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830656.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830656.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830660",
+      "title": "Overdrive",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830660.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830660.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830660.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830664",
+      "title": "Gone Country",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830664.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830664.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830664.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830666",
+      "title": "Beautiful As You",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830666.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830666.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830666.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830911",
+      "title": "Can't Love You Anymore",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830911.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830911.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830911.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830914",
+      "title": "After All The Bars Are Closed",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830914.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830914.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830914.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830916",
+      "title": "Church",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830916.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830916.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830916.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830919",
+      "title": "Back To Blue",
+      "duration": "2:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830919.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830919.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830919.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830921",
+      "title": "Country For California",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830921.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830921.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830921.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830927",
+      "title": "Somethin' 'Bout A Woman",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830927.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830927.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830927.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830931",
+      "title": "What Could Go Right",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830931.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830931.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830931.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830932",
+      "title": "Boots",
+      "duration": "2:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830932.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830932.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830932.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830934",
+      "title": "Don't Wanna Dance",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830934.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830934.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830934.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1748830937",
+      "title": "I Could Spend Forever Loving You",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830937.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830937.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1748830649/audio/1748830937.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

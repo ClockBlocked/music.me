@@ -1,0 +1,366 @@
+{
+  "id": "1603171516",
+  "artistId": "479756766",
+  "title": "Dawn FM",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/479756766/albums/1603171516/artwork/160.jpg",
+    "320": "/library/artists/479756766/albums/1603171516/artwork/320.jpg",
+    "640": "/library/artists/479756766/albums/1603171516/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1603171527",
+      "title": "Dawn FM",
+      "duration": "1:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171527.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171527.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171527.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171529",
+      "title": "Gasoline",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171529.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171529.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171529.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171530",
+      "title": "How Do I Make You Love Me?",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171530.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171530.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171530.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171531",
+      "title": "Take My Breath",
+      "duration": "5:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171531.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171531.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171531.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171533",
+      "title": "Sacrifice",
+      "duration": "3:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171533.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171533.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171533.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171534",
+      "title": "A Tale By Quincy",
+      "duration": "1:36",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171534.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171534.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171534.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171870",
+      "title": "Out of Time",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171870.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171870.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171870.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171873",
+      "title": "Here We Go… Again (feat. Tyler, The Creator)",
+      "duration": "3:29",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171873.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171873.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171873.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171875",
+      "title": "Best Friends",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171875.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171875.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171875.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171893",
+      "title": "Is There Someone Else?",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171893.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171893.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171893.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171895",
+      "title": "Starry Eyes",
+      "duration": "2:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171895.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171895.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171895.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171957",
+      "title": "Every Angel is Terrifying",
+      "duration": "2:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171957.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171957.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171957.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171963",
+      "title": "Don’t Break My Heart",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171963.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171963.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171963.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171968",
+      "title": "I Heard You’re Married (feat. Lil Wayne)",
+      "duration": "4:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171968.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171968.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171968.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171970",
+      "title": "Less Than Zero",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171970.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171970.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171970.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603171973",
+      "title": "Phantom Regret by Jim",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 16,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171973.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171973.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1603171516/audio/1603171973.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

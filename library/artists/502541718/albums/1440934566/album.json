@@ -1,0 +1,322 @@
+{
+  "id": "1440934566",
+  "artistId": "502541718",
+  "title": "Life Changes",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/502541718/albums/1440934566/artwork/160.jpg",
+    "320": "/library/artists/502541718/albums/1440934566/artwork/320.jpg",
+    "640": "/library/artists/502541718/albums/1440934566/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440934569",
+      "title": "Craving You (feat. Maren Morris)",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934569.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934569.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934569.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934570",
+      "title": "Unforgettable",
+      "duration": "2:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934570.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934570.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934570.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934901",
+      "title": "Sixteen",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934901.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934901.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934901.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934902",
+      "title": "Drink a Little Beer (feat. Rhett Akins)",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934902.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934902.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934902.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934907",
+      "title": "Marry Me",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934907.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934907.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934907.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934908",
+      "title": "Leave Right Now",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934908.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934908.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934908.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934913",
+      "title": "Smooth Like the Summer",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934913.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934913.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934913.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934914",
+      "title": "Life Changes",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934914.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934914.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934914.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934917",
+      "title": "When You Look Like That",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934917.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934917.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934917.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934918",
+      "title": "Sweetheart",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934918.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934918.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934918.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934920",
+      "title": "Kiss Me Like a Stranger",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934920.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934920.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934920.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934927",
+      "title": "Renegades",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934927.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934927.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934927.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440934929",
+      "title": "Gateway Love",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934929.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934929.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440934929.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440935051",
+      "title": "Grave",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440935051.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440935051.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1440934566/audio/1440935051.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

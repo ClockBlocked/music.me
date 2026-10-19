@@ -1,0 +1,278 @@
+{
+  "id": "1895402771",
+  "artistId": "472949623",
+  "title": "BITCH",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/472949623/albums/1895402771/artwork/160.jpg",
+    "320": "/library/artists/472949623/albums/1895402771/artwork/320.jpg",
+    "640": "/library/artists/472949623/albums/1895402771/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6763621804",
+      "title": "A Toast",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621804.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621804.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621804.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763621805",
+      "title": "Happy 2 Be",
+      "duration": "2:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621805.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621805.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621805.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763621806",
+      "title": "Don’t Make Me Love U",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621806.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621806.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763621806.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622110",
+      "title": "BITCH",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622110.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622110.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622110.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622113",
+      "title": "She Stole My Man",
+      "duration": "2:47",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622113.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622113.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622113.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622114",
+      "title": "Whose Hair Is This",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622114.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622114.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622114.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622115",
+      "title": "Little Black Cat",
+      "duration": "3:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622115.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622115.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622115.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622116",
+      "title": "Sexy Ladies (feat. UCB)",
+      "duration": "2:50",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622116.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622116.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622116.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622118",
+      "title": "That GRRRL",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622118.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622118.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622118.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622119",
+      "title": "Too Nice",
+      "duration": "1:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622119.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622119.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622119.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622121",
+      "title": "Like A Crime",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622121.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622121.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622121.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6763622123",
+      "title": "Goodmorning!",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622123.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622123.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1895402771/audio/6763622123.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

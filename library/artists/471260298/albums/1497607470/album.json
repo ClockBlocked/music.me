@@ -1,0 +1,322 @@
+{
+  "id": "1497607470",
+  "artistId": "471260298",
+  "title": "Heartbreak Weather",
+  "year": "2020",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260298/albums/1497607470/artwork/160.jpg",
+    "320": "/library/artists/471260298/albums/1497607470/artwork/320.jpg",
+    "640": "/library/artists/471260298/albums/1497607470/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1497608049",
+      "title": "Heartbreak Weather",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608049.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608049.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608049.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608050",
+      "title": "Black And White",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608050.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608050.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608050.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608053",
+      "title": "Dear Patience",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608053.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608053.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608053.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608057",
+      "title": "Bend The Rules",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608057.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608057.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608057.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608060",
+      "title": "Small Talk",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608060.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608060.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608060.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608061",
+      "title": "Nice to Meet Ya",
+      "duration": "2:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608061.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608061.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608061.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608062",
+      "title": "Put a Little Love On Me",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608062.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608062.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608062.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608064",
+      "title": "Arms Of A Stranger",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608064.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608064.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608064.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608069",
+      "title": "Everywhere",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608069.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608069.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608069.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608071",
+      "title": "Cross Your Mind",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608071.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608071.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608071.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608072",
+      "title": "New Angel",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608072.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608072.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608072.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608074",
+      "title": "No Judgement",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608074.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608074.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608074.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608075",
+      "title": "San Francisco",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608075.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608075.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608075.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1497608198",
+      "title": "Still",
+      "duration": "4:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608198.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608198.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1497607470/audio/1497608198.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

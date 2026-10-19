@@ -1,0 +1,61 @@
+{
+  "artistId": "471260298",
+  "name": "Niall Horan",
+  "albums": [
+    {
+      "id": "1497607470",
+      "title": "Heartbreak Weather",
+      "year": "2020",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/471260298/albums/1497607470/artwork/160.jpg",
+        "320": "/library/artists/471260298/albums/1497607470/artwork/320.jpg",
+        "640": "/library/artists/471260298/albums/1497607470/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1671631634",
+      "title": "The Show",
+      "year": "2023",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/471260298/albums/1671631634/artwork/160.jpg",
+        "320": "/library/artists/471260298/albums/1671631634/artwork/320.jpg",
+        "640": "/library/artists/471260298/albums/1671631634/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1884418567",
+      "title": "Dinner Party",
+      "year": "2026",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/471260298/albums/1884418567/artwork/160.jpg",
+        "320": "/library/artists/471260298/albums/1884418567/artwork/320.jpg",
+        "640": "/library/artists/471260298/albums/1884418567/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440902723",
+      "title": "Flicker",
+      "year": "2017",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/471260298/albums/1440902723/artwork/160.jpg",
+        "320": "/library/artists/471260298/albums/1440902723/artwork/320.jpg",
+        "640": "/library/artists/471260298/albums/1440902723/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1763809363",
+      "title": "Niall Horan Sollos Relax Collection",
+      "year": "2017",
+      "songCount": 0,
+      "artwork": {
+        "160": "/library/artists/471260298/albums/1763809363/artwork/160.jpg",
+        "320": "/library/artists/471260298/albums/1763809363/artwork/320.jpg",
+        "640": "/library/artists/471260298/albums/1763809363/artwork/640.jpg"
+      }
+    }
+  ]
+}

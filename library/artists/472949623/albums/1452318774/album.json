@@ -1,0 +1,256 @@
+{
+  "id": "1452318774",
+  "artistId": "472949623",
+  "title": "Cuz I Love You",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/472949623/albums/1452318774/artwork/160.jpg",
+    "320": "/library/artists/472949623/albums/1452318774/artwork/320.jpg",
+    "640": "/library/artists/472949623/albums/1452318774/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1452319268",
+      "title": "Cuz I Love You",
+      "duration": "2:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319268.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319268.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319268.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452319270",
+      "title": "Like A Girl",
+      "duration": "3:04",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319270.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319270.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319270.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452319283",
+      "title": "Juice",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319283.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319283.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319283.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452319970",
+      "title": "Soulmate",
+      "duration": "2:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319970.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319970.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452319970.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452320164",
+      "title": "Jerome",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320164.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320164.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320164.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452320176",
+      "title": "Crybaby",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320176.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320176.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320176.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452320177",
+      "title": "Tempo (feat. Missy Elliott)",
+      "duration": "2:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320177.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320177.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320177.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452320180",
+      "title": "Exactly How I Feel (feat. Gucci Mane)",
+      "duration": "2:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320180.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320180.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320180.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452320185",
+      "title": "Better In Color",
+      "duration": "2:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320185.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320185.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320185.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452320516",
+      "title": "Heaven Help Me",
+      "duration": "3:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320516.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320516.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320516.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1452320518",
+      "title": "Lingerie",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320518.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320518.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1452318774/audio/1452320518.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "id": "1454614683",
+  "artistId": "502541718",
+  "title": "Center Point Road",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/502541718/albums/1454614683/artwork/160.jpg",
+    "320": "/library/artists/502541718/albums/1454614683/artwork/320.jpg",
+    "640": "/library/artists/502541718/albums/1454614683/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1454614690",
+      "title": "Up",
+      "duration": "3:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614690.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614690.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614690.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614693",
+      "title": "Don’t Threaten Me with a Good Time (feat. Little Big Town)",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614693.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614693.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614693.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614695",
+      "title": "Blessed",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614695.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614695.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614695.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614696",
+      "title": "Look What God Gave Her",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614696.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614696.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614696.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614697",
+      "title": "Center Point Road (feat. Kelsea Ballerini)",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614697.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614697.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614697.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614703",
+      "title": "That Old Truck",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614703.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614703.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614703.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614769",
+      "title": "VHS",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614769.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614769.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614769.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614773",
+      "title": "Notice",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614773.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614773.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614773.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614778",
+      "title": "Sand",
+      "duration": "2:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614778.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614778.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614778.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614782",
+      "title": "Beer Can't Fix (feat. Jon Pardi)",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614782.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614782.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614782.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614787",
+      "title": "Things You Do for Love",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614787.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614787.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614787.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614791",
+      "title": "Remember You Young",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614791.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614791.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614791.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614857",
+      "title": "Don't Stop Drivin'",
+      "duration": "3:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614857.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614857.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614857.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614861",
+      "title": "Barefoot",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614861.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614861.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614861.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614866",
+      "title": "Dream You Never Had",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614866.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614866.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614866.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1454614874",
+      "title": "Almost",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 16,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614874.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614874.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1454614683/audio/1454614874.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

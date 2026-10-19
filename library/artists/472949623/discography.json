@@ -1,0 +1,61 @@
+{
+  "artistId": "472949623",
+  "name": "Lizzo",
+  "albums": [
+    {
+      "id": "1452318774",
+      "title": "Cuz I Love You",
+      "year": "2019",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/472949623/albums/1452318774/artwork/160.jpg",
+        "320": "/library/artists/472949623/albums/1452318774/artwork/320.jpg",
+        "640": "/library/artists/472949623/albums/1452318774/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1619161952",
+      "title": "Special",
+      "year": "2022",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/472949623/albums/1619161952/artwork/160.jpg",
+        "320": "/library/artists/472949623/albums/1619161952/artwork/320.jpg",
+        "640": "/library/artists/472949623/albums/1619161952/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1822827244",
+      "title": "MY FACE HURTS FROM SMILING",
+      "year": "2025",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/472949623/albums/1822827244/artwork/160.jpg",
+        "320": "/library/artists/472949623/albums/1822827244/artwork/320.jpg",
+        "640": "/library/artists/472949623/albums/1822827244/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1895402771",
+      "title": "BITCH",
+      "year": "2026",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/472949623/albums/1895402771/artwork/160.jpg",
+        "320": "/library/artists/472949623/albums/1895402771/artwork/320.jpg",
+        "640": "/library/artists/472949623/albums/1895402771/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1648186577",
+      "title": "Lizzobangers",
+      "year": "2013",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/472949623/albums/1648186577/artwork/160.jpg",
+        "320": "/library/artists/472949623/albums/1648186577/artwork/320.jpg",
+        "640": "/library/artists/472949623/albums/1648186577/artwork/640.jpg"
+      }
+    }
+  ]
+}

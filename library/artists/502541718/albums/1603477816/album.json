@@ -1,0 +1,344 @@
+{
+  "id": "1603477816",
+  "artistId": "502541718",
+  "title": "Where We Started",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/502541718/albums/1603477816/artwork/160.jpg",
+    "320": "/library/artists/502541718/albums/1603477816/artwork/320.jpg",
+    "640": "/library/artists/502541718/albums/1603477816/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1603477828",
+      "title": "The Hill",
+      "duration": "2:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477828.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477828.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477828.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477834",
+      "title": "Church Boots",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477834.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477834.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477834.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477957",
+      "title": "Bass Pro Hat",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477957.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477957.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477957.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477960",
+      "title": "Anything Cold",
+      "duration": "2:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477960.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477960.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477960.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477962",
+      "title": "Angels",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477962.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477962.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477962.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477964",
+      "title": "Half Of Me (feat. Riley Green)",
+      "duration": "3:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477964.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477964.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477964.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477967",
+      "title": "Bring The Bar",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477967.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477967.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477967.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477979",
+      "title": "Paradise",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477979.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477979.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477979.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603477982",
+      "title": "Death Row (feat. Tyler Hubbard & Russell Dickerson)",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477982.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477982.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603477982.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603478136",
+      "title": "Mama’s Front Door",
+      "duration": "2:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478136.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478136.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478136.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603478138",
+      "title": "Slow Down Summer",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478138.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478138.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478138.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603478140",
+      "title": "Simple As A Song",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478140.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478140.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478140.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603478197",
+      "title": "Us Someday",
+      "duration": "2:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478197.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478197.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478197.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603478198",
+      "title": "Somebody Like Me",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478198.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478198.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478198.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1603478200",
+      "title": "Where We Started",
+      "duration": "3:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478200.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478200.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/502541718/albums/1603477816/audio/1603478200.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

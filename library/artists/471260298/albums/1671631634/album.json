@@ -1,0 +1,234 @@
+{
+  "id": "1671631634",
+  "artistId": "471260298",
+  "title": "The Show",
+  "year": "2023",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260298/albums/1671631634/artwork/160.jpg",
+    "320": "/library/artists/471260298/albums/1671631634/artwork/320.jpg",
+    "640": "/library/artists/471260298/albums/1671631634/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1671631635",
+      "title": "Heaven",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631635.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631635.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631635.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631937",
+      "title": "If You Leave Me",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631937.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631937.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631937.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631938",
+      "title": "Meltdown",
+      "duration": "2:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631938.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631938.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631938.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631939",
+      "title": "Never Grow Up",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631939.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631939.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631939.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631940",
+      "title": "The Show",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631940.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631940.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631940.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631942",
+      "title": "You Could Start A Cult",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631942.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631942.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631942.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631943",
+      "title": "Save My Life",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631943.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631943.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631943.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631951",
+      "title": "On A Night Like Tonight",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631951.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631951.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631951.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631952",
+      "title": "Science",
+      "duration": "2:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631952.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631952.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631952.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1671631954",
+      "title": "Must Be Love",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631954.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631954.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1671631634/audio/1671631954.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

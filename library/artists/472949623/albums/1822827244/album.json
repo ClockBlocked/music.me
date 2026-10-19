@@ -1,0 +1,300 @@
+{
+  "id": "1822827244",
+  "artistId": "472949623",
+  "title": "MY FACE HURTS FROM SMILING",
+  "year": "2025",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/472949623/albums/1822827244/artwork/160.jpg",
+    "320": "/library/artists/472949623/albums/1822827244/artwork/320.jpg",
+    "640": "/library/artists/472949623/albums/1822827244/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1822827245",
+      "title": "CRASHOUT",
+      "duration": "2:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827245.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827245.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827245.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827246",
+      "title": "YITTY ON YO TITTYS (FREESTYLE)",
+      "duration": "2:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827246.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827246.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827246.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827247",
+      "title": "JUST 4 FUN",
+      "duration": "2:33",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827247.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827247.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827247.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827248",
+      "title": "GOTCHO BITCH",
+      "duration": "2:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827248.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827248.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827248.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827249",
+      "title": "STILL CANT FUH (FEAT. DOJA CAT)",
+      "duration": "2:42",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827249.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827249.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827249.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827250",
+      "title": "NEW MISTAKES",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827250.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827250.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827250.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827251",
+      "title": "BEND IT OVA",
+      "duration": "2:27",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827251.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827251.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827251.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827253",
+      "title": "LEFTRIGHT",
+      "duration": "2:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827253.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827253.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827253.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827254",
+      "title": "DROPPIN ON IT",
+      "duration": "2:33",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827254.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827254.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827254.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827255",
+      "title": "SUMMA SHIT",
+      "duration": "2:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827255.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827255.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827255.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827257",
+      "title": "IRL (FEAT. SZA)",
+      "duration": "2:44",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827257.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827257.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827257.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827260",
+      "title": "CUT EM OFF",
+      "duration": "2:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827260.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827260.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827260.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1822827261",
+      "title": "DITTO",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827261.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827261.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1822827244/audio/1822827261.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

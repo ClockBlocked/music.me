@@ -1,0 +1,278 @@
+{
+  "id": "1884418567",
+  "artistId": "471260298",
+  "title": "Dinner Party",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/471260298/albums/1884418567/artwork/160.jpg",
+    "320": "/library/artists/471260298/albums/1884418567/artwork/320.jpg",
+    "640": "/library/artists/471260298/albums/1884418567/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1884418568",
+      "title": "Tastes So Good",
+      "duration": "3:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418568.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418568.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418568.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418570",
+      "title": "Dinner Party",
+      "duration": "2:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418570.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418570.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418570.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418587",
+      "title": "Monochromatic",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418587.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418587.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418587.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418590",
+      "title": "She Gets It from Her Mother",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418590.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418590.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418590.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418591",
+      "title": "Better Man",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418591.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418591.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418591.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418592",
+      "title": "Little More Time",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418592.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418592.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418592.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418593",
+      "title": "Flowers",
+      "duration": "2:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418593.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418593.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418593.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418595",
+      "title": "Boys Are Fun",
+      "duration": "3:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418595.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418595.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418595.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418596",
+      "title": "Fighting Over Nothing",
+      "duration": "2:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418596.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418596.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418596.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418718",
+      "title": "Pretty",
+      "duration": "2:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418718.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418718.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418718.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418719",
+      "title": "Die If I Don’t",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418719.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418719.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418719.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1884418721",
+      "title": "End of an Era",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418721.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418721.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/471260298/albums/1884418567/audio/1884418721.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "id": "1619161952",
+  "artistId": "472949623",
+  "title": "Special",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/472949623/albums/1619161952/artwork/160.jpg",
+    "320": "/library/artists/472949623/albums/1619161952/artwork/320.jpg",
+    "640": "/library/artists/472949623/albums/1619161952/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1619162348",
+      "title": "The Sign",
+      "duration": "2:45",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162348.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162348.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162348.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162353",
+      "title": "About Damn Time",
+      "duration": "3:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162353.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162353.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162353.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162362",
+      "title": "Grrrls",
+      "duration": "2:01",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162362.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162362.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162362.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162365",
+      "title": "2 Be Loved (Am I Ready)",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162365.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162365.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162365.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162367",
+      "title": "I Love You Bitch",
+      "duration": "2:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162367.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162367.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162367.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162369",
+      "title": "Special",
+      "duration": "2:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162369.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162369.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162369.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162372",
+      "title": "Break Up Twice",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162372.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162372.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162372.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162375",
+      "title": "Everybody’s Gay",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162375.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162375.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162375.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162832",
+      "title": "Naked",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162832.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162832.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162832.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162836",
+      "title": "Birthday Girl",
+      "duration": "3:07",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162836.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162836.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162836.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162846",
+      "title": "If You Love Me",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162846.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162846.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162846.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162977",
+      "title": "Coldplay",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162977.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162977.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162977.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1619162998",
+      "title": "A Very Special Message From Lizzo",
+      "duration": "1:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162998.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162998.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/472949623/albums/1619161952/audio/1619162998.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

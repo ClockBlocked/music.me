@@ -1,0 +1,72 @@
+{
+  "artistId": "502541718",
+  "name": "Thomas Rhett",
+  "albums": [
+    {
+      "id": "1454614683",
+      "title": "Center Point Road",
+      "year": "2019",
+      "songCount": 16,
+      "artwork": {
+        "160": "/library/artists/502541718/albums/1454614683/artwork/160.jpg",
+        "320": "/library/artists/502541718/albums/1454614683/artwork/320.jpg",
+        "640": "/library/artists/502541718/albums/1454614683/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1603477816",
+      "title": "Where We Started",
+      "year": "2022",
+      "songCount": 15,
+      "artwork": {
+        "160": "/library/artists/502541718/albums/1603477816/artwork/160.jpg",
+        "320": "/library/artists/502541718/albums/1603477816/artwork/320.jpg",
+        "640": "/library/artists/502541718/albums/1603477816/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1748830649",
+      "title": "About A Woman",
+      "year": "2024",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/502541718/albums/1748830649/artwork/160.jpg",
+        "320": "/library/artists/502541718/albums/1748830649/artwork/320.jpg",
+        "640": "/library/artists/502541718/albums/1748830649/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440934566",
+      "title": "Life Changes",
+      "year": "2017",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/502541718/albums/1440934566/artwork/160.jpg",
+        "320": "/library/artists/502541718/albums/1440934566/artwork/320.jpg",
+        "640": "/library/artists/502541718/albums/1440934566/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440934527",
+      "title": "Tangled Up",
+      "year": "2015",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/502541718/albums/1440934527/artwork/160.jpg",
+        "320": "/library/artists/502541718/albums/1440934527/artwork/320.jpg",
+        "640": "/library/artists/502541718/albums/1440934527/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440934946",
+      "title": "It Goes Like This",
+      "year": "2013",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/502541718/albums/1440934946/artwork/160.jpg",
+        "320": "/library/artists/502541718/albums/1440934946/artwork/320.jpg",
+        "640": "/library/artists/502541718/albums/1440934946/artwork/640.jpg"
+      }
+    }
+  ]
+}

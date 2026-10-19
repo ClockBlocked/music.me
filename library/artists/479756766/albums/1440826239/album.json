@@ -1,0 +1,322 @@
+{
+  "id": "1440826239",
+  "artistId": "479756766",
+  "title": "Beauty Behind the Madness",
+  "year": "2015",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/479756766/albums/1440826239/artwork/160.jpg",
+    "320": "/library/artists/479756766/albums/1440826239/artwork/320.jpg",
+    "640": "/library/artists/479756766/albums/1440826239/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440826364",
+      "title": "Real Life",
+      "duration": "3:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826364.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826364.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826364.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826369",
+      "title": "Losers (feat. Labrinth)",
+      "duration": "4:41",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826369.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826369.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826369.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826376",
+      "title": "Tell Your Friends",
+      "duration": "5:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826376.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826376.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826376.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826380",
+      "title": "Often",
+      "duration": "4:09",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826380.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826380.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826380.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826383",
+      "title": "The Hills",
+      "duration": "4:02",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826383.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826383.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826383.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826386",
+      "title": "Acquainted",
+      "duration": "5:48",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826386.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826386.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826386.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826389",
+      "title": "Can't Feel My Face",
+      "duration": "3:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826389.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826389.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826389.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826575",
+      "title": "Shameless",
+      "duration": "4:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826575.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826575.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826575.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826577",
+      "title": "Earned It (Fifty Shades of Grey)",
+      "duration": "4:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826577.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826577.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826577.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826580",
+      "title": "In the Night",
+      "duration": "3:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826580.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826580.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826580.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826583",
+      "title": "As You Are",
+      "duration": "5:40",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826583.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826583.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826583.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826586",
+      "title": "Dark Times (feat. Ed Sheeran)",
+      "duration": "4:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826586.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826586.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826586.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826588",
+      "title": "Prisoner (feat. Lana Del Rey)",
+      "duration": "4:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826588.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826588.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826588.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440826590",
+      "title": "Angel",
+      "duration": "6:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826590.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826590.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/479756766/albums/1440826239/audio/1440826590.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}
