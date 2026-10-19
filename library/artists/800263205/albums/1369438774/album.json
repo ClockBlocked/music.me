@@ -1,0 +1,366 @@
+{
+  "id": "1369438774",
+  "artistId": "800263205",
+  "title": "COSMIC",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/800263205/albums/1369438774/artwork/160.jpg",
+    "320": "/library/artists/800263205/albums/1369438774/artwork/320.jpg",
+    "640": "/library/artists/800263205/albums/1369438774/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1369438946",
+      "title": "Dreams",
+      "duration": "2:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438946.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438946.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438946.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438947",
+      "title": "Soarin",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438947.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438947.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438947.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438949",
+      "title": "Myself",
+      "duration": "2:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438949.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438949.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438949.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438950",
+      "title": "Star",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438950.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438950.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438950.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438951",
+      "title": "Why",
+      "duration": "2:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438951.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438951.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438951.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438953",
+      "title": "3:15",
+      "duration": "2:47",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438953.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438953.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438953.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438954",
+      "title": "Honest",
+      "duration": "2:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438954.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438954.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438954.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438955",
+      "title": "Mirror",
+      "duration": "2:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438955.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438955.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438955.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369438956",
+      "title": "Gone",
+      "duration": "2:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438956.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438956.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369438956.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369439264",
+      "title": "Fantasy",
+      "duration": "2:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439264.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439264.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439264.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369439265",
+      "title": "BRB",
+      "duration": "2:40",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439265.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439265.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439265.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369439267",
+      "title": "Cartier",
+      "duration": "2:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439267.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439267.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439267.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369439269",
+      "title": "Beautiful",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439269.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439269.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439269.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369439270",
+      "title": "Mine",
+      "duration": "2:11",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439270.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439270.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439270.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369439271",
+      "title": "Changed",
+      "duration": "2:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439271.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439271.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439271.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1369439273",
+      "title": "Somebody",
+      "duration": "2:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 16,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439273.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439273.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1369438774/audio/1369439273.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

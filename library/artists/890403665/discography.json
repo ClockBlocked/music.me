@@ -1,0 +1,72 @@
+{
+  "artistId": "890403665",
+  "name": "Shawn Mendes",
+  "albums": [
+    {
+      "id": "1376115721",
+      "title": "Shawn Mendes",
+      "year": "2018",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/890403665/albums/1376115721/artwork/160.jpg",
+        "320": "/library/artists/890403665/albums/1376115721/artwork/320.jpg",
+        "640": "/library/artists/890403665/albums/1376115721/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1533345318",
+      "title": "Wonder",
+      "year": "2020",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/890403665/albums/1533345318/artwork/160.jpg",
+        "320": "/library/artists/890403665/albums/1533345318/artwork/320.jpg",
+        "640": "/library/artists/890403665/albums/1533345318/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1761182577",
+      "title": "Shawn",
+      "year": "2024",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/890403665/albums/1761182577/artwork/160.jpg",
+        "320": "/library/artists/890403665/albums/1761182577/artwork/320.jpg",
+        "640": "/library/artists/890403665/albums/1761182577/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440904104",
+      "title": "Illuminate",
+      "year": "2016",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/890403665/albums/1440904104/artwork/160.jpg",
+        "320": "/library/artists/890403665/albums/1440904104/artwork/320.jpg",
+        "640": "/library/artists/890403665/albums/1440904104/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440849711",
+      "title": "Handwritten",
+      "year": "2015",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/890403665/albums/1440849711/artwork/160.jpg",
+        "320": "/library/artists/890403665/albums/1440849711/artwork/320.jpg",
+        "640": "/library/artists/890403665/albums/1440849711/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440882199",
+      "title": "MTV Unplugged",
+      "year": "2017",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/890403665/albums/1440882199/artwork/160.jpg",
+        "320": "/library/artists/890403665/albums/1440882199/artwork/320.jpg",
+        "640": "/library/artists/890403665/albums/1440882199/artwork/640.jpg"
+      }
+    }
+  ]
+}

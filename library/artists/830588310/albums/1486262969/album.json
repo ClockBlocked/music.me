@@ -1,0 +1,278 @@
+{
+  "id": "1486262969",
+  "artistId": "830588310",
+  "title": "Hot Pink",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/830588310/albums/1486262969/artwork/160.jpg",
+    "320": "/library/artists/830588310/albums/1486262969/artwork/320.jpg",
+    "640": "/library/artists/830588310/albums/1486262969/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1486263167",
+      "title": "Cyber Sex",
+      "duration": "2:45",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263167.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263167.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263167.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263170",
+      "title": "Won't Bite (feat. Smino)",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263170.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263170.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263170.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263177",
+      "title": "Rules",
+      "duration": "3:07",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263177.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263177.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263177.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263178",
+      "title": "Bottom Bitch",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263178.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263178.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263178.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263180",
+      "title": "Say So",
+      "duration": "3:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263180.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263180.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263180.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263181",
+      "title": "Like That (feat. Gucci Mane)",
+      "duration": "2:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263181.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263181.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263181.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263182",
+      "title": "Talk Dirty",
+      "duration": "4:01",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263182.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263182.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263182.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263367",
+      "title": "Addiction",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263367.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263367.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263367.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263368",
+      "title": "Streets",
+      "duration": "3:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263368.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263368.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263368.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263370",
+      "title": "Shine",
+      "duration": "2:40",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263370.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263370.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263370.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263371",
+      "title": "Better Than Me",
+      "duration": "3:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263371.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263371.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263371.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1486263372",
+      "title": "Juicy",
+      "duration": "3:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263372.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263372.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1486262969/audio/1486263372.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

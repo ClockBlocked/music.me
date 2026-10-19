@@ -1,0 +1,300 @@
+{
+  "id": "1364076874",
+  "artistId": "830588310",
+  "title": "Amala",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/830588310/albums/1364076874/artwork/160.jpg",
+    "320": "/library/artists/830588310/albums/1364076874/artwork/320.jpg",
+    "640": "/library/artists/830588310/albums/1364076874/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1364077354",
+      "title": "Go To Town",
+      "duration": "3:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077354.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077354.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077354.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077355",
+      "title": "Cookie Jar",
+      "duration": "3:19",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077355.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077355.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077355.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077356",
+      "title": "Roll With Us",
+      "duration": "3:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077356.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077356.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077356.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077357",
+      "title": "Wine Pon You (feat. Konshens)",
+      "duration": "3:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077357.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077357.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077357.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077358",
+      "title": "Fancy",
+      "duration": "2:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077358.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077358.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077358.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077359",
+      "title": "Wild Beach",
+      "duration": "3:24",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077359.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077359.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077359.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077455",
+      "title": "Morning Light",
+      "duration": "3:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077455.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077455.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077455.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077457",
+      "title": "Candy",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077457.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077457.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077457.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077458",
+      "title": "Game",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077458.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077458.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077458.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077461",
+      "title": "Casual",
+      "duration": "4:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077461.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077461.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077461.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077464",
+      "title": "Down Low",
+      "duration": "3:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077464.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077464.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077464.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077467",
+      "title": "Body Language",
+      "duration": "4:05",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077467.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077467.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077467.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1364077468",
+      "title": "All Nighter",
+      "duration": "3:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077468.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077468.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1364076874/audio/1364077468.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

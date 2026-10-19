@@ -1,0 +1,278 @@
+{
+  "id": "1440816421",
+  "artistId": "898094630",
+  "title": "Mansion",
+  "year": "2015",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/898094630/albums/1440816421/artwork/160.jpg",
+    "320": "/library/artists/898094630/albums/1440816421/artwork/320.jpg",
+    "640": "/library/artists/898094630/albums/1440816421/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440816429",
+      "title": "Intro",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816429.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816429.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816429.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816527",
+      "title": "Mansion (feat. Fleurie)",
+      "duration": "5:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816527.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816527.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816527.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816528",
+      "title": "All I Have",
+      "duration": "4:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816528.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816528.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816528.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816531",
+      "title": "Wait",
+      "duration": "4:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816531.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816531.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816531.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816540",
+      "title": "Wake Up",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816540.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816540.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816540.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816543",
+      "title": "Face It",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816543.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816543.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816543.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816545",
+      "title": "Motivated",
+      "duration": "4:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816545.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816545.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816545.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816547",
+      "title": "Notepad",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816547.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816547.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816547.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816550",
+      "title": "Turn the Music Up",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816550.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816550.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816550.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816733",
+      "title": "Paralyzed",
+      "duration": "4:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816733.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816733.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816733.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816734",
+      "title": "I'll Keep On (feat. Jeremiah Carlson)",
+      "duration": "4:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816734.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816734.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816734.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440816737",
+      "title": "Can You Hold Me (feat. Britt Nicole)",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816737.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816737.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440816421/audio/1440816737.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

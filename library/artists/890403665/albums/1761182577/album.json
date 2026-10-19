@@ -1,0 +1,278 @@
+{
+  "id": "1761182577",
+  "artistId": "890403665",
+  "title": "Shawn",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/890403665/albums/1761182577/artwork/160.jpg",
+    "320": "/library/artists/890403665/albums/1761182577/artwork/320.jpg",
+    "640": "/library/artists/890403665/albums/1761182577/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1761182582",
+      "title": "Who I Am",
+      "duration": "1:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182582.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182582.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182582.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761182591",
+      "title": "Why Why Why",
+      "duration": "2:49",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182591.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182591.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182591.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761182824",
+      "title": "That’s The Dream",
+      "duration": "2:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182824.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182824.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182824.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761182834",
+      "title": "Nobody Knows",
+      "duration": "2:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182834.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182834.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182834.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761182835",
+      "title": "Isn’t That Enough",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182835.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182835.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182835.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761182836",
+      "title": "Heart of Gold",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182836.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182836.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182836.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761182990",
+      "title": "Heavy",
+      "duration": "2:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182990.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182990.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182990.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761182991",
+      "title": "That’ll Be The Day",
+      "duration": "1:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182991.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182991.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761182991.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761183006",
+      "title": "In Between",
+      "duration": "1:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183006.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183006.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183006.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761183109",
+      "title": "The Mountain",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183109.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183109.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183109.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761183112",
+      "title": "Rollin’ Right Along",
+      "duration": "2:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183112.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183112.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183112.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1761183114",
+      "title": "Hallelujah",
+      "duration": "3:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183114.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183114.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1761182577/audio/1761183114.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

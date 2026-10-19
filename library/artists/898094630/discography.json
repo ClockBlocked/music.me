@@ -1,0 +1,50 @@
+{
+  "artistId": "898094630",
+  "name": "NF",
+  "albums": [
+    {
+      "id": "1440848910",
+      "title": "Perception",
+      "year": "2017",
+      "songCount": 16,
+      "artwork": {
+        "160": "/library/artists/898094630/albums/1440848910/artwork/160.jpg",
+        "320": "/library/artists/898094630/albums/1440848910/artwork/320.jpg",
+        "640": "/library/artists/898094630/albums/1440848910/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1670412644",
+      "title": "HOPE",
+      "year": "2023",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/898094630/albums/1670412644/artwork/160.jpg",
+        "320": "/library/artists/898094630/albums/1670412644/artwork/320.jpg",
+        "640": "/library/artists/898094630/albums/1670412644/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440845435",
+      "title": "Therapy Session",
+      "year": "2016",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/898094630/albums/1440845435/artwork/160.jpg",
+        "320": "/library/artists/898094630/albums/1440845435/artwork/320.jpg",
+        "640": "/library/artists/898094630/albums/1440845435/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440816421",
+      "title": "Mansion",
+      "year": "2015",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/898094630/albums/1440816421/artwork/160.jpg",
+        "320": "/library/artists/898094630/albums/1440816421/artwork/320.jpg",
+        "640": "/library/artists/898094630/albums/1440816421/artwork/640.jpg"
+      }
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "id": "1475805810",
+  "artistId": "800263205",
+  "title": "Soul Searching",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/800263205/albums/1475805810/artwork/160.jpg",
+    "320": "/library/artists/800263205/albums/1475805810/artwork/320.jpg",
+    "640": "/library/artists/800263205/albums/1475805810/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1475805812",
+      "title": "Humble Beginnings",
+      "duration": "3:04",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805812.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805812.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805812.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805813",
+      "title": "Soul Searching",
+      "duration": "2:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805813.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805813.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805813.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805816",
+      "title": "No Way!",
+      "duration": "1:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805816.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805816.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805816.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805817",
+      "title": "Fallin (feat. 6LACK)",
+      "duration": "2:30",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805817.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805817.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805817.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805818",
+      "title": "Can We Go Back to Bed?",
+      "duration": "2:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805818.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805818.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805818.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805821",
+      "title": "Live Forever",
+      "duration": "2:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805821.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805821.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805821.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805822",
+      "title": "I.F.L.Y.",
+      "duration": "2:45",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805822.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805822.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805822.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805823",
+      "title": "Focus (feat. 21 Savage)",
+      "duration": "2:35",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805823.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805823.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805823.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805825",
+      "title": "Paradise",
+      "duration": "2:49",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805825.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805825.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805825.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805826",
+      "title": "Conversations with Myself",
+      "duration": "1:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805826.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805826.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805826.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1475805828",
+      "title": "Who Am I?",
+      "duration": "2:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805828.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805828.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/800263205/albums/1475805810/audio/1475805828.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

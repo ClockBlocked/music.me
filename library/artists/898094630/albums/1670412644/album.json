@@ -1,0 +1,300 @@
+{
+  "id": "1670412644",
+  "artistId": "898094630",
+  "title": "HOPE",
+  "year": "2023",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/898094630/albums/1670412644/artwork/160.jpg",
+    "320": "/library/artists/898094630/albums/1670412644/artwork/320.jpg",
+    "640": "/library/artists/898094630/albums/1670412644/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1670412645",
+      "title": "HOPE",
+      "duration": "4:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670412645.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670412645.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670412645.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413039",
+      "title": "MOTTO",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413039.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413039.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413039.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413042",
+      "title": "CAREFUL",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413042.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413042.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413042.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413043",
+      "title": "MAMA",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413043.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413043.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413043.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413058",
+      "title": "HAPPY",
+      "duration": "4:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413058.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413058.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413058.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413062",
+      "title": "PANDEMONIUM",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413062.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413062.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413062.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413064",
+      "title": "SUFFICE",
+      "duration": "4:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413064.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413064.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413064.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413065",
+      "title": "GONE",
+      "duration": "4:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413065.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413065.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413065.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413219",
+      "title": "BULLET",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413219.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413219.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413219.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413220",
+      "title": "TURN MY BACK",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413220.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413220.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413220.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413230",
+      "title": "MISTAKE",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413230.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413230.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413230.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413231",
+      "title": "LET EM PRAY",
+      "duration": "3:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413231.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413231.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413231.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1670413233",
+      "title": "RUNNING",
+      "duration": "4:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413233.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413233.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1670412644/audio/1670413233.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

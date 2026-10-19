@@ -1,0 +1,344 @@
+{
+  "id": "1704921687",
+  "artistId": "830588310",
+  "title": "Scarlet",
+  "year": "2023",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/830588310/albums/1704921687/artwork/160.jpg",
+    "320": "/library/artists/830588310/albums/1704921687/artwork/320.jpg",
+    "640": "/library/artists/830588310/albums/1704921687/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1704921697",
+      "title": "Paint The Town Red",
+      "duration": "3:50",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921697.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921697.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921697.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704921701",
+      "title": "Demons",
+      "duration": "3:15",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921701.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921701.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921701.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704921986",
+      "title": "Wet Vagina",
+      "duration": "3:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921986.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921986.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921986.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704921988",
+      "title": "F**k The Girls (FTG)",
+      "duration": "2:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921988.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921988.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921988.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704921989",
+      "title": "Ouchies",
+      "duration": "2:02",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921989.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921989.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921989.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704921996",
+      "title": "97",
+      "duration": "2:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921996.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921996.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921996.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704921998",
+      "title": "Gun",
+      "duration": "2:56",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921998.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921998.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921998.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704921999",
+      "title": "Go Off",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921999.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921999.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704921999.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704922308",
+      "title": "Agora Hills",
+      "duration": "4:25",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922308.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922308.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922308.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704922316",
+      "title": "Can't Wait",
+      "duration": "3:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922316.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922316.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922316.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704922330",
+      "title": "Often",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922330.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922330.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922330.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704922368",
+      "title": "Love Life",
+      "duration": "3:56",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922368.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922368.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922368.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704922372",
+      "title": "Skull And Bones",
+      "duration": "4:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922372.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922372.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922372.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704922374",
+      "title": "Attention",
+      "duration": "4:35",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922374.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922374.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922374.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1704922383",
+      "title": "Balut",
+      "duration": "3:27",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922383.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922383.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1704921687/audio/1704922383.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "id": "1571168930",
+  "artistId": "830588310",
+  "title": "Planet Her",
+  "year": "2021",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/830588310/albums/1571168930/artwork/160.jpg",
+    "320": "/library/artists/830588310/albums/1571168930/artwork/320.jpg",
+    "640": "/library/artists/830588310/albums/1571168930/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1571169048",
+      "title": "Woman",
+      "duration": "2:52",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169048.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169048.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169048.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169057",
+      "title": "Naked",
+      "duration": "3:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169057.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169057.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169057.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169061",
+      "title": "Payday (feat. Young Thug)",
+      "duration": "3:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169061.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169061.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169061.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169191",
+      "title": "Get Into It (Yuh)",
+      "duration": "2:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169191.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169191.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169191.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169194",
+      "title": "Need To Know",
+      "duration": "3:30",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169194.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169194.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169194.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169195",
+      "title": "I Don't Do Drugs (feat. Ariana Grande)",
+      "duration": "3:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169195.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169195.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169195.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169277",
+      "title": "Love To Dream",
+      "duration": "3:36",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169277.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169277.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169277.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169280",
+      "title": "You Right",
+      "duration": "3:06",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169280.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169280.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169280.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169281",
+      "title": "Been Like This",
+      "duration": "2:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169281.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169281.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169281.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169287",
+      "title": "Options (feat. JID)",
+      "duration": "2:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169287.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169287.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169287.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169431",
+      "title": "Ain't Shit",
+      "duration": "2:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169431.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169431.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169431.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169434",
+      "title": "Imagine",
+      "duration": "2:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169434.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169434.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169434.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169439",
+      "title": "Alone",
+      "duration": "3:48",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169439.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169439.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169439.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1571169440",
+      "title": "Kiss Me More (feat. SZA)",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169440.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169440.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1571168930/audio/1571169440.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

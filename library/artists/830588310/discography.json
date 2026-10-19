@@ -1,0 +1,61 @@
+{
+  "artistId": "830588310",
+  "name": "Doja Cat",
+  "albums": [
+    {
+      "id": "1486262969",
+      "title": "Hot Pink",
+      "year": "2019",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/830588310/albums/1486262969/artwork/160.jpg",
+        "320": "/library/artists/830588310/albums/1486262969/artwork/320.jpg",
+        "640": "/library/artists/830588310/albums/1486262969/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1571168930",
+      "title": "Planet Her",
+      "year": "2021",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/830588310/albums/1571168930/artwork/160.jpg",
+        "320": "/library/artists/830588310/albums/1571168930/artwork/320.jpg",
+        "640": "/library/artists/830588310/albums/1571168930/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1364076874",
+      "title": "Amala",
+      "year": "2018",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/830588310/albums/1364076874/artwork/160.jpg",
+        "320": "/library/artists/830588310/albums/1364076874/artwork/320.jpg",
+        "640": "/library/artists/830588310/albums/1364076874/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1704921687",
+      "title": "Scarlet",
+      "year": "2023",
+      "songCount": 15,
+      "artwork": {
+        "160": "/library/artists/830588310/albums/1704921687/artwork/160.jpg",
+        "320": "/library/artists/830588310/albums/1704921687/artwork/320.jpg",
+        "640": "/library/artists/830588310/albums/1704921687/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1834042903",
+      "title": "Vie",
+      "year": "2025",
+      "songCount": 15,
+      "artwork": {
+        "160": "/library/artists/830588310/albums/1834042903/artwork/160.jpg",
+        "320": "/library/artists/830588310/albums/1834042903/artwork/320.jpg",
+        "640": "/library/artists/830588310/albums/1834042903/artwork/640.jpg"
+      }
+    }
+  ]
+}

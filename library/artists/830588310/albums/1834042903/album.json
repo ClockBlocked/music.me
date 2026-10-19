@@ -1,0 +1,344 @@
+{
+  "id": "1834042903",
+  "artistId": "830588310",
+  "title": "Vie",
+  "year": "2025",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/830588310/albums/1834042903/artwork/160.jpg",
+    "320": "/library/artists/830588310/albums/1834042903/artwork/320.jpg",
+    "640": "/library/artists/830588310/albums/1834042903/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1834042904",
+      "title": "Cards",
+      "duration": "3:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042904.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042904.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042904.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042905",
+      "title": "Jealous Type",
+      "duration": "2:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042905.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042905.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042905.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042906",
+      "title": "AAAHH MEN!",
+      "duration": "3:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042906.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042906.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042906.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042907",
+      "title": "Couples Therapy",
+      "duration": "2:41",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042907.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042907.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042907.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042908",
+      "title": "Gorgeous",
+      "duration": "4:26",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042908.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042908.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042908.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042909",
+      "title": "Stranger",
+      "duration": "3:21",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042909.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042909.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042909.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042910",
+      "title": "All Mine",
+      "duration": "3:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042910.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042910.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042910.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042911",
+      "title": "Take Me Dancing (feat. SZA)",
+      "duration": "3:44",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042911.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042911.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042911.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834042912",
+      "title": "Lipstain",
+      "duration": "3:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042912.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042912.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834042912.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834043669",
+      "title": "Silly! Fun!",
+      "duration": "2:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043669.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043669.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043669.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834043670",
+      "title": "Acts of Service",
+      "duration": "3:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043670.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043670.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043670.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834043671",
+      "title": "Make it Up",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043671.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043671.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043671.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834043672",
+      "title": "One More Time",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043672.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043672.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043672.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834043673",
+      "title": "Happy",
+      "duration": "3:24",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043673.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043673.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043673.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1834043674",
+      "title": "Come Back",
+      "duration": "3:05",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043674.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043674.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/830588310/albums/1834042903/audio/1834043674.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

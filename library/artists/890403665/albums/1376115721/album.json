@@ -1,0 +1,322 @@
+{
+  "id": "1376115721",
+  "artistId": "890403665",
+  "title": "Shawn Mendes",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/890403665/albums/1376115721/artwork/160.jpg",
+    "320": "/library/artists/890403665/albums/1376115721/artwork/320.jpg",
+    "640": "/library/artists/890403665/albums/1376115721/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1376115725",
+      "title": "In My Blood",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115725.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115725.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115725.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376115726",
+      "title": "Nervous",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115726.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115726.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115726.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376115727",
+      "title": "Lost in Japan",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115727.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115727.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115727.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376115730",
+      "title": "Where Were You in the Morning?",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115730.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115730.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376115730.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116241",
+      "title": "Like to Be You (feat. Julia Michaels)",
+      "duration": "2:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116241.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116241.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116241.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116243",
+      "title": "Fallin' All in You",
+      "duration": "3:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116243.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116243.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116243.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116246",
+      "title": "Particular Taste",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116246.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116246.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116246.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116247",
+      "title": "Why",
+      "duration": "3:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116247.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116247.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116247.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116248",
+      "title": "Because I Had You",
+      "duration": "2:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116248.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116248.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116248.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116249",
+      "title": "Queen",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116249.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116249.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116249.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116250",
+      "title": "Youth (feat. Khalid)",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116250.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116250.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116250.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116252",
+      "title": "Mutual",
+      "duration": "2:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116252.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116252.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116252.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116269",
+      "title": "Perfectly Wrong",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116269.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116269.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116269.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1376116372",
+      "title": "When You're Ready",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116372.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116372.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1376115721/audio/1376116372.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

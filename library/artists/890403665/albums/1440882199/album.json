@@ -1,0 +1,256 @@
+{
+  "id": "1440882199",
+  "artistId": "890403665",
+  "title": "MTV Unplugged",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/890403665/albums/1440882199/artwork/160.jpg",
+    "320": "/library/artists/890403665/albums/1440882199/artwork/320.jpg",
+    "640": "/library/artists/890403665/albums/1440882199/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440882201",
+      "title": "There's Nothing Holdin' Me Back (MTV Unplugged)",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882201.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882201.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882201.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882203",
+      "title": "Ruin (MTV Unplugged)",
+      "duration": "6:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882203.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882203.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882203.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882206",
+      "title": "Stitches (MTV Unplugged)",
+      "duration": "4:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882206.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882206.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882206.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882208",
+      "title": "Three Empty Words (MTV Unplugged)",
+      "duration": "4:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882208.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882208.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882208.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882214",
+      "title": "Patience (MTV Unplugged)",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882214.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882214.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882214.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882216",
+      "title": "Bad Reputation (MTV Unplugged)",
+      "duration": "5:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882216.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882216.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882216.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882219",
+      "title": "Don't Be a Fool (MTV Unplugged)",
+      "duration": "5:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882219.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882219.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882219.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882220",
+      "title": "Roses (MTV Unplugged)",
+      "duration": "4:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882220.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882220.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882220.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882402",
+      "title": "Mercy (MTV Unplugged)",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882402.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882402.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882402.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882404",
+      "title": "Never Be Alone (MTV Unplugged)",
+      "duration": "4:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882404.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882404.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882404.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440882407",
+      "title": "Use Somebody / Treat You Better (MTV Unplugged)",
+      "duration": "5:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882407.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882407.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440882199/audio/1440882407.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

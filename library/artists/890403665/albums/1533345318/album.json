@@ -1,0 +1,322 @@
+{
+  "id": "1533345318",
+  "artistId": "890403665",
+  "title": "Wonder",
+  "year": "2020",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/890403665/albums/1533345318/artwork/160.jpg",
+    "320": "/library/artists/890403665/albums/1533345318/artwork/320.jpg",
+    "640": "/library/artists/890403665/albums/1533345318/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1533345321",
+      "title": "Intro",
+      "duration": "1:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345321.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345321.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345321.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345325",
+      "title": "Wonder",
+      "duration": "2:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345325.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345325.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345325.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345326",
+      "title": "Higher",
+      "duration": "2:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345326.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345326.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345326.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345327",
+      "title": "24 Hours",
+      "duration": "2:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345327.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345327.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345327.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345328",
+      "title": "Teach Me How To Love",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345328.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345328.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345328.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345329",
+      "title": "Call My Friends",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345329.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345329.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345329.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345330",
+      "title": "Dream",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345330.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345330.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345330.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345331",
+      "title": "Song For No One",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345331.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345331.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345331.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345332",
+      "title": "Monster",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345332.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345332.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345332.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345333",
+      "title": "305",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345333.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345333.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345333.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345334",
+      "title": "Always Been You",
+      "duration": "2:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345334.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345334.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345334.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345335",
+      "title": "Piece Of You",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345335.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345335.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345335.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345576",
+      "title": "Look Up At The Stars",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345576.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345576.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345576.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1533345577",
+      "title": "Can't Imagine",
+      "duration": "2:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345577.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345577.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1533345318/audio/1533345577.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

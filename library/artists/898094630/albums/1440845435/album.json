@@ -1,0 +1,322 @@
+{
+  "id": "1440845435",
+  "artistId": "898094630",
+  "title": "Therapy Session",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/898094630/albums/1440845435/artwork/160.jpg",
+    "320": "/library/artists/898094630/albums/1440845435/artwork/320.jpg",
+    "640": "/library/artists/898094630/albums/1440845435/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440845891",
+      "title": "Intro 2",
+      "duration": "3:15",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845891.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845891.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845891.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845894",
+      "title": "Therapy Session",
+      "duration": "5:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845894.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845894.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845894.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845898",
+      "title": "I Just Wanna Know",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845898.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845898.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845898.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845900",
+      "title": "How Could You Leave Us",
+      "duration": "5:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845900.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845900.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845900.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845903",
+      "title": "Breathe",
+      "duration": "4:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845903.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845903.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845903.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845907",
+      "title": "Real",
+      "duration": "4:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845907.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845907.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845907.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845911",
+      "title": "Oh Lord",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845911.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845911.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845911.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845914",
+      "title": "I Can Feel It",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845914.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845914.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845914.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845918",
+      "title": "Got You on My Mind",
+      "duration": "4:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845918.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845918.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845918.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440845920",
+      "title": "Grindin' (feat. Marty)",
+      "duration": "4:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845920.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845920.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440845920.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440846133",
+      "title": "Wish You Wouldn't",
+      "duration": "4:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846133.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846133.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846133.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440846136",
+      "title": "Statement",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846136.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846136.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846136.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440846143",
+      "title": "All I Do",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846143.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846143.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846143.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440846157",
+      "title": "Lost in the Moment (feat. Andreas Moss)",
+      "duration": "4:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846157.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846157.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440845435/audio/1440846157.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

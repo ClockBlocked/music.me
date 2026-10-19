@@ -1,0 +1,300 @@
+{
+  "id": "1440904104",
+  "artistId": "890403665",
+  "title": "Illuminate",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/890403665/albums/1440904104/artwork/160.jpg",
+    "320": "/library/artists/890403665/albums/1440904104/artwork/320.jpg",
+    "640": "/library/artists/890403665/albums/1440904104/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440904105",
+      "title": "There's Nothing Holdin' Me Back",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904105.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904105.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904105.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904107",
+      "title": "Ruin",
+      "duration": "4:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904107.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904107.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904107.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904108",
+      "title": "Mercy",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904108.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904108.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904108.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904109",
+      "title": "Treat You Better",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904109.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904109.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904109.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904110",
+      "title": "Three Empty Words",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904110.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904110.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904110.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904111",
+      "title": "Don't Be a Fool",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904111.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904111.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904111.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904112",
+      "title": "Like This",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904112.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904112.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904112.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904114",
+      "title": "No Promises",
+      "duration": "2:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904114.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904114.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904114.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904116",
+      "title": "Lights On",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904116.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904116.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904116.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904118",
+      "title": "Honest",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904118.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904118.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904118.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904119",
+      "title": "Patience",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904119.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904119.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904119.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904421",
+      "title": "Bad Reputation",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904421.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904421.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904421.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440904422",
+      "title": "Understand",
+      "duration": "5:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904422.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904422.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/890403665/albums/1440904104/audio/1440904422.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

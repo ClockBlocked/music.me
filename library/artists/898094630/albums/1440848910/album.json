@@ -1,0 +1,366 @@
+{
+  "id": "1440848910",
+  "artistId": "898094630",
+  "title": "Perception",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/898094630/albums/1440848910/artwork/160.jpg",
+    "320": "/library/artists/898094630/albums/1440848910/artwork/320.jpg",
+    "640": "/library/artists/898094630/albums/1440848910/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440849111",
+      "title": "Intro III",
+      "duration": "4:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849111.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849111.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849111.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849116",
+      "title": "Outcast",
+      "duration": "5:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849116.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849116.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849116.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849119",
+      "title": "10 Feet Down (feat. Ruelle)",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849119.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849119.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849119.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849349",
+      "title": "Green Lights",
+      "duration": "3:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849349.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849349.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849349.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849354",
+      "title": "Dreams",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849354.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849354.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849354.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849363",
+      "title": "Let You Down",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849363.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849363.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849363.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849522",
+      "title": "Destiny",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849522.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849522.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849522.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849525",
+      "title": "My Life",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849525.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849525.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849525.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849528",
+      "title": "You're Special",
+      "duration": "5:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849528.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849528.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849528.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849544",
+      "title": "If You Want Love",
+      "duration": "3:19",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849544.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849544.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849544.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849547",
+      "title": "Remember This",
+      "duration": "4:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849547.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849547.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849547.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849674",
+      "title": "Know",
+      "duration": "3:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849674.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849674.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849674.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849677",
+      "title": "Lie",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849677.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849677.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849677.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849686",
+      "title": "3 A.M.",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849686.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849686.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849686.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849691",
+      "title": "One Hundred",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849691.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849691.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849691.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440849699",
+      "title": "Outro",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 16,
+      "sources": [
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849699.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849699.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/898094630/albums/1440848910/audio/1440849699.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}
