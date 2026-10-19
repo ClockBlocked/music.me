@@ -2,214 +2,382 @@
   "version": 2,
   "artists": [
     {
-      "id": "1117",
-      "artist": "Pink",
-      "genre": "Pop",
-      "albumCount": 6
-    },
-    {
-      "id": "1850",
-      "artist": "Katy Perry",
-      "genre": "Pop",
-      "albumCount": 3
-    },
-    {
-      "id": "2130",
-      "artist": "Bruno Mars",
-      "genre": "Pop",
-      "albumCount": 4
-    },
-    {
-      "id": "2679",
-      "artist": "Sam Smith",
-      "genre": "Pop",
-      "albumCount": 4
-    },
-    {
-      "id": "3054",
-      "artist": "Flume",
-      "genre": "Electronic",
-      "albumCount": 2
-    },
-    {
-      "id": "3616",
-      "artist": "Britney Spears",
-      "genre": "Pop",
-      "albumCount": 7
-    },
-    {
-      "id": "3729",
-      "artist": "Avril Lavigne",
-      "genre": "Pop Rock",
-      "albumCount": 7
-    },
-    {
-      "id": "4294",
-      "artist": "Jason Derulo",
-      "genre": "Pop",
-      "albumCount": 5
-    },
-    {
-      "id": "4295",
-      "artist": "Taylor Swift",
-      "genre": "Pop",
-      "albumCount": 7
-    },
-    {
-      "id": "4383",
+      "id": "262836961",
       "artist": "Adele",
-      "genre": "Pop",
+      "genre": "",
       "albumCount": 4
     },
     {
-      "id": "4403",
-      "artist": "Bebe Rexha",
-      "genre": "Pop",
-      "albumCount": 2
-    },
-    {
-      "id": "4507",
-      "artist": "Thomas Rhett",
-      "genre": "Country",
-      "albumCount": 5
-    },
-    {
-      "id": "4590",
-      "artist": "Fifth Harmony",
-      "genre": "Pop",
-      "albumCount": 3
-    },
-    {
-      "id": "4637",
-      "artist": "Louis Tomlinson",
-      "genre": "Pop",
-      "albumCount": 2
-    },
-    {
-      "id": "4686",
-      "artist": "Rihanna",
-      "genre": "Pop, R&B",
-      "albumCount": 6
-    },
-    {
-      "id": "5381",
-      "artist": "Selena Gomez",
-      "genre": "Pop",
-      "albumCount": 3
-    },
-    {
-      "id": "5900",
-      "artist": "Ed Sheeran",
-      "genre": "Pop",
-      "albumCount": 3
-    },
-    {
-      "id": "6308",
-      "artist": "Ariana Grande",
-      "genre": "Pop",
-      "albumCount": 6
-    },
-    {
-      "id": "6363",
-      "artist": "The Weeknd",
-      "genre": "Unknown",
-      "albumCount": 3
-    },
-    {
-      "id": "6488",
-      "artist": "John Legend",
-      "genre": "R&B",
-      "albumCount": 6
-    },
-    {
-      "id": "6613",
-      "artist": "Post Malone",
-      "genre": "Hip-Hop/Rap",
-      "albumCount": 4
-    },
-    {
-      "id": "7556",
-      "artist": "Lady GaGa",
-      "genre": "Pop",
-      "albumCount": 4
-    },
-    {
-      "id": "7645",
-      "artist": "Demi Lovato",
-      "genre": "Pop",
-      "albumCount": 6
-    },
-    {
-      "id": "7742",
-      "artist": "Nick Jonas",
-      "genre": "Pop",
-      "albumCount": 3
-    },
-    {
-      "id": "7917",
-      "artist": "Charlie Puth",
-      "genre": "Pop",
-      "albumCount": 3
-    },
-    {
-      "id": "8058",
-      "artist": "Sia",
-      "genre": "Pop",
-      "albumCount": 2
-    },
-    {
-      "id": "8099",
-      "artist": "NF",
-      "genre": "Hip-Hop/Rap",
-      "albumCount": 5
-    },
-    {
-      "id": "8247",
-      "artist": "Twenty One Pilots",
-      "genre": "Pop-alternative",
-      "albumCount": 6
-    },
-    {
-      "id": "8361",
-      "artist": "Kesha",
-      "genre": "Pop",
-      "albumCount": 4
-    },
-    {
-      "id": "8718",
-      "artist": "Justin Bieber",
-      "genre": "Pop",
-      "albumCount": 6
-    },
-    {
-      "id": "9055",
-      "artist": "Halsey",
-      "genre": "Pop",
-      "albumCount": 4
-    },
-    {
-      "id": "9085",
-      "artist": "Lorde",
-      "genre": "Pop",
-      "albumCount": 2
-    },
-    {
-      "id": "9417",
-      "artist": "Ellie Goulding",
-      "genre": "Pop",
-      "albumCount": 4
-    },
-    {
-      "id": "9489",
+      "id": "3261325",
       "artist": "Akon",
-      "genre": "R&B",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "316069",
+      "artist": "Alicia Keys",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "412778295",
+      "artist": "Ariana Grande",
+      "genre": "",
+      "albumCount": 10
+    },
+    {
+      "id": "459885",
+      "artist": "Avril Lavigne",
+      "genre": "",
       "albumCount": 4
     },
     {
-      "id": "9938",
-      "artist": "Maroon 5",
-      "genre": "Pop-alternative",
+      "id": "800263205",
+      "artist": "Bazzi",
+      "genre": "",
+      "albumCount": 2
+    },
+    {
+      "id": "466059563",
+      "artist": "Bebe Rexha",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "1419227",
+      "artist": "Beyoncé",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "1065981054",
+      "artist": "Billie Eilish",
+      "genre": "",
+      "albumCount": 3
+    },
+    {
+      "id": "217005",
+      "artist": "Britney Spears",
+      "genre": "",
+      "albumCount": 14
+    },
+    {
+      "id": "278873078",
+      "artist": "Bruno Mars",
+      "genre": "",
+      "albumCount": 2
+    },
+    {
+      "id": "935727853",
+      "artist": "Camila Cabello",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "336249253",
+      "artist": "Charlie Puth",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "95705522",
+      "artist": "Chris Brown",
+      "genre": "",
+      "albumCount": 3
+    },
+    {
+      "id": "259398",
+      "artist": "Christina Aguilera",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "471744",
+      "artist": "Coldplay",
+      "genre": "",
+      "albumCount": 10
+    },
+    {
+      "id": "280215821",
+      "artist": "Demi Lovato",
+      "genre": "",
+      "albumCount": 8
+    },
+    {
+      "id": "830588310",
+      "artist": "Doja Cat",
+      "genre": "",
+      "albumCount": 5
+    },
+    {
+      "id": "271256",
+      "artist": "Drake",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "1031397873",
+      "artist": "Dua Lipa",
+      "genre": "",
+      "albumCount": 3
+    },
+    {
+      "id": "183313439",
+      "artist": "Ed Sheeran",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "338264227",
+      "artist": "Ellie Goulding",
+      "genre": "",
+      "albumCount": 5
+    },
+    {
+      "id": "28673423",
+      "artist": "Fall Out Boy",
+      "genre": "",
+      "albumCount": 8
+    },
+    {
+      "id": "577354628",
+      "artist": "Fifth Harmony",
+      "genre": "",
+      "albumCount": 3
+    },
+    {
+      "id": "4275634",
+      "artist": "Flume",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "324916925",
+      "artist": "Halsey",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "471260289",
+      "artist": "Harry Styles",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "358714030",
+      "artist": "Imagine Dragons",
+      "genre": "",
       "albumCount": 6
+    },
+    {
+      "id": "259118085",
+      "artist": "Jason Derulo",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "16586443",
+      "artist": "John Legend",
+      "genre": "",
+      "albumCount": 10
+    },
+    {
+      "id": "320569549",
+      "artist": "Justin Bieber",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "64387566",
+      "artist": "Katy Perry",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "316265",
+      "artist": "Kelly Clarkson",
+      "genre": "",
+      "albumCount": 10
+    },
+    {
+      "id": "334854763",
+      "artist": "Kesha",
+      "genre": "",
+      "albumCount": 5
+    },
+    {
+      "id": "82842423",
+      "artist": "Khalid",
+      "genre": "",
+      "albumCount": 3
+    },
+    {
+      "id": "277293880",
+      "artist": "Lady Gaga",
+      "genre": "",
+      "albumCount": 10
+    },
+    {
+      "id": "982612996",
+      "artist": "LAUV",
+      "genre": "",
+      "albumCount": 1
+    },
+    {
+      "id": "472949623",
+      "artist": "Lizzo",
+      "genre": "",
+      "albumCount": 5
+    },
+    {
+      "id": "602767352",
+      "artist": "Lorde",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "471260295",
+      "artist": "Louis Tomlinson",
+      "genre": "",
+      "albumCount": 3
+    },
+    {
+      "id": "1798556",
+      "artist": "Maroon 5",
+      "genre": "",
+      "albumCount": 10
+    },
+    {
+      "id": "1258989914",
+      "artist": "Megan Thee Stallion",
+      "genre": "",
+      "albumCount": 2
+    },
+    {
+      "id": "137057909",
+      "artist": "Miley Cyrus",
+      "genre": "",
+      "albumCount": 8
+    },
+    {
+      "id": "898094630",
+      "artist": "NF",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "471260298",
+      "artist": "Niall Horan",
+      "genre": "",
+      "albumCount": 5
+    },
+    {
+      "id": "286541773",
+      "artist": "Nick Jonas",
+      "genre": "",
+      "albumCount": 5
+    },
+    {
+      "id": "979458609",
+      "artist": "Olivia Rodrigo",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "260414340",
+      "artist": "OneRepublic",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "966309175",
+      "artist": "Post Malone",
+      "genre": "",
+      "albumCount": 3
+    },
+    {
+      "id": "63346553",
+      "artist": "Rihanna",
+      "genre": "",
+      "albumCount": 10
+    },
+    {
+      "id": "156488786",
+      "artist": "Sam Smith",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "280215834",
+      "artist": "Selena Gomez",
+      "genre": "",
+      "albumCount": 8
+    },
+    {
+      "id": "890403665",
+      "artist": "Shawn Mendes",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "28721078",
+      "artist": "Sia",
+      "genre": "",
+      "albumCount": 5
+    },
+    {
+      "id": "605800394",
+      "artist": "SZA",
+      "genre": "",
+      "albumCount": 2
+    },
+    {
+      "id": "159260351",
+      "artist": "Taylor Swift",
+      "genre": "",
+      "albumCount": 14
+    },
+    {
+      "id": "479756766",
+      "artist": "The Weeknd",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "502541718",
+      "artist": "Thomas Rhett",
+      "genre": "",
+      "albumCount": 6
+    },
+    {
+      "id": "549236696",
+      "artist": "Travis Scott",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "396295677",
+      "artist": "Troye Sivan",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "349736311",
+      "artist": "twenty one pilots",
+      "genre": "",
+      "albumCount": 7
+    },
+    {
+      "id": "15885",
+      "artist": "USHER",
+      "genre": "",
+      "albumCount": 4
+    },
+    {
+      "id": "973181994",
+      "artist": "ZAYN",
+      "genre": "",
+      "albumCount": 4
     }
   ]
 }
