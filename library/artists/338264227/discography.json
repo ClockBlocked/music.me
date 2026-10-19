@@ -1,0 +1,61 @@
+{
+  "artistId": "338264227",
+  "name": "Ellie Goulding",
+  "albums": [
+    {
+      "id": "1440788349",
+      "title": "Lights",
+      "year": "2011",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/338264227/albums/1440788349/artwork/160.jpg",
+        "320": "/library/artists/338264227/albums/1440788349/artwork/320.jpg",
+        "640": "/library/artists/338264227/albums/1440788349/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "6773855466",
+      "title": "I Know Too Much",
+      "year": "2026",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/338264227/albums/6773855466/artwork/160.jpg",
+        "320": "/library/artists/338264227/albums/6773855466/artwork/320.jpg",
+        "640": "/library/artists/338264227/albums/6773855466/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "6817870957",
+      "title": "EG.0",
+      "year": "2026",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/338264227/albums/6817870957/artwork/160.jpg",
+        "320": "/library/artists/338264227/albums/6817870957/artwork/320.jpg",
+        "640": "/library/artists/338264227/albums/6817870957/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1649386100",
+      "title": "Higher Than Heaven",
+      "year": "2023",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/338264227/albums/1649386100/artwork/160.jpg",
+        "320": "/library/artists/338264227/albums/1649386100/artwork/320.jpg",
+        "640": "/library/artists/338264227/albums/1649386100/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "6805159756",
+      "title": "We Know Too Much",
+      "year": "2026",
+      "songCount": 16,
+      "artwork": {
+        "160": "/library/artists/338264227/albums/6805159756/artwork/160.jpg",
+        "320": "/library/artists/338264227/albums/6805159756/artwork/320.jpg",
+        "640": "/library/artists/338264227/albums/6805159756/artwork/640.jpg"
+      }
+    }
+  ]
+}

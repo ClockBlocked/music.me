@@ -1,0 +1,300 @@
+{
+  "id": "1733370881",
+  "artistId": "349736311",
+  "title": "Clancy",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/349736311/albums/1733370881/artwork/160.jpg",
+    "320": "/library/artists/349736311/albums/1733370881/artwork/320.jpg",
+    "640": "/library/artists/349736311/albums/1733370881/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1733370882",
+      "title": "Overcompensate",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733370882.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733370882.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733370882.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733370884",
+      "title": "Next Semester",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733370884.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733370884.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733370884.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371037",
+      "title": "Backslide",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371037.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371037.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371037.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371039",
+      "title": "Midwest Indigo",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371039.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371039.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371039.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371042",
+      "title": "Routines In The Night",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371042.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371042.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371042.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371044",
+      "title": "Vignette",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371044.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371044.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371044.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371050",
+      "title": "The Craving (Jenna's version)",
+      "duration": "2:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371050.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371050.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371050.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371051",
+      "title": "Lavish",
+      "duration": "2:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371051.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371051.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371051.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371057",
+      "title": "Navigating",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371057.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371057.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371057.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371064",
+      "title": "Snap Back",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371064.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371064.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371064.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371065",
+      "title": "Oldies Station",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371065.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371065.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371065.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371066",
+      "title": "At The Risk Of Feeling Dumb",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371066.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371066.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371066.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1733371252",
+      "title": "Paladin Strait",
+      "duration": "6:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371252.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371252.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1733370881/audio/1733371252.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

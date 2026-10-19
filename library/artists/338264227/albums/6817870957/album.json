@@ -1,0 +1,234 @@
+{
+  "id": "6817870957",
+  "artistId": "338264227",
+  "title": "EG.0",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/338264227/albums/6817870957/artwork/160.jpg",
+    "320": "/library/artists/338264227/albums/6817870957/artwork/320.jpg",
+    "640": "/library/artists/338264227/albums/6817870957/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6817870979",
+      "title": "Close To Me",
+      "duration": "3:02",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817870979.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817870979.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817870979.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871202",
+      "title": "Hate Me",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871202.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871202.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871202.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871206",
+      "title": "Sixteen",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871206.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871206.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871206.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871209",
+      "title": "Slow Grenade",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871209.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871209.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871209.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871215",
+      "title": "Worry About Me",
+      "duration": "2:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871215.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871215.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871215.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871219",
+      "title": "Overture",
+      "duration": "1:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871219.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871219.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871219.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871221",
+      "title": "Close To Me (Solo)",
+      "duration": "3:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871221.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871221.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871221.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871222",
+      "title": "Hate Me (Solo)",
+      "duration": "2:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871222.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871222.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871222.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871224",
+      "title": "Close To Me (Acoustic)",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871224.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871224.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871224.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6817871287",
+      "title": "Hate Me (Acoustic)",
+      "duration": "3:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871287.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871287.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6817870957/audio/6817871287.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

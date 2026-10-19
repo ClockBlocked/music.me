@@ -1,0 +1,256 @@
+{
+  "id": "1561836997",
+  "artistId": "349736311",
+  "title": "Scaled And Icy",
+  "year": "2021",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/349736311/albums/1561836997/artwork/160.jpg",
+    "320": "/library/artists/349736311/albums/1561836997/artwork/320.jpg",
+    "640": "/library/artists/349736311/albums/1561836997/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1561837001",
+      "title": "Good Day",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837001.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837001.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837001.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837006",
+      "title": "Choker",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837006.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837006.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837006.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837008",
+      "title": "Shy Away",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837008.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837008.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837008.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837009",
+      "title": "The Outside",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837009.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837009.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837009.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837010",
+      "title": "Saturday",
+      "duration": "2:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837010.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837010.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837010.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837011",
+      "title": "Never Take It",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837011.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837011.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837011.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837012",
+      "title": "Mulberry Street",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837012.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837012.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837012.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837016",
+      "title": "Formidable",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837016.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837016.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837016.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837018",
+      "title": "Bounce Man",
+      "duration": "3:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837018.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837018.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837018.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837019",
+      "title": "No Chances",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837019.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837019.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837019.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1561837020",
+      "title": "Redecorate",
+      "duration": "4:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837020.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837020.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1561836997/audio/1561837020.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

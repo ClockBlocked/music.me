@@ -1,0 +1,278 @@
+{
+  "id": "1440788349",
+  "artistId": "338264227",
+  "title": "Lights",
+  "year": "2011",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/338264227/albums/1440788349/artwork/160.jpg",
+    "320": "/library/artists/338264227/albums/1440788349/artwork/320.jpg",
+    "640": "/library/artists/338264227/albums/1440788349/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440788691",
+      "title": "Lights (Single Version)",
+      "duration": "3:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788691.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788691.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788691.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788698",
+      "title": "Guns and Horses",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788698.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788698.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788698.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788701",
+      "title": "Starry Eyed",
+      "duration": "2:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788701.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788701.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788701.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788709",
+      "title": "This Love (Will Be Your Downfall)",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788709.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788709.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788709.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788898",
+      "title": "Under the Sheets",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788898.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788898.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788898.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788900",
+      "title": "The Writer",
+      "duration": "4:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788900.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788900.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788900.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788905",
+      "title": "Animal",
+      "duration": "3:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788905.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788905.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788905.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788908",
+      "title": "Every Time You Go",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788908.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788908.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788908.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788912",
+      "title": "Your Biggest Mistake",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788912.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788912.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788912.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440788917",
+      "title": "Salt Skin",
+      "duration": "4:15",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788917.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788917.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440788917.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440789224",
+      "title": "Your Song",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440789224.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440789224.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440789224.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440789232",
+      "title": "Starry Eyed (Live At the Cherrytree House)",
+      "duration": "3:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440789232.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440789232.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1440788349/audio/1440789232.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

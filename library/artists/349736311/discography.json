@@ -1,0 +1,83 @@
+{
+  "artistId": "349736311",
+  "name": "twenty one pilots",
+  "albums": [
+    {
+      "id": "974485462",
+      "title": "Blurryface",
+      "year": "2015",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/349736311/albums/974485462/artwork/160.jpg",
+        "320": "/library/artists/349736311/albums/974485462/artwork/320.jpg",
+        "640": "/library/artists/349736311/albums/974485462/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "585128397",
+      "title": "Vessel",
+      "year": "2013",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/349736311/albums/585128397/artwork/160.jpg",
+        "320": "/library/artists/349736311/albums/585128397/artwork/320.jpg",
+        "640": "/library/artists/349736311/albums/585128397/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1422828208",
+      "title": "Trench",
+      "year": "2018",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/349736311/albums/1422828208/artwork/160.jpg",
+        "320": "/library/artists/349736311/albums/1422828208/artwork/320.jpg",
+        "640": "/library/artists/349736311/albums/1422828208/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1561836997",
+      "title": "Scaled And Icy",
+      "year": "2021",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/349736311/albums/1561836997/artwork/160.jpg",
+        "320": "/library/artists/349736311/albums/1561836997/artwork/320.jpg",
+        "640": "/library/artists/349736311/albums/1561836997/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1733370881",
+      "title": "Clancy",
+      "year": "2024",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/349736311/albums/1733370881/artwork/160.jpg",
+        "320": "/library/artists/349736311/albums/1733370881/artwork/320.jpg",
+        "640": "/library/artists/349736311/albums/1733370881/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1827507396",
+      "title": "Breach",
+      "year": "2025",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/349736311/albums/1827507396/artwork/160.jpg",
+        "320": "/library/artists/349736311/albums/1827507396/artwork/320.jpg",
+        "640": "/library/artists/349736311/albums/1827507396/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1784341970",
+      "title": "Twenty One Pilots",
+      "year": "2009",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/349736311/albums/1784341970/artwork/160.jpg",
+        "320": "/library/artists/349736311/albums/1784341970/artwork/320.jpg",
+        "640": "/library/artists/349736311/albums/1784341970/artwork/640.jpg"
+      }
+    }
+  ]
+}

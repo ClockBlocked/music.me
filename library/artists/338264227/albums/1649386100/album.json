@@ -1,0 +1,256 @@
+{
+  "id": "1649386100",
+  "artistId": "338264227",
+  "title": "Higher Than Heaven",
+  "year": "2023",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/338264227/albums/1649386100/artwork/160.jpg",
+    "320": "/library/artists/338264227/albums/1649386100/artwork/320.jpg",
+    "640": "/library/artists/338264227/albums/1649386100/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1649386101",
+      "title": "Midnight Dreams",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386101.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386101.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386101.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386102",
+      "title": "Cure For Love",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386102.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386102.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386102.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386103",
+      "title": "By The End Of The Night",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386103.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386103.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386103.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386104",
+      "title": "Like A Saviour",
+      "duration": "3:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386104.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386104.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386104.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386105",
+      "title": "Love Goes On",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386105.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386105.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386105.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386111",
+      "title": "Easy Lover (feat. Big Sean)",
+      "duration": "3:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386111.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386111.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386111.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386115",
+      "title": "Higher Than Heaven",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386115.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386115.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386115.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386118",
+      "title": "Let It Die",
+      "duration": "2:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386118.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386118.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386118.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386119",
+      "title": "Waiting For It",
+      "duration": "3:19",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386119.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386119.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386119.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386122",
+      "title": "Just For You",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386122.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386122.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386122.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1649386123",
+      "title": "How Long",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386123.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386123.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/1649386100/audio/1649386123.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

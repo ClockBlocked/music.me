@@ -1,0 +1,234 @@
+{
+  "id": "1694860250",
+  "artistId": "396295677",
+  "title": "Something To Give Each Other",
+  "year": "2023",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/396295677/albums/1694860250/artwork/160.jpg",
+    "320": "/library/artists/396295677/albums/1694860250/artwork/320.jpg",
+    "640": "/library/artists/396295677/albums/1694860250/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1694860254",
+      "title": "Rush",
+      "duration": "2:36",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860254.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860254.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860254.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860257",
+      "title": "What's The Time Where You Are?",
+      "duration": "3:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860257.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860257.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860257.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860260",
+      "title": "One Of Your Girls",
+      "duration": "3:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860260.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860260.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860260.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860262",
+      "title": "In My Room (feat. Guitarricadelafuente)",
+      "duration": "3:13",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860262.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860262.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860262.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860267",
+      "title": "Still Got It",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860267.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860267.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860267.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860268",
+      "title": "Can't Go Back, Baby",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860268.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860268.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860268.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860270",
+      "title": "Got Me Started",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860270.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860270.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860270.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860517",
+      "title": "Silly",
+      "duration": "3:38",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860517.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860517.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860517.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860537",
+      "title": "Honey",
+      "duration": "3:26",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860537.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860537.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860537.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694860540",
+      "title": "How To Stay With You",
+      "duration": "3:16",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860540.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860540.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1694860250/audio/1694860540.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

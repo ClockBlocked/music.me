@@ -1,0 +1,234 @@
+{
+  "id": "1741841621",
+  "artistId": "358714030",
+  "title": "LOOM",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/358714030/albums/1741841621/artwork/160.jpg",
+    "320": "/library/artists/358714030/albums/1741841621/artwork/320.jpg",
+    "640": "/library/artists/358714030/albums/1741841621/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1741841778",
+      "title": "Wake Up",
+      "duration": "2:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841778.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841778.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841778.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841783",
+      "title": "Nice to Meet You",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841783.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841783.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841783.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841785",
+      "title": "Eyes Closed",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841785.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841785.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841785.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841793",
+      "title": "Take Me to the Beach",
+      "duration": "2:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841793.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841793.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841793.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841795",
+      "title": "In Your Corner",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841795.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841795.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841795.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841797",
+      "title": "Gods Don’t Pray",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841797.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841797.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841797.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841801",
+      "title": "Don’t Forget Me",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841801.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841801.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841801.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841804",
+      "title": "Kid",
+      "duration": "2:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841804.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841804.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841804.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741841806",
+      "title": "Fire in These Hills",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841806.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841806.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741841806.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1741842048",
+      "title": "Eyes Closed",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741842048.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741842048.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1741841621/audio/1741842048.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "id": "1784341970",
+  "artistId": "349736311",
+  "title": "Twenty One Pilots",
+  "year": "2009",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/349736311/albums/1784341970/artwork/160.jpg",
+    "320": "/library/artists/349736311/albums/1784341970/artwork/320.jpg",
+    "640": "/library/artists/349736311/albums/1784341970/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1784341971",
+      "title": "Implicit Demand For Proof",
+      "duration": "4:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341971.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341971.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341971.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341972",
+      "title": "Fall Away",
+      "duration": "3:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341972.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341972.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341972.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341973",
+      "title": "The Pantaloon",
+      "duration": "3:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341973.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341973.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341973.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341974",
+      "title": "Addict With A Pen",
+      "duration": "4:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341974.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341974.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341974.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341976",
+      "title": "Friend, Please",
+      "duration": "4:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341976.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341976.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341976.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341977",
+      "title": "March To the Sea",
+      "duration": "5:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341977.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341977.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341977.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341978",
+      "title": "Johnny Boy",
+      "duration": "4:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341978.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341978.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341978.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341979",
+      "title": "Oh Ms Believer",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341979.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341979.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341979.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341980",
+      "title": "Air Catcher",
+      "duration": "4:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341980.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341980.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341980.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341981",
+      "title": "Trapdoor",
+      "duration": "4:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341981.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341981.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341981.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341982",
+      "title": "A Car, a Torch, a Death",
+      "duration": "4:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341982.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341982.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341982.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341983",
+      "title": "Taxi Cab",
+      "duration": "4:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341983.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341983.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341983.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341984",
+      "title": "Before You Start Your Day",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341984.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341984.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341984.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1784341985",
+      "title": "Isle Of Flightless Birds",
+      "duration": "5:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341985.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341985.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1784341970/audio/1784341985.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

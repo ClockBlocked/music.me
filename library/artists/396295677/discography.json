@@ -1,0 +1,50 @@
+{
+  "artistId": "396295677",
+  "name": "Troye Sivan",
+  "albums": [
+    {
+      "id": "1396292262",
+      "title": "Bloom",
+      "year": "2018",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/396295677/albums/1396292262/artwork/160.jpg",
+        "320": "/library/artists/396295677/albums/1396292262/artwork/320.jpg",
+        "640": "/library/artists/396295677/albums/1396292262/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1694860250",
+      "title": "Something To Give Each Other",
+      "year": "2023",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/396295677/albums/1694860250/artwork/160.jpg",
+        "320": "/library/artists/396295677/albums/1694860250/artwork/320.jpg",
+        "640": "/library/artists/396295677/albums/1694860250/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "6820298773",
+      "title": "She’s the Best",
+      "year": "2026",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/396295677/albums/6820298773/artwork/160.jpg",
+        "320": "/library/artists/396295677/albums/6820298773/artwork/320.jpg",
+        "640": "/library/artists/396295677/albums/6820298773/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1270168270",
+      "title": "There for You: The Remixes",
+      "year": "2017",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/396295677/albums/1270168270/artwork/160.jpg",
+        "320": "/library/artists/396295677/albums/1270168270/artwork/320.jpg",
+        "640": "/library/artists/396295677/albums/1270168270/artwork/640.jpg"
+      }
+    }
+  ]
+}

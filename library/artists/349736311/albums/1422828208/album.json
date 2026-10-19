@@ -1,0 +1,322 @@
+{
+  "id": "1422828208",
+  "artistId": "349736311",
+  "title": "Trench",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/349736311/albums/1422828208/artwork/160.jpg",
+    "320": "/library/artists/349736311/albums/1422828208/artwork/320.jpg",
+    "640": "/library/artists/349736311/albums/1422828208/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1422828209",
+      "title": "Jumpsuit",
+      "duration": "3:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828209.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828209.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828209.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828211",
+      "title": "Levitate",
+      "duration": "2:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828211.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828211.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828211.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828212",
+      "title": "Morph",
+      "duration": "4:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828212.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828212.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828212.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828213",
+      "title": "My Blood",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828213.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828213.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828213.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828214",
+      "title": "Chlorine",
+      "duration": "5:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828214.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828214.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828214.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828215",
+      "title": "Smithereens",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828215.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828215.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828215.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828216",
+      "title": "Neon Gravestones",
+      "duration": "4:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828216.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828216.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828216.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828217",
+      "title": "The Hype",
+      "duration": "4:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828217.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828217.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828217.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828219",
+      "title": "Nico And The Niners",
+      "duration": "3:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828219.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828219.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828219.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828464",
+      "title": "Cut My Lip",
+      "duration": "4:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828464.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828464.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828464.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828465",
+      "title": "Bandito",
+      "duration": "5:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828465.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828465.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828465.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828466",
+      "title": "Pet Cheetah",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828466.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828466.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828466.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828467",
+      "title": "Legend",
+      "duration": "2:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828467.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828467.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828467.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1422828468",
+      "title": "Leave the City",
+      "duration": "4:40",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828468.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828468.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1422828208/audio/1422828468.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

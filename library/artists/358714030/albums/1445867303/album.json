@@ -1,0 +1,300 @@
+{
+  "id": "1445867303",
+  "artistId": "358714030",
+  "title": "Smoke + Mirrors",
+  "year": "2014",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/358714030/albums/1445867303/artwork/160.jpg",
+    "320": "/library/artists/358714030/albums/1445867303/artwork/320.jpg",
+    "640": "/library/artists/358714030/albums/1445867303/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1445867307",
+      "title": "Shots",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867307.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867307.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867307.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867310",
+      "title": "Gold",
+      "duration": "3:36",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867310.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867310.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867310.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867312",
+      "title": "Smoke and Mirrors",
+      "duration": "4:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867312.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867312.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867312.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867313",
+      "title": "I'm So Sorry",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867313.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867313.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867313.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867316",
+      "title": "I Bet My Life",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867316.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867316.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867316.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867317",
+      "title": "Polaroid",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867317.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867317.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867317.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867318",
+      "title": "Friction",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867318.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867318.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867318.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867319",
+      "title": "It Comes Back to You",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867319.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867319.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867319.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867441",
+      "title": "Dream",
+      "duration": "4:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867441.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867441.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867441.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867442",
+      "title": "Trouble",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867442.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867442.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867442.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867446",
+      "title": "Summer",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867446.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867446.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867446.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867447",
+      "title": "Hopeless Opus",
+      "duration": "4:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867447.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867447.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867447.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1445867448",
+      "title": "The Fall",
+      "duration": "6:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867448.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867448.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1445867303/audio/1445867448.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

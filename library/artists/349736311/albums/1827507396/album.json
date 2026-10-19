@@ -1,0 +1,300 @@
+{
+  "id": "1827507396",
+  "artistId": "349736311",
+  "title": "Breach",
+  "year": "2025",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/349736311/albums/1827507396/artwork/160.jpg",
+    "320": "/library/artists/349736311/albums/1827507396/artwork/320.jpg",
+    "640": "/library/artists/349736311/albums/1827507396/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1827507397",
+      "title": "City Walls",
+      "duration": "5:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507397.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507397.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507397.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507398",
+      "title": "RAWFEAR",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507398.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507398.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507398.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507400",
+      "title": "Drum Show",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507400.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507400.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507400.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507401",
+      "title": "Garbage",
+      "duration": "3:16",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507401.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507401.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507401.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507402",
+      "title": "The Contract",
+      "duration": "3:45",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507402.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507402.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507402.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507404",
+      "title": "Downstairs",
+      "duration": "5:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507404.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507404.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507404.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507408",
+      "title": "Robot Voices",
+      "duration": "3:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507408.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507408.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507408.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507411",
+      "title": "Center Mass",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507411.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507411.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507411.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507412",
+      "title": "Cottonwood",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507412.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507412.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507412.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507415",
+      "title": "One Way",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507415.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507415.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507415.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507601",
+      "title": "Days Lie Dormant",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507601.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507601.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507601.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507603",
+      "title": "Tally",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507603.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507603.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507603.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1827507604",
+      "title": "Intentions",
+      "duration": "2:15",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507604.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507604.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/1827507396/audio/1827507604.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

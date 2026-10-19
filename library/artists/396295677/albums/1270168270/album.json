@@ -1,0 +1,278 @@
+{
+  "id": "1270168270",
+  "artistId": "396295677",
+  "title": "There for You: The Remixes",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/396295677/albums/1270168270/artwork/160.jpg",
+    "320": "/library/artists/396295677/albums/1270168270/artwork/320.jpg",
+    "640": "/library/artists/396295677/albums/1270168270/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1270168734",
+      "title": "There for You (Araatan Remix)",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168734.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168734.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168734.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168737",
+      "title": "There for You (Bali Bandits Remix)",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168737.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168737.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168737.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168738",
+      "title": "There for You (Dzeko Remix)",
+      "duration": "2:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168738.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168738.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168738.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168739",
+      "title": "There for You (Bart B More Remix)",
+      "duration": "2:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168739.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168739.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168739.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168740",
+      "title": "There for You (Julian Jordan Remix)",
+      "duration": "3:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168740.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168740.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168740.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168742",
+      "title": "There for You (Madison Mars Remix)",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168742.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168742.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168742.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168745",
+      "title": "There for You (Vintage Culture & Kohen Remix)",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168745.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168745.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168745.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168746",
+      "title": "There for You (King Arthur Remix)",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168746.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168746.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168746.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168747",
+      "title": "There for You (Goldhouse Remix)",
+      "duration": "3:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168747.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168747.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168747.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168748",
+      "title": "There for You (Brohug Remix)",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168748.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168748.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168748.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168749",
+      "title": "There for You (Lione Remix)",
+      "duration": "4:35",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168749.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168749.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168749.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1270168750",
+      "title": "There for You (Lontalius Remix)",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168750.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168750.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1270168270/audio/1270168750.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

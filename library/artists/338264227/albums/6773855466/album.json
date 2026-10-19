@@ -1,0 +1,234 @@
+{
+  "id": "6773855466",
+  "artistId": "338264227",
+  "title": "I Know Too Much",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/338264227/albums/6773855466/artwork/160.jpg",
+    "320": "/library/artists/338264227/albums/6773855466/artwork/320.jpg",
+    "640": "/library/artists/338264227/albums/6773855466/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6773855795",
+      "title": "Black Prada Dress",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855795.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855795.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855795.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773855956",
+      "title": "Jealousy",
+      "duration": "3:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855956.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855956.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855956.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773855958",
+      "title": "Loser",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855958.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855958.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855958.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773855959",
+      "title": "4 Seasons",
+      "duration": "3:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855959.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855959.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855959.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773855968",
+      "title": "Nobody Dances",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855968.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855968.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855968.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773855973",
+      "title": "Always Think of You",
+      "duration": "3:06",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855973.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855973.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773855973.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773856156",
+      "title": "For Your Entertainment",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856156.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856156.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856156.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773856174",
+      "title": "Misremember You",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856174.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856174.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856174.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773856182",
+      "title": "I Know Too Much",
+      "duration": "4:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856182.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856182.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856182.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6773856314",
+      "title": "Ravers",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856314.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856314.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6773855466/audio/6773856314.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

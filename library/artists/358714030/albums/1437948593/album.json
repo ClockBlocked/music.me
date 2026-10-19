@@ -1,0 +1,278 @@
+{
+  "id": "1437948593",
+  "artistId": "358714030",
+  "title": "Origins",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/358714030/albums/1437948593/artwork/160.jpg",
+    "320": "/library/artists/358714030/albums/1437948593/artwork/320.jpg",
+    "640": "/library/artists/358714030/albums/1437948593/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1437948594",
+      "title": "Natural",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948594.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948594.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948594.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948595",
+      "title": "Boomerang",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948595.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948595.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948595.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948596",
+      "title": "Machine",
+      "duration": "3:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948596.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948596.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948596.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948597",
+      "title": "Cool Out",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948597.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948597.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948597.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948598",
+      "title": "Bad Liar",
+      "duration": "4:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948598.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948598.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948598.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948599",
+      "title": "West Coast",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948599.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948599.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948599.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948600",
+      "title": "Zero (From \"Ralph Breaks the Internet\")",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948600.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948600.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948600.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948601",
+      "title": "Bullet In a Gun",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948601.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948601.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948601.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948602",
+      "title": "Digital",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948602.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948602.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948602.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948603",
+      "title": "Only",
+      "duration": "3:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948603.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948603.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948603.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948604",
+      "title": "Stuck",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948604.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948604.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948604.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1437948605",
+      "title": "Love",
+      "duration": "2:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948605.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948605.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1437948593/audio/1437948605.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

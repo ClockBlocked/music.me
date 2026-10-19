@@ -1,0 +1,322 @@
+{
+  "id": "974485462",
+  "artistId": "349736311",
+  "title": "Blurryface",
+  "year": "2015",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/349736311/albums/974485462/artwork/160.jpg",
+    "320": "/library/artists/349736311/albums/974485462/artwork/320.jpg",
+    "640": "/library/artists/349736311/albums/974485462/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "974485473",
+      "title": "Heavydirtysoul",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485473.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485473.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485473.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485474",
+      "title": "Stressed Out",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485474.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485474.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485474.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485805",
+      "title": "Ride",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485805.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485805.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485805.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485806",
+      "title": "Fairly Local",
+      "duration": "3:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485806.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485806.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485806.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485807",
+      "title": "Tear in My Heart",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485807.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485807.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485807.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485808",
+      "title": "Lane Boy",
+      "duration": "4:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485808.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485808.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485808.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485809",
+      "title": "The Judge",
+      "duration": "4:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485809.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485809.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485809.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485810",
+      "title": "Doubt",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485810.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485810.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485810.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485811",
+      "title": "Polarize",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485811.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485811.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485811.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485812",
+      "title": "We Don't Believe What's on TV",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485812.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485812.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485812.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485813",
+      "title": "Message Man",
+      "duration": "4:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485813.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485813.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485813.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485814",
+      "title": "Hometown",
+      "duration": "3:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485814.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485814.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485814.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485815",
+      "title": "Not Today",
+      "duration": "3:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485815.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485815.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485815.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "974485816",
+      "title": "Goner",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485816.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485816.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/974485462/audio/974485816.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

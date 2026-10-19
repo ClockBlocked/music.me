@@ -1,0 +1,234 @@
+{
+  "id": "1396292262",
+  "artistId": "396295677",
+  "title": "Bloom",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/396295677/albums/1396292262/artwork/160.jpg",
+    "320": "/library/artists/396295677/albums/1396292262/artwork/320.jpg",
+    "640": "/library/artists/396295677/albums/1396292262/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1396292352",
+      "title": "Seventeen",
+      "duration": "3:38",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292352.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292352.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292352.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292353",
+      "title": "My My My!",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292353.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292353.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292353.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292370",
+      "title": "The Good Side",
+      "duration": "4:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292370.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292370.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292370.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292371",
+      "title": "Bloom",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292371.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292371.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292371.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292372",
+      "title": "Postcard (feat. Gordi)",
+      "duration": "3:36",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292372.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292372.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292372.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292380",
+      "title": "Dance To This (feat. Ariana Grande)",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292380.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292380.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292380.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292381",
+      "title": "Plum",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292381.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292381.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292381.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292382",
+      "title": "What a Heavenly Way to Die",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292382.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292382.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292382.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292383",
+      "title": "Lucky Strike",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292383.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292383.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292383.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1396292384",
+      "title": "Animal",
+      "duration": "4:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292384.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292384.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/1396292262/audio/1396292384.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

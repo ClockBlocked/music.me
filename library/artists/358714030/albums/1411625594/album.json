@@ -1,0 +1,278 @@
+{
+  "id": "1411625594",
+  "artistId": "358714030",
+  "title": "Evolve",
+  "year": "2017",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/358714030/albums/1411625594/artwork/160.jpg",
+    "320": "/library/artists/358714030/albums/1411625594/artwork/320.jpg",
+    "640": "/library/artists/358714030/albums/1411625594/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1411627254",
+      "title": "Next to Me",
+      "duration": "3:50",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411627254.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411627254.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411627254.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411627436",
+      "title": "I Don't Know Why",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411627436.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411627436.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411627436.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411628148",
+      "title": "Whatever It Takes",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628148.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628148.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628148.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411628233",
+      "title": "Believer",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628233.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628233.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628233.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411628672",
+      "title": "Walking the Wire",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628672.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628672.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628672.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411628678",
+      "title": "Rise Up",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628678.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628678.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628678.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411628967",
+      "title": "I'll Make It Up to You",
+      "duration": "4:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628967.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628967.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628967.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411628993",
+      "title": "Yesterday",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628993.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628993.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411628993.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411629046",
+      "title": "Mouth of the River",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629046.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629046.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629046.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411629089",
+      "title": "Thunder",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629089.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629089.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629089.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411629153",
+      "title": "Start Over",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629153.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629153.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629153.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1411629292",
+      "title": "Dancing In the Dark",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629292.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629292.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1411625594/audio/1411629292.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

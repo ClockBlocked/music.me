@@ -1,0 +1,278 @@
+{
+  "id": "6820298773",
+  "artistId": "396295677",
+  "title": "She’s the Best",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/396295677/albums/6820298773/artwork/160.jpg",
+    "320": "/library/artists/396295677/albums/6820298773/artwork/320.jpg",
+    "640": "/library/artists/396295677/albums/6820298773/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6820298789",
+      "title": "She’s the Best",
+      "duration": "4:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820298789.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820298789.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820298789.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299042",
+      "title": "Party",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299042.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299042.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299042.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299043",
+      "title": "Canada Dry",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299043.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299043.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299043.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299046",
+      "title": "I Do This For You",
+      "duration": "3:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299046.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299046.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299046.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299048",
+      "title": "Cowboy",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299048.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299048.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299048.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299050",
+      "title": "Embarrassingly",
+      "duration": "3:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299050.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299050.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299050.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299054",
+      "title": "Le Boy",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299054.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299054.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299054.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299058",
+      "title": "Sex Star",
+      "duration": "3:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299058.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299058.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299058.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299059",
+      "title": "Troye Meets World",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299059.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299059.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299059.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299242",
+      "title": "FF",
+      "duration": "4:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299242.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299242.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299242.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299250",
+      "title": "Love So Big It Hurts",
+      "duration": "2:47",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299250.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299250.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299250.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6820299251",
+      "title": "Lost Time (feat. Lily Rose Depp)",
+      "duration": "4:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299251.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299251.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/396295677/albums/6820298773/audio/6820299251.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

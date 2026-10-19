@@ -1,0 +1,278 @@
+{
+  "id": "585128397",
+  "artistId": "349736311",
+  "title": "Vessel",
+  "year": "2013",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/349736311/albums/585128397/artwork/160.jpg",
+    "320": "/library/artists/349736311/albums/585128397/artwork/320.jpg",
+    "640": "/library/artists/349736311/albums/585128397/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "585128667",
+      "title": "Ode To Sleep",
+      "duration": "5:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128667.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128667.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128667.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128668",
+      "title": "Holding On To You",
+      "duration": "4:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128668.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128668.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128668.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128669",
+      "title": "Migraine",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128669.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128669.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128669.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128670",
+      "title": "House of Gold",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128670.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128670.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128670.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128671",
+      "title": "Car Radio",
+      "duration": "4:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128671.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128671.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128671.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128672",
+      "title": "Semi-Automatic",
+      "duration": "4:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128672.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128672.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128672.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128673",
+      "title": "Screen",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128673.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128673.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128673.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128674",
+      "title": "The Run and Go",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128674.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128674.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128674.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128675",
+      "title": "Fake You Out",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128675.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128675.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128675.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128676",
+      "title": "Guns For Hands",
+      "duration": "4:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128676.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128676.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128676.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128677",
+      "title": "Trees",
+      "duration": "4:27",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128677.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128677.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128677.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "585128678",
+      "title": "Truce",
+      "duration": "2:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128678.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128678.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/349736311/albums/585128397/audio/585128678.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "id": "1440873107",
+  "artistId": "358714030",
+  "title": "Night Visions",
+  "year": "2012",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/358714030/albums/1440873107/artwork/160.jpg",
+    "320": "/library/artists/358714030/albums/1440873107/artwork/320.jpg",
+    "640": "/library/artists/358714030/albums/1440873107/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440873126",
+      "title": "Radioactive",
+      "duration": "3:06",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873126.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873126.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873126.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873319",
+      "title": "Tiptoe",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873319.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873319.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873319.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873335",
+      "title": "It's Time",
+      "duration": "4:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873335.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873335.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873335.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873339",
+      "title": "Demons",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873339.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873339.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873339.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873406",
+      "title": "On Top of the World",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873406.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873406.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873406.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873421",
+      "title": "Amsterdam",
+      "duration": "4:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873421.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873421.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873421.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873425",
+      "title": "Hear Me",
+      "duration": "3:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873425.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873425.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873425.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873593",
+      "title": "Every Night",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873593.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873593.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873593.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873595",
+      "title": "Bleeding Out",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873595.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873595.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873595.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873607",
+      "title": "Underdog",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873607.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873607.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873607.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873735",
+      "title": "Nothing Left to Say / Rocks",
+      "duration": "8:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873735.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873735.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873735.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873739",
+      "title": "Working Man",
+      "duration": "3:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873739.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873739.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873739.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440873744",
+      "title": "Fallen",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873744.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873744.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/358714030/albums/1440873107/audio/1440873744.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

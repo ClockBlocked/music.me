@@ -1,0 +1,72 @@
+{
+  "artistId": "358714030",
+  "name": "Imagine Dragons",
+  "albums": [
+    {
+      "id": "1411625594",
+      "title": "Evolve",
+      "year": "2017",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/358714030/albums/1411625594/artwork/160.jpg",
+        "320": "/library/artists/358714030/albums/1411625594/artwork/320.jpg",
+        "640": "/library/artists/358714030/albums/1411625594/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440873107",
+      "title": "Night Visions",
+      "year": "2012",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/358714030/albums/1440873107/artwork/160.jpg",
+        "320": "/library/artists/358714030/albums/1440873107/artwork/320.jpg",
+        "640": "/library/artists/358714030/albums/1440873107/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1437948593",
+      "title": "Origins",
+      "year": "2018",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/358714030/albums/1437948593/artwork/160.jpg",
+        "320": "/library/artists/358714030/albums/1437948593/artwork/320.jpg",
+        "640": "/library/artists/358714030/albums/1437948593/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1741841621",
+      "title": "LOOM",
+      "year": "2024",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/358714030/albums/1741841621/artwork/160.jpg",
+        "320": "/library/artists/358714030/albums/1741841621/artwork/320.jpg",
+        "640": "/library/artists/358714030/albums/1741841621/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1445867303",
+      "title": "Smoke + Mirrors",
+      "year": "2014",
+      "songCount": 13,
+      "artwork": {
+        "160": "/library/artists/358714030/albums/1445867303/artwork/160.jpg",
+        "320": "/library/artists/358714030/albums/1445867303/artwork/320.jpg",
+        "640": "/library/artists/358714030/albums/1445867303/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1808744438",
+      "title": "Imagine Dragons Sollos Focus Collection",
+      "year": "2011",
+      "songCount": 0,
+      "artwork": {
+        "160": "/library/artists/358714030/albums/1808744438/artwork/160.jpg",
+        "320": "/library/artists/358714030/albums/1808744438/artwork/320.jpg",
+        "640": "/library/artists/358714030/albums/1808744438/artwork/640.jpg"
+      }
+    }
+  ]
+}

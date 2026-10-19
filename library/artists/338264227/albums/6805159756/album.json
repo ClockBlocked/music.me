@@ -1,0 +1,366 @@
+{
+  "id": "6805159756",
+  "artistId": "338264227",
+  "title": "We Know Too Much",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/338264227/albums/6805159756/artwork/160.jpg",
+    "320": "/library/artists/338264227/albums/6805159756/artwork/320.jpg",
+    "640": "/library/artists/338264227/albums/6805159756/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6805159757",
+      "title": "Black Prada Dress",
+      "duration": "3:18",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159757.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159757.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159757.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159758",
+      "title": "Jealousy",
+      "duration": "3:01",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159758.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159758.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159758.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159761",
+      "title": "Loser",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159761.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159761.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159761.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159762",
+      "title": "4 Seasons",
+      "duration": "3:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159762.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159762.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159762.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159763",
+      "title": "Nobody Dances",
+      "duration": "3:04",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159763.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159763.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159763.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159767",
+      "title": "Always Think of You",
+      "duration": "3:06",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159767.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159767.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159767.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159768",
+      "title": "For Your Entertainment",
+      "duration": "3:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159768.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159768.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159768.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159769",
+      "title": "Misremember You",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159769.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159769.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159769.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159770",
+      "title": "I Know Too Much",
+      "duration": "4:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159770.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159770.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159770.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159771",
+      "title": "Ravers",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159771.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159771.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159771.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159773",
+      "title": "Nice Things",
+      "duration": "2:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159773.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159773.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159773.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159774",
+      "title": "Sweet Delusion",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159774.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159774.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159774.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159904",
+      "title": "Right Hand",
+      "duration": "1:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159904.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159904.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159904.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159905",
+      "title": "All The Time",
+      "duration": "1:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159905.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159905.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159905.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159907",
+      "title": "Fields of Love",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159907.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159907.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159907.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6805159909",
+      "title": "Ways to Hurt",
+      "duration": "4:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 16,
+      "sources": [
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159909.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159909.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/338264227/albums/6805159756/audio/6805159909.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}
