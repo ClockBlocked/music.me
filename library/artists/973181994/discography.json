@@ -1,0 +1,50 @@
+{
+  "artistId": "973181994",
+  "name": "ZAYN",
+  "albums": [
+    {
+      "id": "1087165116",
+      "title": "Mind Of Mine",
+      "year": "2016",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/973181994/albums/1087165116/artwork/160.jpg",
+        "320": "/library/artists/973181994/albums/1087165116/artwork/320.jpg",
+        "640": "/library/artists/973181994/albums/1087165116/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1541392718",
+      "title": "Nobody Is Listening",
+      "year": "2021",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/973181994/albums/1541392718/artwork/160.jpg",
+        "320": "/library/artists/973181994/albums/1541392718/artwork/320.jpg",
+        "640": "/library/artists/973181994/albums/1541392718/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1872663947",
+      "title": "KONNAKOL",
+      "year": "2026",
+      "songCount": 15,
+      "artwork": {
+        "160": "/library/artists/973181994/albums/1872663947/artwork/160.jpg",
+        "320": "/library/artists/973181994/albums/1872663947/artwork/320.jpg",
+        "640": "/library/artists/973181994/albums/1872663947/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1735357056",
+      "title": "ROOM UNDER THE STAIRS",
+      "year": "2024",
+      "songCount": 15,
+      "artwork": {
+        "160": "/library/artists/973181994/albums/1735357056/artwork/160.jpg",
+        "320": "/library/artists/973181994/albums/1735357056/artwork/320.jpg",
+        "640": "/library/artists/973181994/albums/1735357056/artwork/640.jpg"
+      }
+    }
+  ]
+}

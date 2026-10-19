@@ -1,0 +1,39 @@
+{
+  "artistId": "966309175",
+  "name": "Post Malone",
+  "albums": [
+    {
+      "id": "1623192950",
+      "title": "Twelve Carat Toothache",
+      "year": "2022",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/966309175/albums/1623192950/artwork/160.jpg",
+        "320": "/library/artists/966309175/albums/1623192950/artwork/320.jpg",
+        "640": "/library/artists/966309175/albums/1623192950/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1440890146",
+      "title": "Stoney",
+      "year": "2016",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/966309175/albums/1440890146/artwork/160.jpg",
+        "320": "/library/artists/966309175/albums/1440890146/artwork/320.jpg",
+        "640": "/library/artists/966309175/albums/1440890146/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "6799168319",
+      "title": "August 26",
+      "year": "2016",
+      "songCount": 10,
+      "artwork": {
+        "160": "/library/artists/966309175/albums/6799168319/artwork/160.jpg",
+        "320": "/library/artists/966309175/albums/6799168319/artwork/320.jpg",
+        "640": "/library/artists/966309175/albums/6799168319/artwork/640.jpg"
+      }
+    }
+  ]
+}

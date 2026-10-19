@@ -1,0 +1,344 @@
+{
+  "id": "1872663947",
+  "artistId": "973181994",
+  "title": "KONNAKOL",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/973181994/albums/1872663947/artwork/160.jpg",
+    "320": "/library/artists/973181994/albums/1872663947/artwork/320.jpg",
+    "640": "/library/artists/973181994/albums/1872663947/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1872664192",
+      "title": "Nusrat",
+      "duration": "2:19",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664192.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664192.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664192.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664195",
+      "title": "Betting Folk",
+      "duration": "2:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664195.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664195.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664195.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664196",
+      "title": "Used to the Blues",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664196.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664196.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664196.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664197",
+      "title": "Sideways",
+      "duration": "3:12",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664197.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664197.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664197.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664198",
+      "title": "5th Element",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664198.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664198.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664198.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664199",
+      "title": "Prayers",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664199.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664199.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664199.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664200",
+      "title": "Side Effects",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664200.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664200.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664200.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664201",
+      "title": "Met Tonight",
+      "duration": "2:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664201.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664201.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664201.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664205",
+      "title": "Fatal",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664205.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664205.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664205.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664206",
+      "title": "Take Turns",
+      "duration": "3:26",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664206.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664206.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664206.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664208",
+      "title": "Blooming",
+      "duration": "2:20",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664208.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664208.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664208.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664209",
+      "title": "Like I Have You",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664209.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664209.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664209.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664210",
+      "title": "Loving The Way I Do",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664210.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664210.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664210.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664212",
+      "title": "Breathe",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664212.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664212.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664212.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1872664213",
+      "title": "Die For Me",
+      "duration": "3:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664213.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664213.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1872663947/audio/1872664213.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

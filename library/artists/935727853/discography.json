@@ -1,0 +1,50 @@
+{
+  "artistId": "935727853",
+  "name": "Camila Cabello",
+  "albums": [
+    {
+      "id": "1321216767",
+      "title": "Camila",
+      "year": "2018",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/935727853/albums/1321216767/artwork/160.jpg",
+        "320": "/library/artists/935727853/albums/1321216767/artwork/320.jpg",
+        "640": "/library/artists/935727853/albums/1321216767/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1487577356",
+      "title": "Romance",
+      "year": "2019",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/935727853/albums/1487577356/artwork/160.jpg",
+        "320": "/library/artists/935727853/albums/1487577356/artwork/320.jpg",
+        "640": "/library/artists/935727853/albums/1487577356/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1610834866",
+      "title": "Familia",
+      "year": "2022",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/935727853/albums/1610834866/artwork/160.jpg",
+        "320": "/library/artists/935727853/albums/1610834866/artwork/320.jpg",
+        "640": "/library/artists/935727853/albums/1610834866/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1745257770",
+      "title": "C,XOXO",
+      "year": "2024",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/935727853/albums/1745257770/artwork/160.jpg",
+        "320": "/library/artists/935727853/albums/1745257770/artwork/320.jpg",
+        "640": "/library/artists/935727853/albums/1745257770/artwork/640.jpg"
+      }
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "id": "1560735414",
+  "artistId": "979458609",
+  "title": "SOUR",
+  "year": "2021",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/979458609/albums/1560735414/artwork/160.jpg",
+    "320": "/library/artists/979458609/albums/1560735414/artwork/320.jpg",
+    "640": "/library/artists/979458609/albums/1560735414/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1560735419",
+      "title": "brutal",
+      "duration": "2:23",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735419.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735419.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735419.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735421",
+      "title": "traitor",
+      "duration": "3:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735421.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735421.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735421.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735424",
+      "title": "drivers license",
+      "duration": "4:02",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735424.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735424.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735424.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735547",
+      "title": "1 step forward, 3 steps back",
+      "duration": "2:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735547.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735547.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735547.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735548",
+      "title": "deja vu",
+      "duration": "3:35",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735548.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735548.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735548.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735551",
+      "title": "good 4 u",
+      "duration": "2:58",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735551.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735551.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735551.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735555",
+      "title": "enough for you",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735555.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735555.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735555.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735557",
+      "title": "happier",
+      "duration": "2:55",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735557.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735557.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735557.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735561",
+      "title": "jealousy, jealousy",
+      "duration": "2:53",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735561.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735561.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735561.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735563",
+      "title": "favorite crime",
+      "duration": "2:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735563.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735563.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735563.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1560735566",
+      "title": "hope ur ok",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735566.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735566.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1560735414/audio/1560735566.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

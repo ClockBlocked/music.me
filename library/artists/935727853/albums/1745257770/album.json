@@ -1,0 +1,322 @@
+{
+  "id": "1745257770",
+  "artistId": "935727853",
+  "title": "C,XOXO",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/935727853/albums/1745257770/artwork/160.jpg",
+    "320": "/library/artists/935727853/albums/1745257770/artwork/320.jpg",
+    "640": "/library/artists/935727853/albums/1745257770/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1745258030",
+      "title": "I LUV IT",
+      "duration": "2:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258030.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258030.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258030.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258050",
+      "title": "Chanel No.5",
+      "duration": "2:40",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258050.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258050.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258050.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258053",
+      "title": "pink xoxo",
+      "duration": "0:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258053.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258053.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258053.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258119",
+      "title": "HE KNOWS",
+      "duration": "3:01",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258119.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258119.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258119.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258126",
+      "title": "Twentysomethings",
+      "duration": "2:42",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258126.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258126.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258126.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258129",
+      "title": "Dade County Dreaming (feat. JT & Yung Miami)",
+      "duration": "2:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258129.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258129.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258129.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258132",
+      "title": "koshi xoxo (feat. BLP KOSHER)",
+      "duration": "0:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258132.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258132.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258132.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258134",
+      "title": "HOT UPTOWN (feat. Drake)",
+      "duration": "2:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258134.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258134.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258134.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258143",
+      "title": "Uuugly",
+      "duration": "1:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258143.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258143.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258143.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258279",
+      "title": "DREAM-GIRLS",
+      "duration": "2:51",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258279.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258279.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258279.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258280",
+      "title": "305tilidie",
+      "duration": "0:49",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258280.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258280.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258280.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258283",
+      "title": "B.O.A.T.",
+      "duration": "2:56",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258283.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258283.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258283.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258285",
+      "title": "pretty when i cry",
+      "duration": "2:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258285.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258285.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258285.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1745258286",
+      "title": "June Gloom",
+      "duration": "3:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258286.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258286.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1745257770/audio/1745258286.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

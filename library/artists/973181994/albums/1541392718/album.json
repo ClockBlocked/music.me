@@ -1,0 +1,256 @@
+{
+  "id": "1541392718",
+  "artistId": "973181994",
+  "title": "Nobody Is Listening",
+  "year": "2021",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/973181994/albums/1541392718/artwork/160.jpg",
+    "320": "/library/artists/973181994/albums/1541392718/artwork/320.jpg",
+    "640": "/library/artists/973181994/albums/1541392718/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1541392719",
+      "title": "Calamity",
+      "duration": "3:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392719.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392719.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392719.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392721",
+      "title": "Better",
+      "duration": "2:54",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392721.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392721.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392721.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392722",
+      "title": "Outside",
+      "duration": "3:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392722.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392722.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392722.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392723",
+      "title": "Vibez",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392723.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392723.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392723.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392724",
+      "title": "When Love's Around (feat. Syd)",
+      "duration": "3:11",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392724.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392724.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392724.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392725",
+      "title": "Connexion",
+      "duration": "3:16",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392725.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392725.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392725.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392726",
+      "title": "Sweat",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392726.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392726.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392726.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392727",
+      "title": "Unfuckwitable",
+      "duration": "2:44",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392727.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392727.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392727.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392728",
+      "title": "Windowsill (feat. Devlin)",
+      "duration": "3:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392728.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392728.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392728.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392729",
+      "title": "Tightrope",
+      "duration": "3:24",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392729.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392729.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392729.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1541392730",
+      "title": "River Road",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392730.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392730.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1541392718/audio/1541392730.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

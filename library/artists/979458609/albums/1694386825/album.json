@@ -1,0 +1,278 @@
+{
+  "id": "1694386825",
+  "artistId": "979458609",
+  "title": "GUTS",
+  "year": "2023",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/979458609/albums/1694386825/artwork/160.jpg",
+    "320": "/library/artists/979458609/albums/1694386825/artwork/320.jpg",
+    "640": "/library/artists/979458609/albums/1694386825/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1694386827",
+      "title": "all-american bitch",
+      "duration": "2:45",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386827.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386827.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386827.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386828",
+      "title": "bad idea right?",
+      "duration": "3:04",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386828.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386828.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386828.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386830",
+      "title": "vampire",
+      "duration": "3:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386830.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386830.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386830.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386831",
+      "title": "lacy",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386831.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386831.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386831.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386833",
+      "title": "ballad of a homeschooled girl",
+      "duration": "3:23",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386833.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386833.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386833.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386835",
+      "title": "making the bed",
+      "duration": "3:18",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386835.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386835.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386835.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386840",
+      "title": "logical",
+      "duration": "3:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386840.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386840.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386840.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386841",
+      "title": "get him back!",
+      "duration": "3:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386841.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386841.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386841.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386843",
+      "title": "love is embarrassing",
+      "duration": "2:34",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386843.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386843.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386843.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386844",
+      "title": "the grudge",
+      "duration": "3:09",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386844.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386844.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386844.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386937",
+      "title": "pretty isn’t pretty",
+      "duration": "3:19",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386937.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386937.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386937.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1694386938",
+      "title": "teenage dream",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386938.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386938.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1694386825/audio/1694386938.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

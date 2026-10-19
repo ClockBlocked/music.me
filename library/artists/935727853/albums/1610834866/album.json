@@ -1,0 +1,278 @@
+{
+  "id": "1610834866",
+  "artistId": "935727853",
+  "title": "Familia",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/935727853/albums/1610834866/artwork/160.jpg",
+    "320": "/library/artists/935727853/albums/1610834866/artwork/320.jpg",
+    "640": "/library/artists/935727853/albums/1610834866/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1610834868",
+      "title": "Familia",
+      "duration": "0:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834868.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834868.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834868.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834869",
+      "title": "Celia",
+      "duration": "2:33",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834869.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834869.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834869.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834870",
+      "title": "psychofreak (feat. WILLOW)",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834870.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834870.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834870.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834871",
+      "title": "Bam Bam (feat. Ed Sheeran)",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834871.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834871.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834871.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834872",
+      "title": "La Buena Vida",
+      "duration": "3:17",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834872.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834872.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834872.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834873",
+      "title": "Quiet",
+      "duration": "2:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834873.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834873.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834873.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834874",
+      "title": "Boys Don't Cry",
+      "duration": "3:42",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834874.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834874.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834874.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834875",
+      "title": "Hasta Los Dientes",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834875.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834875.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834875.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834876",
+      "title": "No Doubt",
+      "duration": "3:10",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834876.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834876.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834876.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834877",
+      "title": "Don't Go Yet",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834877.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834877.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834877.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834878",
+      "title": "Lola (feat. Yotuel)",
+      "duration": "3:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834878.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834878.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834878.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1610834879",
+      "title": "everyone at this party",
+      "duration": "2:48",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834879.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834879.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1610834866/audio/1610834879.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "artistId": "979458609",
+  "name": "Olivia Rodrigo",
+  "albums": [
+    {
+      "id": "1560735414",
+      "title": "SOUR",
+      "year": "2021",
+      "songCount": 11,
+      "artwork": {
+        "160": "/library/artists/979458609/albums/1560735414/artwork/160.jpg",
+        "320": "/library/artists/979458609/albums/1560735414/artwork/320.jpg",
+        "640": "/library/artists/979458609/albums/1560735414/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1889992111",
+      "title": "you seem pretty sad for a girl so in love",
+      "year": "2026",
+      "songCount": 14,
+      "artwork": {
+        "160": "/library/artists/979458609/albums/1889992111/artwork/160.jpg",
+        "320": "/library/artists/979458609/albums/1889992111/artwork/320.jpg",
+        "640": "/library/artists/979458609/albums/1889992111/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1694386825",
+      "title": "GUTS",
+      "year": "2023",
+      "songCount": 12,
+      "artwork": {
+        "160": "/library/artists/979458609/albums/1694386825/artwork/160.jpg",
+        "320": "/library/artists/979458609/albums/1694386825/artwork/320.jpg",
+        "640": "/library/artists/979458609/albums/1694386825/artwork/640.jpg"
+      }
+    },
+    {
+      "id": "1576278029",
+      "title": "Best of High School Musical: The Musical: The Series",
+      "year": "2021",
+      "songCount": 0,
+      "artwork": {
+        "160": "/library/artists/979458609/albums/1576278029/artwork/160.jpg",
+        "320": "/library/artists/979458609/albums/1576278029/artwork/320.jpg",
+        "640": "/library/artists/979458609/albums/1576278029/artwork/640.jpg"
+      }
+    }
+  ]
+}

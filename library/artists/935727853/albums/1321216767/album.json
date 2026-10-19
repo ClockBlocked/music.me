@@ -1,0 +1,256 @@
+{
+  "id": "1321216767",
+  "artistId": "935727853",
+  "title": "Camila",
+  "year": "2018",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/935727853/albums/1321216767/artwork/160.jpg",
+    "320": "/library/artists/935727853/albums/1321216767/artwork/320.jpg",
+    "640": "/library/artists/935727853/albums/1321216767/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1321217021",
+      "title": "Never Be the Same",
+      "duration": "3:46",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217021.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217021.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217021.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217030",
+      "title": "All These Years",
+      "duration": "2:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217030.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217030.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217030.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217031",
+      "title": "She Loves Control",
+      "duration": "2:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217031.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217031.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217031.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217032",
+      "title": "Havana (feat. Young Thug)",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217032.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217032.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217032.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217033",
+      "title": "Inside Out",
+      "duration": "3:02",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217033.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217033.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217033.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217034",
+      "title": "Consequences",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217034.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217034.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217034.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217035",
+      "title": "Real Friends",
+      "duration": "3:34",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217035.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217035.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217035.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217036",
+      "title": "Something's Gotta Give",
+      "duration": "3:56",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217036.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217036.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217036.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217037",
+      "title": "In the Dark",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217037.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217037.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217037.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217038",
+      "title": "Into It",
+      "duration": "2:55",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217038.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217038.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217038.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1321217039",
+      "title": "Never Be the Same (Radio Edit)",
+      "duration": "3:47",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217039.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217039.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1321216767/audio/1321217039.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

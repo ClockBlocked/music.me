@@ -1,0 +1,322 @@
+{
+  "id": "1487577356",
+  "artistId": "935727853",
+  "title": "Romance",
+  "year": "2019",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/935727853/albums/1487577356/artwork/160.jpg",
+    "320": "/library/artists/935727853/albums/1487577356/artwork/320.jpg",
+    "640": "/library/artists/935727853/albums/1487577356/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1487577364",
+      "title": "Shameless",
+      "duration": "3:39",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577364.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577364.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577364.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577492",
+      "title": "Living Proof",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577492.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577492.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577492.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577496",
+      "title": "Should've Said It",
+      "duration": "3:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577496.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577496.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577496.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577497",
+      "title": "My Oh My (feat. DaBaby)",
+      "duration": "2:51",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577497.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577497.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577497.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577500",
+      "title": "Señorita",
+      "duration": "3:10",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577500.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577500.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577500.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577501",
+      "title": "Liar",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577501.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577501.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577501.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577503",
+      "title": "Bad Kind of Butterflies",
+      "duration": "2:49",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577503.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577503.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577503.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577504",
+      "title": "Easy",
+      "duration": "3:14",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577504.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577504.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577504.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577505",
+      "title": "Feel It Twice",
+      "duration": "3:08",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577505.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577505.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577505.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577506",
+      "title": "Dream of You",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577506.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577506.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577506.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577510",
+      "title": "Cry for Me",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577510.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577510.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577510.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577511",
+      "title": "This Love",
+      "duration": "3:40",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577511.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577511.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577511.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577513",
+      "title": "Used to This",
+      "duration": "3:30",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577513.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577513.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577513.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1487577579",
+      "title": "First Man",
+      "duration": "3:48",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577579.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577579.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/935727853/albums/1487577356/audio/1487577579.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

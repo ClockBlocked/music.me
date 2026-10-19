@@ -1,0 +1,322 @@
+{
+  "id": "1623192950",
+  "artistId": "966309175",
+  "title": "Twelve Carat Toothache",
+  "year": "2022",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/966309175/albums/1623192950/artwork/160.jpg",
+    "320": "/library/artists/966309175/albums/1623192950/artwork/320.jpg",
+    "640": "/library/artists/966309175/albums/1623192950/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1623193178",
+      "title": "Reputation",
+      "duration": "4:08",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193178.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193178.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193178.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193267",
+      "title": "Cooped Up (feat. Roddy Ricch)",
+      "duration": "3:05",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193267.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193267.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193267.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193275",
+      "title": "Lemon Tree",
+      "duration": "4:03",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193275.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193275.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193275.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193280",
+      "title": "Wrapped Around Your Finger",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193280.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193280.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193280.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193283",
+      "title": "I Like You (A Happier Song) [feat. Doja Cat]",
+      "duration": "3:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193283.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193283.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193283.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193285",
+      "title": "I Cannot Be (A Sadder Song) [feat. Gunna]",
+      "duration": "2:49",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193285.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193285.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193285.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193291",
+      "title": "Insane",
+      "duration": "2:49",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193291.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193291.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193291.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193571",
+      "title": "Love/Hate Letter To Alcohol (feat. Fleet Foxes)",
+      "duration": "3:03",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193571.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193571.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193571.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193578",
+      "title": "Wasting Angels (feat. The Kid LAROI)",
+      "duration": "4:03",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193578.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193578.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193578.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193580",
+      "title": "Euthanasia",
+      "duration": "2:25",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193580.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193580.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193580.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193587",
+      "title": "When I’m Alone",
+      "duration": "3:15",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193587.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193587.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193587.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193594",
+      "title": "Waiting For A Miracle",
+      "duration": "2:21",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193594.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193594.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193594.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193825",
+      "title": "One Right Now",
+      "duration": "3:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193825.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193825.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193825.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1623193830",
+      "title": "New Recording 12, Jan 3, 2020",
+      "duration": "1:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193830.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193830.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1623192950/audio/1623193830.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

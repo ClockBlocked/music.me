@@ -1,0 +1,322 @@
+{
+  "id": "1889992111",
+  "artistId": "979458609",
+  "title": "you seem pretty sad for a girl so in love",
+  "year": "2026",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/979458609/albums/1889992111/artwork/160.jpg",
+    "320": "/library/artists/979458609/albums/1889992111/artwork/320.jpg",
+    "640": "/library/artists/979458609/albums/1889992111/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1889992113",
+      "title": "drop dead",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992113.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992113.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992113.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992115",
+      "title": "stupid song",
+      "duration": "3:29",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992115.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992115.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992115.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992116",
+      "title": "honeybee",
+      "duration": "3:43",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992116.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992116.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992116.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992117",
+      "title": "maggots for brains",
+      "duration": "4:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992117.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992117.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992117.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992118",
+      "title": "u + me = <3",
+      "duration": "4:07",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992118.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992118.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992118.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992120",
+      "title": "my way",
+      "duration": "3:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992120.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992120.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992120.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992121",
+      "title": "purple",
+      "duration": "4:00",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992121.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992121.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992121.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992123",
+      "title": "the cure",
+      "duration": "4:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992123.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992123.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992123.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992124",
+      "title": "begged",
+      "duration": "3:37",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992124.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992124.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992124.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992126",
+      "title": "what’s wrong with me",
+      "duration": "3:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992126.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992126.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992126.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992127",
+      "title": "less",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992127.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992127.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992127.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992129",
+      "title": "expectations",
+      "duration": "3:41",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992129.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992129.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992129.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992130",
+      "title": "cigarette smoke",
+      "duration": "5:40",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992130.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992130.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992130.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1889992132",
+      "title": "you seem pretty sad for a girl so in love",
+      "duration": "0:20",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992132.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992132.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/979458609/albums/1889992111/audio/1889992132.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

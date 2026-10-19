@@ -1,0 +1,322 @@
+{
+  "id": "1087165116",
+  "artistId": "973181994",
+  "title": "Mind Of Mine",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/973181994/albums/1087165116/artwork/160.jpg",
+    "320": "/library/artists/973181994/albums/1087165116/artwork/320.jpg",
+    "640": "/library/artists/973181994/albums/1087165116/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1087165119",
+      "title": "MiNd Of MiNdd (Intro)",
+      "duration": "0:57",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165119.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165119.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165119.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165120",
+      "title": "PILLOWTALK",
+      "duration": "3:22",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165120.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165120.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165120.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165451",
+      "title": "iT's YoU",
+      "duration": "3:46",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165451.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165451.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165451.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165452",
+      "title": "BeFoUr",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165452.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165452.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165452.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165453",
+      "title": "sHe",
+      "duration": "3:09",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165453.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165453.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165453.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165454",
+      "title": "dRuNk",
+      "duration": "3:25",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165454.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165454.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165454.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165455",
+      "title": "INTERMISSION: fLoWer",
+      "duration": "1:44",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165455.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165455.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165455.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165456",
+      "title": "rEaR vIeW",
+      "duration": "3:21",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165456.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165456.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165456.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165457",
+      "title": "wRoNg (feat. Kehlani)",
+      "duration": "3:32",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165457.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165457.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165457.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165458",
+      "title": "fOoL fOr YoU",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165458.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165458.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165458.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165459",
+      "title": "BoRdErSz",
+      "duration": "3:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165459.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165459.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165459.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165460",
+      "title": "tRuTh",
+      "duration": "4:05",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165460.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165460.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165460.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165461",
+      "title": "lUcOzAdE",
+      "duration": "4:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165461.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165461.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165461.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1087165462",
+      "title": "TiO",
+      "duration": "2:58",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165462.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165462.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1087165116/audio/1087165462.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "id": "6799168319",
+  "artistId": "966309175",
+  "title": "August 26",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/966309175/albums/6799168319/artwork/160.jpg",
+    "320": "/library/artists/966309175/albums/6799168319/artwork/320.jpg",
+    "640": "/library/artists/966309175/albums/6799168319/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "6799168327",
+      "title": "Never Understand (feat. Larry June)",
+      "duration": "4:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168327.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168327.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168327.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168336",
+      "title": "Money Made Me Do It (feat. 2 Chainz)",
+      "duration": "3:50",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168336.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168336.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168336.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168339",
+      "title": "Git Wit U",
+      "duration": "2:24",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168339.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168339.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168339.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168344",
+      "title": "God Damn (feat. FKi 1st)",
+      "duration": "3:00",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168344.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168344.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168344.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168470",
+      "title": "F**k (feat. Jeremih)",
+      "duration": "3:33",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168470.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168470.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168470.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168476",
+      "title": "40 Funk",
+      "duration": "4:24",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168476.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168476.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168476.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168480",
+      "title": "Monta (feat. Lil Yachty)",
+      "duration": "3:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168480.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168480.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168480.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168487",
+      "title": "Hollywood Dreams / Come Down",
+      "duration": "5:01",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168487.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168487.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168487.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168492",
+      "title": "Lonely (feat. Jaden & ¿Téo?)",
+      "duration": "4:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168492.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168492.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168492.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "6799168493",
+      "title": "Oh God",
+      "duration": "2:50",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168493.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168493.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/6799168319/audio/6799168493.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

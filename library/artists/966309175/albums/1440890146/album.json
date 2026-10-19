@@ -1,0 +1,322 @@
+{
+  "id": "1440890146",
+  "artistId": "966309175",
+  "title": "Stoney",
+  "year": "2016",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/966309175/albums/1440890146/artwork/160.jpg",
+    "320": "/library/artists/966309175/albums/1440890146/artwork/320.jpg",
+    "640": "/library/artists/966309175/albums/1440890146/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1440890167",
+      "title": "Broken Whiskey Glass",
+      "duration": "3:53",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890167.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890167.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890167.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890494",
+      "title": "Big Lie",
+      "duration": "3:27",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890494.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890494.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890494.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890716",
+      "title": "Deja Vu (feat. Justin Bieber)",
+      "duration": "3:54",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890716.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890716.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890716.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890725",
+      "title": "No Option",
+      "duration": "2:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890725.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890725.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890725.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890894",
+      "title": "Cold",
+      "duration": "4:28",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890894.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890894.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890894.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890903",
+      "title": "White Iverson",
+      "duration": "4:16",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890903.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890903.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890903.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890952",
+      "title": "I Fall Apart",
+      "duration": "3:43",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890952.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890952.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890952.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890964",
+      "title": "Patient",
+      "duration": "3:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890964.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890964.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890964.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890971",
+      "title": "Go Flex",
+      "duration": "2:59",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890971.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890971.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890971.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440890979",
+      "title": "Feel (feat. Kehlani)",
+      "duration": "3:17",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890979.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890979.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440890979.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440891165",
+      "title": "Too Young",
+      "duration": "3:57",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891165.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891165.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891165.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440891173",
+      "title": "Congratulations (feat. Quavo)",
+      "duration": "3:40",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891173.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891173.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891173.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440891181",
+      "title": "Up There",
+      "duration": "3:14",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891181.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891181.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891181.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1440891187",
+      "title": "Yours Truly, Austin Post",
+      "duration": "3:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891187.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891187.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/966309175/albums/1440890146/audio/1440891187.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}

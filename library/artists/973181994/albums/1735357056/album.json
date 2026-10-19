@@ -1,0 +1,344 @@
+{
+  "id": "1735357056",
+  "artistId": "973181994",
+  "title": "ROOM UNDER THE STAIRS",
+  "year": "2024",
+  "sold": "",
+  "artwork": {
+    "160": "/library/artists/973181994/albums/1735357056/artwork/160.jpg",
+    "320": "/library/artists/973181994/albums/1735357056/artwork/320.jpg",
+    "640": "/library/artists/973181994/albums/1735357056/artwork/640.jpg"
+  },
+  "songs": [
+    {
+      "id": "1735357057",
+      "title": "Dreamin",
+      "duration": "3:32",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 1,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357057.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357057.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357057.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357058",
+      "title": "What I Am",
+      "duration": "3:31",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 2,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357058.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357058.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357058.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357059",
+      "title": "Grateful",
+      "duration": "3:22",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 3,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357059.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357059.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357059.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357063",
+      "title": "Alienated",
+      "duration": "4:07",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 4,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357063.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357063.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357063.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357064",
+      "title": "My Woman",
+      "duration": "3:42",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 5,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357064.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357064.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357064.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357065",
+      "title": "How It Feels",
+      "duration": "2:59",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 6,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357065.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357065.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357065.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357398",
+      "title": "Stardust",
+      "duration": "3:52",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 7,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357398.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357398.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357398.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357399",
+      "title": "Gates Of Hell",
+      "duration": "2:39",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 8,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357399.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357399.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357399.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357402",
+      "title": "Birds On A Cloud",
+      "duration": "3:12",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 9,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357402.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357402.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357402.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357406",
+      "title": "Concrete Kisses",
+      "duration": "3:45",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 10,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357406.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357406.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357406.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357411",
+      "title": "False Starts",
+      "duration": "3:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 11,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357411.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357411.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357411.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357413",
+      "title": "The Time",
+      "duration": "3:13",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 12,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357413.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357413.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357413.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357414",
+      "title": "Something In The Water",
+      "duration": "2:31",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 13,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357414.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357414.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357414.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357421",
+      "title": "Shoot At Will",
+      "duration": "2:37",
+      "explicit": true,
+      "video": "",
+      "trackNumber": 14,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357421.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357421.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357421.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "id": "1735357423",
+      "title": "Fuchsia Sea",
+      "duration": "2:28",
+      "explicit": false,
+      "video": "",
+      "trackNumber": 15,
+      "sources": [
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357423.webm",
+          "type": "audio/webm; codecs=opus"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357423.m4a",
+          "type": "audio/mp4"
+        },
+        {
+          "src": "/library/artists/973181994/albums/1735357056/audio/1735357423.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ]
+}
