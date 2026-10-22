@@ -1,25 +1,12 @@
-
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-
-
-
 :root {
---redLight: #f58a8a;
---red: #f37373;
---redDeep: #f15b5b;
---redDeeper: #ef4444;
+  --redLight: #f58a8a;
+  --red: #f37373;
+  --redDeep: #f15b5b;
+  --redDeeper: #ef4444;
 }
 
-/* ============================================================================
-   pages/home.css — MyBeats Home v2 (bento dashboard)
-   Uses global theme variables only (no scoped overrides)
-   ============================================================================ */
-
-/* ---- Page shell ---- */
 .hp {
   min-height: 100%;
   background:
@@ -33,14 +20,19 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- Reset (scoped) ---- */
-.hp, .hp *, .hp *::before, .hp *::after {
+.hp,
+.hp *,
+.hp *::before,
+.hp *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.hp button, .hp input, .hp textarea, .hp select {
+.hp button,
+.hp input,
+.hp textarea,
+.hp select {
   font: inherit;
 }
 
@@ -61,19 +53,19 @@
   text-decoration: none;
 }
 
-.hp ul, .hp ol {
+.hp ul,
+.hp ol {
   list-style: none;
-}
-
-/* ---- Layout ---- */
-.hp .pageSection {
-  width: 100%;
-  min-height: 100vh;
-  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 3vw, 3rem);
 }
 
 .container {
   background: transparent;
+}
+
+.hp .pageSection {
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 3vw, 3rem);
 }
 
 .hp .container {
@@ -82,13 +74,11 @@
   margin: 0 auto;
 }
 
-/* ---- Page Header ---- */
 .hp .pageHeader {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 2rem;
-  padding-top: 2cm;
   margin-bottom: clamp(1.5rem, 4vw, 3rem);
 }
 
@@ -155,57 +145,32 @@
   border-color: rgba(var(--borderPrimary) / 1);
 }
 
-/* ---- Bento Grid ---- */
 .hp .bentoGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-
-/******
-@media (min-width: 700px) {
+@media (min-width: 768px) {
   .hp .bentoGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
   .hp .bentoGrid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-rows: minmax(500px, auto) minmax(300px, auto);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-*********/
 
-
-  @media (min-width: 768px) {
-    .hp .bentoGrid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .hp .bentoGrid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-
-
-
-/* ---- Music Card ---- */
 .hp .musicCard {
   position: relative;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
   border: 1px solid rgba(var(--borderSubtle) / 1);
-/**  border-radius: 1.5rem; **/
-  background:
-    linear-gradient(145deg,
-      rgba(var(--bgCard) / 0.6),
-      rgba(var(--bgOthers) / 0.3));
+  border-radius: 1.5rem;
+  background: linear-gradient(145deg, rgba(var(--bgCard) / 0.6), rgba(var(--bgOthers) / 0.3));
   box-shadow: 0 15px 45px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
   isolation: isolate;
 }
@@ -219,64 +184,93 @@
   z-index: -1;
 }
 
-.hp .musicCardHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 78px;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid rgba(var(--borderSubtle) / 0.8);
-  background: rgba(var(--bgCard) / 0.5);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.hp .cardHeading {
-  min-width: 0;
-}
-
-.hp .cardKicker {
-  color: rgb(var(--colorPurple));
-  font-size: 0.65rem;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-}
-
-.hp .cardTitle {
-  margin-top: 0.35rem;
-  font-size: 1rem;
-  line-height: 1.2;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-  color: rgb(var(--textPrimary));
-}
-
-.hp .cardAction {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: rgba(var(--textSecondary) / 1);
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.hp .cardAction:hover {
-  color: rgb(var(--textPrimary));
-  background: rgba(var(--bgButtons) / 0.8);
-  border-color: rgba(var(--borderPrimary) / 1);
-}
-
 .hp .cardContent {
   min-height: 0;
 }
 
-/* ---- Recently Played ---- */
+.hp .section-title-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1.75rem;
+  padding: 0.35rem;
+}
+
+.hp .section-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 10px;
+  opacity: 0.72;
+}
+
+.hp .section-title {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(14px, 3.5vw, 18px);
+  letter-spacing: 0.08em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(190, 140, 255, 0.92);
+  filter:
+    drop-shadow(0 0 5px rgba(175, 100, 255, 0.6))
+    drop-shadow(0 0 20px rgba(150, 70, 255, 0.22));
+  line-height: 1.3;
+  padding: 0 2px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.hp [data-card]:hover .section-title {
+  color: rgba(160, 90, 255, 0.85);
+}
+
+.hp .section-title-notes {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+  margin-left: 10px;
+  opacity: 0.6;
+}
+
+.hp .section-title-notes svg {
+  animation: note-float 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.hp .section-title-notes svg:nth-child(1) { animation-delay: 0s; }
+.hp .section-title-notes svg:nth-child(2) { animation-delay: 0.5s; }
+.hp .section-title-notes svg:nth-child(3) { animation-delay: 1s; }
+.hp .section-title-notes svg:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes note-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-4px) rotate(-3deg);
+    opacity: 1;
+  }
+}
+
+.hp .cardAction {
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.hp .hp-empty {
+  padding: 2rem 1.25rem;
+  color: rgba(var(--textOthers) / 1);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .hp .recentlyPlayed {
   grid-column: 1 / -1;
   height: clamp(450px, 65vh, 700px);
@@ -317,7 +311,6 @@
   background: rgba(var(--textOthers) / 0.2);
 }
 
-/* ---- Song Row ---- */
 .hp .song {
   position: relative;
   display: grid;
@@ -328,6 +321,7 @@
   padding: 0.5rem 1rem;
   border-bottom: 1px solid rgba(var(--borderSubtle) / 0.5);
   transition: background-color 0.22s ease;
+  will-change: transform;
 }
 
 .hp .song:last-child {
@@ -473,7 +467,6 @@
   color: var(--redLight);
 }
 
-/* ---- Currently Playing ---- */
 .hp .song.is-playing {
   background: linear-gradient(90deg, rgba(var(--colorPurple) / 0.14), rgba(var(--colorPurple) / 0.025));
 }
@@ -498,7 +491,6 @@
   color: rgba(var(--colorPurple) / 0.65);
 }
 
-/* ---- Releases Card ---- */
 .hp .releasesCard {
   grid-column: 1 / -1;
   min-height: 500px;
@@ -536,10 +528,12 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg,
+  background: linear-gradient(
+    180deg,
     transparent 15%,
     rgba(var(--bgBody) / 0.15) 35%,
-    rgba(var(--bgBody) / 0.92) 100%);
+    rgba(var(--bgBody) / 0.92) 100%
+  );
   z-index: 1;
 }
 
@@ -615,7 +609,6 @@
   border-color: rgba(var(--borderPrimary) / 1);
 }
 
-/* ---- Most Played ---- */
 .hp .mostPlayed {
   grid-column: 1 / -1;
   min-height: 300px;
@@ -639,7 +632,7 @@
   min-height: 68px;
   padding: 0.45rem 0.5rem;
   border-radius: 0.75rem;
-  transition: background-color 0.22s ease;
+  transition: background-color 0.22s ease, transform 350ms ease;
 }
 
 .hp .rankItem:hover {
@@ -697,7 +690,6 @@
   white-space: nowrap;
 }
 
-/* ---- Library Card ---- */
 .hp .libraryCard {
   grid-column: 1 / -1;
   min-height: 300px;
@@ -758,7 +750,6 @@
   font-size: 0.65rem;
 }
 
-/* ---- Favorites Card ---- */
 .hp .favoritesCard {
   grid-column: 1 / -1;
   min-height: 300px;
@@ -821,298 +812,6 @@
   font-size: 0.7rem;
 }
 
-/* ---- Empty state ---- */
-.hp .hp-empty {
-  padding: 2rem 1.25rem;
-  color: rgba(var(--textOthers) / 1);
-  font-size: 0.8rem;
-  line-height: 1.5;
-  text-align: center;
-}
-
-/* ---- Live update animations ---- */
-.hp .song {
-  will-change: transform;
-}
-
-.hp .song-enter {
-  animation: hpSongIn 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes hpSongIn {
-  from { opacity: 0; transform: translateY(-16px) scale(0.97); }
-  60%  { opacity: 1; }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.hp .song-exit {
-  animation: hpSongOut 280ms ease both;
-}
-
-@keyframes hpSongOut {
-  to { opacity: 0; transform: translateX(24px); }
-}
-
-.hp .song-bump {
-  animation: hpSongBump 900ms ease;
-}
-
-@keyframes hpSongBump {
-  0%   { background: rgba(var(--colorPurple) / 0.22); }
-  100% { background: transparent; }
-}
-
-.hp .songAction.heart-pop {
-  animation: hpHeartPop 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes hpHeartPop {
-  0%   { transform: scale(1); }
-  45%  { transform: scale(1.35); }
-  100% { transform: scale(1); }
-}
-
-.hp .hp-swap {
-  animation: hpSwap 420ms ease;
-}
-
-@keyframes hpSwap {
-  from { opacity: 0.15; transform: translateY(4px); }
-  to   { opacity: 1; transform: none; }
-}
-
-.hp .rankItem.rank-shift {
-  transition: transform 350ms ease;
-}
-
-/* ---- Responsive tweaks ---- */
-@media (max-width: 699px) {
-  .hp .pageHeader {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .hp .headerAction {
-    width: 100%;
-  }
-
-  .hp .song {
-    grid-template-columns: 44px minmax(0, 1fr) auto;
-    gap: 0.65rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .hp .songArtwork {
-    width: 44px;
-    height: 44px;
-  }
-
-  .hp .songAction {
-    width: 30px;
-    height: 30px;
-  }
-
-  .hp .songAction.favorite {
-    display: none;
-  }
-
-  .hp .songMeta {
-    display: none;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hp .recentlyPlayed {
-    border-top-left-radius: 2rem;
-  }
-
-  .hp .releasesCard {
-    border-top-right-radius: 2rem;
-  }
-
-  .hp .mostPlayed {
-    border-bottom-left-radius: 2rem;
-  }
-
-  .hp .favoritesCard {
-    border-bottom-right-radius: 2rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hp, .hp *, .hp *::before, .hp *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-}
-
-
-
-
-
-
-
-
-.section-title-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    margin-bottom: 1.75rem;
-    position: relative;
-
-  padding: 0.35rem;
-}
-
-.section-title-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-right: 10px;
-    opacity: 0.72;
-}
-
-.section-title {
-  font-family: "Pacifico", cursive;
-  font-weight: 400;
-  font-style: normal;
-    font-size: clamp(14px, 3.5vw, 18px);
-    
-    letter-spacing: 0.08em;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(190, 140, 255, 0.92);
-    filter: drop-shadow(0 0 5px rgba(175, 100, 255, 0.6))
-            drop-shadow(0 0 20px rgba(150, 70, 255, 0.22));
-    line-height: 1.3;
-    padding: 0 2px;
-    flex-shrink: 0;
-    white-space: nowrap;
-}
-[data-card]:hover .section-title {
-  color: rgba(160, 90, 255, 0.85);
-}
-
-
-.section-title-notes {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    /*flex-shrink: 0;*/
-  flex: 1;
-    margin-left: 10px;
-    opacity: 0.6;
-}
-
-.section-title-divider {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(
-        to right,
-        rgba(160, 90, 255, 0.45),
-        rgba(160, 90, 255, 0.08) 60%,
-        transparent
-    );
-    margin-left: 12px;
-    min-width: 20px;
-}
-
-/* Optional: if you keep the action button, place it after the divider */
-.cardAction {
-    margin-left: 12px;
-    flex-shrink: 0;
-}
-
-
-/* ============================================================
-   CARD FOCUS — clicked card brightens, siblings dim
-   ============================================================ */
-
-.hp .musicCard[data-card] {
-  /* keeps the brighten/dim + existing hover border animation smooth */
-  transition:
-    filter 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 600ms ease-in-out,
-    box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: filter;
-}
-
-/* when ANY card is focused, dim every card */
-.hp .bentoGrid.has-card-focus .musicCard[data-card] {
-  filter: brightness(0.52) saturate(0.85);
-}
-
-/* …except the focused one, which pops */
-.hp .bentoGrid.has-card-focus .musicCard[data-card].is-card-focused {
-  filter: brightness(1.18) saturate(1.06);
-  border-color: rgba(160, 90, 255, 0.85);
-  box-shadow:
-    0 0 0 1px rgba(160, 90, 255, 0.25),
-    0 18px 55px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha)),
-    0 0 42px rgba(160, 90, 255, 0.18);
-}
-
-/* optional: slightly dim the whole "Genres" marquee band too,
-   since it is NOT a .musicCard and would otherwise stay full‑bright */
-.hp .bentoGrid.has-card-focus .homeGenres {
-  filter: brightness(0.6) saturate(0.9);
-  transition: filter 380ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* keep reduced-motion users happy (overrides the 380ms above) */
-@media (prefers-reduced-motion: reduce) {
-  .hp .musicCard[data-card],
-  .hp .bentoGrid.has-card-focus .homeGenres {
-    transition-duration: 0.01ms !important;
-  }
-}
-
-
-/* Gentle bobbing / floating animation for the decorative notes */
-@keyframes note-float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-4px) rotate(-3deg);
-    opacity: 1;
-  }
-}
-
-/* Apply to all SVGs inside the note container */
-.section-title-notes svg {
-  animation: note-float 3s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-/* Optional: add staggered delays so notes don’t move in sync */
-.section-title-notes svg:nth-child(1) {
-  animation-delay: 0s;
-}
-.section-title-notes svg:nth-child(2) {
-  animation-delay: 0.5s;
-}
-.section-title-notes svg:nth-child(3) {
-  animation-delay: 1s;
-}
-.section-title-notes svg:nth-child(4) {
-  animation-delay: 1.5s;
-}
-/* Add more if you have more notes */
-
-
-
-
-
-/* ============================================================================
-   HOME — DISCOVER / GENRES / COLLECTIONS
-   ============================================================================ */
-/* ---------------------------------------------------------------
-   DISCOVER CARD
-   --------------------------------------------------------------- */
 .hp .discoverCard {
   grid-column: 1 / -1;
   min-height: 360px;
@@ -1351,10 +1050,7 @@
   border-color: rgba(var(--colorPurple) / 0.35);
 }
 
-.hp .discoverSong.is-playing .discoverSongTitle {
-  color: rgb(var(--colorPurple));
-}
-
+.hp .discoverSong.is-playing .discoverSongTitle,
 .hp .discoverSong.is-playing .discoverSongIndex {
   color: rgb(var(--colorPurple));
 }
@@ -1364,18 +1060,17 @@
     grid-template-columns: 18px 36px minmax(0, 1fr) 26px;
     gap: 0.55rem;
   }
+
   .hp .discoverSongArt {
     width: 36px;
     height: 36px;
   }
+
   .hp .discoverCounter {
     display: none;
   }
 }
 
-/* ---------------------------------------------------------------
-   GENRES — continuous marquee band (no musicCard wrapper)
-   --------------------------------------------------------------- */
 .hp .homeGenres {
   grid-column: 1 / -1;
   min-width: 0;
@@ -1412,8 +1107,12 @@
 }
 
 @keyframes genreMarqueeScroll {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .hp .genreTile {
@@ -1429,10 +1128,11 @@
   background: linear-gradient(145deg, rgba(var(--bgCard) / 0.7), rgba(var(--bgOthers) / 0.35));
   text-align: left;
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.3s ease,
-              background 0.3s ease,
-              box-shadow 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hp .genreTile:hover {
@@ -1445,8 +1145,9 @@
   transform: translateY(-2px) scale(1.02);
   border-color: rgba(var(--colorPurple) / 0.95);
   background: linear-gradient(145deg, rgba(var(--colorPurple) / 0.22), rgba(var(--bgCard) / 0.85));
-  box-shadow: 0 0 0 1px rgba(var(--colorPurple) / 0.35),
-              0 10px 30px rgba(var(--colorPurple) / 0.22);
+  box-shadow:
+    0 0 0 1px rgba(var(--colorPurple) / 0.35),
+    0 10px 30px rgba(var(--colorPurple) / 0.22);
 }
 
 .hp .genreTileArt {
@@ -1495,9 +1196,6 @@
   color: rgba(var(--colorPurple) / 0.9);
 }
 
-/* ---------------------------------------------------------------
-   COLLECTIONS CARD  (playlists styled like Favorites album cards)
-   --------------------------------------------------------------- */
 .hp .collectionsCard {
   grid-column: 1 / -1;
   min-height: 360px;
@@ -1605,7 +1303,6 @@
   background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.2), rgba(var(--bgCard) / 0.7));
 }
 
-/* Glass content overlay (matches Favorites album cards) */
 .hp .collection-card .content {
   position: absolute;
   bottom: -100px;
@@ -1710,122 +1407,192 @@
   .hp .collectionGrid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
+
   .hp .collection-card .content {
     height: 86px;
     bottom: -86px;
   }
 }
 
-/* ---------------------------------------------------------------
-   Reduced-motion safety for the new pieces
-   --------------------------------------------------------------- */
+.hp .song-enter {
+  animation: hpSongIn 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hpSongIn {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.97);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hp .song-exit {
+  animation: hpSongOut 280ms ease both;
+}
+
+@keyframes hpSongOut {
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+.hp .song-bump {
+  animation: hpSongBump 900ms ease;
+}
+
+@keyframes hpSongBump {
+  0% {
+    background: rgba(var(--colorPurple) / 0.22);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+.hp .songAction.heart-pop {
+  animation: hpHeartPop 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes hpHeartPop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hp .hp-swap {
+  animation: hpSwap 420ms ease;
+}
+
+@keyframes hpSwap {
+  from {
+    opacity: 0.15;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hp .musicCard[data-card] {
+  transition:
+    filter 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 600ms ease-in-out,
+    box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: filter;
+}
+
+.hp .bentoGrid.has-card-focus .musicCard[data-card] {
+  filter: brightness(0.52) saturate(0.85);
+}
+
+.hp .bentoGrid.has-card-focus .musicCard[data-card].is-card-focused {
+  filter: brightness(1.18) saturate(1.06);
+  border-color: rgba(160, 90, 255, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(160, 90, 255, 0.25),
+    0 18px 55px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha)),
+    0 0 42px rgba(160, 90, 255, 0.18);
+}
+
+.hp .bentoGrid.has-card-focus .homeGenres {
+  filter: brightness(0.6) saturate(0.9);
+  transition: filter 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 699px) {
+  .hp .pageHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hp .headerAction {
+    width: 100%;
+  }
+
+  .hp .song {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    gap: 0.65rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .hp .songArtwork {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hp .songAction {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hp .songAction.favorite {
+    display: none;
+  }
+
+  .hp .songMeta {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hp .recentlyPlayed {
+    border-top-left-radius: 2rem;
+  }
+
+  .hp .releasesCard {
+    border-top-right-radius: 2rem;
+  }
+
+  .hp .mostPlayed {
+    border-bottom-left-radius: 2rem;
+  }
+
+  .hp .favoritesCard {
+    border-bottom-right-radius: 2rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hp,
+  .hp *,
+  .hp *::before,
+  .hp *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .hp .musicCard[data-card],
+  .hp .bentoGrid.has-card-focus .homeGenres {
+    transition-duration: 0.01ms !important;
+  }
+
   .hp .genreMarqueeTrack {
     animation: none !important;
     transform: translateX(0) !important;
   }
+
   .hp .discoverTrack {
     transition-duration: 0.01ms !important;
   }
+
+  .hp .note-float,
+  .hp .section-title-notes svg {
+    animation: none !important;
+  }
 }
-
-
-
-
-
-
-/* ---------- tokens ---------- */
-.bentoGrid {
-  --r-outer: 28px;   /* the "more curved" corner  */
-  --r-inner: 8px;    /* the "significantly less curved" corner */
-
-  display: grid;
-  gap: 12px;                     /* your existing gap */
-  grid-template-columns: 1fr;    /* MOBILE: 1 column */
-}
-
-/* ---------- every card starts "inner" on all 4 corners ---------- */
-.musicCard {
-  --tl: var(--r-inner);
-  --tr: var(--r-inner);
-  --br: var(--r-inner);
-  --bl: var(--r-inner);
-
-  border-radius: var(--tl) var(--tr) var(--br) var(--bl);
-  overflow: hidden;              /* so images/children respect the corners */
-}
-
-/* ---------- MOBILE (N = 1, 6 cards) ---------- */
-.musicCard:first-child { --tl: var(--r-outer); --tr: var(--r-outer); }
-.musicCard:last-child  { --bl: var(--r-outer); --br: var(--r-outer); }
-
-/* ---------- TABLET (N = 2, 6 cards) ---------- */
-@media (min-width: 640px) {          /* use YOUR tablet breakpoint */
-  .bentoGrid { grid-template-columns: repeat(2, 1fr); }
-
-  .musicCard:nth-child(1) { --tl: var(--r-outer); }
-  .musicCard:nth-child(2) { --tr: var(--r-outer); }
-  .musicCard:nth-child(5) { --bl: var(--r-outer); }
-  .musicCard:nth-child(6) { --br: var(--r-outer); }
-}
-
-/* ---------- DESKTOP (N = 3, 6 cards) ---------- */
-@media (min-width: 1024px) {         /* use YOUR desktop breakpoint */
-  .bentoGrid { grid-template-columns: repeat(3, 1fr); }
-
-  .musicCard:nth-child(1) { --tl: var(--r-outer); }
-  .musicCard:nth-child(3) { --tr: var(--r-outer); }
-  .musicCard:nth-child(4) { --bl: var(--r-outer); }
-  .musicCard:nth-child(6) { --br: var(--r-outer); }
-}
-
-
-
-
-
-
-
-/**
-JavaScript:
-https://mybeats.cloud/modules/global.js
-https://mybeats.cloud/modules/background.js
-https://mybeats.cloud/modules/FavoritesPlaylists.js
-https://mybeats.cloud/modules/builder.js
-https://mybeats.cloud/modules/hearts.js
-https://mybeats.cloud/modules/icons.js
-https://mybeats.cloud/modules/layoutsjs
-https://mybeats.cloud/modules/players.js
-https://mybeats.cloud/modules/progress.js
-https://mybeats.cloud/modules/theming.js
-https://mybeats.cloud/modules/utilities.js
-
-
-CSS:
-https://mybeats.cloud/dev/CoPilot/base/icons.css
-https://mybeats.cloud/dev/CoPilot/base/setup.css
-https://mybeats.cloud/dev/CoPilot/base/images.css
-https://mybeats.cloud/dev/CoPilot/base/lists.css
-https://mybeats.cloud/dev/CoPilot/base/themes.css
-
-https://mybeats.cloud/dev/CoPilot/pages/home.css
-https://mybeats.cloud/dev/CoPilot/pages/artists.css
-https://mybeats.cloud/dev/CoPilot/pages/favorites.css
-https://mybeats.cloud/dev/CoPilot/pages/playlists.css
-https://mybeats.cloud/dev/CoPilot/pages/library.css
-
-https://mybeats.cloud/dev/CoPilot/navbars/top.css
-https://mybeats.cloud/dev/CoPilot/navbars/breadcrumbs.css
-https://mybeats.cloud/dev/CoPilot/navbars/albume.css
-
-https://mybeats.cloud/dev/CoPilot/overlays/dialogs.css
-https://mybeats.cloud/dev/CoPilot/overlays/dropDowns.css
-https://mybeats.cloud/dev/CoPilot/overlays/popOvers.css
-https://mybeats.cloud/dev/CoPilot/overlays/modals.css
-https://mybeats.cloud/dev/CoPilot/overlays/search.css
-https://mybeats.cloud/dev/CoPilot/overlays/toasts.css
-https://mybeats.cloud/dev/CoPilot/overlays/toolTips.css
-
-https://mybeats.cloud/dev/CoPilot/players/drawer.css
-https://mybeats.cloud/dev/CoPilot/players/floating.css
-
-**/
