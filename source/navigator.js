@@ -1,29 +1,18 @@
-class Spinner {
-  static defaults = {
-    type: "area",
-    container: null,
-    label: "",
-    blur: 14,
-    dim: 0.55,
-    size: 38,
-    accent: "",
-    delay: 0,
-    minDuration: 0,
-    autoHideAfter: 0,
-    zIndex: 20,
-  };
+const SPINNER_DEFAULTS = {
+  type: "area",
+  container: null,
+  label: "",
+  blur: 14,
+  dim: 0.55,
+  size: 38,
+  accent: "",
+  delay: 0,
+  minDuration: 0,
+  autoHideAfter: 0,
+  zIndex: 20,
+};
 
-  static registry = new Set();
-  static _stylesInjected = false;
-
-  static injectStyles() {
-    if (Spinner._stylesInjected || document.getElementById("mb-spinner-styles")) {
-      Spinner._stylesInjected = true;
-      return;
-    }
-    const style = document.createElement("style");
-    style.id = "mb-spinner-styles";
-    style.textContent = `
+const SPINNER_STYLES = `
 .mb-spinner-static { position: relative !important; }
 .mb-spinner-overlay {
   position: absolute; inset: 0; display: block; border-radius: inherit;
@@ -65,42 +54,93 @@ class Spinner {
   .mb-spinner-overlay { transition: none; }
   .mb-spinner-ring { animation-duration: 1.8s; }
 }
-    `;
-    document.head.appendChild(style);
-    Spinner._stylesInjected = true;
+::view-transition-old(root) {
+  animation: mb-page-out .35s cubic-bezier(.22,1,.36,1) both;
+}
+::view-transition-new(root) {
+  animation: mb-page-in .45s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes mb-page-out {
+  to { opacity: 0; transform: translateY(-8px) scale(.995); }
+}
+@keyframes mb-page-in {
+  from { opacity: 0; transform: translateY(10px) scale(.995); }
+  to   { opacity: 1; transform: none; }
+}
+[data-navbar="breadcrumbs"],
+[data-navbar="top"],
+.mb-context-menu,
+#full-player-drawer {
+  view-transition-name: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: .01ms; }
+}
+`;
+
+const ViewTransition = {
+  isSupported() {
+    return typeof document !== "undefined" && typeof document.startViewTransition === "function";
+  },
+  run(update) {
+    if (this.isSupported() && !prefersReducedMotion()) {
+      try {
+        return document.startViewTransition(update);
+      } catch {
+        update();
+        return null;
+      }
+    }
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        update();
+        requestAnimationFrame(resolve);
+      });
+    });
+  },
+};
+
+function prefersReducedMotion() {
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
+}
+
+class Spinner {
+  static registry = new Set();
+  static stylesInjected = false;
+
+  static injectStyles() {
+    if (Spinner.stylesInjected || document.getElementById("mb-spinner-styles")) {
+      Spinner.stylesInjected = true;
+      return;
+    }
+    const tag = document.createElement("style");
+    tag.id = "mb-spinner-styles";
+    tag.textContent = SPINNER_STYLES;
+    document.head.appendChild(tag);
+    Spinner.stylesInjected = true;
   }
 
   constructor(options = {}) {
-    const o = { ...Spinner.defaults, ...options };
-    this.type = o.type;
-    this.container = o.container;
-    this.label = o.label;
-    this.blur = o.blur;
-    this.dim = o.dim;
-    this.size = o.size;
-    this.accent = o.accent;
-    this.delay = o.delay;
-    this.minDuration = o.minDuration;
-    this.autoHideAfter = o.autoHideAfter;
-    this.zIndex = o.zIndex;
-
-    this.el = null;
-    this.host = null;
+    Object.assign(this, SPINNER_DEFAULTS, options);
+    this.element = null;
+    this.hostElement = null;
     this.visible = false;
-    this._showTimer = null;
-    this._hideTimer = null;
-    this._autoTimer = null;
-    this._shownAt = 0;
-    this._forcedFullscreen = false;
-    this._addedStaticClass = false;
+    this.showTimer = null;
+    this.hideTimer = null;
+    this.autoHideTimer = null;
+    this.shownAt = 0;
+    this.forcedFullscreen = false;
+    this.addedStaticClass = false;
   }
+
   resolveHost() {
     if (this.type === "fullscreen") return document.body;
     if (this.type === "page") {
       const main = document.getElementById("main-content");
       const parent = main?.parentElement;
       if (parent && parent !== document.body && parent !== document.documentElement) return parent;
-      this._forcedFullscreen = true;
+      this.forcedFullscreen = true;
       return document.body;
     }
     let host = this.container;
@@ -109,20 +149,19 @@ class Spinner {
   }
 
   mount() {
-    if (this.el && this.el.isConnected) return this.el;
+    if (this.element && this.element.isConnected) return this.element;
     const host = this.resolveHost();
     if (!host) return null;
     Spinner.injectStyles();
 
-    const computed = window.getComputedStyle(host);
-    if (computed.position === "static") {
+    if (window.getComputedStyle(host).position === "static") {
       host.classList.add("mb-spinner-static");
-      this._addedStaticClass = true;
+      this.addedStaticClass = true;
     }
 
     const overlay = document.createElement("div");
     overlay.className = "mb-spinner-overlay";
-    overlay.dataset.mbSpinner = this._forcedFullscreen ? "fullscreen" : this.type;
+    overlay.dataset.mbSpinner = this.forcedFullscreen ? "fullscreen" : this.type;
     overlay.dataset.visible = "false";
     overlay.setAttribute("role", "status");
     overlay.setAttribute("aria-live", "polite");
@@ -153,84 +192,115 @@ class Spinner {
 
     overlay.append(scrim, box);
     host.appendChild(overlay);
-    this.el = overlay;
-    this.host = host;
+    this.element = overlay;
+    this.hostElement = host;
     return overlay;
   }
+
   show() {
     Spinner.registry.add(this);
-    if (this._hideTimer) { clearTimeout(this._hideTimer); this._hideTimer = null; }
-    if (this.visible || this._showTimer) return this;
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+    if (this.visible || this.showTimer) return this;
 
     const reveal = () => {
-      this._showTimer = null;
+      this.showTimer = null;
       const el = this.mount();
       if (!el) return;
       this.visible = true;
-      this._shownAt = performance.now();
+      this.shownAt = performance.now();
       requestAnimationFrame(() => {
         el.dataset.visible = "true";
         el.setAttribute("aria-busy", "true");
       });
       if (this.autoHideAfter > 0) {
-        clearTimeout(this._autoTimer);
-        this._autoTimer = setTimeout(() => this.hide(), this.autoHideAfter);
+        clearTimeout(this.autoHideTimer);
+        this.autoHideTimer = setTimeout(() => this.hide(), this.autoHideAfter);
       }
     };
 
-    if (this.delay > 0) this._showTimer = setTimeout(reveal, this.delay);
+    if (this.delay > 0) this.showTimer = setTimeout(reveal, this.delay);
     else reveal();
     return this;
   }
+
   hide(options = {}) {
     const immediate = options.immediate === true;
-    if (this._showTimer) { clearTimeout(this._showTimer); this._showTimer = null; }
-    if (this._hideTimer) { clearTimeout(this._hideTimer); this._hideTimer = null; }
-    if (this._autoTimer) { clearTimeout(this._autoTimer); this._autoTimer = null; }
+    if (this.showTimer) {
+      clearTimeout(this.showTimer);
+      this.showTimer = null;
+    }
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+    if (this.autoHideTimer) {
+      clearTimeout(this.autoHideTimer);
+      this.autoHideTimer = null;
+    }
     if (!this.visible) return this;
 
-    const elapsed = performance.now() - this._shownAt;
+    const elapsed = performance.now() - this.shownAt;
     const wait = immediate ? 0 : Math.max(0, this.minDuration - elapsed);
 
     const conceal = () => {
-      this._hideTimer = null;
+      this.hideTimer = null;
       this.visible = false;
-      if (!this.el) return;
-      this.el.dataset.visible = "false";
-      this.el.setAttribute("aria-busy", "false");
+      if (!this.element) return;
+      this.element.dataset.visible = "false";
+      this.element.setAttribute("aria-busy", "false");
     };
 
-    if (wait > 0) this._hideTimer = setTimeout(conceal, wait);
+    if (wait > 0) this.hideTimer = setTimeout(conceal, wait);
     else conceal();
     return this;
   }
 
   remove() {
-    if (this._showTimer) { clearTimeout(this._showTimer); this._showTimer = null; }
-    if (this._hideTimer) { clearTimeout(this._hideTimer); this._hideTimer = null; }
-    if (this._autoTimer) { clearTimeout(this._autoTimer); this._autoTimer = null; }
+    if (this.showTimer) {
+      clearTimeout(this.showTimer);
+      this.showTimer = null;
+    }
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+    if (this.autoHideTimer) {
+      clearTimeout(this.autoHideTimer);
+      this.autoHideTimer = null;
+    }
     this.visible = false;
-    const el = this.el;
-    this.el = null;
+    const el = this.element;
+    this.element = null;
     if (el) {
       el.dataset.visible = "false";
       el.setAttribute("aria-busy", "false");
       setTimeout(() => el.remove(), 320);
     }
-    if (this._addedStaticClass && this.host) this.host.classList.remove("mb-spinner-static");
-    this._addedStaticClass = false;
-    this.host = null;
+    if (this.addedStaticClass && this.hostElement) {
+      this.hostElement.classList.remove("mb-spinner-static");
+    }
+    this.addedStaticClass = false;
+    this.hostElement = null;
     Spinner.registry.delete(this);
     return this;
   }
-  destroy() { return this.remove(); }
+
+  destroy() {
+    return this.remove();
+  }
 
   setLabel(text) {
     this.label = text || "";
-    if (!this.el) return this;
-    const box = this.el.querySelector(".mb-spinner-box");
-    let label = this.el.querySelector(".mb-spinner-label");
-    if (!this.label) { label?.remove(); return this; }
+    if (!this.element) return this;
+    let label = this.element.querySelector(".mb-spinner-label");
+    const box = this.element.querySelector(".mb-spinner-box");
+    if (!this.label) {
+      label?.remove();
+      return this;
+    }
     if (!label) {
       label = document.createElement("span");
       label.className = "mb-spinner-label";
@@ -248,22 +318,42 @@ class Spinner {
     const spinners = list.map((c) => new Spinner({ ...options, container: c }).show());
     return {
       spinners,
-      get visible() { return spinners.some((s) => s.visible); },
-      hide(opts) { spinners.forEach((s) => s.hide(opts)); return this; },
-      remove() { spinners.forEach((s) => s.remove()); return this; },
-      setLabel(text) { spinners.forEach((s) => s.setLabel(text)); return this; },
+      get visible() {
+        return spinners.some((s) => s.visible);
+      },
+      hide(opts) {
+        spinners.forEach((s) => s.hide(opts));
+        return this;
+      },
+      remove() {
+        spinners.forEach((s) => s.remove());
+        return this;
+      },
+      setLabel(text) {
+        spinners.forEach((s) => s.setLabel(text));
+        return this;
+      },
     };
   }
 
-  static hideAll(options) { [...Spinner.registry].forEach((s) => s.hide(options)); }
-  static removeAll() { [...Spinner.registry].forEach((s) => s.remove()); Spinner.registry.clear(); }
+  static hideAll(options) {
+    [...Spinner.registry].forEach((s) => s.hide(options));
+  }
+
+  static removeAll() {
+    [...Spinner.registry].forEach((s) => s.remove());
+    Spinner.registry.clear();
+  }
+
   static pruneDetached() {
-    [...Spinner.registry].forEach((s) => { if (s.el && !s.el.isConnected) s.remove(); });
+    [...Spinner.registry].forEach((s) => {
+      if (s.element && !s.element.isConnected) s.remove();
+    });
   }
 }
 
-class AppNavigator {
-  static ALBUM_SPINNER = {
+class Router {
+  static ALBUM_SPINNER_OPTIONS = {
     blur: 16,
     dim: 0.55,
     minDuration: 500,
@@ -271,66 +361,54 @@ class AppNavigator {
     size: 34,
   };
 
-  static ALBUM_SWAP_MS = 900;
+  static ALBUM_SWAP_DELAY = 900;
 
   constructor(ui) {
     this.ui = ui;
     this.state = ui.state;
-
-    this._activeGroup = null;
-    this._navigating = false;
-    this._breadcrumbHidden = false;
+    this.activeGroup = null;
+    this.navigating = false;
+    this.breadcrumbHidden = false;
   }
 
   pathFor(page, opts = {}) {
     switch (page) {
       case "home":
         return "/home/";
-
       case "library":
-        return this._libraryPath(opts);
-
+        return this.libraryPathFor(opts);
       case "favorites": {
         const tab = opts.tab || this.state.favoritesTab || "songs";
         return `/favorites/${tab}/`;
       }
-
       case "playlists":
         return "/playlists/";
-
       case "playlist": {
         const id = opts.id || this.state.selectedPlaylistId;
         return id ? `/playlist/${id}/` : "/playlists/";
       }
-
       case "editPlaylist": {
         const id = opts.id || this.state.editingPlaylistId;
         return id ? `/playlist/${id}/edit/` : "/playlists/";
       }
-
       case "createPlaylist":
         return "/playlists/new/";
-
       case "artist": {
         const artistId = opts.artistId;
         if (!artistId) return "/home/";
         const albumId = opts.albumId;
-        return albumId
-          ? `/artist/${artistId}/album/${albumId}/`
-          : `/artist/${artistId}/`;
+        return albumId ? `/artist/${artistId}/album/${albumId}/` : `/artist/${artistId}/`;
       }
-
       default:
         return "/home/";
     }
   }
 
-  _libraryPath(opts = {}) {
+  libraryPathFor(opts = {}) {
     const library = this.ui.libraryPage;
     const view = opts.view || library?.view || "overview";
     const sort = opts.sort || library?.sort || "recent";
     const filter = opts.filter || library?.filter || { type: "all", value: null, label: "" };
-
     if (sort === "mostPlayed" && view === "albums") return "/library/top/albums/";
     if (sort === "mostPlayed" && view === "artists") return "/library/top/artists/";
     if (sort === "mostPlayed") return "/library/mostplayed/";
@@ -339,19 +417,39 @@ class AppNavigator {
     return "/library/";
   }
 
-  // ----------------------------------------------
-  // Convenience navigators
-  // ----------------------------------------------
-  goHome()                    { return this.go("home"); }
-  goLibrary(opts = {})        { return this.go("library", opts); }
-  goFavorites(tab)            { return this.go("favorites", { tab }); }
-  goPlaylists()               { return this.go("playlists"); }
-  goPlaylist(id)              { return this.go("playlist", { id }); }
-  goEditPlaylist(id)          { return this.go("editPlaylist", { id }); }
-  goCreatePlaylist()          { return this.go("createPlaylist"); }
-  goArtist(artistId, albumId) { return this.go("artist", { artistId, albumId }); }
+  navigateHome() {
+    return this.navigateTo("home");
+  }
 
-  go(page, opts = {}) {
+  navigateLibrary(opts = {}) {
+    return this.navigateTo("library", opts);
+  }
+
+  navigateFavorites(tab) {
+    return this.navigateTo("favorites", { tab });
+  }
+
+  navigatePlaylists() {
+    return this.navigateTo("playlists");
+  }
+
+  navigatePlaylist(id) {
+    return this.navigateTo("playlist", { id });
+  }
+
+  navigateEditPlaylist(id) {
+    return this.navigateTo("editPlaylist", { id });
+  }
+
+  navigateCreatePlaylist() {
+    return this.navigateTo("createPlaylist");
+  }
+
+  navigateArtist(artistId, albumId) {
+    return this.navigateTo("artist", { artistId, albumId });
+  }
+
+  navigateTo(page, opts = {}) {
     if (
       page === "artist" &&
       this.state.currentPage === "artist" &&
@@ -360,7 +458,7 @@ class AppNavigator {
     ) {
       return this.switchAlbum(opts.artistId, opts.albumId);
     }
-    return this._commit(page, opts);
+    return this.performNavigation(page, opts);
   }
 
   async switchAlbum(artistId, albumId) {
@@ -373,8 +471,10 @@ class AppNavigator {
     const album = await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null);
     if (!album) return;
 
-    this._push(this.pathFor("artist", { artistId, albumId }), {
-      page: "artist", artistId, albumId,
+    this.pushHistory(this.pathFor("artist", { artistId, albumId }), {
+      page: "artist",
+      artistId,
+      albumId,
     });
     state.selectedAlbumId = albumId;
     state.selectedAlbumName = album.album;
@@ -387,20 +487,20 @@ class AppNavigator {
     const aboutEl = document.querySelector('[data-page="artist"] [data-area="about"]');
 
     const group = Spinner.showIn([coverEl, songsEl, aboutEl].filter(Boolean), {
-      ...AppNavigator.ALBUM_SPINNER,
+      ...Router.ALBUM_SPINNER_OPTIONS,
       label: "Loading album…",
     });
-    this._activeGroup = group;
+    this.activeGroup = group;
 
     setTimeout(() => {
-      this._swapArtistSections(artist, album);
+      this.swapArtistSections(artist, album);
       group.hide();
       setTimeout(() => group.remove(), 400);
-      if (this._activeGroup === group) this._activeGroup = null;
+      if (this.activeGroup === group) this.activeGroup = null;
     }, 60);
   }
 
-  _swapArtistSections(artist, album) {
+  swapArtistSections(artist, album) {
     const ui = this.ui;
     const artistPage = ui.artistPage;
 
@@ -408,11 +508,11 @@ class AppNavigator {
     if (coverEl && album.coverUrl) {
       const img = coverEl.querySelector("img");
       if (img) {
-        const newImg = new Image();
-        newImg.onload = () => {
+        const preload = new Image();
+        preload.onload = () => {
           img.src = album.coverUrl;
         };
-        newImg.src = album.coverUrl;
+        preload.src = album.coverUrl;
       }
     }
 
@@ -440,10 +540,8 @@ class AppNavigator {
       });
     }
 
-    const heroOverlay = document.querySelector(".hero-overlay .album-title");
-    if (heroOverlay) {
-      heroOverlay.textContent = album.album;
-    }
+    const heroTitle = document.querySelector(".hero-overlay .album-title");
+    if (heroTitle) heroTitle.textContent = album.album;
 
     const trackCount = document.querySelector(".hero-overlay .track-count");
     if (trackCount) {
@@ -451,50 +549,43 @@ class AppNavigator {
     }
 
     ui.contentEvents?.attachContentEvents?.();
-    window.dispatchEvent(new CustomEvent("mybeats:album-swapped", {
-      detail: { artistId: artist.id, albumId: album.id },
-    }));
+    window.dispatchEvent(
+      new CustomEvent("mybeats:album-swapped", {
+        detail: { artistId: artist.id, albumId: album.id },
+      })
+    );
   }
 
-  _pageTransition(page, opts = {}) {
-    if (this._navigating) return;
-    return this._commit(page, opts);
-  }
-
-  async _commit(page, opts = {}) {
+  async performNavigation(page, opts = {}) {
     const state = this.state;
     const ui = this.ui;
 
     if (state.isDrawerOpen) ui.closePlayerDrawer?.();
 
-    let artist = null;
     let resolvedArtistId = opts.artistId || null;
+    let artist = null;
     if (resolvedArtistId) {
       artist = state.getArtistById(resolvedArtistId);
       if (!artist) {
-        artist = (window.MusicStore?.index || []).find(
+        const fallback = (window.MusicStore?.index || []).find(
           (a) => String(a.artist) === String(resolvedArtistId)
         );
-        if (artist) resolvedArtistId = artist.id;
+        if (fallback) {
+          artist = fallback;
+          resolvedArtistId = fallback.id;
+        }
       }
     }
 
-    let album = null;
     let resolvedAlbumId = opts.albumId || null;
+    let album = null;
     if (resolvedAlbumId) {
       album = state.getAlbumById(resolvedAlbumId);
-      if (album && artist && String(album.artistId) !== String(resolvedArtistId)) {
-        album = null;
-      }
+      if (album && artist && String(album.artistId) !== String(resolvedArtistId)) album = null;
     }
 
-    if (state.currentPage === "createPlaylist" && page !== "createPlaylist") {
-      state.draftPlaylist = null;
-    }
-
-    if (page === "createPlaylist" && !state.draftPlaylist) {
-      ui.createPlaylistPage?.reset?.();
-    }
+    if (state.currentPage === "createPlaylist" && page !== "createPlaylist") state.draftPlaylist = null;
+    if (page === "createPlaylist" && !state.draftPlaylist) ui.createPlaylistPage?.reset?.();
 
     state.currentPage = page;
     state.artistId = resolvedArtistId;
@@ -504,12 +595,8 @@ class AppNavigator {
     state.isSearchOpen = false;
     state.isCreatingPlaylist = page === "createPlaylist";
 
-    if (page !== "playlists" && page !== "editPlaylist") {
-      state.selectedPlaylistName = null;
-    }
-    if (page !== "editPlaylist") {
-      state.editingPlaylistId = null;
-    }
+    if (page !== "playlists" && page !== "editPlaylist") state.selectedPlaylistName = null;
+    if (page !== "editPlaylist") state.editingPlaylistId = null;
 
     const url = this.pathFor(page, {
       ...opts,
@@ -517,7 +604,7 @@ class AppNavigator {
       albumId: resolvedAlbumId,
       id: opts.id || state.editingPlaylistId,
     });
-    this._push(url, {
+    this.pushHistory(url, {
       page,
       artistId: resolvedArtistId,
       albumId: resolvedAlbumId,
@@ -528,18 +615,18 @@ class AppNavigator {
     this.updateActiveNav();
     this.updateBreadcrumbs();
 
-    ui.render();
+    await ViewTransition.run(() => ui.render());
   }
 
-  _normalize(path) {
+  normalizePath(path) {
     if (!path) return "/";
     const stripped = path.replace(/\/+$/, "");
     return stripped === "" ? "/" : stripped;
   }
 
-  _push(url, stateObj = {}) {
-    const current = this._normalize(window.location.pathname);
-    const target = this._normalize(url);
+  pushHistory(url, stateObj = {}) {
+    const current = this.normalizePath(window.location.pathname);
+    const target = this.normalizePath(url);
     const hasSearch = !!window.location.search;
     if (current === target && !hasSearch) return;
     history.pushState(stateObj, "", url);
@@ -549,11 +636,10 @@ class AppNavigator {
     const parts = window.location.pathname.split("/").filter((p) => p);
     const params = new URLSearchParams(window.location.search);
     const deepLinkSong = params.get("song");
-
     const state = this.state;
+
     state.pendingDeepLinkSong = null;
     state.editingPlaylistId = null;
-
     state.selectedPlaylistName = null;
     state.selectedPlaylistId = null;
     state.isCreatingPlaylist = false;
@@ -569,23 +655,19 @@ class AppNavigator {
       switch (page) {
         case "library":
           state.currentPage = "library";
-          this._parseLibrary(parts.slice(1));
+          this.applyLibraryRoute(parts.slice(1));
           break;
-
         case "discover":
           state.currentPage = "library";
-          this._parseDiscover(parts.slice(1));
+          this.applyDiscoverRoute(parts.slice(1));
           break;
-
         case "favorites":
           state.currentPage = "favorites";
           state.favoritesTab = parts[1] || "songs";
           break;
-
         case "playlist":
-          this._parsePlaylist(parts, deepLinkSong);
+          this.applyPlaylistRoute(parts, deepLinkSong);
           break;
-
         case "playlists":
           if (parts[1] === "new") {
             state.currentPage = "createPlaylist";
@@ -595,11 +677,9 @@ class AppNavigator {
             state.currentPage = "playlists";
           }
           break;
-
         case "artist":
-          await this._parseArtist(parts, deepLinkSong);
+          await this.applyArtistRoute(parts, deepLinkSong);
           break;
-
         default:
           state.currentPage = "404";
       }
@@ -608,13 +688,15 @@ class AppNavigator {
     this.updateActiveNav();
     this.updateBreadcrumbs();
     this.updateTitle();
-    this.ui.render();
+    await ViewTransition.run(() => this.ui.render());
   }
 
-  _parsePlaylist(parts, deepLinkSong) {
+  applyPlaylistRoute(parts, deepLinkSong) {
     const state = this.state;
-    if (!parts[1]) { state.currentPage = "404"; return; }
-
+    if (!parts[1]) {
+      state.currentPage = "404";
+      return;
+    }
     const playlistId = parts[1];
     const norm = IdUtils.norm(playlistId);
     const playlist = state.playlists.find((p) => IdUtils.norm(p.id) === norm);
@@ -634,14 +716,18 @@ class AppNavigator {
     if (deepLinkSong) state.pendingDeepLinkSong = deepLinkSong;
   }
 
-  async _parseArtist(parts, deepLinkSong) {
+  async applyArtistRoute(parts, deepLinkSong) {
     const state = this.state;
-    if (!parts[1]) { state.currentPage = "404"; return; }
-
+    if (!parts[1]) {
+      state.currentPage = "404";
+      return;
+    }
     const artistId = parts[1];
     const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
-    if (!artist) { state.currentPage = "404"; return; }
-
+    if (!artist) {
+      state.currentPage = "404";
+      return;
+    }
     state.currentPage = "artist";
     state.artistId = artistId;
     state.artistPageName = artist.artist;
@@ -652,11 +738,10 @@ class AppNavigator {
       state.selectedAlbumId = album ? albumId : null;
       state.selectedAlbumName = album?.title || album?.album || null;
     }
-
     if (deepLinkSong) state.pendingDeepLinkSong = deepLinkSong;
   }
 
-  _parseLibrary(parts) {
+  applyLibraryRoute(parts) {
     const library = this.ui.libraryPage;
     if (!library) return;
 
@@ -707,12 +792,10 @@ class AppNavigator {
       library.filter = { type: "decade", value: b, label: b + "s" };
       return;
     }
-    if (views.includes(a)) {
-      library.view = a;
-    }
+    if (views.includes(a)) library.view = a;
   }
 
-  _parseDiscover(parts) {
+  applyDiscoverRoute(parts) {
     const library = this.ui.libraryPage;
     if (!library) return;
 
@@ -736,11 +819,11 @@ class AppNavigator {
 
   updateActiveNav() {
     document.querySelectorAll("nav .link[data-nav]").forEach((link) => {
-      const isPlaylistsArea =
+      const playlistsArea =
         this.state.currentPage === "createPlaylist" ||
         this.state.currentPage === "editPlaylist" ||
         this.state.currentPage === "playlist";
-      const target = isPlaylistsArea ? "playlists" : this.state.currentPage;
+      const target = playlistsArea ? "playlists" : this.state.currentPage;
       link.classList.toggle("active", link.dataset.nav === target);
     });
   }
@@ -751,7 +834,6 @@ class AppNavigator {
     const tab = state.favoritesTab || "songs";
     const artist = state.artistId ? state.getArtistById(state.artistId) : null;
     const album = state.selectedAlbumId ? state.getAlbumById(state.selectedAlbumId) : null;
-
     const titles = {
       home: "MyBeats — Home",
       library: "MyBeats — Library",
@@ -769,7 +851,6 @@ class AppNavigator {
           : `MyBeats — ${artist.artist}`
         : "MyBeats",
     };
-
     document.title = titles[page] ?? "MyBeats";
   }
 
@@ -782,13 +863,13 @@ class AppNavigator {
 
     if (existing.length > 0) {
       existing.forEach((item) => item.classList.add("removing"));
-      setTimeout(() => this._renderCrumbs(container, crumbs), 350);
+      setTimeout(() => this.renderCrumbs(container, crumbs), 350);
     } else {
-      this._renderCrumbs(container, crumbs);
+      this.renderCrumbs(container, crumbs);
     }
   }
 
-  _renderCrumbs(container, crumbs) {
+  renderCrumbs(container, crumbs) {
     if (!crumbs.length) {
       container.innerHTML = '<span class="item active">Home</span>';
       return;
@@ -820,7 +901,6 @@ class AppNavigator {
         const view = library.view || "overview";
         const sort = library.sort || "recent";
         const filter = library.filter || { type: "all", value: null, label: "" };
-
         if (sort === "mostPlayed" && view === "albums") crumbs.push("Top", "Albums");
         else if (sort === "mostPlayed" && view === "artists") crumbs.push("Top", "Artists");
         else if (sort === "mostPlayed") crumbs.push("Most Played");
@@ -847,29 +927,62 @@ class AppNavigator {
       if (state.artistPageName) crumbs.push(state.artistPageName);
       if (state.selectedAlbumName) crumbs.push(state.selectedAlbumName);
     }
-
     return crumbs;
   }
 
   toggleBreadcrumb() {
     const nav = document.querySelector('[data-navbar="breadcrumbs"]');
     if (!nav) return;
-    this._breadcrumbHidden = !this._breadcrumbHidden;
-    nav.classList.toggle("hide", this._breadcrumbHidden);
+    this.breadcrumbHidden = !this.breadcrumbHidden;
+    nav.classList.toggle("hide", this.breadcrumbHidden);
   }
 
   setUrl(page, artistId, albumId) {
-    this._push(this.pathFor(page, { artistId, albumId }));
+    this.pushHistory(this.pathFor(page, { artistId, albumId }));
   }
 
-  normalizePath(path) { return this._normalize(path); }
-  handlePopState()    { return this.onPopState(); }
-  syncWithUrl()       { return this.syncFromUrl(); }
+  handlePopState() {
+    return this.onPopState();
+  }
+
+  syncWithUrl() {
+    return this.syncFromUrl();
+  }
 
   goTo(page, artistId, albumId) {
-    return this.go(page, { artistId, albumId });
+    return this.navigateTo(page, { artistId, albumId });
+  }
+
+  get go() {
+    return this.navigateTo.bind(this);
+  }
+  get goHome() {
+    return this.navigateHome.bind(this);
+  }
+  get goLibrary() {
+    return this.navigateLibrary.bind(this);
+  }
+  get goFavorites() {
+    return this.navigateFavorites.bind(this);
+  }
+  get goPlaylists() {
+    return this.navigatePlaylists.bind(this);
+  }
+  get goPlaylist() {
+    return this.navigatePlaylist.bind(this);
+  }
+  get goEditPlaylist() {
+    return this.navigateEditPlaylist.bind(this);
+  }
+  get goCreatePlaylist() {
+    return this.navigateCreatePlaylist.bind(this);
+  }
+  get goArtist() {
+    return this.navigateArtist.bind(this);
   }
 }
 
 window.Spinner = Spinner;
-window.AppNavigator = AppNavigator;
+window.Router = Router;
+window.AppNavigator = Router;
+window.ViewTransition = ViewTransition;
