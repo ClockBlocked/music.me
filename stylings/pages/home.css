@@ -88,7 +88,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 2rem;
-  padding-top; 2cm;
+  padding-top: 2cm;
   margin-bottom: clamp(1.5rem, 4vw, 3rem);
 }
 
@@ -201,7 +201,7 @@
   min-height: 0;
   overflow: hidden;
   border: 1px solid rgba(var(--borderSubtle) / 1);
-  border-radius: 1.5rem;
+/**  border-radius: 1.5rem; **/
   background:
     linear-gradient(145deg,
       rgba(var(--bgCard) / 0.6),
@@ -1728,6 +1728,60 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+
+
+
+
+/* ---------- tokens ---------- */
+.bentoGrid {
+  --r-outer: 28px;   /* the "more curved" corner  */
+  --r-inner: 8px;    /* the "significantly less curved" corner */
+
+  display: grid;
+  gap: 12px;                     /* your existing gap */
+  grid-template-columns: 1fr;    /* MOBILE: 1 column */
+}
+
+/* ---------- every card starts "inner" on all 4 corners ---------- */
+.musicCard {
+  --tl: var(--r-inner);
+  --tr: var(--r-inner);
+  --br: var(--r-inner);
+  --bl: var(--r-inner);
+
+  border-radius: var(--tl) var(--tr) var(--br) var(--bl);
+  overflow: hidden;              /* so images/children respect the corners */
+}
+
+/* ---------- MOBILE (N = 1, 6 cards) ---------- */
+.musicCard:first-child { --tl: var(--r-outer); --tr: var(--r-outer); }
+.musicCard:last-child  { --bl: var(--r-outer); --br: var(--r-outer); }
+
+/* ---------- TABLET (N = 2, 6 cards) ---------- */
+@media (min-width: 640px) {          /* use YOUR tablet breakpoint */
+  .bentoGrid { grid-template-columns: repeat(2, 1fr); }
+
+  .musicCard:nth-child(1) { --tl: var(--r-outer); }
+  .musicCard:nth-child(2) { --tr: var(--r-outer); }
+  .musicCard:nth-child(5) { --bl: var(--r-outer); }
+  .musicCard:nth-child(6) { --br: var(--r-outer); }
+}
+
+/* ---------- DESKTOP (N = 3, 6 cards) ---------- */
+@media (min-width: 1024px) {         /* use YOUR desktop breakpoint */
+  .bentoGrid { grid-template-columns: repeat(3, 1fr); }
+
+  .musicCard:nth-child(1) { --tl: var(--r-outer); }
+  .musicCard:nth-child(3) { --tr: var(--r-outer); }
+  .musicCard:nth-child(4) { --bl: var(--r-outer); }
+  .musicCard:nth-child(6) { --br: var(--r-outer); }
+}
+
+
+
+
 
 
 
