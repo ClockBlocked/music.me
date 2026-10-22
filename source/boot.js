@@ -29,17 +29,79 @@ jQuery(function ($) {
   }).boot();
 
   window.closeModal = () => window.popups?.closeType("modal");
+
+/**
   window.createNewPlaylist = () => window.favoritesPlaylists.createNewPlaylist();
   window.renamePlaylist = (id) => window.favoritesPlaylists.renamePlaylist(id);
   window.deletePlaylist = (id) => window.favoritesPlaylists.deletePlaylist(id);
   window.addSongToPlaylist = (plId, songId) => window.favoritesPlaylists.addSongToPlaylist(plId, songId);
   window.toggleFavAndReRender = (id) => window.uiManager?.toggleFavAndReRender(id);
+**/
 
+  
   window.openMoreMenu = (event, type, id) => {
     if (type === "album") window.contextMenu.show(event.clientX, event.clientY, { albumId: id });
     else if (type === "artist") window.contextMenu.show(event.clientX, event.clientY, { artistId: id });
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
+
+
+
+
+window.createNewPlaylist = function () {
+  if (window.favoritesPlaylists && typeof window.favoritesPlaylists.createNewPlaylist === "function") {
+    return window.favoritesPlaylists.createNewPlaylist();
+  }
+
+  if (window.uiManager && typeof window.uiManager.createPlaylist === "function") {
+    return window.uiManager.createPlaylist();
+  }
+
+  if (window.popups && typeof window.popups.modal === "function") {
+    return window.popups.modal({
+      title: "Create Playlist",
+      content: `
+        <div class="popups-form">
+          <div class="popups-field">
+            <label for="new-pl-name">Playlist name</label>
+            <input id="new-pl-name" class="popups-input" placeholder="e.g. Late Night Drive">
+          </div>
+        </div>
+      `,
+      confirmLabel: "Create",
+      cancelLabel: "Cancel",
+      onConfirm: () => {
+        const input = document.getElementById("new-pl-name");
+        const name = (input?.value || "").trim();
+        if (!name) {
+          if (window.state?.showToast) {
+            window.state.showToast("Please enter a playlist name", "warning");
+          }
+          return;
+        }
+        if (window.favoritesPlaylists) {
+          window.favoritesPlaylists.createPlaylist({ name });
+        }
+      }
+    });
+  }
+
+  console.warn("[boot] Playlist creation flow is unavailable.");
+  return null;
+};
+
+window.createPlaylist = window.createNewPlaylist;
+window.renamePlaylist = (id) => window.favoritesPlaylists?.renamePlaylist?.(id);
+window.deletePlaylist = (id) => window.favoritesPlaylists?.deletePlaylist?.(id);
+window.addSongToPlaylist = (plId, songId) => window.favoritesPlaylists?.addSongToPlaylist?.(plId, songId);
+window.toggleFavAndReRender = (id) => window.uiManager?.toggleFavAndReRender?.(id);
+
+
+
+
+
+
+  
 
 
 
