@@ -1,20 +1,10 @@
-
-
-
 :root {
-
---redLight: #f58a8a;
---red: #f37373;
---redDeep: #f15b5b;
---redDeeper: #ef4444;
+  --redLight: #f58a8a;
+  --red: #f37373;
+  --redDeep: #f15b5b;
+  --redDeeper: #ef4444;
 }
 
-/* ============================================================================
-   pages/library.css — MyBeats Browse v2
-   Uses global theme variables only
-   ============================================================================ */
-
-/* ---- Page shell ---- */
 .bp {
   min-height: 100%;
   background:
@@ -28,14 +18,18 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- Reset ---- */
-.bp, .bp *, .bp *::before, .bp *::after {
+.bp,
+.bp *,
+.bp *::before,
+.bp *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.bp button, .bp input, .bp select {
+.bp button,
+.bp input,
+.bp select {
   font: inherit;
 }
 
@@ -56,7 +50,6 @@
   text-decoration: none;
 }
 
-/* ---- Layout ---- */
 .bp .browsePage {
   width: 100%;
   min-height: 100vh;
@@ -69,7 +62,6 @@
   margin: 0 auto;
 }
 
-/* ---- Header ---- */
 .bp .browseHeader {
   display: flex;
   flex-direction: column;
@@ -102,7 +94,6 @@
   line-height: 1.65;
 }
 
-/* ---- Search ---- */
 .bp .searchWrapper {
   position: relative;
   width: 100%;
@@ -142,7 +133,6 @@
   box-shadow: 0 0 0 4px rgba(var(--colorPurple) / 0.07);
 }
 
-/* ---- Category nav ---- */
 .bp .browseNavigation {
   display: flex;
   align-items: center;
@@ -184,13 +174,10 @@
 
 .bp .browseTab.is-active {
   color: #fff;
-  background: linear-gradient(135deg,
-    rgba(var(--colorPurple) / 0.2),
-    rgba(var(--borderBlue) / 0.16));
+  background: linear-gradient(135deg, rgba(var(--colorPurple) / 0.2), rgba(var(--borderBlue) / 0.16));
   box-shadow: inset 0 1px 0 rgba(var(--textPrimary) / 0.06);
 }
 
-/* ---- Filters ---- */
 .bp .filterToolbar {
   display: flex;
   align-items: center;
@@ -241,12 +228,17 @@
   background: rgba(var(--borderBlue) / 0.09);
 }
 
+.bp .filterButton.has-filter {
+  border-color: rgba(var(--colorPurple) / 0.45);
+  background: rgba(var(--colorPurple) / 0.12);
+  color: rgb(var(--colorPurple));
+}
+
 .bp .filterArrow {
   font-size: 0.55rem;
   opacity: 0.7;
 }
 
-/* ---- Display controls ---- */
 .bp .displayControls {
   display: flex;
   align-items: center;
@@ -291,7 +283,6 @@
   background: rgba(var(--bgButtons) / 0.8);
 }
 
-/* ---- Results header ---- */
 .bp .resultsHeader {
   display: flex;
   align-items: flex-end;
@@ -320,7 +311,6 @@
   white-space: nowrap;
 }
 
-/* ---- Dynamic content area ---- */
 .bp .dynamicContent {
   position: relative;
   min-height: 600px;
@@ -334,7 +324,6 @@
   padding: clamp(1rem, 2.5vw, 1.75rem);
 }
 
-/* ---- Loading overlay ---- */
 .bp .loadingLayer {
   position: absolute;
   inset: 0;
@@ -398,14 +387,17 @@
 }
 
 @keyframes loadingSpin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes loadingSpinReverse {
-  to { transform: rotate(-360deg); }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
-/* ---- Album grid & card ---- */
 .bp .albumGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -511,17 +503,14 @@
   color: rgb(var(--bgBody));
   box-shadow: 0 8px 25px rgba(var(--shadowPrimary) / var(--shadowPrimaryAlpha));
   opacity: 0;
+  pointer-events: none;
   transform: translateY(10px) scale(0.85);
   transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 .bp .albumCard:hover .albumPlay {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.bp .albumPlay:hover {
-  transform: scale(1.08) !important;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .bp .albumInformation {
@@ -557,7 +546,6 @@
   font-size: 0.6rem;
 }
 
-/* ---- Album hover overlay ---- */
 .bp .albumHover {
   position: absolute;
   inset: 0;
@@ -568,12 +556,13 @@
   padding: 0.85rem;
   border-radius: 1rem;
   overflow: hidden;
-  background:
-    linear-gradient(180deg,
-      rgba(var(--bgBody) / 0.55) 0%,
-      rgba(var(--bgBody) / 0.28) 32%,
-      rgba(var(--bgBody) / 0.88) 78%,
-      rgba(var(--bgBody) / 0.96) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--bgBody) / 0.55) 0%,
+    rgba(var(--bgBody) / 0.28) 32%,
+    rgba(var(--bgBody) / 0.88) 78%,
+    rgba(var(--bgBody) / 0.96) 100%
+  );
   -webkit-backdrop-filter: blur(10px) saturate(1.25);
   backdrop-filter: blur(10px) saturate(1.25);
   opacity: 0;
@@ -599,9 +588,17 @@
   opacity: 1;
 }
 
-.bp .albumCard:hover .albumHover > *:nth-child(1) { transition-delay: 40ms; }
-.bp .albumCard:hover .albumHover > *:nth-child(2) { transition-delay: 90ms; }
-.bp .albumCard:hover .albumHover > *:nth-child(3) { transition-delay: 140ms; }
+.bp .albumCard:hover .albumHover > *:nth-child(1) {
+  transition-delay: 40ms;
+}
+
+.bp .albumCard:hover .albumHover > *:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+.bp .albumCard:hover .albumHover > *:nth-child(3) {
+  transition-delay: 140ms;
+}
 
 .bp .albumHoverTop {
   display: flex;
@@ -731,13 +728,6 @@
   border-color: var(--redDeep);
 }
 
-/* While hovering the card, the old corner play button stays out of the way */
-.bp .albumCard:hover .albumPlay {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Touch devices: no hover — always show the album play affordance */
 @media (hover: none) {
   .bp .albumHover {
     top: auto;
@@ -770,7 +760,6 @@
   }
 }
 
-/* ---- Artist grid & card ---- */
 .bp .artistGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -893,7 +882,6 @@
   background: rgba(var(--borderBlue) / 0.07);
 }
 
-/* ---- Playlist grid & card ---- */
 .bp .playlistGrid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -996,7 +984,6 @@
   font-size: 0.62rem;
 }
 
-/* ---- Genre grid & card ---- */
 .bp .genreGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1016,9 +1003,7 @@
   padding: 1rem;
   border: 1px solid rgba(var(--borderSubtle) / 1);
   border-radius: 1rem;
-  background: linear-gradient(135deg,
-    rgba(var(--borderBlue) / 0.1),
-    rgba(var(--colorPurple) / 0.06));
+  background: linear-gradient(135deg, rgba(var(--borderBlue) / 0.1), rgba(var(--colorPurple) / 0.06));
   transition: transform 0.22s ease, border-color 0.22s ease;
 }
 
@@ -1055,7 +1040,6 @@
   font-size: 0.65rem;
 }
 
-/* ---- Song table ---- */
 .bp .songTableWrapper {
   width: 100%;
   overflow-x: auto;
@@ -1163,7 +1147,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ---- Rows list (list view) ---- */
 .bp .rowsList {
   display: flex;
   flex-direction: column;
@@ -1236,7 +1219,6 @@
   gap: 0.15rem;
 }
 
-/* ---- Filter / sort menu ---- */
 .bp .filterMenu {
   position: absolute;
   z-index: 60;
@@ -1256,8 +1238,14 @@
 }
 
 @keyframes bpMenuIn {
-  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .bp .filterMenuItem {
@@ -1293,13 +1281,6 @@
   font-size: 0.64rem;
 }
 
-.bp .filterButton.has-filter {
-  border-color: rgba(var(--colorPurple) / 0.45);
-  background: rgba(var(--colorPurple) / 0.12);
-  color: rgb(var(--colorPurple));
-}
-
-/* ---- Empty state ---- */
 .bp .emptyState {
   min-height: 500px;
   display: flex;
@@ -1337,7 +1318,6 @@
   line-height: 1.5;
 }
 
-/* ---- Home rails integration ---- */
 .bp .homeRails {
   display: flex;
   flex-direction: column;
@@ -1423,7 +1403,6 @@
   flex-basis: 300px;
 }
 
-/* ---- Mobile responsive ---- */
 @media (max-width: 700px) {
   .bp .browsePage {
     padding: 1.5rem 0.85rem 3rem;
@@ -1484,7 +1463,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bp, .bp *, .bp *::before, .bp *::after {
+  .bp,
+  .bp *,
+  .bp *::before,
+  .bp *::after {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
