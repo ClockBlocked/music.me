@@ -501,3 +501,20 @@
   color: #64748b;
   font-size: 0.9rem;
 }
+
+
+
+
+
+
+
+[data-card="recent"] {
+  width: 100%; min-height: 450px; max-height: 525px;
+
+
+  .recent-list {
+ /* padding: 0.575rem; */
+    overflow-y: auto;
+  }
+  
+}
