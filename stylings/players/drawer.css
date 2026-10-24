@@ -1,31 +1,23 @@
-/* ============================================================================
-   players/drawer.css
-   Full-player drawer — overlay, shell, vinyl art, controls, queue modal,
-   lyrics overlay, sleep timer trigger
-   ============================================================================ */
-
-
-/* ===== 1. DRAWER OVERLAY ===== */
 .player-drawer-overlay {
   position: fixed;
   inset: 0;
   background: rgba(var(--overlayBg) / var(--overlayAlpha));
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   z-index: 90;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.45s ease-in-out;
+  pointer-events: none;
+  transition: opacity 0.45s ease-in-out, visibility 0.45s ease-in-out;
 }
 
 .player-drawer-overlay.open {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.45s ease-in-out, visibility 0.45s ease;
   pointer-events: auto;
+  transition: opacity 0.45s ease-in-out, visibility 0.45s ease;
 }
 
-
-/* ===== 2. DRAWER SHELL ===== */
 .player-drawer {
   position: fixed;
   bottom: -10px;
@@ -41,6 +33,7 @@
   transition: transform 0.45s ease-in-out, var(--theme-transition);
   overflow: hidden;
   box-shadow: 0 -10px 60px rgba(var(--shadowHeavy) / var(--shadowHeavyAlpha));
+  will-change: transform;
 }
 
 .player-drawer.open {
@@ -93,6 +86,7 @@
   border: none;
   cursor: pointer;
   transition: all 0.2s ease, var(--theme-transition);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -102,8 +96,6 @@
   transition: all 0.45s ease;
 }
 
-
-/* ===== 3. VINYL ALBUM ART ===== */
 .player-drawer .album-art-wrapper {
   position: relative;
   z-index: 10;
@@ -141,8 +133,6 @@
   pointer-events: none;
 }
 
-
-/* ===== 4. TRACK META ===== */
 [data-player="full"] .meta {
   position: relative;
   z-index: 10;
@@ -150,6 +140,7 @@
   margin-top: 2rem;
   padding: 0 1.5rem;
 }
+
 [data-player="full"] .meta .title {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -161,6 +152,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 [data-player="full"] .meta .sub {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -171,16 +163,14 @@
   white-space: nowrap;
 }
 
-
-/* ===== 5. CONTROL PANEL ===== */
 .player-drawer .control-panel {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   background: rgba(var(--playerBgSecondary) / 0.7);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   padding: 30px 32px 40px;
   z-index: 20;
   border-top: 1px solid rgba(var(--borderSubtle) / 0.05);
@@ -301,14 +291,14 @@
   border: 1px solid rgba(var(--playerAccent));
 }
 
-
-/* ===== 6. SLEEP TIMER TRIGGER ===== */
 #sleep-btn {
   position: relative;
 }
+
 #sleep-btn.active {
   color: rgba(var(--colorOrange));
 }
+
 .sleep-badge {
   position: absolute;
   top: -6px;
@@ -324,8 +314,6 @@
   white-space: nowrap;
 }
 
-
-/* ===== 7. UP NEXT QUEUE MODAL ===== */
 .player-drawer .queue-modal {
   position: absolute;
   bottom: 0;
@@ -333,6 +321,7 @@
   width: 100%;
   height: 70%;
   background: rgba(var(--playerBgSecondary) / 0.7);
+  -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   z-index: 50;
   border-radius: 30px 30px 0 0;
@@ -484,19 +473,19 @@
   line-height: 1.75rem;
   font-weight: 700;
 }
+
 [data-player="full"] .queue-list .empty {
   text-align: center;
   padding: 2rem;
   color: rgba(var(--textSecondary));
 }
+
 [data-player="full"] .queue-item .num {
   color: rgb(100 116 139);
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-
-/* ===== 8. NOW-PLAYING INDICATOR ===== */
 .player-drawer .now-playing-indicator {
   display: flex;
   gap: 3px;
@@ -527,8 +516,6 @@
   height: 50%;
 }
 
-
-/* ===== 9. LYRICS OVERLAY ===== */
 .player-drawer .lyrics-overlay {
   position: absolute;
   top: 0;
@@ -567,15 +554,11 @@
   margin-top: 1rem;
 }
 
-
-/* ===== 10. DISABLED CONTROLS ===== */
 #full-player-drawer button[disabled] {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-
-/* ===== 11. DRAWER KEYFRAMES ===== */
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(var(--playerAccent) / 0.5);
@@ -598,8 +581,6 @@
   }
 }
 
-
-/* ===== 12. DESKTOP POSITIONING ===== */
 @media (min-width: 768px) {
   .player-drawer {
     max-width: 480px;
