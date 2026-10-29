@@ -5,7 +5,7 @@
 class Home {
   constructor(ui) {
     this.ui = ui;
-    this.recentLimit = 15;
+    this.recentLimit = 10;
     this.featuredCache = null;
     this.bindLiveUpdates();
   }
@@ -49,6 +49,10 @@ class Home {
     };
   }
 
+  getStats() {
+    return window.MusicStore?.getStats?.() || { songs: 0, albums: 0, artists: 0, playlists: 0 };
+  }
+
   refreshLoadedCards() {
     if (!this.isActive()) return;
     const root = this.getRoot();
@@ -79,9 +83,7 @@ class Home {
   }
 
   renderFeaturedAlbum() {
-    if (!this.featuredCache) {
-      return `<div class="featured-card" style="display:grid;place-items:center;background:#13141b;"><p style="color:#64748b;">Loading featured album...</p></div>`;
-    }
+    if (!this.featuredCache) return `<div class="featured-card skeleton"></div>`;
 
     const release = this.featuredCache;
     const isFav = this.ui.favorites.isAlbum(release.albumId);
@@ -109,7 +111,7 @@ class Home {
               <i class="fa-solid fa-play"></i> Play album
             </button>
             <button type="button" class="btn-secondary" data-action="toggle-favorite-album" data-album-id="${this.esc(release.albumId)}">
-              <i class="fa-solid fa-plus"></i> ${isFav ? "Remove favorite" : "Add to favorites"}
+              <i class="fa-solid fa-plus"></i> ${isFav ? "Remove" : "Add to favorites"}
             </button>
           </div>
         </div>
@@ -123,34 +125,23 @@ class Home {
       .map((song) => this.ui.state.getSongById(song.id) || song)
       .filter(Boolean);
 
-    const isEmpty = recent.length === 0;
-    const playFeaturedData = this.featuredCache ? this.esc(JSON.stringify({ artistId: this.featuredCache.artistId, albumId: this.featuredCache.albumId })) : "";
-
-    let content = "";
-    
-    if (isEmpty) {
-      content = `
-        <div class="recent-empty">
-          <div class="recent-icon-wrap">
-            <i class="fa-regular fa-clock"></i>
-          </div>
-          <h3 class="recent-empty-title">Your next favorite starts here.</h3>
-          <p class="recent-empty-desc">Play an album or track and it will appear in your listening history.</p>
-          ${this.featuredCache ? `<button type="button" class="recent-play-btn" data-play-album='${playFeaturedData}'>Play featured album</button>` : ""}
-        </div>
-      `;
-    } else {
-      content = `
-        <div class="recent-list">
-          ${recent.map(song => `
-            <div class="recent-row" data-song-id="${this.esc(song.id)}">
-              <div class="recent-art"><img src="${this.esc(song.coverUrl)}" alt="" loading="lazy"></div>
-              <div class="recent-info">
-                <span class="recent-song">${this.esc(song.title)}</span>
-                <span class="recent-artist">${this.esc(song.artist)}</span>
-              </div>
+    if (!recent.length) {
+      return `
+        <div class="recent-card" data-card="recent">
+          <div class="recent-header">
+            <div class="recent-heading">
+              <span class="recent-kicker">YOUR LISTENING</span>
+              <h2 class="recent-title">Recently played</h2>
             </div>
-          `).join("")}
+          </div>
+          <div class="recent-empty">
+            <div class="recent-icon-wrap"><i class="fa-regular fa-clock"></i></div>
+            <h3 class="recent-empty-title">Your next favorite starts here.</h3>
+            <p class="recent-empty-desc">Play an album or track and it will appear in your listening history.</p>
+          </div>
+          <div class="recent-footer">
+            <i class="fa-solid fa-music"></i> Listening history stays in your library
+          </div>
         </div>
       `;
     }
@@ -164,9 +155,17 @@ class Home {
           </div>
           <button type="button" class="recent-history-btn" data-nav="library">History</button>
         </div>
-        
-        ${content}
-        
+        <div class="recent-list">
+          ${recent.map(song => `
+            <div class="recent-row" data-song-id="${this.esc(song.id)}">
+              <div class="recent-art"><img src="${this.esc(song.coverUrl)}" alt="" loading="lazy"></div>
+              <div class="recent-info">
+                <span class="recent-song">${this.esc(song.title)}</span>
+                <span class="recent-artist">${this.esc(song.artist)}</span>
+              </div>
+            </div>
+          `).join("")}
+        </div>
         <div class="recent-footer">
           <i class="fa-solid fa-music"></i> Listening history stays in your library
         </div>
@@ -174,32 +173,121 @@ class Home {
     `;
   }
 
-  renderCollections() {
+  renderMostPlayed() {
+    const mostPlayed = this.ui.state.getMostPlayed ? this.ui.state.getMostPlayed(5) : [];
+    if (!mostPlayed.length) return "";
+
     return `
-      <div class="collections-section">
-        <span class="collections-kicker">MADE PERSONAL</span>
-        <h2 class="collections-title">Your collection, in good company.</h2>
-        <p class="collections-desc">The albums, playlists, and artists you return to—easy to find, ready when you are.</p>
-        
+      <section class="home-section">
+        <div class="section-head">
+          <span class="section-kicker">TOP TRACKS</span>
+          <h2 class="section-title">Most Played</h2>
+        </div>
+        <div class="recent-list">
+          ${mostPlayed.map((song, i) => `
+            <div class="recent-row" data-song-id="${this.esc(song.id)}">
+              <span class="rank-num">${i + 1}</span>
+              <div class="recent-art"><img src="${this.esc(song.coverUrl)}" alt="" loading="lazy"></div>
+              <div class="recent-info">
+                <span class="recent-song">${this.esc(song.title)}</span>
+                <span class="recent-artist">${this.esc(song.artist)}</span>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  renderDiscover() {
+    const artists = window.MusicStore?.index || [];
+    if (!artists.length) return "";
+    
+    const picks = artists.slice(0, 8).map(a => window.MusicStore.artists[String(a.id)] || a).filter(Boolean);
+
+    return `
+      <section class="home-section">
+        <div class="section-head">
+          <span class="section-kicker">EXPLORE</span>
+          <h2 class="section-title">Discover Artists</h2>
+        </div>
+        <div class="h-scroll">
+          ${picks.map(a => `
+            <div class="h-card artist-h-card" data-nav="artist" data-artist-id="${this.esc(a.id)}">
+              <div class="h-card-img round"><img src="${this.esc(a.imageUrl || window.MusicStore.portraitUrl(a.portrait) || "")}" alt=""></div>
+              <span class="h-card-title">${this.esc(a.artist)}</span>
+              <span class="h-card-sub">${this.esc(a.genre || "Artist")}</span>
+            </div>
+          `).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  renderCollections() {
+    const playlists = (this.ui.state.playlists || []).slice(0, 8);
+    if (!playlists.length) return "";
+
+    return `
+      <section class="home-section">
+        <div class="section-head">
+          <span class="section-kicker">MADE PERSONAL</span>
+          <h2 class="section-title">Your Collections</h2>
+          <button class="section-link" data-nav="playlists">See all</button>
+        </div>
+        <div class="h-scroll">
+          ${playlists.map(pl => {
+            const covers = pl.songs.map(id => this.ui.state.getSongById(id)).filter(Boolean).slice(0, 1).map(s => s.coverUrl);
+            return `
+              <div class="h-card playlist-h-card" data-playlist-view="${this.esc(pl.name)}">
+                <div class="h-card-img">
+                  ${covers.length ? `<img src="${this.esc(covers[0])}" alt="">` : `<div class="empty-cover"><i class="fa-solid fa-list-ul"></i></div>`}
+                </div>
+                <span class="h-card-title">${this.esc(pl.name)}</span>
+                <span class="h-card-sub">${pl.songs.length} songs</span>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  renderGenres() {
+    const genres = new Set();
+    (window.MusicStore?.index || []).forEach(a => { if (a.genre) genres.add(a.genre); });
+    if (!genres.size) return "";
+
+    return `
+      <section class="home-section">
+        <div class="section-head">
+          <span class="section-kicker">VIBES</span>
+          <h2 class="section-title">Browse by Genre</h2>
+        </div>
+        <div class="genre-pills">
+          ${[...genres].slice(0, 10).map(g => `<button class="genre-pill" data-genre="${this.esc(g)}">${this.esc(g)}</button>`).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  renderLibraryLinks() {
+    const stats = this.getStats();
+    return `
+      <section class="home-section">
+        <div class="section-head">
+          <span class="section-kicker">YOUR MUSIC</span>
+          <h2 class="section-title">Your Library</h2>
+        </div>
         <div class="collections-list">
           <button type="button" class="collections-item" data-nav="library">
             <div class="collections-icon"><i class="fa-solid fa-record-vinyl"></i></div>
             <div class="collections-text">
               <span class="collections-name">Albums</span>
-              <span class="collections-sub">Your saved records</span>
+              <span class="collections-sub">${stats.albums} saved records</span>
             </div>
             <i class="fa-solid fa-chevron-right collections-arrow"></i>
           </button>
-          
-          <button type="button" class="collections-item" data-nav="playlists">
-            <div class="collections-icon"><i class="fa-solid fa-list-ul"></i></div>
-            <div class="collections-text">
-              <span class="collections-name">Playlists</span>
-              <span class="collections-sub">Soundtracks for every mood</span>
-            </div>
-            <i class="fa-solid fa-chevron-right collections-arrow"></i>
-          </button>
-          
           <button type="button" class="collections-item" data-nav="favorites">
             <div class="collections-icon"><i class="fa-regular fa-heart"></i></div>
             <div class="collections-text">
@@ -209,7 +297,7 @@ class Home {
             <i class="fa-solid fa-chevron-right collections-arrow"></i>
           </button>
         </div>
-      </div>
+      </section>
     `;
   }
 
@@ -218,11 +306,13 @@ class Home {
       <div data-page="home" class="hp pageSection">
         <div class="home-container">
           ${this.renderHeader()}
-          <div data-area="featured">
-            ${this.renderFeaturedAlbum()}
-          </div>
+          <div data-area="featured">${this.renderFeaturedAlbum()}</div>
           ${this.renderRecentlyPlayed()}
+          ${this.renderMostPlayed()}
+          ${this.renderDiscover()}
           ${this.renderCollections()}
+          ${this.renderGenres()}
+          ${this.renderLibraryLinks()}
         </div>
       </div>
     `;
@@ -249,7 +339,26 @@ class Home {
       const navBtn = e.target.closest("[data-nav]");
       if (navBtn) {
         e.stopPropagation();
-        this.ui.navigate(navBtn.dataset.nav);
+        if (navBtn.dataset.nav === "artist") {
+          this.ui.navigate("artist", navBtn.dataset.artistId);
+        } else {
+          this.ui.navigate(navBtn.dataset.nav);
+        }
+        return;
+      }
+
+      const plView = e.target.closest("[data-playlist-view]");
+      if (plView) {
+        e.stopPropagation();
+        this.ui.navigate("playlists");
+        setTimeout(() => this.ui.pages.playlists.viewPlaylist(plView.dataset.playlistView), 60);
+        return;
+      }
+
+      const genre = e.target.closest("[data-genre]");
+      if (genre) {
+        e.stopPropagation();
+        if (window.pagesActions?.openGenre) window.pagesActions.openGenre(genre.dataset.genre);
         return;
       }
 
@@ -292,10 +401,6 @@ class Home {
   }
 }
 
-
-
-
-
 class Library {
   constructor(ui) {
     this.ui = ui;
@@ -304,182 +409,58 @@ class Library {
     this.sort = "recent";
     this.mode = "grid";
     this.query = "";
-    this._loadedAll = false;
-    this._loadingPromise = null;
+    
+    this.page = 1;
+    this.limit = 24;
+    this.totalItems = 0;
   }
 
-  allSongs() {
+  getStats() {
+    return window.MusicStore?.getStats?.() || { songs: 0, albums: 0, artists: 0, playlists: 0 };
+  }
+
+  getPaginatedItems() {
     if (!window.MusicStore) return [];
-    return Array.from(window.MusicStore.songCache.values());
+    
+    let items = [];
+    if (this.view === "songs") items = window.MusicStore.getSongsPaginated(this.page, this.limit, this.sort, this.query);
+    else if (this.view === "albums") items = window.MusicStore.getAlbumsPaginated(this.page, this.limit, this.sort, this.query);
+    else if (this.view === "artists") items = window.MusicStore.getArtistsPaginated(this.page, this.limit, this.sort, this.query);
+    else if (this.view === "playlists") items = (this.ui.state.playlists || []).slice((this.page - 1) * this.limit, this.page * this.limit);
+    
+    return items;
   }
 
-  allAlbums() {
-    if (!window.MusicStore) return [];
-    const state = this.ui.state;
-    const albums = [];
-    for (const album of window.MusicStore.albumCache.values()) {
-      if (album._discographyOnly) continue;
-      const totalSeconds = (album.songs || []).reduce((sum, song) => {
-        const parts = String(song.duration || "0:0").split(":");
-        return sum + (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
-      }, 0);
-
-      const plays = (album.songs || []).reduce(
-        (sum, song) => sum + (state.getPlayCount ? state.getPlayCount(song.id) : 0),
-        0
-      );
-
-      albums.push({
-        artistId: album.artistId,
-        artistName: album.artistName,
-        albumId: album.id,
-        albumName: album.album,
-        coverUrl: album.coverUrl,
-        genre: (state.getArtistById?.(album.artistId)?.genre) || "",
-        year: album.year || "",
-        songs: album.songs || [],
-        songCount: (album.songs || []).length,
-        totalSeconds,
-        plays,
-      });
-    }
-    return albums;
-  }
-
-  allArtists() {
-    if (!window.MusicStore) return [];
-    const state = this.ui.state;
-    const index = window.MusicStore.index || [];
-    return index.map((entry) => {
-      const full = window.MusicStore.artists[String(entry.id)];
-      const albumCount = (full?.albums && full.albums.length) || entry.albumCount || 0;
-      let songCount = 0;
-      if (full?.albums) {
-        songCount = full.albums.reduce((n, a) => n + (a.songCount || 0), 0);
-      }
-      return {
-        id: entry.id,
-        name: entry.artist,
-        imageUrl: full?.imageUrl || window.MusicStore.portraitUrl(full?.portrait) || "",
-        genre: entry.genre || "",
-        albumCount,
-        songCount,
-        plays: full?.albums
-          ? full.albums.reduce((sum, a) => {
-              const album = window.MusicStore.albumCache.get(String(a.id));
-              if (!album || album._discographyOnly) return sum;
-              return sum + (album.songs || []).reduce(
-                (m, song) => m + (state.getPlayCount ? state.getPlayCount(song.id) : 0),
-                0
-              );
-            }, 0)
-          : 0,
-      };
-    });
-  }
-
-  allGenres() {
-    const map = new Map();
-    this.allSongs().forEach((song) => {
-      if (!song.genre) return;
-      map.set(song.genre, (map.get(song.genre) || 0) + 1);
-    });
-    return [...map.entries()]
-      .map(([name, count]) => ({ name, count }))
-      .sort((a, b) => b.count - a.count);
-  }
-
-  minutes(totalSeconds) {
-    if (!totalSeconds) return "";
-    const m = Math.round(totalSeconds / 60);
-    return m >= 60 ? `${Math.floor(m / 60)} hr ${m % 60} min` : `${m} min`;
+  updateTotals() {
+    const stats = this.getStats();
+    if (this.view === "songs") this.totalItems = stats.songs;
+    else if (this.view === "albums") this.totalItems = stats.albums;
+    else if (this.view === "artists") this.totalItems = stats.artists;
+    else if (this.view === "playlists") this.totalItems = (this.ui.state.playlists || []).length;
+    else this.totalItems = stats.songs + stats.albums + stats.artists;
   }
 
   esc(text) {
     return Utils.esc(text == null ? "" : String(text));
   }
 
-  pipeline(items) {
-    let out = [...items];
-    const filter = this.filter;
-
-    if (filter.type !== "all" && filter.value != null) {
-      out = out.filter((item) => {
-        if (filter.type === "artist") return String(item.artistId ?? item.id) === String(filter.value);
-        if (filter.type === "genre") return (item.genre || "").toLowerCase() === String(filter.value).toLowerCase();
-        if (filter.type === "year") return String(item.year || "") === String(filter.value);
-        if (filter.type === "decade") return item.year && Math.floor(Number(item.year) / 10) * 10 === Number(filter.value);
-        return true;
-      });
-    }
-
-    if (this.query.trim()) {
-      const q = this.query.trim().toLowerCase();
-      out = out.filter((item) =>
-        [item.title, item.albumName, item.name, item.album, item.artist, item.artistName, item.genre]
-          .filter(Boolean)
-          .some((text) => String(text).toLowerCase().includes(q))
-      );
-    }
-
-    const by = {
-      title: (a, b) =>
-        String(a.title ?? a.albumName ?? a.name ?? "").localeCompare(String(b.title ?? b.albumName ?? b.name ?? "")),
-      artist: (a, b) =>
-        String(a.artist ?? a.artistName ?? a.name ?? "").localeCompare(String(b.artist ?? b.artistName ?? b.name ?? "")),
-      yearDesc: (a, b) => (Number(b.year) || 0) - (Number(a.year) || 0),
-      yearAsc: (a, b) => (Number(a.year) || 0) - (Number(b.year) || 0),
-      mostPlayed: (a, b) => (b.plays || 0) - (a.plays || 0),
-    }[this.sort];
-
-    if (by) out.sort(by);
-    return out;
-  }
-
   renderAlbumCard(album) {
     const isFav = this.ui.favorites.isAlbum(album.albumId);
     const playData = this.esc(JSON.stringify({ artistId: album.artistId, albumId: album.albumId }));
-
-    const meta = [
-      `${album.songCount} song${album.songCount === 1 ? "" : "s"}`,
-      this.minutes(album.totalSeconds),
-      album.plays ? `${album.plays} play${album.plays === 1 ? "" : "s"}` : "",
-    ]
-      .filter(Boolean)
-      .join(" • ");
-
     return `
-      <article class="albumCard" data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}" tabindex="0" aria-label="${this.esc(album.albumName)}">
+      <article class="albumCard" data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}" tabindex="0">
         <div class="albumArtwork">
           <img src="${this.esc(album.coverUrl || "")}" alt="${this.esc(album.albumName)}" loading="lazy">
-          <button class="albumPlay" type="button" aria-label="Play ${this.esc(album.albumName)}" data-play-album='${playData}'>${Icons.player.play(16)}</button>
+          <button class="albumPlay" type="button" data-play-album='${playData}'>${Icons.player.play(16)}</button>
           <div class="albumHover">
-            <div class="albumHoverTop">${album.year ? `<span class="albumBadge">${this.esc(album.year)}</span>` : ""}${album.genre ? `<span class="albumBadge albumBadgeGenre">${this.esc(album.genre)}</span>` : ""}</div>
-            <div class="albumHoverBody"><h3 class="albumHoverTitle">${this.esc(album.albumName)}</h3><p class="albumHoverArtist">${this.esc(album.artistName)}</p><p class="albumHoverMeta">${meta}</p></div>
+            <div class="albumHoverTop">${album.year ? `<span class="albumBadge">${this.esc(album.year)}</span>` : ""}</div>
+            <div class="albumHoverBody"><h3 class="albumHoverTitle">${this.esc(album.albumName)}</h3><p class="albumHoverArtist">${this.esc(album.artistName)}</p></div>
             <div class="albumHoverActions">
               <button type="button" class="albumHoverPlay" data-play-album='${playData}'>${Icons.player.play(13)} Play</button>
-              <button type="button" class="albumHoverBtn${isFav ? " favorited" : ""}" aria-label="Favorite album" title="${isFav ? "Remove from favorites" : "Add to favorites"}" data-action="toggle-favorite-album" data-album-id="${this.esc(album.albumId)}"><i class="fa-solid fa-heart ${isFav ? "liked-icon" : "not-liked-icon"}"></i></button>
-              <button type="button" class="albumHoverBtn" aria-label="Add to queue" title="Add to queue" data-action="add-album-to-queue" data-album-id="${this.esc(album.albumId)}">${Icons.general.plus(16)}</button>
-              <button type="button" class="albumHoverBtn" aria-label="More options" title="More options" data-album-more data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}">${Icons.general.moreVert(16)}</button>
             </div>
           </div>
         </div>
       </article>
-    `;
-  }
-
-  renderAlbumRow(album) {
-    return `
-      <div class="rowItem" data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}">
-        <div class="rowArtwork"><img src="${this.esc(album.coverUrl || "")}" alt="" loading="lazy"></div>
-        <span class="rowPrimary">${this.esc(album.albumName)}</span>
-        <span class="rowSecondary">${this.esc(album.artistName)}</span>
-        <span class="rowMeta">${album.year ? this.esc(album.year) + " • " : ""}${album.songCount} songs</span>
-        <div class="rowActions">
-          <button type="button" class="tableAction" aria-label="Play" data-play-album='${this.esc(JSON.stringify({ artistId: album.artistId, albumId: album.albumId }))}'>${Icons.player.play(14)}</button>
-          <button type="button" class="tableAction" aria-label="More options" data-album-more data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}">${Icons.general.moreVert(16)}</button>
-        </div>
-      </div>
     `;
   }
 
@@ -489,71 +470,17 @@ class Library {
         <div class="artistPortrait"><img src="${this.esc(artist.imageUrl || "")}" alt="${this.esc(artist.name)}" loading="lazy"></div>
         <div class="artistInfo">
           <span class="artistName">${this.esc(artist.name)}</span>
-          <p class="artistDetails">${artist.albumCount} album${artist.albumCount === 1 ? "" : "s"} • ${artist.songCount} song${artist.songCount === 1 ? "" : "s"}</p>
-          <div class="artistActions"><button type="button" class="artistButton primary" data-artist-open="${this.esc(artist.id)}">View Artist</button><button type="button" class="artistButton" data-artist-play="${this.esc(artist.id)}">Play</button></div>
+          <p class="artistDetails">${this.esc(artist.genre || "Artist")}</p>
         </div>
       </article>
     `;
-  }
-
-  renderArtistRow(artist) {
-    return `
-      <div class="rowItem" data-artist-id="${this.esc(artist.id)}">
-        <div class="rowArtwork round"><img src="${this.esc(artist.imageUrl || "")}" alt="" loading="lazy"></div>
-        <span class="rowPrimary">${this.esc(artist.name)}</span>
-        <span class="rowSecondary">${this.esc(artist.genre || "Artist")}</span>
-        <span class="rowMeta">${artist.albumCount} albums • ${artist.songCount} songs</span>
-        <div class="rowActions">
-          <button type="button" class="tableAction" aria-label="Play artist" data-artist-play="${this.esc(artist.id)}">${Icons.player.play(14)}</button>
-          <button type="button" class="tableAction" aria-label="View artist" data-artist-open="${this.esc(artist.id)}">${Icons.general.arrowRight(14)}</button>
-        </div>
-      </div>
-    `;
-  }
-
-  renderPlaylistCard(playlist) {
-    const state = this.ui.state;
-    const covers = playlist.songs
-      .map((id) => state.getSongById(id))
-      .filter(Boolean)
-      .map((song) => song.coverUrl)
-      .filter(Boolean);
-
-    while (covers.length < 4 && covers.length) {
-      covers.push(covers[covers.length % Math.max(covers.length, 1)] || "");
-    }
-
-    const isPlFav = this.ui?.favorites?.isPlaylist?.(playlist.id) || false;
-
-    return `
-      <article class="playlistCard" data-playlist-id="${this.esc(playlist.id)}">
-        <button type="button" class="heart playlistCardHeart${isPlFav ? " favorited is-favorite" : ""}" data-heart-playlist="${this.esc(playlist.id)}" aria-label="Favorite playlist"></button>
-        <div class="playlistMosaic">${
-          covers
-            .slice(0, 4)
-            .map((cover) => `<img src="${this.esc(cover)}" alt="" loading="lazy">`)
-            .join("") || `<div class="playlistMosaicEmpty">${Icons.general.playlist(28)}</div>`
-        }</div>
-        <div class="playlistInformation">
-          <span class="playlistType">Playlist</span>
-          <h3 class="playlistName">${this.esc(playlist.name)}</h3>
-          ${playlist.description ? `<p class="playlistDescription">${this.esc(playlist.description)}</p>` : ""}
-          <span class="playlistCount">${playlist.songs.length} song${playlist.songs.length === 1 ? "" : "s"}</span>
-        </div>
-      </article>
-    `;
-  }
-
-  renderGenreCard(genre) {
-    return `<article class="genreCard" data-genre="${this.esc(genre.name)}"><h3 class="genreName">${this.esc(genre.name)}</h3><p class="genreCount">${genre.count} song${genre.count === 1 ? "" : "s"}</p></article>`;
   }
 
   renderSongRow(song, index) {
     const isFav = this.ui.favorites.isSong(song.id);
-
     return `
       <tr data-song-id="${this.esc(song.id)}" data-artist-id="${this.esc(song.artistId)}" data-album-id="${this.esc(song.albumId)}" data-context='${this.esc(JSON.stringify({ artistId: song.artistId, albumId: song.albumId }))}'>
-        <td class="tableNum">${index + 1}</td>
+        <td class="tableNum">${(this.page - 1) * this.limit + index + 1}</td>
         <td>
           <div class="tableSong">
             <div class="tableArtwork"><img src="${this.esc(song.coverUrl || "")}" alt="" loading="lazy"></div>
@@ -561,715 +488,149 @@ class Library {
           </div>
         </td>
         <td>${this.esc(song.album)}</td>
-        <td>${this.esc(song.year || "-")}</td>
         <td>${this.esc(song.duration || "")}</td>
         <td>
           <div class="rowActions">
-            <button type="button" class="tableAction heart${isFav ? " favorited is-favorite" : ""}" aria-label="Favorite" data-fav-song="${this.esc(song.id)}">${this.ui.likeStatus("song", isFav, false, null)}</button>
-            <button type="button" class="tableAction" aria-label="More options" data-more-song="${this.esc(song.id)}">${Icons.general.moreVert(16)}</button>
+            <button type="button" class="tableAction heart${isFav ? " favorited" : ""}" data-fav-song="${this.esc(song.id)}">${this.ui.likeStatus("song", isFav, false, null)}</button>
           </div>
         </td>
       </tr>
     `;
   }
 
-  renderEmpty(title, description) {
-    return `<div class="emptyState"><div class="emptyIcon">${Icons.general.search(34)}</div><h3 class="emptyTitle">${this.esc(title)}</h3><p class="emptyDescription">${this.esc(description)}</p></div>`;
-  }
-
-  renderSectionHead(title, sub) {
-    return `<div class="resultsHeader"><div><h2 class="resultsTitle">${this.esc(title)}</h2><p class="resultsSubtitle">${this.esc(sub)}</p></div></div>`;
-  }
-
-  renderViewContent(view) {
-    const state = this.ui.state;
-
-    if (view === "songs") {
-      const songs = this.pipeline(this.allSongs());
-      if (!songs.length) return this.renderEmpty("No songs match", "Try clearing your search or filters.");
-      return `<div class="songTableWrapper"><table class="songTable"><thead><tr><th>#</th><th>Title</th><th>Album</th><th>Year</th><th>Time</th><th></th></tr></thead><tbody>${songs.map((song, i) => this.renderSongRow(song, i)).join("")}</tbody></table></div>`;
-    }
-
-    if (view === "albums") {
-      const albums = this.pipeline(this.allAlbums());
-      if (!albums.length) return this.renderEmpty("No albums match", "Try clearing your search or filters.");
-      return this.mode === "grid"
-        ? `<div class="albumGrid">${albums.map((album) => this.renderAlbumCard(album)).join("")}</div>`
-        : `<div class="rowsList">${albums.map((album) => this.renderAlbumRow(album)).join("")}</div>`;
-    }
-
-    if (view === "artists") {
-      const artists = this.pipeline(this.allArtists());
-      if (!artists.length) return this.renderEmpty("No artists match", "Try clearing your search or filters.");
-      return this.mode === "grid"
-        ? `<div class="artistGrid">${artists.map((artist) => this.renderArtistCard(artist)).join("")}</div>`
-        : `<div class="rowsList">${artists.map((artist) => this.renderArtistRow(artist)).join("")}</div>`;
-    }
-
-    if (view === "playlists") {
-      const playlists = (state.playlists || []).filter(
-        (playlist) => !this.query.trim() || playlist.name.toLowerCase().includes(this.query.trim().toLowerCase())
-      );
-      if (!playlists.length) return this.renderEmpty("No playlists yet", "Create a playlist and it will show up here.");
-      return `<div class="playlistGrid">${playlists.map((playlist) => this.renderPlaylistCard(playlist)).join("")}</div>`;
-    }
-
-    if (view === "genres") {
-      const genres = this.pipeline(this.allGenres());
-      if (!genres.length) return this.renderEmpty("No genres found", "Your library genres will appear here.");
-      return `<div class="genreGrid">${genres.map((genre) => this.renderGenreCard(genre)).join("")}</div>`;
-    }
-
-    const albums = this.allAlbums();
-    const recentAlbums = this.pipeline([...albums].reverse()).slice(0, 10);
-    const artists = this.pipeline(this.allArtists())
-      .sort((a, b) => b.songCount - a.songCount)
-      .slice(0, 5);
-    const playlists = (state.playlists || []).slice(0, 3);
-    const genres = this.allGenres().slice(0, 8);
+  renderPagination() {
+    const totalPages = Math.ceil(this.totalItems / this.limit) || 1;
+    if (totalPages <= 1) return "";
 
     return `
-      ${recentAlbums.length ? `<section>${this.renderSectionHead("Recently Added", "New additions to your collection.")}<div class="albumGrid">${recentAlbums.map((album) => this.renderAlbumCard(album)).join("")}</div></section>` : ""}
-      ${artists.length ? `<section style="margin-top: 3rem">${this.renderSectionHead("Popular Artists", "Artists with the most music in your collection.")}<div class="artistGrid">${artists.map((artist) => this.renderArtistCard(artist)).join("")}</div></section>` : ""}
-      ${playlists.length ? `<section style="margin-top: 3rem">${this.renderSectionHead("Explore Playlists", "Curated collections ready to explore.")}<div class="playlistGrid">${playlists.map((playlist) => this.renderPlaylistCard(playlist)).join("")}</div></section>` : ""}
-      ${genres.length ? `<section style="margin-top: 3rem">${this.renderSectionHead("Browse by Genre", "Find something based on the mood.")}<div class="genreGrid">${genres.map((genre) => this.renderGenreCard(genre)).join("")}</div></section>` : ""}
+      <div class="pagination-controls">
+        <button class="pag-btn" data-page-action="prev" ${this.page === 1 ? "disabled" : ""}>Prev</button>
+        <span class="pag-info">Page ${this.page} of ${totalPages}</span>
+        <button class="pag-btn" data-page-action="next" ${this.page === totalPages ? "disabled" : ""}>Next</button>
+      </div>
     `;
   }
 
-  countForView(view) {
-    const state = this.ui.state;
-    const fmt = (n) => `${n.toLocaleString()} item${n === 1 ? "" : "s"}`;
+  renderContent() {
+    const items = this.getPaginatedItems();
+    if (!items.length) return `<div class="emptyState"><h3 class="emptyTitle">No items found</h3></div>`;
 
-    switch (view) {
-      case "songs":
-        return fmt(this.pipeline(this.allSongs()).length);
-      case "albums":
-        return fmt(this.pipeline(this.allAlbums()).length);
-      case "artists":
-        return fmt(this.pipeline(this.allArtists()).length);
-      case "playlists":
-        return fmt((state.playlists || []).length);
-      case "genres":
-        return fmt(this.pipeline(this.allGenres()).length);
-      default: {
-        const total =
-          this.allAlbums().length +
-          this.allArtists().length +
-          (state.playlists || []).length +
-          this.allGenres().length;
-        return fmt(total);
-      }
+    let html = "";
+    if (this.view === "songs") {
+      html = `<div class="songTableWrapper"><table class="songTable"><tbody>${items.map((s, i) => this.renderSongRow(s, i)).join("")}</tbody></table></div>`;
+    } else if (this.view === "albums") {
+      html = `<div class="albumGrid">${items.map(a => this.renderAlbumCard(a)).join("")}</div>`;
+    } else if (this.view === "artists") {
+      html = `<div class="artistGrid">${items.map(a => this.renderArtistCard(a)).join("")}</div>`;
     }
-  }
-
-  viewMeta(view) {
-    return (
-      {
-        overview: ["Explore Your Collection", "A curated overview of your music."],
-        songs: ["All Songs", "Every track in your library."],
-        albums: ["All Albums", "Hover an album for the full story."],
-        artists: ["All Artists", "The people behind your music."],
-        playlists: ["All Playlists", "Your curated collections."],
-        genres: ["All Genres", "Browse by mood and style."],
-      }[view] || ["", ""]
-    );
-  }
-
-  sortLabel() {
-    return {
-      recent: "Recently Added",
-      title: "Title A-Z",
-      artist: "Artist A-Z",
-      yearDesc: "Newest First",
-      yearAsc: "Oldest First",
-      mostPlayed: "Most Played",
-    }[this.sort];
+    
+    return html + this.renderPagination();
   }
 
   render() {
-    const tabs = [
-      ["overview", "Overview"],
-      ["songs", "Songs"],
-      ["albums", "Albums"],
-      ["artists", "Artists"],
-      ["playlists", "Playlists"],
-      ["genres", "Genres"],
-    ];
+    this.updateTotals();
+    const tabs = [["songs", "Songs"], ["albums", "Albums"], ["artists", "Artists"], ["playlists", "Playlists"]];
 
-    const filter = this.filter;
-
-    const filterBtn = (type, label) => {
-      const active = filter.type === type;
-      return `<button type="button" class="filterButton${active ? " has-filter is-active" : ""}" data-filter="${type}">${active ? this.esc(filter.label) : label}<span class="filterArrow">${Icons.general.chevronDown()}</span></button>`;
-    };
-
-    const [title, sub] = this.viewMeta(this.view);
-
-    const html = `
+    return `
       <div data-page="library" class="bp browsePage">
         <div class="browseContainer">
           <header class="browseHeader">
-            <div><span class="browseKicker">Explore</span><h1 class="browseTitle">Browse Music</h1><p class="browseDescription">Explore songs, albums, artists, playlists, genres, and everything else in your music collection.</p></div>
-            <div class="searchWrapper"><span class="searchIcon" aria-hidden="true">${Icons.general.search(16)}</span><input type="search" class="librarySearch" id="librarySearch" placeholder="Search songs, artists, albums, playlists..." autocomplete="off" value="${this.esc(this.query)}"></div>
-            <nav class="browseNavigation" aria-label="Browse categories">${tabs
-              .map(
-                ([key, label]) =>
-                  `<button class="browseTab${this.view === key ? " is-active" : ""}" type="button" data-view="${key}">${label}</button>`
-              )
-              .join("")}</nav>
-            <div class="filterToolbar">
-              <div class="filterGroup">
-                <button type="button" class="filterButton${filter.type === "all" ? " is-active" : ""}" data-filter="all">All</button>
-                ${filterBtn("artist", "Artist")}${filterBtn("genre", "Genre")}${filterBtn("year", "Year")}${filterBtn("decade", "Decade")}
-              </div>
-              <div class="displayControls">
-                <button type="button" class="sortButton" data-action="sort">${this.sortLabel()}<span>${Icons.general.chevronDown()}</span></button>
-                <div class="viewToggle" aria-label="Display mode">
-                  <button type="button" class="viewButton${this.mode === "grid" ? " is-active" : ""}" aria-label="Grid view" data-view-mode="grid">${Icons.general.grid(15)}</button>
-                  <button type="button" class="viewButton${this.mode === "list" ? " is-active" : ""}" aria-label="List view" data-view-mode="list">${Icons.general.list(15)}</button>
-                </div>
-              </div>
-            </div>
+            <div><h1 class="browseTitle">Browse Music</h1></div>
+            <div class="searchWrapper"><input type="search" class="librarySearch" id="librarySearch" placeholder="Search..." value="${this.esc(this.query)}"></div>
+            <nav class="browseNavigation">${tabs.map(([k, l]) => `<button class="browseTab${this.view === k ? " is-active" : ""}" data-view="${k}">${l}</button>`).join("")}</nav>
           </header>
-          <div class="resultsHeader" id="browseResultsHeader"><div><h2 class="resultsTitle">${title}</h2><p class="resultsSubtitle">${sub}</p></div><span class="resultsCount" id="browseResultsCount">${this.countForView(this.view)}</span></div>
-          <section class="dynamicContent" id="browseContent" aria-live="polite">
-            <div class="loadingLayer" id="loadingLayer" aria-hidden="false"><div class="loadingContent"><div class="loadingSpinner" aria-hidden="true"></div><div><div class="loadingTitle">Loading library...</div><p class="loadingDescription">Fetching tracks from the server.</p></div></div></div>
-            <div class="contentSection" data-content-view="${this.view}"></div>
+          <div class="resultsHeader" id="browseResultsHeader">
+            <h2 class="resultsTitle">${this.view.charAt(0).toUpperCase() + this.view.slice(1)}</h2>
+            <span class="resultsCount">${this.totalItems.toLocaleString()} items</span>
+          </div>
+          <section class="dynamicContent" id="browseContent">
+            <div class="contentSection">
+              ${this.renderContent()}
+            </div>
           </section>
         </div>
       </div>
     `;
-
-    this.bindWhenReady();
-    return html;
   }
 
   bindWhenReady(attempts = 0) {
     const root = document.querySelector('[data-page="library"].bp');
-    if (root) {
-      this.bindEvents(root);
-      this.hydrateAll(root);
-    } else if (attempts < 60) {
-      setTimeout(() => this.bindWhenReady(attempts + 1), 50);
-    }
-  }
-
-  async hydrateAll(root) {
-    if (!root) return;
-    if (!this._loadingPromise) {
-      this._loadingPromise = (async () => {
-        if (!this._loadedAll) {
-          await window.MusicStore.loadAllSongs();
-          this._loadedAll = true;
-        }
-      })();
-    }
-    await this._loadingPromise;
-    const layer = root.querySelector("#loadingLayer");
-    layer?.classList.add("is-hidden");
-    this.refreshContent(false);
+    if (root) this.bindEvents(root);
+    else if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
   }
 
   getRoot() {
     return document.querySelector('[data-page="library"].bp');
   }
 
-  refreshContent(withLoading = false) {
+  refreshContent() {
+    this.updateTotals();
     const root = this.getRoot();
     if (!root) return;
-
-    const swap = () => {
-      const section = root.querySelector(".contentSection");
-      if (section) {
-        section.dataset.contentView = this.view;
-        section.innerHTML = this.renderViewContent(this.view);
-      }
-
-      const [title, sub] = this.viewMeta(this.view);
-      const head = root.querySelector("#browseResultsHeader");
-      if (head) {
-        head.querySelector(".resultsTitle").textContent = title;
-        head.querySelector(".resultsSubtitle").textContent = sub;
-      }
-
-      const count = root.querySelector("#browseResultsCount");
-      if (count) count.textContent = this.countForView(this.view);
-
-      root.querySelectorAll(".browseTab").forEach((tab) => tab.classList.toggle("is-active", tab.dataset.view === this.view));
-
-      this.hydrate(root.querySelector("#browseContent"));
-    };
-
-    if (withLoading) {
-      const layer = root.querySelector("#loadingLayer");
-      layer?.classList.remove("is-hidden");
-      setTimeout(() => {
-        swap();
-        layer?.classList.add("is-hidden");
-      }, 200);
-    } else {
-      swap();
-    }
+    
+    root.querySelector(".resultsTitle").textContent = this.view.charAt(0).toUpperCase() + this.view.slice(1);
+    root.querySelector(".resultsCount").textContent = `${this.totalItems.toLocaleString()} items`;
+    root.querySelectorAll(".browseTab").forEach(t => t.classList.toggle("is-active", t.dataset.view === this.view));
+    
+    const container = root.querySelector(".contentSection");
+    container.innerHTML = this.renderContent();
+    this.hydrate(container);
   }
 
   hydrate(scope) {
     if (!scope) return;
-
     window.heartManager?.bindAll(scope);
-
-    scope.querySelectorAll("[data-more-song]").forEach((el) => {
-      if (el.moreBound) return;
-      el.moreBound = true;
-      el.addEventListener("click", (e) => {
-        e.stopPropagation();
-        this.ui.events.showSongMenu(el.dataset.moreSong, e);
-      });
-    });
-
-    scope.querySelectorAll("[data-play-album]").forEach((el) => {
-      if (el.paBound) return;
-      el.paBound = true;
-      el.addEventListener("click", async (e) => {
-        e.stopPropagation();
-        const data = JSON.parse(el.dataset.playAlbum);
-        const queue = await Utils.albumQueue(data.artistId, data.albumId);
-        if (queue.length) this.ui.audioPlayer.playSong(queue[0], queue, true, "album");
-      });
-    });
-
-    scope.querySelectorAll('[data-action="add-album-to-queue"]').forEach((el) => {
-      if (el.aqBound) return;
-      el.aqBound = true;
-      el.addEventListener("click", async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const state = this.ui.state;
-        const albumId = el.dataset.albumId;
-        const stub = state.getAlbumById(albumId);
-        if (!stub) return;
-        const album = await window.MusicStore.loadAlbum(stub.artistId, albumId).catch(() => null);
-        if (!album?.songs?.length) return;
-
-        const queue = await Utils.albumQueue(stub.artistId, albumId);
-        const currentQueue = state.queue || [];
-        state.queue = [...currentQueue, ...queue];
-
-        if (state.currentSong) {
-          state.queueIndex = state.queue.findIndex((s) => s.id == state.currentSong.id);
-        }
-        state.showToast?.(`Added ${queue.length} song${queue.length === 1 ? "" : "s"} to queue`);
-      });
-    });
-  }
-
-  closeMenus() {
-    this.getRoot()?.querySelectorAll(".filterMenu").forEach((menu) => menu.remove());
-  }
-
-  openMenu(anchorBtn, items, current, onSelect) {
-    this.closeMenus();
-
-    const root = this.getRoot();
-    if (!root) return;
-
-    const menu = document.createElement("div");
-    menu.className = "filterMenu";
-    menu.innerHTML = items
-      .map(
-        (item) =>
-          `<button type="button" class="filterMenuItem${String(item.value) === String(current) ? " is-active" : ""}" data-value="${this.esc(item.value)}"><span>${this.esc(item.label)}</span>${item.count != null ? `<span class="count">${item.count}</span>` : ""}</button>`
-      )
-      .join("");
-
-    root.appendChild(menu);
-
-    const rect = anchorBtn.getBoundingClientRect();
-    const rootRect = root.getBoundingClientRect();
-    menu.style.top = `${rect.bottom - rootRect.top + root.scrollTop + 6}px`;
-    menu.style.left = `${Math.max(8, rect.left - rootRect.left)}px`;
-
-    menu.addEventListener("click", (e) => {
-      const item = e.target.closest(".filterMenuItem");
-      if (!item) return;
-      e.stopPropagation();
-      onSelect(item.dataset.value);
-      this.closeMenus();
-    });
-
-    setTimeout(() => {
-      this.menuCloser = (e) => {
-        if (!menu.contains(e.target)) this.closeMenus();
-      };
-      document.addEventListener("click", this.menuCloser, { once: true });
-    }, 0);
-  }
-
-  openFilterMenu(btn, type) {
-    const state = this.ui.state;
-    let items = [];
-
-    if (type === "artist") {
-      items = this.allArtists()
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .map((artist) => ({ value: artist.id, label: artist.name, count: artist.songCount }));
-    } else if (type === "genre") {
-      items = this.allGenres().map((genre) => ({ value: genre.name, label: genre.name, count: genre.count }));
-    } else if (type === "year") {
-      const years = [...new Set(this.allAlbums().map((album) => album.year).filter(Boolean))].sort().reverse();
-      items = years.map((year) => ({ value: year, label: year }));
-    } else if (type === "decade") {
-      const decades = [
-        ...new Set(
-          this.allAlbums()
-            .map((album) => album.year)
-            .filter(Boolean)
-            .map((year) => Math.floor(Number(year) / 10) * 10)
-        ),
-      ].sort((a, b) => b - a);
-      items = decades.map((decade) => ({ value: decade, label: `${decade}s` }));
-    }
-
-    if (!items.length) {
-      state.showToast?.("Nothing to filter by yet");
-      return;
-    }
-
-    this.openMenu(btn, items, this.filter.type === type ? this.filter.value : null, (value) => {
-      const item = items.find((i) => String(i.value) === String(value));
-      this.filter = { type, value, label: item ? item.label : value };
-      this.ui.render();
-    });
-  }
-
-  openSortMenu(btn) {
-    const items = [
-      { value: "recent", label: "Recently Added" },
-      { value: "title", label: "Title A-Z" },
-      { value: "artist", label: "Artist A-Z" },
-      { value: "yearDesc", label: "Newest First" },
-      { value: "yearAsc", label: "Oldest First" },
-      { value: "mostPlayed", label: "Most Played" },
-    ];
-
-    this.openMenu(btn, items, this.sort, (value) => {
-      this.sort = value;
-      this.ui.render();
-    });
-  }
-
-  async playArtist(artistId) {
-    const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
-    if (!artist) return;
-
-    const queues = await Promise.all(
-      (artist.albums || []).map((album) => Utils.albumQueue(artistId, album.id))
-    );
-    const queue = queues.flat();
-    if (queue.length) {
-      this.ui.audioPlayer.playSong(queue[0], queue, true, "artist");
-      this.ui.state.showToast?.(`Playing ${artist.artist}`);
-    }
   }
 
   bindEvents(root) {
-    if (!root || root.browseDelegated) return;
+    if (root.browseDelegated) return;
     root.browseDelegated = true;
 
-    const ui = this.ui;
-
-    root.addEventListener("click", async (e) => {
+    root.addEventListener("click", (e) => {
       const tab = e.target.closest(".browseTab");
       if (tab) {
         e.stopPropagation();
-        if (tab.dataset.view !== this.view) {
-          this.view = tab.dataset.view;
-          this.refreshContent(true);
-        }
+        this.view = tab.dataset.view;
+        this.page = 1;
+        this.refreshContent();
         return;
       }
 
-      const filterBtn = e.target.closest(".filterButton");
-      if (filterBtn) {
+      const pagBtn = e.target.closest("[data-page-action]");
+      if (pagBtn) {
         e.stopPropagation();
-        const type = filterBtn.dataset.filter;
-        if (type === "all") {
-          if (this.filter.type !== "all") {
-            this.filter = { type: "all", value: null, label: "" };
-            ui.render();
-          }
-          return;
-        }
-        this.openFilterMenu(filterBtn, type);
-        return;
-      }
-
-      if (e.target.closest('[data-action="sort"]')) {
-        e.stopPropagation();
-        this.openSortMenu(e.target.closest('[data-action="sort"]'));
-        return;
-      }
-
-      const viewBtn = e.target.closest(".viewButton[data-view-mode]");
-      if (viewBtn) {
-        e.stopPropagation();
-        if (viewBtn.dataset.viewMode !== this.mode) {
-          this.mode = viewBtn.dataset.viewMode;
-          root.querySelectorAll(".viewButton").forEach((b) => b.classList.toggle("is-active", b === viewBtn));
-          this.refreshContent(false);
-        }
-        return;
-      }
-
-      const albumMore = e.target.closest("[data-album-more]");
-      if (albumMore) {
-        e.stopPropagation();
-        window.contextMenu?.show(e.clientX, e.clientY, {
-          artistId: albumMore.dataset.artistId,
-          albumId: albumMore.dataset.albumId,
-        });
-        return;
-      }
-
-      const artistPlay = e.target.closest("[data-artist-play]");
-      if (artistPlay) {
-        e.stopPropagation();
-        this.playArtist(artistPlay.dataset.artistPlay);
-        return;
-      }
-
-      const artistOpen = e.target.closest("[data-artist-open]");
-      if (artistOpen) {
-        e.stopPropagation();
-        ui.navigate("artist", artistOpen.dataset.artistOpen);
-        return;
-      }
-
-      const genre = e.target.closest(".genreCard[data-genre]");
-      if (genre) {
-        e.stopPropagation();
-        if (window.pagesActions?.playGenre) window.pagesActions.playGenre(genre.dataset.genre);
-        return;
-      }
-
-      const playlistCard = e.target.closest(".playlistCard[data-playlist-id]");
-      if (playlistCard) {
-        e.stopPropagation();
-        const playlist = ui.state.playlists.find((p) => String(p.id) === String(playlistCard.dataset.playlistId));
-        if (playlist) {
-          ui.state.selectedPlaylistName = playlist.name;
-          ui.state.selectedPlaylistId = playlist.id;
-          ui.navigate("playlists");
-        }
-        return;
-      }
-
-      const songRow = e.target.closest("tr[data-song-id]");
-      if (songRow) {
-        if (e.target.closest("button")) return;
-        e.stopPropagation();
-        let song = ui.state.getSongById(songRow.dataset.songId);
-        if (!song) {
-          await window.MusicStore.loadAlbum(songRow.dataset.artistId, songRow.dataset.albumId).catch(() => null);
-          song = ui.state.getSongById(songRow.dataset.songId);
-        }
-        if (!song) return;
-
-        const queue = [...root.querySelectorAll("tr[data-song-id]")]
-          .map((row) => ui.state.getSongById(row.dataset.songId))
-          .filter(Boolean);
-
-        ui.audioPlayer.playSong(song, queue.length ? queue : null, true, "library");
-        return;
-      }
-
-      const rowItem = e.target.closest(".rowItem[data-artist-id]");
-      if (rowItem) {
-        if (e.target.closest("button")) return;
-        e.stopPropagation();
-        ui.navigate("artist", rowItem.dataset.artistId, rowItem.dataset.albumId || null);
+        if (pagBtn.dataset.pageAction === "prev") this.page = Math.max(1, this.page - 1);
+        if (pagBtn.dataset.pageAction === "next") this.page += 1;
+        this.refreshContent();
         return;
       }
     });
 
     const searchInput = root.querySelector("#librarySearch");
-    if (searchInput && !searchInput.browseSearchBound) {
-      searchInput.browseSearchBound = true;
-
+    if (searchInput) {
       let timer;
       searchInput.addEventListener("input", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
           this.query = searchInput.value;
-          this.refreshContent(false);
-        }, 160);
+          this.page = 1;
+          this.refreshContent();
+        }, 300);
       });
     }
   }
-
-  destroy() {}
 }
 
 class Artists {
   constructor(ui) {
     this.ui = ui;
-    this.tabsScrollHandler = null;
-    this.tabsRaf = null;
-    this.pinned = false;
+    this.page = 1;
+    this.limit = 20;
   }
 
   render() {
     this.bindWhenReady();
-    return `
-      <div class="artist-page" data-page="artist">
-        <div class="artist-shell">
-          <div class="artist-loading" style="padding: 4rem 1rem; text-align: center; opacity: 0.7;">Loading artist…</div>
-        </div>
-      </div>
-    `;
-  }
-
-  renderFull(artist, activeAlbum) {
-    const similarIds = artist.similar || [];
-    const rows = [similarIds.slice(0, 4), similarIds.slice(4, 8), similarIds.slice(8, 12)];
-
-    return `
-      ${this.renderHeader(artist)}
-      <div class="albumTabsSentinel" aria-hidden="true"></div>
-      ${this.renderAlbumTabs(artist, activeAlbum)}
-      <div class="artist-heroBody">
-        <div class="hero-stage">
-          <div class="hero-left">${this.renderHeroCover(artist, activeAlbum)}${this.renderMetaSummary(artist, activeAlbum)}</div>
-          <div class="hero-right">${this.renderSongsList(artist, activeAlbum)}</div>
-        </div>
-      </div>
-      ${similarIds.length ? this.renderSimilarMarquee(rows, artist.id) : ""}
-    `;
-  }
-
-  renderHeader(artist) {
-    const isFav = this.ui.favorites.isArtist(artist.id);
-
-    return `
-      <header class="artist-header">
-        <div class="artist-header-left"><span class="artist-header-kicker">Artist</span><h1 class="artist-name">${Utils.esc(artist.artist)}</h1></div>
-        <button type="button" class="artist-heart ${isFav ? "favorited" : ""}" data-artist-heart="${Utils.esc(artist.id)}" aria-label="Favorite artist">${this.ui.likeStatus("artist", isFav, false, null)}</button>
-      </header>
-    `;
-  }
-
-  renderAlbumTabs(artist, activeAlbum) {
-    return `
-      <nav class="albumTabsBar" data-area="albums" aria-label="Albums">
-        <div class="albumTabs-scroll">
-          ${(artist.albums || [])
-            .map(
-              (album) =>
-                `<button type="button" class="albumTab ${album.id === activeAlbum.id ? "active" : ""}" data-artist-id="${Utils.esc(artist.id)}" data-album-id="${Utils.esc(album.id)}" aria-pressed="${album.id === activeAlbum.id}">${Utils.esc(album.title || album.album)}</button>`
-            )
-            .join("")}
-        </div>
-      </nav>
-    `;
-  }
-
-  renderHeroCover(artist, activeAlbum) {
-    return `
-      <div class="hero-cover">
-        <img src="${Utils.esc(activeAlbum.coverUrl)}" alt="${Utils.esc(activeAlbum.album)}" loading="eager">
-        <div class="hero-scrim"></div>
-        <div class="hero-overlay">
-          <div class="album-meta"><h2 class="album-title">${Utils.esc(activeAlbum.album)}</h2><span class="track-count">${activeAlbum.songs.length} track${activeAlbum.songs.length === 1 ? "" : "s"}</span></div>
-          <button type="button" class="play-all" data-play-album='${JSON.stringify({ artistId: artist.id, albumId: activeAlbum.id })}' aria-label="Shuffle album">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/><polygon points="10,7 17,12 10,17" fill="currentColor"/></svg>
-            <span class="shuffle-text">Shuffle</span>
-          </button>
-        </div>
-      </div>
-    `;
-  }
-
-  renderMetaSummary(artist, activeAlbum) {
-    const isAlbumFav = this.ui.favorites.isAlbum(activeAlbum.id);
-
-    return `
-      <div data-area="meta-summary" class="hero-meta">
-        <div data-list="editorial-brief" class="bento-meta-node">
-          <div class="brief-wrapper"><span class="brief-mono">${Utils.esc(activeAlbum.year || "2024")}</span><span class="brief-heading">${Utils.esc(activeAlbum.sold || "Double Platinum")}</span></div>
-          <a href="#" class="brief-anchor" id="bento-album-share" data-album-title="${Utils.esc(activeAlbum.album)}">Share this album</a>
-        </div>
-        <div data-list="utility-hub" class="bento-meta-node">
-          <button type="button" class="hub-pill-btn" id="bento-offline-toggle" data-album-id="${Utils.esc(activeAlbum.id)}"><span class="hub-btn-txt">Listen Offline</span></button>
-          <div class="hub-group">
-            <h5 class="hub-group-title">Add to library</h5>
-            <div class="hub-links">
-              <a href="#" class="hub-link-item" data-action="add-album-to-playlist" data-album-id="${Utils.esc(activeAlbum.id)}">Playlist</a>
-              <a href="#" class="hub-link-item" data-action="add-album-to-queue" data-album-id="${Utils.esc(activeAlbum.id)}">Queue</a>
-              <a href="#" class="hub-link-item" data-action="toggle-favorite-album" data-album-id="${Utils.esc(activeAlbum.id)}">${isAlbumFav ? "Remove Favorite" : "Favorites"}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  renderSongsList(artist, activeAlbum) {
-    return `<div data-list="songs" data-type="album" class="hero-songs"><div id="songsList" class="body">${activeAlbum.songs.map((song, i) => this.createSongRow(song, i, artist, activeAlbum)).join("")}</div></div>`;
-  }
-
-  createSongRow(song, index, artist, album) {
-    const isFav = this.ui.favorites.isSong(song.id);
-    const isPlaying = this.ui.state.currentSong?.id == song.id;
-
-    return `
-      <div class="songItem ${isPlaying ? "playing" : ""}" data-song-id="${Utils.esc(song.id)}" data-context='${JSON.stringify({ artistId: artist.id, albumId: album.id })}'>
-        <div class="left">
-          <div class="trackNum">${index + 1}</div>
-          <div class="play"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/><polygon points="10,7 17,12 10,17" fill="currentColor"/></svg></div>
-        </div>
-        <div class="center"><div class="title"><span>${Utils.esc(song.title)}</span></div></div>
-        <div class="right">
-          <div class="time">${Utils.esc(song.duration || "")}</div>
-          <button type="button" class="heart ${isFav ? "favorited" : ""}" data-fav-song="${Utils.esc(song.id)}" aria-label="Favorite song">${this.ui.likeStatus("song", isFav, false, null)}</button>
-          <button type="button" class="downloadBtn" data-action="download-song" data-song-id="${Utils.esc(song.id)}" data-song-title="${Utils.esc(song.title)}" data-song-thumbnail="${Utils.esc(album.coverUrl)}" aria-label="Download song"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
-          <button type="button" class="moreMenu" data-more-song="${Utils.esc(song.id)}" aria-label="More options">${Icons.general.moreVert(18)}</button>
-        </div>
-      </div>
-    `;
-  }
-
-  renderSimilarMarquee(rows, artistId) {
-    const configs = [
-      ["left", 40],
-      ["right", 45],
-      ["left", 35],
-    ];
-
-    const renderPill = (entry) => {
-      const value = typeof entry === "string" ? entry : String(entry);
-      const label = Utils.esc(value);
-      return `
-        <span class="artist-name-pill animate-fadeIn"
-              data-artist-id="${Utils.esc(value)}"
-              data-artist-name="${label}">
-              ${label}
-        </span>`;
-    };
-
-    const marquee = (artists, direction, duration) => `
-      <div class="marquee-container">
-        <div class="marquee-track marquee-${direction}" style="animation-duration: ${duration}s;">
-          ${[...artists, ...artists].map(renderPill).join("")}
-        </div>
-      </div>
-    `;
-
-    return `
-      <div data-area="similar" class="similar-artists-section">
-        <h5 class="similar-artists-title">Listen to similar Artists</h5>
-        ${rows.map((row, i) => (row.length ? marquee(row, ...configs[i]) : "")).join("")}
-      </div>
-    `;
+    return `<div class="artist-page" data-page="artist"><div class="artist-shell"><div class="artist-loading">Loading...</div></div></div>`;
   }
 
   async bindWhenReady(attempts = 0) {
@@ -1278,177 +639,67 @@ class Artists {
       if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
       return;
     }
-
     const shell = root.querySelector(".artist-shell");
     if (!shell) return;
 
-    const state = this.ui.state;
-    const artistId = state.artistId;
-    if (!artistId) {
-      shell.innerHTML = `<div class="artist-missing">Artist not found</div>`;
-      return;
-    }
+    const artistId = this.ui.state.artistId;
+    if (!artistId) { shell.innerHTML = `<div class="artist-missing">Artist not found</div>`; return; }
 
     const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
-    if (!artist) {
-      shell.innerHTML = `<div class="artist-missing">Artist not found</div>`;
-      return;
-    }
+    if (!artist) { shell.innerHTML = `<div class="artist-missing">Artist not found</div>`; return; }
 
-    let albumId = state.selectedAlbumId;
+    let albumId = this.ui.state.selectedAlbumId;
     if (!albumId && artist.albums?.length) albumId = artist.albums[0].id;
-    if (!albumId) {
-      shell.innerHTML = `<div class="artist-missing">Album not found</div>`;
-      return;
-    }
-
-    const album = await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null);
-    if (!album) {
-      shell.innerHTML = `<div class="artist-missing">Album not found</div>`;
-      return;
-    }
-
-    state.selectedAlbumId = albumId;
-    state.selectedAlbumName = album.album;
+    
+    const album = albumId ? await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null) : null;
+    if (!album) { shell.innerHTML = `<div class="artist-missing">Album not found</div>`; return; }
 
     shell.innerHTML = this.renderFull(artist, album);
     this.afterRender();
-    this.ui.router.updateTitle();
     this.ui.events.attachContentEvents();
   }
 
+  renderFull(artist, album) {
+    return `
+      <header class="artist-header">
+        <h1 class="artist-name">${Utils.esc(artist.artist)}</h1>
+      </header>
+      <div class="artist-heroBody">
+        <div class="hero-stage">
+          <div class="hero-left">
+            <div class="hero-cover">
+              <img src="${Utils.esc(album.coverUrl)}" alt="">
+              <h2 class="album-title">${Utils.esc(album.album)}</h2>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div data-list="songs" class="hero-songs">
+              <div class="body">
+                ${album.songs.map((song, i) => this.createSongRow(song, i, artist, album)).join("")}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  createSongRow(song, index, artist, album) {
+    const isFav = this.ui.favorites.isSong(song.id);
+    return `
+      <div class="songItem" data-song-id="${Utils.esc(song.id)}" data-context='${JSON.stringify({ artistId: artist.id, albumId: album.id })}'>
+        <div class="left"><div class="trackNum">${index + 1}</div></div>
+        <div class="center"><div class="title"><span>${Utils.esc(song.title)}</span></div></div>
+        <div class="right">
+          <div class="time">${Utils.esc(song.duration || "")}</div>
+          <button type="button" class="heart ${isFav ? "favorited" : ""}" data-fav-song="${Utils.esc(song.id)}">${this.ui.likeStatus("song", isFav, false, null)}</button>
+        </div>
+      </div>
+    `;
+  }
+
   afterRender() {
-    this.watchAlbumTabsPin();
-    this.bindAlbumTabsClick();
-    this.bindSimilarPills();
-  }
-
-  bindSimilarPills() {
-    const root = this.getRoot();
-    if (!root || root.similarBound) return;
-    root.similarBound = true;
-
-    root.addEventListener("click", (e) => {
-      const pill = e.target.closest(".artist-name-pill[data-artist-id]");
-      if (!pill) return;
-      const artistId = pill.dataset.artistId;
-      if (!artistId) return;
-
-      const spinner = new Spinner({
-        container: pill,
-        blur: 8,
-        dim: 0.4,
-        size: 18,
-        minDuration: 250,
-        delay: 60,
-      });
-      spinner.show();
-
-      setTimeout(() => {
-        window.uiManager?.events?.showArtistPopover(artistId, e);
-        spinner.hide();
-        setTimeout(() => spinner.remove(), 300);
-      }, window.uiManager?.popoverDelay || 400);
-    });
-  }
-
-  bindAlbumTabsClick() {
-    const root = this.getRoot();
-    if (!root) return;
-
-    const bar = root.querySelector(".albumTabsBar");
-    if (!bar || bar.bound) return;
-    bar.bound = true;
-
-    bar.addEventListener("click", (e) => {
-      const tab = e.target.closest(".albumTab");
-      if (!tab) return;
-
-      const artistId = tab.dataset.artistId;
-      const albumId = tab.dataset.albumId;
-      if (!artistId || !albumId) return;
-
-      bar.querySelectorAll(".albumTab.active").forEach((t) => {
-        t.classList.remove("active");
-        t.setAttribute("aria-pressed", "false");
-      });
-      tab.classList.add("active");
-      tab.setAttribute("aria-pressed", "true");
-
-      try {
-        window.uiManager?.router?.switchAlbum(artistId, albumId);
-      } catch (err) {
-        console.warn("[Artists] Album switch failed:", err);
-        return;
-      }
-
-      setTimeout(() => {
-        this.watchAlbumTabsPin();
-        this.scrollHeroIntoView();
-      }, 40);
-    });
-  }
-
-  scrollHeroIntoView() {
-    const root = this.getRoot();
-    if (!root) return;
-
-    const sentinel = root.querySelector(".albumTabsSentinel");
-    if (!sentinel) return;
-
-    const pinTop = 56;
-    const rect = sentinel.getBoundingClientRect();
-    const sentinelBottomPage = rect.bottom + window.scrollY;
-    const targetY = Math.max(0, sentinelBottomPage - pinTop + 2);
-
-    window.scrollTo({ top: targetY, behavior: "smooth" });
-  }
-
-  watchAlbumTabsPin() {
-    const root = this.getRoot();
-    if (!root) return;
-
-    if (this.tabsScrollHandler) {
-      window.removeEventListener("scroll", this.tabsScrollHandler, true);
-      this.tabsScrollHandler = null;
-    }
-    if (this.tabsRaf) {
-      cancelAnimationFrame(this.tabsRaf);
-      this.tabsRaf = null;
-    }
-
-    const bar = root.querySelector(".albumTabsBar");
-    const sentinel = root.querySelector(".albumTabsSentinel");
-    if (!bar || !sentinel) return;
-
-    const pinTop = 56;
-
-    const compute = () => {
-      this.tabsRaf = null;
-      if (!bar.isConnected || !sentinel.isConnected) return;
-
-      const sRect = sentinel.getBoundingClientRect();
-      const pinned = sRect.bottom <= pinTop + 0.5;
-      if (pinned !== this.pinned) {
-        this.pinned = pinned;
-        bar.classList.toggle("is-pinned", pinned);
-      }
-    };
-
-    this.tabsScrollHandler = () => {
-      if (this.tabsRaf) return;
-      this.tabsRaf = requestAnimationFrame(compute);
-    };
-
-    this.pinned = false;
-    bar.classList.remove("is-pinned");
-    compute();
-
-    window.addEventListener("scroll", this.tabsScrollHandler, { passive: true, capture: true });
-  }
-
-  getRoot() {
-    return document.querySelector('[data-page="artist"]');
+    this.ui.router.updateTitle();
   }
 }
 
@@ -2169,3 +1420,31 @@ window.Playlists = Playlists;
 window.CreatePlaylist = CreatePlaylist;
 window.EditPlaylist = EditPlaylist;
 window.Error404 = Error404;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    William Cole Hanson
+//   Chevrolay@Outlook.com
+//      m.me/Chevrolay
