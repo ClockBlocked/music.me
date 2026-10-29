@@ -125,6 +125,20 @@ class UIManager {
     };
   }
 
+  artistNameTooltip(artistId, displayText = null) {
+    const artist = this.state.getArtistById(artistId);
+    if (!artist) return displayText || "Unknown";
+    const name = artist.artist;
+    const text = displayText || name;
+    return `
+    <div class="tooltip-wrapper" tabindex="0" role="button">
+      <span class="text">${text}
+        <span class="popup" role="tooltip" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}')">View Artist</span>
+      </span>
+    </div>
+    `;
+  }
+
   renderScrollSection(title, cards) {
     return `<section data-area="scroll" class="section container"><h2 class="section-header">${title}</h2><div class="scroll-row">${cards.join("")}</div></section>`;
   }
@@ -191,7 +205,7 @@ class UIManager {
           <img src="${song.coverUrl}" class="cover">
           <div class="info">
             <p class="title">${song.title}</p>
-            <p class="sub">${this.renderArtistTooltip(artistId)} • <span class="album-link" data-artist-id="${artistId}" data-album-id="${albumId}" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}', '${albumId}')">${song.album}</span></p>
+            <p class="sub">${this.artistNameTooltip(artistId)} • <span class="album-link" data-artist-id="${artistId}" data-album-id="${albumId}" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}', '${albumId}')">${song.album}</span></p>
           </div>
         </button>
         <button class="downloadBtn" data-action="download-song" data-song-id="${song.id}" data-song-title="${song.title}" data-song-thumbnail="${song.coverUrl}" title="Download">
@@ -200,20 +214,6 @@ class UIManager {
         ${showDuration ? `<span class="time">${song.duration}</span>` : ""}
         <button class="heart ${this.favorites.isSong(song.id) ? "favorited" : ""}" data-fav-song="${song.id}">${this.likeStatus("song", this.favorites.isSong(song.id), false, null)}</button>
       </div>
-    `;
-  }
-
-  renderArtistTooltip(artistId, displayText = null) {
-    const artist = this.state.getArtistById(artistId);
-    if (!artist) return displayText || "Unknown";
-    const name = artist.artist;
-    const text = displayText || name;
-    return `
-    <div class="tooltip-wrapper" tabindex="0" role="button">
-      <span class="text">${text}
-        <span class="popup" role="tooltip" onclick="event.stopPropagation(); window.uiManager.navigate('artist', '${artistId}')">View Artist</span>
-      </span>
-    </div>
     `;
   }
 
@@ -431,6 +431,7 @@ class UIManager {
     return isHovered ? `<i class="fa-solid fa-heart-circle-plus hover-not-liked-icon"></i>` : `<i class="fa-solid fa-heart not-liked-icon"></i>`;
   }
 }
+
 
 class GlobalListeners {
   static globalHandlers(ui) {
