@@ -2,6 +2,7 @@
 
 
 
+
 class Home {
   constructor(ui) {
     this.ui = ui;
@@ -173,33 +174,7 @@ class Home {
     `;
   }
 
-  renderMostPlayed() {
-    const mostPlayed = this.ui.state.getMostPlayed ? this.ui.state.getMostPlayed(5) : [];
-    if (!mostPlayed.length) return "";
-
-    return `
-      <section class="home-section">
-        <div class="section-head">
-          <span class="section-kicker">TOP TRACKS</span>
-          <h2 class="section-title">Most Played</h2>
-        </div>
-        <div class="recent-list">
-          ${mostPlayed.map((song, i) => `
-            <div class="recent-row" data-song-id="${this.esc(song.id)}">
-              <span class="rank-num">${i + 1}</span>
-              <div class="recent-art"><img src="${this.esc(song.coverUrl)}" alt="" loading="lazy"></div>
-              <div class="recent-info">
-                <span class="recent-song">${this.esc(song.title)}</span>
-                <span class="recent-artist">${this.esc(song.artist)}</span>
-              </div>
-            </div>
-          `).join("")}
-        </div>
-      </section>
-    `;
-  }
-
-  renderDiscover() {
+  renderTopArtists() {
     const artists = window.MusicStore?.index || [];
     if (!artists.length) return "";
     
@@ -209,7 +184,7 @@ class Home {
       <section class="home-section">
         <div class="section-head">
           <span class="section-kicker">EXPLORE</span>
-          <h2 class="section-title">Discover Artists</h2>
+          <h2 class="section-title">Top Artists</h2>
         </div>
         <div class="h-scroll">
           ${picks.map(a => `
@@ -262,40 +237,10 @@ class Home {
       <section class="home-section">
         <div class="section-head">
           <span class="section-kicker">VIBES</span>
-          <h2 class="section-title">Browse by Genre</h2>
+          <h2 class="section-title">Top Genre</h2>
         </div>
         <div class="genre-pills">
           ${[...genres].slice(0, 10).map(g => `<button class="genre-pill" data-genre="${this.esc(g)}">${this.esc(g)}</button>`).join("")}
-        </div>
-      </section>
-    `;
-  }
-
-  renderLibraryLinks() {
-    const stats = this.getStats();
-    return `
-      <section class="home-section">
-        <div class="section-head">
-          <span class="section-kicker">YOUR MUSIC</span>
-          <h2 class="section-title">Your Library</h2>
-        </div>
-        <div class="collections-list">
-          <button type="button" class="collections-item" data-nav="library">
-            <div class="collections-icon"><i class="fa-solid fa-record-vinyl"></i></div>
-            <div class="collections-text">
-              <span class="collections-name">Albums</span>
-              <span class="collections-sub">${stats.albums} saved records</span>
-            </div>
-            <i class="fa-solid fa-chevron-right collections-arrow"></i>
-          </button>
-          <button type="button" class="collections-item" data-nav="favorites">
-            <div class="collections-icon"><i class="fa-regular fa-heart"></i></div>
-            <div class="collections-text">
-              <span class="collections-name">Favorite artists</span>
-              <span class="collections-sub">The voices you keep close</span>
-            </div>
-            <i class="fa-solid fa-chevron-right collections-arrow"></i>
-          </button>
         </div>
       </section>
     `;
@@ -308,11 +253,9 @@ class Home {
           ${this.renderHeader()}
           <div data-area="featured">${this.renderFeaturedAlbum()}</div>
           ${this.renderRecentlyPlayed()}
-          ${this.renderMostPlayed()}
-          ${this.renderDiscover()}
+          ${this.renderTopArtists()}
           ${this.renderCollections()}
           ${this.renderGenres()}
-          ${this.renderLibraryLinks()}
         </div>
       </div>
     `;
@@ -400,6 +343,10 @@ class Home {
     return this.ui.state.currentPage === "home" && !!this.getRoot();
   }
 }
+
+
+
+
 
 class Library {
   constructor(ui) {
@@ -702,6 +649,10 @@ class Artists {
     this.ui.router.updateTitle();
   }
 }
+
+
+
+
 
 class Favorites {
   constructor(ui) {
@@ -1193,6 +1144,10 @@ class Playlists {
   }
 }
 
+
+
+
+
 class CreatePlaylist {
   constructor(ui) {
     this.ui = ui;
@@ -1293,6 +1248,10 @@ class CreatePlaylist {
   }
 }
 
+
+
+
+
 class EditPlaylist {
   constructor(ui) {
     this.ui = ui;
@@ -1389,6 +1348,10 @@ class EditPlaylist {
   }
 }
 
+
+
+
+
 class Error404 {
   constructor(ui) {
     this.ui = ui;
@@ -1411,6 +1374,10 @@ class Error404 {
     `;
   }
 }
+
+
+
+
 
 window.Home = Home;
 window.Library = Library;
