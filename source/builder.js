@@ -1426,35 +1426,32 @@ class Search {
     this.lastQueue = null;
   }
 
-  async refresh() {
-    if (!this.ui.state.isSearchOpen) return;
-    const query = (this.ui.state.searchQuery || "").trim();
-    const el = this.resultsHost();
-    if (!el) return;
-    if (!query) {
-      this.clear();
-      return;
-    }
-
-    el.className = "srResults";
-    el.innerHTML = `<div class="srEmpty"><span class="srEmptyIcon">${Icons.general.search(26)}</span><p class="srEmptyTitle">Searching…</p></div>`;
-
-    if (!this.allSongsPromise) {
-      this.allSongsPromise = window.MusicStore.loadAllSongs().catch(() => null);
-    }
-    await this.allSongsPromise;
-
-    if (!this.ui.state.isSearchOpen) return;
-    if (!(this.ui.state.searchQuery || "").trim()) {
-      this.clear();
-      return;
-    }
-
-    el.innerHTML = this.renderResults();
-    this.activeIndex = -1;
-    this.bindResults(el);
+async refresh() {
+  if (!this.ui.state.isSearchOpen) return;
+  const query = (this.ui.state.searchQuery || "").trim();
+  const el = this.resultsHost();
+  if (!el) return;
+  if (!query) {
+    this.clear();
+    return;
   }
 
+  el.className = "srResults";
+  el.innerHTML = `<div class="srEmpty"><span class="srEmptyIcon">${Icons.general.search(26)}</span><p class="srEmptyTitle">Searching…</p></div>`;
+
+  // REMOVED: window.MusicStore.loadAllSongs()
+  // Removed globally for a more efficient approach
+  
+  if (!this.ui.state.isSearchOpen) return;
+  if (!(this.ui.state.searchQuery || "").trim()) {
+    this.clear();
+    return;
+  }
+
+  el.innerHTML = this.renderResults();
+  this.activeIndex = -1;
+  this.bindResults(el);
+}
   escape(text) {
     return Utils.esc(text == null ? "" : String(text));
   }
