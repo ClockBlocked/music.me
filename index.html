@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -569,8 +571,93 @@
 
 </head>
 
-<body>
 
+
+
+<body>
+  <div class="app-shell">
+    
+    <!-- Mobile Top Nav -->
+    <nav class="mobile-nav">
+      <div class="links">
+        <button class="link active" data-nav="home">Discover</button>
+        <button class="link" data-nav="library">Library</button>
+        <button class="link" data-nav="favorites">Favorites</button>
+        <button class="link" data-nav="playlists">Collections</button>
+      </div>
+      <div class="mobile-actions">
+        <button id="open-search" class="btn" title="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+        </button>
+        <button data-action="settings" class="btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Desktop Sidebar -->
+    <aside class="desktop-sidebar">
+      <div class="logo">
+        <div class="icon"><i class="fa-solid fa-waveform"></i></div>
+        <span class="text">MyBeats™</span>
+      </div>
+      <div class="links">
+        <button class="link active" data-nav="home"><i class="fa-solid fa-compass"></i> Discover</button>
+        <button class="link" data-nav="library"><i class="fa-solid fa-music"></i> Library</button>
+        <button class="link" data-nav="favorites"><i class="fa-solid fa-heart"></i> Favorites</button>
+        <button class="link" data-nav="playlists"><i class="fa-solid fa-list"></i> Collections</button>
+      </div>
+      <div class="desktop-sidebar-footer">
+        <button data-action="settings" class="btn"><i class="fa-solid fa-gear"></i> Settings</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-scroll-area wrapper"></main>
+
+    <!-- Desktop Right Sidebar (Queue) -->
+    <aside class="desktop-right-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-header">
+          <h3>Up Next</h3>
+          <button class="icon-btn" id="desktop-queue-clear"><i class="fa-solid fa-trash"></i></button>
+        </div>
+        <div id="desktop-queue-list" class="sidebar-queue-list"></div>
+      </div>
+    </aside>
+    
+  </div>
+
+  <!-- Overlays & Player -->
+  <div id="search-bar" class="hidden" data-overlay="search">
+    <div class="overlay" id="search-overlay"></div>
+    <div class="panel">
+      <div class="head">
+        <div class="field">
+          <input type="text" id="search-input" placeholder="Search songs, artists, albums..." autocomplete="off" />
+          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
+          <button class="close" id="close-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" /></svg></button>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div id="search-results-container" class="results hidden"></div>
+    </div>
+  </div>
+
+  <div id="player-bar-container"></div>
+  <div data-overlay="drawer" id="player-drawer-overlay"></div>
+  <div id="full-player-drawer"></div>
+  <div data-overlay="modal" id="modal-overlay"></div>
+  <div class="modal" id="modal"></div>
+  <div data-overlay="toast" id="toast"></div>
+
+  <audio id="global-audio" preload="none" crossorigin="anonymous"></audio>
+
+
+
+
+<!--
+<body>
   <nav data-navbar="site">
     <div class="wrap">
 
@@ -681,7 +768,10 @@
     <div data-overlay="toast" id="toast"></div>
 
     <audio id="global-audio" preload="none" crossorigin="anonymous"></audio>
+--->
 
+
+  
     <script src="https://clockblocked.github.io/music.me/pwa.js"></script>
 
     <script>
