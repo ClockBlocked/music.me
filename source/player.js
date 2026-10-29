@@ -716,6 +716,7 @@ class MediaSessionManager {
   }
 }
 
+
 class PlayerManager {
   constructor(ui) {
     this.ui = ui;
@@ -753,6 +754,7 @@ class PlayerManager {
       this.renderMiniPlayer();
       if (this.ui.state.isDrawerOpen) this.renderFullPlayer();
       this.updateProgressOnly();
+      this.renderQueueList();
     });
 
     ap.on("error", () => {
@@ -765,6 +767,7 @@ class PlayerManager {
     this.setPlayingUI(!!this.ui.state.isPlaying);
     this.updateProgressOnly();
     if (this.ui.state.isPlaying) this.startProgressLoop();
+    this.renderQueueList();
   }
 
   startProgressLoop() {
@@ -875,7 +878,6 @@ class PlayerManager {
 
     this.ui.state.isDrawerOpen = false;
     this.ui.state.isQueueOpen = false;
-    this.ui.state.isLyricsOpen = false;
 
     document.getElementById("player-drawer-overlay").classList.remove("open");
 
@@ -1016,6 +1018,9 @@ class PlayerManager {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="3"/><polygon points="10,9 16,12 10,15" fill="currentColor" stroke="none"/><path d="M16 10l5-3v10l-5-3"/></svg>
             </button>
             <button class="speed-btn" id="speed-btn" ${disabledAttr}>${state.playbackRate}x</button>
+            <button class="control-btn" id="queue-btn" aria-label="Queue" title="Up Next Queue" ${disabledAttr}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
             <button class="control-btn" id="sleep-btn" aria-label="Sleep Timer" ${disabledAttr}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </button>
@@ -1052,9 +1057,6 @@ class PlayerManager {
             </div>
           </div>
           <div class="queue-list scroll-contain" id="queue-list"></div>
-        </div>
-        <div class="lyrics-overlay ${state.isLyricsOpen ? "visible" : ""}" id="lyrics-overlay">
-          <div class="lyrics-text"><p>Lyrics will appear here</p><p class="hint">Tap anywhere to close</p></div>
         </div>
       </div>
     `
@@ -1139,11 +1141,11 @@ class PlayerManager {
         ?.addEventListener("click", () => this.ui.audioPlayer.toggleShuffle());
       document.getElementById("share-btn")?.addEventListener("click", () => this.toggleShare());
       document.getElementById("speed-btn")?.addEventListener("click", () => this.cycleSpeed());
+      document.getElementById("queue-btn")?.addEventListener("click", () => this.toggleQueue());
       document.getElementById("sleep-btn")?.addEventListener("click", () => this.toggleSleepTimer());
       document
         .getElementById("album-wrapper")
         ?.addEventListener("click", () => this.ui.audioPlayer.togglePlay());
-      document.getElementById("lyrics-overlay")?.addEventListener("click", () => this.toggleLyrics());
 
       document.getElementById("progress-container")?.addEventListener("click", (e) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -1206,7 +1208,7 @@ class PlayerManager {
       this.attachVideoControls();
     }
 
-    this.ui.contentEvents.attachHeartEvents();
+    this.ui.events.attachHeartEvents();
     this.applyPlaybackErrorState();
     this.updateSleepBadge();
   }
@@ -1389,10 +1391,35 @@ class PlayerManager {
   }
 
   renderQueueList() {
+    const state = this.ui.state;
+    
+    const desktopList = document.getElementById("desktop-queue-list");
+    if (desktopList) {
+      if (!state.queue.length) {
+        desktopList.innerHTML = '<div class="empty" style="color: var(--text-sub); text-align: center; padding: 1rem;">Queue is empty</div>';
+      } else {
+        desktopList.innerHTML = state.queue.map((song, idx) => `
+          <div class="recent-row" data-song-id="${song.id}" style="${idx === state.queueIndex ? 'background: rgba(255,255,255,0.05);' : ''}">
+            <div class="recent-art"><img src="${song.coverUrl || Config.DEFAULT_COVER}" alt=""></div>
+            <div class="recent-info">
+              <span class="recent-song">${song.title}</span>
+              <span class="recent-artist">${song.artist}</span>
+            </div>
+          </div>
+        `).join("");
+        
+        desktopList.querySelectorAll('[data-song-id]').forEach(el => {
+          el.onclick = () => {
+            const idx = state.queue.findIndex(s => s.id === el.dataset.songId);
+            if (idx !== -1) this.ui.audioPlayer.playSong(state.queue[idx], state.queue, true, "queue");
+          };
+        });
+      }
+    }
+
     const list = document.getElementById("queue-list");
     if (!list) return;
 
-    const state = this.ui.state;
     list.innerHTML = "";
 
     if (!state.queue.length) {
@@ -1556,13 +1583,6 @@ class PlayerManager {
   closeQueue() {
     this.ui.state.isQueueOpen = false;
     document.getElementById("queue-modal")?.classList.remove("open");
-  }
-
-  toggleLyrics() {
-    this.ui.state.isLyricsOpen = !this.ui.state.isLyricsOpen;
-    document
-      .getElementById("lyrics-overlay")
-      ?.classList.toggle("visible", this.ui.state.isLyricsOpen);
   }
 
   toggleShare() {
@@ -1863,6 +1883,9 @@ class PlayerManager {
     observer.observe(document.body, { childList: true, subtree: true });
   }
 }
+
+
+
 
 window.AUDIO_CDN_BASE = AUDIO_CDN_BASE;
 window.PlayerState = PlayerState;
