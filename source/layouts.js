@@ -1,14 +1,90 @@
-
-
-
-
-
 class Home {
   constructor(ui) {
     this.ui = ui;
-    this.recentLimit = 10;
-    this.featuredCache = null;
+    this.recentLimit = 15;
+    this.mostPlayedLimit = 3;
+    this.discoverArtistLimit = 5;
+    this.discoverSongsPerArtist = 3;
+    this.genreLimit = 14;
+    this.discoverIndex = 0;
+    this.discoverCache = null;
+    this.focusedGenre = null;
     this.bindLiveUpdates();
+  }
+
+  collectSongs() {
+    return window.pagesActions?.buildSongs() || [];
+  }
+  collectAlbums() {
+    return window.pagesActions?.buildAlbums() || [];
+  }
+  collectGenres() {
+    const index = window.MusicStore?.index || [];
+    const map = new Map();
+    index.forEach((entry) => {
+      const name = (entry.genre || "").trim();
+      if (!name) return;
+      if (!map.has(name)) map.set(name, { name, count: 0, coverUrl: "" });
+      map.get(name).count += 1;
+    });
+    return [...map.values()].sort((a, b) => b.count - a.count);
+  }
+
+  featuredRelease() {
+    return this.featuredCache || null;
+  }
+
+  libraryCounts() {
+    const index = window.MusicStore?.index || [];
+    return {
+      songs: window.MusicStore?.songCache?.size || 0,
+      albums: Array.from(window.MusicStore?.albumCache?.values() || []).filter((a) => !a._discographyOnly).length,
+      artists: index.length,
+      playlists: (this.ui.state.playlists || []).length,
+    };
+  }
+
+  discoverArtists() {
+    return this.discoverCache || [];
+  }
+
+  recentSongs() {
+    const state = this.ui.state;
+    return (state.recentlyPlayed || [])
+      .slice(0, this.recentLimit)
+      .map((song) => state.getSongById(song.id) || song)
+      .filter(Boolean);
+  }
+
+  mostPlayedSongs() {
+    const state = this.ui.state;
+    const songs =
+      typeof state.getMostPlayed === "function" ? state.getMostPlayed(this.mostPlayedLimit) : [];
+    return songs.map((song) => ({
+      song,
+      plays: state.getPlayCount ? state.getPlayCount(song.id) : 0,
+    }));
+  }
+
+  favoritesSummary() {
+    const state = this.ui.state;
+    const songCount = (state.favoriteSongs || []).length;
+    const albumCount = (state.favoriteAlbums || []).length;
+    const artistCount = (state.favoriteArtists || []).length;
+
+    let coverUrl = "";
+    const latestSongId = [...(state.favoriteSongs || [])].pop();
+    const latestSong = latestSongId != null ? state.getSongById(latestSongId) : null;
+
+    if (latestSong?.coverUrl) {
+      coverUrl = latestSong.coverUrl;
+    } else {
+      const latestAlbumId = [...(state.favoriteAlbums || [])].pop();
+      const latestAlbum = latestAlbumId != null ? state.getAlbumById(latestAlbumId) : null;
+      if (latestAlbum?.coverUrl) coverUrl = latestAlbum.coverUrl;
+    }
+
+    return { songCount, albumCount, artistCount, coverUrl };
   }
 
   async load() {
@@ -16,7 +92,13 @@ class Home {
 
     this.loadPromise = (async () => {
       try {
-        await this.loadFeaturedRelease();
+        await Promise.all([
+          this.loadFeaturedRelease(),
+          this.loadDiscoverArtists(),
+          this.prefetchRecentSongs(),
+          this.prefetchMostPlayed(),
+          this.prefetchFavorites(),
+        ]);
       } catch (err) {
         console.error("[Home.load] error:", err);
       } finally {
@@ -27,17 +109,16 @@ class Home {
 
     return this.loadPromise;
   }
-
   async loadFeaturedRelease() {
     if (this.featuredCache) return;
     const index = window.MusicStore?.index || [];
     if (!index.length) return;
 
-    const pick = index[Math.floor(Math.random() * index.length)];
+    const pick = this.shuffle(index)[0];
     const artist = await window.MusicStore.loadArtist(pick.id).catch(() => null);
     if (!artist?.albums?.length) return;
 
-    const albumStub = artist.albums[Math.floor(Math.random() * artist.albums.length)];
+    const albumStub = this.shuffle(artist.albums)[0];
     const album = await window.MusicStore.loadAlbum(artist.id, albumStub.id).catch(() => null);
     if (!album) return;
 
@@ -49,213 +130,556 @@ class Home {
       coverUrl: album.coverUrl,
     };
   }
+  async loadDiscoverArtists() {
+    if (Array.isArray(this.discoverCache) && this.discoverCache.length) return;
+    const index = window.MusicStore?.index || [];
+    if (!index.length) return;
 
-  getStats() {
-    return window.MusicStore?.getStats?.() || { songs: 0, albums: 0, artists: 0, playlists: 0 };
+    const picked = this.shuffle(index).slice(0, this.discoverArtistLimit);
+    const artists = await Promise.all(
+      picked.map((a) => window.MusicStore.loadArtist(a.id).catch(() => null))
+    );
+
+    const loaded = await Promise.all(
+      artists.map(async (artist) => {
+        if (!artist?.albums?.length) return null;
+        const albumStub = this.shuffle(artist.albums)[0];
+        const album = await window.MusicStore.loadAlbum(artist.id, albumStub.id).catch(() => null);
+        if (!album?.songs?.length) return null;
+        return {
+          artistId: artist.id,
+          artistName: artist.artist,
+          genre: artist.genre,
+          imageUrl: artist.imageUrl,
+          songs: this.shuffle(album.songs).slice(0, this.discoverSongsPerArtist),
+        };
+      })
+    );
+
+    this.discoverCache = loaded.filter(Boolean);
+    this.discoverIndex = 0;
+  }
+
+  async prefetchRecentSongs() {
+    const recent = (this.ui.state.recentlyPlayed || []).slice(0, this.recentLimit);
+    if (!recent.length) return;
+
+    const toLoad = new Map();
+    for (const ref of recent) {
+      if (window.MusicStore.songCache.has(String(ref.id))) continue;
+      if (ref.artistId && ref.albumId) {
+        toLoad.set(`${ref.artistId}/${ref.albumId}`, { artistId: ref.artistId, albumId: ref.albumId });
+      }
+    }
+    await Promise.all(
+      Array.from(toLoad.values()).map(({ artistId, albumId }) =>
+        window.MusicStore.loadAlbum(artistId, albumId).catch(() => null)
+      )
+    );
+  }
+  async prefetchMostPlayed() {
+    const entries = this.mostPlayedSongs();
+    if (!entries.length) return;
+
+    const toLoad = new Map();
+    for (const { song } of entries) {
+      if (!song) continue;
+      if (window.MusicStore.songCache.has(String(song.id))) continue;
+      if (song.artistId && song.albumId) {
+        toLoad.set(`${song.artistId}/${song.albumId}`, { artistId: song.artistId, albumId: song.albumId });
+      }
+    }
+    await Promise.all(
+      Array.from(toLoad.values()).map(({ artistId, albumId }) =>
+        window.MusicStore.loadAlbum(artistId, albumId).catch(() => null)
+      )
+    );
+  }
+  async prefetchFavorites() {
+    const state = this.ui.state;
+    const toLoad = new Map();
+    const scan = (arr) => {
+      for (const f of arr || []) {
+        if (
+          typeof f === "object" &&
+          f.artistId &&
+          f.albumId &&
+          !window.MusicStore.songCache.has(String(f.id))
+        ) {
+          toLoad.set(`${f.artistId}/${f.albumId}`, { artistId: f.artistId, albumId: f.albumId });
+        }
+      }
+    };
+    scan(state.favoriteSongs);
+    scan(state.favoriteAlbums);
+    if (!toLoad.size) return;
+
+    await Promise.all(
+      Array.from(toLoad.values()).map(({ artistId, albumId }) =>
+        window.MusicStore.loadAlbum(artistId, albumId).catch(() => null)
+      )
+    );
   }
 
   refreshLoadedCards() {
+    this.replaceCard("releases", this.renderFeaturedRelease(this.featuredRelease()));
+    this.replaceCard("discover", this.renderDiscover(this.ui.state));
+    this.replaceCard("recents", this.renderRecentlyPlayed(this.recentSongs()));
+    this.replaceCard("most-played", this.renderMostPlayed(this.mostPlayedSongs()));
+    this.replaceCard("favorites", this.renderFavoritesCard());
+  }
+
+  replaceCard(cardKey, html) {
     if (!this.isActive()) return;
     const root = this.getRoot();
     if (!root) return;
-    
-    const featuredContainer = root.querySelector('[data-area="featured"]');
-    if (featuredContainer) {
-      featuredContainer.innerHTML = this.renderFeaturedAlbum();
-      this.ui.events.bindAlbumActions(featuredContainer);
+    const grid = root.querySelector(".bentoGrid");
+    if (!grid) return;
+
+    const existing = grid.querySelector(`[data-card="${cardKey}"]`);
+    if (!html) {
+      existing?.remove();
+      return;
     }
+
+    const tpl = document.createElement("template");
+    tpl.innerHTML = html.trim();
+    const fresh = tpl.content.firstElementChild;
+    if (!fresh) return;
+
+    if (existing) {
+      existing.replaceWith(fresh);
+    } else {
+      const order = ["releases", "recents", "most-played", "library", "favorites", "discover", "collections", "genres"];
+      const idx = order.indexOf(cardKey);
+      let inserted = false;
+      for (const child of grid.children) {
+        if (order.indexOf(child.dataset.card) > idx) {
+          grid.insertBefore(fresh, child);
+          inserted = true;
+          break;
+        }
+      }
+      if (!inserted) grid.appendChild(fresh);
+    }
+    this.syncNowPlaying();
+  }
+
+  shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 
   esc(text) {
     return Utils.esc(text);
   }
 
+
+
+////////////////////////////////   Sections Content   /////
+///////////////////////////////////////////////////////////
+// ─ SVGs ──────────── • • •  
+  iconChevronLeft(size = 16) {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
+  iconChevronRight(size = 16) {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
+  iconShuffle(size = 16) {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h2.2c1.1 0 2.1.55 2.7 1.47L10.1 10l2.2 3.53c.6.92 1.6 1.47 2.7 1.47H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15h2.2c1.1 0 2.1-.55 2.7-1.47l.9-1.43" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.1 5H17M15.1 15H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14.4 3.4 16.6 5l-2.2 1.6M14.4 13.4 16.6 15l-2.2 1.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
+  iconDiscover() {
+    return `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><path d="M12.9 7.1 11.4 11.4 7.1 12.9 8.6 8.6z" stroke="rgba(190,140,255,0.82)" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
+  }
+  iconCollections() {
+    return `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="6.5" width="11" height="11" rx="2.6" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><path d="M6 4.4h8.4A3.1 3.1 0 0 1 17.5 7.5V15" stroke="rgba(190,140,255,0.82)" stroke-width="1.2" stroke-linecap="round"/></svg>`;
+  }
+  iconGenres() {
+    return `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><rect x="11.1" y="2.5" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><rect x="2.5" y="11.1" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><rect x="11.1" y="11.1" width="6.4" height="6.4" rx="2" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/></svg>`;
+  }
+
+// ─ Headers ──────────── • • •  
+  renderNote(type) {
+    const color = "rgba(190,140,255,0.85)";
+    if (type === 1) {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="${color}" fill="none" stroke="${color}" stroke-width="1.5"><circle cx="17.9922" cy="15.75" r="3"></circle><circle cx="5.99219" cy="17.75" r="3"></circle><path d="M8.99219 17.75V9.66559M8.99219 9.66559V8.77944C8.99219 7.26371 8.99219 6.50585 9.41578 5.9576C9.83937 5.40936 10.5669 5.22555 12.022 4.85793L16.022 3.84738C18.3099 3.26938 19.4538 2.98038 20.223 3.58727C20.859 4.08907 20.9691 4.99061 20.9882 6.63495M8.99219 9.66559L20.9882 6.63495M20.9922 15.7289V7.76889C20.9922 7.35623 20.9922 6.9793 20.9882 6.63495M20.9882 6.63495L20.9922 6.63394" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+    }
+    if (type === 2) {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="${color}" fill="none" stroke="${color}" stroke-width="1.5"><path d="M7 9.5C7 10.8807 5.88071 12 4.5 12C3.11929 12 2 10.8807 2 9.5C2 8.11929 3.11929 7 4.5 7C5.88071 7 7 8.11929 7 9.5ZM7 9.5V2C7.33333 2.5 7.6 4.6 10 5" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="10.5" cy="19.5" r="2.5"></circle><circle cx="20" cy="18" r="2"></circle><path d="M13 19.5L13 11C13 10.09 13 9.63502 13.2466 9.35248C13.4932 9.06993 13.9938 9.00163 14.9949 8.86504C18.0085 8.45385 20.2013 7.19797 21.3696 6.42937C21.6498 6.24509 21.7898 6.15295 21.8949 6.20961C22 6.26627 22 6.43179 22 6.76283V17.9259" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13 13C17.8 13 21 10.6667 22 10" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+    }
+    if (type === 3) {
+      return `<svg width="24" height="19" viewBox="0 0 24 19" fill="none"><line x1="6" y1="3" x2="6" y2="14.5" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/><line x1="18" y1="1" x2="18" y2="13.5" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/><line x1="6" y1="3" x2="18" y2="1" stroke="${color}" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="6.5" x2="18" y2="4.5" stroke="rgba(190,140,255,0.62)" stroke-width="1.2" stroke-linecap="round"/><ellipse cx="3.4" cy="15" rx="3" ry="2" transform="rotate(-15 3.4 15)" fill="rgba(190,140,255,0.8)"/><ellipse cx="15.4" cy="14" rx="3" ry="2" transform="rotate(-15 15.4 14)" fill="rgba(190,140,255,0.8)"/></svg>`;
+    }
+    if (type === 4) {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="${color}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.49219" cy="17" r="4"></circle><path d="M13.4922 17V3C13.4922 5.76142 15.7308 8 18.4922 8"></path></svg>`;
+    }
+    return "";
+  }
+  renderSectionTitle({ icon, title, notes = [], action = "" }) {
+    return `
+      <div class="section-title-wrap">
+        <span class="section-title-icon" aria-hidden="true">${icon}</span>
+        <h2 class="section-title">${title}</h2>
+        ${notes.length ? `<div class="section-title-notes" aria-hidden="true">${notes.join("")}</div>` : ""}
+        ${action}
+      </div>
+    `;
+  }
+  renderActionButton(action, label) {
+    return `<button type="button" class="cardAction" aria-label="${label}" data-action="${action}">${Icons.general.arrowRight(16)}</button>`;
+  }
+  renderEmpty(text) {
+    return `<div class="hp-empty">${this.esc(text)}</div>`;
+  }
   renderHeader() {
     return `
-      <header class="home-header">
-        <span class="home-kicker">YOUR MUSIC</span>
-        <h1 class="home-title">Music, right where you left it.</h1>
-        <p class="home-desc">Pick up where you left off, find something new, or settle back into your collection.</p>
-        <button type="button" class="home-library-btn" data-nav="library">
-          View your library <i class="fa-solid fa-arrow-right"></i>
-        </button>
+      <header class="pageHeader">
+        <div class="pageHeaderContent">
+          <span class="pageKicker">Your Music</span>
+          <h1 class="pageTitle">Music Library</h1>
+          <p class="pageDescription">Pick up where you left off, discover new releases, and explore your music collection.</p>
+        </div>
+        <button type="button" class="headerAction" data-nav="library">View Library</button>
       </header>
     `;
   }
 
-  renderFeaturedAlbum() {
-    if (!this.featuredCache) return `<div class="featured-card skeleton"></div>`;
+// ─ Discover Sections ──────────── • • •    
+  renderDiscoverSong(song, index) {
+    const isPlaying = String(this.ui.state.currentSong?.id) === String(song.id);
+    const title = this.esc(song.title || "Unknown Title");
+    const album = this.esc(song.album || "");
 
-    const release = this.featuredCache;
-    const isFav = this.ui.favorites.isAlbum(release.albumId);
+    return `
+      <button type="button" class="discoverSong${isPlaying ? " is-playing" : ""}" data-song-id="${this.esc(song.id)}" data-artist-id="${this.esc(song.artistId ?? "")}" data-album-id="${this.esc(song.albumId ?? "")}" aria-label="Play ${title}">
+        <span class="discoverSongIndex" aria-hidden="true">${index + 1}</span>
+        <span class="discoverSongArt" aria-hidden="true"><img src="${this.esc(song.coverUrl || "")}" alt="" loading="lazy"></span>
+        <span class="discoverSongInfo"><span class="discoverSongTitle">${title}</span><span class="discoverSongAlbum">${album}</span></span>
+        <span class="discoverSongPlay" aria-hidden="true">${Icons.player.play(14)}</span>
+      </button>
+    `;
+  }
+  renderDiscoverArtist(artist) {
+    const name = this.esc(artist.artistName);
+    return `
+      <div class="discoverArtist" data-artist-id="${this.esc(artist.artistId)}">
+        <div class="discoverArtistHead">
+          <div class="discoverArtistArt"><img src="${this.esc(artist.imageUrl || "")}" alt="${name}" loading="lazy"></div>
+          <div class="discoverArtistMeta"><span class="discoverArtistName">${name}</span><span class="discoverArtistGenre">${this.esc(artist.genre || "Artist")}</span></div>
+          <button type="button" class="discoverArtistOpen" data-artist-open="${this.esc(artist.artistId)}" aria-label="Open ${name}">${this.iconChevronRight(15)}</button>
+        </div>
+        <div class="discoverSongList">${artist.songs.map((s, i) => this.renderDiscoverSong(s, i)).join("")}</div>
+      </div>
+    `;
+  }
+  renderDiscoverNav(index, total) {
+    return `
+      <div class="discoverNav">
+        <button type="button" class="cardAction" data-discover-refresh aria-label="Shuffle discoveries">${this.iconShuffle(15)}</button>
+        <span class="discoverCounter" data-discover-counter>${index + 1} / ${total}</span>
+        <button type="button" class="cardAction" data-discover-prev aria-label="Previous artist" ${index <= 0 ? "disabled" : ""}>${this.iconChevronLeft(16)}</button>
+        <button type="button" class="cardAction" data-discover-next aria-label="Next artist" ${index >= total - 1 ? "disabled" : ""}>${this.iconChevronRight(16)}</button>
+      </div>
+    `;
+  }
+  renderDiscover() {
+    const artists = this.discoverArtists();
+    if (!artists.length) return "";
+
+    let index = Number.isFinite(this.discoverIndex) ? this.discoverIndex : 0;
+    index = Math.max(0, Math.min(artists.length - 1, index));
+    this.discoverIndex = index;
+
+    return `
+      <article class="musicCard discoverCard" data-card="discover">
+        ${this.renderSectionTitle({
+          icon: this.iconDiscover(),
+          title: "Discover",
+          notes: [this.renderNote(2)],
+          action: this.renderDiscoverNav(index, artists.length),
+        })}
+        <div class="discoverViewport"><div class="discoverTrack" style="transform: translateX(-${index * 100}%)">${artists.map((a) => this.renderDiscoverArtist(a)).join("")}</div></div>
+      </article>
+    `;
+  }
+
+// ─ Genre Shuffling Section ──────────── • • •  
+  renderGenreTile(genre) {
+    const name = this.esc(genre.name);
+    const count = genre.count;
+    return `
+      <button type="button" class="genreTile" data-genre="${name}" aria-label="Genre ${name}">
+        <span class="genreTileArt" aria-hidden="true">${genre.coverUrl ? `<img src="${this.esc(genre.coverUrl)}" alt="" loading="lazy">` : ""}</span>
+        <span class="genreTileBody"><span class="genreTileName">${name}</span><span class="genreTileCount">${count} artist${count === 1 ? "" : "s"}</span></span>
+      </button>
+    `;
+  }
+  renderGenres() {
+    const genres = this.collectGenres().slice(0, this.genreLimit);
+    if (!genres.length) return "";
+
+    const tiles = genres.map((g) => this.renderGenreTile(g)).join("");
+
+    return `
+      <section class="homeGenres" aria-label="Browse by genre">
+        ${this.renderSectionTitle({
+          icon: this.iconGenres(),
+          title: "Genres",
+          notes: [this.renderNote(2), this.renderNote(4)],
+          action: this.renderActionButton("open-library", "Open library"),
+        })}
+        <div class="genreMarquee" data-genre-marquee><div class="genreMarqueeTrack">${tiles}${tiles}</div></div>
+      </section>
+    `;
+  }
+  
+// ─ Collections Section ──────────── • • •  
+  renderCollectionCard(playlist) {
+    const state = this.ui.state;
+    const songs = (playlist.songs || [])
+      .map((id) => (typeof state.getSongById === "function" ? state.getSongById(id) : null))
+      .filter(Boolean);
+    const covers = songs.map((song) => song.coverUrl).filter(Boolean);
+    const uniqueCovers = [...new Set(covers)];
+
+    let art = "";
+    if (uniqueCovers.length >= 4) {
+      art = `<div class="collectionMosaic">${uniqueCovers
+        .slice(0, 4)
+        .map((cover) => `<img src="${this.esc(cover)}" alt="" loading="lazy">`)
+        .join("")}</div>`;
+    } else if (uniqueCovers.length >= 1) {
+      art = `<img src="${this.esc(uniqueCovers[0])}" alt="" loading="lazy">`;
+    } else {
+      art = `<div class="collectionEmpty">${Icons.general.playlistAdd(30)}</div>`;
+    }
+
+    const name = this.esc(playlist.name);
+    const count = songs.length;
+
+    return `
+      <div class="collection-card" data-playlist-id="${this.esc(playlist.id)}" data-playlist-name="${name}" role="button" tabindex="0" aria-label="Open collection ${name}">
+        <div class="imgBx">${art}</div>
+        <div class="content">
+          <div class="contentBx"><h3>${name}<br><span>${count} song${count === 1 ? "" : "s"}</span></h3></div>
+          <ul class="sci">
+            <li style="--i:1"><button type="button" class="icon-btn" data-playlist-play="${this.esc(playlist.id)}" aria-label="Play collection">${Icons.player.play(18)}</button></li>
+            <li style="--i:2"><button type="button" class="icon-btn" data-playlist-shuffle="${this.esc(playlist.id)}" aria-label="Shuffle collection">${this.iconShuffle(18)}</button></li>
+            <li style="--i:3"><button type="button" class="icon-btn" data-playlist-more="${this.esc(playlist.id)}" aria-label="More options">${Icons.general.moreVert(18)}</button></li>
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+  renderCollectionsInner() {
+    const state = this.ui.state;
+    const playlists = (state.playlists || []).filter((p) => p && p.name);
+    if (!playlists.length) {
+      return this.renderEmpty("No collections yet - create a playlist and it will show up here.");
+    }
+    return `<div class="collectionGrid">${playlists.map((pl) => this.renderCollectionCard(pl)).join("")}</div>`;
+  }
+  renderCollections() {
+    return `
+      <article class="musicCard collectionsCard" data-card="collections">
+        ${this.renderSectionTitle({
+          icon: this.iconCollections(),
+          title: "Collections",
+          notes: [this.renderNote(4), this.renderNote(3)],
+          action: this.renderActionButton("open-playlists", "Open all collections"),
+        })}
+        <div class="cardContent" id="homeCollectionsWrap">${this.renderCollectionsInner()}</div>
+      </article>
+    `;
+  }
+
+  renderSongRow(song) {
+    const isFav = this.ui.favorites.isSong(song.id);
+    const isPlaying = String(this.ui.state.currentSong?.id) === String(song.id);
+    const title = this.esc(song.title || "Unknown Title");
+
+    return `
+      <article class="song${isPlaying ? " is-playing" : ""}" data-song-id="${this.esc(song.id)}" data-artist-id="${this.esc(song.artistId ?? "")}" data-album-id="${this.esc(song.albumId ?? "")}">
+        <div class="songArtwork">
+          <img src="${this.esc(song.coverUrl || "")}" alt="${title}" loading="lazy">
+          <button type="button" class="songArtworkOverlay" aria-label="Play ${title}" data-action="play"><span class="playIcon" aria-hidden="true">${Icons.player.play(13)}</span></button>
+        </div>
+        <div class="songInformation">
+          <span class="songArtist">${this.esc(song.artist || "Unknown Artist")}</span>
+          <span class="songTitle">${title}</span>
+          <div class="songMeta"><span class="songAlbum">${this.esc(song.album || "")}</span><span aria-hidden="true">&bull;</span><span class="songDuration">${this.esc(song.duration || "")}</span></div>
+        </div>
+        <div class="songActions">
+          <button type="button" class="songAction favorite${isFav ? " is-favorite favorited" : ""}" aria-label="Favorite song" data-fav-song="${this.esc(song.id)}">${this.ui.likeStatus("song", isFav, false, null)}</button>
+          <button type="button" class="songAction" aria-label="More options" data-more-song="${this.esc(song.id)}">${Icons.general.moreVert(18)}</button>
+        </div>
+      </article>
+    `;
+  }
+
+  renderRankRow(entry, index) {
+    const song = entry.song;
+    const isPlaying = String(this.ui.state.currentSong?.id) === String(song.id);
+    const title = this.esc(song.title || "Unknown Title");
+    const plays = entry.plays;
+
+    return `
+      <article class="rankItem${isPlaying ? " is-playing" : ""}" data-song-id="${this.esc(song.id)}" data-artist-id="${this.esc(song.artistId ?? "")}" data-album-id="${this.esc(song.albumId ?? "")}">
+        <span class="rankNumber">${String(index + 1).padStart(2, "0")}</span>
+        <div class="rankArtwork"><img src="${this.esc(song.coverUrl || "")}" alt="${title}" loading="lazy"></div>
+        <div class="rankInformation"><span class="rankTitle">${title}</span><span class="rankSubtitle">${this.esc(song.artist || "Unknown Artist")}</span></div>
+        <span class="rankCount">${plays} play${plays === 1 ? "" : "s"}</span>
+      </article>
+    `;
+  }
+
+  renderRecentlyPlayed(recent) {
+    return `
+      <article class="musicCard recentlyPlayed" data-card="recents">
+        ${this.renderSectionTitle({
+          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><polygon points="8.5,7 8.5,13.5 14.5,10.25" fill="rgba(190,140,255,0.82)"/></svg>`,
+          title: "Recently Played",
+          notes: [this.renderNote(1), this.renderNote(2)],
+          action: this.renderActionButton("view-recents", "View recently played"),
+        })}
+        <div class="cardContent"><div class="songList" id="recentSongs" aria-label="Recently played songs">${recent.length ? recent.map((s) => this.renderSongRow(s)).join("") : this.renderEmpty("Nothing here yet - play a song and it will appear at the top of this list.")}</div></div>
+      </article>
+    `;
+  }
+
+  renderFeaturedRelease(release) {
+    if (!release) return "";
+
     const playData = this.esc(JSON.stringify({ artistId: release.artistId, albumId: release.albumId }));
 
     return `
-      <div class="featured-card" data-card="featured">
-        <img src="${this.esc(release.coverUrl)}" alt="${this.esc(release.albumName)}" class="featured-bg" loading="eager">
-        <div class="featured-overlay"></div>
-        
-        <div class="featured-top">
-          <span class="featured-badge">FEATURED ALBUM</span>
-          <button type="button" class="featured-heart ${isFav ? "favorited" : ""}" data-action="toggle-favorite-album" data-album-id="${this.esc(release.albumId)}">
-            ${this.ui.likeStatus("album", isFav, false, null)}
-          </button>
-        </div>
-
-        <div class="featured-content">
-          <span class="featured-kicker">A FAMILIAR FAVORITE</span>
-          <h2 class="featured-title">${this.esc(release.albumName)}</h2>
-          <p class="featured-artist">${this.esc(release.artistName)} <span class="dot">·</span> Album</p>
-          
-          <div class="featured-actions">
-            <button type="button" class="btn-primary" data-play-album='${playData}'>
-              <i class="fa-solid fa-play"></i> Play album
-            </button>
-            <button type="button" class="btn-secondary" data-action="toggle-favorite-album" data-album-id="${this.esc(release.albumId)}">
-              <i class="fa-solid fa-plus"></i> ${isFav ? "Remove" : "Add to favorites"}
-            </button>
+      <article class="musicCard releasesCard" data-card="releases" data-artist-id="${this.esc(release.artistId)}" data-album-id="${this.esc(release.albumId)}">
+        ${this.renderSectionTitle({
+          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="2.5" width="15" height="15" rx="3.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><line x1="10" y1="6.5" x2="10" y2="13.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+          title: "New Release",
+          notes: [this.renderNote(3)],
+          action: this.renderActionButton("view-releases", "View all releases"),
+        })}
+        <div class="releaseFeature">
+          <img class="releaseBackground" src="${this.esc(release.coverUrl)}" alt="${this.esc(release.albumName)}">
+          <div class="releaseInfo">
+            <span class="releaseLabel">Featured Album</span>
+            <h3 class="releaseTitle">${this.esc(release.albumName)}</h3>
+            <p class="releaseArtist">${this.esc(release.artistName)}</p>
+            <div class="releaseControls">
+              <button type="button" class="primaryPlay" aria-label="Play album" data-play-album='${playData}'>${Icons.player.play(18)}</button>
+              <button type="button" class="secondaryControl" aria-label="Add album to queue" data-action="add-album-to-queue" data-album-id="${this.esc(release.albumId)}">${Icons.general.plus(18)}</button>
+              <button type="button" class="secondaryControl" aria-label="More album options" data-release-more data-artist-id="${this.esc(release.artistId)}" data-album-id="${this.esc(release.albumId)}">${Icons.general.moreVert(18)}</button>
+            </div>
           </div>
+        </div>
+      </article>
+    `;
+  }
+
+  renderMostPlayed(mostPlayed) {
+    return `
+      <article class="musicCard mostPlayed" data-card="most-played">
+        ${this.renderSectionTitle({
+          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 16.5 C10 16.5 3 11.5 3 7 C3 4.8 4.8 3 7 3 C8.5 3 9.7 3.9 10 5 C10.3 3.9 11.5 3 13 3 C15.2 3 17 4.8 17 7 C17 11.5 10 16.5 10 16.5Z" stroke="rgba(190,140,255,0.82)" stroke-width="1.2" fill="rgba(190,140,255,0.1)"/></svg>`,
+          title: "Most Played",
+          notes: [this.renderNote(1)],
+          action: this.renderActionButton("view-most-played", "View most played"),
+        })}
+        <div class="cardContent"><div class="rankList" id="mostPlayedSongs">${mostPlayed.length ? mostPlayed.map((e, i) => this.renderRankRow(e, i)).join("") : this.renderEmpty("Your most played songs will show up here once you start listening.")}</div></div>
+      </article>
+    `;
+  }
+
+  renderLibraryCard(counts) {
+    const items = [
+      { key: "songs", label: "Songs", count: counts.songs, icon: Icons.general.musicNote(18) },
+      { key: "albums", label: "Albums", count: counts.albums, icon: Icons.general.album(18) },
+      { key: "artists", label: "Artists", count: counts.artists, icon: Icons.general.artist(18) },
+      { key: "playlists", label: "Playlists", count: counts.playlists, icon: Icons.general.playlistAdd(18) },
+    ];
+
+    return `
+      <article class="musicCard libraryCard" data-card="library">
+        ${this.renderSectionTitle({
+          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="2.5" width="15" height="15" rx="3.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><line x1="10" y1="6.5" x2="10" y2="13.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+          title: "Your Library",
+          notes: [],
+          action: this.renderActionButton("open-library", "Open library"),
+        })}
+        <div class="cardContent"><div class="libraryGrid">${items
+          .map(
+            (item) => `
+          <button type="button" class="libraryItem" data-library="${item.key}">
+            <span class="libraryIcon" aria-hidden="true">${item.icon}</span>
+            <span class="libraryName">${item.label}</span>
+            <span class="libraryCount">${item.count} ${item.label.toLowerCase()}</span>
+          </button>`
+          )
+          .join("")}
+        </div></div>
+      </article>
+    `;
+  }
+
+  renderFavoritesInner() {
+    const favorites = this.favoritesSummary();
+    const total = favorites.songCount + favorites.albumCount + favorites.artistCount;
+
+    return `
+      <div class="favoriteHero">
+        ${favorites.coverUrl ? `<img class="favoriteArtwork" src="${this.esc(favorites.coverUrl)}" alt="Favorite album artwork">` : ""}
+        <div class="favoriteInfo">
+          <h3 class="favoriteTitle">Your Favorite Music</h3>
+          <p class="favoriteSubtitle">${
+            total
+              ? `${favorites.songCount} song${favorites.songCount === 1 ? "" : "s"} &bull; ${favorites.albumCount} album${favorites.albumCount === 1 ? "" : "s"} &bull; ${favorites.artistCount} artist${favorites.artistCount === 1 ? "" : "s"}`
+              : "Your most-loved songs and albums."
+          }</p>
         </div>
       </div>
     `;
   }
-
-  renderRecentlyPlayed() {
-    const recent = (this.ui.state.recentlyPlayed || [])
-      .slice(0, this.recentLimit)
-      .map((song) => this.ui.state.getSongById(song.id) || song)
-      .filter(Boolean);
-
-    if (!recent.length) {
-      return `
-        <div class="recent-card" data-card="recent">
-          <div class="recent-header">
-            <div class="recent-heading">
-              <span class="recent-kicker">YOUR LISTENING</span>
-              <h2 class="recent-title">Recently played</h2>
-            </div>
-          </div>
-          <div class="recent-empty">
-            <div class="recent-icon-wrap"><i class="fa-regular fa-clock"></i></div>
-            <h3 class="recent-empty-title">Your next favorite starts here.</h3>
-            <p class="recent-empty-desc">Play an album or track and it will appear in your listening history.</p>
-          </div>
-          <div class="recent-footer">
-            <i class="fa-solid fa-music"></i> Listening history stays in your library
-          </div>
-        </div>
-      `;
-    }
-
+  renderFavoritesCard() {
     return `
-      <div class="recent-card" data-card="recent">
-        <div class="recent-header">
-          <div class="recent-heading">
-            <span class="recent-kicker">YOUR LISTENING</span>
-            <h2 class="recent-title">Recently played</h2>
-          </div>
-          <button type="button" class="recent-history-btn" data-nav="library">History</button>
-        </div>
-        <div class="recent-list">
-          ${recent.map(song => `
-            <div class="recent-row" data-song-id="${this.esc(song.id)}">
-              <div class="recent-art"><img src="${this.esc(song.coverUrl)}" alt="" loading="lazy"></div>
-              <div class="recent-info">
-                <span class="recent-song">${this.esc(song.title)}</span>
-                <span class="recent-artist">${this.esc(song.artist)}</span>
-              </div>
-            </div>
-          `).join("")}
-        </div>
-        <div class="recent-footer">
-          <i class="fa-solid fa-music"></i> Listening history stays in your library
-        </div>
-      </div>
-    `;
-  }
-
-  renderTopArtists() {
-    const artists = window.MusicStore?.index || [];
-    if (!artists.length) return "";
-    
-    const picks = artists.slice(0, 8).map(a => window.MusicStore.artists[String(a.id)] || a).filter(Boolean);
-
-    return `
-      <section class="home-section">
-        <div class="section-head">
-          <span class="section-kicker">EXPLORE</span>
-          <h2 class="section-title">Top Artists</h2>
-        </div>
-        <div class="h-scroll">
-          ${picks.map(a => `
-            <div class="h-card artist-h-card" data-nav="artist" data-artist-id="${this.esc(a.id)}">
-              <div class="h-card-img round"><img src="${this.esc(a.imageUrl || window.MusicStore.portraitUrl(a.portrait) || "")}" alt=""></div>
-              <span class="h-card-title">${this.esc(a.artist)}</span>
-              <span class="h-card-sub">${this.esc(a.genre || "Artist")}</span>
-            </div>
-          `).join("")}
-        </div>
-      </section>
-    `;
-  }
-
-  renderCollections() {
-    const playlists = (this.ui.state.playlists || []).slice(0, 8);
-    if (!playlists.length) return "";
-
-    return `
-      <section class="home-section">
-        <div class="section-head">
-          <span class="section-kicker">MADE PERSONAL</span>
-          <h2 class="section-title">Your Collections</h2>
-          <button class="section-link" data-nav="playlists">See all</button>
-        </div>
-        <div class="h-scroll">
-          ${playlists.map(pl => {
-            const covers = pl.songs.map(id => this.ui.state.getSongById(id)).filter(Boolean).slice(0, 1).map(s => s.coverUrl);
-            return `
-              <div class="h-card playlist-h-card" data-playlist-view="${this.esc(pl.name)}">
-                <div class="h-card-img">
-                  ${covers.length ? `<img src="${this.esc(covers[0])}" alt="">` : `<div class="empty-cover"><i class="fa-solid fa-list-ul"></i></div>`}
-                </div>
-                <span class="h-card-title">${this.esc(pl.name)}</span>
-                <span class="h-card-sub">${pl.songs.length} songs</span>
-              </div>
-            `;
-          }).join("")}
-        </div>
-      </section>
-    `;
-  }
-
-  renderGenres() {
-    const genres = new Set();
-    (window.MusicStore?.index || []).forEach(a => { if (a.genre) genres.add(a.genre); });
-    if (!genres.size) return "";
-
-    return `
-      <section class="home-section">
-        <div class="section-head">
-          <span class="section-kicker">VIBES</span>
-          <h2 class="section-title">Top Genre</h2>
-        </div>
-        <div class="genre-pills">
-          ${[...genres].slice(0, 10).map(g => `<button class="genre-pill" data-genre="${this.esc(g)}">${this.esc(g)}</button>`).join("")}
-        </div>
-      </section>
+      <article class="musicCard favoritesCard" data-card="favorites">
+        ${this.renderSectionTitle({
+          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 16.5 C10 16.5 3 11.5 3 7 C3 4.8 4.8 3 7 3 C8.5 3 9.7 3.9 10 5 C10.3 3.9 11.5 3 13 3 C15.2 3 17 4.8 17 7 C17 11.5 10 16.5 10 16.5Z" stroke="rgba(190,140,255,0.82)" stroke-width="1.2" fill="rgba(190,140,255,0.1)"/></svg>`,
+          title: "Favorites",
+          notes: [this.renderNote(4), this.renderNote(3)],
+          action: this.renderActionButton("view-favorites", "View favorites"),
+        })}
+        <div class="favoriteContent" id="homeFavoritesCard">${this.renderFavoritesInner()}</div>
+      </article>
     `;
   }
 
   render() {
+    this.focusedGenre = null;
+    this.clearCardFocus();
+
+    if (!Array.isArray(this.discoverCache)) this.discoverCache = null;
+
+    const cards = [
+      this.renderFeaturedRelease(this.featuredRelease()),
+      this.renderRecentlyPlayed(this.recentSongs()),
+      this.renderMostPlayed(this.mostPlayedSongs()),
+      this.renderLibraryCard(this.libraryCounts()),
+      this.renderFavoritesCard(),
+      this.renderDiscover(),
+      this.renderCollections(),
+      this.renderGenres(),
+    ].filter(Boolean);
+
     const html = `
       <div data-page="home" class="hp pageSection">
-        <div class="home-container">
+        <div class="container">
           ${this.renderHeader()}
-          <div data-area="featured">${this.renderFeaturedAlbum()}</div>
-          ${this.renderRecentlyPlayed()}
-          ${this.renderTopArtists()}
-          ${this.renderCollections()}
-          ${this.renderGenres()}
+          <section class="bentoGrid" aria-label="Music dashboard">${cards.join("")}</section>
         </div>
       </div>
     `;
@@ -264,6 +688,8 @@ class Home {
     return html;
   }
 
+
+  
   bindWhenReady(attempts = 0) {
     const root = document.querySelector('[data-page="home"].hp');
     if (root) this.bindEvents(root);
@@ -275,72 +701,542 @@ class Home {
   }
 
   bindEvents(root) {
-    if (root.homeBound) return;
-    root.homeBound = true;
+    if (!root.homeCardFocusBound) {
+      root.homeCardFocusBound = true;
 
-    root.addEventListener("click", (e) => {
-      const navBtn = e.target.closest("[data-nav]");
-      if (navBtn) {
-        e.stopPropagation();
-        if (navBtn.dataset.nav === "artist") {
-          this.ui.navigate("artist", navBtn.dataset.artistId);
-        } else {
-          this.ui.navigate(navBtn.dataset.nav);
-        }
-        return;
-      }
+      root.addEventListener("click", (e) => this.handleCardFocus(e), true);
 
-      const plView = e.target.closest("[data-playlist-view]");
-      if (plView) {
-        e.stopPropagation();
-        this.ui.navigate("playlists");
-        setTimeout(() => this.ui.pages.playlists.viewPlaylist(plView.dataset.playlistView), 60);
-        return;
-      }
+      root.addEventListener("focusin", (e) => {
+        const grid = root.querySelector(".bentoGrid");
+        if (!grid) return;
 
-      const genre = e.target.closest("[data-genre]");
-      if (genre) {
-        e.stopPropagation();
-        if (window.pagesActions?.openGenre) window.pagesActions.openGenre(genre.dataset.genre);
-        return;
-      }
+        const card = e.target.closest(".musicCard[data-card]");
+        if (!card || !grid.contains(card)) return;
 
-      const row = e.target.closest(".recent-row[data-song-id]");
-      if (row) {
-        e.stopPropagation();
-        const song = this.ui.state.getSongById(row.dataset.songId);
-        if (song) this.ui.audioPlayer.playSong(song, null, true, "home");
-        return;
-      }
-    });
+        grid.querySelectorAll(".musicCard.is-card-focused").forEach((c) => c.classList.remove("is-card-focused"));
+        card.classList.add("is-card-focused");
+        grid.classList.add("has-card-focus");
+      });
 
+      document.addEventListener(
+        "click",
+        (e) => {
+          if (!root.isConnected) return;
+          if (!root.contains(e.target)) this.clearCardFocus();
+        },
+        true
+      );
+    }
+
+    if (root.homeDelegated) return;
+    root.homeDelegated = true;
+
+    root.addEventListener("click", (e) => this.handleRootClick(e));
+    root.addEventListener("keydown", (e) => this.handleRootKeydown(e));
     this.load();
+  }
+
+  handleRootClick(e) {
+    const ui = this.ui;
+    const state = ui.state;
+
+    if (this.focusedGenre && !e.target.closest(".genreTile[data-genre]")) {
+      this.clearGenreFocus();
+    }
+
+    const overlay = e.target.closest(".songArtworkOverlay");
+    if (overlay) {
+      const row = overlay.closest("[data-song-id]");
+      const song = row && state.getSongById(row.dataset.songId);
+      if (song) {
+        e.stopPropagation();
+        ui.audioPlayer.playSong(song, null, true, "home");
+      }
+      return;
+    }
+
+    const moreBtn = e.target.closest("[data-more-song]");
+    if (moreBtn) {
+      e.stopPropagation();
+      ui.events.showSongMenu(moreBtn.dataset.moreSong, e);
+      return;
+    }
+
+    const albumMore = e.target.closest("[data-album-more]");
+    if (albumMore) {
+      e.stopPropagation();
+      window.contextMenu?.show(e.clientX, e.clientY, {
+        artistId: albumMore.dataset.artistId,
+        albumId: albumMore.dataset.albumId,
+      });
+      return;
+    }
+
+    const artistPlay = e.target.closest("[data-artist-play]");
+    if (artistPlay) {
+      e.stopPropagation();
+      ui.pages.library?.playArtist(artistPlay.dataset.artistPlay);
+      return;
+    }
+
+    const artistOpen = e.target.closest("[data-artist-open]");
+    if (artistOpen) {
+      e.stopPropagation();
+      ui.navigate("artist", artistOpen.dataset.artistOpen);
+      return;
+    }
+
+    const refreshBtn = e.target.closest("[data-discover-refresh]");
+    if (refreshBtn) {
+      e.stopPropagation();
+      this.discoverCache = null;
+      this.discoverIndex = 0;
+      this.rebuildDiscoverCard();
+      return;
+    }
+
+    const prevBtn = e.target.closest("[data-discover-prev]");
+    if (prevBtn) {
+      e.stopPropagation();
+      if (!prevBtn.disabled) this.moveDiscover(-1);
+      return;
+    }
+
+    const nextBtn = e.target.closest("[data-discover-next]");
+    if (nextBtn) {
+      e.stopPropagation();
+      if (!nextBtn.disabled) this.moveDiscover(1);
+      return;
+    }
+
+    const discoverSong = e.target.closest(".discoverSong[data-song-id]");
+    if (discoverSong) {
+      e.stopPropagation();
+      const song = state.getSongById(discoverSong.dataset.songId);
+      if (song) ui.audioPlayer.playSong(song, null, true, "home");
+      return;
+    }
+
+    const genreTile = e.target.closest(".genreTile[data-genre]");
+    if (genreTile) {
+      e.stopPropagation();
+      const name = genreTile.dataset.genre;
+      if (this.focusedGenre !== name) {
+        this.focusedGenre = name;
+        this.syncGenreFocus();
+        return;
+      }
+      this.focusedGenre = null;
+      this.syncGenreFocus();
+      this.openGenre(name);
+      return;
+    }
+
+    const releaseMore = e.target.closest("[data-release-more]");
+    if (releaseMore) {
+      e.stopPropagation();
+      window.contextMenu?.show(e.clientX, e.clientY, {
+        artistId: releaseMore.dataset.artistId,
+        albumId: releaseMore.dataset.albumId,
+      });
+      return;
+    }
+
+    const playlistPlay = e.target.closest("[data-playlist-play]");
+    if (playlistPlay) {
+      e.stopPropagation();
+      const id = playlistPlay.dataset.playlistPlay;
+      const playlist = (state.playlists || []).find((p) => String(p.id) === String(id));
+      const songs = playlist
+        ? (playlist.songs || []).map((sid) => state.getSongById(sid)).filter(Boolean)
+        : [];
+      if (songs.length) ui.audioPlayer.playSong(songs[0], songs, true, "home");
+      return;
+    }
+
+    const playlistShuffle = e.target.closest("[data-playlist-shuffle]");
+    if (playlistShuffle) {
+      e.stopPropagation();
+      const id = playlistShuffle.dataset.playlistShuffle;
+      const playlist = (state.playlists || []).find((p) => String(p.id) === String(id));
+      const songs = playlist
+        ? (playlist.songs || []).map((sid) => state.getSongById(sid)).filter(Boolean)
+        : [];
+      const shuffled = this.shuffle(songs);
+      if (shuffled.length) ui.audioPlayer.playSong(shuffled[0], shuffled, true, "home");
+      return;
+    }
+
+    const playlistMore = e.target.closest("[data-playlist-more]");
+    if (playlistMore) {
+      e.stopPropagation();
+      const id = playlistMore.dataset.playlistMore;
+      if (typeof ui.openMoreMenu === "function") ui.openMoreMenu(e, "playlist", id);
+      else if (typeof ui.pages.playlists?.showMenu === "function") ui.pages.playlists.showMenu(e, id);
+      else if (window.contextMenu?.show) window.contextMenu.show(e.clientX, e.clientY, { playlistId: id });
+      return;
+    }
+
+    const navBtn = e.target.closest("[data-nav], .cardAction[data-action]");
+    if (navBtn) {
+      e.stopPropagation();
+      const dest =
+        navBtn.dataset.nav ||
+        {
+          "view-recents": "library",
+          "view-releases": "library",
+          "view-most-played": "library",
+          "open-library": "library",
+          "view-favorites": "favorites",
+          "open-playlists": "playlists",
+        }[navBtn.dataset.action];
+      if (dest) ui.navigate(dest);
+      return;
+    }
+
+    const libItem = e.target.closest(".libraryItem[data-library]");
+    if (libItem) {
+      e.stopPropagation();
+      ui.navigate(libItem.dataset.library === "playlists" ? "playlists" : "library");
+      return;
+    }
+
+    if (e.target.closest(".favoriteContent")) {
+      e.stopPropagation();
+      ui.navigate("favorites");
+      return;
+    }
+
+    const collCard = e.target.closest(".collection-card[data-playlist-name]");
+    if (collCard) {
+      if (e.target.closest("button")) return;
+      e.stopPropagation();
+      collCard.classList.add("active");
+      const name = collCard.dataset.playlistName;
+      ui.navigate("playlists");
+      setTimeout(() => {
+        try {
+          ui.pages.playlists?.viewPlaylist?.(name);
+        } catch {}
+      }, 60);
+      return;
+    }
+
+    const row = e.target.closest(".song[data-song-id], .rankItem[data-song-id]");
+    if (row) {
+      if (e.target.closest("button")) return;
+      e.stopPropagation();
+      const song = state.getSongById(row.dataset.songId);
+      if (song) ui.audioPlayer.playSong(song, null, true, "home");
+      return;
+    }
+  }
+  handleRootKeydown(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+
+    const collCard = e.target.closest(".collection-card[data-playlist-name]");
+    if (!collCard) return;
+    if (e.target.closest("button")) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const name = collCard.dataset.playlistName;
+    this.ui.navigate("playlists");
+    setTimeout(() => {
+      try {
+        this.ui.pages.playlists?.viewPlaylist?.(name);
+      } catch {}
+    }, 60);
+  }
+
+  hydrateSongRow(row) {
+    const songId = row.dataset.songId;
+
+    const heart = row.querySelector("[data-fav-song]");
+    if (heart) this.ui.events.bindHeartButton(heart, "song", heart.dataset.favSong);
+
+    const more = row.querySelector("[data-more-song]");
+    if (more && !more.homeMoreBound) {
+      more.homeMoreBound = true;
+      more.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.ui.events.showSongMenu(songId, e);
+      });
+    }
+  }
+
+  moveDiscover(delta) {
+    const artists = this.discoverCache || [];
+    if (!artists.length) return;
+
+    const current = Math.max(0, Math.min(artists.length - 1, this.discoverIndex || 0));
+    const next = Math.max(0, Math.min(artists.length - 1, current + delta));
+    if (next === current) return;
+
+    this.discoverIndex = next;
+    this.syncDiscover();
+  }
+
+  syncDiscover() {
+    if (!this.isActive()) return;
+    const root = this.getRoot();
+    if (!root) return;
+
+    const track = root.querySelector(".discoverTrack");
+    if (!track) return;
+
+    const total = track.children.length;
+    if (!total) return;
+
+    const index = Math.max(0, Math.min(total - 1, this.discoverIndex || 0));
+    this.discoverIndex = index;
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    const prev = root.querySelector("[data-discover-prev]");
+    const next = root.querySelector("[data-discover-next]");
+    if (prev) prev.disabled = index <= 0;
+    if (next) next.disabled = index >= total - 1;
+
+    const counter = root.querySelector("[data-discover-counter]");
+    if (counter) counter.textContent = `${index + 1} / ${total}`;
+  }
+
+  rebuildDiscoverCard() {
+    if (!this.isActive()) return;
+    const root = this.getRoot();
+    if (!root) return;
+
+    const card = root.querySelector('[data-card="discover"]');
+    const html = this.renderDiscover(this.ui.state);
+
+    if (!card) {
+      if (!html) return;
+      const grid = root.querySelector(".bentoGrid");
+      if (!grid) return;
+      const tpl = document.createElement("template");
+      tpl.innerHTML = html.trim();
+      const fresh = tpl.content.firstElementChild;
+      if (fresh) grid.appendChild(fresh);
+      this.syncNowPlaying();
+      return;
+    }
+
+    if (!html) {
+      card.remove();
+      return;
+    }
+
+    const tpl = document.createElement("template");
+    tpl.innerHTML = html.trim();
+    const fresh = tpl.content.firstElementChild;
+    if (!fresh) return;
+    card.replaceWith(fresh);
+    this.syncNowPlaying();
+  }
+
+  syncGenreFocus() {
+    const root = this.getRoot();
+    if (!root) return;
+
+    const marquee = root.querySelector("[data-genre-marquee]");
+    if (!marquee) return;
+
+    const focused = this.focusedGenre;
+    marquee.classList.toggle("has-focus", !!focused);
+
+    marquee.querySelectorAll(".genreTile").forEach((tile) => {
+      const isFocus = !!focused && tile.dataset.genre === focused;
+      tile.classList.toggle("is-focused", isFocus);
+      tile.setAttribute("aria-pressed", isFocus ? "true" : "false");
+    });
+  }
+  clearGenreFocus() {
+    if (!this.focusedGenre) return;
+    this.focusedGenre = null;
+    this.syncGenreFocus();
+  }
+  openGenre(name) {
+    if (!name) return;
+    if (window.pagesActions?.openGenre) {
+      window.pagesActions.openGenre(name);
+      return;
+    }
+    if (window.pagesActions?.playGenre) {
+      window.pagesActions.playGenre(name);
+      return;
+    }
+    this.ui.navigate("library");
+  }
+
+  syncCollections() {
+    if (!this.isActive()) return;
+    const root = this.getRoot();
+    if (!root) return;
+
+    const wrap = root.querySelector("#homeCollectionsWrap");
+    if (!wrap) return;
+
+    wrap.innerHTML = this.renderCollectionsInner();
+    wrap.classList.remove("hp-swap");
+    void wrap.offsetWidth;
+    wrap.classList.add("hp-swap");
   }
 
   bindLiveUpdates() {
     if (Home.liveBound) return;
     Home.liveBound = true;
 
-    window.addEventListener("mybeats:recently-played", () => {
-      if (!this.isActive()) return;
-      const root = this.getRoot();
-      if (!root) return;
-      const recentContainer = root.querySelector('[data-card="recent"]');
-      if (recentContainer) {
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = this.renderRecentlyPlayed();
-        recentContainer.replaceWith(tempDiv.firstElementChild);
-      }
+    window.addEventListener("mybeats:recently-played", (e) => this.onRecentlyPlayed(e.detail?.song));
+    window.addEventListener("mybeats:playback-change", () => this.syncNowPlaying());
+    window.addEventListener("mybeats:favorites-changed", () => this.syncFavorites());
+    window.addEventListener("mybeats:play-counts", () => this.syncMostPlayed());
+    window.addEventListener("mybeats:library-changed", () => {
+      this.discoverCache = null;
+      this.discoverIndex = 0;
+      if (this.isActive()) this.rebuildDiscoverCard();
     });
-    
-    window.addEventListener("mybeats:favorites-changed", () => {
-      if (!this.isActive()) return;
-      this.refreshLoadedCards();
+    window.addEventListener("mybeats:playlists-changed", () => {
+      if (this.isActive()) this.syncCollections();
     });
   }
 
   isActive() {
     return this.ui.state.currentPage === "home" && !!this.getRoot();
+  }
+
+  onRecentlyPlayed(song) {
+    if (!song || !this.isActive()) return;
+
+    const resolved = this.ui.state.getSongById(song.id) || song;
+    const list = this.getRoot().querySelector("#recentSongs");
+    if (!list) return;
+
+    list.querySelector(".hp-empty")?.remove();
+
+    const selector = `.song[data-song-id="${String(resolved.id).replace(/"/g, '\\"')}"]`;
+    const existing = list.querySelector(selector);
+    const kids = [...list.querySelectorAll(".song")];
+    const tops = new Map(kids.map((k) => [k, k.getBoundingClientRect().top]));
+
+    const animateSiblings = () => {
+      kids.forEach((k) => {
+        const delta = (tops.get(k) ?? 0) - k.getBoundingClientRect().top;
+        if (!delta) return;
+        k.style.transition = "none";
+        k.style.transform = `translateY(${delta}px)`;
+        requestAnimationFrame(() => {
+          k.style.transition = "transform 350ms cubic-bezier(0.22, 1, 0.36, 1)";
+          k.style.transform = "";
+        });
+      });
+    };
+
+    if (existing) {
+      if (list.firstElementChild !== existing) {
+        list.prepend(existing);
+        animateSiblings();
+      }
+      existing.classList.remove("song-bump");
+      void existing.offsetWidth;
+      existing.classList.add("song-bump");
+      setTimeout(() => existing.classList.remove("song-bump"), 900);
+    } else {
+      const tpl = document.createElement("template");
+      tpl.innerHTML = this.renderSongRow(resolved).trim();
+      const row = tpl.content.firstElementChild;
+      row.classList.add("song-enter");
+      list.prepend(row);
+      animateSiblings();
+      this.hydrateSongRow(row);
+      row.addEventListener("animationend", () => row.classList.remove("song-enter"), { once: true });
+    }
+
+    this.syncNowPlaying();
+
+    const rows = [...list.querySelectorAll(".song")];
+    rows.slice(this.recentLimit).forEach((row) => {
+      row.classList.add("song-exit");
+      row.addEventListener("animationend", () => row.remove(), { once: true });
+      setTimeout(() => row.remove(), 400);
+    });
+  }
+
+  syncNowPlaying() {
+    if (!this.isActive()) return;
+    const root = this.getRoot();
+    const id = this.ui.state.currentSong?.id;
+
+    root
+      .querySelectorAll(".song.is-playing, .rankItem.is-playing, .discoverSong.is-playing")
+      .forEach((el) => el.classList.remove("is-playing"));
+
+    if (id == null) return;
+
+    const selector = `[data-song-id="${String(id).replace(/"/g, '\\"')}"]`;
+    root
+      .querySelectorAll(`.song${selector}, .rankItem${selector}, .discoverSong${selector}`)
+      .forEach((el) => el.classList.add("is-playing"));
+  }
+  syncFavorites() {
+    if (!this.isActive()) return;
+    const root = this.getRoot();
+    const card = root.querySelector("#homeFavoritesCard");
+    if (!card) return;
+
+    card.innerHTML = this.renderFavoritesInner();
+    card.classList.remove("hp-swap");
+    void card.offsetWidth;
+    card.classList.add("hp-swap");
+  }
+  syncMostPlayed() {
+    if (!this.isActive()) return;
+
+    const list = this.getRoot().querySelector("#mostPlayedSongs");
+    if (!list) return;
+
+    const entries = this.mostPlayedSongs();
+    list.innerHTML = entries.length
+      ? entries.map((e, i) => this.renderRankRow(e, i)).join("")
+      : this.renderEmpty("Your most played songs will show up here once you start listening.");
+
+    list.classList.remove("hp-swap");
+    void list.offsetWidth;
+    list.classList.add("hp-swap");
+    this.syncNowPlaying();
+  }
+
+  handleCardFocus(e) {
+    const root = this.getRoot();
+    if (!root) return;
+
+    const grid = root.querySelector(".bentoGrid");
+    if (!grid) return;
+
+    const card = e.target.closest(".musicCard[data-card]");
+    if (!card || !grid.contains(card)) {
+      this.clearCardFocus();
+      return;
+    }
+
+    if (card.classList.contains("is-card-focused")) {
+      this.clearCardFocus();
+      return;
+    }
+
+    grid.querySelectorAll(".musicCard.is-card-focused").forEach((c) => c.classList.remove("is-card-focused"));
+    card.classList.add("is-card-focused");
+    grid.classList.add("has-card-focus");
+  }
+  clearCardFocus() {
+    const root = this.getRoot();
+    if (!root) return;
+
+    const grid = root.querySelector(".bentoGrid");
+    if (!grid) return;
+
+    grid.classList.remove("has-card-focus");
+    grid.querySelectorAll(".musicCard.is-card-focused").forEach((c) => c.classList.remove("is-card-focused"));
   }
 }
 
@@ -356,58 +1252,182 @@ class Library {
     this.sort = "recent";
     this.mode = "grid";
     this.query = "";
-    
-    this.page = 1;
-    this.limit = 24;
-    this.totalItems = 0;
+    this._loadedAll = false;
+    this._loadingPromise = null;
   }
 
-  getStats() {
-    return window.MusicStore?.getStats?.() || { songs: 0, albums: 0, artists: 0, playlists: 0 };
-  }
-
-  getPaginatedItems() {
+  allSongs() {
     if (!window.MusicStore) return [];
-    
-    let items = [];
-    if (this.view === "songs") items = window.MusicStore.getSongsPaginated(this.page, this.limit, this.sort, this.query);
-    else if (this.view === "albums") items = window.MusicStore.getAlbumsPaginated(this.page, this.limit, this.sort, this.query);
-    else if (this.view === "artists") items = window.MusicStore.getArtistsPaginated(this.page, this.limit, this.sort, this.query);
-    else if (this.view === "playlists") items = (this.ui.state.playlists || []).slice((this.page - 1) * this.limit, this.page * this.limit);
-    
-    return items;
+    return Array.from(window.MusicStore.songCache.values());
   }
 
-  updateTotals() {
-    const stats = this.getStats();
-    if (this.view === "songs") this.totalItems = stats.songs;
-    else if (this.view === "albums") this.totalItems = stats.albums;
-    else if (this.view === "artists") this.totalItems = stats.artists;
-    else if (this.view === "playlists") this.totalItems = (this.ui.state.playlists || []).length;
-    else this.totalItems = stats.songs + stats.albums + stats.artists;
+  allAlbums() {
+    if (!window.MusicStore) return [];
+    const state = this.ui.state;
+    const albums = [];
+    for (const album of window.MusicStore.albumCache.values()) {
+      if (album._discographyOnly) continue;
+      const totalSeconds = (album.songs || []).reduce((sum, song) => {
+        const parts = String(song.duration || "0:0").split(":");
+        return sum + (parseInt(parts[0], 10) || 0) * 60 + (parseInt(parts[1], 10) || 0);
+      }, 0);
+
+      const plays = (album.songs || []).reduce(
+        (sum, song) => sum + (state.getPlayCount ? state.getPlayCount(song.id) : 0),
+        0
+      );
+
+      albums.push({
+        artistId: album.artistId,
+        artistName: album.artistName,
+        albumId: album.id,
+        albumName: album.album,
+        coverUrl: album.coverUrl,
+        genre: (state.getArtistById?.(album.artistId)?.genre) || "",
+        year: album.year || "",
+        songs: album.songs || [],
+        songCount: (album.songs || []).length,
+        totalSeconds,
+        plays,
+      });
+    }
+    return albums;
+  }
+
+  allArtists() {
+    if (!window.MusicStore) return [];
+    const state = this.ui.state;
+    const index = window.MusicStore.index || [];
+    return index.map((entry) => {
+      const full = window.MusicStore.artists[String(entry.id)];
+      const albumCount = (full?.albums && full.albums.length) || entry.albumCount || 0;
+      let songCount = 0;
+      if (full?.albums) {
+        songCount = full.albums.reduce((n, a) => n + (a.songCount || 0), 0);
+      }
+      return {
+        id: entry.id,
+        name: entry.artist,
+        imageUrl: full?.imageUrl || window.MusicStore.portraitUrl(full?.portrait) || "",
+        genre: entry.genre || "",
+        albumCount,
+        songCount,
+        plays: full?.albums
+          ? full.albums.reduce((sum, a) => {
+              const album = window.MusicStore.albumCache.get(String(a.id));
+              if (!album || album._discographyOnly) return sum;
+              return sum + (album.songs || []).reduce(
+                (m, song) => m + (state.getPlayCount ? state.getPlayCount(song.id) : 0),
+                0
+              );
+            }, 0)
+          : 0,
+      };
+    });
+  }
+
+  allGenres() {
+    const map = new Map();
+    this.allSongs().forEach((song) => {
+      if (!song.genre) return;
+      map.set(song.genre, (map.get(song.genre) || 0) + 1);
+    });
+    return [...map.entries()]
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count);
+  }
+
+  minutes(totalSeconds) {
+    if (!totalSeconds) return "";
+    const m = Math.round(totalSeconds / 60);
+    return m >= 60 ? `${Math.floor(m / 60)} hr ${m % 60} min` : `${m} min`;
   }
 
   esc(text) {
     return Utils.esc(text == null ? "" : String(text));
   }
 
+  pipeline(items) {
+    let out = [...items];
+    const filter = this.filter;
+
+    if (filter.type !== "all" && filter.value != null) {
+      out = out.filter((item) => {
+        if (filter.type === "artist") return String(item.artistId ?? item.id) === String(filter.value);
+        if (filter.type === "genre") return (item.genre || "").toLowerCase() === String(filter.value).toLowerCase();
+        if (filter.type === "year") return String(item.year || "") === String(filter.value);
+        if (filter.type === "decade") return item.year && Math.floor(Number(item.year) / 10) * 10 === Number(filter.value);
+        return true;
+      });
+    }
+
+    if (this.query.trim()) {
+      const q = this.query.trim().toLowerCase();
+      out = out.filter((item) =>
+        [item.title, item.albumName, item.name, item.album, item.artist, item.artistName, item.genre]
+          .filter(Boolean)
+          .some((text) => String(text).toLowerCase().includes(q))
+      );
+    }
+
+    const by = {
+      title: (a, b) =>
+        String(a.title ?? a.albumName ?? a.name ?? "").localeCompare(String(b.title ?? b.albumName ?? b.name ?? "")),
+      artist: (a, b) =>
+        String(a.artist ?? a.artistName ?? a.name ?? "").localeCompare(String(b.artist ?? b.artistName ?? b.name ?? "")),
+      yearDesc: (a, b) => (Number(b.year) || 0) - (Number(a.year) || 0),
+      yearAsc: (a, b) => (Number(a.year) || 0) - (Number(b.year) || 0),
+      mostPlayed: (a, b) => (b.plays || 0) - (a.plays || 0),
+    }[this.sort];
+
+    if (by) out.sort(by);
+    return out;
+  }
+
   renderAlbumCard(album) {
     const isFav = this.ui.favorites.isAlbum(album.albumId);
     const playData = this.esc(JSON.stringify({ artistId: album.artistId, albumId: album.albumId }));
+
+    const meta = [
+      `${album.songCount} song${album.songCount === 1 ? "" : "s"}`,
+      this.minutes(album.totalSeconds),
+      album.plays ? `${album.plays} play${album.plays === 1 ? "" : "s"}` : "",
+    ]
+      .filter(Boolean)
+      .join(" • ");
+
     return `
-      <article class="albumCard" data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}" tabindex="0">
+      <article class="albumCard" data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}" tabindex="0" aria-label="${this.esc(album.albumName)}">
         <div class="albumArtwork">
           <img src="${this.esc(album.coverUrl || "")}" alt="${this.esc(album.albumName)}" loading="lazy">
-          <button class="albumPlay" type="button" data-play-album='${playData}'>${Icons.player.play(16)}</button>
+          <button class="albumPlay" type="button" aria-label="Play ${this.esc(album.albumName)}" data-play-album='${playData}'>${Icons.player.play(16)}</button>
           <div class="albumHover">
-            <div class="albumHoverTop">${album.year ? `<span class="albumBadge">${this.esc(album.year)}</span>` : ""}</div>
-            <div class="albumHoverBody"><h3 class="albumHoverTitle">${this.esc(album.albumName)}</h3><p class="albumHoverArtist">${this.esc(album.artistName)}</p></div>
+            <div class="albumHoverTop">${album.year ? `<span class="albumBadge">${this.esc(album.year)}</span>` : ""}${album.genre ? `<span class="albumBadge albumBadgeGenre">${this.esc(album.genre)}</span>` : ""}</div>
+            <div class="albumHoverBody"><h3 class="albumHoverTitle">${this.esc(album.albumName)}</h3><p class="albumHoverArtist">${this.esc(album.artistName)}</p><p class="albumHoverMeta">${meta}</p></div>
             <div class="albumHoverActions">
               <button type="button" class="albumHoverPlay" data-play-album='${playData}'>${Icons.player.play(13)} Play</button>
+              <button type="button" class="albumHoverBtn${isFav ? " favorited" : ""}" aria-label="Favorite album" title="${isFav ? "Remove from favorites" : "Add to favorites"}" data-action="toggle-favorite-album" data-album-id="${this.esc(album.albumId)}"><i class="fa-solid fa-heart ${isFav ? "liked-icon" : "not-liked-icon"}"></i></button>
+              <button type="button" class="albumHoverBtn" aria-label="Add to queue" title="Add to queue" data-action="add-album-to-queue" data-album-id="${this.esc(album.albumId)}">${Icons.general.plus(16)}</button>
+              <button type="button" class="albumHoverBtn" aria-label="More options" title="More options" data-album-more data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}">${Icons.general.moreVert(16)}</button>
             </div>
           </div>
         </div>
       </article>
+    `;
+  }
+
+  renderAlbumRow(album) {
+    return `
+      <div class="rowItem" data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}">
+        <div class="rowArtwork"><img src="${this.esc(album.coverUrl || "")}" alt="" loading="lazy"></div>
+        <span class="rowPrimary">${this.esc(album.albumName)}</span>
+        <span class="rowSecondary">${this.esc(album.artistName)}</span>
+        <span class="rowMeta">${album.year ? this.esc(album.year) + " • " : ""}${album.songCount} songs</span>
+        <div class="rowActions">
+          <button type="button" class="tableAction" aria-label="Play" data-play-album='${this.esc(JSON.stringify({ artistId: album.artistId, albumId: album.albumId }))}'>${Icons.player.play(14)}</button>
+          <button type="button" class="tableAction" aria-label="More options" data-album-more data-artist-id="${this.esc(album.artistId)}" data-album-id="${this.esc(album.albumId)}">${Icons.general.moreVert(16)}</button>
+        </div>
+      </div>
     `;
   }
 
@@ -417,17 +1437,71 @@ class Library {
         <div class="artistPortrait"><img src="${this.esc(artist.imageUrl || "")}" alt="${this.esc(artist.name)}" loading="lazy"></div>
         <div class="artistInfo">
           <span class="artistName">${this.esc(artist.name)}</span>
-          <p class="artistDetails">${this.esc(artist.genre || "Artist")}</p>
+          <p class="artistDetails">${artist.albumCount} album${artist.albumCount === 1 ? "" : "s"} • ${artist.songCount} song${artist.songCount === 1 ? "" : "s"}</p>
+          <div class="artistActions"><button type="button" class="artistButton primary" data-artist-open="${this.esc(artist.id)}">View Artist</button><button type="button" class="artistButton" data-artist-play="${this.esc(artist.id)}">Play</button></div>
         </div>
       </article>
     `;
   }
 
+  renderArtistRow(artist) {
+    return `
+      <div class="rowItem" data-artist-id="${this.esc(artist.id)}">
+        <div class="rowArtwork round"><img src="${this.esc(artist.imageUrl || "")}" alt="" loading="lazy"></div>
+        <span class="rowPrimary">${this.esc(artist.name)}</span>
+        <span class="rowSecondary">${this.esc(artist.genre || "Artist")}</span>
+        <span class="rowMeta">${artist.albumCount} albums • ${artist.songCount} songs</span>
+        <div class="rowActions">
+          <button type="button" class="tableAction" aria-label="Play artist" data-artist-play="${this.esc(artist.id)}">${Icons.player.play(14)}</button>
+          <button type="button" class="tableAction" aria-label="View artist" data-artist-open="${this.esc(artist.id)}">${Icons.general.arrowRight(14)}</button>
+        </div>
+      </div>
+    `;
+  }
+
+  renderPlaylistCard(playlist) {
+    const state = this.ui.state;
+    const covers = playlist.songs
+      .map((id) => state.getSongById(id))
+      .filter(Boolean)
+      .map((song) => song.coverUrl)
+      .filter(Boolean);
+
+    while (covers.length < 4 && covers.length) {
+      covers.push(covers[covers.length % Math.max(covers.length, 1)] || "");
+    }
+
+    const isPlFav = this.ui?.favorites?.isPlaylist?.(playlist.id) || false;
+
+    return `
+      <article class="playlistCard" data-playlist-id="${this.esc(playlist.id)}">
+        <button type="button" class="heart playlistCardHeart${isPlFav ? " favorited is-favorite" : ""}" data-heart-playlist="${this.esc(playlist.id)}" aria-label="Favorite playlist"></button>
+        <div class="playlistMosaic">${
+          covers
+            .slice(0, 4)
+            .map((cover) => `<img src="${this.esc(cover)}" alt="" loading="lazy">`)
+            .join("") || `<div class="playlistMosaicEmpty">${Icons.general.playlist(28)}</div>`
+        }</div>
+        <div class="playlistInformation">
+          <span class="playlistType">Playlist</span>
+          <h3 class="playlistName">${this.esc(playlist.name)}</h3>
+          ${playlist.description ? `<p class="playlistDescription">${this.esc(playlist.description)}</p>` : ""}
+          <span class="playlistCount">${playlist.songs.length} song${playlist.songs.length === 1 ? "" : "s"}</span>
+        </div>
+      </article>
+    `;
+  }
+
+  renderGenreCard(genre) {
+    return `<article class="genreCard" data-genre="${this.esc(genre.name)}"><h3 class="genreName">${this.esc(genre.name)}</h3><p class="genreCount">${genre.count} song${genre.count === 1 ? "" : "s"}</p></article>`;
+  }
+
   renderSongRow(song, index) {
     const isFav = this.ui.favorites.isSong(song.id);
+
     return `
       <tr data-song-id="${this.esc(song.id)}" data-artist-id="${this.esc(song.artistId)}" data-album-id="${this.esc(song.albumId)}" data-context='${this.esc(JSON.stringify({ artistId: song.artistId, albumId: song.albumId }))}'>
-        <td class="tableNum">${(this.page - 1) * this.limit + index + 1}</td>
+        <td class="tableNum">${index + 1}</td>
         <td>
           <div class="tableSong">
             <div class="tableArtwork"><img src="${this.esc(song.coverUrl || "")}" alt="" loading="lazy"></div>
@@ -435,149 +1509,719 @@ class Library {
           </div>
         </td>
         <td>${this.esc(song.album)}</td>
+        <td>${this.esc(song.year || "-")}</td>
         <td>${this.esc(song.duration || "")}</td>
         <td>
           <div class="rowActions">
-            <button type="button" class="tableAction heart${isFav ? " favorited" : ""}" data-fav-song="${this.esc(song.id)}">${this.ui.likeStatus("song", isFav, false, null)}</button>
+            <button type="button" class="tableAction heart${isFav ? " favorited is-favorite" : ""}" aria-label="Favorite" data-fav-song="${this.esc(song.id)}">${this.ui.likeStatus("song", isFav, false, null)}</button>
+            <button type="button" class="tableAction" aria-label="More options" data-more-song="${this.esc(song.id)}">${Icons.general.moreVert(16)}</button>
           </div>
         </td>
       </tr>
     `;
   }
 
-  renderPagination() {
-    const totalPages = Math.ceil(this.totalItems / this.limit) || 1;
-    if (totalPages <= 1) return "";
+  renderEmpty(title, description) {
+    return `<div class="emptyState"><div class="emptyIcon">${Icons.general.search(34)}</div><h3 class="emptyTitle">${this.esc(title)}</h3><p class="emptyDescription">${this.esc(description)}</p></div>`;
+  }
+
+  renderSectionHead(title, sub) {
+    return `<div class="resultsHeader"><div><h2 class="resultsTitle">${this.esc(title)}</h2><p class="resultsSubtitle">${this.esc(sub)}</p></div></div>`;
+  }
+
+  renderViewContent(view) {
+    const state = this.ui.state;
+
+    if (view === "songs") {
+      const songs = this.pipeline(this.allSongs());
+      if (!songs.length) return this.renderEmpty("No songs match", "Try clearing your search or filters.");
+      return `<div class="songTableWrapper"><table class="songTable"><thead><tr><th>#</th><th>Title</th><th>Album</th><th>Year</th><th>Time</th><th></th></tr></thead><tbody>${songs.map((song, i) => this.renderSongRow(song, i)).join("")}</tbody></table></div>`;
+    }
+
+    if (view === "albums") {
+      const albums = this.pipeline(this.allAlbums());
+      if (!albums.length) return this.renderEmpty("No albums match", "Try clearing your search or filters.");
+      return this.mode === "grid"
+        ? `<div class="albumGrid">${albums.map((album) => this.renderAlbumCard(album)).join("")}</div>`
+        : `<div class="rowsList">${albums.map((album) => this.renderAlbumRow(album)).join("")}</div>`;
+    }
+
+    if (view === "artists") {
+      const artists = this.pipeline(this.allArtists());
+      if (!artists.length) return this.renderEmpty("No artists match", "Try clearing your search or filters.");
+      return this.mode === "grid"
+        ? `<div class="artistGrid">${artists.map((artist) => this.renderArtistCard(artist)).join("")}</div>`
+        : `<div class="rowsList">${artists.map((artist) => this.renderArtistRow(artist)).join("")}</div>`;
+    }
+
+    if (view === "playlists") {
+      const playlists = (state.playlists || []).filter(
+        (playlist) => !this.query.trim() || playlist.name.toLowerCase().includes(this.query.trim().toLowerCase())
+      );
+      if (!playlists.length) return this.renderEmpty("No playlists yet", "Create a playlist and it will show up here.");
+      return `<div class="playlistGrid">${playlists.map((playlist) => this.renderPlaylistCard(playlist)).join("")}</div>`;
+    }
+
+    if (view === "genres") {
+      const genres = this.pipeline(this.allGenres());
+      if (!genres.length) return this.renderEmpty("No genres found", "Your library genres will appear here.");
+      return `<div class="genreGrid">${genres.map((genre) => this.renderGenreCard(genre)).join("")}</div>`;
+    }
+
+    const albums = this.allAlbums();
+    const recentAlbums = this.pipeline([...albums].reverse()).slice(0, 10);
+    const artists = this.pipeline(this.allArtists())
+      .sort((a, b) => b.songCount - a.songCount)
+      .slice(0, 5);
+    const playlists = (state.playlists || []).slice(0, 3);
+    const genres = this.allGenres().slice(0, 8);
 
     return `
-      <div class="pagination-controls">
-        <button class="pag-btn" data-page-action="prev" ${this.page === 1 ? "disabled" : ""}>Prev</button>
-        <span class="pag-info">Page ${this.page} of ${totalPages}</span>
-        <button class="pag-btn" data-page-action="next" ${this.page === totalPages ? "disabled" : ""}>Next</button>
-      </div>
+      ${recentAlbums.length ? `<section>${this.renderSectionHead("Recently Added", "New additions to your collection.")}<div class="albumGrid">${recentAlbums.map((album) => this.renderAlbumCard(album)).join("")}</div></section>` : ""}
+      ${artists.length ? `<section style="margin-top: 3rem">${this.renderSectionHead("Popular Artists", "Artists with the most music in your collection.")}<div class="artistGrid">${artists.map((artist) => this.renderArtistCard(artist)).join("")}</div></section>` : ""}
+      ${playlists.length ? `<section style="margin-top: 3rem">${this.renderSectionHead("Explore Playlists", "Curated collections ready to explore.")}<div class="playlistGrid">${playlists.map((playlist) => this.renderPlaylistCard(playlist)).join("")}</div></section>` : ""}
+      ${genres.length ? `<section style="margin-top: 3rem">${this.renderSectionHead("Browse by Genre", "Find something based on the mood.")}<div class="genreGrid">${genres.map((genre) => this.renderGenreCard(genre)).join("")}</div></section>` : ""}
     `;
   }
 
-  renderContent() {
-    const items = this.getPaginatedItems();
-    if (!items.length) return `<div class="emptyState"><h3 class="emptyTitle">No items found</h3></div>`;
+  countForView(view) {
+    const state = this.ui.state;
+    const fmt = (n) => `${n.toLocaleString()} item${n === 1 ? "" : "s"}`;
 
-    let html = "";
-    if (this.view === "songs") {
-      html = `<div class="songTableWrapper"><table class="songTable"><tbody>${items.map((s, i) => this.renderSongRow(s, i)).join("")}</tbody></table></div>`;
-    } else if (this.view === "albums") {
-      html = `<div class="albumGrid">${items.map(a => this.renderAlbumCard(a)).join("")}</div>`;
-    } else if (this.view === "artists") {
-      html = `<div class="artistGrid">${items.map(a => this.renderArtistCard(a)).join("")}</div>`;
+    switch (view) {
+      case "songs":
+        return fmt(this.pipeline(this.allSongs()).length);
+      case "albums":
+        return fmt(this.pipeline(this.allAlbums()).length);
+      case "artists":
+        return fmt(this.pipeline(this.allArtists()).length);
+      case "playlists":
+        return fmt((state.playlists || []).length);
+      case "genres":
+        return fmt(this.pipeline(this.allGenres()).length);
+      default: {
+        const total =
+          this.allAlbums().length +
+          this.allArtists().length +
+          (state.playlists || []).length +
+          this.allGenres().length;
+        return fmt(total);
+      }
     }
-    
-    return html + this.renderPagination();
+  }
+
+  viewMeta(view) {
+    return (
+      {
+        overview: ["Explore Your Collection", "A curated overview of your music."],
+        songs: ["All Songs", "Every track in your library."],
+        albums: ["All Albums", "Hover an album for the full story."],
+        artists: ["All Artists", "The people behind your music."],
+        playlists: ["All Playlists", "Your curated collections."],
+        genres: ["All Genres", "Browse by mood and style."],
+      }[view] || ["", ""]
+    );
+  }
+
+  sortLabel() {
+    return {
+      recent: "Recently Added",
+      title: "Title A-Z",
+      artist: "Artist A-Z",
+      yearDesc: "Newest First",
+      yearAsc: "Oldest First",
+      mostPlayed: "Most Played",
+    }[this.sort];
   }
 
   render() {
-    this.updateTotals();
-    const tabs = [["songs", "Songs"], ["albums", "Albums"], ["artists", "Artists"], ["playlists", "Playlists"]];
+    const tabs = [
+      ["overview", "Overview"],
+      ["songs", "Songs"],
+      ["albums", "Albums"],
+      ["artists", "Artists"],
+      ["playlists", "Playlists"],
+      ["genres", "Genres"],
+    ];
 
-    return `
+    const filter = this.filter;
+
+    const filterBtn = (type, label) => {
+      const active = filter.type === type;
+      return `<button type="button" class="filterButton${active ? " has-filter is-active" : ""}" data-filter="${type}">${active ? this.esc(filter.label) : label}<span class="filterArrow">${Icons.general.chevronDown()}</span></button>`;
+    };
+
+    const [title, sub] = this.viewMeta(this.view);
+
+    const html = `
       <div data-page="library" class="bp browsePage">
         <div class="browseContainer">
           <header class="browseHeader">
-            <div><h1 class="browseTitle">Browse Music</h1></div>
-            <div class="searchWrapper"><input type="search" class="librarySearch" id="librarySearch" placeholder="Search..." value="${this.esc(this.query)}"></div>
-            <nav class="browseNavigation">${tabs.map(([k, l]) => `<button class="browseTab${this.view === k ? " is-active" : ""}" data-view="${k}">${l}</button>`).join("")}</nav>
-          </header>
-          <div class="resultsHeader" id="browseResultsHeader">
-            <h2 class="resultsTitle">${this.view.charAt(0).toUpperCase() + this.view.slice(1)}</h2>
-            <span class="resultsCount">${this.totalItems.toLocaleString()} items</span>
-          </div>
-          <section class="dynamicContent" id="browseContent">
-            <div class="contentSection">
-              ${this.renderContent()}
+            <div><span class="browseKicker">Explore</span><h1 class="browseTitle">Browse Music</h1><p class="browseDescription">Explore songs, albums, artists, playlists, genres, and everything else in your music collection.</p></div>
+            <div class="searchWrapper"><span class="searchIcon" aria-hidden="true">${Icons.general.search(16)}</span><input type="search" class="librarySearch" id="librarySearch" placeholder="Search songs, artists, albums, playlists..." autocomplete="off" value="${this.esc(this.query)}"></div>
+            <nav class="browseNavigation" aria-label="Browse categories">${tabs
+              .map(
+                ([key, label]) =>
+                  `<button class="browseTab${this.view === key ? " is-active" : ""}" type="button" data-view="${key}">${label}</button>`
+              )
+              .join("")}</nav>
+            <div class="filterToolbar">
+              <div class="filterGroup">
+                <button type="button" class="filterButton${filter.type === "all" ? " is-active" : ""}" data-filter="all">All</button>
+                ${filterBtn("artist", "Artist")}${filterBtn("genre", "Genre")}${filterBtn("year", "Year")}${filterBtn("decade", "Decade")}
+              </div>
+              <div class="displayControls">
+                <button type="button" class="sortButton" data-action="sort">${this.sortLabel()}<span>${Icons.general.chevronDown()}</span></button>
+                <div class="viewToggle" aria-label="Display mode">
+                  <button type="button" class="viewButton${this.mode === "grid" ? " is-active" : ""}" aria-label="Grid view" data-view-mode="grid">${Icons.general.grid(15)}</button>
+                  <button type="button" class="viewButton${this.mode === "list" ? " is-active" : ""}" aria-label="List view" data-view-mode="list">${Icons.general.list(15)}</button>
+                </div>
+              </div>
             </div>
+          </header>
+          <div class="resultsHeader" id="browseResultsHeader"><div><h2 class="resultsTitle">${title}</h2><p class="resultsSubtitle">${sub}</p></div><span class="resultsCount" id="browseResultsCount">${this.countForView(this.view)}</span></div>
+          <section class="dynamicContent" id="browseContent" aria-live="polite">
+            <div class="loadingLayer" id="loadingLayer" aria-hidden="false"><div class="loadingContent"><div class="loadingSpinner" aria-hidden="true"></div><div><div class="loadingTitle">Loading library...</div><p class="loadingDescription">Fetching tracks from the server.</p></div></div></div>
+            <div class="contentSection" data-content-view="${this.view}"></div>
           </section>
         </div>
       </div>
     `;
+
+    this.bindWhenReady();
+    return html;
   }
 
   bindWhenReady(attempts = 0) {
     const root = document.querySelector('[data-page="library"].bp');
-    if (root) this.bindEvents(root);
-    else if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
+    if (root) {
+      this.bindEvents(root);
+      this.hydrateAll(root);
+    } else if (attempts < 60) {
+      setTimeout(() => this.bindWhenReady(attempts + 1), 50);
+    }
+  }
+
+  async hydrateAll(root) {
+    if (!root) return;
+    if (!this._loadingPromise) {
+      this._loadingPromise = (async () => {
+        if (!this._loadedAll) {
+          await window.MusicStore.loadAllSongs();
+          this._loadedAll = true;
+        }
+      })();
+    }
+    await this._loadingPromise;
+    const layer = root.querySelector("#loadingLayer");
+    layer?.classList.add("is-hidden");
+    this.refreshContent(false);
   }
 
   getRoot() {
     return document.querySelector('[data-page="library"].bp');
   }
 
-  refreshContent() {
-    this.updateTotals();
+  refreshContent(withLoading = false) {
     const root = this.getRoot();
     if (!root) return;
-    
-    root.querySelector(".resultsTitle").textContent = this.view.charAt(0).toUpperCase() + this.view.slice(1);
-    root.querySelector(".resultsCount").textContent = `${this.totalItems.toLocaleString()} items`;
-    root.querySelectorAll(".browseTab").forEach(t => t.classList.toggle("is-active", t.dataset.view === this.view));
-    
-    const container = root.querySelector(".contentSection");
-    container.innerHTML = this.renderContent();
-    this.hydrate(container);
+
+    const swap = () => {
+      const section = root.querySelector(".contentSection");
+      if (section) {
+        section.dataset.contentView = this.view;
+        section.innerHTML = this.renderViewContent(this.view);
+      }
+
+      const [title, sub] = this.viewMeta(this.view);
+      const head = root.querySelector("#browseResultsHeader");
+      if (head) {
+        head.querySelector(".resultsTitle").textContent = title;
+        head.querySelector(".resultsSubtitle").textContent = sub;
+      }
+
+      const count = root.querySelector("#browseResultsCount");
+      if (count) count.textContent = this.countForView(this.view);
+
+      root.querySelectorAll(".browseTab").forEach((tab) => tab.classList.toggle("is-active", tab.dataset.view === this.view));
+
+      this.hydrate(root.querySelector("#browseContent"));
+    };
+
+    if (withLoading) {
+      const layer = root.querySelector("#loadingLayer");
+      layer?.classList.remove("is-hidden");
+      setTimeout(() => {
+        swap();
+        layer?.classList.add("is-hidden");
+      }, 200);
+    } else {
+      swap();
+    }
   }
 
   hydrate(scope) {
     if (!scope) return;
+
     window.heartManager?.bindAll(scope);
+
+    scope.querySelectorAll("[data-more-song]").forEach((el) => {
+      if (el.moreBound) return;
+      el.moreBound = true;
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.ui.events.showSongMenu(el.dataset.moreSong, e);
+      });
+    });
+
+    scope.querySelectorAll("[data-play-album]").forEach((el) => {
+      if (el.paBound) return;
+      el.paBound = true;
+      el.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        const data = JSON.parse(el.dataset.playAlbum);
+        const queue = await Utils.albumQueue(data.artistId, data.albumId);
+        if (queue.length) this.ui.audioPlayer.playSong(queue[0], queue, true, "album");
+      });
+    });
+
+    scope.querySelectorAll('[data-action="add-album-to-queue"]').forEach((el) => {
+      if (el.aqBound) return;
+      el.aqBound = true;
+      el.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const state = this.ui.state;
+        const albumId = el.dataset.albumId;
+        const stub = state.getAlbumById(albumId);
+        if (!stub) return;
+        const album = await window.MusicStore.loadAlbum(stub.artistId, albumId).catch(() => null);
+        if (!album?.songs?.length) return;
+
+        const queue = await Utils.albumQueue(stub.artistId, albumId);
+        const currentQueue = state.queue || [];
+        state.queue = [...currentQueue, ...queue];
+
+        if (state.currentSong) {
+          state.queueIndex = state.queue.findIndex((s) => s.id == state.currentSong.id);
+        }
+        state.showToast?.(`Added ${queue.length} song${queue.length === 1 ? "" : "s"} to queue`);
+      });
+    });
+  }
+
+  closeMenus() {
+    this.getRoot()?.querySelectorAll(".filterMenu").forEach((menu) => menu.remove());
+  }
+
+  openMenu(anchorBtn, items, current, onSelect) {
+    this.closeMenus();
+
+    const root = this.getRoot();
+    if (!root) return;
+
+    const menu = document.createElement("div");
+    menu.className = "filterMenu";
+    menu.innerHTML = items
+      .map(
+        (item) =>
+          `<button type="button" class="filterMenuItem${String(item.value) === String(current) ? " is-active" : ""}" data-value="${this.esc(item.value)}"><span>${this.esc(item.label)}</span>${item.count != null ? `<span class="count">${item.count}</span>` : ""}</button>`
+      )
+      .join("");
+
+    root.appendChild(menu);
+
+    const rect = anchorBtn.getBoundingClientRect();
+    const rootRect = root.getBoundingClientRect();
+    menu.style.top = `${rect.bottom - rootRect.top + root.scrollTop + 6}px`;
+    menu.style.left = `${Math.max(8, rect.left - rootRect.left)}px`;
+
+    menu.addEventListener("click", (e) => {
+      const item = e.target.closest(".filterMenuItem");
+      if (!item) return;
+      e.stopPropagation();
+      onSelect(item.dataset.value);
+      this.closeMenus();
+    });
+
+    setTimeout(() => {
+      this.menuCloser = (e) => {
+        if (!menu.contains(e.target)) this.closeMenus();
+      };
+      document.addEventListener("click", this.menuCloser, { once: true });
+    }, 0);
+  }
+
+  openFilterMenu(btn, type) {
+    const state = this.ui.state;
+    let items = [];
+
+    if (type === "artist") {
+      items = this.allArtists()
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((artist) => ({ value: artist.id, label: artist.name, count: artist.songCount }));
+    } else if (type === "genre") {
+      items = this.allGenres().map((genre) => ({ value: genre.name, label: genre.name, count: genre.count }));
+    } else if (type === "year") {
+      const years = [...new Set(this.allAlbums().map((album) => album.year).filter(Boolean))].sort().reverse();
+      items = years.map((year) => ({ value: year, label: year }));
+    } else if (type === "decade") {
+      const decades = [
+        ...new Set(
+          this.allAlbums()
+            .map((album) => album.year)
+            .filter(Boolean)
+            .map((year) => Math.floor(Number(year) / 10) * 10)
+        ),
+      ].sort((a, b) => b - a);
+      items = decades.map((decade) => ({ value: decade, label: `${decade}s` }));
+    }
+
+    if (!items.length) {
+      state.showToast?.("Nothing to filter by yet");
+      return;
+    }
+
+    this.openMenu(btn, items, this.filter.type === type ? this.filter.value : null, (value) => {
+      const item = items.find((i) => String(i.value) === String(value));
+      this.filter = { type, value, label: item ? item.label : value };
+      this.ui.render();
+    });
+  }
+
+  openSortMenu(btn) {
+    const items = [
+      { value: "recent", label: "Recently Added" },
+      { value: "title", label: "Title A-Z" },
+      { value: "artist", label: "Artist A-Z" },
+      { value: "yearDesc", label: "Newest First" },
+      { value: "yearAsc", label: "Oldest First" },
+      { value: "mostPlayed", label: "Most Played" },
+    ];
+
+    this.openMenu(btn, items, this.sort, (value) => {
+      this.sort = value;
+      this.ui.render();
+    });
+  }
+
+  async playArtist(artistId) {
+    const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
+    if (!artist) return;
+
+    const queues = await Promise.all(
+      (artist.albums || []).map((album) => Utils.albumQueue(artistId, album.id))
+    );
+    const queue = queues.flat();
+    if (queue.length) {
+      this.ui.audioPlayer.playSong(queue[0], queue, true, "artist");
+      this.ui.state.showToast?.(`Playing ${artist.artist}`);
+    }
   }
 
   bindEvents(root) {
-    if (root.browseDelegated) return;
+    if (!root || root.browseDelegated) return;
     root.browseDelegated = true;
 
-    root.addEventListener("click", (e) => {
+    const ui = this.ui;
+
+    root.addEventListener("click", async (e) => {
       const tab = e.target.closest(".browseTab");
       if (tab) {
         e.stopPropagation();
-        this.view = tab.dataset.view;
-        this.page = 1;
-        this.refreshContent();
+        if (tab.dataset.view !== this.view) {
+          this.view = tab.dataset.view;
+          this.refreshContent(true);
+        }
         return;
       }
 
-      const pagBtn = e.target.closest("[data-page-action]");
-      if (pagBtn) {
+      const filterBtn = e.target.closest(".filterButton");
+      if (filterBtn) {
         e.stopPropagation();
-        if (pagBtn.dataset.pageAction === "prev") this.page = Math.max(1, this.page - 1);
-        if (pagBtn.dataset.pageAction === "next") this.page += 1;
-        this.refreshContent();
+        const type = filterBtn.dataset.filter;
+        if (type === "all") {
+          if (this.filter.type !== "all") {
+            this.filter = { type: "all", value: null, label: "" };
+            ui.render();
+          }
+          return;
+        }
+        this.openFilterMenu(filterBtn, type);
+        return;
+      }
+
+      if (e.target.closest('[data-action="sort"]')) {
+        e.stopPropagation();
+        this.openSortMenu(e.target.closest('[data-action="sort"]'));
+        return;
+      }
+
+      const viewBtn = e.target.closest(".viewButton[data-view-mode]");
+      if (viewBtn) {
+        e.stopPropagation();
+        if (viewBtn.dataset.viewMode !== this.mode) {
+          this.mode = viewBtn.dataset.viewMode;
+          root.querySelectorAll(".viewButton").forEach((b) => b.classList.toggle("is-active", b === viewBtn));
+          this.refreshContent(false);
+        }
+        return;
+      }
+
+      const albumMore = e.target.closest("[data-album-more]");
+      if (albumMore) {
+        e.stopPropagation();
+        window.contextMenu?.show(e.clientX, e.clientY, {
+          artistId: albumMore.dataset.artistId,
+          albumId: albumMore.dataset.albumId,
+        });
+        return;
+      }
+
+      const artistPlay = e.target.closest("[data-artist-play]");
+      if (artistPlay) {
+        e.stopPropagation();
+        this.playArtist(artistPlay.dataset.artistPlay);
+        return;
+      }
+
+      const artistOpen = e.target.closest("[data-artist-open]");
+      if (artistOpen) {
+        e.stopPropagation();
+        ui.navigate("artist", artistOpen.dataset.artistOpen);
+        return;
+      }
+
+      const genre = e.target.closest(".genreCard[data-genre]");
+      if (genre) {
+        e.stopPropagation();
+        if (window.pagesActions?.playGenre) window.pagesActions.playGenre(genre.dataset.genre);
+        return;
+      }
+
+      const playlistCard = e.target.closest(".playlistCard[data-playlist-id]");
+      if (playlistCard) {
+        e.stopPropagation();
+        const playlist = ui.state.playlists.find((p) => String(p.id) === String(playlistCard.dataset.playlistId));
+        if (playlist) {
+          ui.state.selectedPlaylistName = playlist.name;
+          ui.state.selectedPlaylistId = playlist.id;
+          ui.navigate("playlists");
+        }
+        return;
+      }
+
+      const songRow = e.target.closest("tr[data-song-id]");
+      if (songRow) {
+        if (e.target.closest("button")) return;
+        e.stopPropagation();
+        let song = ui.state.getSongById(songRow.dataset.songId);
+        if (!song) {
+          await window.MusicStore.loadAlbum(songRow.dataset.artistId, songRow.dataset.albumId).catch(() => null);
+          song = ui.state.getSongById(songRow.dataset.songId);
+        }
+        if (!song) return;
+
+        const queue = [...root.querySelectorAll("tr[data-song-id]")]
+          .map((row) => ui.state.getSongById(row.dataset.songId))
+          .filter(Boolean);
+
+        ui.audioPlayer.playSong(song, queue.length ? queue : null, true, "library");
+        return;
+      }
+
+      const rowItem = e.target.closest(".rowItem[data-artist-id]");
+      if (rowItem) {
+        if (e.target.closest("button")) return;
+        e.stopPropagation();
+        ui.navigate("artist", rowItem.dataset.artistId, rowItem.dataset.albumId || null);
         return;
       }
     });
 
     const searchInput = root.querySelector("#librarySearch");
-    if (searchInput) {
+    if (searchInput && !searchInput.browseSearchBound) {
+      searchInput.browseSearchBound = true;
+
       let timer;
       searchInput.addEventListener("input", () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
           this.query = searchInput.value;
-          this.page = 1;
-          this.refreshContent();
-        }, 300);
+          this.refreshContent(false);
+        }, 160);
       });
     }
   }
+
+  destroy() {}
 }
+
+
+
+
 
 class Artists {
   constructor(ui) {
     this.ui = ui;
-    this.page = 1;
-    this.limit = 20;
+    this.tabsScrollHandler = null;
+    this.tabsRaf = null;
+    this.pinned = false;
   }
 
   render() {
     this.bindWhenReady();
-    return `<div class="artist-page" data-page="artist"><div class="artist-shell"><div class="artist-loading">Loading...</div></div></div>`;
+    return `
+      <div class="artist-page" data-page="artist">
+        <div class="artist-shell">
+          <div class="artist-loading" style="padding: 4rem 1rem; text-align: center; opacity: 0.7;">Loading artist…</div>
+        </div>
+      </div>
+    `;
+  }
+
+  renderFull(artist, activeAlbum) {
+    const similarIds = artist.similar || [];
+    const rows = [similarIds.slice(0, 4), similarIds.slice(4, 8), similarIds.slice(8, 12)];
+
+    return `
+      ${this.renderHeader(artist)}
+      <div class="albumTabsSentinel" aria-hidden="true"></div>
+      ${this.renderAlbumTabs(artist, activeAlbum)}
+      <div class="artist-heroBody">
+        <div class="hero-stage">
+          <div class="hero-left">${this.renderHeroCover(artist, activeAlbum)}${this.renderMetaSummary(artist, activeAlbum)}</div>
+          <div class="hero-right">${this.renderSongsList(artist, activeAlbum)}</div>
+        </div>
+      </div>
+      ${similarIds.length ? this.renderSimilarMarquee(rows, artist.id) : ""}
+    `;
+  }
+
+  renderHeader(artist) {
+    const isFav = this.ui.favorites.isArtist(artist.id);
+
+    return `
+      <header class="artist-header">
+        <div class="artist-header-left"><span class="artist-header-kicker">Artist</span><h1 class="artist-name">${Utils.esc(artist.artist)}</h1></div>
+        <button type="button" class="artist-heart ${isFav ? "favorited" : ""}" data-artist-heart="${Utils.esc(artist.id)}" aria-label="Favorite artist">${this.ui.likeStatus("artist", isFav, false, null)}</button>
+      </header>
+    `;
+  }
+
+  renderAlbumTabs(artist, activeAlbum) {
+    return `
+      <nav class="albumTabsBar" data-area="albums" aria-label="Albums">
+        <div class="albumTabs-scroll">
+          ${(artist.albums || [])
+            .map(
+              (album) =>
+                `<button type="button" class="albumTab ${album.id === activeAlbum.id ? "active" : ""}" data-artist-id="${Utils.esc(artist.id)}" data-album-id="${Utils.esc(album.id)}" aria-pressed="${album.id === activeAlbum.id}">${Utils.esc(album.title || album.album)}</button>`
+            )
+            .join("")}
+        </div>
+      </nav>
+    `;
+  }
+
+  renderHeroCover(artist, activeAlbum) {
+    return `
+      <div class="hero-cover">
+        <img src="${Utils.esc(activeAlbum.coverUrl)}" alt="${Utils.esc(activeAlbum.album)}" loading="eager">
+        <div class="hero-scrim"></div>
+        <div class="hero-overlay">
+          <div class="album-meta"><h2 class="album-title">${Utils.esc(activeAlbum.album)}</h2><span class="track-count">${activeAlbum.songs.length} track${activeAlbum.songs.length === 1 ? "" : "s"}</span></div>
+          <button type="button" class="play-all" data-play-album='${JSON.stringify({ artistId: artist.id, albumId: activeAlbum.id })}' aria-label="Shuffle album">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/><polygon points="10,7 17,12 10,17" fill="currentColor"/></svg>
+            <span class="shuffle-text">Shuffle</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  renderMetaSummary(artist, activeAlbum) {
+    const isAlbumFav = this.ui.favorites.isAlbum(activeAlbum.id);
+
+    return `
+      <div data-area="meta-summary" class="hero-meta">
+        <div data-list="editorial-brief" class="bento-meta-node">
+          <div class="brief-wrapper"><span class="brief-mono">${Utils.esc(activeAlbum.year || "2024")}</span><span class="brief-heading">${Utils.esc(activeAlbum.sold || "Double Platinum")}</span></div>
+          <a href="#" class="brief-anchor" id="bento-album-share" data-album-title="${Utils.esc(activeAlbum.album)}">Share this album</a>
+        </div>
+        <div data-list="utility-hub" class="bento-meta-node">
+          <button type="button" class="hub-pill-btn" id="bento-offline-toggle" data-album-id="${Utils.esc(activeAlbum.id)}"><span class="hub-btn-txt">Listen Offline</span></button>
+          <div class="hub-group">
+            <h5 class="hub-group-title">Add to library</h5>
+            <div class="hub-links">
+              <a href="#" class="hub-link-item" data-action="add-album-to-playlist" data-album-id="${Utils.esc(activeAlbum.id)}">Playlist</a>
+              <a href="#" class="hub-link-item" data-action="add-album-to-queue" data-album-id="${Utils.esc(activeAlbum.id)}">Queue</a>
+              <a href="#" class="hub-link-item" data-action="toggle-favorite-album" data-album-id="${Utils.esc(activeAlbum.id)}">${isAlbumFav ? "Remove Favorite" : "Favorites"}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  renderSongsList(artist, activeAlbum) {
+    return `<div data-list="songs" data-type="album" class="hero-songs"><div id="songsList" class="body">${activeAlbum.songs.map((song, i) => this.createSongRow(song, i, artist, activeAlbum)).join("")}</div></div>`;
+  }
+
+  createSongRow(song, index, artist, album) {
+    const isFav = this.ui.favorites.isSong(song.id);
+    const isPlaying = this.ui.state.currentSong?.id == song.id;
+
+    return `
+      <div class="songItem ${isPlaying ? "playing" : ""}" data-song-id="${Utils.esc(song.id)}" data-context='${JSON.stringify({ artistId: artist.id, albumId: album.id })}'>
+        <div class="left">
+          <div class="trackNum">${index + 1}</div>
+          <div class="play"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/><polygon points="10,7 17,12 10,17" fill="currentColor"/></svg></div>
+        </div>
+        <div class="center"><div class="title"><span>${Utils.esc(song.title)}</span></div></div>
+        <div class="right">
+          <div class="time">${Utils.esc(song.duration || "")}</div>
+          <button type="button" class="heart ${isFav ? "favorited" : ""}" data-fav-song="${Utils.esc(song.id)}" aria-label="Favorite song">${this.ui.likeStatus("song", isFav, false, null)}</button>
+          <button type="button" class="downloadBtn" data-action="download-song" data-song-id="${Utils.esc(song.id)}" data-song-title="${Utils.esc(song.title)}" data-song-thumbnail="${Utils.esc(album.coverUrl)}" aria-label="Download song"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+          <button type="button" class="moreMenu" data-more-song="${Utils.esc(song.id)}" aria-label="More options">${Icons.general.moreVert(18)}</button>
+        </div>
+      </div>
+    `;
+  }
+
+  renderSimilarMarquee(rows, artistId) {
+    const configs = [
+      ["left", 40],
+      ["right", 45],
+      ["left", 35],
+    ];
+
+    const renderPill = (entry) => {
+      const value = typeof entry === "string" ? entry : String(entry);
+      const label = Utils.esc(value);
+      return `
+        <span class="artist-name-pill animate-fadeIn"
+              data-artist-id="${Utils.esc(value)}"
+              data-artist-name="${label}">
+              ${label}
+        </span>`;
+    };
+
+    const marquee = (artists, direction, duration) => `
+      <div class="marquee-container">
+        <div class="marquee-track marquee-${direction}" style="animation-duration: ${duration}s;">
+          ${[...artists, ...artists].map(renderPill).join("")}
+        </div>
+      </div>
+    `;
+
+    return `
+      <div data-area="similar" class="similar-artists-section">
+        <h5 class="similar-artists-title">Listen to similar Artists</h5>
+        ${rows.map((row, i) => (row.length ? marquee(row, ...configs[i]) : "")).join("")}
+      </div>
+    `;
   }
 
   async bindWhenReady(attempts = 0) {
@@ -586,67 +2230,177 @@ class Artists {
       if (attempts < 60) setTimeout(() => this.bindWhenReady(attempts + 1), 50);
       return;
     }
+
     const shell = root.querySelector(".artist-shell");
     if (!shell) return;
 
-    const artistId = this.ui.state.artistId;
-    if (!artistId) { shell.innerHTML = `<div class="artist-missing">Artist not found</div>`; return; }
+    const state = this.ui.state;
+    const artistId = state.artistId;
+    if (!artistId) {
+      shell.innerHTML = `<div class="artist-missing">Artist not found</div>`;
+      return;
+    }
 
     const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
-    if (!artist) { shell.innerHTML = `<div class="artist-missing">Artist not found</div>`; return; }
+    if (!artist) {
+      shell.innerHTML = `<div class="artist-missing">Artist not found</div>`;
+      return;
+    }
 
-    let albumId = this.ui.state.selectedAlbumId;
+    let albumId = state.selectedAlbumId;
     if (!albumId && artist.albums?.length) albumId = artist.albums[0].id;
-    
-    const album = albumId ? await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null) : null;
-    if (!album) { shell.innerHTML = `<div class="artist-missing">Album not found</div>`; return; }
+    if (!albumId) {
+      shell.innerHTML = `<div class="artist-missing">Album not found</div>`;
+      return;
+    }
+
+    const album = await window.MusicStore.loadAlbum(artistId, albumId).catch(() => null);
+    if (!album) {
+      shell.innerHTML = `<div class="artist-missing">Album not found</div>`;
+      return;
+    }
+
+    state.selectedAlbumId = albumId;
+    state.selectedAlbumName = album.album;
 
     shell.innerHTML = this.renderFull(artist, album);
     this.afterRender();
+    this.ui.router.updateTitle();
     this.ui.events.attachContentEvents();
   }
 
-  renderFull(artist, album) {
-    return `
-      <header class="artist-header">
-        <h1 class="artist-name">${Utils.esc(artist.artist)}</h1>
-      </header>
-      <div class="artist-heroBody">
-        <div class="hero-stage">
-          <div class="hero-left">
-            <div class="hero-cover">
-              <img src="${Utils.esc(album.coverUrl)}" alt="">
-              <h2 class="album-title">${Utils.esc(album.album)}</h2>
-            </div>
-          </div>
-          <div class="hero-right">
-            <div data-list="songs" class="hero-songs">
-              <div class="body">
-                ${album.songs.map((song, i) => this.createSongRow(song, i, artist, album)).join("")}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  createSongRow(song, index, artist, album) {
-    const isFav = this.ui.favorites.isSong(song.id);
-    return `
-      <div class="songItem" data-song-id="${Utils.esc(song.id)}" data-context='${JSON.stringify({ artistId: artist.id, albumId: album.id })}'>
-        <div class="left"><div class="trackNum">${index + 1}</div></div>
-        <div class="center"><div class="title"><span>${Utils.esc(song.title)}</span></div></div>
-        <div class="right">
-          <div class="time">${Utils.esc(song.duration || "")}</div>
-          <button type="button" class="heart ${isFav ? "favorited" : ""}" data-fav-song="${Utils.esc(song.id)}">${this.ui.likeStatus("song", isFav, false, null)}</button>
-        </div>
-      </div>
-    `;
-  }
-
   afterRender() {
-    this.ui.router.updateTitle();
+    this.watchAlbumTabsPin();
+    this.bindAlbumTabsClick();
+    this.bindSimilarPills();
+  }
+
+  bindSimilarPills() {
+    const root = this.getRoot();
+    if (!root || root.similarBound) return;
+    root.similarBound = true;
+
+    root.addEventListener("click", (e) => {
+      const pill = e.target.closest(".artist-name-pill[data-artist-id]");
+      if (!pill) return;
+      const artistId = pill.dataset.artistId;
+      if (!artistId) return;
+
+      const spinner = new Spinner({
+        container: pill,
+        blur: 8,
+        dim: 0.4,
+        size: 18,
+        minDuration: 250,
+        delay: 60,
+      });
+      spinner.show();
+
+      setTimeout(() => {
+        window.uiManager?.events?.showArtistPopover(artistId, e);
+        spinner.hide();
+        setTimeout(() => spinner.remove(), 300);
+      }, window.uiManager?.popoverDelay || 400);
+    });
+  }
+
+  bindAlbumTabsClick() {
+    const root = this.getRoot();
+    if (!root) return;
+
+    const bar = root.querySelector(".albumTabsBar");
+    if (!bar || bar.bound) return;
+    bar.bound = true;
+
+    bar.addEventListener("click", (e) => {
+      const tab = e.target.closest(".albumTab");
+      if (!tab) return;
+
+      const artistId = tab.dataset.artistId;
+      const albumId = tab.dataset.albumId;
+      if (!artistId || !albumId) return;
+
+      bar.querySelectorAll(".albumTab.active").forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-pressed", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-pressed", "true");
+
+      try {
+        window.uiManager?.router?.switchAlbum(artistId, albumId);
+      } catch (err) {
+        console.warn("[Artists] Album switch failed:", err);
+        return;
+      }
+
+      setTimeout(() => {
+        this.watchAlbumTabsPin();
+        this.scrollHeroIntoView();
+      }, 40);
+    });
+  }
+
+  scrollHeroIntoView() {
+    const root = this.getRoot();
+    if (!root) return;
+
+    const sentinel = root.querySelector(".albumTabsSentinel");
+    if (!sentinel) return;
+
+    const pinTop = 56;
+    const rect = sentinel.getBoundingClientRect();
+    const sentinelBottomPage = rect.bottom + window.scrollY;
+    const targetY = Math.max(0, sentinelBottomPage - pinTop + 2);
+
+    window.scrollTo({ top: targetY, behavior: "smooth" });
+  }
+
+  watchAlbumTabsPin() {
+    const root = this.getRoot();
+    if (!root) return;
+
+    if (this.tabsScrollHandler) {
+      window.removeEventListener("scroll", this.tabsScrollHandler, true);
+      this.tabsScrollHandler = null;
+    }
+    if (this.tabsRaf) {
+      cancelAnimationFrame(this.tabsRaf);
+      this.tabsRaf = null;
+    }
+
+    const bar = root.querySelector(".albumTabsBar");
+    const sentinel = root.querySelector(".albumTabsSentinel");
+    if (!bar || !sentinel) return;
+
+    const pinTop = 56;
+
+    const compute = () => {
+      this.tabsRaf = null;
+      if (!bar.isConnected || !sentinel.isConnected) return;
+
+      const sRect = sentinel.getBoundingClientRect();
+      const pinned = sRect.bottom <= pinTop + 0.5;
+      if (pinned !== this.pinned) {
+        this.pinned = pinned;
+        bar.classList.toggle("is-pinned", pinned);
+      }
+    };
+
+    this.tabsScrollHandler = () => {
+      if (this.tabsRaf) return;
+      this.tabsRaf = requestAnimationFrame(compute);
+    };
+
+    this.pinned = false;
+    bar.classList.remove("is-pinned");
+    compute();
+
+    window.addEventListener("scroll", this.tabsScrollHandler, { passive: true, capture: true });
+  }
+
+  getRoot() {
+    return document.querySelector('[data-page="artist"]');
   }
 }
 
@@ -947,6 +2701,10 @@ class Favorites {
   }
 }
 
+
+
+
+
 class Playlists {
   constructor(ui) {
     this.ui = ui;
@@ -1145,9 +2903,6 @@ class Playlists {
 }
 
 
-
-
-
 class CreatePlaylist {
   constructor(ui) {
     this.ui = ui;
@@ -1249,9 +3004,6 @@ class CreatePlaylist {
 }
 
 
-
-
-
 class EditPlaylist {
   constructor(ui) {
     this.ui = ui;
@@ -1347,6 +3099,7 @@ class EditPlaylist {
     return `<div class="edit-cover-mosaic">${songs.map((song) => `<img src="${song.coverUrl}" class="edit-cover-quarter" alt="">`).join("")}</div>`;
   }
 }
+
 
 
 
