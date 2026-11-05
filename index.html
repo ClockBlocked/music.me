@@ -1,26 +1,7 @@
-
-
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 
-
-  <!-- GTag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R3VW514RFS">
-</script>
-  
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-R3VW514RFS');
-</script>
-  <!-- END -- END -- END ---------------------------------->
-
-
-
-  
   <script>
     window.addEventListener('error', function (event) {
       if (event.target && (event.target.tagName === 'SCRIPT' || event.target.type === 'module')) {
@@ -518,6 +499,7 @@
 
   <link rel="stylesheet" href="./stylings/base/fonts.css" />
   <link rel="stylesheet" href="./stylings/base/themes.css" />
+  <link rel="stylesheet" href="./stylings/app.css" />
   <link rel="stylesheet" href="./stylings/base/setup.css" />
   <link rel="stylesheet" href="./stylings/base/icons.css" />
   <link rel="stylesheet" href="./stylings/base/images.css" />
@@ -546,13 +528,9 @@
 
   <link rel="stylesheet" href="./stylings/overlays/all.css?v=1.1.2" />
 
-  
-  <link rel="stylesheet"
-        href="./stylings/desktop/home.css"
-        media="(min-width: 992px)">
-  
   <link rel="stylesheet" href="./stylings/animate/loaders.css" />
   <link rel="stylesheet" href="./stylings/ytSaver.css" />
+  <link rel="stylesheet" href="./stylings/shell/appShell.css?v=1.0.0" />
 
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
@@ -576,108 +554,51 @@
 
 </head>
 
-
-
-
 <body>
-  <div class="app-shell">
-    
-    <!-- Mobile Top Nav -->
-    <nav class="mobile-nav">
-      <div class="links">
-        <button class="link active" data-nav="home">Discover</button>
-        <button class="link" data-nav="library">Library</button>
-        <button class="link" data-nav="favorites">Favorites</button>
-        <button class="link" data-nav="playlists">Collections</button>
-      </div>
-      <div class="mobile-actions">
-        <button id="open-search" class="btn" title="Search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
-        </button>
-        <button data-action="settings" class="btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
-        </button>
-      </div>
-    </nav>
 
-    <!-- Desktop Sidebar -->
-    <aside class="desktop-sidebar">
-      <div class="logo">
-        <div class="icon"><i class="fa-solid fa-waveform"></i></div>
-        <span class="text">MyBeats™</span>
-      </div>
-      <div class="links">
-        <button class="link active" data-nav="home"><i class="fa-solid fa-compass"></i> Discover</button>
-        <button class="link" data-nav="library"><i class="fa-solid fa-music"></i> Library</button>
-        <button class="link" data-nav="favorites"><i class="fa-solid fa-heart"></i> Favorites</button>
-        <button class="link" data-nav="playlists"><i class="fa-solid fa-list"></i> Collections</button>
-      </div>
-      <div class="desktop-sidebar-footer">
-        <button data-action="settings" class="btn"><i class="fa-solid fa-gear"></i> Settings</button>
-      </div>
-    </aside>
+  <div id="app-shell">
 
-    <!-- Main Content Area -->
-    <main id="main-content" class="main-scroll-area wrapper"></main>
-
-    <!-- Desktop Right Sidebar (Queue) -->
-    <aside class="desktop-right-sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-header">
-          <h3>Up Next</h3>
-          <button class="icon-btn" id="desktop-queue-clear"><i class="fa-solid fa-trash"></i></button>
-        </div>
-        <div id="desktop-queue-list" class="sidebar-queue-list"></div>
-      </div>
-    </aside>
-    
-  </div>
-
-  <!-- Overlays & Player -->
-  <div id="search-bar" class="hidden" data-overlay="search">
-    <div class="overlay" id="search-overlay"></div>
-    <div class="panel">
-      <div class="head">
-        <div class="field">
-          <input type="text" id="search-input" placeholder="Search songs, artists, albums..." autocomplete="off" />
-          <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
-          <button class="close" id="close-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" /></svg></button>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div id="search-results-container" class="results hidden"></div>
-    </div>
-  </div>
-
-  <div id="player-bar-container"></div>
-  <div data-overlay="drawer" id="player-drawer-overlay"></div>
-  <div id="full-player-drawer"></div>
-  <div data-overlay="modal" id="modal-overlay"></div>
-  <div class="modal" id="modal"></div>
-  <div data-overlay="toast" id="toast"></div>
-
-  <audio id="global-audio" preload="none" crossorigin="anonymous"></audio>
-
-
-
-
-<!--
-<body>
-  <nav data-navbar="site">
+  <nav data-navbar="site" aria-label="Primary">
     <div class="wrap">
 
-      <div class="logo">
+      <div class="logo" data-shell-action="go-home" role="button" tabindex="0" aria-label="MyBeats home">
         <div class="icon">
           <svg viewBox="0 0 500 500" fill="currentColor"></svg>
         </div>
         <span class="text">MyBeats<span>™</span></span>
       </div>
 
-      <div class="links">
-        <button class="link active" data-nav="home">Discover</button>
-        <button class="link" data-nav="library">Library</button>
-        <button class="link" data-nav="favorites">Favorites</button>
-        <button class="link" data-nav="playlists">Collections</button>
+      <div class="links" data-group="menu">
+        <span class="navGroupLabel">Menu</span>
+        <button class="link active" data-nav="home">
+          <svg class="linkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <span class="linkText">Discover</span>
+        </button>
+        <button class="link" data-nav="library">
+          <svg class="linkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          <span class="linkText">Library</span>
+        </button>
+        <button class="link" data-nav="favorites">
+          <svg class="linkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span class="linkText">Favorites</span>
+        </button>
+        <button class="link" data-nav="playlists">
+          <svg class="linkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15V6"/><path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/></svg>
+          <span class="linkText">Collections</span>
+        </button>
+      </div>
+
+      <div class="navGroup" data-group="customize">
+        <span class="navGroupLabel">Customize</span>
+        <button class="link" data-shell-action="new-playlist">
+          <svg class="linkIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          <span class="linkText">New Playlist</span>
+        </button>
+        <button class="link" data-shell-action="toggle-theme" aria-label="Toggle color theme">
+          <svg class="linkIcon themeIconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <span class="linkText">Appearance</span>
+          <span class="themePill" aria-hidden="true"><span class="themePillDot"></span></span>
+        </button>
       </div>
 
       <div class="actions">
@@ -698,20 +619,44 @@
         <button id="notification-bell" class="btn" data-dash="notifications" aria-label="Notifications">
           <i class="fad fa-list-dropdown"></i>
         </button>
+
+        <button class="btn avatarBtn" data-shell-action="open-settings" aria-label="Account">
+          <span class="avatarInitial">M</span>
+        </button>
+      </div>
+
+      <div class="shellUser">
+        <button class="shellUserBtn" data-shell-action="open-settings">
+          <span class="shellUserAvatar" aria-hidden="true">M</span>
+          <span class="shellUserMeta">
+            <span class="shellUserName">My Listener</span>
+            <span class="shellUserPlan">Free plan</span>
+          </span>
+        </button>
       </div>
 
     </div>
   </nav>
 
-  <style>
-    .upperWrap {
-      height: 5rem;
-      position: relative;
-      padding-top: 3.5rem;
-    }
-  </style>
+  <section class="upperWrap shell-main">
 
-  <section class="upperWrap">
+    <header id="shell-header">
+      <nav class="shellHeaderLinks" aria-label="Quick links">
+        <button class="shellHeaderLink" data-shell-nav="home">New releases</button>
+        <button class="shellHeaderLink" data-shell-action="shuffle-play">Shuffle play</button>
+        <button class="shellHeaderLink" data-shell-nav="library">Top charts</button>
+      </nav>
+      <div class="shellHeaderRight">
+        <button id="shell-header-search" class="shellHeaderSearch" aria-label="Search (Ctrl+K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span class="shellHeaderSearchText">Search music</span>
+          <kbd class="shellHeaderKbd">Ctrl K</kbd>
+        </button>
+        <button class="shellHeaderAvatar" data-shell-action="open-settings" aria-label="Account">
+          <span class="avatarInitial">M</span>
+        </button>
+      </div>
+    </header>
 
     <div data-navbar="breadcrumbs">
       <div class="trail">
@@ -773,10 +718,7 @@
     <div data-overlay="toast" id="toast"></div>
 
     <audio id="global-audio" preload="none" crossorigin="anonymous"></audio>
---->
 
-
-  
     <script src="https://clockblocked.github.io/music.me/pwa.js"></script>
 
     <script>
@@ -1314,8 +1256,80 @@
     <script src="https://clockblocked.github.io/music.me/source/layouts.js"></script>
     <script src="https://clockblocked.github.io/music.me/source/player.js"></script>
     <script src="https://clockblocked.github.io/music.me/source/interactions.js"></script>
+    <script src="https://clockblocked.github.io/music.me/source/shell.js"></script>
 
   </section>
+
+  <aside id="shell-rail" aria-label="Discovery and player">
+    <section class="railBlock railSearchBlock">
+      <h3 class="railTitle">Quick search</h3>
+      <button class="railSearchField" data-shell-action="open-search" aria-label="Open search">
+        <span class="railSearchPlaceholder">Type here to search</span>
+        <span class="railSearchIcon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </span>
+      </button>
+    </section>
+
+    <section class="railBlock railArtistsBlock">
+      <h3 class="railTitle">Top artists</h3>
+      <div class="railArtists" id="rail-top-artists"></div>
+    </section>
+
+    <section class="railBlock railPlayerBlock">
+      <h3 class="railTitle">Player</h3>
+      <div class="railPlayerCard" id="rail-player-card">
+        <div class="railPlayerArtWrap" data-shell-action="open-drawer" role="button" tabindex="0" aria-label="Open full player">
+          <img id="rail-player-art" class="railPlayerArt" src="" alt="" />
+          <span class="railPlayerArtGlow" aria-hidden="true"></span>
+        </div>
+        <div class="railPlayerMeta">
+          <h4 class="railPlayerTitle" id="rail-player-title">Nothing playing</h4>
+          <p class="railPlayerArtist" id="rail-player-artist">Pick something you love</p>
+        </div>
+        <div class="railPlayerProgressTrack" aria-hidden="true"><div class="railPlayerProgressFill" id="rail-player-progress"></div></div>
+        <div class="railPlayerTimes"><span id="rail-time-cur">0:00</span><span id="rail-time-dur">0:00</span></div>
+        <div class="railPlayerControls">
+          <button class="railCtrl" id="rail-shuffle" aria-label="Shuffle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>
+          </button>
+          <button class="railCtrl" id="rail-prev" aria-label="Previous">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 20 9 12l10-8v16Z"/><path d="M5 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <button class="railCtrl railCtrlMain" id="rail-toggle" aria-label="Play or pause">
+            <svg id="rail-toggle-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button class="railCtrl" id="rail-next" aria-label="Next">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m5 4 10 8-10 8V4Z"/><path d="M19 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <button class="railCtrl" id="rail-fav" aria-label="Favorite">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </aside>
+
+  <nav id="mobile-tabs" aria-label="Primary">
+    <button class="mtab active" data-nav="home" aria-label="Home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      <span class="mtabLabel">Discover</span>
+    </button>
+    <button class="mtab" data-nav="library" aria-label="Library">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+      <span class="mtabLabel">Library</span>
+    </button>
+    <button class="mtab" data-nav="favorites" aria-label="Favorites">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      <span class="mtabLabel">Favorites</span>
+    </button>
+    <button class="mtab" data-nav="playlists" aria-label="Collections">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15V6"/><path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/></svg>
+      <span class="mtabLabel">Collections</span>
+    </button>
+  </nav>
+
+  </div><!-- /#app-shell -->
 
 </body>
 </html>
