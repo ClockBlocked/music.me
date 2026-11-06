@@ -93,10 +93,11 @@ class UIManager {
     this.isTransitioning = true;
     this.transitionStart = Date.now();
 
-    Object.assign(this.main.style, {
-      transition: "opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease",
-      transform: "translateY(10px)",
-    });
+    window.dispatchEvent(
+      new CustomEvent("mybeats:page-change", {
+        detail: { page: this.state.currentPage },
+      })
+    );
 
     this.routes();
     this.player.renderMiniPlayer();
@@ -114,17 +115,29 @@ class UIManager {
       404: () => this.errorPage.render(),
     };
 
+    const main = this.main;
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    const OUT_MS = reduceMotion ? 0 : 190;
+
+    main.classList.remove("page-enter", "page-enter-active");
+    main.classList.add("page-leave");
+
     setTimeout(() => {
       try {
-        this.main.innerHTML =
+        main.innerHTML =
           (pageMap[this.state.currentPage] ?? (() => "<div>Not found</div>"))();
 
-        Object.assign(this.main.style, { transform: "translateY(0)" });
+        main.classList.remove("page-leave");
+        main.classList.add("page-enter");
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => main.classList.add("page-enter-active"));
+        });
 
         setTimeout(() => {
-          this.main.style.transition = "";
+          main.classList.remove("page-enter", "page-enter-active");
           this.isTransitioning = false;
-        }, 300);
+        }, reduceMotion ? 0 : 520);
 
         this.contentEvents.attachContentEvents();
         Spinner.pruneDetached();
@@ -132,10 +145,11 @@ class UIManager {
         this.autoPlayDeepLink();
       } catch (err) {
         console.error("[UIManager] Page render error:", err);
+        main.classList.remove("page-leave", "page-enter", "page-enter-active");
         this.isTransitioning = false;
         if (window.NProgress && NProgress.status !== null) NProgress.done();
       }
-    }, 300);
+    }, OUT_MS);
   }
 
   scrollSection(title, cards) {
