@@ -78,6 +78,36 @@ class Utils {
       .replace(/"/g, "&quot;");
   }
 
+  /**
+   * Smoothly swap an element's inner content:
+   * fade/slide the old content out, replace, then animate the new content in.
+   * Falls back to an instant swap when reduced motion is requested.
+   */
+  static flowSwap(el, html, { outMs = 160, inMs = 380 } = {}) {
+    if (!el) return;
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (reduceMotion) {
+      el.innerHTML = html;
+      return;
+    }
+
+    el.classList.remove("flow-in", "flow-in-active");
+    el.classList.add("flow-out");
+
+    setTimeout(() => {
+      if (!el.isConnected) return;
+      el.innerHTML = html;
+      el.classList.remove("flow-out");
+      el.classList.add("flow-in");
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => el.classList.add("flow-in-active"));
+      });
+      setTimeout(() => {
+        el.classList.remove("flow-in", "flow-in-active");
+      }, inMs);
+    }, outMs);
+  }
+
   static fmtDuration(raw) {
     if (raw === null || raw === undefined || raw === "") return "";
     if (typeof raw === "string") {
