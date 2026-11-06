@@ -418,7 +418,9 @@ class AppNavigator {
 
     const songsEl = document.querySelector('[data-list="songs"]');
     if (songsEl && artistPage?.createSongRow) {
-      songsEl.innerHTML = `
+      Utils.flowSwap(
+        songsEl,
+        `
       <div class="header">
         <div class="left">
           <span class="badge">${album.sold || "Double Platinum"}</span>
@@ -429,15 +431,18 @@ class AppNavigator {
       <div class="body">
         ${album.songs.map((song, i) => artistPage.createSongRow(song, i, artist, album)).join("")}
       </div>
-    `;
+    `
+      );
     }
 
     const aboutEl = document.querySelector('[data-page="artist"] [data-area="about"]');
     if (aboutEl && artistPage?.aboutSection) {
-      aboutEl.innerHTML = artistPage.aboutSection(artist, album);
-      aboutEl.querySelectorAll(".tab").forEach((btn) => {
-        btn.classList.toggle("active", IdUtils.norm(btn.dataset.albumId) === IdUtils.norm(album.id));
-      });
+      Utils.flowSwap(aboutEl, artistPage.aboutSection(artist, album));
+      setTimeout(() => {
+        aboutEl.querySelectorAll(".tab").forEach((btn) => {
+          btn.classList.toggle("active", IdUtils.norm(btn.dataset.albumId) === IdUtils.norm(album.id));
+        });
+      }, 180);
     }
 
     const heroOverlay = document.querySelector(".hero-overlay .album-title");
