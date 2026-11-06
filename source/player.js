@@ -785,11 +785,14 @@ class PlayerManager {
   }
 
   setPlayingUI(isPlaying) {
+    const label = `<span class="miniToggleLabel">${isPlaying ? "Pause" : "Play"}</span>`;
     const playSVG = Icons.player.play(22);
     const pauseSVG = Icons.player.pause(22);
 
     const miniBtn = document.getElementById("toggle-play-mini");
-    if (miniBtn) miniBtn.innerHTML = isPlaying ? pauseSVG : playSVG;
+    if (miniBtn) miniBtn.innerHTML = (isPlaying ? pauseSVG : playSVG) + label;
+
+    window.appShell?.syncRailPlayer?.();
 
     const drawerBtn = document.getElementById("play-pause-drawer");
     if (drawerBtn) {
@@ -816,6 +819,8 @@ class PlayerManager {
 
     const totalEl = document.getElementById("total-time");
     if (totalEl) totalEl.textContent = total;
+
+    window.appShell?.syncRailProgress?.(pctStr, cur, total);
   }
 
   showCoverBuffer() {
@@ -917,7 +922,7 @@ class PlayerManager {
             </div>
             <div class="actions">
               <button id="fav-mini" class="${isFav ? "favorited" : ""}" ${!currentSong ? "disabled" : ""}>${currentSong ? this.ui.likeStatus("song", isFav, false, null) : '<i class="fa-solid fa-heart not-liked-icon"></i>'}</button>
-              <button id="toggle-play-mini" class="toggle" ${!currentSong ? "disabled" : ""}>${currentSong ? (state.isPlaying ? pauseSVG : playSVG) : playSVG}</button>
+              <button id="toggle-play-mini" class="toggle" ${!currentSong ? "disabled" : ""}>${currentSong ? (state.isPlaying ? pauseSVG : playSVG) : playSVG}<span class="miniToggleLabel">${state.isPlaying && currentSong ? "Pause" : "Play"}</span></button>
               <button id="skip-forward-mini" ${!currentSong ? "disabled" : ""}>${skipSVG}</button>
             </div>
           </div>
@@ -954,6 +959,8 @@ class PlayerManager {
 
     this.applyPlaybackErrorState();
     if (this.coverBufferVisible) this.showCoverBuffer();
+
+    window.appShell?.syncRailPlayer?.();
   }
 
   renderFullPlayer() {
