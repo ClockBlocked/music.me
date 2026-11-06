@@ -221,10 +221,13 @@ class Home {
     const fresh = tpl.content.firstElementChild;
     if (!fresh) return;
 
+    fresh.classList.add("card-patched");
+    fresh.addEventListener("animationend", () => fresh.classList.remove("card-patched"), { once: true });
+
     if (existing) {
       existing.replaceWith(fresh);
     } else {
-      const ORDER = ["releases", "recents", "most-played", "library", "favorites", "discover", "collections", "genres"];
+      const ORDER = ["releases", "recents", "library", "most-played", "favorites", "discover", "collections", "genres"];
       const idx = ORDER.indexOf(cardKey);
       let inserted = false;
       for (const child of grid.children) {
@@ -237,6 +240,7 @@ class Home {
       if (!inserted) grid.appendChild(fresh);
     }
     this.syncNowPlaying();
+    window.heartManager?.bindAll(fresh);
   }
 
   shuffle(arr) {
@@ -343,15 +347,30 @@ class Home {
 
   renderHeader() {
     return `
-      <header class="pageHeader">
+      <header class="pageHeader heroIntro" style="--i:0">
         <div class="pageHeaderContent">
-          <span class="pageKicker">Your Music</span>
-          <h1 class="pageTitle">Music Library</h1>
-          <p class="pageDescription">Pick up where you left off, discover new releases, and explore your music collection.</p>
+          <span class="pageKicker heroKicker"><span class="heroKickerDot" aria-hidden="true"></span>Your Music</span>
+          <h1 class="pageTitle heroTitle">Music, right where you left it.</h1>
+          <p class="pageDescription heroSub">Pick up where you left off, find something new, or settle back into your collection.</p>
+          <div class="heroCtas">
+            <button type="button" class="heroCta" data-nav="library">
+              <span>View your library</span>
+              ${Icons.general.arrowRight(16)}
+            </button>
+          </div>
         </div>
-        <button type="button" class="headerAction" data-nav="library">View Library</button>
       </header>
     `;
+  }
+
+  async playFeatured() {
+    const release = this._featuredRelease;
+    if (!release) return;
+    const album = await window.MusicStore.loadAlbum(release.artistId, release.albumId).catch(() => null);
+    const songs = (album?.songs || [])
+      .map((s) => window.MusicStore.songCache.get(String(s.id)) || s)
+      .filter(Boolean);
+    if (songs.length) this.ui.audioPlayer.playSong(songs[0], songs, true, "home");
   }
 
   // ----------------------------------------------
@@ -663,39 +682,65 @@ class Home {
   renderRecentlyPlayed(recent) {
     return `
       <article class="musicCard recentlyPlayed" data-card="recents">
-        ${this.sectionTitle({
-          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><polygon points="8.5,7 8.5,13.5 14.5,10.25" fill="rgba(190,140,255,0.82)"/></svg>`,
-          title: "Recently Played",
-          notes: [this.musicNoteSvg(1), this.musicNoteSvg(2)],
-          action: this.actionButton("view-recents", "View recently played"),
-        })}
-        <div class="cardContent"><div class="songList" id="recentSongs" aria-label="Recently played songs">${recent.length ? recent.map((s) => this.songRow(s)).join("") : this.emptyNote("Nothing here yet - play a song and it will appear at the top of this list.")}</div></div>
+        <div class="rpHeader">
+          <div class="rpHeaderText">
+            <span class="rpKicker">Your Listening</span>
+            <h2 class="rpTitle">Recently played</h2>
+          </div>
+          <button type="button" class="rpHistoryChip" data-action="view-recents" aria-label="View listening history">History</button>
+        </div>
+        <div class="cardContent"><div class="songList" id="recentSongs" aria-label="Recently played songs">${recent.length ? recent.map((s) => this.songRow(s)).join("") : this.recentsEmptyState()}</div></div>
+        <div class="rpFoot">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span>Listening history stays in your library</span>
+        </div>
       </article>
+    `;
+  }
+
+  recentsEmptyState() {
+    return `
+      <div class="recentsEmpty">
+        <span class="recentsEmptyIcon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>
+        </span>
+        <p class="recentsEmptyTitle">Your next favorite starts here.</p>
+        <p class="recentsEmptySub">Play an album or track and it will appear in your listening history.</p>
+        ${this._featuredRelease ? `<button type="button" class="heroGhostBtn recentsEmptyCta" data-action="play-featured">Play featured album</button>` : ""}
+      </div>
     `;
   }
   renderNewRelease(release) {
     if (!release) return "";
 
     const playData = this.esc(JSON.stringify({ artistId: release.artistId, albumId: release.albumId }));
+    const isFav = this.ui.favorites?.isAlbum?.(release.albumId) ?? false;
 
     return `
-      <article class="musicCard releasesCard" data-card="releases" data-artist-id="${this.esc(release.artistId)}" data-album-id="${this.esc(release.albumId)}">
-        ${this.sectionTitle({
-          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="2.5" width="15" height="15" rx="3.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><line x1="10" y1="6.5" x2="10" y2="13.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/></svg>`,
-          title: "New Release",
-          notes: [this.musicNoteSvg(3)],
-          action: this.actionButton("view-releases", "View all releases"),
-        })}
-        <div class="releaseFeature">
-          <img class="releaseBackground" src="${this.esc(release.coverUrl)}" alt="${this.esc(release.albumName)}">
-          <div class="releaseInfo">
-            <span class="releaseLabel">Featured Album</span>
-            <h3 class="releaseTitle">${this.esc(release.albumName)}</h3>
-            <p class="releaseArtist">${this.esc(release.artistName)}</p>
-            <div class="releaseControls">
-              <button type="button" class="primaryPlay" aria-label="Play album" data-play-album='${playData}'>${Icons.player.play(18)}</button>
-              <button type="button" class="secondaryControl" aria-label="Add album to queue" data-action="add-album-to-queue" data-album-id="${this.esc(release.albumId)}">${Icons.general.plus(18)}</button>
-              <button type="button" class="secondaryControl" aria-label="More album options" data-release-more data-artist-id="${this.esc(release.artistId)}" data-album-id="${this.esc(release.albumId)}">${Icons.general.moreVert(18)}</button>
+      <article class="musicCard releasesCard heroCard" data-card="releases" data-artist-id="${this.esc(release.artistId)}" data-album-id="${this.esc(release.albumId)}">
+        <div class="heroMedia">
+          <img class="heroBg" src="${this.esc(release.coverUrl)}" alt="${this.esc(release.albumName)}" loading="lazy">
+          <span class="heroShade" aria-hidden="true"></span>
+
+          <span class="heroPill">Featured Album</span>
+          <button type="button" class="heroHeart${isFav ? " is-favorite" : ""}" aria-label="Favorite album" data-action="toggle-favorite-album" data-album-id="${this.esc(release.albumId)}">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </button>
+
+          <div class="heroOverlay">
+            <span class="heroKicker2">A Familiar Favorite</span>
+            <h3 class="heroTitle2">${this.esc(release.albumName)}</h3>
+            <p class="heroSub2">${this.esc(release.artistName)}<span class="heroDotSep" aria-hidden="true">·</span>Album</p>
+            <div class="heroActions">
+              <button type="button" class="heroPlayBtn" aria-label="Play album" data-play-album='${playData}'>
+                ${Icons.player.play(15)}
+                <span>Play album</span>
+              </button>
+              <button type="button" class="heroGhostBtn" aria-label="Add album to queue" data-action="add-album-to-queue" data-album-id="${this.esc(release.albumId)}">
+                ${Icons.general.plus(15)}
+                <span>Add to queue</span>
+              </button>
+              <button type="button" class="heroMoreBtn" aria-label="More album options" data-release-more data-artist-id="${this.esc(release.artistId)}" data-album-id="${this.esc(release.albumId)}">${Icons.general.moreVert(18)}</button>
             </div>
           </div>
         </div>
@@ -716,33 +761,50 @@ class Home {
     `;
   }
   renderLibraryCard(counts) {
-    const items = [
-      { key: "songs",     label: "Songs",     count: counts.songs,     icon: Icons.general.musicNote(18) },
-      { key: "albums",    label: "Albums",    count: counts.albums,    icon: Icons.general.album(18) },
-      { key: "artists",   label: "Artists",   count: counts.artists,   icon: Icons.general.artist(18) },
-      { key: "playlists", label: "Playlists", count: counts.playlists, icon: Icons.general.playlistAdd(18) },
+    const rows = [
+      {
+        key: "albums",
+        name: "Albums",
+        desc: "Your saved records",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg>`,
+      },
+      {
+        key: "playlists",
+        name: "Playlists",
+        desc: "Soundtracks for every mood",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15V6"/><path d="M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/></svg>`,
+      },
+      {
+        key: "artists",
+        name: "Favorite artists",
+        desc: "The voices you keep close",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`,
+      },
     ];
 
     return `
-      <article class="musicCard libraryCard" data-card="library">
-        ${this.sectionTitle({
-          icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="2.5" width="15" height="15" rx="3.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.2"/><line x1="10" y1="6.5" x2="10" y2="13.5" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/><line x1="6.5" y1="10" x2="13.5" y2="10" stroke="rgba(190,140,255,0.82)" stroke-width="1.5" stroke-linecap="round"/></svg>`,
-          title: "Your Library",
-          notes: [],
-          action: this.actionButton("open-library", "Open library"),
-        })}
-        <div class="cardContent"><div class="libraryGrid">${items
-          .map(
-            (item) => `
-          <button type="button" class="libraryItem" data-library="${item.key}">
-            <span class="libraryIcon" aria-hidden="true">${item.icon}</span>
-            <span class="libraryName">${item.label}</span>
-            <span class="libraryCount">${item.count} ${item.label.toLowerCase()}</span>
-          </button>`
-          )
-          .join("")}
-        </div></div>
-      </article>
+      <section class="musicCard madePersonal" data-card="library" aria-label="Your collection">
+        <div class="mpHeader">
+          <span class="mpKicker">Made Personal</span>
+          <h2 class="mpTitle">Your collection, in good company.</h2>
+          <p class="mpSub">The albums, playlists, and artists you return to—easy to find, ready when you are.</p>
+        </div>
+        <div class="mpRows">
+          ${rows
+            .map(
+              (row) => `
+            <button type="button" class="mpRow" data-library="${row.key}" aria-label="Open ${row.name}">
+              <span class="mpIcon" aria-hidden="true">${row.icon}</span>
+              <span class="mpMeta">
+                <span class="mpName">${row.name}</span>
+                <span class="mpDesc">${row.desc}</span>
+              </span>
+              <span class="mpChevron" aria-hidden="true">${this.iconChevronRight(18)}</span>
+            </button>`
+            )
+            .join("")}
+        </div>
+      </section>
     `;
   }
 
@@ -795,8 +857,8 @@ class Home {
     const cards = [
       this.renderNewRelease(this.pickFeatured(state)),
       this.renderRecentlyPlayed(this.getRecent(state)),
-      this.renderMostPlayed(this.getMostPlayed(state)),
       this.renderLibraryCard(this.getCounts(state)),
+      this.renderMostPlayed(this.getMostPlayed(state)),
       this.renderFavoritesCard(),
       this.renderDiscover(state),
       this.renderCollections(state),
@@ -999,7 +1061,26 @@ class Home {
         return;
       }
 
-      const navBtn = e.target.closest("[data-nav], .cardAction[data-action]");
+      const playFeaturedBtn = e.target.closest('[data-action="play-featured"]');
+      if (playFeaturedBtn) {
+        e.stopPropagation();
+        this.playFeatured();
+        return;
+      }
+
+      const playAlbumBtn = e.target.closest("[data-play-album]");
+      if (playAlbumBtn) {
+        e.stopPropagation();
+        try {
+          const data = JSON.parse(playAlbumBtn.dataset.playAlbum);
+          Utils.albumQueue(data.artistId, data.albumId).then((queue) => {
+            if (queue.length) ui.audioPlayer.playSong(queue[0], queue, true, "album");
+          });
+        } catch {}
+        return;
+      }
+
+      const navBtn = e.target.closest("[data-nav], .cardAction[data-action], .rpHistoryChip[data-action]");
       if (navBtn) {
         e.stopPropagation();
         const dest =
@@ -1016,7 +1097,7 @@ class Home {
         return;
       }
 
-      const libItem = e.target.closest(".libraryItem[data-library]");
+      const libItem = e.target.closest(".libraryItem[data-library], .mpRow[data-library]");
       if (libItem) {
         e.stopPropagation();
         ui.navigate(libItem.dataset.library === "playlists" ? "playlists" : "library");
@@ -1123,6 +1204,7 @@ class Home {
     if (!list) return;
 
     list.querySelector(".hp-empty")?.remove();
+    list.querySelector(".recentsEmpty")?.remove();
 
     const sel = `.song[data-song-id="${String(resolved.id).replace(/"/g, '\\"')}"]`;
     const existing = list.querySelector(sel);
