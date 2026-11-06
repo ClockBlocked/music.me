@@ -1829,3 +1829,597 @@ https://mybeats.cloud/dev/CoPilot/players/drawer.css
 https://mybeats.cloud/dev/CoPilot/players/floating.css
 
 **/
+
+/* ============================================================================
+   HOME NEXT — mobileView (Aftertone) + Design02 (Podcastr) inspired reskin
+   Appended layer: wins over earlier rules at equal specificity by order.
+   ============================================================================ */
+
+.hp {
+  --hvAccent: var(--shellAccent, rgb(var(--buttonSecondary, 167 139 250)));
+  --hvAccentText: var(--shellAccentText, rgb(var(--buttonSecondaryHover, 196 181 253)));
+  --hvCard: rgba(var(--bgCard, 24 27 36) / 0.72);
+  --hvCardBorder: rgba(var(--borderSubtle, 255 255 255) / 0.09);
+  --hvMuted: rgba(var(--textSecondary, 148 155 172) / 1);
+}
+
+/* ---- Page frame: tighter, app-like ---- */
+.hp.pageSection,
+.hp .pageSection {
+  padding: 1.35rem 1rem 2.25rem;
+  min-height: auto;
+}
+.hp .container { max-width: 1280px; }
+
+/* ============================
+   Hero intro ("Music, right where you left it.")
+   ============================ */
+.hp .heroIntro {
+  display: block;
+  padding-top: 0;
+  margin-bottom: 1.5rem;
+}
+.hp .heroKicker {
+  color: var(--hvAccentText);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+.hp .heroKicker::before { display: none; }
+.hp .heroKicker .heroKickerDot {
+  width: 6px;
+  height: 6px;
+  background: var(--hvAccent);
+  box-shadow: 0 0 10px rgba(var(--buttonSecondary, 167 139 250) / 0.8);
+}
+.hp .heroKickerDot {
+  display: inline-block;
+  border-radius: 50%;
+}
+.hp .heroTitle {
+  font-size: clamp(1.75rem, 7.2vw, 3.1rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  max-width: 620px;
+}
+.hp .heroSub {
+  font-size: 0.9rem;
+  max-width: 480px;
+  color: var(--hvMuted);
+}
+.hp .heroCtas {
+  margin-top: 1.15rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.hp .heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.62rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--hvCardBorder);
+  background: rgba(var(--bgCard, 24 27 36) / 0.5);
+  color: rgb(var(--textPrimary));
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+.hp .heroCta svg { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+.hp .heroCta:hover {
+  border-color: rgba(var(--buttonSecondary, 167 139 250) / 0.55);
+  background: rgba(var(--buttonSecondary, 167 139 250) / 0.1);
+  transform: translateY(-1px);
+}
+.hp .heroCta:hover svg { transform: translateX(3px); }
+.hp .heroCta:active { transform: translateY(0) scale(0.97); }
+
+/* ============================
+   Featured album hero card
+   ============================ */
+.hp .heroCard {
+  border-radius: 1.4rem;
+  overflow: hidden;
+  border: 1px solid var(--hvCardBorder);
+  background: var(--hvCard);
+}
+.hp .heroMedia {
+  position: relative;
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+}
+.hp .heroBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hp .heroCard:hover .heroBg { transform: scale(1.07); }
+.hp .heroShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(8, 10, 15, 0.92) 0%, rgba(8, 10, 15, 0.45) 38%, rgba(8, 10, 15, 0.15) 60%, rgba(8, 10, 15, 0.35) 100%);
+}
+.hp .heroPill {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(10, 12, 18, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.hp .heroHeart {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(10, 12, 18, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, color 0.2s ease;
+}
+.hp .heroHeart:hover { transform: scale(1.1); }
+.hp .heroHeart:active { transform: scale(0.92); }
+.hp .heroHeart.is-favorite,
+.hp .heroHeart.favorited {
+  color: #ff7eb0;
+  background: rgba(255, 126, 176, 0.16);
+  border-color: rgba(255, 126, 176, 0.4);
+}
+.hp .heroHeart.is-favorite svg,
+.hp .heroHeart.favorited svg { fill: currentColor; }
+
+.hp .heroOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.35rem 1.25rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+.hp .heroKicker2 {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(230, 224, 255, 0.75);
+}
+.hp .heroTitle2 {
+  font-size: 1.75rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+}
+.hp .heroSub2 {
+  font-size: 0.82rem;
+  color: rgba(235, 236, 245, 0.72);
+}
+.hp .heroDotSep { margin: 0 0.4em; opacity: 0.6; }
+.hp .heroActions {
+  margin-top: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+.hp .heroPlayBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.68rem 1.3rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--hvAccent);
+  color: #14162a;
+  font-size: 0.84rem;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(var(--buttonSecondary, 167 139 250) / 0.4);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease;
+}
+.hp .heroPlayBtn:hover {
+  transform: translateY(-1px) scale(1.02);
+  background: rgb(var(--buttonSecondaryHover, 196 181 253));
+  box-shadow: 0 10px 26px rgba(var(--buttonSecondary, 167 139 250) / 0.5);
+}
+.hp .heroPlayBtn:active { transform: scale(0.96); }
+.hp .heroGhostBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.66rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(12, 14, 20, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.hp .heroGhostBtn:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.35); }
+.hp .heroGhostBtn:active { transform: scale(0.96); }
+.hp .heroMoreBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(12, 14, 20, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.hp .heroMoreBtn:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* ============================
+   Recently played card
+   ============================ */
+.hp .recentlyPlayed {
+  border-radius: 1.4rem;
+  border: 1px solid var(--hvCardBorder);
+  background: var(--hvCard);
+  padding: 1.25rem 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.hp .recentlyPlayed::before { display: none; }
+.hp .rpHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.hp .rpKicker {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hvAccentText);
+  margin-bottom: 0.3rem;
+}
+.hp .rpTitle {
+  font-size: 1.28rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgb(var(--textPrimary));
+}
+.hp .rpHistoryChip {
+  flex: 0 0 auto;
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--hvCardBorder);
+  background: rgba(var(--bgOthers, 20 23 31) / 0.6);
+  color: var(--hvMuted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.hp .rpHistoryChip:hover {
+  color: rgb(var(--textPrimary));
+  border-color: rgba(var(--buttonSecondary, 167 139 250) / 0.5);
+}
+
+.hp .recentlyPlayed .cardContent { flex: 1 1 auto; }
+.hp .recentlyPlayed .songList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+/* Empty state */
+.hp .recentsEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.2rem 1.25rem 2.1rem;
+  gap: 0.45rem;
+}
+.hp .recentsEmptyIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hvAccentText);
+  background: rgba(var(--buttonSecondary, 167 139 250) / 0.1);
+  border: 1px solid rgba(var(--buttonSecondary, 167 139 250) / 0.22);
+  margin-bottom: 0.6rem;
+}
+.hp .recentsEmptyTitle {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: rgb(var(--textPrimary));
+}
+.hp .recentsEmptySub {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--hvMuted);
+  max-width: 300px;
+}
+.hp .recentsEmptyCta { margin-top: 0.85rem; }
+
+.hp .rpFoot {
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--hvCardBorder);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--hvMuted);
+  font-size: 0.72rem;
+}
+.hp .rpFoot svg { color: var(--hvAccentText); flex: 0 0 auto; }
+
+/* ============================
+   Made Personal rows
+   ============================ */
+.hp .madePersonal {
+  border-radius: 1.4rem;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0.35rem 0 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.hp .madePersonal::before { display: none; }
+.hp .mpKicker {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hvAccentText);
+  margin-bottom: 0.45rem;
+}
+.hp .mpTitle {
+  font-size: 1.55rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: rgb(var(--textPrimary));
+  max-width: 420px;
+}
+.hp .mpSub {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--hvMuted);
+  max-width: 460px;
+}
+.hp .mpRows {
+  margin-top: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.hp .mpRow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border-radius: 1.05rem;
+  border: 1px solid var(--hvCardBorder);
+  background: var(--hvCard);
+  text-align: left;
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease;
+}
+.hp .mpRow:hover {
+  border-color: rgba(var(--buttonSecondary, 167 139 250) / 0.4);
+  background: rgba(var(--bgCard, 24 27 36) / 0.9);
+  transform: translateX(3px);
+}
+.hp .mpRow:active { transform: scale(0.985); }
+.hp .mpIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hvAccentText);
+  background: rgba(var(--buttonSecondary, 167 139 250) / 0.1);
+  border: 1px solid rgba(var(--buttonSecondary, 167 139 250) / 0.18);
+}
+.hp .mpMeta { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1 1 auto; }
+.hp .mpName { font-size: 0.92rem; font-weight: 700; color: rgb(var(--textPrimary)); }
+.hp .mpDesc {
+  font-size: 0.74rem;
+  color: var(--hvMuted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hp .mpChevron {
+  flex: 0 0 auto;
+  color: var(--hvMuted);
+  display: inline-flex;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), color 0.22s ease;
+}
+.hp .mpRow:hover .mpChevron { transform: translateX(3px); color: var(--hvAccentText); }
+
+/* ============================
+   Bento placement
+   ============================ */
+.hp .bentoGrid { gap: 1.15rem; }
+.hp .bentoGrid > [data-card="releases"],
+.hp .bentoGrid > [data-card="recents"],
+.hp .bentoGrid > [data-card="library"] {
+  grid-column: 1 / -1;
+}
+
+/* Song rows inside the recents card (mobile list style) */
+.hp .recentlyPlayed .song {
+  border-radius: 0.9rem;
+  padding: 0.45rem 0.5rem;
+}
+.hp .recentlyPlayed .song:hover { background: rgba(var(--textPrimary, 255 255 255) / 0.045); }
+
+/* ============================
+   TABLET (768px+)
+   ============================ */
+@media (min-width: 768px) {
+  .hp.pageSection,
+  .hp .pageSection {
+    padding: 1.75rem 1.75rem 2.5rem;
+  }
+  .hp .heroTitle { max-width: 560px; }
+
+  .hp .bentoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .hp .bentoGrid > [data-card="releases"] { grid-column: 1 / -1; }
+  .hp .bentoGrid > [data-card="recents"] { grid-column: 1 / -1; }
+  .hp .bentoGrid > [data-card="library"] { grid-column: 1 / -1; }
+  .hp .bentoGrid > [data-card="genres"] { grid-column: 1 / -1; }
+
+  .hp .heroMedia { aspect-ratio: 21 / 10; }
+  .hp .heroShade {
+    background: linear-gradient(to right, rgba(8, 10, 15, 0.94) 22%, rgba(8, 10, 15, 0.55) 52%, rgba(8, 10, 15, 0.12) 78%);
+  }
+  .hp .heroOverlay {
+    top: 0;
+    justify-content: center;
+    max-width: 56%;
+    padding: 2rem;
+  }
+  .hp .heroTitle2 { font-size: 2.1rem; }
+
+  .hp .mpRows {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .hp .mpRow { flex-direction: column; align-items: flex-start; gap: 0.7rem; padding: 1rem; }
+  .hp .mpChevron { display: none; }
+
+  /* Recently played becomes a horizontal card strip (Design02) */
+  .hp .recentlyPlayed .songList {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0.85rem;
+    padding-bottom: 0.35rem;
+    scrollbar-width: thin;
+  }
+  .hp .recentlyPlayed .song {
+    scroll-snap-align: start;
+    flex: 0 0 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.55rem;
+  }
+  .hp .recentlyPlayed .song .songArtwork {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+  .hp .recentlyPlayed .song .songInformation { padding: 0 0.15rem; }
+
+  /* Most played rows in two columns */
+  .hp .mostPlayed .rankList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem 1rem;
+  }
+}
+
+/* ============================
+   DESKTOP (1200px+)
+   ============================ */
+@media (min-width: 1200px) {
+  .hp.pageSection,
+  .hp .pageSection {
+    padding: 2rem 2.25rem 3rem;
+  }
+  .hp .heroIntro { margin-bottom: 2rem; }
+
+  .hp .bentoGrid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+  .hp .bentoGrid > [data-card="releases"] { grid-column: 1 / -1; }
+  .hp .bentoGrid > [data-card="recents"] { grid-column: 1 / -1; }
+  .hp .bentoGrid > [data-card="most-played"] { grid-column: 1 / -1; }
+  .hp .bentoGrid > [data-card="library"] { grid-column: 1 / -1; }
+  .hp .bentoGrid > [data-card="favorites"] { grid-column: span 3; }
+  .hp .bentoGrid > [data-card="discover"] { grid-column: span 3; }
+  .hp .bentoGrid > [data-card="collections"] { grid-column: span 3; }
+  .hp .bentoGrid > [data-card="genres"] { grid-column: span 3; }
+
+  .hp .heroMedia { aspect-ratio: 21 / 7; min-height: 300px; }
+  .hp .heroOverlay { max-width: 46%; padding: 2.5rem; }
+  .hp .heroTitle2 { font-size: 2.6rem; }
+  .hp .heroPill { top: 1.35rem; left: 1.5rem; }
+  .hp .heroHeart { top: 1.25rem; right: 1.35rem; }
+
+  .hp .mostPlayed .rankList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Rail artwork swap-in animation */
+@keyframes railArtIn {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.rail-art-in { animation: railArtIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Mini player pill toggle (mobile look) */
+#player-bar-container .miniToggleLabel { display: none; }
+@media (max-width: 767px) {
+  #player-bar-container #toggle-play-mini {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: auto;
+    height: auto;
+    padding: 0.55rem 1.05rem;
+    border-radius: 999px;
+    background: var(--hvAccent, rgb(167 139 250));
+    color: #14162a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(167, 139, 250, 0.35);
+  }
+  #player-bar-container #toggle-play-mini svg { width: 14px; height: 14px; }
+  #player-bar-container .miniToggleLabel { display: inline; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hp .heroBg { transition: none; }
+  .rail-art-in { animation: none; }
+}
