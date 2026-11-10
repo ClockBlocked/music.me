@@ -1,3 +1,9 @@
+
+
+
+importScripts("https://progressier.app/tXyXhOpUEpE9MDdeqkWi/sw.js" );
+
+
 const SW_VERSION = '20261002-combined';
 const BASE_PATH = '/music.me';
 const STATIC_CACHE = `mybeats-static-${SW_VERSION}`;
