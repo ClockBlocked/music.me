@@ -1,11 +1,11 @@
 /* ============================================================================
    navbars/top.css
-   Primary site navigation bar
+   Mobile top navigation bar (tablet/desktop use the left sidebar instead)
    ============================================================================ */
 
 
-/* ===== 1. SITE TOP NAVIGATION BAR ===== */
-[data-navbar="site"] {
+/* ===== 1. MOBILE TOP NAVIGATION BAR ===== */
+[data-navbar="mobile"] {
   position: fixed;
   top: 0;
   left: 0;
