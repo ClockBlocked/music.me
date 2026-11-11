@@ -2453,7 +2453,7 @@ class Artists {
     const sentinel = root.querySelector(".albumTabsSentinel");
     if (!sentinel) return;
 
-    const pinTop = 56;
+    const pinTop = this.pinTop();
     const rect = sentinel.getBoundingClientRect();
     const sentinelBottomPage = rect.bottom + window.scrollY;
     const targetY = Math.max(0, sentinelBottomPage - pinTop + 2);
@@ -2478,7 +2478,7 @@ class Artists {
     const sentinel = root.querySelector(".albumTabsSentinel");
     if (!bar || !sentinel) return;
 
-    const pinTop = 56;
+    const pinTop = this.pinTop();
 
     const compute = () => {
       this.tabsRaf = null;
@@ -2502,6 +2502,17 @@ class Artists {
     compute();
 
     window.addEventListener("scroll", this.tabsScrollHandler, { passive: true, capture: true });
+  }
+
+  // Sticky offset shared with the breadcrumbs bar (--crumbStickTop on
+  // #app-shell) so the album-tabs bar pins exactly where the breadcrumbs
+  // sit, keeping the "albums push breadcrumbs out of the way" handoff
+  // pixel-perfect at every breakpoint (58px mobile, 64px tablet/desktop).
+  pinTop() {
+    const shell = document.getElementById("app-shell");
+    const raw = shell ? getComputedStyle(shell).getPropertyValue("--crumbStickTop") : "";
+    const px = parseFloat(raw);
+    return Number.isFinite(px) ? px : 56;
   }
 
   getRoot() {
