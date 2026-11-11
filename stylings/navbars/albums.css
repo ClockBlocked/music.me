@@ -7,7 +7,9 @@
 /* ===== 1. ALBUM TABS BAR ===== */
 [data-area="albums"] {
   position: sticky;
-  top: 3.5rem;
+  /* Same offset as the breadcrumbs bar (--crumbStickTop) + higher z-index,
+     so this bar pushes the breadcrumbs up and out of the way on scroll */
+  top: var(--crumbStickTop, 3.5rem);
   z-index: 110;
   display: flex;
   gap: .5rem;
