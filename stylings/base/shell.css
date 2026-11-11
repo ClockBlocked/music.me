@@ -20,7 +20,10 @@
 /* ===== 0. Shell tokens ===== */
 #app-shell {
   --shellTopH: 58px;
-  --shellTabsH: 60px;
+  --shellHeaderH: 64px;
+  /* Shared sticky offset for breadcrumbs + album tabs so the albums bar
+     keeps pushing the breadcrumbs bar up and out of the way on scroll */
+  --crumbStickTop: var(--shellTopH);
   --shellSideW: 250px;
   --shellRailW: 326px;
   --shellSideWTablet: 84px;
@@ -118,11 +121,14 @@
   position: relative;
   min-height: 100dvh;
   padding-top: var(--shellTopH);
-  padding-bottom: calc(var(--shellTabsH) + 96px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
 }
 
+/* Desktop sidebar stays out of the mobile flow */
+#app-shell [data-navbar="desktop"] { display: none; }
+
 /* --- Top app bar --- */
-#app-shell [data-navbar="site"] {
+#app-shell [data-navbar="mobile"] {
   position: fixed;
   top: 0;
   left: 0;
@@ -134,7 +140,7 @@
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   border-bottom: 1px solid var(--shellBorder);
 }
-#app-shell [data-navbar="site"] .wrap {
+#app-shell [data-navbar="mobile"] .wrap {
   max-width: none;
   height: 100%;
   padding: 0 1rem;
@@ -143,42 +149,43 @@
   justify-content: space-between;
   gap: 0.75rem;
 }
-#app-shell [data-navbar="site"] .logo {
+#app-shell [data-navbar="mobile"] .logo {
   gap: 0.6rem;
 }
-#app-shell [data-navbar="site"] .logo .icon {
+#app-shell [data-navbar="mobile"] .logo .icon {
   width: 2rem;
   height: 2rem;
   border-radius: 0.55rem;
   background: linear-gradient(135deg, var(--shellAccent), rgba(var(--colorPink, 226 117 173) / 0.85));
   box-shadow: 0 4px 14px rgba(var(--buttonSecondary, 167 139 250) / 0.3);
 }
-#app-shell [data-navbar="site"] .logo .text {
+#app-shell [data-navbar="mobile"] .logo .text {
   display: block;
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: -0.01em;
   color: var(--shellText);
 }
-#app-shell [data-navbar="site"] .logo .text span {
+#app-shell [data-navbar="mobile"] .logo .text span {
   font-size: 0.6rem;
   vertical-align: super;
   color: var(--shellAccentText);
 }
 
-/* mobile: nav groups collapse into the bottom tab bar */
-#app-shell [data-navbar="site"] .links,
-#app-shell [data-navbar="site"] .navGroup,
-#app-shell [data-navbar="site"] .shellUser {
-  display: none;
+/* mobile: links pill scrolls horizontally between logo and actions */
+#app-shell [data-navbar="mobile"] .links {
+  flex: 1 1 auto;
+  min-width: 0;
+  scrollbar-width: none;
 }
+#app-shell [data-navbar="mobile"] .links::-webkit-scrollbar { display: none; }
 
-#app-shell [data-navbar="site"] .actions {
+#app-shell [data-navbar="mobile"] .actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-#app-shell [data-navbar="site"] .actions .btn {
+#app-shell [data-navbar="mobile"] .actions .btn {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -190,74 +197,19 @@
   border: 0;
   transition: background 0.2s ease, transform 0.2s ease;
 }
-#app-shell [data-navbar="site"] .actions .btn:active { transform: scale(0.92); }
-#app-shell [data-navbar="site"] .actions .btn:hover { background: rgba(var(--textPrimary, 255 255 255) / 0.07); }
-#app-shell [data-navbar="site"] .actions [data-action="settings"],
-#app-shell [data-navbar="site"] .actions #notification-bell {
-  display: none;
-}
+#app-shell [data-navbar="mobile"] .actions .btn:active { transform: scale(0.92); }
+#app-shell [data-navbar="mobile"] .actions .btn:hover { background: rgba(var(--textPrimary, 255 255 255) / 0.07); }
 
-/* --- Breadcrumbs give way to the cleaner mobile header --- */
-#app-shell [data-navbar="breadcrumbs"] { display: none; }
+/* --- Breadcrumbs stick at the shared offset (varies per breakpoint) --- */
+#app-shell [data-navbar="breadcrumbs"] { top: var(--crumbStickTop); }
 
 /* --- Desktop-only regions --- */
 #shell-header,
 #shell-rail { display: none; }
 
-/* --- Bottom tab bar --- */
-#mobile-tabs {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 90;
-  height: calc(var(--shellTabsH) + env(safe-area-inset-bottom, 0px));
-  padding: 0 0.5rem env(safe-area-inset-bottom, 0px);
-  display: flex;
-  align-items: stretch;
-  justify-content: space-around;
-  background: rgba(var(--bgBody, 13 15 20) / 0.92);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border-top: 1px solid var(--shellBorder);
-}
-#mobile-tabs .mtab {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  background: none;
-  border: 0;
-  color: var(--shellMuted);
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  position: relative;
-  transition: color 0.2s ease;
-}
-#mobile-tabs .mtab::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 0;
-  height: 2.5px;
-  border-radius: 0 0 4px 4px;
-  background: var(--shellAccent);
-  transform: translateX(-50%);
-  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-#mobile-tabs .mtab svg { transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
-#mobile-tabs .mtab.active { color: var(--shellAccentText); }
-#mobile-tabs .mtab.active::before { width: 26px; }
-#mobile-tabs .mtab.active svg { transform: translateY(-1px) scale(1.08); }
-#mobile-tabs .mtab:active svg { transform: scale(0.9); }
-
-/* --- Mini player floats above the tab bar --- */
+/* --- Mini player floats above the bottom edge (no bottom tab bar) --- */
 #player-bar-container .mini-player {
-  bottom: calc(var(--shellTabsH) + env(safe-area-inset-bottom, 0px) + 10px) !important;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
   left: 10px;
   right: 10px;
 }
@@ -268,6 +220,9 @@
   #app-shell {
     display: grid;
     grid-template-columns: var(--shellSideWTablet) minmax(0, 1fr);
+    /* Breadcrumbs + album tabs stick just under the sticky shell header,
+       keeping the albums-pushes-breadcrumbs handoff in sync */
+    --crumbStickTop: var(--shellHeaderH);
   }
 
   .upperWrap.shell-main {
@@ -275,7 +230,11 @@
     padding-bottom: 110px;
   }
 
-  #app-shell [data-navbar="site"] {
+  /* Mobile top bar hands off to the sidebar */
+  #app-shell [data-navbar="mobile"] { display: none; }
+
+  #app-shell [data-navbar="desktop"] {
+    display: block;
     position: sticky;
     top: 0;
     height: 100dvh;
@@ -286,7 +245,7 @@
     -webkit-backdrop-filter: none;
     z-index: 60;
   }
-  #app-shell [data-navbar="site"] .wrap {
+  #app-shell [data-navbar="desktop"] .wrap {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -295,11 +254,11 @@
     padding: 1.1rem 0.6rem;
     gap: 1.4rem;
   }
-  #app-shell [data-navbar="site"] .logo .text { display: none; }
-  #app-shell [data-navbar="site"] .logo .icon { width: 2.5rem; height: 2.5rem; border-radius: 0.8rem; }
+  #app-shell [data-navbar="desktop"] .logo .text { display: none; }
+  #app-shell [data-navbar="desktop"] .logo .icon { width: 2.5rem; height: 2.5rem; border-radius: 0.8rem; }
 
-  #app-shell [data-navbar="site"] .links,
-  #app-shell [data-navbar="site"] .navGroup {
+  #app-shell [data-navbar="desktop"] .links,
+  #app-shell [data-navbar="desktop"] .navGroup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -308,12 +267,12 @@
     padding: 0;
     border-radius: 0;
   }
-  #app-shell [data-navbar="site"] .navGroupLabel,
-  #app-shell [data-navbar="site"] .linkText,
-  #app-shell [data-navbar="site"] .themePill {
+  #app-shell [data-navbar="desktop"] .navGroupLabel,
+  #app-shell [data-navbar="desktop"] .linkText,
+  #app-shell [data-navbar="desktop"] .themePill {
     display: none;
   }
-  #app-shell [data-navbar="site"] .link {
+  #app-shell [data-navbar="desktop"] .link {
     width: 46px;
     height: 46px;
     border-radius: 14px;
@@ -325,23 +284,23 @@
     border: 0;
     transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
-  #app-shell [data-navbar="site"] .link:hover {
+  #app-shell [data-navbar="desktop"] .link:hover {
     background: rgba(var(--textPrimary, 255 255 255) / 0.06);
     color: var(--shellText);
   }
-  #app-shell [data-navbar="site"] .link.active {
+  #app-shell [data-navbar="desktop"] .link.active {
     background: var(--shellAccentSoft);
     color: var(--shellAccentText);
     box-shadow: inset 0 0 0 1px rgba(var(--buttonSecondary, 167 139 250) / 0.25);
   }
 
-  #app-shell [data-navbar="site"] .actions {
+  #app-shell [data-navbar="desktop"] .actions {
     margin-top: auto;
     flex-direction: column;
     gap: 0.35rem;
     display: flex;
   }
-  #app-shell [data-navbar="site"] .actions .btn {
+  #app-shell [data-navbar="desktop"] .actions .btn {
     width: 42px;
     height: 42px;
     border-radius: 13px;
@@ -352,11 +311,9 @@
     background: transparent;
     border: 0;
   }
-  #app-shell [data-navbar="site"] .actions .btn:hover { background: rgba(var(--textPrimary, 255 255 255) / 0.06); color: var(--shellText); }
-  #app-shell [data-navbar="site"] .actions .avatarBtn { width: 38px; height: 38px; }
-  #app-shell [data-navbar="site"] .shellUser { display: none; }
-
-  #mobile-tabs { display: none; }
+  #app-shell [data-navbar="desktop"] .actions .btn:hover { background: rgba(var(--textPrimary, 255 255 255) / 0.06); color: var(--shellText); }
+  #app-shell [data-navbar="desktop"] .actions .avatarBtn { width: 38px; height: 38px; }
+  #app-shell [data-navbar="desktop"] .shellUser { display: none; }
 
   /* Top header bar */
   #shell-header {
@@ -367,6 +324,8 @@
     position: sticky;
     top: 0;
     z-index: 55;
+    height: var(--shellHeaderH);
+    box-sizing: border-box;
     padding: 0.85rem 1.75rem;
     background: rgba(var(--bgBody, 13 15 20) / 0.82);
     backdrop-filter: blur(16px) saturate(140%);
@@ -455,26 +414,26 @@
   .upperWrap.shell-main { padding-bottom: 2.5rem; }
 
   /* --- Sidebar --- */
-  #app-shell [data-navbar="site"] .wrap {
+  #app-shell [data-navbar="desktop"] .wrap {
     align-items: stretch;
     padding: 1.4rem 1rem;
     gap: 1.6rem;
   }
-  #app-shell [data-navbar="site"] .logo {
+  #app-shell [data-navbar="desktop"] .logo {
     padding: 0 0.55rem;
   }
-  #app-shell [data-navbar="site"] .logo .text { display: block; }
+  #app-shell [data-navbar="desktop"] .logo .text { display: block; }
 
-  #app-shell [data-navbar="site"] .links,
-  #app-shell [data-navbar="site"] .navGroup {
+  #app-shell [data-navbar="desktop"] .links,
+  #app-shell [data-navbar="desktop"] .navGroup {
     align-items: stretch;
     gap: 0.2rem;
   }
-  #app-shell [data-navbar="site"] .navGroupLabel {
+  #app-shell [data-navbar="desktop"] .navGroupLabel {
     display: block;
     margin-bottom: 0.45rem;
   }
-  #app-shell [data-navbar="site"] .link {
+  #app-shell [data-navbar="desktop"] .link {
     width: 100%;
     height: auto;
     justify-content: flex-start;
@@ -484,12 +443,12 @@
     font-size: 0.85rem;
     font-weight: 600;
   }
-  #app-shell [data-navbar="site"] .linkText { display: inline; }
-  #app-shell [data-navbar="site"] .link.active {
+  #app-shell [data-navbar="desktop"] .linkText { display: inline; }
+  #app-shell [data-navbar="desktop"] .link.active {
     box-shadow: none;
     position: relative;
   }
-  #app-shell [data-navbar="site"] .link.active::before {
+  #app-shell [data-navbar="desktop"] .link.active::before {
     content: "";
     position: absolute;
     left: -1rem;
@@ -499,18 +458,18 @@
     border-radius: 0 3px 3px 0;
     background: var(--shellAccent);
   }
-  #app-shell [data-navbar="site"] .themePill { display: block; }
+  #app-shell [data-navbar="desktop"] .themePill { display: block; }
 
-  #app-shell [data-navbar="site"] .actions {
+  #app-shell [data-navbar="desktop"] .actions {
     flex-direction: row;
     justify-content: flex-start;
     gap: 0.4rem;
     margin-top: auto;
     padding: 0 0.35rem;
   }
-  #app-shell [data-navbar="site"] .actions .avatarBtn { display: none; }
+  #app-shell [data-navbar="desktop"] .actions .avatarBtn { display: none; }
 
-  #app-shell [data-navbar="site"] .shellUser {
+  #app-shell [data-navbar="desktop"] .shellUser {
     display: block;
     border-top: 1px solid var(--shellBorder);
     padding-top: 0.9rem;
