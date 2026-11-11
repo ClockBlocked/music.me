@@ -61,13 +61,6 @@ class AppShell {
         return;
       }
 
-      const tab = e.target.closest("#mobile-tabs [data-nav]");
-      if (tab) {
-        e.preventDefault();
-        this.ui.navigate(tab.dataset.nav);
-        return;
-      }
-
       const follow = e.target.closest(".railFollow[data-artist-id]");
       if (follow) {
         e.preventDefault();
@@ -141,7 +134,7 @@ class AppShell {
   }
 
   // ----------------------------------------------------------
-  // Active nav sync (sidebar links + mobile tabs)
+  // Active nav sync (desktop sidebar links + mobile top bar links)
   // ----------------------------------------------------------
   syncActiveNav(page) {
     const map = {
@@ -157,7 +150,7 @@ class AppShell {
     const active = map[page] || "home";
 
     document
-      .querySelectorAll('nav [data-nav], #mobile-tabs [data-nav]')
+      .querySelectorAll("nav [data-nav]")
       .forEach((btn) => btn.classList.toggle("active", btn.dataset.nav === active));
   }
 
