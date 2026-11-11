@@ -544,16 +544,18 @@ class AppListeners {
         type: "click",
         handler: () => ui.closeSearch(),
       },
-      {
-        el: document.querySelector('[data-action="settings"]'),
+      // Both navbars (desktop sidebar + mobile top bar) carry these buttons,
+      // so bind every match rather than only the first one in the DOM.
+      ...Array.from(document.querySelectorAll('[data-action="settings"]')).map((el) => ({
+        el,
         type: "click",
         handler: () => ui.showSettingsModal(),
-      },
-      {
-        el: document.querySelector('[data-dash="notifications"]'),
+      })),
+      ...Array.from(document.querySelectorAll('[data-dash="notifications"]')).map((el) => ({
+        el,
         type: "click",
         handler: (e) => window.popups.showNotificationPanel(e.currentTarget),
-      },
+      })),
       {
         setup: (bind) => {
           const input = document.getElementById("search-input");
