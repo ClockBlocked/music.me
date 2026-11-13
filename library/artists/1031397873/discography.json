@@ -8,9 +8,9 @@
       "year": "2020",
       "songCount": 13,
       "artwork": {
-        "160": "/library/artists/1031397873/albums/1538003494/artwork/160.jpg",
-        "320": "/library/artists/1031397873/albums/1538003494/artwork/320.jpg",
-        "640": "/library/artists/1031397873/albums/1538003494/artwork/640.jpg"
+        "160": "./library/artists/1031397873/albums/1538003494/artwork/160.jpg",
+        "320": "./library/artists/1031397873/albums/1538003494/artwork/320.jpg",
+        "640": "./library/artists/1031397873/albums/1538003494/artwork/640.jpg"
       }
     },
     {
@@ -19,9 +19,9 @@
       "year": "2024",
       "songCount": 11,
       "artwork": {
-        "160": "/library/artists/1031397873/albums/1734980417/artwork/160.jpg",
-        "320": "/library/artists/1031397873/albums/1734980417/artwork/320.jpg",
-        "640": "/library/artists/1031397873/albums/1734980417/artwork/640.jpg"
+        "160": "./library/artists/1031397873/albums/1734980417/artwork/160.jpg",
+        "320": "./library/artists/1031397873/albums/1734980417/artwork/320.jpg",
+        "640": "./library/artists/1031397873/albums/1734980417/artwork/640.jpg"
       }
     },
     {
@@ -30,9 +30,9 @@
       "year": "2017",
       "songCount": 12,
       "artwork": {
-        "160": "/library/artists/1031397873/albums/1227678117/artwork/160.jpg",
-        "320": "/library/artists/1031397873/albums/1227678117/artwork/320.jpg",
-        "640": "/library/artists/1031397873/albums/1227678117/artwork/640.jpg"
+        "160": "./library/artists/1031397873/albums/1227678117/artwork/160.jpg",
+        "320": "./library/artists/1031397873/albums/1227678117/artwork/320.jpg",
+        "640": "./library/artists/1031397873/albums/1227678117/artwork/640.jpg"
       }
     }
   ]
