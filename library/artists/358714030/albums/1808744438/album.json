@@ -5,9 +5,9 @@
   "year": "2011",
   "sold": "",
   "artwork": {
-    "160": "/library/artists/358714030/albums/1808744438/artwork/160.jpg",
-    "320": "/library/artists/358714030/albums/1808744438/artwork/320.jpg",
-    "640": "/library/artists/358714030/albums/1808744438/artwork/640.jpg"
+    "160": "./library/artists/358714030/albums/1808744438/artwork/160.jpg",
+    "320": "./library/artists/358714030/albums/1808744438/artwork/320.jpg",
+    "640": "./library/artists/358714030/albums/1808744438/artwork/640.jpg"
   },
   "songs": []
 }
