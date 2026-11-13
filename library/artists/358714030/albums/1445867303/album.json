@@ -5,9 +5,9 @@
   "year": "2014",
   "sold": "",
   "artwork": {
-    "160": "/library/artists/358714030/albums/1445867303/artwork/160.jpg",
-    "320": "/library/artists/358714030/albums/1445867303/artwork/320.jpg",
-    "640": "/library/artists/358714030/albums/1445867303/artwork/640.jpg"
+    "160": "./library/artists/358714030/albums/1445867303/artwork/160.jpg",
+    "320": "./library/artists/358714030/albums/1445867303/artwork/320.jpg",
+    "640": "./library/artists/358714030/albums/1445867303/artwork/640.jpg"
   },
   "songs": [
     {
@@ -19,15 +19,15 @@
       "trackNumber": 1,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867307.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867307.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867307.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867307.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867307.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867307.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -41,15 +41,15 @@
       "trackNumber": 2,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867310.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867310.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867310.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867310.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867310.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867310.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -63,15 +63,15 @@
       "trackNumber": 3,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867312.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867312.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867312.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867312.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867312.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867312.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -85,15 +85,15 @@
       "trackNumber": 4,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867313.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867313.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867313.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867313.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867313.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867313.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -107,15 +107,15 @@
       "trackNumber": 5,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867316.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867316.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867316.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867316.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867316.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867316.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -129,15 +129,15 @@
       "trackNumber": 6,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867317.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867317.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867317.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867317.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867317.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867317.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -151,15 +151,15 @@
       "trackNumber": 7,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867318.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867318.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867318.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867318.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867318.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867318.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -173,15 +173,15 @@
       "trackNumber": 8,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867319.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867319.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867319.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867319.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867319.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867319.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -195,15 +195,15 @@
       "trackNumber": 9,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867441.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867441.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867441.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867441.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867441.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867441.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -217,15 +217,15 @@
       "trackNumber": 10,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867442.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867442.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867442.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867442.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867442.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867442.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -239,15 +239,15 @@
       "trackNumber": 11,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867446.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867446.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867446.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867446.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867446.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867446.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -261,15 +261,15 @@
       "trackNumber": 12,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867447.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867447.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867447.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867447.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867447.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867447.mp3",
           "type": "audio/mpeg"
         }
       ]
@@ -283,15 +283,15 @@
       "trackNumber": 13,
       "sources": [
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867448.webm",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867448.webm",
           "type": "audio/webm; codecs=opus"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867448.m4a",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867448.m4a",
           "type": "audio/mp4"
         },
         {
-          "src": "/library/artists/358714030/albums/1445867303/audio/1445867448.mp3",
+          "src": "./library/artists/358714030/albums/1445867303/audio/1445867448.mp3",
           "type": "audio/mpeg"
         }
       ]
