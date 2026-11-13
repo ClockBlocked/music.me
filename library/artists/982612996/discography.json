@@ -8,9 +8,9 @@
       "year": "2022",
       "songCount": 13,
       "artwork": {
-        "160": "/library/artists/982612996/albums/1616908862/artwork/160.jpg",
-        "320": "/library/artists/982612996/albums/1616908862/artwork/320.jpg",
-        "640": "/library/artists/982612996/albums/1616908862/artwork/640.jpg"
+        "160": "./library/artists/982612996/albums/1616908862/artwork/160.jpg",
+        "320": "./library/artists/982612996/albums/1616908862/artwork/320.jpg",
+        "640": "./library/artists/982612996/albums/1616908862/artwork/640.jpg"
       }
     }
   ]
