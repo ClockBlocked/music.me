@@ -1,6 +1,7 @@
 jQuery(function ($) {
   "use strict";
 
+
   Prefs.init();
 
   window.colorExtractor = new ColorExtractor();
@@ -30,10 +31,9 @@ jQuery(function ($) {
     favoritesStore: window.favoritesPlaylists,
   }).boot();
 
-
-
-
-   
+  /* ------------------------------------------------------------------ *
+   * 2. Global UI affordances
+   * ------------------------------------------------------------------ */
 
   window.closeModal = () => window.popups?.closeType("modal");
 
@@ -89,9 +89,10 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
+  /* ------------------------------------------------------------------ *
+   * 3. Environment & network helpers
+   * ------------------------------------------------------------------ */
 
-
-   
   const FETCH_TIMEOUT_MS = 12000;
   const FETCH_RETRIES = 1;
   const LOAD_CONCURRENCY = 4;
@@ -165,9 +166,9 @@ jQuery(function ($) {
     throw lastError;
   }
 
-
-
-   
+  /* ------------------------------------------------------------------ *
+   * 4. Media normalization (single source of truth)
+   * ------------------------------------------------------------------ */
 
   function mediaSource(value, fallback = "") {
     if (value == null || value === "") return fallback;
@@ -298,9 +299,9 @@ jQuery(function ($) {
     return "";
   };
 
-  
-
-   
+  /* ------------------------------------------------------------------ *
+   * 5. Boot failure UI (XSS-safe: textContent only)
+   * ------------------------------------------------------------------ */
 
   function renderBootError(err) {
     const card = document.createElement("div");
@@ -322,10 +323,10 @@ jQuery(function ($) {
     document.body.appendChild(card);
   }
 
+  /* ------------------------------------------------------------------ *
+   * 6. Library initialization
+   * ------------------------------------------------------------------ */
 
-
-
-   
   async function initLibrary() {
     console.log("[initLibrary] starting");
 
@@ -519,9 +520,9 @@ jQuery(function ($) {
     window.popups.ui = window.uiManager;
     window.heartManager.store.state = window.state;
 
-
-
-     
+    /* ---------------------------------------------------------------- *
+     * 7. Page actions
+     * ---------------------------------------------------------------- */
 
     // Data-driven mood mixes: extend by editing this map (or load from JSON).
     const MOOD_GENRE_MAP = {
@@ -623,10 +624,9 @@ jQuery(function ($) {
       },
     };
 
-
-
-
-     
+    /* ---------------------------------------------------------------- *
+     * 8. Deep links — ?artist=<id>&album=<id>&song=<id>&play=1
+     * ---------------------------------------------------------------- */
 
     async function handleDeepLink() {
       const params = new URLSearchParams(window.location.search);
@@ -684,9 +684,9 @@ jQuery(function ($) {
     }
   })();
 
-  
-
-   
+  /* ------------------------------------------------------------------ *
+   * 9. Offline caching helpers + real toggle wiring
+   * ------------------------------------------------------------------ */
 
   function getAlbumSongsSync(albumId) {
     const record = window.MusicStore?.albumCache?.get(String(albumId));
@@ -721,14 +721,10 @@ jQuery(function ($) {
     if (cached === songs.length) setOfflineToggleUI(btn, "all");
     else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
     else setOfflineToggleUI(btn, "none");
- => window.offlineCache.isCached(s)).length;
-    if (cached === songs.length) setOfflineToggleUI(btn, "all");
-    else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
-    else setOfflineToggleUI(btn, "none");
   }
 
-
-if ("serviceWorker" in navigator) {
+  // Keep the toggle honest as the service worker reports cache changes.
+  if ("serviceWorker" in navigator) {
     navigator.serviceWorker.addEventListener("message", (event) => {
       const type = event.data?.type;
       if (type === "CACHE_STATUS_RESULT" || type === "SONG_CACHED") syncOfflineToggle();
@@ -747,8 +743,8 @@ if ("serviceWorker" in navigator) {
 
     let songs = getAlbumSongsSync(albumId);
 
-
-     if (!songs) {
+    // Album may only exist as discography metadata — fully load it first.
+    if (!songs) {
       const record = window.MusicStore?.albumCache?.get(String(albumId));
       if (!record?.artistId) {
         toast?.("Album is not loaded yet", "warning");
@@ -780,12 +776,13 @@ if ("serviceWorker" in navigator) {
       for (const song of songs) if (!cache.isCached(s)) cache.cacheSong(song);
     }
 
+    // Final state reconciles when the SW confirms; refresh immediately too.
     syncOfflineToggle();
   }
 
-
-
-
+  /* ------------------------------------------------------------------ *
+   * 10. Share helpers
+   * ------------------------------------------------------------------ */
 
   function buildAlbumShareUrl(albumTitle) {
     try {
@@ -821,8 +818,9 @@ if ("serviceWorker" in navigator) {
     }
   }
 
-
-
+  /* ------------------------------------------------------------------ *
+   * 11. Keyboard shortcuts
+   * ------------------------------------------------------------------ */
 
   const SEEK_STEP_SECONDS = 10;
 
@@ -895,8 +893,9 @@ if ("serviceWorker" in navigator) {
 
   bindKeyboardShortcuts();
 
-
-
+  /* ------------------------------------------------------------------ *
+   * 12. Delegated global click handlers
+   * ------------------------------------------------------------------ */
 
   $(document).on("click", async function (e) {
     const shareAnchor = e.target.closest("#bento-album-share");
