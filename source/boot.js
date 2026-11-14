@@ -1,31 +1,5 @@
-/* ============================================================================
-   MyBeats — boot.js (regenerated)
-   ----------------------------------------------------------------------------
-   Responsibilities:
-     1. Construct the global runtime (state, audio engine, managers).
-     2. Normalize & cache the music library (MusicStore) with resilient fetches.
-     3. Expose page-level actions (pagesActions) used by layouts/interactions.
-     4. Wire share, offline caching, deep links, and keyboard shortcuts.
-
-   Improvements in this revision:
-     - Inflight request maps no longer leak rejected promises (retry-safe).
-     - fetchJson: timeout + limited retry with backoff.
-     - loadAllSongs: concurrency-limited parallel loading (same progress API).
-     - BASE URL is configurable (window.MUSIC_ME_BASE) and fork-friendly.
-     - Normalized songs carry downloadPath so OfflineCache can cache them.
-     - Offline toggle performs real cache/remove operations and syncs itself.
-     - Deep links (?artist, ?album, ?song, ?play=1) + share URLs use them.
-     - Keyboard shortcuts for playback, seek, mute, shuffle.
-     - Boot failure renders a retryable, XSS-safe error card.
-     - Mood mixes are data-driven (MOOD_GENRE_MAP).
-   ============================================================================ */
-
 jQuery(function ($) {
   "use strict";
-
-  /* ------------------------------------------------------------------ *
-   * 1. Runtime construction
-   * ------------------------------------------------------------------ */
 
   Prefs.init();
 
@@ -56,9 +30,10 @@ jQuery(function ($) {
     favoritesStore: window.favoritesPlaylists,
   }).boot();
 
-  /* ------------------------------------------------------------------ *
-   * 2. Global UI affordances
-   * ------------------------------------------------------------------ */
+
+
+
+   
 
   window.closeModal = () => window.popups?.closeType("modal");
 
@@ -114,10 +89,9 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
-  /* ------------------------------------------------------------------ *
-   * 3. Environment & network helpers
-   * ------------------------------------------------------------------ */
 
+
+   
   const FETCH_TIMEOUT_MS = 12000;
   const FETCH_RETRIES = 1;
   const LOAD_CONCURRENCY = 4;
@@ -191,9 +165,9 @@ jQuery(function ($) {
     throw lastError;
   }
 
-  /* ------------------------------------------------------------------ *
-   * 4. Media normalization (single source of truth)
-   * ------------------------------------------------------------------ */
+
+
+   
 
   function mediaSource(value, fallback = "") {
     if (value == null || value === "") return fallback;
@@ -324,9 +298,9 @@ jQuery(function ($) {
     return "";
   };
 
-  /* ------------------------------------------------------------------ *
-   * 5. Boot failure UI (XSS-safe: textContent only)
-   * ------------------------------------------------------------------ */
+  
+
+   
 
   function renderBootError(err) {
     const card = document.createElement("div");
@@ -348,10 +322,10 @@ jQuery(function ($) {
     document.body.appendChild(card);
   }
 
-  /* ------------------------------------------------------------------ *
-   * 6. Library initialization
-   * ------------------------------------------------------------------ */
 
+
+
+   
   async function initLibrary() {
     console.log("[initLibrary] starting");
 
@@ -375,9 +349,9 @@ jQuery(function ($) {
     window.MusicStore.artworkUrl = artworkUrl;
     window.MusicStore.portraitUrl = portraitUrl;
 
-    window.MusicStore.loadArtist = function (artistId) {
+    window.MusicStore.loadArtist = async function (artistId) {
       const id = String(artistId);
-      if (window.MusicStore.artists[id]) return Promise.resolve(window.MusicStore.artists[id]);
+      if (window.MusicStore.artists[id]) return window.MusicStore.artists[id];
       if (_artistInflight.has(id)) return _artistInflight.get(id);
 
       const promise = (async () => {
@@ -428,10 +402,10 @@ jQuery(function ($) {
       }
     };
 
-    window.MusicStore.loadAlbum = function (artistId, albumId) {
+    window.MusicStore.loadAlbum = async function (artistId, albumId) {
       const aid = String(albumId);
       const cached = window.MusicStore.albumCache.get(aid);
-      if (cached && !cached._discographyOnly) return Promise.resolve(cached);
+      if (cached && !cached._discographyOnly) return cached;
       if (_albumInflight.has(aid)) return _albumInflight.get(aid);
 
       const promise = (async () => {
@@ -545,9 +519,9 @@ jQuery(function ($) {
     window.popups.ui = window.uiManager;
     window.heartManager.store.state = window.state;
 
-    /* ---------------------------------------------------------------- *
-     * 7. Page actions
-     * ---------------------------------------------------------------- */
+
+
+     
 
     // Data-driven mood mixes: extend by editing this map (or load from JSON).
     const MOOD_GENRE_MAP = {
@@ -649,9 +623,10 @@ jQuery(function ($) {
       },
     };
 
-    /* ---------------------------------------------------------------- *
-     * 8. Deep links — ?artist=<id>&album=<id>&song=<id>&play=1
-     * ---------------------------------------------------------------- */
+
+
+
+     
 
     async function handleDeepLink() {
       const params = new URLSearchParams(window.location.search);
@@ -709,9 +684,9 @@ jQuery(function ($) {
     }
   })();
 
-  /* ------------------------------------------------------------------ *
-   * 9. Offline caching helpers + real toggle wiring
-   * ------------------------------------------------------------------ */
+  
+
+   
 
   function getAlbumSongsSync(albumId) {
     const record = window.MusicStore?.albumCache?.get(String(albumId));
@@ -746,10 +721,14 @@ jQuery(function ($) {
     if (cached === songs.length) setOfflineToggleUI(btn, "all");
     else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
     else setOfflineToggleUI(btn, "none");
+ => window.offlineCache.isCached(s)).length;
+    if (cached === songs.length) setOfflineToggleUI(btn, "all");
+    else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
+    else setOfflineToggleUI(btn, "none");
   }
 
-  // Keep the toggle honest as the service worker reports cache changes.
-  if ("serviceWorker" in navigator) {
+
+if ("serviceWorker" in navigator) {
     navigator.serviceWorker.addEventListener("message", (event) => {
       const type = event.data?.type;
       if (type === "CACHE_STATUS_RESULT" || type === "SONG_CACHED") syncOfflineToggle();
@@ -768,8 +747,8 @@ jQuery(function ($) {
 
     let songs = getAlbumSongsSync(albumId);
 
-    // Album may only exist as discography metadata — fully load it first.
-    if (!songs) {
+
+     if (!songs) {
       const record = window.MusicStore?.albumCache?.get(String(albumId));
       if (!record?.artistId) {
         toast?.("Album is not loaded yet", "warning");
@@ -801,13 +780,12 @@ jQuery(function ($) {
       for (const song of songs) if (!cache.isCached(s)) cache.cacheSong(song);
     }
 
-    // Final state reconciles when the SW confirms; refresh immediately too.
     syncOfflineToggle();
   }
 
-  /* ------------------------------------------------------------------ *
-   * 10. Share helpers
-   * ------------------------------------------------------------------ */
+
+
+
 
   function buildAlbumShareUrl(albumTitle) {
     try {
@@ -843,9 +821,8 @@ jQuery(function ($) {
     }
   }
 
-  /* ------------------------------------------------------------------ *
-   * 11. Keyboard shortcuts
-   * ------------------------------------------------------------------ */
+
+
 
   const SEEK_STEP_SECONDS = 10;
 
@@ -911,16 +888,15 @@ jQuery(function ($) {
       if (isTypingTarget(event.target)) return;
       if (window.state?.isSearchOpen) return;
 
-      const key = event.key.length === 1 ? event.key.toLowerCase() : event.key.toLowerCase();
+      const key = event.key.toLowerCase();
       if (shortcuts(key)) event.preventDefault();
     });
   }
 
   bindKeyboardShortcuts();
 
-  /* ------------------------------------------------------------------ *
-   * 12. Delegated global click handlers
-   * ------------------------------------------------------------------ */
+
+
 
   $(document).on("click", async function (e) {
     const shareAnchor = e.target.closest("#bento-album-share");
