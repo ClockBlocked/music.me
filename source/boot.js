@@ -1,4 +1,32 @@
+/* ============================================================================
+   MyBeats — boot.js (regenerated)
+   ----------------------------------------------------------------------------
+   Responsibilities:
+     1. Construct the global runtime (state, audio engine, managers).
+     2. Normalize & cache the music library (MusicStore) with resilient fetches.
+     3. Expose page-level actions (pagesActions) used by layouts/interactions.
+     4. Wire share, offline caching, deep links, and keyboard shortcuts.
+
+   Improvements in this revision:
+     - Inflight request maps no longer leak rejected promises (retry-safe).
+     - fetchJson: timeout + limited retry with backoff.
+     - loadAllSongs: concurrency-limited parallel loading (same progress API).
+     - BASE URL is configurable (window.MUSIC_ME_BASE) and fork-friendly.
+     - Normalized songs carry downloadPath so OfflineCache can cache them.
+     - Offline toggle performs real cache/remove operations and syncs itself.
+     - Deep links (?artist, ?album, ?song, ?play=1) + share URLs use them.
+     - Keyboard shortcuts for playback, seek, mute, shuffle.
+     - Boot failure renders a retryable, XSS-safe error card.
+     - Mood mixes are data-driven (MOOD_GENRE_MAP).
+   ============================================================================ */
+
 jQuery(function ($) {
+  "use strict";
+
+  /* ------------------------------------------------------------------ *
+   * 1. Runtime construction
+   * ------------------------------------------------------------------ */
+
   Prefs.init();
 
   window.colorExtractor = new ColorExtractor();
@@ -11,6 +39,7 @@ jQuery(function ($) {
   window.contextMenu = new ContextMenu();
   window.offlineCache = new OfflineCache(window.state);
 
+  // Placeholder until the real drawer registers itself.
   window.saveToLibraryDrawer = window.saveToLibraryDrawer || {
     refreshSavedBadges: () => {},
     badgeRows: () => {},
@@ -27,7 +56,13 @@ jQuery(function ($) {
     favoritesStore: window.favoritesPlaylists,
   }).boot();
 
+  /* ------------------------------------------------------------------ *
+   * 2. Global UI affordances
+   * ------------------------------------------------------------------ */
+
   window.closeModal = () => window.popups?.closeType("modal");
+
+  const PLAYLIST_NAME_MAX = 120;
 
   window.createNewPlaylist = function () {
     if (window.favoritesPlaylists && typeof window.favoritesPlaylists.createNewPlaylist === "function") {
@@ -45,7 +80,7 @@ jQuery(function ($) {
           <div class="popups-form">
             <div class="popups-field">
               <label for="new-pl-name">Playlist name</label>
-              <input id="new-pl-name" class="popups-input" placeholder="e.g. Late Night Drive">
+              <input id="new-pl-name" class="popups-input" maxlength="${PLAYLIST_NAME_MAX}" placeholder="e.g. Late Night Drive">
             </div>
           </div>
         `,
@@ -53,17 +88,13 @@ jQuery(function ($) {
         cancelLabel: "Cancel",
         onConfirm: () => {
           const input = document.getElementById("new-pl-name");
-          const name = (input?.value || "").trim();
+          const name = (input?.value || "").trim().slice(0, PLAYLIST_NAME_MAX);
           if (!name) {
-            if (window.state?.showToast) {
-              window.state.showToast("Please enter a playlist name", "warning");
-            }
+            window.state?.showToast?.("Please enter a playlist name", "warning");
             return;
           }
-          if (window.favoritesPlaylists) {
-            window.favoritesPlaylists.createPlaylist({ name });
-          }
-        }
+          window.favoritesPlaylists?.createPlaylist({ name });
+        },
       });
     }
 
@@ -83,123 +114,249 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
-  (async function initLibrary() {
-    console.log("[initLibrary] starting");
+  /* ------------------------------------------------------------------ *
+   * 3. Environment & network helpers
+   * ------------------------------------------------------------------ */
 
-    if (!window.MusicStore || !window.MusicStore.index) {
-      const d = document.createElement("div");
-      d.style.cssText = "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;";
-      d.textContent = "Initialization failed:\nwindow.MusicStore.index is missing.";
-      document.body.appendChild(d);
-      return;
+  const FETCH_TIMEOUT_MS = 12000;
+  const FETCH_RETRIES = 1;
+  const LOAD_CONCURRENCY = 4;
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  /**
+   * Resolve the base URL the library is served from.
+   * Priority: explicit window.MUSIC_ME_BASE → local dev → document.baseURI
+   * (keeps forks / custom domains working) → canonical GitHub Pages origin.
+   */
+  function resolveBase() {
+    if (window.MUSIC_ME_BASE) {
+      return String(window.MUSIC_ME_BASE).replace(/\/+$/, "");
     }
 
-    const BASE =
-      window.location.hostname === "localhost"
-        ? `${window.location.origin}${window.location.pathname.includes("/music.me") ? "/music.me" : ""}`
-        : "https://clockblocked.github.io/music.me";
+    const { hostname, origin, pathname } = window.location;
+    const isLocal = hostname === "localhost" || hostname === "127.0.0.1" || hostname === "";
+    if (isLocal) {
+      return `${origin}${pathname.includes("/music.me") ? "/music.me" : ""}`;
+    }
 
-    const LIB = `${BASE}/library`;
-    const SZ = { cover: 320, portrait: 160 };
+    try {
+      const base = new URL(document.baseURI, origin);
+      const dir = base.pathname.replace(/\/[^/]*$/, "");
+      return `${base.origin}${dir}`.replace(/\/+$/, "") || base.origin;
+    } catch {
+      return "https://clockblocked.github.io/music.me";
+    }
+  }
 
-    function mediaSource(value, fallback = "") {
-      if (value == null || value === "") return fallback;
+  const BASE = resolveBase();
+  const LIB = `${BASE}/library`;
+  const SZ = { cover: 320, portrait: 160 };
 
-      if (typeof value === "string") {
-        let raw = value.trim();
-        if (!raw) return fallback;
+  async function fetchJson(url, { retries = FETCH_RETRIES } = {}) {
+    let lastError = null;
 
-        if (/^https?:\/\//i.test(raw)) return raw;
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-        if (raw.startsWith("/")) {
-          return `${BASE}${raw.startsWith("/") ? raw : `/${raw}`}`;
+      try {
+        const response = await fetch(url, { cache: "default", signal: controller.signal });
+
+        if (!response.ok) {
+          const err = new Error(`HTTP ${response.status}: ${url}`);
+          // Retry transient server errors only; 4xx is permanent.
+          if (response.status >= 500 && attempt < retries) {
+            lastError = err;
+            await delay(400 * (attempt + 1));
+            continue;
+          }
+          throw err;
         }
 
-        try {
-          return new URL(raw, `${BASE}/`).toString();
-        } catch (err) {
-          return `${BASE}/${raw.replace(/^\.?\//, "")}`;
+        return await response.json();
+      } catch (err) {
+        lastError = err;
+        const transient = err.name === "AbortError" || err instanceof TypeError;
+        if (attempt < retries && transient) {
+          await delay(400 * (attempt + 1));
+          continue;
         }
+        throw err;
+      } finally {
+        clearTimeout(timer);
       }
+    }
 
-      if (Array.isArray(value)) {
-        for (const item of value) {
-          const normalized = mediaSource(item, "");
-          if (normalized) return normalized;
-        }
-        return fallback;
+    throw lastError;
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 4. Media normalization (single source of truth)
+   * ------------------------------------------------------------------ */
+
+  function mediaSource(value, fallback = "") {
+    if (value == null || value === "") return fallback;
+
+    if (typeof value === "string") {
+      const raw = value.trim();
+      if (!raw) return fallback;
+
+      if (/^https?:\/\//i.test(raw)) return raw;
+      if (raw.startsWith("/")) return `${BASE}${raw}`;
+
+      try {
+        return new URL(raw, `${BASE}/`).toString();
+      } catch {
+        return `${BASE}/${raw.replace(/^\.?\//, "")}`;
       }
+    }
 
-      if (typeof value === "object") {
-        for (const child of Object.values(value)) {
-          const normalized = mediaSource(child, "");
-          if (normalized) return normalized;
-        }
-        return fallback;
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        const normalized = mediaSource(item, "");
+        if (normalized) return normalized;
       }
-
       return fallback;
     }
 
-    function artworkSource(artwork) {
-      if (!artwork) return "";
-      if (typeof artwork === "string") return mediaSource(artwork, "");
-      if (typeof artwork === "object") {
-        const out = {};
-        for (const [size, src] of Object.entries(artwork)) {
-          const normalized = mediaSource(src, "");
-          if (normalized) out[size] = normalized;
-        }
-        return Object.keys(out).length ? out : "";
+    if (typeof value === "object") {
+      for (const child of Object.values(value)) {
+        const normalized = mediaSource(child, "");
+        if (normalized) return normalized;
       }
-      return "";
+      return fallback;
     }
 
-    function portraitSource(artist) {
-      if (!artist) return {};
-      const portrait = artworkSource(artist.portrait || artist.image || {});
-      const imageUrl =
-        mediaSource(
-          artist.imageUrl ||
-            artist.portrait?.["160"] ||
-            artist.portrait?.[160] ||
-            artist.portrait?.["320"] ||
-            artist.portrait?.[320] ||
-            portrait ||
-            "",
-          ""
-        ) || "";
+    return fallback;
+  }
 
-      return {
-        ...artist,
-        portrait,
-        imageUrl,
-        artist: artist.name ?? artist.artist ?? "",
-        genre: artist.genre ?? "Unknown",
-      };
+  function artworkSource(artwork) {
+    if (!artwork) return "";
+    if (typeof artwork === "string") return mediaSource(artwork, "");
+    if (typeof artwork === "object") {
+      const out = {};
+      for (const [size, src] of Object.entries(artwork)) {
+        const normalized = mediaSource(src, "");
+        if (normalized) out[size] = normalized;
+      }
+      return Object.keys(out).length ? out : "";
     }
+    return "";
+  }
 
-    function albumSource(album) {
-      if (!album) return {};
-      const artwork = artworkSource(album.artwork || album.cover || {});
-      const coverUrl =
-        mediaSource(
-          album.coverUrl ||
-            album.artwork?.["320"] ||
-            album.artwork?.[320] ||
-            album.artwork?.["640"] ||
-            album.artwork?.[640] ||
-            artwork ||
-            "",
-          ""
-        ) || "";
+  function portraitSource(artist) {
+    if (!artist) return {};
+    const portrait = artworkSource(artist.portrait || artist.image || {});
+    const imageUrl =
+      mediaSource(
+        artist.imageUrl ||
+          artist.portrait?.["160"] ||
+          artist.portrait?.[160] ||
+          artist.portrait?.["320"] ||
+          artist.portrait?.[320] ||
+          portrait ||
+          "",
+        ""
+      ) || "";
 
-      return {
-        ...album,
-        artwork,
-        coverUrl,
-        title: album.title ?? album.album ?? "",
-      };
+    return {
+      ...artist,
+      portrait,
+      imageUrl,
+      artist: artist.name ?? artist.artist ?? "",
+      genre: artist.genre ?? "Unknown",
+    };
+  }
+
+  function albumSource(album) {
+    if (!album) return {};
+    const artwork = artworkSource(album.artwork || album.cover || {});
+    const coverUrl =
+      mediaSource(
+        album.coverUrl ||
+          album.artwork?.["320"] ||
+          album.artwork?.[320] ||
+          album.artwork?.["640"] ||
+          album.artwork?.[640] ||
+          artwork ||
+          "",
+        ""
+      ) || "";
+
+    return {
+      ...album,
+      artwork,
+      coverUrl,
+      title: album.title ?? album.album ?? "",
+    };
+  }
+
+  const artworkUrl = (artwork, size = SZ.cover) => {
+    if (!artwork) return "";
+    if (typeof artwork === "string") return mediaSource(artwork, "");
+    const normalized = artworkSource(artwork);
+    if (normalized && typeof normalized === "object") {
+      return (
+        mediaSource(normalized[size], "") ||
+        mediaSource(normalized["320"], "") ||
+        mediaSource(normalized["640"], "") ||
+        mediaSource(normalized["160"], "") ||
+        ""
+      );
+    }
+    return "";
+  };
+
+  const portraitUrl = (portrait, size = SZ.portrait) => {
+    if (!portrait) return "";
+    if (typeof portrait === "string") return mediaSource(portrait, "");
+    const normalized = artworkSource(portrait);
+    if (normalized && typeof normalized === "object") {
+      return (
+        mediaSource(normalized[size], "") ||
+        mediaSource(normalized["160"], "") ||
+        mediaSource(normalized["320"], "") ||
+        mediaSource(normalized["640"], "") ||
+        ""
+      );
+    }
+    return "";
+  };
+
+  /* ------------------------------------------------------------------ *
+   * 5. Boot failure UI (XSS-safe: textContent only)
+   * ------------------------------------------------------------------ */
+
+  function renderBootError(err) {
+    const card = document.createElement("div");
+    card.style.cssText =
+      "color:#ff6b6b;font-family:monospace;padding:2rem;white-space:pre-wrap;line-height:1.6;";
+
+    const message = document.createElement("div");
+    message.textContent = `Initialization failed:\n${err?.message || err}`;
+
+    const retry = document.createElement("button");
+    retry.type = "button";
+    retry.textContent = "Retry";
+    retry.style.cssText =
+      "margin-top:1rem;padding:0.6rem 1.4rem;border:1px solid #ff6b6b;border-radius:8px;" +
+      "background:transparent;color:#ff6b6b;font-family:inherit;cursor:pointer;";
+    retry.addEventListener("click", () => window.location.reload());
+
+    card.append(message, retry);
+    document.body.appendChild(card);
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 6. Library initialization
+   * ------------------------------------------------------------------ */
+
+  async function initLibrary() {
+    console.log("[initLibrary] starting");
+
+    if (!window.MusicStore || !window.MusicStore.index) {
+      throw new Error("window.MusicStore.index is missing.");
     }
 
     window.MusicStore.artists = {};
@@ -209,59 +366,24 @@ jQuery(function ($) {
       (window.MusicStore.index || []).map((a) => [String(a.id), a])
     );
 
+    // Inflight de-duplication. Entries are removed in `finally` blocks so a
+    // failed fetch never poisons future retries.
     const _artistInflight = new Map();
     const _albumInflight = new Map();
 
-    const json = async (url) => {
-      const r = await fetch(url, { cache: "default" });
-      if (!r.ok) throw new Error(`HTTP ${r.status}: ${url}`);
-      return r.json();
-    };
-
-    const artworkUrl = (artwork, size = SZ.cover) => {
-      if (!artwork) return "";
-      if (typeof artwork === "string") return mediaSource(artwork, "");
-      const normalized = artworkSource(artwork);
-      if (normalized && typeof normalized === "object") {
-        return (
-          mediaSource(normalized[size], "") ||
-          mediaSource(normalized["320"], "") ||
-          mediaSource(normalized["640"], "") ||
-          mediaSource(normalized["160"], "") ||
-          ""
-        );
-      }
-      return "";
-    };
-
-    const portraitUrl = (portrait, size = SZ.portrait) => {
-      if (!portrait) return "";
-      if (typeof portrait === "string") return mediaSource(portrait, "");
-      const normalized = artworkSource(portrait);
-      if (normalized && typeof normalized === "object") {
-        return (
-          mediaSource(normalized[size], "") ||
-          mediaSource(normalized["160"], "") ||
-          mediaSource(normalized["320"], "") ||
-          mediaSource(normalized["640"], "") ||
-          ""
-        );
-      }
-      return "";
-    };
-
+    window.MusicStore.mediaSource = mediaSource;
     window.MusicStore.artworkUrl = artworkUrl;
     window.MusicStore.portraitUrl = portraitUrl;
 
-    window.MusicStore.loadArtist = async function (artistId) {
+    window.MusicStore.loadArtist = function (artistId) {
       const id = String(artistId);
-      if (window.MusicStore.artists[id]) return window.MusicStore.artists[id];
+      if (window.MusicStore.artists[id]) return Promise.resolve(window.MusicStore.artists[id]);
       if (_artistInflight.has(id)) return _artistInflight.get(id);
 
       const promise = (async () => {
         const [artist, disc] = await Promise.all([
-          json(`${LIB}/artists/${id}/artist.json`),
-          json(`${LIB}/artists/${id}/discography.json`).catch(() => ({ albums: [] })),
+          fetchJson(`${LIB}/artists/${id}/artist.json`),
+          fetchJson(`${LIB}/artists/${id}/discography.json`).catch(() => ({ albums: [] })),
         ]);
 
         const artistPhoto = portraitSource(artist);
@@ -295,22 +417,25 @@ jQuery(function ($) {
         }
 
         window.MusicStore.artists[id] = merged;
-        _artistInflight.delete(id);
         return merged;
       })();
 
       _artistInflight.set(id, promise);
-      return promise;
+      try {
+        return await promise;
+      } finally {
+        _artistInflight.delete(id);
+      }
     };
 
-    window.MusicStore.loadAlbum = async function (artistId, albumId) {
+    window.MusicStore.loadAlbum = function (artistId, albumId) {
       const aid = String(albumId);
       const cached = window.MusicStore.albumCache.get(aid);
-      if (cached && !cached._discographyOnly) return cached;
+      if (cached && !cached._discographyOnly) return Promise.resolve(cached);
       if (_albumInflight.has(aid)) return _albumInflight.get(aid);
 
       const promise = (async () => {
-        const album = await json(`${LIB}/artists/${artistId}/albums/${aid}/album.json`);
+        const album = await fetchJson(`${LIB}/artists/${artistId}/albums/${aid}/album.json`);
         const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
 
         const normalizedAlbum = albumSource(album);
@@ -332,6 +457,7 @@ jQuery(function ($) {
 
         for (const song of normalizedAlbum.songs || album.songs || []) {
           const sources = Array.isArray(song.sources) ? song.sources : [];
+          const primarySrc = mediaSource(sources[0]?.src || song.source || "", "");
           const normalizedSong = {
             ...song,
             artistId: record.artistId,
@@ -343,8 +469,10 @@ jQuery(function ($) {
             portrait: artistPhoto.portrait || {},
             artistImageUrl: artistPhoto.imageUrl || "",
             genre: artistPhoto.genre || "Unknown",
-            source: mediaSource(sources[0]?.src || song.source || "", ""),
-            sources: (sources || []).map((src) => ({
+            source: primarySrc,
+            // OfflineCache keys off downloadPath; guarantee it exists.
+            downloadPath: mediaSource(song.downloadPath || sources[0]?.src || song.source || "", ""),
+            sources: sources.map((src) => ({
               ...src,
               src: mediaSource(src?.src || "", ""),
             })),
@@ -355,33 +483,51 @@ jQuery(function ($) {
         }
 
         window.MusicStore.albumCache.set(aid, record);
-        _albumInflight.delete(aid);
         return record;
       })();
 
       _albumInflight.set(aid, promise);
-      return promise;
+      try {
+        return await promise;
+      } finally {
+        _albumInflight.delete(aid);
+      }
     };
 
+    /**
+     * Load every artist + album with a bounded worker pool.
+     * Progress contract unchanged: onProgress(completedArtists, totalArtists).
+     * One failing artist never aborts the rest of the sweep.
+     */
     window.MusicStore.loadAllSongs = async function (onProgress) {
       const entries = window.MusicStore.index || [];
+      if (!entries.length) return;
+
+      let cursor = 0;
       let done = 0;
-      for (const entry of entries) {
-        try {
-          const artist = await window.MusicStore.loadArtist(entry.id);
-          for (const a of artist.albums || []) {
-            try {
-              await window.MusicStore.loadAlbum(entry.id, a.id);
-            } catch (e) {
-              console.warn(`[loadAllSongs] album ${a.id}:`, e);
-            }
+
+      const worker = async () => {
+        while (cursor < entries.length) {
+          const entry = entries[cursor++];
+          try {
+            const artist = await window.MusicStore.loadArtist(entry.id);
+            await Promise.allSettled(
+              (artist.albums || []).map((a) =>
+                window.MusicStore.loadAlbum(entry.id, a.id).catch((e) => {
+                  console.warn(`[loadAllSongs] album ${a.id}:`, e);
+                })
+              )
+            );
+          } catch (e) {
+            console.warn(`[loadAllSongs] artist ${entry.id}:`, e);
           }
-        } catch (e) {
-          console.warn(`[loadAllSongs] artist ${entry.id}:`, e);
+          done++;
+          if (onProgress) onProgress(done, entries.length);
         }
-        done++;
-        if (onProgress) onProgress(done, entries.length);
-      }
+      };
+
+      const lanes = Math.min(LOAD_CONCURRENCY, entries.length);
+      await Promise.all(Array.from({ length: lanes }, worker));
     };
 
     window.state.getSongById = (id) => window.MusicStore.songCache.get(String(id)) || null;
@@ -399,6 +545,19 @@ jQuery(function ($) {
     window.popups.ui = window.uiManager;
     window.heartManager.store.state = window.state;
 
+    /* ---------------------------------------------------------------- *
+     * 7. Page actions
+     * ---------------------------------------------------------------- */
+
+    // Data-driven mood mixes: extend by editing this map (or load from JSON).
+    const MOOD_GENRE_MAP = {
+      chill: ["pop", "indie", "acoustic", "r&b", "soul"],
+      energy: ["dance", "electronic", "edm", "hip hop", "rock", "pop"],
+      focus: ["indie", "acoustic", "classical", "instrumental", "alternative"],
+      party: ["dance", "electronic", "club", "pop", "hip hop"],
+      romance: ["r&b", "soul", "ballad", "pop", "love"],
+    };
+
     window.pagesActions = {
       buildSongs() {
         return Array.from(window.MusicStore.songCache.values());
@@ -406,15 +565,21 @@ jQuery(function ($) {
       buildAlbums() {
         return Array.from(window.MusicStore.albumCache.values()).filter((a) => !a._discographyOnly);
       },
-      getSongById(id) { return window.MusicStore.songCache.get(String(id)) || null; },
-      getAlbumById(id) { return window.MusicStore.albumCache.get(String(id)) || null; },
+      getSongById(id) {
+        return window.MusicStore.songCache.get(String(id)) || null;
+      },
+      getAlbumById(id) {
+        return window.MusicStore.albumCache.get(String(id)) || null;
+      },
       getArtistById(id) {
         const sid = String(id);
         return window.MusicStore.artists[sid] || window.MusicStore.indexById.get(sid) || null;
       },
       artworkUrl,
       portraitUrl,
-      pickSource(sources) { return mediaSource(sources?.[0]?.src || "", ""); },
+      pickSource(sources) {
+        return mediaSource(sources?.[0]?.src || "", "");
+      },
 
       playQueue(queue, index = 0, label = "", source = null) {
         if (!queue.length || !window.uiManager?.audioPlayer) return;
@@ -443,19 +608,18 @@ jQuery(function ($) {
       },
       async playMood(mood) {
         await window.MusicStore.loadAllSongs();
-        const map = {
-          chill: ["pop", "indie", "acoustic", "r&b", "soul"],
-          energy: ["dance", "electronic", "edm", "hip hop", "rock", "pop"],
-          focus: ["indie", "acoustic", "classical", "instrumental", "alternative"],
-          party: ["dance", "electronic", "club", "pop", "hip hop"],
-          romance: ["r&b", "soul", "ballad", "pop", "love"],
-        };
-        const tags = map[mood] || [];
+        const tags = MOOD_GENRE_MAP[mood] || [];
         const all = this.buildSongs();
-        const filtered = all.filter((s) => tags.some((t) => String(s.genre).toLowerCase().includes(t)));
+        const filtered = all.filter((s) =>
+          tags.some((t) => String(s.genre).toLowerCase().includes(t))
+        );
         const pool = filtered.length ? filtered : all;
-        this.playQueue(IdUtils.sample(pool, Math.min(12, pool.length)), 0,
-          `${mood[0].toUpperCase() + mood.slice(1)} mix loaded`, "home");
+        this.playQueue(
+          IdUtils.sample(pool, Math.min(12, pool.length)),
+          0,
+          `${mood[0].toUpperCase() + mood.slice(1)} mix loaded`,
+          "home"
+        );
       },
       openStatsDashboard() {
         if (window.uiManager && window.state)
@@ -468,12 +632,16 @@ jQuery(function ($) {
       },
       async playAlbum(artistId, albumId) {
         const album = await window.MusicStore.loadAlbum(artistId, albumId);
-        const queue = (album.songs || []).map((s) => window.MusicStore.songCache.get(String(s.id))).filter(Boolean);
+        const queue = (album.songs || [])
+          .map((s) => window.MusicStore.songCache.get(String(s.id)))
+          .filter(Boolean);
         if (queue.length) window.uiManager.audioPlayer.playSong(queue[0], queue, true, "album");
       },
       async shuffleAlbum(artistId, albumId) {
         const album = await window.MusicStore.loadAlbum(artistId, albumId);
-        const queue = (album.songs || []).map((s) => window.MusicStore.songCache.get(String(s.id))).filter(Boolean);
+        const queue = (album.songs || [])
+          .map((s) => window.MusicStore.songCache.get(String(s.id)))
+          .filter(Boolean);
         if (queue.length) {
           const sh = Utils.shuffle(queue);
           window.uiManager.audioPlayer.playSong(sh[0], sh, true, "album");
@@ -481,31 +649,300 @@ jQuery(function ($) {
       },
     };
 
+    /* ---------------------------------------------------------------- *
+     * 8. Deep links — ?artist=<id>&album=<id>&song=<id>&play=1
+     * ---------------------------------------------------------------- */
+
+    async function handleDeepLink() {
+      const params = new URLSearchParams(window.location.search);
+      const artistId = params.get("artist");
+      const albumId = params.get("album");
+      const songId = params.get("song") || params.get("track");
+      const autoplay = params.get("play") === "1";
+      if (!artistId && !albumId && !songId) return;
+
+      const stripParams = () => {
+        try {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        } catch {}
+      };
+
+      try {
+        if (artistId && albumId) {
+          const album = await window.MusicStore.loadAlbum(artistId, albumId);
+          const queue = (album.songs || [])
+            .map((s) => window.MusicStore.songCache.get(String(s.id)))
+            .filter(Boolean);
+
+          if (songId) {
+            const index = queue.findIndex((s) => String(s.id) === String(songId));
+            if (index !== -1) {
+              if (autoplay) window.pagesActions.playQueue(queue, index, "", "deep-link");
+              else window.state.showToast?.(`${queue[index].title} ready — press play`);
+            }
+          } else if (autoplay && queue.length) {
+            window.pagesActions.playQueue(queue, 0, `Playing ${album.title}`, "deep-link");
+          } else {
+            window.state.showToast?.(`${album.title} loaded`);
+          }
+          stripParams();
+        } else if (artistId) {
+          await window.MusicStore.loadArtist(artistId);
+          stripParams();
+        }
+      } catch (err) {
+        console.warn("[deepLink] could not resolve link:", err);
+      }
+    }
+
+    await handleDeepLink();
+
     console.log("[initLibrary] ready");
+  }
+
+  (async () => {
+    try {
+      await initLibrary();
+    } catch (err) {
+      console.error("[initLibrary] failed:", err);
+      renderBootError(err);
+    }
   })();
+
+  /* ------------------------------------------------------------------ *
+   * 9. Offline caching helpers + real toggle wiring
+   * ------------------------------------------------------------------ */
+
+  function getAlbumSongsSync(albumId) {
+    const record = window.MusicStore?.albumCache?.get(String(albumId));
+    if (!record || record._discographyOnly || !record.songs?.length) return null;
+    return record.songs
+      .map((s) => window.MusicStore.songCache.get(String(s.id)) || s)
+      .filter((s) => s && (s.downloadPath || s.source));
+  }
+
+  function setOfflineToggleUI(btn, state) {
+    const label = btn.querySelector(".hub-btn-txt");
+    const active = state === "all";
+    btn.classList.toggle("is-cached-locally", active);
+    btn.style.borderColor = active ? "rgba(var(--colorPurple), 0.8)" : "";
+    if (!label) return;
+    if (state === "all") label.textContent = "Saved Offline ✓";
+    else if (state === "busy") label.textContent = "Working…";
+    else if (typeof state === "object" && state.partial) {
+      label.textContent = `Listen Offline (${state.cached}/${state.total} saved)`;
+    } else label.textContent = "Listen Offline";
+  }
+
+  function syncOfflineToggle() {
+    const btn = document.getElementById("bento-offline-toggle");
+    if (!btn || !window.offlineCache) return;
+    const songs = getAlbumSongsSync(btn.dataset.albumId);
+    if (!songs || !songs.length) {
+      setOfflineToggleUI(btn, "none");
+      return;
+    }
+    const cached = songs.filter((s) => window.offlineCache.isCached(s)).length;
+    if (cached === songs.length) setOfflineToggleUI(btn, "all");
+    else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
+    else setOfflineToggleUI(btn, "none");
+  }
+
+  // Keep the toggle honest as the service worker reports cache changes.
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.addEventListener("message", (event) => {
+      const type = event.data?.type;
+      if (type === "CACHE_STATUS_RESULT" || type === "SONG_CACHED") syncOfflineToggle();
+    });
+  }
+
+  async function handleOfflineToggle(btn) {
+    const albumId = btn.dataset.albumId;
+    const cache = window.offlineCache;
+    const toast = (msg, kind) => window.state?.showToast?.(msg, kind);
+
+    if (!cache || !("serviceWorker" in navigator)) {
+      toast?.("Offline caching unavailable on this device", "warning");
+      return;
+    }
+
+    let songs = getAlbumSongsSync(albumId);
+
+    // Album may only exist as discography metadata — fully load it first.
+    if (!songs) {
+      const record = window.MusicStore?.albumCache?.get(String(albumId));
+      if (!record?.artistId) {
+        toast?.("Album is not loaded yet", "warning");
+        return;
+      }
+      setOfflineToggleUI(btn, "busy");
+      btn.disabled = true;
+      try {
+        await window.MusicStore.loadAlbum(record.artistId, albumId);
+        songs = getAlbumSongsSync(albumId) || [];
+      } catch (err) {
+        console.warn("[offline] album load failed:", err);
+        toast?.("Could not load album for offline saving", "warning");
+        return;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    if (!songs.length) {
+      toast?.("Nothing to cache for this album", "warning");
+      return;
+    }
+
+    const allCached = songs.every((s) => cache.isCached(s));
+    if (allCached) {
+      for (const song of songs) cache.removeSong(song);
+    } else {
+      for (const song of songs) if (!cache.isCached(s)) cache.cacheSong(song);
+    }
+
+    // Final state reconciles when the SW confirms; refresh immediately too.
+    syncOfflineToggle();
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 10. Share helpers
+   * ------------------------------------------------------------------ */
+
+  function buildAlbumShareUrl(albumTitle) {
+    try {
+      const match = Array.from(window.MusicStore?.albumCache?.values() || []).find(
+        (a) => String(a.title || a.album || "").toLowerCase() === String(albumTitle).toLowerCase()
+      );
+      if (match?.artistId && match?.id) {
+        const url = new URL(window.location.origin + window.location.pathname);
+        url.searchParams.set("artist", match.artistId);
+        url.searchParams.set("album", match.id);
+        url.searchParams.set("play", "1");
+        return url.toString();
+      }
+    } catch {}
+    return window.location.href;
+  }
+
+  async function copyToClipboard(text) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    // Fallback for non-secure contexts.
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.style.cssText = "position:fixed;opacity:0;pointer-events:none;";
+    document.body.appendChild(area);
+    area.select();
+    try {
+      document.execCommand("copy");
+    } finally {
+      area.remove();
+    }
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 11. Keyboard shortcuts
+   * ------------------------------------------------------------------ */
+
+  const SEEK_STEP_SECONDS = 10;
+
+  function isTypingTarget(el) {
+    if (!el) return false;
+    const tag = el.tagName;
+    return (
+      tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el.isContentEditable === true
+    );
+  }
+
+  function bindKeyboardShortcuts() {
+    const player = window.audioPlayer;
+    if (!player) return;
+
+    const seekBy = (delta) => {
+      const audio = player.audio;
+      if (!audio || !Number.isFinite(audio.currentTime)) return;
+      player.seekTo(audio.currentTime + delta);
+    };
+
+    const shortcuts = (key) => {
+      switch (key) {
+        case " ":
+        case "k":
+          player.togglePlay();
+          return true;
+        case "arrowright":
+        case "l":
+          seekBy(SEEK_STEP_SECONDS);
+          return true;
+        case "arrowleft":
+        case "j":
+          seekBy(-SEEK_STEP_SECONDS);
+          return true;
+        case "n":
+        case ".":
+          player.skipForward?.();
+          return true;
+        case "p":
+        case ",":
+          player.skipBack?.();
+          return true;
+        case "m":
+          player.toggleMute?.();
+          return true;
+        case "s":
+          player.toggleShuffle?.();
+          return true;
+        case "?":
+          window.state?.showToast?.(
+            "Shortcuts — Space/K: play-pause · ←/→ or J/L: seek 10s · N/P: next/previous · M: mute · S: shuffle"
+          );
+          return true;
+        default:
+          return false;
+      }
+    };
+
+    document.addEventListener("keydown", (event) => {
+      if (event.defaultPrevented || event.repeat) return;
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+      if (isTypingTarget(event.target)) return;
+      if (window.state?.isSearchOpen) return;
+
+      const key = event.key.length === 1 ? event.key.toLowerCase() : event.key.toLowerCase();
+      if (shortcuts(key)) event.preventDefault();
+    });
+  }
+
+  bindKeyboardShortcuts();
+
+  /* ------------------------------------------------------------------ *
+   * 12. Delegated global click handlers
+   * ------------------------------------------------------------------ */
 
   $(document).on("click", async function (e) {
     const shareAnchor = e.target.closest("#bento-album-share");
     if (shareAnchor) {
       e.preventDefault();
       const albumTitle = shareAnchor.getAttribute("data-album-title") || "Album Selection";
+      const shareUrl = buildAlbumShareUrl(albumTitle);
       const shareMeta = {
         title: albumTitle,
         text: `Listen to ${albumTitle} streaming on our app portfolio platform.`,
-        url: window.location.href,
+        url: shareUrl,
       };
       try {
         if (navigator.share) {
           await navigator.share(shareMeta);
         } else {
-          await navigator.clipboard.writeText(window.location.href);
-          if (window.uiManager?.state?.showToast) {
-            window.uiManager.state.showToast("Share path copied to device clipboard!");
-          } else if (window.state?.showToast) {
-            window.state.showToast("Share path copied to device clipboard!");
-          }
+          await copyToClipboard(shareUrl);
+          const toast = window.uiManager?.state?.showToast || window.state?.showToast;
+          toast?.("Share link copied to your clipboard!");
         }
       } catch (err) {
+        // User dismissed the share sheet — not an error worth surfacing.
         console.warn("Media runtime share actions terminated cleanly:", err);
       }
     }
@@ -513,15 +950,7 @@ jQuery(function ($) {
     const offlineBtn = e.target.closest("#bento-offline-toggle");
     if (offlineBtn) {
       e.preventDefault();
-      offlineBtn.classList.toggle("is-cached-locally");
-      const indicatorText = offlineBtn.querySelector(".hub-btn-txt");
-      if (offlineBtn.classList.contains("is-cached-locally")) {
-        indicatorText.textContent = "Saved Offline ✓";
-        offlineBtn.style.borderColor = "rgba(var(--colorPurple), 0.8)";
-      } else {
-        indicatorText.textContent = "Listen Offline";
-        offlineBtn.style.borderColor = "";
-      }
+      handleOfflineToggle(offlineBtn);
     }
   });
 });
