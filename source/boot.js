@@ -1,7 +1,6 @@
 jQuery(function ($) {
   "use strict";
 
-
   Prefs.init();
 
   window.colorExtractor = new ColorExtractor();
@@ -14,7 +13,6 @@ jQuery(function ($) {
   window.contextMenu = new ContextMenu();
   window.offlineCache = new OfflineCache(window.state);
 
-  // Placeholder until the real drawer registers itself.
   window.saveToLibraryDrawer = window.saveToLibraryDrawer || {
     refreshSavedBadges: () => {},
     badgeRows: () => {},
@@ -30,10 +28,6 @@ jQuery(function ($) {
     audioPlayer: window.audioPlayer,
     favoritesStore: window.favoritesPlaylists,
   }).boot();
-
-  /* ------------------------------------------------------------------ *
-   * 2. Global UI affordances
-   * ------------------------------------------------------------------ */
 
   window.closeModal = () => window.popups?.closeType("modal");
 
@@ -89,21 +83,12 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
-  /* ------------------------------------------------------------------ *
-   * 3. Environment & network helpers
-   * ------------------------------------------------------------------ */
-
   const FETCH_TIMEOUT_MS = 12000;
   const FETCH_RETRIES = 1;
   const LOAD_CONCURRENCY = 4;
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  /**
-   * Resolve the base URL the library is served from.
-   * Priority: explicit window.MUSIC_ME_BASE → local dev → document.baseURI
-   * (keeps forks / custom domains working) → canonical GitHub Pages origin.
-   */
   function resolveBase() {
     if (window.MUSIC_ME_BASE) {
       return String(window.MUSIC_ME_BASE).replace(/\/+$/, "");
@@ -140,7 +125,6 @@ jQuery(function ($) {
 
         if (!response.ok) {
           const err = new Error(`HTTP ${response.status}: ${url}`);
-          // Retry transient server errors only; 4xx is permanent.
           if (response.status >= 500 && attempt < retries) {
             lastError = err;
             await delay(400 * (attempt + 1));
@@ -166,11 +150,7 @@ jQuery(function ($) {
     throw lastError;
   }
 
-  /* ------------------------------------------------------------------ *
-   * 4. Media normalization (single source of truth)
-   * ------------------------------------------------------------------ */
-
-  function mediaSource(value, fallback = "") {
+  function mediaSource(value, fallback = "", baseUrl = BASE) {
     if (value == null || value === "") return fallback;
 
     if (typeof value === "string") {
@@ -181,15 +161,15 @@ jQuery(function ($) {
       if (raw.startsWith("/")) return `${BASE}${raw}`;
 
       try {
-        return new URL(raw, `${BASE}/`).toString();
+        return new URL(raw, `${baseUrl.replace(/\/+$/, "")}/`).toString();
       } catch {
-        return `${BASE}/${raw.replace(/^\.?\//, "")}`;
+        return `${baseUrl.replace(/\/+$/, "")}/${raw.replace(/^\.?\//, "")}`;
       }
     }
 
     if (Array.isArray(value)) {
       for (const item of value) {
-        const normalized = mediaSource(item, "");
+        const normalized = mediaSource(item, "", baseUrl);
         if (normalized) return normalized;
       }
       return fallback;
@@ -197,7 +177,7 @@ jQuery(function ($) {
 
     if (typeof value === "object") {
       for (const child of Object.values(value)) {
-        const normalized = mediaSource(child, "");
+        const normalized = mediaSource(child, "", baseUrl);
         if (normalized) return normalized;
       }
       return fallback;
@@ -206,13 +186,13 @@ jQuery(function ($) {
     return fallback;
   }
 
-  function artworkSource(artwork) {
+  function artworkSource(artwork, baseUrl = BASE) {
     if (!artwork) return "";
-    if (typeof artwork === "string") return mediaSource(artwork, "");
+    if (typeof artwork === "string") return mediaSource(artwork, "", baseUrl);
     if (typeof artwork === "object") {
       const out = {};
       for (const [size, src] of Object.entries(artwork)) {
-        const normalized = mediaSource(src, "");
+        const normalized = mediaSource(src, "", baseUrl);
         if (normalized) out[size] = normalized;
       }
       return Object.keys(out).length ? out : "";
@@ -220,9 +200,9 @@ jQuery(function ($) {
     return "";
   }
 
-  function portraitSource(artist) {
+  function portraitSource(artist, baseUrl = BASE) {
     if (!artist) return {};
-    const portrait = artworkSource(artist.portrait || artist.image || {});
+    const portrait = artworkSource(artist.portrait || artist.image || {}, baseUrl);
     const imageUrl =
       mediaSource(
         artist.imageUrl ||
@@ -232,7 +212,8 @@ jQuery(function ($) {
           artist.portrait?.[320] ||
           portrait ||
           "",
-        ""
+        "",
+        baseUrl
       ) || "";
 
     return {
@@ -244,9 +225,9 @@ jQuery(function ($) {
     };
   }
 
-  function albumSource(album) {
+  function albumSource(album, baseUrl = BASE) {
     if (!album) return {};
-    const artwork = artworkSource(album.artwork || album.cover || {});
+    const artwork = artworkSource(album.artwork || album.cover || {}, baseUrl);
     const coverUrl =
       mediaSource(
         album.coverUrl ||
@@ -256,7 +237,8 @@ jQuery(function ($) {
           album.artwork?.[640] ||
           artwork ||
           "",
-        ""
+        "",
+        baseUrl
       ) || "";
 
     return {
@@ -299,10 +281,6 @@ jQuery(function ($) {
     return "";
   };
 
-  /* ------------------------------------------------------------------ *
-   * 5. Boot failure UI (XSS-safe: textContent only)
-   * ------------------------------------------------------------------ */
-
   function renderBootError(err) {
     const card = document.createElement("div");
     card.style.cssText =
@@ -323,10 +301,6 @@ jQuery(function ($) {
     document.body.appendChild(card);
   }
 
-  /* ------------------------------------------------------------------ *
-   * 6. Library initialization
-   * ------------------------------------------------------------------ */
-
   async function initLibrary() {
     console.log("[initLibrary] starting");
 
@@ -341,8 +315,6 @@ jQuery(function ($) {
       (window.MusicStore.index || []).map((a) => [String(a.id), a])
     );
 
-    // Inflight de-duplication. Entries are removed in `finally` blocks so a
-    // failed fetch never poisons future retries.
     const _artistInflight = new Map();
     const _albumInflight = new Map();
 
@@ -361,7 +333,9 @@ jQuery(function ($) {
           fetchJson(`${LIB}/artists/${id}/discography.json`).catch(() => ({ albums: [] })),
         ]);
 
-        const artistPhoto = portraitSource(artist);
+        const artistDir = `${LIB}/artists/${id}/`;
+        const artistPhoto = portraitSource(artist, artistDir);
+
         const merged = {
           id: artistPhoto.id ?? id,
           artist: artistPhoto.name ?? artistPhoto.artist ?? "",
@@ -369,7 +343,9 @@ jQuery(function ($) {
           portrait: artistPhoto.portrait || {},
           imageUrl: artistPhoto.imageUrl || "",
           similar: artistPhoto.similar ?? [],
-          albums: (disc.albums || []).map((album) => albumSource(album)),
+          albums: (disc.albums || []).map((album) =>
+            albumSource(album, `${LIB}/artists/${id}/albums/${album.id}/`)
+          ),
         };
 
         for (const a of merged.albums) {
@@ -413,8 +389,11 @@ jQuery(function ($) {
         const album = await fetchJson(`${LIB}/artists/${artistId}/albums/${aid}/album.json`);
         const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
 
-        const normalizedAlbum = albumSource(album);
-        const artistPhoto = portraitSource(artist || {});
+        const albumDir = `${LIB}/artists/${artistId}/albums/${aid}/`;
+        const artistDir = `${LIB}/artists/${artistId}/`;
+
+        const normalizedAlbum = albumSource(album, albumDir);
+        const artistPhoto = portraitSource(artist || {}, artistDir);
 
         const record = {
           id: normalizedAlbum.id ?? aid,
@@ -445,7 +424,6 @@ jQuery(function ($) {
             artistImageUrl: artistPhoto.imageUrl || "",
             genre: artistPhoto.genre || "Unknown",
             source: primarySrc,
-            // OfflineCache keys off downloadPath; guarantee it exists.
             downloadPath: mediaSource(song.downloadPath || sources[0]?.src || song.source || "", ""),
             sources: sources.map((src) => ({
               ...src,
@@ -469,11 +447,6 @@ jQuery(function ($) {
       }
     };
 
-    /**
-     * Load every artist + album with a bounded worker pool.
-     * Progress contract unchanged: onProgress(completedArtists, totalArtists).
-     * One failing artist never aborts the rest of the sweep.
-     */
     window.MusicStore.loadAllSongs = async function (onProgress) {
       const entries = window.MusicStore.index || [];
       if (!entries.length) return;
@@ -520,11 +493,6 @@ jQuery(function ($) {
     window.popups.ui = window.uiManager;
     window.heartManager.store.state = window.state;
 
-    /* ---------------------------------------------------------------- *
-     * 7. Page actions
-     * ---------------------------------------------------------------- */
-
-    // Data-driven mood mixes: extend by editing this map (or load from JSON).
     const MOOD_GENRE_MAP = {
       chill: ["pop", "indie", "acoustic", "r&b", "soul"],
       energy: ["dance", "electronic", "edm", "hip hop", "rock", "pop"],
@@ -624,10 +592,6 @@ jQuery(function ($) {
       },
     };
 
-    /* ---------------------------------------------------------------- *
-     * 8. Deep links — ?artist=<id>&album=<id>&song=<id>&play=1
-     * ---------------------------------------------------------------- */
-
     async function handleDeepLink() {
       const params = new URLSearchParams(window.location.search);
       const artistId = params.get("artist");
@@ -684,10 +648,6 @@ jQuery(function ($) {
     }
   })();
 
-  /* ------------------------------------------------------------------ *
-   * 9. Offline caching helpers + real toggle wiring
-   * ------------------------------------------------------------------ */
-
   function getAlbumSongsSync(albumId) {
     const record = window.MusicStore?.albumCache?.get(String(albumId));
     if (!record || record._discographyOnly || !record.songs?.length) return null;
@@ -723,7 +683,6 @@ jQuery(function ($) {
     else setOfflineToggleUI(btn, "none");
   }
 
-  // Keep the toggle honest as the service worker reports cache changes.
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.addEventListener("message", (event) => {
       const type = event.data?.type;
@@ -743,7 +702,6 @@ jQuery(function ($) {
 
     let songs = getAlbumSongsSync(albumId);
 
-    // Album may only exist as discography metadata — fully load it first.
     if (!songs) {
       const record = window.MusicStore?.albumCache?.get(String(albumId));
       if (!record?.artistId) {
@@ -773,16 +731,11 @@ jQuery(function ($) {
     if (allCached) {
       for (const song of songs) cache.removeSong(song);
     } else {
-      for (const song of songs) if (!cache.isCached(s)) cache.cacheSong(song);
+      for (const song of songs) if (!cache.isCached(song)) cache.cacheSong(song);
     }
 
-    // Final state reconciles when the SW confirms; refresh immediately too.
     syncOfflineToggle();
   }
-
-  /* ------------------------------------------------------------------ *
-   * 10. Share helpers
-   * ------------------------------------------------------------------ */
 
   function buildAlbumShareUrl(albumTitle) {
     try {
@@ -805,7 +758,6 @@ jQuery(function ($) {
       await navigator.clipboard.writeText(text);
       return;
     }
-    // Fallback for non-secure contexts.
     const area = document.createElement("textarea");
     area.value = text;
     area.style.cssText = "position:fixed;opacity:0;pointer-events:none;";
@@ -817,10 +769,6 @@ jQuery(function ($) {
       area.remove();
     }
   }
-
-  /* ------------------------------------------------------------------ *
-   * 11. Keyboard shortcuts
-   * ------------------------------------------------------------------ */
 
   const SEEK_STEP_SECONDS = 10;
 
@@ -893,10 +841,6 @@ jQuery(function ($) {
 
   bindKeyboardShortcuts();
 
-  /* ------------------------------------------------------------------ *
-   * 12. Delegated global click handlers
-   * ------------------------------------------------------------------ */
-
   $(document).on("click", async function (e) {
     const shareAnchor = e.target.closest("#bento-album-share");
     if (shareAnchor) {
@@ -917,7 +861,6 @@ jQuery(function ($) {
           toast?.("Share link copied to your clipboard!");
         }
       } catch (err) {
-        // User dismissed the share sheet — not an error worth surfacing.
         console.warn("Media runtime share actions terminated cleanly:", err);
       }
     }
