@@ -13,12 +13,211 @@ jQuery(function ($) {
   window.contextMenu = new ContextMenu();
   window.offlineCache = new OfflineCache(window.state);
 
+
+////////////  Offline & Sharing [ WORKING ON ] ///////
+//////////////////////////////////////////////////
   window.saveToLibraryDrawer = window.saveToLibraryDrawer || {
     refreshSavedBadges: () => {},
     badgeRows: () => {},
   };
   window.saveDrawer = window.saveToLibraryDrawer;
 
+  function getAlbumSongsSync(albumId) {
+    const record = window.MusicStore?.albumCache?.get(String(albumId));
+    if (!record || record._discographyOnly || !record.songs?.length) return null;
+    return record.songs
+      .map((s) => window.MusicStore.songCache.get(String(s.id)) || s)
+      .filter((s) => s && (s.downloadPath || s.source));
+  }
+
+  function setOfflineToggleUI(btn, state) {
+    const label = btn.querySelector(".hub-btn-txt");
+    const active = state === "all";
+    btn.classList.toggle("is-cached-locally", active);
+    btn.style.borderColor = active ? "rgba(var(--colorPurple), 0.8)" : "";
+    if (!label) return;
+    if (state === "all") label.textContent = "Saved Offline ✓";
+    else if (state === "busy") label.textContent = "Working…";
+    else if (typeof state === "object" && state.partial) {
+      label.textContent = `Listen Offline (${state.cached}/${state.total} saved)`;
+    } else label.textContent = "Listen Offline";
+  }
+  function syncOfflineToggle() {
+    const btn = document.getElementById("bento-offline-toggle");
+    if (!btn || !window.offlineCache) return;
+    const songs = getAlbumSongsSync(btn.dataset.albumId);
+    if (!songs || !songs.length) {
+      setOfflineToggleUI(btn, "none");
+      return;
+    }
+    const cached = songs.filter((s) => window.offlineCache.isCached(s)).length;
+    if (cached === songs.length) setOfflineToggleUI(btn, "all");
+    else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
+    else setOfflineToggleUI(btn, "none");
+  }
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.addEventListener("message", (event) => {
+      const type = event.data?.type;
+      if (type === "CACHE_STATUS_RESULT" || type === "SONG_CACHED") syncOfflineToggle();
+    });
+  }
+
+  async function handleOfflineToggle(btn) {
+    const albumId = btn.dataset.albumId;
+    const cache = window.offlineCache;
+    const toast = (msg, kind) => window.state?.showToast?.(msg, kind);
+
+    if (!cache || !("serviceWorker" in navigator)) {
+      toast?.("Offline caching unavailable on this device", "warning");
+      return;
+    }
+
+    let songs = getAlbumSongsSync(albumId);
+
+    if (!songs) {
+      const record = window.MusicStore?.albumCache?.get(String(albumId));
+      if (!record?.artistId) {
+        toast?.("Album is not loaded yet", "warning");
+        return;
+      }
+      setOfflineToggleUI(btn, "busy");
+      btn.disabled = true;
+      try {
+        await window.MusicStore.loadAlbum(record.artistId, albumId);
+        songs = getAlbumSongsSync(albumId) || [];
+      } catch (err) {
+        console.warn("[offline] album load failed:", err);
+        toast?.("Could not load album for offline saving", "warning");
+        return;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    if (!songs.length) {
+      toast?.("Nothing to cache for this album", "warning");
+      return;
+    }
+
+    const allCached = songs.every((s) => cache.isCached(s));
+    if (allCached) {
+      for (const song of songs) cache.removeSong(song);
+    } else {
+      for (const song of songs) if (!cache.isCached(song)) cache.cacheSong(song);
+    }
+
+    syncOfflineToggle();
+  }
+
+
+  
+  function buildAlbumShareUrl(albumTitle) {
+    try {
+      const match = Array.from(window.MusicStore?.albumCache?.values() || []).find(
+        (a) => String(a.title || a.album || "").toLowerCase() === String(albumTitle).toLowerCase()
+      );
+      if (match?.artistId && match?.id) {
+        const url = new URL(window.location.origin + window.location.pathname);
+        url.searchParams.set("artist", match.artistId);
+        url.searchParams.set("album", match.id);
+        url.searchParams.set("play", "1");
+        return url.toString();
+      }
+    } catch {}
+    return window.location.href;
+  }
+  async function copyToClipboard(text) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.style.cssText = "position:fixed;opacity:0;pointer-events:none;";
+    document.body.appendChild(area);
+    area.select();
+    try {
+      document.execCommand("copy");
+    } finally {
+      area.remove();
+    }
+  }
+
+  const SEEK_STEP_SECONDS = 10;
+
+  function isTypingTarget(el) {
+    if (!el) return false;
+    const tag = el.tagName;
+    return (
+      tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el.isContentEditable === true
+    );
+  }
+  function bindKeyboardShortcuts() {
+    const player = window.audioPlayer;
+    if (!player) return;
+
+    const seekBy = (delta) => {
+      const audio = player.audio;
+      if (!audio || !Number.isFinite(audio.currentTime)) return;
+      player.seekTo(audio.currentTime + delta);
+    };
+
+    const shortcuts = (key) => {
+      switch (key) {
+        case " ":
+        case "k":
+          player.togglePlay();
+          return true;
+        case "arrowright":
+        case "l":
+          seekBy(SEEK_STEP_SECONDS);
+          return true;
+        case "arrowleft":
+        case "j":
+          seekBy(-SEEK_STEP_SECONDS);
+          return true;
+        case "n":
+        case ".":
+          player.skipForward?.();
+          return true;
+        case "p":
+        case ",":
+          player.skipBack?.();
+          return true;
+        case "m":
+          player.toggleMute?.();
+          return true;
+        case "s":
+          player.toggleShuffle?.();
+          return true;
+        case "?":
+          window.state?.showToast?.(
+            "Shortcuts — Space/K: play-pause · ←/→ or J/L: seek 10s · N/P: next/previous · M: mute · S: shuffle"
+// REPLACE with a Modal or PopOver or ToolTip Element
+          );
+          return true;
+        default:
+          return false;
+      }
+    };
+
+    document.addEventListener("keydown", (event) => {
+      if (event.defaultPrevented || event.repeat) return;
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+      if (isTypingTarget(event.target)) return;
+      if (window.state?.isSearchOpen) return;
+
+      const key = event.key.toLowerCase();
+      if (shortcuts(key)) event.preventDefault();
+    });
+  }
+//---------------------------------------------------------------------
+
+
+  
+/////////////////////  Global Setups  ////////////
+//////////////////////////////////////////////////
   window.persistence = new PersistenceManager(window.state, window.audioPlayer);
   window.mediaSessionManager = new MediaSessionManager(window.state, window.audioPlayer);
   window.audioPlayer.setMediaSessionManager(window.mediaSessionManager);
@@ -32,7 +231,6 @@ jQuery(function ($) {
   window.closeModal = () => window.popups?.closeType("modal");
 
   const PLAYLIST_NAME_MAX = 120;
-
   window.createNewPlaylist = function () {
     if (window.favoritesPlaylists && typeof window.favoritesPlaylists.createNewPlaylist === "function") {
       return window.favoritesPlaylists.createNewPlaylist();
@@ -70,7 +268,6 @@ jQuery(function ($) {
     console.warn("[boot] Playlist creation flow is unavailable.");
     return null;
   };
-
   window.createPlaylist = window.createNewPlaylist;
   window.renamePlaylist = (id) => window.favoritesPlaylists?.renamePlaylist?.(id);
   window.deletePlaylist = (id) => window.favoritesPlaylists?.deletePlaylist?.(id);
@@ -83,9 +280,16 @@ jQuery(function ($) {
     else if (type === "playlist") window.contextMenu.show(event.clientX, event.clientY, { playlistId: id });
   };
 
+
+///////////////////////  Database Fetching  //////////
+//////////////////////////////////////////////////////
   const FETCH_TIMEOUT_MS = 12000;
   const FETCH_RETRIES = 1;
   const LOAD_CONCURRENCY = 4;
+
+  const BASE = resolveBase();
+  const LIB = `${BASE}/library`;
+  const SZ = { cover: 320, portrait: 160 };
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -108,11 +312,6 @@ jQuery(function ($) {
       return "https://clockblocked.github.io/music.me";
     }
   }
-
-  const BASE = resolveBase();
-  const LIB = `${BASE}/library`;
-  const SZ = { cover: 320, portrait: 160 };
-
   async function fetchJson(url, { retries = FETCH_RETRIES } = {}) {
     let lastError = null;
 
@@ -150,6 +349,8 @@ jQuery(function ($) {
     throw lastError;
   }
 
+
+// ──────────────────  S O U R C E S  ────────── • • 
   function mediaSource(value, fallback = "", baseUrl = BASE) {
     if (value == null || value === "") return fallback;
 
@@ -185,7 +386,6 @@ jQuery(function ($) {
 
     return fallback;
   }
-
   function artworkSource(artwork, baseUrl = BASE) {
     if (!artwork) return "";
     if (typeof artwork === "string") return mediaSource(artwork, "", baseUrl);
@@ -199,7 +399,6 @@ jQuery(function ($) {
     }
     return "";
   }
-
   function portraitSource(artist, baseUrl = BASE) {
     if (!artist) return {};
     const portrait = artworkSource(artist.portrait || artist.image || {}, baseUrl);
@@ -224,7 +423,6 @@ jQuery(function ($) {
       genre: artist.genre ?? "Unknown",
     };
   }
-
   function albumSource(album, baseUrl = BASE) {
     if (!album) return {};
     const artwork = artworkSource(album.artwork || album.cover || {}, baseUrl);
@@ -264,7 +462,6 @@ jQuery(function ($) {
     }
     return "";
   };
-
   const portraitUrl = (portrait, size = SZ.portrait) => {
     if (!portrait) return "";
     if (typeof portrait === "string") return mediaSource(portrait, "");
@@ -281,6 +478,10 @@ jQuery(function ($) {
     return "";
   };
 
+
+
+
+// ──────────────────  Initialization  ────────── • • 
   function renderBootError(err) {
     const card = document.createElement("div");
     card.style.cssText =
@@ -300,7 +501,7 @@ jQuery(function ($) {
     card.append(message, retry);
     document.body.appendChild(card);
   }
-
+  
   async function initLibrary() {
     console.log("[initLibrary] starting");
 
@@ -630,15 +831,15 @@ jQuery(function ($) {
           stripParams();
         }
       } catch (err) {
-        console.warn("[deepLink] could not resolve link:", err);
+// REMOVE ME ... //      console.warn("[deepLink] could not resolve link:", err);
+//... Replace with a Warning Modal
       }
     }
 
     await handleDeepLink();
 
-    console.log("[initLibrary] ready");
+// REMOVE ME //  console.log("[initLibrary] ready");
   }
-
   (async () => {
     try {
       await initLibrary();
@@ -648,196 +849,6 @@ jQuery(function ($) {
     }
   })();
 
-  function getAlbumSongsSync(albumId) {
-    const record = window.MusicStore?.albumCache?.get(String(albumId));
-    if (!record || record._discographyOnly || !record.songs?.length) return null;
-    return record.songs
-      .map((s) => window.MusicStore.songCache.get(String(s.id)) || s)
-      .filter((s) => s && (s.downloadPath || s.source));
-  }
-
-  function setOfflineToggleUI(btn, state) {
-    const label = btn.querySelector(".hub-btn-txt");
-    const active = state === "all";
-    btn.classList.toggle("is-cached-locally", active);
-    btn.style.borderColor = active ? "rgba(var(--colorPurple), 0.8)" : "";
-    if (!label) return;
-    if (state === "all") label.textContent = "Saved Offline ✓";
-    else if (state === "busy") label.textContent = "Working…";
-    else if (typeof state === "object" && state.partial) {
-      label.textContent = `Listen Offline (${state.cached}/${state.total} saved)`;
-    } else label.textContent = "Listen Offline";
-  }
-
-  function syncOfflineToggle() {
-    const btn = document.getElementById("bento-offline-toggle");
-    if (!btn || !window.offlineCache) return;
-    const songs = getAlbumSongsSync(btn.dataset.albumId);
-    if (!songs || !songs.length) {
-      setOfflineToggleUI(btn, "none");
-      return;
-    }
-    const cached = songs.filter((s) => window.offlineCache.isCached(s)).length;
-    if (cached === songs.length) setOfflineToggleUI(btn, "all");
-    else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
-    else setOfflineToggleUI(btn, "none");
-  }
-
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.addEventListener("message", (event) => {
-      const type = event.data?.type;
-      if (type === "CACHE_STATUS_RESULT" || type === "SONG_CACHED") syncOfflineToggle();
-    });
-  }
-
-  async function handleOfflineToggle(btn) {
-    const albumId = btn.dataset.albumId;
-    const cache = window.offlineCache;
-    const toast = (msg, kind) => window.state?.showToast?.(msg, kind);
-
-    if (!cache || !("serviceWorker" in navigator)) {
-      toast?.("Offline caching unavailable on this device", "warning");
-      return;
-    }
-
-    let songs = getAlbumSongsSync(albumId);
-
-    if (!songs) {
-      const record = window.MusicStore?.albumCache?.get(String(albumId));
-      if (!record?.artistId) {
-        toast?.("Album is not loaded yet", "warning");
-        return;
-      }
-      setOfflineToggleUI(btn, "busy");
-      btn.disabled = true;
-      try {
-        await window.MusicStore.loadAlbum(record.artistId, albumId);
-        songs = getAlbumSongsSync(albumId) || [];
-      } catch (err) {
-        console.warn("[offline] album load failed:", err);
-        toast?.("Could not load album for offline saving", "warning");
-        return;
-      } finally {
-        btn.disabled = false;
-      }
-    }
-
-    if (!songs.length) {
-      toast?.("Nothing to cache for this album", "warning");
-      return;
-    }
-
-    const allCached = songs.every((s) => cache.isCached(s));
-    if (allCached) {
-      for (const song of songs) cache.removeSong(song);
-    } else {
-      for (const song of songs) if (!cache.isCached(song)) cache.cacheSong(song);
-    }
-
-    syncOfflineToggle();
-  }
-
-  function buildAlbumShareUrl(albumTitle) {
-    try {
-      const match = Array.from(window.MusicStore?.albumCache?.values() || []).find(
-        (a) => String(a.title || a.album || "").toLowerCase() === String(albumTitle).toLowerCase()
-      );
-      if (match?.artistId && match?.id) {
-        const url = new URL(window.location.origin + window.location.pathname);
-        url.searchParams.set("artist", match.artistId);
-        url.searchParams.set("album", match.id);
-        url.searchParams.set("play", "1");
-        return url.toString();
-      }
-    } catch {}
-    return window.location.href;
-  }
-
-  async function copyToClipboard(text) {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(text);
-      return;
-    }
-    const area = document.createElement("textarea");
-    area.value = text;
-    area.style.cssText = "position:fixed;opacity:0;pointer-events:none;";
-    document.body.appendChild(area);
-    area.select();
-    try {
-      document.execCommand("copy");
-    } finally {
-      area.remove();
-    }
-  }
-
-  const SEEK_STEP_SECONDS = 10;
-
-  function isTypingTarget(el) {
-    if (!el) return false;
-    const tag = el.tagName;
-    return (
-      tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el.isContentEditable === true
-    );
-  }
-
-  function bindKeyboardShortcuts() {
-    const player = window.audioPlayer;
-    if (!player) return;
-
-    const seekBy = (delta) => {
-      const audio = player.audio;
-      if (!audio || !Number.isFinite(audio.currentTime)) return;
-      player.seekTo(audio.currentTime + delta);
-    };
-
-    const shortcuts = (key) => {
-      switch (key) {
-        case " ":
-        case "k":
-          player.togglePlay();
-          return true;
-        case "arrowright":
-        case "l":
-          seekBy(SEEK_STEP_SECONDS);
-          return true;
-        case "arrowleft":
-        case "j":
-          seekBy(-SEEK_STEP_SECONDS);
-          return true;
-        case "n":
-        case ".":
-          player.skipForward?.();
-          return true;
-        case "p":
-        case ",":
-          player.skipBack?.();
-          return true;
-        case "m":
-          player.toggleMute?.();
-          return true;
-        case "s":
-          player.toggleShuffle?.();
-          return true;
-        case "?":
-          window.state?.showToast?.(
-            "Shortcuts — Space/K: play-pause · ←/→ or J/L: seek 10s · N/P: next/previous · M: mute · S: shuffle"
-          );
-          return true;
-        default:
-          return false;
-      }
-    };
-
-    document.addEventListener("keydown", (event) => {
-      if (event.defaultPrevented || event.repeat) return;
-      if (event.ctrlKey || event.metaKey || event.altKey) return;
-      if (isTypingTarget(event.target)) return;
-      if (window.state?.isSearchOpen) return;
-
-      const key = event.key.toLowerCase();
-      if (shortcuts(key)) event.preventDefault();
-    });
-  }
 
   bindKeyboardShortcuts();
 
@@ -849,7 +860,7 @@ jQuery(function ($) {
       const shareUrl = buildAlbumShareUrl(albumTitle);
       const shareMeta = {
         title: albumTitle,
-        text: `Listen to ${albumTitle} streaming on our app portfolio platform.`,
+        text: `Listen to ${albumTitle} on MyBeats Music.`,
         url: shareUrl,
       };
       try {
@@ -858,7 +869,7 @@ jQuery(function ($) {
         } else {
           await copyToClipboard(shareUrl);
           const toast = window.uiManager?.state?.showToast || window.state?.showToast;
-          toast?.("Share link copied to your clipboard!");
+          toast?.("Link copied!");
         }
       } catch (err) {
         console.warn("Media runtime share actions terminated cleanly:", err);
