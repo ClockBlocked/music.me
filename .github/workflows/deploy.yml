@@ -2,7 +2,7 @@ name: Build and Deploy Indexes to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Or "master", depending on your default branch
+    branches: ["primary"] # Or "master", depending on your default branch
   workflow_dispatch: # Allows you to run it manually from the Actions tab
 
 # Sets permissions for the GITHUB_TOKEN to allow deployment to GitHub Pages
