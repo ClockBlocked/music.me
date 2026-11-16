@@ -503,7 +503,7 @@ jQuery(function ($) {
   }
   
   async function initLibrary() {
-    console.log("[initLibrary] starting");
+//  console.log("[initLibrary] starting");
 
     if (!window.MusicStore || !window.MusicStore.index) {
       throw new Error("window.MusicStore.index is missing.");
@@ -648,6 +648,11 @@ jQuery(function ($) {
       }
     };
 
+
+
+/**
+REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
+***********************
     window.MusicStore.loadAllSongs = async function (onProgress) {
       const entries = window.MusicStore.index || [];
       if (!entries.length) return;
@@ -678,7 +683,11 @@ jQuery(function ($) {
       const lanes = Math.min(LOAD_CONCURRENCY, entries.length);
       await Promise.all(Array.from({ length: lanes }, worker));
     };
+***********************
+**/
 
+
+    
     window.state.getSongById = (id) => window.MusicStore.songCache.get(String(id)) || null;
     window.state.getAlbumById = (id) => window.MusicStore.albumCache.get(String(id)) || null;
     window.state.getArtistById = (id) => {
@@ -735,6 +744,12 @@ jQuery(function ($) {
         const song = this.getSongById(songId);
         if (song) window.uiManager?.audioPlayer?.playSong(song, null, true, source);
       },
+
+
+      
+/**
+REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
+***********************
       async shuffleAll() {
         await window.MusicStore.loadAllSongs();
         const songs = this.buildSongs();
@@ -765,6 +780,10 @@ jQuery(function ($) {
           "home"
         );
       },
+***********************
+**/
+
+      
       openStatsDashboard() {
         if (window.uiManager && window.state)
           window.state.modalOpen(window.uiManager.homePage.statsDashboard());
