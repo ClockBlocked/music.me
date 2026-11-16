@@ -26,9 +26,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm ci # Or npm install if you don't have a lockfile
-
       - name: Run build script to generate indexes
         run: node ./scripts/build-indexes.js # This executes your script
 
