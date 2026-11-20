@@ -82,5 +82,5 @@
   }
   const descriptors = Object.getOwnPropertyDescriptors(HomeCollectionsMethods.prototype);
   delete descriptors.constructor;
-  Object.defineProperties(Home.prototype, descriptors);
+  Object.defineProperties(window.Home.prototype, descriptors);
 })();
