@@ -26,14 +26,16 @@ class UIManager {
     this.player = new PlayerManager(this);
     this.search = new Search(this);
     this.contentEvents = new ContentEvents(this);
-    this.homePage = new Home(this);
-    this.libraryPage = new Library(this);
-    this.favoritesPage = new Favorites(this);
-    this.playlistsPage = new Playlists(this);
-    this.editPlaylistPage = new EditPlaylist(this);
-    this.createPlaylistPage = new CreatePlaylist(this);
-    this.artistPage = new Artists(this);
-    this.errorPage = new Error404(this);
+    // Page instances are constructed only on first navigation to each route.
+    this.homePage = null;
+    this.libraryPage = null;
+    this.favoritesPage = null;
+    this.playlistsPage = null;
+    this.editPlaylistPage = null;
+    this.createPlaylistPage = null;
+    this.artistPage = null;
+    this.errorPage = null;
+    this._pageLoads = new Map();
 
     this.init();
 
@@ -54,6 +56,35 @@ class UIManager {
     window.addEventListener("popstate", this.handlePopState);
   }
 
+  async ensurePage(page) {
+    const mapping = {
+      home: "homePage",
+      library: "libraryPage",
+      favorites: "favoritesPage",
+      playlists: "playlistsPage",
+      editPlaylist: "editPlaylistPage",
+      createPlaylist: "createPlaylistPage",
+      artist: "artistPage",
+      "404": "errorPage",
+    };
+    const key = Object.hasOwn(mapping, page) ? page : "404";
+    const property = mapping[key];
+    if (this[property]) return this[property];
+    if (!this._pageLoads.has(key)) {
+      const loading = window.RouteLoader.load(key)
+        .then((Page) => {
+          if (!this[property]) this[property] = new Page(this);
+          return this[property];
+        })
+        .catch((err) => {
+          this._pageLoads.delete(key);
+          throw err;
+        });
+      this._pageLoads.set(key, loading);
+    }
+    return this._pageLoads.get(key);
+  }
+
   navigate(page, artistId = null, albumId = null) {
     if (!this.skipProgress && window.NProgress) NProgress.start();
     this.skipProgress = false;
@@ -71,8 +102,9 @@ class UIManager {
     return this.navigator.goEditPlaylist(playlistId);
   }
 
-  createPlaylist() {
-    this.createPlaylistPage.reset();
+  async createPlaylist() {
+    const page = await this.ensurePage("createPlaylist");
+    page.reset();
     this.state.selectedPlaylistName = null;
     return this.navigator.goCreatePlaylist?.() ?? this.navigator.go("createPlaylist");
   }
