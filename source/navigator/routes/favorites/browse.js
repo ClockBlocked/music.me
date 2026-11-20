@@ -117,7 +117,7 @@ class Favorites {
               .map((song) => song.coverUrl);
 
             return `
-          <div class="ui-card" data-playlist-view="${Utils.esc(playlist.name)}" style="--d: ${i * 40}ms" onclick="window.uiManager.navigate('playlists'); window.uiManager.playlistsPage.viewPlaylist('${Utils.esc(playlist.name)}')">
+          <div class="ui-card" data-playlist-view="${Utils.esc(playlist.name)}" style="--d: ${i * 40}ms" onclick="window.uiManager.state.selectedPlaylistName = this.dataset.playlistView; window.uiManager.navigate('playlists')">
             <div class="ui-art-wrap mosaic-wrap">
               ${covers.length ? covers.map((cover) => `<img src="${cover}" alt="">`).join("") : `<div class="mosaic-empty">${Icons.general.playlist(32)}</div>`}
               <button class="ui-play-btn" data-playlist-play="${playlist.id}" onclick="event.stopPropagation();">${Icons.player.play(18)}</button>
