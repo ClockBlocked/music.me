@@ -18,9 +18,12 @@
     const definition = definitions[page] ?? definitions["404"];
     // Modules have global compatibility exports (window.Home, window.Library, etc).
     // Home methods must be installed AFTER its class facade is evaluated.
-    for (const file of definition.files) {
-      await import(new URL(file, root).href);
-    }
+    // Home's class must exist before any extension module installs methods.
+    // Independent extensions can then load in parallel.
+    await import(new URL(definition.files[0], root).href);
+    await Promise.all(definition.files.slice(1).map((file) =>
+      import(new URL(file, root).href)
+    ));
     const Class = window[definition.className];
     if (typeof Class !== "function") {
       throw new Error(`[RouteLoader] ${definition.className} did not register for ${page}`);
