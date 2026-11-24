@@ -611,7 +611,7 @@ class AppNavigator {
           break;
 
         default:
-          state.currentPage = "404";
+          state.currentPage = "discover";
       }
     }
 
