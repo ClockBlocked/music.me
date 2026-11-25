@@ -1,46 +1,12 @@
+
+
+//////////////////////////////  S E T U P  ///////
+//////////////////////////////////////////////////
 class PopupsManager {
-  constructor({ ui = null, container = document.body } = {}) {
-    this.ui = ui;
-    this.container =
-      typeof container === "string" ? document.querySelector(container) : container;
-    if (!this.container) this.container = document.body;
+  static cached = null;
 
-    this.active = new Set();
-    this.stack = [];
-
-    this.keyHandler = (e) => this.onKeyDown(e);
-    this.resizeHandler = () => this.repositionPopups();
-    this.tooltipEnterHandler = (e) => this.onTooltipEnter(e);
-
-    document.addEventListener("keydown", this.keyHandler, true);
-    window.addEventListener("resize", this.resizeHandler);
-
-    this.ensureToastContainer();
-
-    this.notificationHistory = [];
-    this.enableTooltips();
-  }
-
-  // ----------------------------------------------
-  // Escaping helpers
-  // ----------------------------------------------
-  static escapeText(text = "") {
-    return Utils.esc(text);
-  }
-
-  static escapeAttr(text = "") {
-    return String(text)
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
-  }
-
-  // ----------------------------------------------
-  // Icon library
-  // ----------------------------------------------
-  static get icons() {
+  static iconGlossary() {
     const svg = (attrs, content) => `<svg ${attrs}>${content}</svg>`;
-
     return {
       close(size = 16) {
         return svg(
@@ -129,9 +95,50 @@ class PopupsManager {
     };
   }
 
-  // ----------------------------------------------
-  // Registration
-  // ----------------------------------------------
+  static get icons() {
+    if (!this.cached) this.cached = this.iconGlossary();
+    return this.cached;
+  }
+
+  static escapeText(text = "") {
+    return Utils.esc(text);
+  }
+
+  static escapeAttr(text = "") {
+    return String(text)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  constructor({ ui = null, container = document.body, tooltips = true } = {}) {
+    this.ui = ui;
+    this.container =
+      typeof container === "string" ? document.querySelector(container) : container;
+    if (!this.container) this.container = document.body;
+
+    this.active = new Set();
+    this.stack = [];
+    this.destroyed = false;
+    this.tooltipsEnabled = false;
+    this.notificationHistory = [];
+
+    this.keyHandler = (e) => this.onKeyDown(e);
+    this.resizeHandler = () => this.repositionPopups();
+    this.scrollHandler = () => this._scheduleReposition();
+    this.tooltipEnterHandler = (e) => this.onTooltipEnter(e);
+
+    document.addEventListener("keydown", this.keyHandler, true);
+    window.addEventListener("resize", this.resizeHandler);
+    window.addEventListener("scroll", this.scrollHandler, true);
+
+    this.ensureToastContainer();
+
+    if (tooltips) this.enableTooltips();
+  }
+
   register(popup) {
     if (this.destroyed) return;
     this.active.add(popup);
@@ -145,9 +152,6 @@ class PopupsManager {
     if (idx >= 0) this.stack.splice(idx, 1);
   }
 
-  // ----------------------------------------------
-  // Closing
-  // ----------------------------------------------
   closeType(type) {
     [...this.stack].reverse().forEach((popup) => {
       if (popup.type === type && popup.isOpen) popup.hide();
@@ -165,36 +169,72 @@ class PopupsManager {
   }
 
   destroy() {
-    this.cleanup();
+    if (this.destroyed) return;
     this.destroyed = true;
+
+    // Force-destroy every popup synchronously so nothing is left in the DOM.
+    for (const popup of [...this.stack]) {
+      try { popup.destroy(); } catch (e) { console.error(e); }
+    }
+    this.stack.length = 0;
+    this.active.clear();
+
+    if (this._scrollRaf) {
+      cancelAnimationFrame(this._scrollRaf);
+      this._scrollRaf = null;
+    }
+
     document.removeEventListener("keydown", this.keyHandler, true);
     window.removeEventListener("resize", this.resizeHandler);
-    document.removeEventListener("mouseenter", this.tooltipEnterHandler, true);
+    window.removeEventListener("scroll", this.scrollHandler, true);
+
+    if (this.tooltipsEnabled) {
+      document.removeEventListener("mouseenter", this.tooltipEnterHandler, true);
+      this.tooltipsEnabled = false;
+    }
+
+    if (this.toastContainer) {
+      if (this._onToastEnter) this.toastContainer.removeEventListener("mouseenter", this._onToastEnter);
+      if (this._onToastLeave) this.toastContainer.removeEventListener("mouseleave", this._onToastLeave);
+    }
   }
 
   // ----------------------------------------------
-  // Keyboard / resize
+  // Keyboard / reposition
   // ----------------------------------------------
   onKeyDown(e) {
     if (e.key !== "Escape") return;
-
     for (let i = this.stack.length - 1; i >= 0; i--) {
       const popup = this.stack[i];
-      if (popup.isOpen && popup.type !== "toast" && popup.closable !== false) {
-        e.preventDefault();
-        e.stopPropagation();
-        popup.hide();
-        break;
-      }
+      if (!popup.isOpen) continue;
+      if (popup.type === "toast") continue;     // toasts handle their own Esc
+      if (popup.escClosable === false) continue;
+      e.preventDefault();
+      e.stopPropagation();
+      popup.hide();
+      break;
     }
+  }
+
+  _scheduleReposition() {
+    if (this._scrollRaf) return;
+    this._scrollRaf = requestAnimationFrame(() => {
+      this._scrollRaf = null;
+      this.repositionPopups();
+    });
   }
 
   repositionPopups() {
     this.active.forEach((popup) => {
-      if (popup.isOpen && typeof popup.reposition === "function") popup.reposition();
+      if (popup.isOpen && typeof popup.reposition === "function") {
+        try { popup.reposition(); } catch (e) { console.error(e); }
+      }
     });
   }
 
+  // ----------------------------------------------
+  // Toast container
+  // ----------------------------------------------
   updateToastStack() {
     if (!this.toastContainer) return;
     const toasts = this.toastContainer.querySelectorAll(".popups-toast");
@@ -203,7 +243,6 @@ class PopupsManager {
 
   ensureToastContainer() {
     if (this.toastContainer) return this.toastContainer;
-
     let el = document.getElementById("popups-toast-container");
     if (!el) {
       el = document.createElement("div");
@@ -211,10 +250,11 @@ class PopupsManager {
       el.className = "popups-toast-container";
       document.body.appendChild(el);
     }
-
     this.toastContainer = el;
-    el.addEventListener("mouseenter", () => el.classList.add("popups-stack-expanded"));
-    el.addEventListener("mouseleave", () => el.classList.remove("popups-stack-expanded"));
+    this._onToastEnter = () => el.classList.add("popups-stack-expanded");
+    this._onToastLeave = () => el.classList.remove("popups-stack-expanded");
+    el.addEventListener("mouseenter", this._onToastEnter);
+    el.addEventListener("mouseleave", this._onToastLeave);
     return el;
   }
 
@@ -239,21 +279,29 @@ class PopupsManager {
       size = "sm",
     } = options;
 
+    let resolved = false;
+
     const popup = new PopupsModal(this, {
       title,
       size,
-      closable: false,
+      closable: false,       // no × button — dialogs are explicit
+      escClosable: true,     // Esc = cancel
       content: `<p class="popups-dialog-message">${PopupsManager.escapeText(message)}</p>`,
       actions: [
         { label: cancelLabel, action: "cancel", type: "secondary" },
         { label: confirmLabel, action: "confirm", type: dangerous ? "danger" : "primary" },
       ],
       onAction: (action) => {
-        if (action === "confirm") onConfirm && onConfirm();
-        else onCancel && onCancel();
+        if (action === "confirm") {
+          resolved = true;
+          if (typeof onConfirm === "function") onConfirm();
+        } else if (action === "cancel") {
+          resolved = true;
+          if (typeof onCancel === "function") onCancel();
+        }
       },
       onClose: () => {
-        onCancel && onCancel();
+        if (!resolved && typeof onCancel === "function") onCancel();
       },
     });
 
@@ -281,8 +329,10 @@ class PopupsManager {
   }
 
   enableTooltips(selector = "[data-tooltip]") {
+    if (this.tooltipsEnabled) return;
     this.tooltipSelector = selector;
     document.addEventListener("mouseenter", this.tooltipEnterHandler, true);
+    this.tooltipsEnabled = true;
   }
 
   onTooltipEnter(e) {
@@ -300,19 +350,19 @@ class PopupsManager {
       tip.show();
     }, 250);
 
-    const removeListeners = () => {
+    const onLeave = () => {
       clearTimeout(tip.enterTimer);
       tip.enterTimer = null;
       tip.hide();
       target.removeEventListener("mouseleave", onLeave);
       target.removeEventListener("mousedown", onLeave);
+      target.removeEventListener("blur", onLeave);
       target.popupsTooltip = null;
     };
 
-    const onLeave = () => removeListeners();
-
     target.addEventListener("mouseleave", onLeave, { once: true });
     target.addEventListener("mousedown", onLeave, { once: true });
+    target.addEventListener("blur", onLeave, { once: true });
   }
 
   // ----------------------------------------------
@@ -326,7 +376,6 @@ class PopupsManager {
       message: options.message || "",
       timestamp: new Date().toISOString(),
     });
-
     if (this.notificationHistory.length > 50) this.notificationHistory.length = 50;
 
     const popup = new PopupsToast(this, options);
@@ -342,24 +391,28 @@ class PopupsManager {
 
     const pageSize = 8;
     let currentOffset = 0;
+    let loadMoreTimer = null;
 
     const buildList = (notifications) => {
       if (!notifications.length) {
         return `<div class="notifications-empty">No notifications yet</div>`;
       }
       return notifications
-        .map(
-          (n) => `
-        <div class="notification-item notification-${n.type}">
-          <span class="notification-icon">${PopupsManager.icons[n.type] ? PopupsManager.icons[n.type](16) : PopupsManager.icons.info(16)}</span>
-          <div class="notification-content">
-            ${n.title ? `<div class="notification-title">${PopupsManager.escapeText(n.title)}</div>` : ""}
-            <div class="notification-message">${PopupsManager.escapeText(n.message)}</div>
-          </div>
-          <div class="notification-time">${new Date(n.timestamp).toLocaleTimeString()}</div>
-        </div>
-      `
-        )
+        .map((n) => {
+          const safeType = ["info", "success", "warning", "error"].includes(n.type)
+            ? n.type
+            : "info";
+          return `
+            <div class="notification-item notification-${safeType}">
+              <span class="notification-icon">${PopupsManager.icons[safeType](16)}</span>
+              <div class="notification-content">
+                ${n.title ? `<div class="notification-title">${PopupsManager.escapeText(n.title)}</div>` : ""}
+                <div class="notification-message">${PopupsManager.escapeText(n.message)}</div>
+              </div>
+              <div class="notification-time">${new Date(n.timestamp).toLocaleTimeString()}</div>
+            </div>
+          `;
+        })
         .join("");
     };
 
@@ -370,7 +423,22 @@ class PopupsManager {
       <div class="notifications-popover-wrapper">
         <div class="notifications-header"><h3>Notifications</h3></div>
         <div class="notifications-list">${buildList(notifications)}</div>
-        ${showMore ? `<div class="notifications-load-more"><button class="load-more-btn" data-action="load-more">Load earlier</button><div class="load-more-spinner" style="display:none;"><span class="spinner"></span>Loading…</div></div>` : ""}
+        ${
+          showMore
+            ? `
+            <div class="notifications-load-more">
+              <button class="load-more-btn" data-action="load-more">
+              Load earlier
+              </button>
+              
+            <div class="load-more-spinner" style="display:none;">
+              <span class="spinner"></span>
+              Loading…
+            </div>              
+           </div>
+`
+            : ""
+        }
       </div>
     `;
 
@@ -379,37 +447,50 @@ class PopupsManager {
       persistentActions: ["load-more"],
       onAction: (action) => {
         if (action !== "load-more") return;
+        if (!popover.el) return;
 
         const loadMoreBtn = popover.el.querySelector(".load-more-btn");
         const spinner = popover.el.querySelector(".load-more-spinner");
+        if (!loadMoreBtn || !spinner) return;
 
-        if (loadMoreBtn && spinner) {
-          loadMoreBtn.style.display = "none";
-          spinner.style.display = "flex";
+        loadMoreBtn.style.display = "none";
+        spinner.style.display = "flex";
 
-          setTimeout(() => {
-            currentOffset += pageSize;
-            const allCurrent = this.notificationHistory.slice(0, currentOffset + pageSize);
-            const stillHasMore = this.notificationHistory.length > currentOffset + pageSize;
+        loadMoreTimer = setTimeout(() => {
+          loadMoreTimer = null;
+          if (!popover.el) return; // Guard against close during spinner
 
-            const listEl = popover.el.querySelector(".notifications-list");
-            if (listEl) listEl.innerHTML = buildList(allCurrent);
+          currentOffset += pageSize;
+          const allCurrent = this.notificationHistory.slice(0, currentOffset + pageSize);
+          const stillHasMore = this.notificationHistory.length > currentOffset + pageSize;
 
-            const loadMoreSection = popover.el.querySelector(".notifications-load-more");
-            if (loadMoreSection) {
-              if (stillHasMore) {
-                loadMoreSection.innerHTML = `<button class="load-more-btn" data-action="load-more">Load earlier</button><div class="load-more-spinner" style="display:none;"><span class="spinner"></span>Loading…</div>`;
-              } else {
-                loadMoreSection.remove();
-              }
+          const listEl = popover.el.querySelector(".notifications-list");
+          if (listEl) listEl.innerHTML = buildList(allCurrent);
+
+          const loadMoreSection = popover.el.querySelector(".notifications-load-more");
+          if (loadMoreSection) {
+            if (stillHasMore) {
+              loadMoreSection.innerHTML = `<button class="load-more-btn" data-action="load-more">Load earlier</button><div class="load-more-spinner" style="display:none;"><span class="spinner"></span>Loading…</div>`;
+            } else {
+              loadMoreSection.remove();
             }
-          }, 1500);
-        }
+          }
+        }, 1500);
       },
     });
 
+    const originalBeforeDestroy = popover.beforeDestroy;
+    popover.beforeDestroy = () => {
+      if (loadMoreTimer) {
+        clearTimeout(loadMoreTimer);
+        loadMoreTimer = null;
+      }
+      if (typeof originalBeforeDestroy === "function") originalBeforeDestroy();
+    };
+
     const rect = anchorEl.getBoundingClientRect();
-    const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const rootFontSize =
+      parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
     const offsetLeft = 7 * rootFontSize;
     let left = rect.left + rect.width / 2 - offsetLeft;
 
@@ -424,11 +505,34 @@ class PopupsManager {
   }
 
   // ----------------------------------------------
+  // Fallback clipboard
+  // ----------------------------------------------
+  _fallbackCopy(text) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      if (ok) this.toast({ message: "Link copied to clipboard" });
+      else this.toast({ type: "error", message: "Could not copy link" });
+    } catch (e) {
+      this.toast({ type: "error", message: "Could not copy link" });
+    }
+  }
+
+  // ----------------------------------------------
   // Song menu
   // ----------------------------------------------
   showSongMenu(songId, event) {
     const state = this.ui && this.ui.state;
-    const song = state && typeof state.getSongById === "function" && state.getSongById(songId);
+    const song =
+      state && typeof state.getSongById === "function" && state.getSongById(songId);
     if (!song) return null;
 
     const getIsFav = () =>
@@ -455,13 +559,8 @@ class PopupsManager {
 
     const dropdown = this.dropdown({
       triggerEvent: event,
-      header: {
-        title: song.title,
-        subtitle: song.artist || "",
-      },
-
-      persistentActions: ["add-fav"],
-
+      header: { title: song.title, subtitle: song.artist || "" },
+      persistentActions: ["add-fav"], // ← keeps menu open on favorite toggle
       groups: [
         [
           {
@@ -499,34 +598,44 @@ class PopupsManager {
             action: "view-album",
             label: "View Album",
             iconHTML: PopupsManager.icons.album(16),
-            data: {
-              artistId: song.artistId,
-              albumId: song.albumId,
-            },
+            data: { artistId: song.artistId, albumId: song.albumId },
           },
         ],
       ],
-
       itemExtraData: dataAttr,
-      onAction: (action) => {
+      onAction: async (action, item) => {
         if (action === "add-fav" && this.ui && this.ui.favorites) {
           this.ui.favorites.toggleSong(song);
         } else if (action === "add-playlist") {
-          if (window.favoritesPlaylists && typeof window.favoritesPlaylists.addToPlaylistModal === "function") {
+          if (
+            window.favoritesPlaylists &&
+            typeof window.favoritesPlaylists.addToPlaylistModal === "function"
+          ) {
             window.favoritesPlaylists.addToPlaylistModal(song);
           }
         } else if (action === "view-artist") {
-          if (this.ui && typeof this.ui.navigate === "function") this.ui.navigate("artist", song.artistId);
+          if (this.ui && typeof this.ui.navigate === "function") {
+            this.ui.navigate("artist", item?.data?.artistId || song.artistId);
+          }
         } else if (action === "view-album") {
           if (this.ui && typeof this.ui.navigate === "function") {
-            this.ui.navigate("artist", song.artistId, song.albumId);
+            this.ui.navigate(
+              "artist",
+              item?.data?.artistId || song.artistId,
+              item?.data?.albumId || song.albumId
+            );
           }
         } else if (action === "copy-link") {
           const url = `${window.location.origin}/artist/${song.artistId}/album/${song.albumId}?song=${song.id}`;
           if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard
-              .writeText(url)
-              .then(() => this.toast({ message: "Link copied to clipboard" }));
+            try {
+              await navigator.clipboard.writeText(url);
+              this.toast({ message: "Link copied to clipboard" });
+            } catch {
+              this._fallbackCopy(url);
+            }
+          } else {
+            this._fallbackCopy(url);
           }
         } else if (action === "offline-toggle") {
           if (!window.offlineCache) return;
@@ -541,7 +650,6 @@ class PopupsManager {
 
     const updateFavoriteOption = () => {
       if (!dropdown.el || !dropdown.isOpen) return;
-
       const favoriteButton = dropdown.el.querySelector('[data-action="add-fav"]');
       if (!favoriteButton) return;
 
@@ -550,31 +658,29 @@ class PopupsManager {
       const icon = favoriteButton.querySelector(".icon");
 
       if (label) {
-        label.textContent = isFavorite ? "Remove from Favorites" : "Add to Favorites";
+        label.textContent = isFavorite
+          ? "Remove from Favorites"
+          : "Add to Favorites";
       }
-
-      if (icon) {
-        icon.innerHTML = PopupsManager.icons.heart(16, isFavorite);
-      }
-
+      if (icon) icon.innerHTML = PopupsManager.icons.heart(16, isFavorite);
       favoriteButton.style.color = isFavorite ? "rgb(var(--colorPink))" : "";
       favoriteButton.setAttribute("aria-pressed", String(isFavorite));
     };
 
-    const onFavoritesChanged = (event) => {
-      const detail = event.detail || {};
-      if (String(detail.type) === "song" && String(detail.id) === String(songId)) {
+    const onFavoritesChanged = (ev) => {
+      const detail = ev.detail || {};
+      if (
+        String(detail.type) === "song" &&
+        String(detail.id) === String(songId)
+      ) {
         updateFavoriteOption();
       }
     };
 
     window.addEventListener("mybeats:favorites-changed", onFavoritesChanged);
-
     dropdown.beforeDestroy = () => {
       window.removeEventListener("mybeats:favorites-changed", onFavoritesChanged);
     };
-
-    updateFavoriteOption();
 
     return dropdown;
   }
@@ -585,6 +691,9 @@ class PopupsManager {
   async showArtistPopover(artistId, event) {
     const state = this.ui && this.ui.state;
     if (!state) return null;
+    if (!window.MusicStore || typeof window.MusicStore.loadArtist !== "function") {
+      return null;
+    }
 
     const artist = await window.MusicStore.loadArtist(artistId).catch(() => null);
     if (!artist) return null;
@@ -599,20 +708,20 @@ class PopupsManager {
       <div class="popover-content">
         <div class="popover-header">
           <div class="popover-avatar-wrapper">
-            <img src="${PopupsManager.escapeAttr(artist.imageUrl || "")}" class="popover-avatar" alt="${PopupsManager.escapeAttr(artist.artist)}">
+            <img src="${PopupsManager.escapeAttr(artist.imageUrl || "")}" class="popover-avatar" alt="${PopupsManager.escapeAttr(artist.artist || "")}">
             <div class="popover-avatar-glow"></div>
           </div>
           <div class="popover-title-section">
-            <h3 class="popover-artist-name">${PopupsManager.escapeText(artist.artist)}</h3>
+            <h3 class="popover-artist-name">${PopupsManager.escapeText(artist.artist || "")}</h3>
             <span class="popover-genre-badge">${PopupsManager.escapeText(artist.genre || "Artist")}</span>
           </div>
         </div>
         <div class="popover-stats">
-          <div class="popover-stat"><span class="popover-stat-value">${albumCount}</span><span class="popover-stat-label">Albums</span></div>
+          <div class="popover-stat"><span class="popover-stat-value">${PopupsManager.escapeText(String(albumCount))}</span><span class="popover-stat-label">Albums</span></div>
           <div class="popover-stat-divider"></div>
-          <div class="popover-stat"><span class="popover-stat-value">${listeners}</span><span class="popover-stat-label">Listeners</span></div>
+          <div class="popover-stat"><span class="popover-stat-value">${PopupsManager.escapeText(String(listeners))}</span><span class="popover-stat-label">Listeners</span></div>
           <div class="popover-stat-divider"></div>
-          <div class="popover-stat"><span class="popover-stat-value">${topPlays}</span><span class="popover-stat-label">Plays</span></div>
+          <div class="popover-stat"><span class="popover-stat-value">${PopupsManager.escapeText(String(topPlays))}</span><span class="popover-stat-label">Plays</span></div>
         </div>
         <div class="popups-popover-actions">
           <button class="popups-action-btn popups-action-primary" data-action="go-artist">${PopupsManager.icons.eye(18)}<span>View Profile</span></button>
@@ -631,10 +740,14 @@ class PopupsManager {
       size: "artist",
       content,
       onAction: async (action) => {
-        if (navigator.vibrate && typeof navigator.vibrate === "function") navigator.vibrate(20);
+        if (navigator.vibrate && typeof navigator.vibrate === "function") {
+          navigator.vibrate(20);
+        }
 
         if (action === "go-artist") {
-          if (this.ui && typeof this.ui.navigate === "function") this.ui.navigate("artist", artistId);
+          if (this.ui && typeof this.ui.navigate === "function") {
+            this.ui.navigate("artist", artistId);
+          }
         } else if (action === "play-top") {
           const firstAlbum = (artist.albums || [])[0];
           if (!firstAlbum) return;
@@ -647,13 +760,13 @@ class PopupsManager {
     });
   }
 }
-
 class PopupsBase {
   constructor(manager, options = {}) {
     this.manager = manager;
     this.options = options;
     this.type = "base";
-    this.closable = true;
+    this.closable = options.closable !== false;
+    this.escClosable = options.escClosable !== false;
     this.el = null;
     this.isOpen = false;
     this.destroyed = false;
@@ -665,7 +778,6 @@ class PopupsBase {
 
   show() {
     if (this.destroyed) return;
-
     this.el = this.render();
     if (!this.el) return;
 
@@ -675,19 +787,17 @@ class PopupsBase {
     this.isOpen = true;
     this.manager.register(this);
 
-    requestAnimationFrame(() => this.el.classList.add("popups-open"));
+    requestAnimationFrame(() => {
+      if (this.el) this.el.classList.add("popups-open");
+    });
   }
 
   hide() {
     if (!this.isOpen || this.destroyed) return;
     this.isOpen = false;
 
-    if (this.options.onClose && typeof this.options.onClose === "function") {
-      try {
-        this.options.onClose(this);
-      } catch (e) {
-        console.error(e);
-      }
+    if (typeof this.options.onClose === "function") {
+      try { this.options.onClose(this); } catch (e) { console.error(e); }
     }
 
     if (this.el) this.el.classList.remove("popups-open");
@@ -697,8 +807,8 @@ class PopupsBase {
   destroy() {
     if (this.destroyed) return;
 
-    this.beforeDestroy && this.beforeDestroy();
-    this.detachEvents && this.detachEvents();
+    this.beforeDestroy();
+    this.detachEvents();
 
     if (this.el && this.el.parentNode) this.el.parentNode.removeChild(this.el);
 
@@ -707,15 +817,27 @@ class PopupsBase {
     this.el = null;
   }
 
+  /* hooks subclasses override */
   attachEvents() {}
   detachEvents() {}
+  beforeDestroy() {}
+  reposition() {}
 }
+//---------------------------------------------------------------------
 
+
+
+
+
+// ───────────  Modal  ────────── • • •
 class PopupsModal extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
     this.type = "modal";
     this.closable = options.closable !== false;
+    this.escClosable = options.escClosable !== false;
+    this._previousFocus = null;
+    this._bounceTimer = null;
   }
 
   render() {
@@ -726,6 +848,7 @@ class PopupsModal extends PopupsBase {
     const size = this.options.size || "md";
     const closable = this.closable;
     const actions = Array.isArray(this.options.actions) ? this.options.actions : [];
+    const titleId = `popups-modal-title-${Math.random().toString(36).slice(2, 9)}`;
 
     const actionButtons = actions
       .map((action, idx) => {
@@ -735,12 +858,12 @@ class PopupsModal extends PopupsBase {
       .join("");
 
     overlay.innerHTML = `
-      <div class="popups-modal popups-size-${size} popups-surface" role="dialog" aria-modal="true">
+      <div class="popups-modal popups-size-${size} popups-surface" role="dialog" aria-modal="true" ${this.options.title ? `aria-labelledby="${titleId}"` : ""} tabindex="-1">
         ${
           this.options.title
-            ? `<div class="popups-modal-header"><h3 class="popups-modal-title">${PopupsManager.escapeText(this.options.title)}</h3>${closable ? `<button class="popups-close-btn" data-action="close" aria-label="Close">${PopupsManager.icons.close(18)}</button>` : ""}</div>`
+            ? `<div class="popups-modal-header"><h3 class="popups-modal-title" id="${titleId}">${PopupsManager.escapeText(this.options.title)}</h3>${closable ? `<button class="popups-close-btn" data-action="__close" aria-label="Close">${PopupsManager.icons.close(18)}</button>` : ""}</div>`
             : closable
-              ? `<button class="popups-close-btn popups-close-float" data-action="close" aria-label="Close">${PopupsManager.icons.close(18)}</button>`
+              ? `<button class="popups-close-btn popups-close-float" data-action="__close" aria-label="Close">${PopupsManager.icons.close(18)}</button>`
               : ""
         }
         <div class="popups-modal-body"></div>
@@ -750,7 +873,6 @@ class PopupsModal extends PopupsBase {
 
     const body = overlay.querySelector(".popups-modal-body");
     const content = this.options.content;
-
     if (content instanceof HTMLElement) body.appendChild(content);
     else if (content != null) body.innerHTML = String(content);
 
@@ -758,54 +880,103 @@ class PopupsModal extends PopupsBase {
   }
 
   attachEvents() {
-    this.onItemClick = (e) => {
+    this.onClick = (e) => {
+      // Backdrop click → bounce, never close
+      if (e.target === this.el) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.bounce();
+        return;
+      }
+
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
-
       e.stopPropagation();
 
       const action = btn.dataset.action;
-      const item = this.findItem(action);
 
-      if (this.options.onAction && typeof this.options.onAction === "function") {
-        this.options.onAction(action, item);
-      } else if (item && typeof item.onClick === "function") {
-        item.onClick(action, item);
+      // Internal close action (× button). Never forwarded to user's onAction.
+      if (action === "__close" || action === "close") {
+        this.hide();
+        return;
       }
 
+      const item = this.findItem(action);
       const persistentActions = Array.isArray(this.options.persistentActions)
         ? this.options.persistentActions
         : [];
 
-      if (!persistentActions.includes(action)) {
-        this.hide();
+      if (typeof this.options.onAction === "function") {
+        this.options.onAction(action, item, this);
+      } else if (item && typeof item.onClick === "function") {
+        item.onClick(action, item);
       }
+
+      if (!persistentActions.includes(action)) this.hide();
     };
 
-    this.backdropMouseDown = (e) => {
-      if (e.target === this.el) {
+    this.el.addEventListener("click", this.onClick);
+    this.attachFocusTrap();
+    // NOTE: deliberately NO document-level outside-click listener.
+    // Modals close only via ×, Esc, or an action button.
+  }
+
+  attachFocusTrap() {
+    this._previousFocus = document.activeElement;
+
+    const focusFirst = () => {
+      if (!this.el) return;
+      const focusable = this.el.querySelector(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const modal = this.el.querySelector(".popups-modal");
+      (focusable || modal)?.focus?.();
+    };
+    requestAnimationFrame(focusFirst);
+
+    this._trapFocus = (e) => {
+      if (e.key !== "Tab" || !this.el) return;
+      const focusables = Array.from(
+        this.el.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => el.offsetParent !== null || el === document.activeElement);
+
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
-        this.bounce();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
+    document.addEventListener("keydown", this._trapFocus);
+  }
 
-    this.el.addEventListener("mousedown", this.backdropMouseDown);
-    this.el.addEventListener("click", this.onItemClick);
-
-    setTimeout(() => {
-      this.outsideClick = (e) => {
-        if (!this.el.contains(e.target)) this.hide();
-      };
-
-      document.addEventListener("click", this.outsideClick, { once: true });
-    }, 0);
+  detachFocusTrap() {
+    if (this._trapFocus) {
+      document.removeEventListener("keydown", this._trapFocus);
+      this._trapFocus = null;
+    }
+    if (
+      this._previousFocus &&
+      this._previousFocus.isConnected &&
+      typeof this._previousFocus.focus === "function"
+    ) {
+      try { this._previousFocus.focus(); } catch { /* noop */ }
+    }
+    this._previousFocus = null;
   }
 
   detachEvents() {
-    if (this.el) {
-      this.el.removeEventListener("mousedown", this.backdropMouseDown);
+    if (this.el && this.onClick) {
       this.el.removeEventListener("click", this.onClick);
     }
+    this.detachFocusTrap();
   }
 
   bounce() {
@@ -815,10 +986,23 @@ class PopupsModal extends PopupsBase {
     inner.classList.remove("popups-bounce");
     void inner.offsetWidth;
     inner.classList.add("popups-bounce");
-    setTimeout(() => inner.classList.remove("popups-bounce"), 300);
+
+    clearTimeout(this._bounceTimer);
+    this._bounceTimer = setTimeout(
+      () => inner.classList.remove("popups-bounce"),
+      300
+    );
   }
 
   findItem(action) {
+    // Look in actions first (so action buttons get their definition object)
+    const actions = Array.isArray(this.options.actions) ? this.options.actions : [];
+    for (let i = 0; i < actions.length; i++) {
+      const a = actions[i];
+      const name = a.action !== undefined ? a.action : String(i);
+      if (String(name) === String(action)) return a;
+    }
+    // Then search groups (for reuse)
     const groups = Array.isArray(this.options.groups) ? this.options.groups : [];
     for (const group of groups) {
       if (!Array.isArray(group)) continue;
@@ -828,12 +1012,23 @@ class PopupsModal extends PopupsBase {
     }
     return null;
   }
+
+  destroy() {
+    clearTimeout(this._bounceTimer);
+    this._bounceTimer = null;
+    super.destroy();
+  }
 }
 
+
+
+// ───────────  DropDown  ────────── • • •
 class PopupsDropdown extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
     this.type = "dropdown";
+    this._outsideHandler = null;
+    this._outsideTimer = null;
   }
 
   render() {
@@ -849,9 +1044,13 @@ class PopupsDropdown extends PopupsBase {
     const html = [];
 
     if (header) {
-      html.push(
-        `<div class="header"><span class="title">${PopupsManager.escapeText(header.title || "")}</span><span class="subtitle">${PopupsManager.escapeText(header.subtitle || "")}</span></div><div class="divider"></div>`
-      );
+      html.push(`
+        <div class="header">
+          <span class="title">${PopupsManager.escapeText(header.title || "")}</span>
+          <span class="subtitle">${PopupsManager.escapeText(header.subtitle || "")}</span>
+        </div>
+        <div class="divider"></div>
+      `);
     }
 
     let groupIndex = 0;
@@ -860,11 +1059,16 @@ class PopupsDropdown extends PopupsBase {
       if (groupIndex > 0) html.push('<div class="divider"></div>');
       groupIndex += 1;
 
-      html.push('<div class="group">');
+      html.push('<div class="group" role="group">');
       group.forEach((item) => {
         const extra = typeof extras === "function" ? extras(item.data) : extras;
+        const styleAttr = item.style
+          ? ` style="${PopupsManager.escapeAttr(item.style)}"`
+          : "";
         html.push(`
-          <button class="option" data-action="${PopupsManager.escapeAttr(item.action)}" ${item.style ? `style="${PopupsManager.escapeAttr(item.style)}"` : ""} ${extra} type="button">
+          <button class="option"
+                  role="menuitem"
+                  data-action="${PopupsManager.escapeAttr(item.action)}"${styleAttr} ${extra} type="button">
             ${item.iconHTML ? `<span class="icon">${item.iconHTML}</span>` : ""}
             <span class="label">${PopupsManager.escapeText(item.label || item.action)}</span>
           </button>
@@ -882,28 +1086,38 @@ class PopupsDropdown extends PopupsBase {
     const e = this.options.triggerEvent;
     if (e && typeof e.clientX === "number") this.positionAt(e.clientX, e.clientY);
     else if (this.options.rect) this.positionAtRect(this.options.rect);
+
+    // Focus first item once the element is positioned
+    requestAnimationFrame(() => {
+      if (!this.el) return;
+      const first = this.el.querySelector(".option");
+      first?.focus?.();
+    });
   }
 
   positionAt(x, y) {
+    if (!this.el) return;
     const pad = 12;
+
     this.el.style.setProperty("--popups-x", `${x}px`);
     this.el.style.setProperty("--popups-y", `${y}px`);
     this.el.style.left = `${x}px`;
     this.el.style.top = `${y}px`;
 
-    requestAnimationFrame(() => {
-      const rect = this.el.getBoundingClientRect();
-      let left = x;
-      let top = y;
+    // Synchronous measure — offsetWidth/Height are layout values,
+    // unaffected by transforms (no jump).
+    const width = this.el.offsetWidth;
+    const height = this.el.offsetHeight;
 
-      if (rect.right > window.innerWidth - pad) left = window.innerWidth - rect.width - pad;
-      if (left < pad) left = pad;
-      if (rect.bottom > window.innerHeight - pad) top = window.innerHeight - rect.height - pad;
-      if (top < pad) top = pad;
+    let left = x;
+    let top = y;
+    if (left + width > window.innerWidth - pad) left = window.innerWidth - width - pad;
+    if (left < pad) left = pad;
+    if (top + height > window.innerHeight - pad) top = window.innerHeight - height - pad;
+    if (top < pad) top = pad;
 
-      this.el.style.left = `${left}px`;
-      this.el.style.top = `${top}px`;
-    });
+    this.el.style.left = `${left}px`;
+    this.el.style.top = `${top}px`;
   }
 
   positionAtRect(rect) {
@@ -914,36 +1128,82 @@ class PopupsDropdown extends PopupsBase {
     this.onItemClick = (e) => {
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
-
       e.stopPropagation();
 
       const action = btn.dataset.action;
       const item = this.findItem(action);
+      const persistentActions = Array.isArray(this.options.persistentActions)
+        ? this.options.persistentActions
+        : [];
 
-      if (this.options.onAction && typeof this.options.onAction === "function") {
-        this.options.onAction(action, item);
+      if (typeof this.options.onAction === "function") {
+        this.options.onAction(action, item, this);
       } else if (item && typeof item.onClick === "function") {
         item.onClick(action, item);
       }
 
-      this.hide();
+      if (!persistentActions.includes(action)) this.hide();
+    };
+
+    this.onKeyDown = (e) => {
+      if (e.key === "Tab") {
+        // Tab closes the menu (standard behaviour)
+        this.hide();
+        return;
+      }
+      if (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Home" || e.key === "End") {
+        e.preventDefault();
+        this._navigateMenu(e.key);
+      } else if (e.key === "Enter" || e.key === " ") {
+        const current = document.activeElement;
+        if (current && this.el && this.el.contains(current) && current.matches(".option")) {
+          e.preventDefault();
+          current.click();
+        }
+      }
     };
 
     this.el.addEventListener("click", this.onItemClick);
+    this.el.addEventListener("keydown", this.onKeyDown);
 
-    setTimeout(() => {
-      this.outsideClick = (e) => {
-        if (!this.el.contains(e.target)) this.hide();
-      };
-      document.addEventListener("click", this.outsideClick, { once: true });
+    this._outsideHandler = (e) => {
+      if (!this.el || this.el.contains(e.target)) return;
+      this.hide();
+    };
+    this._outsideTimer = setTimeout(() => {
+      this._outsideTimer = null;
+      if (!this.destroyed) document.addEventListener("click", this._outsideHandler);
     }, 0);
   }
 
+  _navigateMenu(key) {
+    if (!this.el) return;
+    const items = Array.from(this.el.querySelectorAll(".option"));
+    if (!items.length) return;
+    const current = document.activeElement;
+    const idx = items.indexOf(current);
+    let next = 0;
+    if (key === "ArrowDown") next = (idx + 1) % items.length;
+    else if (key === "ArrowUp") next = (idx - 1 + items.length) % items.length;
+    else if (key === "Home") next = 0;
+    else if (key === "End") next = items.length - 1;
+    items[next].focus();
+  }
+
   detachEvents() {
-    if (this.el) this.el.removeEventListener("click", this.onItemClick);
-    if (this.outsideClick) {
-      document.removeEventListener("click", this.outsideClick);
-      this.outsideClick = null;
+    if (this.el && this.onItemClick) {
+      this.el.removeEventListener("click", this.onItemClick);
+    }
+    if (this.el && this.onKeyDown) {
+      this.el.removeEventListener("keydown", this.onKeyDown);
+    }
+    if (this._outsideHandler) {
+      document.removeEventListener("click", this._outsideHandler);
+      this._outsideHandler = null;
+    }
+    if (this._outsideTimer) {
+      clearTimeout(this._outsideTimer);
+      this._outsideTimer = null;
     }
   }
 
@@ -957,12 +1217,23 @@ class PopupsDropdown extends PopupsBase {
     }
     return null;
   }
+
+  reposition() {
+    const e = this.options.triggerEvent;
+    if (e && typeof e.clientX === "number") this.positionAt(e.clientX, e.clientY);
+    else if (this.options.rect) this.positionAtRect(this.options.rect);
+  }
 }
 
+
+
+// ───────────  PopOver  ────────── • • •
 class PopupsPopover extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
     this.type = "popover";
+    this._outsideHandler = null;
+    this._outsideTimer = null;
   }
 
   render() {
@@ -976,30 +1247,33 @@ class PopupsPopover extends PopupsBase {
 
   show() {
     super.show();
-
     const e = this.options.triggerEvent;
     if (e && typeof e.clientX === "number") this.positionAt(e.clientX, e.clientY);
-    else if (this.options.x != null && this.options.y != null) this.positionAt(this.options.x, this.options.y);
+    else if (this.options.x != null && this.options.y != null) {
+      this.positionAt(this.options.x, this.options.y);
+    }
   }
 
   positionAt(x, y) {
+    if (!this.el) return;
     const pad = 20;
+
     this.el.style.left = `${x}px`;
     this.el.style.top = `${y}px`;
 
-    requestAnimationFrame(() => {
-      const rect = this.el.getBoundingClientRect();
-      let left = x;
-      let top = y;
+    // Synchronous layout measure — avoids the 1-frame jump
+    const width = this.el.offsetWidth;
+    const height = this.el.offsetHeight;
 
-      if (rect.right > window.innerWidth - pad) left = window.innerWidth - rect.width - pad;
-      if (left < pad) left = pad;
-      if (rect.bottom > window.innerHeight - pad) top = window.innerHeight - rect.height - pad;
-      if (top < pad) top = pad;
+    let left = x;
+    let top = y;
+    if (left + width > window.innerWidth - pad) left = window.innerWidth - width - pad;
+    if (left < pad) left = pad;
+    if (top + height > window.innerHeight - pad) top = window.innerHeight - height - pad;
+    if (top < pad) top = pad;
 
-      this.el.style.left = `${left}px`;
-      this.el.style.top = `${top}px`;
-    });
+    this.el.style.left = `${left}px`;
+    this.el.style.top = `${top}px`;
   }
 
   attachEvents() {
@@ -1010,30 +1284,40 @@ class PopupsPopover extends PopupsBase {
       if (!btn) return;
 
       const action = btn.dataset.action;
-      if (this.options.onAction && typeof this.options.onAction === "function") {
+      const persistentActions = Array.isArray(this.options.persistentActions)
+        ? this.options.persistentActions
+        : [];
+
+      if (typeof this.options.onAction === "function") {
         this.options.onAction(action, btn.dataset, this);
       }
 
-      if (!this.options.persistentActions || !this.options.persistentActions.includes(action)) {
-        this.hide();
-      }
+      if (!persistentActions.includes(action)) this.hide();
     };
 
     this.el.addEventListener("click", this.onClick);
 
-    setTimeout(() => {
-      this.outsideClick = (e) => {
-        if (!this.el.contains(e.target)) this.hide();
-      };
-      window.addEventListener("click", this.outsideClick, { once: true });
+    this._outsideHandler = (e) => {
+      if (!this.el || this.el.contains(e.target)) return;
+      this.hide();
+    };
+    this._outsideTimer = setTimeout(() => {
+      this._outsideTimer = null;
+      if (!this.destroyed) window.addEventListener("click", this._outsideHandler);
     }, 10);
   }
 
   detachEvents() {
-    if (this.el) this.el.removeEventListener("click", this.onClick);
-    if (this.outsideClick) {
-      window.removeEventListener("click", this.outsideClick);
-      this.outsideClick = null;
+    if (this.el && this.onClick) {
+      this.el.removeEventListener("click", this.onClick);
+    }
+    if (this._outsideHandler) {
+      window.removeEventListener("click", this._outsideHandler);
+      this._outsideHandler = null;
+    }
+    if (this._outsideTimer) {
+      clearTimeout(this._outsideTimer);
+      this._outsideTimer = null;
     }
   }
 
@@ -1041,47 +1325,68 @@ class PopupsPopover extends PopupsBase {
     if (!this.isOpen || this.destroyed) return;
     this.isOpen = false;
 
-    if (this.options.onClose && typeof this.options.onClose === "function") {
-      try {
-        this.options.onClose(this);
-      } catch (e) {
-        console.error(e);
-      }
+    if (typeof this.options.onClose === "function") {
+      try { this.options.onClose(this); } catch (e) { console.error(e); }
     }
 
     if (this.el) this.el.style.animation = "popoverFadeOut 0.2s ease forwards";
     setTimeout(() => this.destroy(), 200);
   }
+
+  reposition() {
+    const e = this.options.triggerEvent;
+    if (e && typeof e.clientX === "number") this.positionAt(e.clientX, e.clientY);
+    else if (this.options.x != null && this.options.y != null) {
+      this.positionAt(this.options.x, this.options.y);
+    }
+  }
 }
 
+
+
+// ───────────  ToolTip  ────────── • • •
 class PopupsTooltip extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
     this.type = "tooltip";
     this.target = options.target;
     this.text = options.text || "";
+    this.closable = false;
+    this.escClosable = false;
   }
 
   render() {
     const el = document.createElement("div");
     el.className = "popups-tooltip";
     el.textContent = this.text;
+    el.setAttribute("role", "tooltip");
+
+    if (this.target) {
+      if (!this.target.id) {
+        this.target.id = `popups-tt-${Math.random().toString(36).slice(2, 9)}`;
+      }
+      el.id = `${this.target.id}-tooltip`;
+      this.target.setAttribute("aria-describedby", el.id);
+    }
     return el;
   }
 
   show() {
     if (this.destroyed || !this.target || !this.target.isConnected) return;
 
-    document.body.appendChild(this.el);
+    this.el = this.render();
+    this.manager.container.appendChild(this.el);
     this.position();
 
     this.isOpen = true;
     this.manager.register(this);
-    requestAnimationFrame(() => this.el.classList.add("popups-open"));
+    requestAnimationFrame(() => {
+      if (this.el) this.el.classList.add("popups-open");
+    });
   }
 
   position() {
-    if (!this.target || !this.el) return;
+    if (!this.target || !this.el || !this.target.isConnected) return;
 
     const rect = this.target.getBoundingClientRect();
     const tipRect = this.el.getBoundingClientRect();
@@ -1100,15 +1405,28 @@ class PopupsTooltip extends PopupsBase {
     this.el.style.left = `${left}px`;
   }
 
+  reposition() {
+    this.position();
+  }
+
   hide() {
     if (!this.isOpen || this.destroyed) return;
     this.isOpen = false;
 
     if (this.el) this.el.classList.remove("popups-open");
+    if (this.target) this.target.removeAttribute("aria-describedby");
     setTimeout(() => this.destroy(), 160);
+  }
+
+  destroy() {
+    if (this.target) this.target.removeAttribute("aria-describedby");
+    super.destroy();
   }
 }
 
+
+
+// ───────────  Toast  ────────── • • •
 class PopupsToast extends PopupsBase {
   constructor(manager, options) {
     super(manager, options);
@@ -1118,6 +1436,8 @@ class PopupsToast extends PopupsBase {
     this.paused = false;
     this.dragStartX = 0;
     this.dragging = false;
+    this.closable = false;
+    this.escClosable = false; // toast manages its own Esc
   }
 
   render() {
@@ -1128,14 +1448,16 @@ class PopupsToast extends PopupsBase {
 
     const el = document.createElement("div");
     el.className = `popups-toast popups-toast-${type}`;
-    el.setAttribute("role", "status");
-    el.setAttribute("aria-live", "polite");
+    el.setAttribute("role", type === "error" ? "alert" : "status");
+    el.setAttribute("aria-live", type === "error" ? "assertive" : "polite");
+    el.setAttribute("aria-atomic", "true");
+    el.tabIndex = 0;
 
     const hasUndo = this.options.onUndo && typeof this.options.onUndo === "function";
 
     el.innerHTML = `
       <div class="popups-toast-progress"><div class="popups-toast-progress-fill"></div></div>
-      <button class="popups-toast-close" aria-label="Close">${PopupsManager.icons.close(14)}</button>
+      <button class="popups-toast-close" aria-label="Close notification">${PopupsManager.icons.close(14)}</button>
       <div class="popups-toast-icon">${PopupsManager.icons[iconMap[type]](18)}</div>
       <div class="popups-toast-body">
         ${this.options.title ? `<div class="popups-toast-title">${PopupsManager.escapeText(this.options.title)}</div>` : ""}
@@ -1160,7 +1482,10 @@ class PopupsToast extends PopupsBase {
 
     this.isOpen = true;
     this.manager.register(this);
-    requestAnimationFrame(() => this.el.classList.add("popups-open"));
+
+    requestAnimationFrame(() => {
+      if (this.el) this.el.classList.add("popups-open");
+    });
 
     this.lastTick = performance.now();
     this.tick();
@@ -1176,13 +1501,10 @@ class PopupsToast extends PopupsBase {
     else if (direction === "right") this.el.classList.add("popups-toast-out-right");
     else this.el.classList.add("popups-toast-fade-out");
 
-    if (this.options.onClose && typeof this.options.onClose === "function") {
+    if (typeof this.options.onClose === "function") {
+      const cb = this.options.onClose;
       setTimeout(() => {
-        try {
-          this.options.onClose(this);
-        } catch (e) {
-          console.error(e);
-        }
+        try { cb(this); } catch (e) { console.error(e); }
       }, 250);
     }
 
@@ -1196,88 +1518,114 @@ class PopupsToast extends PopupsBase {
     const closeBtn = this.el.querySelector(".popups-toast-close");
     const undoBtn = this.el.querySelector(".popups-toast-undo");
 
-    this.onClose = () => this.hide();
-    closeBtn && closeBtn.addEventListener("click", this.onClose);
+    this._onCloseClick = () => this.hide();
+    if (closeBtn) closeBtn.addEventListener("click", this._onCloseClick);
 
     if (undoBtn) {
-      this.onUndo = (e) => {
+      this._onUndoClick = (e) => {
         e.stopPropagation();
         if (this.options.onUndo) this.options.onUndo(this);
         this.hide();
       };
-      undoBtn.addEventListener("click", this.onUndo);
+      undoBtn.addEventListener("click", this._onUndoClick);
     }
 
-    this.onEnter = () => {
-      this.paused = true;
-    };
-
-    this.onLeave = () => {
+    this._onEnter = () => { this.paused = true; };
+    this._onLeave = () => {
+      if (this.dragging) return;
       this.paused = false;
       this.lastTick = performance.now();
     };
+    this._onFocusIn = () => { this.paused = true; };
+    this._onFocusOut = (e) => {
+      if (this.el && this.el.contains(e.relatedTarget)) return;
+      if (this.dragging) return;
+      this.paused = false;
+      this.lastTick = performance.now();
+    };
+    this._onKeyDown = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopPropagation();
+        this.hide();
+      }
+    };
+    this._onVisibility = () => {
+      if (document.hidden) {
+        this._wasPaused = this.paused;
+        this.paused = true;
+      } else {
+        this.paused = this._wasPaused || false;
+        this.lastTick = performance.now();
+      }
+    };
 
-    this.el.addEventListener("mouseenter", this.onEnter);
-    this.el.addEventListener("mouseleave", this.onLeave);
+    this.el.addEventListener("mouseenter", this._onEnter);
+    this.el.addEventListener("mouseleave", this._onLeave);
+    this.el.addEventListener("focusin", this._onFocusIn);
+    this.el.addEventListener("focusout", this._onFocusOut);
+    this.el.addEventListener("keydown", this._onKeyDown);
+    document.addEventListener("visibilitychange", this._onVisibility);
 
-    this.onPointerDown = (e) => {
+    this._onPointerDown = (e) => {
       if (e.target.closest(".popups-toast-close, .popups-toast-undo")) return;
-
       this.dragging = true;
+      this.paused = true;
       this.dragStartX = e.clientX;
       this.el.classList.add("popups-toast-dragging");
       this.el.style.transition = "none";
-
-      if (e.target.setPointerCapture) e.target.setPointerCapture(e.pointerId);
+      if (e.target.setPointerCapture) {
+        try { e.target.setPointerCapture(e.pointerId); } catch { /* noop */ }
+      }
     };
-
-    this.onPointerMove = (e) => {
+    this._onPointerMove = (e) => {
       if (!this.dragging) return;
-
       const dx = e.clientX - this.dragStartX;
       const scale = this.getStackScale();
       this.el.style.transform = `translate3d(${dx}px, 0, 0) scale(${scale})`;
     };
-
-    this.onPointerUp = (e) => {
+    this._onPointerUp = (e) => {
       if (!this.dragging) return;
       this.dragging = false;
-
       const dx = e.clientX - this.dragStartX;
       this.el.classList.remove("popups-toast-dragging");
       this.el.style.transition = "";
       this.el.style.transform = "";
 
       if (dx > 100) {
-        this.el.classList.add("popups-toast-out-right");
-        setTimeout(() => this.destroy(), 350);
+        this.hide("right");
       } else if (dx < -100) {
-        this.el.classList.add("popups-toast-out-left");
-        setTimeout(() => this.destroy(), 350);
+        this.hide("left");
+      } else {
+        this.paused = false;
+        this.lastTick = performance.now();
       }
     };
 
-    this.el.addEventListener("pointerdown", this.onPointerDown);
-    this.el.addEventListener("pointermove", this.onPointerMove);
-    this.el.addEventListener("pointerup", this.onPointerUp);
-    this.el.addEventListener("pointercancel", this.onPointerUp);
+    this.el.addEventListener("pointerdown", this._onPointerDown);
+    this.el.addEventListener("pointermove", this._onPointerMove);
+    this.el.addEventListener("pointerup", this._onPointerUp);
+    this.el.addEventListener("pointercancel", this._onPointerUp);
   }
 
   detachEvents() {
     if (!this.el) return;
-
     const closeBtn = this.el.querySelector(".popups-toast-close");
     const undoBtn = this.el.querySelector(".popups-toast-undo");
 
-    closeBtn && closeBtn.removeEventListener("click", this.onClose);
-    undoBtn && undoBtn.removeEventListener("click", this.onUndo);
+    if (closeBtn && this._onCloseClick) closeBtn.removeEventListener("click", this._onCloseClick);
+    if (undoBtn && this._onUndoClick) undoBtn.removeEventListener("click", this._onUndoClick);
 
-    this.el.removeEventListener("mouseenter", this.onEnter);
-    this.el.removeEventListener("mouseleave", this.onLeave);
-    this.el.removeEventListener("pointerdown", this.onPointerDown);
-    this.el.removeEventListener("pointermove", this.onPointerMove);
-    this.el.removeEventListener("pointerup", this.onPointerUp);
-    this.el.removeEventListener("pointercancel", this.onPointerUp);
+    this.el.removeEventListener("mouseenter", this._onEnter);
+    this.el.removeEventListener("mouseleave", this._onLeave);
+    this.el.removeEventListener("focusin", this._onFocusIn);
+    this.el.removeEventListener("focusout", this._onFocusOut);
+    this.el.removeEventListener("keydown", this._onKeyDown);
+    this.el.removeEventListener("pointerdown", this._onPointerDown);
+    this.el.removeEventListener("pointermove", this._onPointerMove);
+    this.el.removeEventListener("pointerup", this._onPointerUp);
+    this.el.removeEventListener("pointercancel", this._onPointerUp);
+    document.removeEventListener("visibilitychange", this._onVisibility);
   }
 
   getStackScale() {
@@ -1292,7 +1640,6 @@ class PopupsToast extends PopupsBase {
     if (this.destroyed || !this.isOpen) return;
 
     const now = performance.now();
-
     if (!this.paused) {
       const dt = now - this.lastTick;
       this.remaining -= dt;
@@ -1311,6 +1658,12 @@ class PopupsToast extends PopupsBase {
   }
 }
 
+
+
+
+
+
+// ───────────  Favorites  ────────── • • •
 class HeartStore {
   constructor(favoritesPlaylists, state) {
     this.fav = favoritesPlaylists;
@@ -1367,7 +1720,6 @@ class HeartStore {
     }
   }
 }
-
 class HeartButton {
   constructor(el, type, id, manager) {
     this.el = el;
@@ -1378,16 +1730,8 @@ class HeartButton {
     this.phase = null;
     this.timer = null;
 
-    this.onEnter = () => {
-      this.isHovering = true;
-      this.render();
-    };
-
-    this.onLeave = () => {
-      this.isHovering = false;
-      this.render();
-    };
-
+    this.onEnter = () => { this.isHovering = true; this.render(); };
+    this.onLeave = () => { this.isHovering = false; this.render(); };
     this.onClick = (e) => this.handleClick(e);
 
     el.addEventListener("mouseenter", this.onEnter);
@@ -1403,7 +1747,7 @@ class HeartButton {
   }
 
   getIcon() {
-    if (this.phase === "error") return PopupsManager.icons.heart(20, true);
+    if (this.phase === "error") return PopupsManager.icons.heart(18, this.liked);
     if (this.phase === "confirm") return PopupsManager.icons.heart(20, true);
     if (this.liked) {
       return this.isHovering ? PopupsManager.icons.heart(20, true) : PopupsManager.icons.heart(18, true);
@@ -1423,8 +1767,35 @@ class HeartButton {
     this.el.classList.toggle("favorited", liked);
     this.el.classList.toggle("is-favorite", liked);
     this.el.classList.toggle("heart-busy", this.phase !== null);
+    this.el.classList.toggle("heart-confirm", this.phase === "confirm");
+    this.el.classList.toggle("heart-error", this.phase === "error");
     this.el.setAttribute("aria-pressed", String(liked));
+    this.el.setAttribute("aria-label", liked ? "Remove from favorites" : "Add to favorites");
     this.el.setAttribute("title", liked ? "Remove from favorites" : "Add to favorites");
+
+    // Minimal inline fallback for the confirm/error states so the user
+    // gets visual feedback even without dedicated CSS rules for the classes.
+    if (this.phase === "confirm") {
+      this.el.style.transition = "transform 0.18s ease";
+      this.el.style.transform = "scale(1.18)";
+      setTimeout(() => {
+        if (this.el && this.phase === "confirm") this.el.style.transform = "";
+      }, 200);
+    } else if (this.phase === "error") {
+      this.el.style.transition = "none";
+      let n = 0;
+      const shake = () => {
+        if (!this.el || this.phase !== "error") return;
+        this.el.style.transform =
+          n % 2 === 0 ? "translateX(-2px)" : "translateX(2px)";
+        n += 1;
+        if (n < 6) setTimeout(shake, 40);
+        else this.el.style.transform = "";
+      };
+      shake();
+    } else if (this.el.style.transform) {
+      this.el.style.transform = "";
+    }
   }
 
   async handleClick(e) {
@@ -1481,28 +1852,51 @@ class HeartButton {
     this.manager.instances.delete(this.el);
   }
 }
-
 class HeartButtonManager {
   constructor(favoritesPlaylists, state) {
     this.store = new HeartStore(favoritesPlaylists, state);
     this.instances = new Map();
+    this._pending = new Set();
+    this._rafScheduled = false;
 
-    window.addEventListener("mybeats:favorites-changed", (e) => {
+    this._onFavoritesChanged = (e) => {
       const { type, id } = e.detail || {};
       if (type && id != null) this.syncEntity(type, String(id));
       else this.syncAll();
-    });
+    };
+    window.addEventListener("mybeats:favorites-changed", this._onFavoritesChanged);
 
-    this.observer = new MutationObserver((mutations) => {
+    this._observer = new MutationObserver((mutations) => {
       for (const m of mutations) {
         for (const node of m.addedNodes) {
-          if (node.nodeType === 1) this.bindAll(node);
+          if (node.nodeType !== 1) continue;
+          // Cheap pre-check: does this subtree contain any heart markers?
+          if (
+            node.matches?.(HeartButtonManager.SELECTOR) ||
+            node.querySelector?.(HeartButtonManager.SELECTOR)
+          ) {
+            this._pending.add(node);
+          }
         }
+      }
+      if (this._pending.size && !this._rafScheduled) {
+        this._rafScheduled = true;
+        requestAnimationFrame(() => {
+          this._rafScheduled = false;
+          const nodes = [...this._pending];
+          this._pending.clear();
+          for (const node of nodes) {
+            if (node.isConnected) this.bindAll(node);
+          }
+        });
       }
     });
 
-    const startObserving = () =>
-      this.observer.observe(document.body, { childList: true, subtree: true });
+    const startObserving = () => {
+      this._observer.observe(document.body, { childList: true, subtree: true });
+      // Also bind any heart markers that were present in initial HTML
+      this.bindAll();
+    };
 
     if (document.body) startObserving();
     else document.addEventListener("DOMContentLoaded", startObserving, { once: true });
@@ -1581,9 +1975,11 @@ class HeartButtonManager {
   }
 
   destroy() {
-    this.observer.disconnect();
+    this._observer.disconnect();
+    window.removeEventListener("mybeats:favorites-changed", this._onFavoritesChanged);
     for (const hb of [...this.instances.values()]) hb.destroy();
     this.instances.clear();
+    this._pending.clear();
   }
 
   async set(type, id, value) {
@@ -1591,7 +1987,6 @@ class HeartButtonManager {
     this.notify(type, id);
   }
 }
-
 class FavoritesPlaylistsManager {
   constructor(state) {
     this.state = state;
@@ -1617,6 +2012,61 @@ class FavoritesPlaylistsManager {
   }
 
   // ----------------------------------------------
+  // Change notification + targeted refresh helpers
+  // ----------------------------------------------
+  _notify(type, id) {
+    window.dispatchEvent(
+      new CustomEvent("mybeats:favorites-changed", { detail: { type, id: String(id) } })
+    );
+  }
+
+  /**
+   * Return true when `type` is a favorites-oriented page so we can do
+   * a full-list render. Everywhere else, hearts sync via the
+   * `mybeats:favorites-changed` event and we don't touch the DOM.
+   * Extend these lists if your UI uses different page names.
+   */
+  _pagesShowingFavorites(type) {
+    const map = {
+      song:     ["favorites", "liked", "likedSongs", "favoriteSongs"],
+      artist:   ["favorites", "favoriteArtists"],
+      album:    ["favorites", "favoriteAlbums"],
+      playlist: ["favorites", "favoritePlaylists"],
+    };
+    return map[type] || [];
+  }
+
+  _refreshFavoritesViewIfVisible(type) {
+    const page = this.state && this.state.currentPage;
+    if (!page) return;
+    if (this._pagesShowingFavorites(type).includes(page)) {
+      this.ui?.render?.();
+    }
+  }
+
+  _refreshPlaylistsListIfVisible() {
+    const page = this.state && this.state.currentPage;
+    if (page === "playlists") this.ui?.render?.();
+  }
+
+  _refreshPlaylistIfEditing(playlistId) {
+    const page = this.state && this.state.currentPage;
+    const ui = this.ui;
+    if (!ui) return;
+    if (
+      page === "editPlaylist" &&
+      String(this.state.editingPlaylistId) === String(playlistId)
+    ) {
+      ui.render();
+    } else if (
+      page === "playlist" &&
+      String(this.state.selectedPlaylistId) === String(playlistId)
+    ) {
+      ui.render();
+    }
+  }
+
+  // ----------------------------------------------
   // Songs
   // ----------------------------------------------
   isSong(id) {
@@ -1626,41 +2076,33 @@ class FavoritesPlaylistsManager {
   toggleSong(song) {
     const id = String(song.id);
     const idx = this.state.favoriteSongs.findIndex((sid) => String(sid) === id);
+    const added = idx < 0;
 
-    if (idx >= 0) {
-      this.state.favoriteSongs.splice(idx, 1);
-      this.toast({
-        message: `Removed "${song.title}" from favorites`,
-        onUndo: () => {
-          if (!this.isSong(id)) {
-            this.state.favoriteSongs.push(id);
-            this.state.persist();
-            this.ui?.render();
-            if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-          }
-        },
-      });
-    } else {
-      this.state.favoriteSongs.push(id);
-      this.toast({
-        message: `Added "${song.title}" to favorites`,
-        onUndo: () => {
-          const i = this.state.favoriteSongs.findIndex((sid) => String(sid) === id);
-          if (i >= 0) {
-            this.state.favoriteSongs.splice(i, 1);
-            this.state.persist();
-            this.ui?.render();
-            if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-          }
-        },
-      });
-    }
+    if (added) this.state.favoriteSongs.push(id);
+    else this.state.favoriteSongs.splice(idx, 1);
 
     this.state.persist();
-    if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-    window.dispatchEvent(
-      new CustomEvent("mybeats:favorites-changed", { detail: { type: "song", id } })
-    );
+    if (this.state.isDrawerOpen) this.ui?.updateFullPlayer?.();
+    this._notify("song", id);
+    this._refreshFavoritesViewIfVisible("song");
+
+    this.toast({
+      message: added
+        ? `Added "${song.title}" to favorites`
+        : `Removed "${song.title}" from favorites`,
+      onUndo: () => {
+        if (added) {
+          const i = this.state.favoriteSongs.findIndex((sid) => String(sid) === id);
+          if (i >= 0) this.state.favoriteSongs.splice(i, 1);
+        } else if (!this.isSong(id)) {
+          this.state.favoriteSongs.push(id);
+        }
+        this.state.persist();
+        if (this.state.isDrawerOpen) this.ui?.updateFullPlayer?.();
+        this._notify("song", id);            // ← keeps hearts in sync
+        this._refreshFavoritesViewIfVisible("song");
+      },
+    });
   }
 
   // ----------------------------------------------
@@ -1675,39 +2117,31 @@ class FavoritesPlaylistsManager {
     const idx = this.state.favoriteArtists.findIndex((aid) => String(aid) === sid);
     const artist = this.state.getArtistById(id);
     const name = artist?.artist || "Artist";
+    const added = idx < 0;
 
-    if (idx >= 0) {
-      this.state.favoriteArtists.splice(idx, 1);
-      this.toast({
-        message: `Removed ${name} from favorite artists`,
-        onUndo: () => {
-          if (!this.isArtist(id)) {
-            this.state.favoriteArtists.push(sid);
-            this.state.persist();
-            this.ui?.render();
-          }
-        },
-      });
-    } else {
-      this.state.favoriteArtists.push(sid);
-      this.toast({
-        message: `Added ${name} to favorite artists`,
-        onUndo: () => {
-          const i = this.state.favoriteArtists.findIndex((aid) => String(aid) === sid);
-          if (i >= 0) {
-            this.state.favoriteArtists.splice(i, 1);
-            this.state.persist();
-            this.ui?.render();
-          }
-        },
-      });
-    }
+    if (added) this.state.favoriteArtists.push(sid);
+    else this.state.favoriteArtists.splice(idx, 1);
 
     this.state.persist();
-    window.dispatchEvent(
-      new CustomEvent("mybeats:favorites-changed", { detail: { type: "artist", id: sid } })
-    );
-    this.ui?.render();
+    this._notify("artist", sid);
+    this._refreshFavoritesViewIfVisible("artist");
+
+    this.toast({
+      message: added
+        ? `Added ${name} to favorite artists`
+        : `Removed ${name} from favorite artists`,
+      onUndo: () => {
+        if (added) {
+          const i = this.state.favoriteArtists.findIndex((aid) => String(aid) === sid);
+          if (i >= 0) this.state.favoriteArtists.splice(i, 1);
+        } else if (!this.isArtist(id)) {
+          this.state.favoriteArtists.push(sid);
+        }
+        this.state.persist();
+        this._notify("artist", sid);
+        this._refreshFavoritesViewIfVisible("artist");
+      },
+    });
   }
 
   // ----------------------------------------------
@@ -1722,45 +2156,37 @@ class FavoritesPlaylistsManager {
     const idx = this.state.favoriteAlbums.findIndex((aid) => String(aid) === sid);
     const album = this.state.getAlbumById(id);
     const name = album?.album || "Album";
+    const added = idx < 0;
 
-    if (idx >= 0) {
-      this.state.favoriteAlbums.splice(idx, 1);
-      this.toast({
-        message: `Removed ${name} from favorite albums`,
-        onUndo: () => {
-          if (!this.isAlbum(id)) {
-            this.state.favoriteAlbums.push(sid);
-            this.state.persist();
-            this.ui?.render();
-            if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-          }
-        },
-      });
-    } else {
-      this.state.favoriteAlbums.push(sid);
-      this.toast({
-        message: `Added ${name} to favorite albums`,
-        onUndo: () => {
-          const i = this.state.favoriteAlbums.findIndex((aid) => String(aid) === sid);
-          if (i >= 0) {
-            this.state.favoriteAlbums.splice(i, 1);
-            this.state.persist();
-            this.ui?.render();
-            if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-          }
-        },
-      });
-    }
+    if (added) this.state.favoriteAlbums.push(sid);
+    else this.state.favoriteAlbums.splice(idx, 1);
 
     this.state.persist();
-    if (this.state.isDrawerOpen) this.ui?.updateFullPlayer();
-    window.dispatchEvent(
-      new CustomEvent("mybeats:favorites-changed", { detail: { type: "album", id: sid } })
-    );
+    if (this.state.isDrawerOpen) this.ui?.updateFullPlayer?.();
+    this._notify("album", sid);
+    this._refreshFavoritesViewIfVisible("album");
+
+    this.toast({
+      message: added
+        ? `Added ${name} to favorite albums`
+        : `Removed ${name} from favorite albums`,
+      onUndo: () => {
+        if (added) {
+          const i = this.state.favoriteAlbums.findIndex((aid) => String(aid) === sid);
+          if (i >= 0) this.state.favoriteAlbums.splice(i, 1);
+        } else if (!this.isAlbum(id)) {
+          this.state.favoriteAlbums.push(sid);
+        }
+        this.state.persist();
+        if (this.state.isDrawerOpen) this.ui?.updateFullPlayer?.();
+        this._notify("album", sid);
+        this._refreshFavoritesViewIfVisible("album");
+      },
+    });
   }
 
   // ----------------------------------------------
-  // Playlists - favorites
+  // Playlists — favorites
   // ----------------------------------------------
   isPlaylist(id) {
     return (this.state.favoritePlaylists || []).some((pid) => String(pid) === String(id));
@@ -1772,42 +2198,36 @@ class FavoritesPlaylistsManager {
     const idx = this.state.favoritePlaylists.findIndex((x) => String(x) === pid);
     const playlist = this.getPlaylist(pid);
     const name = playlist?.name || "Playlist";
+    const added = idx < 0;
 
-    if (idx >= 0) {
-      this.state.favoritePlaylists.splice(idx, 1);
-      this.toast({
-        message: `Removed ${name} from favorites`,
-        onUndo: () => {
-          if (!this.isPlaylist(pid)) {
-            this.state.favoritePlaylists.push(pid);
-            this.state.persist();
-            this.ui?.render();
-          }
-        },
-      });
-    } else {
-      this.state.favoritePlaylists.push(pid);
-      this.toast({
-        message: `Added ${name} to favorites`,
-        onUndo: () => {
-          const i = this.state.favoritePlaylists.findIndex((x) => String(x) === pid);
-          if (i >= 0) {
-            this.state.favoritePlaylists.splice(i, 1);
-            this.state.persist();
-            this.ui?.render();
-          }
-        },
-      });
-    }
+    if (added) this.state.favoritePlaylists.push(pid);
+    else this.state.favoritePlaylists.splice(idx, 1);
 
     this.state.persist();
-    window.dispatchEvent(
-      new CustomEvent("mybeats:favorites-changed", { detail: { type: "playlist", id: pid } })
-    );
+    this._notify("playlist", pid);
+    this._refreshFavoritesViewIfVisible("playlist");
+    // NOTE: playlists list page shows heart via sync; no extra render needed
+
+    this.toast({
+      message: added
+        ? `Added ${name} to favorites`
+        : `Removed ${name} from favorites`,
+      onUndo: () => {
+        if (added) {
+          const i = this.state.favoritePlaylists.findIndex((x) => String(x) === pid);
+          if (i >= 0) this.state.favoritePlaylists.splice(i, 1);
+        } else if (!this.isPlaylist(pid)) {
+          this.state.favoritePlaylists.push(pid);
+        }
+        this.state.persist();
+        this._notify("playlist", pid);
+        this._refreshFavoritesViewIfVisible("playlist");
+      },
+    });
   }
 
   // ----------------------------------------------
-  // Playlists - CRUD
+  // Playlists — CRUD
   // ----------------------------------------------
   getPlaylist(id) {
     const sid = String(id);
@@ -1824,6 +2244,7 @@ class FavoritesPlaylistsManager {
     };
     this.state.playlists.push(playlist);
     this.state.persist();
+    this._refreshPlaylistsListIfVisible();
     return playlist;
   }
 
@@ -1832,6 +2253,8 @@ class FavoritesPlaylistsManager {
     if (!playlist || !newName.trim()) return false;
     playlist.name = newName.trim();
     this.state.persist();
+    this._refreshPlaylistIfEditing(id);
+    this._refreshPlaylistsListIfVisible();
     return true;
   }
 
@@ -1840,6 +2263,7 @@ class FavoritesPlaylistsManager {
     if (!playlist) return false;
     playlist.description = description;
     this.state.persist();
+    this._refreshPlaylistIfEditing(id);
     return true;
   }
 
@@ -1848,6 +2272,7 @@ class FavoritesPlaylistsManager {
     if (!playlist) return false;
     playlist.tags = Array.isArray(tags) ? tags : [];
     this.state.persist();
+    this._refreshPlaylistIfEditing(id);
     return true;
   }
 
@@ -1859,7 +2284,10 @@ class FavoritesPlaylistsManager {
     this.state.playlists = this.state.playlists.filter((p) => String(p.id) !== String(id));
     this.state.persist();
 
-    if (this.popups) this.popups.toast({ type: "success", message: `Playlist "${name}" deleted` });
+    if (this.popups) {
+      this.popups.toast({ type: "success", message: `Playlist "${name}" deleted` });
+    }
+    this._refreshPlaylistsListIfVisible();
     return true;
   }
 
@@ -1868,6 +2296,7 @@ class FavoritesPlaylistsManager {
     if (!playlist || !Array.isArray(newOrder)) return false;
     playlist.songs = newOrder.map((sid) => String(sid));
     this.state.persist();
+    this._refreshPlaylistIfEditing(id);
     return true;
   }
 
@@ -1881,6 +2310,7 @@ class FavoritesPlaylistsManager {
 
     playlist.songs = playlist.songs.filter((id) => String(id) !== sid);
     this.state.persist();
+    this._refreshPlaylistIfEditing(playlistId);
 
     if (song) {
       this.toast({
@@ -1888,12 +2318,7 @@ class FavoritesPlaylistsManager {
         onUndo: () => {
           playlist.songs = before;
           this.state.persist();
-          if (
-            this.ui?.state?.currentPage === "editPlaylist" &&
-            this.ui.state.editingPlaylistId === playlistId
-          ) {
-            this.ui.render();
-          }
+          this._refreshPlaylistIfEditing(playlistId);
         },
       });
     }
@@ -1908,6 +2333,7 @@ class FavoritesPlaylistsManager {
     const song = this.state.getSongById(sid);
     playlist.songs.push(sid);
     this.state.persist();
+    this._refreshPlaylistIfEditing(playlistId);
 
     if (song) {
       this.toast({
@@ -1915,7 +2341,7 @@ class FavoritesPlaylistsManager {
         onUndo: () => {
           playlist.songs = playlist.songs.filter((id) => String(id) !== sid);
           this.state.persist();
-          this.ui?.render();
+          this._refreshPlaylistIfEditing(playlistId);
         },
       });
     }
@@ -1977,9 +2403,9 @@ class FavoritesPlaylistsManager {
 
       if (action === "view") {
         modal.hide();
-        this.ui?.navigate("playlists");
+        this.ui?.navigate?.("playlists");
         this.state.selectedPlaylistName = this.getPlaylist(id)?.name || null;
-        this.ui?.render();
+        this.ui?.render?.();
       } else if (action === "edit") {
         modal.hide();
         this.editPlaylist(id);
@@ -2001,7 +2427,7 @@ class FavoritesPlaylistsManager {
       return `<div class="popups-cover-empty" style="width:${size}px;height:${size}px">${this.playlistIcon(Math.round(size * 0.5))}</div>`;
     }
     if (songs.length === 1) {
-      return `<img src="${songs[0].coverUrl}" width="${size}" height="${size}" class="popups-cover-img">`;
+      return `<img src="${PopupsManager.escapeAttr(songs[0].coverUrl || "")}" width="${size}" height="${size}" class="popups-cover-img" alt="">`;
     }
 
     return `
@@ -2009,7 +2435,7 @@ class FavoritesPlaylistsManager {
         ${Array.from({ length: 4 })
           .map((_, i) =>
             songs[i]
-              ? `<img src="${songs[i].coverUrl}" class="popups-cover-quarter">`
+              ? `<img src="${PopupsManager.escapeAttr(songs[i].coverUrl || "")}" class="popups-cover-quarter" alt="">`
               : `<div class="popups-cover-quarter popups-cover-quarter-empty"></div>`
           )
           .join("")}
@@ -2037,7 +2463,6 @@ class FavoritesPlaylistsManager {
           this.state.selectedPlaylistName = null;
           this.state.selectedPlaylistId = null;
         }
-        this.ui?.render();
       },
     });
   }
@@ -2118,7 +2543,7 @@ class FavoritesPlaylistsManager {
         { label: "Cancel", action: "cancel", type: "secondary" },
         { label: "Create", action: "create", type: "primary" },
       ],
-      onAction: (action, popup) => {
+      onAction: (action, _item, popup) => {
         if (action !== "create") return;
 
         const name = nameInput.value.trim();
@@ -2130,7 +2555,6 @@ class FavoritesPlaylistsManager {
         const description = wrap.querySelector("#new-pl-desc").value.trim();
         this.createPlaylist({ name, description, tags: [...tags] });
         popups.toast({ type: "success", message: `Playlist "${name}" created` });
-        this.ui?.render();
         popup.hide();
       },
     });
@@ -2143,7 +2567,7 @@ class FavoritesPlaylistsManager {
     this.state.editingPlaylistId = id;
     this.state.selectedPlaylistName = this.getPlaylist(id)?.name || null;
     this.ui.navigate("editPlaylist");
-    history.pushState(null, "", `/playlist/${id}/edit`);
+    try { history.pushState(null, "", `/playlist/${id}/edit`); } catch { /* noop */ }
   }
 
   addToPlaylistModal(song) {
@@ -2151,13 +2575,16 @@ class FavoritesPlaylistsManager {
     if (!popups) return;
 
     if (!this.state.playlists.length) {
-      popups.modal({
+      const modal = popups.modal({
         title: "Add to Playlist",
         size: "sm",
         content: `<p class="popups-empty">You don't have any playlists yet.</p>`,
         actions: [{ label: "Create Playlist", action: "create", type: "primary" }],
-        onAction: (action) => {
-          if (action === "create") this.createNewPlaylist();
+        onAction: (action, _item, popup) => {
+          if (action === "create") {
+            popup.hide();
+            this.createNewPlaylist();
+          }
         },
       });
       return;
@@ -2169,7 +2596,7 @@ class FavoritesPlaylistsManager {
     const songHeader = song
       ? `
       <div class="popups-song-context">
-        <img src="${song.coverUrl || Config.DEFAULT_COVER}" class="popups-song-context-thumb" alt="">
+        <img src="${PopupsManager.escapeAttr(song.coverUrl || Config.DEFAULT_COVER || "")}" class="popups-song-context-thumb" alt="">
         <div class="popups-song-context-info">
           <p class="popups-song-context-title">${Utils.esc(song.title)}</p>
           <p class="popups-song-context-sub">${Utils.esc(song.artist || "")}</p>
@@ -2201,9 +2628,9 @@ class FavoritesPlaylistsManager {
       content,
       closable: true,
       actions: [{ label: "Create New", action: "create", type: "secondary" }],
-      onAction: (action) => {
+      onAction: (action, _item, popup) => {
         if (action === "create") {
-          modal.hide();
+          popup.hide();
           this.createNewPlaylist();
         }
       },
@@ -2232,6 +2659,10 @@ class FavoritesPlaylistsManager {
   }
 }
 
+
+
+
+// ┌─────────── Globalizing ───────────┐
 window.PopupsManager = PopupsManager;
 window.PopupsBase = PopupsBase;
 window.PopupsModal = PopupsModal;

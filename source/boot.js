@@ -7,15 +7,15 @@ jQuery(function ($) {
   window.state = new PlayerState();
   window.audioPlayer = new AudioEngine(window.state);
 
+
+
+// ──────────────────  Menus  ────────── • • •
   window.favoritesPlaylists = new FavoritesPlaylistsManager(window.state);
   window.popups = new PopupsManager({ ui: null });
   window.heartManager = new HeartButtonManager(window.favoritesPlaylists, window.state);
   window.contextMenu = new ContextMenu();
   window.offlineCache = new OfflineCache(window.state);
 
-
-////////////  Offline & Sharing [ WORKING ON ] ///////
-//////////////////////////////////////////////////
   window.saveToLibraryDrawer = window.saveToLibraryDrawer || {
     refreshSavedBadges: () => {},
     badgeRows: () => {},
@@ -30,6 +30,8 @@ jQuery(function ($) {
       .filter((s) => s && (s.downloadPath || s.source));
   }
 
+
+// ──────────────────  Offline  ────────── • • •
   function setOfflineToggleUI(btn, state) {
     const label = btn.querySelector(".hub-btn-txt");
     const active = state === "all";
@@ -55,14 +57,6 @@ jQuery(function ($) {
     else if (cached > 0) setOfflineToggleUI(btn, { partial: true, cached, total: songs.length });
     else setOfflineToggleUI(btn, "none");
   }
-
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.addEventListener("message", (event) => {
-      const type = event.data?.type;
-      if (type === "CACHE_STATUS_RESULT" || type === "SONG_CACHED") syncOfflineToggle();
-    });
-  }
-
   async function handleOfflineToggle(btn) {
     const albumId = btn.dataset.albumId;
     const cache = window.offlineCache;
@@ -110,8 +104,17 @@ jQuery(function ($) {
     syncOfflineToggle();
   }
 
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.addEventListener("message", (event) => {
+      const type = event.data?.type;
+      if (type === "CACHE_STATUS_RESULT" || type === "SONG_CACHED") syncOfflineToggle();
+    });
+  }
 
-  
+
+
+
+// ──────────────────  Players  ────────── • • •
   function buildAlbumShareUrl(albumTitle) {
     try {
       const match = Array.from(window.MusicStore?.albumCache?.values() || []).find(
@@ -153,6 +156,7 @@ jQuery(function ($) {
       tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el.isContentEditable === true
     );
   }
+
   function bindKeyboardShortcuts() {
     const player = window.audioPlayer;
     if (!player) return;
@@ -193,8 +197,7 @@ jQuery(function ($) {
           return true;
         case "?":
           window.state?.showToast?.(
-            "Shortcuts — Space/K: play-pause · ←/→ or J/L: seek 10s · N/P: next/previous · M: mute · S: shuffle"
-// REPLACE with a Modal or PopOver or ToolTip Element
+            "Shortcuts — Space/K: play-pause · ←/→ or J/L: seek 10s · N/P: next/previous · M: mute · S: shuffle · ?: this help"
           );
           return true;
         default:
@@ -212,12 +215,7 @@ jQuery(function ($) {
       if (shortcuts(key)) event.preventDefault();
     });
   }
-//---------------------------------------------------------------------
 
-
-  
-/////////////////////  Global Setups  ////////////
-//////////////////////////////////////////////////
   window.persistence = new PersistenceManager(window.state, window.audioPlayer);
   window.mediaSessionManager = new MediaSessionManager(window.state, window.audioPlayer);
   window.audioPlayer.setMediaSessionManager(window.mediaSessionManager);
@@ -230,7 +228,12 @@ jQuery(function ($) {
 
   window.closeModal = () => window.popups?.closeType("modal");
 
+  
+
+  
+  // ──────────────────  Playlists  ────────── • • •
   const PLAYLIST_NAME_MAX = 120;
+
   window.createNewPlaylist = function () {
     if (window.favoritesPlaylists && typeof window.favoritesPlaylists.createNewPlaylist === "function") {
       return window.favoritesPlaylists.createNewPlaylist();
@@ -260,7 +263,11 @@ jQuery(function ($) {
             window.state?.showToast?.("Please enter a playlist name", "warning");
             return;
           }
-          window.favoritesPlaylists?.createPlaylist({ name });
+          if (window.favoritesPlaylists?.createPlaylist) {
+            window.favoritesPlaylists.createPlaylist({ name });
+          } else {
+            window.state?.showToast?.("Playlist creation is unavailable right now", "warning");
+          }
         },
       });
     }
@@ -268,6 +275,7 @@ jQuery(function ($) {
     console.warn("[boot] Playlist creation flow is unavailable.");
     return null;
   };
+
   window.createPlaylist = window.createNewPlaylist;
   window.renamePlaylist = (id) => window.favoritesPlaylists?.renamePlaylist?.(id);
   window.deletePlaylist = (id) => window.favoritesPlaylists?.deletePlaylist?.(id);
@@ -281,18 +289,16 @@ jQuery(function ($) {
   };
 
 
-///////////////////////  Database Fetching  //////////
-//////////////////////////////////////////////////////
+  
+// ──────────────────  S O U R C E S  ────────── • • •
   const FETCH_TIMEOUT_MS = 12000;
   const FETCH_RETRIES = 1;
-  const LOAD_CONCURRENCY = 4;
 
   const BASE = resolveBase();
   const LIB = `${BASE}/library`;
   const SZ = { cover: 320, portrait: 160 };
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
   function resolveBase() {
     if (window.MUSIC_ME_BASE) {
       return String(window.MUSIC_ME_BASE).replace(/\/+$/, "");
@@ -324,7 +330,7 @@ jQuery(function ($) {
 
         if (!response.ok) {
           const err = new Error(`HTTP ${response.status}: ${url}`);
-          if (response.status >= 500 && attempt < retries) {
+          if ((response.status >= 500 || response.status === 429) && attempt < retries) {
             lastError = err;
             await delay(400 * (attempt + 1));
             continue;
@@ -350,7 +356,6 @@ jQuery(function ($) {
   }
 
 
-// ──────────────────  S O U R C E S  ────────── • • 
   function mediaSource(value, fallback = "", baseUrl = BASE) {
     if (value == null || value === "") return fallback;
 
@@ -477,11 +482,9 @@ jQuery(function ($) {
     }
     return "";
   };
+// ─────────────────────────────────────────────────────────────┘
 
-
-
-
-// ──────────────────  Initialization  ────────── • • 
+  
   function renderBootError(err) {
     const card = document.createElement("div");
     card.style.cssText =
@@ -501,10 +504,7 @@ jQuery(function ($) {
     card.append(message, retry);
     document.body.appendChild(card);
   }
-  
   async function initLibrary() {
-//  console.log("[initLibrary] starting");
-
     if (!window.MusicStore || !window.MusicStore.index) {
       throw new Error("window.MusicStore.index is missing.");
     }
@@ -648,46 +648,6 @@ jQuery(function ($) {
       }
     };
 
-
-
-/**
-REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
-***********************
-    window.MusicStore.loadAllSongs = async function (onProgress) {
-      const entries = window.MusicStore.index || [];
-      if (!entries.length) return;
-
-      let cursor = 0;
-      let done = 0;
-
-      const worker = async () => {
-        while (cursor < entries.length) {
-          const entry = entries[cursor++];
-          try {
-            const artist = await window.MusicStore.loadArtist(entry.id);
-            await Promise.allSettled(
-              (artist.albums || []).map((a) =>
-                window.MusicStore.loadAlbum(entry.id, a.id).catch((e) => {
-                  console.warn(`[loadAllSongs] album ${a.id}:`, e);
-                })
-              )
-            );
-          } catch (e) {
-            console.warn(`[loadAllSongs] artist ${entry.id}:`, e);
-          }
-          done++;
-          if (onProgress) onProgress(done, entries.length);
-        }
-      };
-
-      const lanes = Math.min(LOAD_CONCURRENCY, entries.length);
-      await Promise.all(Array.from({ length: lanes }, worker));
-    };
-***********************
-**/
-
-
-    
     window.state.getSongById = (id) => window.MusicStore.songCache.get(String(id)) || null;
     window.state.getAlbumById = (id) => window.MusicStore.albumCache.get(String(id)) || null;
     window.state.getArtistById = (id) => {
@@ -698,7 +658,6 @@ REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
     window.metadata = window.MusicStore.index;
     window.state.enrichedLibrary = window.MusicStore.index;
 
-    console.log("[initLibrary] creating UIManager");
     window.uiManager = new UIManager(window.state, window.audioPlayer, window.favoritesPlaylists);
     window.popups.ui = window.uiManager;
     window.heartManager.store.state = window.state;
@@ -710,6 +669,58 @@ REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
       party: ["dance", "electronic", "club", "pop", "hip hop"],
       romance: ["r&b", "soul", "ballad", "pop", "love"],
     };
+
+    async function gatherSongsByPredicate(predicate, {
+      target = 20,
+      maxArtists = 12,
+      maxAlbumsPerArtist = 3,
+      artistConcurrency = 3,
+    } = {}) {
+      const index = window.MusicStore.index || [];
+      if (!index.length) return [];
+
+      const matches = [];
+      const seenSongs = new Set();
+      const shuffled = Utils.shuffle(index.slice()).slice(0, maxArtists);
+
+      const processArtist = async (entry) => {
+        if (matches.length >= target) return;
+
+        let artist;
+        try {
+          artist = await window.MusicStore.loadArtist(entry.id);
+        } catch {
+          return;
+        }
+        if (!artist?.albums?.length) return;
+
+        const albums = Utils.shuffle(artist.albums.slice()).slice(0, maxAlbumsPerArtist);
+        for (const a of albums) {
+          if (matches.length >= target) return;
+
+          let album;
+          try {
+            album = await window.MusicStore.loadAlbum(entry.id, a.id);
+          } catch {
+            continue;
+          }
+
+          for (const song of album.songs || []) {
+            if (matches.length >= target) break;
+            if (seenSongs.has(song.id)) continue;
+            seenSongs.add(song.id);
+            if (predicate(song)) matches.push(song);
+          }
+        }
+      };
+
+      for (let i = 0; i < shuffled.length && matches.length < target; i += artistConcurrency) {
+        const batch = shuffled.slice(i, i + artistConcurrency);
+        await Promise.all(batch.map(processArtist));
+      }
+
+      return matches.slice(0, target);
+    }
 
     window.pagesActions = {
       buildSongs() {
@@ -745,45 +756,39 @@ REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
         if (song) window.uiManager?.audioPlayer?.playSong(song, null, true, source);
       },
 
-
-      
-/**
-REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
-***********************
-      async shuffleAll() {
-        await window.MusicStore.loadAllSongs();
-        const songs = this.buildSongs();
-        if (!songs.length) return;
-        this.playQueue(IdUtils.sample(songs, songs.length), 0, "Shuffling your whole library", "home");
-      },
       async playGenre(genre) {
-        await window.MusicStore.loadAllSongs();
-        const songs = this.buildSongs().filter(
-          (s) => String(s.genre).toLowerCase() === String(genre).toLowerCase()
+        const songs = await gatherSongsByPredicate(
+          (s) => String(s.genre || "").toLowerCase() === String(genre).toLowerCase(),
+          { target: 20, maxArtists: 15 }
         );
-        if (!songs.length) return;
-        this.playSong(IdUtils.sample(songs, 1)[0].id, "home");
-        window.uiManager?.state.showToast?.(`Playing ${genre}`);
+        if (!songs.length) {
+          window.uiManager?.state.showToast?.(`No songs found in ${genre}`);
+          return;
+        }
+        this.playQueue(Utils.shuffle(songs), 0, `Playing ${genre}`, "home");
       },
+
       async playMood(mood) {
-        await window.MusicStore.loadAllSongs();
         const tags = MOOD_GENRE_MAP[mood] || [];
-        const all = this.buildSongs();
-        const filtered = all.filter((s) =>
-          tags.some((t) => String(s.genre).toLowerCase().includes(t))
+        if (!tags.length) return;
+
+        const songs = await gatherSongsByPredicate(
+          (s) => tags.some((t) => String(s.genre || "").toLowerCase().includes(t)),
+          { target: 20, maxArtists: 25 }
         );
-        const pool = filtered.length ? filtered : all;
+        if (!songs.length) {
+          window.uiManager?.state.showToast?.(`No songs found for ${mood}`);
+          return;
+        }
+
         this.playQueue(
-          IdUtils.sample(pool, Math.min(12, pool.length)),
+          Utils.shuffle(songs).slice(0, 12),
           0,
           `${mood[0].toUpperCase() + mood.slice(1)} mix loaded`,
           "home"
         );
       },
-***********************
-**/
 
-      
       openStatsDashboard() {
         if (window.uiManager && window.state)
           window.state.modalOpen(window.uiManager.homePage.statsDashboard());
@@ -850,14 +855,12 @@ REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
           stripParams();
         }
       } catch (err) {
-// REMOVE ME ... //      console.warn("[deepLink] could not resolve link:", err);
-//... Replace with a Warning Modal
+        console.warn("[deepLink] could not resolve link:", err);
+        window.state?.showToast?.("Could not open that link", "warning");
       }
     }
 
     await handleDeepLink();
-
-// REMOVE ME //  console.log("[initLibrary] ready");
   }
   (async () => {
     try {
@@ -869,6 +872,9 @@ REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
   })();
 
 
+
+  
+  
   bindKeyboardShortcuts();
 
   $(document).on("click", async function (e) {
@@ -898,7 +904,10 @@ REMOVED DUE TO LARGE LIBRARY SIZE MAKING THIS SUPER INEFFICIENT
     const offlineBtn = e.target.closest("#bento-offline-toggle");
     if (offlineBtn) {
       e.preventDefault();
-      handleOfflineToggle(offlineBtn);
+      handleOfflineToggle(offlineBtn).catch((err) => {
+        console.warn("[offline] toggle failed:", err);
+        window.state?.showToast?.("Offline save failed", "warning");
+      });
     }
   });
 });

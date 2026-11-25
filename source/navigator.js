@@ -470,6 +470,9 @@ class AppNavigator {
     const state = this.state;
     const ui = this.ui;
 
+    // Load the destination before changing the URL or current page.
+    await ui.ensurePage(page);
+
     if (state.isDrawerOpen) ui.closePlayerDrawer?.();
 
     let artist = null;
@@ -574,11 +577,13 @@ class AppNavigator {
       switch (page) {
         case "library":
           state.currentPage = "library";
+          await this.ui.ensurePage("library");
           this._parseLibrary(parts.slice(1));
           break;
 
         case "discover":
           state.currentPage = "library";
+          await this.ui.ensurePage("library");
           this._parseDiscover(parts.slice(1));
           break;
 
@@ -606,10 +611,11 @@ class AppNavigator {
           break;
 
         default:
-          state.currentPage = "404";
+          state.currentPage = "discover";
       }
     }
 
+    await this.ui.ensurePage(state.currentPage);
     this.updateActiveNav();
     this.updateBreadcrumbs();
     this.updateTitle();
