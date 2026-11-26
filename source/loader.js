@@ -28,6 +28,96 @@
     if (typeof Class !== "function") {
       throw new Error(`[RouteLoader] ${definition.className} did not register for ${page}`);
     }
+    // Install grouped APIs only after Home's dynamic method extensions finish.
+    if (page === "home" && !Class.prototype.events) {
+      window.MethodNamespaces.install(Class, {
+  "data": [
+    "buildSongs",
+    "buildAlbums",
+    "buildGenres",
+    "pickFeatured",
+    "getCounts",
+    "getDiscoverArtists",
+    "getRecent",
+    "getMostPlayed",
+    "getFavSummary"
+  ],
+  "utils": [
+    "shuffle",
+    "esc",
+    "iconChevronLeft",
+    "iconChevronRight",
+    "iconShuffle",
+    "sectionIconDiscover",
+    "sectionIconCollections",
+    "sectionIconGenres",
+    "musicNoteSvg",
+    "sectionTitle",
+    "actionButton",
+    "emptyNote"
+  ],
+  "views": [
+    "genreTile",
+    "renderHeader",
+    "playFeatured",
+    "renderGenres",
+    "songRow",
+    "rankRow",
+    "renderRecentlyPlayed",
+    "recentsEmptyState",
+    "renderNewRelease",
+    "renderMostPlayed",
+    "renderLibraryCard",
+    "favoritesCardInner",
+    "renderFavoritesCard",
+    "render"
+  ],
+  "loading": [
+    "bootstrap",
+    "refreshLoadedCards",
+    "bootstrapNewRelease",
+    "bootstrapDiscover",
+    "bootstrapRecent",
+    "bootstrapMostPlayed",
+    "bootstrapFavorites",
+    "patchCard"
+  ],
+  "discover": [
+    "discoverSongRow",
+    "discoverArtistCard",
+    "discoverNav",
+    "renderDiscover",
+    "moveDiscover",
+    "syncDiscover",
+    "rebuildDiscoverCard"
+  ],
+  "collections": [
+    "collectionCard",
+    "collectionsInner",
+    "renderCollections",
+    "syncCollections"
+  ],
+  "sync": [
+    "syncGenreFocus",
+    "clearGenreFocus",
+    "openGenre",
+    "isActive",
+    "onRecentlyPlayed",
+    "syncNowPlaying",
+    "syncFavorites",
+    "syncMostPlayed"
+  ],
+  "events": [
+    "bindWhenReady",
+    "getRoot",
+    "bindEvents",
+    "hydrateRow",
+    "bindLiveUpdates",
+    "handleCardFocus",
+    "clearCardFocus"
+  ]
+});
+    }
     return Class;
   }
 
