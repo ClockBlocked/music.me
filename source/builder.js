@@ -1938,6 +1938,74 @@ class ContextMenu {
   }
 }
 
+// Search namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(Search, {
+  "controls": [
+    "openSearch",
+    "closeSearch",
+    "activateItem"
+  ],
+  "events": [
+    "attachResultEvents",
+    "bindKeyboard"
+  ],
+  "views": [
+    "renderHero",
+    "songRow",
+    "albumCard",
+    "artistCard",
+    "playlistRow",
+    "renderDropdown"
+  ],
+  "sync": [
+    "updateDropdown",
+    "resetResults"
+  ],
+  "utils": [
+    "getResultsEl",
+    "collectHits",
+    "highlightText"
+  ]
+});
+
+// ContentEvents namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(ContentEvents, {
+  "events": [
+    "setupHeartButton",
+    "attachPlaylistEditorEvents",
+    "attachContentEvents"
+  ]
+});
+
+// OfflineCache namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(OfflineCache, {
+  "controls": [
+    "init",
+    "cacheSong",
+    "removeSong",
+    "deleteFromCacheDb"
+  ],
+  "sync": [
+    "queryStatus",
+    "isCached"
+  ],
+  "views": [
+    "badgeRows"
+  ],
+  "utils": [
+    "normalizeUrl"
+  ]
+});
+
+// ContextMenu namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(ContextMenu, {
+  "controls": [
+    "init",
+    "show",
+    "hide"
+  ]
+});
+
 window.AppListeners = AppListeners;
 window.ContentEvents = ContentEvents;
 window.ContextMenu = ContextMenu;
