@@ -45,7 +45,10 @@ class UIManager {
       trickleSpeed: 600,
     });
   }
+}
 
+// LIFECYCLE — original UIManager behavior preserved.
+class UILifecycleMethods {
   init() {
     this.render = this.render.bind(this);
     this.navigate = this.navigate.bind(this);
@@ -55,7 +58,10 @@ class UIManager {
     this.navigator.syncFromUrl();
     window.addEventListener("popstate", this.handlePopState);
   }
+}
 
+// NAVIGATION — original UIManager behavior preserved.
+class UINavigationMethods {
   async ensurePage(page) {
     const mapping = {
       home: "homePage",
@@ -91,10 +97,6 @@ class UIManager {
     return this.navigator.go(page, { artistId, albumId });
   }
 
-  handlePopState() {
-    this.navigator.onPopState();
-  }
-
   editPlaylist(playlistId) {
     const playlist = this.state.playlists.find((p) => String(p.id) === String(playlistId));
     this.state.editingPlaylistId = playlistId;
@@ -108,7 +110,17 @@ class UIManager {
     this.state.selectedPlaylistName = null;
     return this.navigator.goCreatePlaylist?.() ?? this.navigator.go("createPlaylist");
   }
+}
 
+// EVENTS — original UIManager behavior preserved.
+class UIEventsMethods {
+  handlePopState() {
+    this.navigator.onPopState();
+  }
+}
+
+// VIEWS — original UIManager behavior preserved.
+class UIViewsMethods {
   render() {
     this.main = document.getElementById("main-content");
     this.scrollToTop();
@@ -276,34 +288,6 @@ class UIManager {
     `;
   }
 
-  async autoPlayDeepLink() {
-    const songId = this.state.pendingDeepLinkSong;
-    if (!songId) return;
-    this.state.pendingDeepLinkSong = null;
-
-    const url = new URL(window.location.href);
-    url.searchParams.delete("song");
-    history.replaceState(null, "", url.pathname + (url.search ? url.search : "") + url.hash);
-
-    if (this.state.currentPage !== "artist") return;
-
-    let song = this.state.getSongById(songId);
-    if (!song && this.state.artistId) {
-      const albumId = this.state.selectedAlbumId;
-      if (albumId) {
-        await window.MusicStore.loadAlbum(this.state.artistId, albumId).catch(() => null);
-      }
-      song = this.state.getSongById(songId);
-    }
-    if (!song) return;
-
-    const queue = await Utils.albumQueue(song.artistId, song.albumId);
-    const startSong = queue.find((s) => Utils.id(s.id) === Utils.id(songId)) || song;
-    this.audioPlayer.playSong(startSong, queue.length ? queue : null, true, "album");
-  }
-
-  toggleTheme() { Prefs.applyTheme(Prefs.nextToggle()); }
-
   showSettingsModal() {
     const popups = window.popups;
     if (!popups) return;
@@ -394,12 +378,6 @@ class UIManager {
   updateMiniPlayer()  { this.player.renderMiniPlayer(); }
   updateProgressOnly() { this.player.updateProgressOnly(); }
 
-  updateFullPlayer() {
-    const drawer = document.getElementById("full-player-drawer");
-    if (drawer) this.player.softUpdateDrawer(drawer);
-    else if (this.state.isDrawerOpen) this.player.renderFullPlayer();
-  }
-
   showShortcutsHelp() {
     const shortcuts = [
       ["Space", "Play / Pause"], ["←", "Previous track"], ["→", "Next track"],
@@ -421,17 +399,14 @@ class UIManager {
       </div>
     `);
   }
+}
 
-  scrollToTop(duration = 500) {
-    const startY = window.scrollY;
-    const startTime = performance.now();
-    const ease = (t) => 1 - Math.pow(1 - t, 4);
-    const step = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      window.scrollTo(0, startY * (1 - ease(progress)));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
+// SYNC — original UIManager behavior preserved.
+class UISyncMethods {
+  updateFullPlayer() {
+    const drawer = document.getElementById("full-player-drawer");
+    if (drawer) this.player.softUpdateDrawer(drawer);
+    else if (this.state.isDrawerOpen) this.player.renderFullPlayer();
   }
 
   refreshArtistContent(artistId, albumId) {
@@ -467,6 +442,21 @@ class UIManager {
   async toggleFavAndReRender(songId) {
     await window.heartManager?.toggle("song", songId);
   }
+}
+
+// UTILS — original UIManager behavior preserved.
+class UIUtilsMethods {
+  scrollToTop(duration = 500) {
+    const startY = window.scrollY;
+    const startTime = performance.now();
+    const ease = (t) => 1 - Math.pow(1 - t, 4);
+    const step = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      window.scrollTo(0, startY * (1 - ease(progress)));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
 
   likeStatus(type, isFavorite, isHovered, tempState) {
     if (tempState === "error" || tempState === "exclamation") return `<i class="fa-solid fa-heart-circle-exclamation error-icon"></i>`;
@@ -475,6 +465,84 @@ class UIManager {
     return isHovered ? `<i class="fa-solid fa-heart-circle-plus hover-not-liked-icon"></i>` : `<i class="fa-solid fa-heart not-liked-icon"></i>`;
   }
 }
+
+// PLAYBACK — original UIManager behavior preserved.
+class UIPlaybackMethods {
+  async autoPlayDeepLink() {
+    const songId = this.state.pendingDeepLinkSong;
+    if (!songId) return;
+    this.state.pendingDeepLinkSong = null;
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("song");
+    history.replaceState(null, "", url.pathname + (url.search ? url.search : "") + url.hash);
+
+    if (this.state.currentPage !== "artist") return;
+
+    let song = this.state.getSongById(songId);
+    if (!song && this.state.artistId) {
+      const albumId = this.state.selectedAlbumId;
+      if (albumId) {
+        await window.MusicStore.loadAlbum(this.state.artistId, albumId).catch(() => null);
+      }
+      song = this.state.getSongById(songId);
+    }
+    if (!song) return;
+
+    const queue = await Utils.albumQueue(song.artistId, song.albumId);
+    const startSong = queue.find((s) => Utils.id(s.id) === Utils.id(songId)) || song;
+    this.audioPlayer.playSong(startSong, queue.length ? queue : null, true, "album");
+  }
+
+  toggleTheme() { Prefs.applyTheme(Prefs.nextToggle()); }
+}
+
+// Group implementations remain available through original ui.method() calls.
+for (const Group of [UILifecycleMethods, UINavigationMethods, UIEventsMethods, UIViewsMethods, UISyncMethods, UIUtilsMethods, UIPlaybackMethods]) {
+  const descriptors = Object.getOwnPropertyDescriptors(Group.prototype);
+  delete descriptors.constructor;
+  Object.defineProperties(UIManager.prototype, descriptors);
+}
+window.MethodNamespaces.install(UIManager, {
+  "lifecycle": [
+    "init"
+  ],
+  "navigation": [
+    "ensurePage",
+    "navigate",
+    "editPlaylist",
+    "createPlaylist"
+  ],
+  "events": [
+    "handlePopState"
+  ],
+  "views": [
+    "render",
+    "routes",
+    "scrollSection",
+    "albumCard",
+    "artistCard",
+    "recentCard",
+    "songRow",
+    "artistNameTooltip",
+    "showSettingsModal",
+    "showShortcutsHelp"
+  ],
+  "sync": [
+    "updateFullPlayer",
+    "refreshArtistContent",
+    "refreshFavoritesContent",
+    "toggleFavAndReRender"
+  ],
+  "utils": [
+    "scrollToTop",
+    "likeStatus"
+  ],
+  "playback": [
+    "autoPlayDeepLink"
+  ]
+});
+
 
 // ////////////////////////////////////////////////////////////////////////
 // Event Listeners
@@ -1869,6 +1937,74 @@ class ContextMenu {
     setTimeout(done, 250);
   }
 }
+
+// Search namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(Search, {
+  "controls": [
+    "openSearch",
+    "closeSearch",
+    "activateItem"
+  ],
+  "events": [
+    "attachResultEvents",
+    "bindKeyboard"
+  ],
+  "views": [
+    "renderHero",
+    "songRow",
+    "albumCard",
+    "artistCard",
+    "playlistRow",
+    "renderDropdown"
+  ],
+  "sync": [
+    "updateDropdown",
+    "resetResults"
+  ],
+  "utils": [
+    "getResultsEl",
+    "collectHits",
+    "highlightText"
+  ]
+});
+
+// ContentEvents namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(ContentEvents, {
+  "events": [
+    "setupHeartButton",
+    "attachPlaylistEditorEvents",
+    "attachContentEvents"
+  ]
+});
+
+// OfflineCache namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(OfflineCache, {
+  "controls": [
+    "init",
+    "cacheSong",
+    "removeSong",
+    "deleteFromCacheDb"
+  ],
+  "sync": [
+    "queryStatus",
+    "isCached"
+  ],
+  "views": [
+    "badgeRows"
+  ],
+  "utils": [
+    "normalizeUrl"
+  ]
+});
+
+// ContextMenu namespaces are additive: legacy calls remain unchanged.
+window.MethodNamespaces.install(ContextMenu, {
+  "controls": [
+    "init",
+    "show",
+    "hide"
+  ]
+});
 
 window.AppListeners = AppListeners;
 window.ContentEvents = ContentEvents;

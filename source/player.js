@@ -726,7 +726,10 @@ class PlayerManager {
     this.eventsBound = false;
     this.videoKeyBound = false;
   }
+}
 
+// EVENTS — original method bodies retained verbatim.
+class PlayerEventsMethods {
   bindAudioEvents() {
     if (this.eventsBound) return;
 
@@ -767,108 +770,233 @@ class PlayerManager {
     if (this.ui.state.isPlaying) this.startProgressLoop();
   }
 
-  startProgressLoop() {
-    if (this.rafId) return;
-    const tick = () => {
-      this.updateProgressOnly();
-      this.rafId = requestAnimationFrame(tick);
-    };
-    this.rafId = requestAnimationFrame(tick);
-  }
+  attachFullPlayerEvents() {
+    const song = this.ui.state.currentSong;
 
-  stopProgressLoop() {
-    if (this.rafId) {
-      cancelAnimationFrame(this.rafId);
-      this.rafId = null;
-    }
-    this.updateProgressOnly();
-  }
-
-  setPlayingUI(isPlaying) {
-    const label = `<span class="miniToggleLabel">${isPlaying ? "Pause" : "Play"}</span>`;
-    const playSVG = Icons.player.play(22);
-    const pauseSVG = Icons.player.pause(22);
-
-    const miniBtn = document.getElementById("toggle-play-mini");
-    if (miniBtn) miniBtn.innerHTML = (isPlaying ? pauseSVG : playSVG) + label;
-
-    window.appShell?.syncRailPlayer?.();
-
-    const drawerBtn = document.getElementById("play-pause-drawer");
-    if (drawerBtn) {
-      drawerBtn.classList.toggle("playing", isPlaying);
-      drawerBtn.innerHTML = isPlaying ? Icons.player.pause(32) : Icons.player.play(32);
-    }
-  }
-
-  updateProgressOnly() {
-    const state = this.ui.state;
-    const pct = state.duration ? (state.currentTime / state.duration) * 100 : 0;
-    const pctStr = `${pct}%`;
-    const cur = state.formatTime(state.currentTime);
-    const total = state.formatTime(state.duration);
-
-    const miniProgress = document.getElementById("mini-progress");
-    if (miniProgress) miniProgress.style.width = pctStr;
-
-    const progressFill = document.getElementById("progress-fill");
-    if (progressFill) progressFill.style.width = pctStr;
-
-    const curEl = document.getElementById("drawer-current-time");
-    if (curEl) curEl.textContent = cur;
-
-    const totalEl = document.getElementById("total-time");
-    if (totalEl) totalEl.textContent = total;
-
-    window.appShell?.syncRailProgress?.(pctStr, cur, total);
-  }
-
-  showCoverBuffer() {
-    this.coverBufferVisible = true;
-    const cover = document.querySelector("#player-bar-container .mini-cover");
-    if (!cover) return;
-    if (cover.querySelector(".mini-cover-buffer")) return;
-
-    const overlay = document.createElement("div");
-    overlay.className = "mini-cover-buffer";
-    const circle = document.createElement("div");
-    circle.className = "spnr-circle";
-    overlay.appendChild(circle);
-    cover.appendChild(overlay);
-  }
-
-  hideCoverBuffer() {
-    this.coverBufferVisible = false;
     document
-      .querySelectorAll("#player-bar-container .mini-cover-buffer")
-      .forEach((el) => el.remove());
+      .getElementById("close-drawer")
+      ?.addEventListener("click", () => this.ui.closePlayerDrawer());
+    document
+      .getElementById("player-drawer-overlay")
+      ?.addEventListener("click", () => this.ui.closePlayerDrawer());
+    document.getElementById("queue-toggle")?.addEventListener("click", () => this.toggleQueue());
+    document.getElementById("close-queue")?.addEventListener("click", () => this.closeQueue());
+    document.getElementById("queue-clear")?.addEventListener("click", () => this.clearQueue());
+    document
+      .getElementById("queue-save-playlist")
+      ?.addEventListener("click", () => this.saveQueueAsPlaylist());
+
+    if (song) {
+      document
+        .getElementById("play-pause-drawer")
+        ?.addEventListener("click", () => this.ui.audioPlayer.togglePlay());
+      document.getElementById("prev-btn")?.addEventListener("click", () => this.ui.audioPlayer.skipBack());
+      document.getElementById("next-btn")?.addEventListener("click", () => this.ui.audioPlayer.skipForward());
+      document
+        .getElementById("shuffle-btn")
+        ?.addEventListener("click", () => this.ui.audioPlayer.toggleShuffle());
+      document.getElementById("share-btn")?.addEventListener("click", () => this.toggleShare());
+      document.getElementById("speed-btn")?.addEventListener("click", () => this.cycleSpeed());
+      document.getElementById("sleep-btn")?.addEventListener("click", () => this.toggleSleepTimer());
+      document
+        .getElementById("album-wrapper")
+        ?.addEventListener("click", () => this.ui.audioPlayer.togglePlay());
+      document.getElementById("lyrics-overlay")?.addEventListener("click", () => this.toggleLyrics());
+
+      document.getElementById("progress-container")?.addEventListener("click", (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        this.ui.audioPlayer.audio.currentTime =
+          ((e.clientX - rect.left) / rect.width) * this.ui.state.duration;
+      });
+
+      const likeBtn = document.getElementById("like-btn");
+      if (likeBtn) {
+        likeBtn.dataset.favSong = song.id;
+        window.heartManager?.bindAll(document.getElementById("full-player-drawer") || document);
+      }
+
+      const drawer = document.getElementById("full-player-drawer");
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchStartTime = 0;
+
+      drawer.addEventListener(
+        "touchstart",
+        (e) => {
+          const t = e.changedTouches[0];
+          touchStartX = t.screenX;
+          touchStartY = t.screenY;
+          touchStartTime = performance.now();
+        },
+        { passive: true }
+      );
+
+      drawer.addEventListener(
+        "touchend",
+        (e) => {
+          const t = e.changedTouches[0];
+          const dx = t.screenX - touchStartX;
+          const dy = t.screenY - touchStartY;
+          const dt = performance.now() - touchStartTime;
+          const absDx = Math.abs(dx);
+          const absDy = Math.abs(dy);
+
+          if (absDx > absDy && absDx > 50) {
+            const velocity = absDx / dt;
+            if (velocity > 0.4 || absDx > 120) {
+              dx > 0 ? this.ui.audioPlayer.skipBack() : this.ui.audioPlayer.skipForward();
+            }
+            return;
+          }
+
+          if (dy < -80 && absDy > absDx) {
+            this.openQueue();
+            return;
+          }
+
+          if (dy > 80 && absDy > absDx && touchStartY < drawer.getBoundingClientRect().top + 120) {
+            this.ui.closePlayerDrawer();
+          }
+        },
+        { passive: true }
+      );
+
+      this.attachVideoControls();
+    }
+
+    this.ui.contentEvents.attachHeartEvents();
+    this.applyPlaybackErrorState();
+    this.updateSleepBadge();
   }
 
-  applyPlaybackErrorState() {
-    const state = this.ui.state;
-    const hasError = !!(state.audioError && state.currentSong && state.audioError === state.currentSong.id);
+  attachVideoControls() {
+    const drawer = document.getElementById("full-player-drawer");
+    if (!drawer) return;
 
-    if (hasError) this.hideCoverBuffer();
+    const btn = drawer.querySelector("#video-btn");
+    if (btn && !btn.videoBound) {
+      btn.videoBound = true;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        this.ui.videoController?.toggle();
+      });
+    }
 
-    const miniInner = document.querySelector("#player-bar-container .mini-player-inner");
-    if (miniInner) miniInner.classList.toggle("audio-missing", hasError);
+    const wrapper = drawer.querySelector("#album-wrapper");
+    if (wrapper && !wrapper.videoLongPressBound) {
+      wrapper.videoLongPressBound = true;
 
-    [
-      "toggle-play-mini",
-      "skip-forward-mini",
-      "play-pause-drawer",
-      "prev-btn",
-      "next-btn",
-      "shuffle-btn",
-      "like-btn",
-    ].forEach((id) => {
-      const btn = document.getElementById(id);
-      if (!btn) return;
-      if (hasError) btn.setAttribute("disabled", "");
-      else if (state.currentSong) btn.removeAttribute("disabled");
-    });
+      let pressTimer = null;
+      let longPressFired = false;
+
+      const start = (e) => {
+        if (this.ui.state.isVideoOpen) return;
+        if (e.button != null && e.button !== 0) return;
+        longPressFired = false;
+        pressTimer = setTimeout(() => {
+          longPressFired = true;
+          if (navigator.vibrate) {
+            try {
+              navigator.vibrate(15);
+            } catch {}
+          }
+          this.ui.videoController?.toggle();
+        }, 550);
+      };
+
+      const cancel = () => {
+        if (pressTimer) {
+          clearTimeout(pressTimer);
+          pressTimer = null;
+        }
+      };
+
+      wrapper.addEventListener("pointerdown", start, { passive: true });
+      wrapper.addEventListener("pointerup", cancel);
+      wrapper.addEventListener("pointercancel", cancel);
+      wrapper.addEventListener("pointerleave", cancel);
+
+      wrapper.addEventListener(
+        "click",
+        (e) => {
+          if (longPressFired) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            longPressFired = false;
+          }
+        },
+        true
+      );
+    }
+
+    if (!this.videoKeyBound) {
+      this.videoKeyBound = true;
+      this.onVideoKey = (e) => {
+        const tag = ((e.target && e.target.tagName) || "").toUpperCase();
+        if (tag === "INPUT" || tag === "TEXTAREA" || (e.target && e.target.isContentEditable)) return;
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+        if (e.code === "KeyV" && this.ui.state.isDrawerOpen) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.ui.videoController?.toggle();
+          return;
+        }
+
+        if (e.code === "Space" && this.ui.state.isVideoOpen) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.ui.videoController?.toggleVideoPlayback();
+        }
+      };
+      window.addEventListener("keydown", this.onVideoKey, true);
+    }
+
+    const host = drawer.querySelector(".yt-player-host");
+    if (host && !host.videoSwipeBound) {
+      host.videoSwipeBound = true;
+
+      let sx = 0;
+      let sy = 0;
+      let st = 0;
+
+      host.addEventListener(
+        "touchstart",
+        (e) => {
+          const t = e.changedTouches[0];
+          sx = t.screenX;
+          sy = t.screenY;
+          st = performance.now();
+        },
+        { passive: true }
+      );
+
+      host.addEventListener(
+        "touchend",
+        (e) => {
+          const t = e.changedTouches[0];
+          const dx = t.screenX - sx;
+          const dy = t.screenY - sy;
+          const dt = performance.now() - st;
+
+          if (dy > 90 && Math.abs(dy) > Math.abs(dx) && dy / Math.max(dt, 1) > 0.35) {
+            e.stopPropagation();
+            e.preventDefault();
+            this.ui.videoController?.close();
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    this.renderVideoInfo(drawer);
+    this.ui.videoController?.updateDrawerUI?.();
   }
+}
 
+// CONTROLS — original method bodies retained verbatim.
+class PlayerControlsMethods {
   openDrawer() {
     this.ui.state.isDrawerOpen = true;
     document.getElementById("player-drawer-overlay").classList.add("open");
@@ -891,6 +1019,194 @@ class PlayerManager {
     }
   }
 
+  toggleQueue() {
+    this.ui.state.isQueueOpen = !this.ui.state.isQueueOpen;
+    document.getElementById("queue-modal")?.classList.toggle("open", this.ui.state.isQueueOpen);
+    if (this.ui.state.isQueueOpen) this.renderQueueList();
+  }
+
+  openQueue() {
+    if (this.ui.state.isQueueOpen) return;
+    this.ui.state.isQueueOpen = true;
+    document.getElementById("queue-modal")?.classList.add("open");
+    this.renderQueueList();
+  }
+
+  closeQueue() {
+    this.ui.state.isQueueOpen = false;
+    document.getElementById("queue-modal")?.classList.remove("open");
+  }
+
+  toggleLyrics() {
+    this.ui.state.isLyricsOpen = !this.ui.state.isLyricsOpen;
+    document
+      .getElementById("lyrics-overlay")
+      ?.classList.toggle("visible", this.ui.state.isLyricsOpen);
+  }
+
+  toggleShare() {
+    const song = this.ui.state.currentSong;
+    if (!song) return;
+
+    const url = `${window.location.origin}/artist/${song.artistId}/album/${song.albumId}?song=${song.id}`;
+    if (navigator.share) {
+      navigator
+        .share({ title: song.title, text: `Listen to ${song.title} by ${song.artist}`, url })
+        .catch(() => {});
+    } else {
+      navigator.clipboard
+        ?.writeText(url)
+        .then(() => this.ui.state.showToast("Link copied to clipboard"));
+    }
+  }
+
+  cycleSpeed() {
+    const speeds = [0.5, 1, 1.5, 2];
+    const idx = (speeds.indexOf(this.ui.state.playbackRate) + 1) % speeds.length;
+    this.ui.state.playbackRate = speeds[idx];
+    this.ui.audioPlayer.audio.playbackRate = this.ui.state.playbackRate;
+
+    const btn = document.getElementById("speed-btn");
+    if (btn) {
+      btn.textContent = this.ui.state.playbackRate + "x";
+      btn.classList.toggle("active", this.ui.state.playbackRate !== 1);
+    }
+  }
+
+  toggleSleepTimer() {
+    this.openSleepMenu();
+  }
+
+  openSleepMenu() {
+    const state = this.ui.state;
+    const minutes = [5, 15, 30, 45, 60];
+    const activeMin = state.sleepTimerEndsAt
+      ? Math.round((state.sleepTimerEndsAt - Date.now()) / 60000)
+      : null;
+
+    state.modalOpen(`
+      <div data-modal="sleep" class="sleep-menu">
+        <div class="head"><h2 class="title">Sleep Timer</h2>
+          <button onclick="window.closeModal()" class="close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+        </div>
+        <div data-list="options" class="sleep-options">
+          ${minutes
+            .map(
+              (m) =>
+                `<button class="sleep-option ${activeMin === m ? "active" : ""}" data-sleep-min="${m}"><span class="sleep-option-label">${m} minutes</span></button>`
+            )
+            .join("")}
+          <button class="sleep-option ${state.sleepTimerTrackEnd ? "active" : ""}" data-sleep-track="1"><span class="sleep-option-label">End of current track</span></button>
+          <button class="sleep-option sleep-option-off" data-sleep-off="1"><span class="sleep-option-label">Off</span></button>
+        </div>
+      </div>
+    `);
+
+    document
+      .querySelectorAll("#modal [data-sleep-min]")
+      .forEach((btn) =>
+        btn.addEventListener("click", () => this.setSleepTimer(parseInt(btn.dataset.sleepMin, 10)))
+      );
+
+    document
+      .querySelector("#modal [data-sleep-track]")
+      ?.addEventListener("click", () => this.setSleepTrackEnd());
+
+    document.querySelector("#modal [data-sleep-off]")?.addEventListener("click", () => {
+      this.clearSleepTimer();
+      state.modalClose();
+    });
+  }
+
+  setSleepTimer(minutes) {
+    const state = this.ui.state;
+    this.clearSleepTimer({ silent: true });
+
+    state.sleepTimerEndsAt = Date.now() + minutes * 60 * 1000;
+    state.sleepTimerId = setTimeout(() => this.fireSleepTimer(), minutes * 60 * 1000);
+
+    document.getElementById("sleep-btn")?.classList.add("active");
+    this.startSleepBadge();
+    state.modalClose();
+    state.showToast(`Sleep timer: ${minutes} min`);
+  }
+
+  setSleepTrackEnd() {
+    const state = this.ui.state;
+    this.clearSleepTimer({ silent: true });
+
+    state.sleepTimerTrackEnd = true;
+    document.getElementById("sleep-btn")?.classList.add("active");
+    this.updateSleepBadge();
+    state.modalClose();
+    state.showToast("Sleep timer: stops after the current track");
+  }
+
+  clearSleepTimer({ silent = false } = {}) {
+    const state = this.ui.state;
+
+    if (state.sleepTimerId) clearTimeout(state.sleepTimerId);
+    state.sleepTimerId = null;
+    state.sleepTimerEndsAt = null;
+    state.sleepTimerTrackEnd = false;
+
+    if (this.sleepBadgeTimer) {
+      clearInterval(this.sleepBadgeTimer);
+      this.sleepBadgeTimer = null;
+    }
+
+    document.getElementById("sleep-btn")?.classList.remove("active");
+    this.updateSleepBadge();
+
+    if (!silent) state.showToast("Sleep timer off");
+  }
+
+  fireSleepTimer() {
+    const state = this.ui.state;
+    state.sleepTimerId = null;
+    state.sleepTimerEndsAt = null;
+
+    if (state.isPlaying) this.ui.audioPlayer.togglePlay();
+
+    this.clearSleepTimer({ silent: true });
+    state.showToast("Sleep timer ended");
+  }
+
+  startSleepBadge() {
+    if (this.sleepBadgeTimer) clearInterval(this.sleepBadgeTimer);
+    this.updateSleepBadge();
+    this.sleepBadgeTimer = setInterval(() => this.updateSleepBadge(), 1000);
+  }
+
+  updateSleepBadge() {
+    const btn = document.getElementById("sleep-btn");
+    if (!btn) return;
+
+    const state = this.ui.state;
+    let badge = btn.querySelector(".sleep-badge");
+    const remaining = state.sleepTimerEndsAt
+      ? Math.max(0, state.sleepTimerEndsAt - Date.now())
+      : null;
+
+    if (remaining == null && !state.sleepTimerTrackEnd) {
+      badge?.remove();
+      return;
+    }
+
+    if (!badge) {
+      badge = document.createElement("span");
+      badge.className = "sleep-badge";
+      btn.appendChild(badge);
+    }
+
+    badge.textContent = state.sleepTimerTrackEnd
+      ? "track"
+      : Utils.fmtTime(Math.ceil(remaining / 1000));
+  }
+}
+
+// RENDER — original method bodies retained verbatim.
+class PlayerRenderMethods {
   renderMiniPlayer() {
     this.bindAudioEvents();
 
@@ -1119,230 +1435,6 @@ class PlayerManager {
     }
   }
 
-  attachFullPlayerEvents() {
-    const song = this.ui.state.currentSong;
-
-    document
-      .getElementById("close-drawer")
-      ?.addEventListener("click", () => this.ui.closePlayerDrawer());
-    document
-      .getElementById("player-drawer-overlay")
-      ?.addEventListener("click", () => this.ui.closePlayerDrawer());
-    document.getElementById("queue-toggle")?.addEventListener("click", () => this.toggleQueue());
-    document.getElementById("close-queue")?.addEventListener("click", () => this.closeQueue());
-    document.getElementById("queue-clear")?.addEventListener("click", () => this.clearQueue());
-    document
-      .getElementById("queue-save-playlist")
-      ?.addEventListener("click", () => this.saveQueueAsPlaylist());
-
-    if (song) {
-      document
-        .getElementById("play-pause-drawer")
-        ?.addEventListener("click", () => this.ui.audioPlayer.togglePlay());
-      document.getElementById("prev-btn")?.addEventListener("click", () => this.ui.audioPlayer.skipBack());
-      document.getElementById("next-btn")?.addEventListener("click", () => this.ui.audioPlayer.skipForward());
-      document
-        .getElementById("shuffle-btn")
-        ?.addEventListener("click", () => this.ui.audioPlayer.toggleShuffle());
-      document.getElementById("share-btn")?.addEventListener("click", () => this.toggleShare());
-      document.getElementById("speed-btn")?.addEventListener("click", () => this.cycleSpeed());
-      document.getElementById("sleep-btn")?.addEventListener("click", () => this.toggleSleepTimer());
-      document
-        .getElementById("album-wrapper")
-        ?.addEventListener("click", () => this.ui.audioPlayer.togglePlay());
-      document.getElementById("lyrics-overlay")?.addEventListener("click", () => this.toggleLyrics());
-
-      document.getElementById("progress-container")?.addEventListener("click", (e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        this.ui.audioPlayer.audio.currentTime =
-          ((e.clientX - rect.left) / rect.width) * this.ui.state.duration;
-      });
-
-      const likeBtn = document.getElementById("like-btn");
-      if (likeBtn) {
-        likeBtn.dataset.favSong = song.id;
-        window.heartManager?.bindAll(document.getElementById("full-player-drawer") || document);
-      }
-
-      const drawer = document.getElementById("full-player-drawer");
-      let touchStartX = 0;
-      let touchStartY = 0;
-      let touchStartTime = 0;
-
-      drawer.addEventListener(
-        "touchstart",
-        (e) => {
-          const t = e.changedTouches[0];
-          touchStartX = t.screenX;
-          touchStartY = t.screenY;
-          touchStartTime = performance.now();
-        },
-        { passive: true }
-      );
-
-      drawer.addEventListener(
-        "touchend",
-        (e) => {
-          const t = e.changedTouches[0];
-          const dx = t.screenX - touchStartX;
-          const dy = t.screenY - touchStartY;
-          const dt = performance.now() - touchStartTime;
-          const absDx = Math.abs(dx);
-          const absDy = Math.abs(dy);
-
-          if (absDx > absDy && absDx > 50) {
-            const velocity = absDx / dt;
-            if (velocity > 0.4 || absDx > 120) {
-              dx > 0 ? this.ui.audioPlayer.skipBack() : this.ui.audioPlayer.skipForward();
-            }
-            return;
-          }
-
-          if (dy < -80 && absDy > absDx) {
-            this.openQueue();
-            return;
-          }
-
-          if (dy > 80 && absDy > absDx && touchStartY < drawer.getBoundingClientRect().top + 120) {
-            this.ui.closePlayerDrawer();
-          }
-        },
-        { passive: true }
-      );
-
-      this.attachVideoControls();
-    }
-
-    this.ui.contentEvents.attachHeartEvents();
-    this.applyPlaybackErrorState();
-    this.updateSleepBadge();
-  }
-
-  attachVideoControls() {
-    const drawer = document.getElementById("full-player-drawer");
-    if (!drawer) return;
-
-    const btn = drawer.querySelector("#video-btn");
-    if (btn && !btn.videoBound) {
-      btn.videoBound = true;
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        this.ui.videoController?.toggle();
-      });
-    }
-
-    const wrapper = drawer.querySelector("#album-wrapper");
-    if (wrapper && !wrapper.videoLongPressBound) {
-      wrapper.videoLongPressBound = true;
-
-      let pressTimer = null;
-      let longPressFired = false;
-
-      const start = (e) => {
-        if (this.ui.state.isVideoOpen) return;
-        if (e.button != null && e.button !== 0) return;
-        longPressFired = false;
-        pressTimer = setTimeout(() => {
-          longPressFired = true;
-          if (navigator.vibrate) {
-            try {
-              navigator.vibrate(15);
-            } catch {}
-          }
-          this.ui.videoController?.toggle();
-        }, 550);
-      };
-
-      const cancel = () => {
-        if (pressTimer) {
-          clearTimeout(pressTimer);
-          pressTimer = null;
-        }
-      };
-
-      wrapper.addEventListener("pointerdown", start, { passive: true });
-      wrapper.addEventListener("pointerup", cancel);
-      wrapper.addEventListener("pointercancel", cancel);
-      wrapper.addEventListener("pointerleave", cancel);
-
-      wrapper.addEventListener(
-        "click",
-        (e) => {
-          if (longPressFired) {
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            longPressFired = false;
-          }
-        },
-        true
-      );
-    }
-
-    if (!this.videoKeyBound) {
-      this.videoKeyBound = true;
-      this.onVideoKey = (e) => {
-        const tag = ((e.target && e.target.tagName) || "").toUpperCase();
-        if (tag === "INPUT" || tag === "TEXTAREA" || (e.target && e.target.isContentEditable)) return;
-        if (e.ctrlKey || e.metaKey || e.altKey) return;
-
-        if (e.code === "KeyV" && this.ui.state.isDrawerOpen) {
-          e.preventDefault();
-          e.stopPropagation();
-          this.ui.videoController?.toggle();
-          return;
-        }
-
-        if (e.code === "Space" && this.ui.state.isVideoOpen) {
-          e.preventDefault();
-          e.stopPropagation();
-          this.ui.videoController?.toggleVideoPlayback();
-        }
-      };
-      window.addEventListener("keydown", this.onVideoKey, true);
-    }
-
-    const host = drawer.querySelector(".yt-player-host");
-    if (host && !host.videoSwipeBound) {
-      host.videoSwipeBound = true;
-
-      let sx = 0;
-      let sy = 0;
-      let st = 0;
-
-      host.addEventListener(
-        "touchstart",
-        (e) => {
-          const t = e.changedTouches[0];
-          sx = t.screenX;
-          sy = t.screenY;
-          st = performance.now();
-        },
-        { passive: true }
-      );
-
-      host.addEventListener(
-        "touchend",
-        (e) => {
-          const t = e.changedTouches[0];
-          const dx = t.screenX - sx;
-          const dy = t.screenY - sy;
-          const dt = performance.now() - st;
-
-          if (dy > 90 && Math.abs(dy) > Math.abs(dx) && dy / Math.max(dt, 1) > 0.35) {
-            e.stopPropagation();
-            e.preventDefault();
-            this.ui.videoController?.close();
-          }
-        },
-        { passive: true }
-      );
-    }
-
-    this.renderVideoInfo(drawer);
-    this.ui.videoController?.updateDrawerUI?.();
-  }
-
   renderVideoInfo(drawer) {
     const info = this.ui.state.videoInfo;
 
@@ -1471,7 +1563,115 @@ class PlayerManager {
       list.appendChild(item);
     });
   }
+}
 
+// SYNC — original method bodies retained verbatim.
+class PlayerSyncMethods {
+  startProgressLoop() {
+    if (this.rafId) return;
+    const tick = () => {
+      this.updateProgressOnly();
+      this.rafId = requestAnimationFrame(tick);
+    };
+    this.rafId = requestAnimationFrame(tick);
+  }
+
+  stopProgressLoop() {
+    if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
+    this.updateProgressOnly();
+  }
+
+  setPlayingUI(isPlaying) {
+    const label = `<span class="miniToggleLabel">${isPlaying ? "Pause" : "Play"}</span>`;
+    const playSVG = Icons.player.play(22);
+    const pauseSVG = Icons.player.pause(22);
+
+    const miniBtn = document.getElementById("toggle-play-mini");
+    if (miniBtn) miniBtn.innerHTML = (isPlaying ? pauseSVG : playSVG) + label;
+
+    window.appShell?.syncRailPlayer?.();
+
+    const drawerBtn = document.getElementById("play-pause-drawer");
+    if (drawerBtn) {
+      drawerBtn.classList.toggle("playing", isPlaying);
+      drawerBtn.innerHTML = isPlaying ? Icons.player.pause(32) : Icons.player.play(32);
+    }
+  }
+
+  updateProgressOnly() {
+    const state = this.ui.state;
+    const pct = state.duration ? (state.currentTime / state.duration) * 100 : 0;
+    const pctStr = `${pct}%`;
+    const cur = state.formatTime(state.currentTime);
+    const total = state.formatTime(state.duration);
+
+    const miniProgress = document.getElementById("mini-progress");
+    if (miniProgress) miniProgress.style.width = pctStr;
+
+    const progressFill = document.getElementById("progress-fill");
+    if (progressFill) progressFill.style.width = pctStr;
+
+    const curEl = document.getElementById("drawer-current-time");
+    if (curEl) curEl.textContent = cur;
+
+    const totalEl = document.getElementById("total-time");
+    if (totalEl) totalEl.textContent = total;
+
+    window.appShell?.syncRailProgress?.(pctStr, cur, total);
+  }
+
+  showCoverBuffer() {
+    this.coverBufferVisible = true;
+    const cover = document.querySelector("#player-bar-container .mini-cover");
+    if (!cover) return;
+    if (cover.querySelector(".mini-cover-buffer")) return;
+
+    const overlay = document.createElement("div");
+    overlay.className = "mini-cover-buffer";
+    const circle = document.createElement("div");
+    circle.className = "spnr-circle";
+    overlay.appendChild(circle);
+    cover.appendChild(overlay);
+  }
+
+  hideCoverBuffer() {
+    this.coverBufferVisible = false;
+    document
+      .querySelectorAll("#player-bar-container .mini-cover-buffer")
+      .forEach((el) => el.remove());
+  }
+
+  applyPlaybackErrorState() {
+    const state = this.ui.state;
+    const hasError = !!(state.audioError && state.currentSong && state.audioError === state.currentSong.id);
+
+    if (hasError) this.hideCoverBuffer();
+
+    const miniInner = document.querySelector("#player-bar-container .mini-player-inner");
+    if (miniInner) miniInner.classList.toggle("audio-missing", hasError);
+
+    [
+      "toggle-play-mini",
+      "skip-forward-mini",
+      "play-pause-drawer",
+      "prev-btn",
+      "next-btn",
+      "shuffle-btn",
+      "like-btn",
+    ].forEach((id) => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      if (hasError) btn.setAttribute("disabled", "");
+      else if (state.currentSong) btn.removeAttribute("disabled");
+    });
+  }
+}
+
+// QUEUE — original method bodies retained verbatim.
+class PlayerQueueMethods {
   moveQueueItem(from, to) {
     const state = this.ui.state;
     if (from < 0 || from >= state.queue.length || to < 0 || to >= state.queue.length) return;
@@ -1546,192 +1746,10 @@ class PlayerManager {
       state.showToast(`Playlist <b>${name}</b> created`);
     });
   }
+}
 
-  toggleQueue() {
-    this.ui.state.isQueueOpen = !this.ui.state.isQueueOpen;
-    document.getElementById("queue-modal")?.classList.toggle("open", this.ui.state.isQueueOpen);
-    if (this.ui.state.isQueueOpen) this.renderQueueList();
-  }
-
-  openQueue() {
-    if (this.ui.state.isQueueOpen) return;
-    this.ui.state.isQueueOpen = true;
-    document.getElementById("queue-modal")?.classList.add("open");
-    this.renderQueueList();
-  }
-
-  closeQueue() {
-    this.ui.state.isQueueOpen = false;
-    document.getElementById("queue-modal")?.classList.remove("open");
-  }
-
-  toggleLyrics() {
-    this.ui.state.isLyricsOpen = !this.ui.state.isLyricsOpen;
-    document
-      .getElementById("lyrics-overlay")
-      ?.classList.toggle("visible", this.ui.state.isLyricsOpen);
-  }
-
-  toggleShare() {
-    const song = this.ui.state.currentSong;
-    if (!song) return;
-
-    const url = `${window.location.origin}/artist/${song.artistId}/album/${song.albumId}?song=${song.id}`;
-    if (navigator.share) {
-      navigator
-        .share({ title: song.title, text: `Listen to ${song.title} by ${song.artist}`, url })
-        .catch(() => {});
-    } else {
-      navigator.clipboard
-        ?.writeText(url)
-        .then(() => this.ui.state.showToast("Link copied to clipboard"));
-    }
-  }
-
-  cycleSpeed() {
-    const speeds = [0.5, 1, 1.5, 2];
-    const idx = (speeds.indexOf(this.ui.state.playbackRate) + 1) % speeds.length;
-    this.ui.state.playbackRate = speeds[idx];
-    this.ui.audioPlayer.audio.playbackRate = this.ui.state.playbackRate;
-
-    const btn = document.getElementById("speed-btn");
-    if (btn) {
-      btn.textContent = this.ui.state.playbackRate + "x";
-      btn.classList.toggle("active", this.ui.state.playbackRate !== 1);
-    }
-  }
-
-  toggleSleepTimer() {
-    this.openSleepMenu();
-  }
-
-  openSleepMenu() {
-    const state = this.ui.state;
-    const minutes = [5, 15, 30, 45, 60];
-    const activeMin = state.sleepTimerEndsAt
-      ? Math.round((state.sleepTimerEndsAt - Date.now()) / 60000)
-      : null;
-
-    state.modalOpen(`
-      <div data-modal="sleep" class="sleep-menu">
-        <div class="head"><h2 class="title">Sleep Timer</h2>
-          <button onclick="window.closeModal()" class="close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
-        </div>
-        <div data-list="options" class="sleep-options">
-          ${minutes
-            .map(
-              (m) =>
-                `<button class="sleep-option ${activeMin === m ? "active" : ""}" data-sleep-min="${m}"><span class="sleep-option-label">${m} minutes</span></button>`
-            )
-            .join("")}
-          <button class="sleep-option ${state.sleepTimerTrackEnd ? "active" : ""}" data-sleep-track="1"><span class="sleep-option-label">End of current track</span></button>
-          <button class="sleep-option sleep-option-off" data-sleep-off="1"><span class="sleep-option-label">Off</span></button>
-        </div>
-      </div>
-    `);
-
-    document
-      .querySelectorAll("#modal [data-sleep-min]")
-      .forEach((btn) =>
-        btn.addEventListener("click", () => this.setSleepTimer(parseInt(btn.dataset.sleepMin, 10)))
-      );
-
-    document
-      .querySelector("#modal [data-sleep-track]")
-      ?.addEventListener("click", () => this.setSleepTrackEnd());
-
-    document.querySelector("#modal [data-sleep-off]")?.addEventListener("click", () => {
-      this.clearSleepTimer();
-      state.modalClose();
-    });
-  }
-
-  setSleepTimer(minutes) {
-    const state = this.ui.state;
-    this.clearSleepTimer({ silent: true });
-
-    state.sleepTimerEndsAt = Date.now() + minutes * 60 * 1000;
-    state.sleepTimerId = setTimeout(() => this.fireSleepTimer(), minutes * 60 * 1000);
-
-    document.getElementById("sleep-btn")?.classList.add("active");
-    this.startSleepBadge();
-    state.modalClose();
-    state.showToast(`Sleep timer: ${minutes} min`);
-  }
-
-  setSleepTrackEnd() {
-    const state = this.ui.state;
-    this.clearSleepTimer({ silent: true });
-
-    state.sleepTimerTrackEnd = true;
-    document.getElementById("sleep-btn")?.classList.add("active");
-    this.updateSleepBadge();
-    state.modalClose();
-    state.showToast("Sleep timer: stops after the current track");
-  }
-
-  clearSleepTimer({ silent = false } = {}) {
-    const state = this.ui.state;
-
-    if (state.sleepTimerId) clearTimeout(state.sleepTimerId);
-    state.sleepTimerId = null;
-    state.sleepTimerEndsAt = null;
-    state.sleepTimerTrackEnd = false;
-
-    if (this.sleepBadgeTimer) {
-      clearInterval(this.sleepBadgeTimer);
-      this.sleepBadgeTimer = null;
-    }
-
-    document.getElementById("sleep-btn")?.classList.remove("active");
-    this.updateSleepBadge();
-
-    if (!silent) state.showToast("Sleep timer off");
-  }
-
-  fireSleepTimer() {
-    const state = this.ui.state;
-    state.sleepTimerId = null;
-    state.sleepTimerEndsAt = null;
-
-    if (state.isPlaying) this.ui.audioPlayer.togglePlay();
-
-    this.clearSleepTimer({ silent: true });
-    state.showToast("Sleep timer ended");
-  }
-
-  startSleepBadge() {
-    if (this.sleepBadgeTimer) clearInterval(this.sleepBadgeTimer);
-    this.updateSleepBadge();
-    this.sleepBadgeTimer = setInterval(() => this.updateSleepBadge(), 1000);
-  }
-
-  updateSleepBadge() {
-    const btn = document.getElementById("sleep-btn");
-    if (!btn) return;
-
-    const state = this.ui.state;
-    let badge = btn.querySelector(".sleep-badge");
-    const remaining = state.sleepTimerEndsAt
-      ? Math.max(0, state.sleepTimerEndsAt - Date.now())
-      : null;
-
-    if (remaining == null && !state.sleepTimerTrackEnd) {
-      badge?.remove();
-      return;
-    }
-
-    if (!badge) {
-      badge = document.createElement("span");
-      badge.className = "sleep-badge";
-      btn.appendChild(badge);
-    }
-
-    badge.textContent = state.sleepTimerTrackEnd
-      ? "track"
-      : Utils.fmtTime(Math.ceil(remaining / 1000));
-  }
-
+// UTILS — original method bodies retained verbatim.
+class PlayerUtilsMethods {
   setupVisualizer() {
     const canvas = document.getElementById("visualizer");
     if (!canvas) return;
@@ -1870,6 +1888,122 @@ class PlayerManager {
     observer.observe(document.body, { childList: true, subtree: true });
   }
 }
+// Restore the original flat API; grouped methods also have namespaced aliases.
+for (const Group of [PlayerEventsMethods, PlayerControlsMethods, PlayerRenderMethods, PlayerSyncMethods, PlayerQueueMethods, PlayerUtilsMethods]) {
+  const descriptors = Object.getOwnPropertyDescriptors(Group.prototype);
+  delete descriptors.constructor;
+  Object.defineProperties(PlayerManager.prototype, descriptors);
+}
+window.MethodNamespaces.install(PlayerManager, {
+  "events": [
+    "bindAudioEvents",
+    "attachFullPlayerEvents",
+    "attachVideoControls"
+  ],
+  "controls": [
+    "openDrawer",
+    "closeDrawer",
+    "toggleQueue",
+    "openQueue",
+    "closeQueue",
+    "toggleLyrics",
+    "toggleShare",
+    "cycleSpeed",
+    "toggleSleepTimer",
+    "openSleepMenu",
+    "setSleepTimer",
+    "setSleepTrackEnd",
+    "clearSleepTimer",
+    "fireSleepTimer",
+    "startSleepBadge",
+    "updateSleepBadge"
+  ],
+  "render": [
+    "renderMiniPlayer",
+    "renderFullPlayer",
+    "softUpdateDrawer",
+    "renderVideoInfo",
+    "renderQueueList"
+  ],
+  "sync": [
+    "startProgressLoop",
+    "stopProgressLoop",
+    "setPlayingUI",
+    "updateProgressOnly",
+    "showCoverBuffer",
+    "hideCoverBuffer",
+    "applyPlaybackErrorState"
+  ],
+  "queue": [
+    "moveQueueItem",
+    "removeQueueItem",
+    "clearQueue",
+    "saveQueueAsPlaylist"
+  ],
+  "utils": [
+    "setupVisualizer"
+  ]
+});
+
+
+// AudioEngine: logically named method accessors; original API remains available.
+window.MethodNamespaces.install(AudioEngine, {
+  "controls": [
+    "playSong",
+    "togglePlay",
+    "skipForward",
+    "skipBack",
+    "setVolume",
+    "toggleMute",
+    "toggleShuffle",
+    "cycleRepeat"
+  ],
+  "events": [
+    "on",
+    "off",
+    "emit",
+    "handleEnded"
+  ],
+  "sync": [
+    "init",
+    "restorePlaybackState",
+    "setMediaSessionManager"
+  ],
+  "stats": [
+    "trackRecently",
+    "trackPlayCount"
+  ]
+});
+
+// MediaSessionManager: logically named method accessors; original API remains available.
+window.MethodNamespaces.install(MediaSessionManager, {
+  "metadata": [
+    "imageCompiler",
+    "buildMetadata",
+    "reapplyMetadata",
+    "updateMetadata",
+    "clearMetadata",
+    "resolveSong",
+    "detectMimeType"
+  ],
+  "events": [
+    "setupActions",
+    "attachAudio",
+    "detachAudio"
+  ],
+  "sync": [
+    "updatePlaybackState",
+    "updatePositionState",
+    "seekTo"
+  ],
+  "utils": [
+    "isSupported",
+    "isValidPosition"
+  ],
+  "lifecycle": [
+    "destroy"
+  ]
+});
 
 window.AUDIO_CDN_BASE = AUDIO_CDN_BASE;
 window.PlayerState = PlayerState;

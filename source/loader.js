@@ -12,6 +12,130 @@
     artist: { files: ["artist.js"], className: "Artists" },
     "404": { files: ["error.js"], className: "Error404" },
   });
+  // Lazy page-specific method group definitions; installed on first import.
+  const routeGroups = {
+  "404": {
+    "views": [
+      "render"
+    ]
+  },
+  "library": {
+    "data": [
+      "allSongs",
+      "allAlbums",
+      "allArtists",
+      "allGenres"
+    ],
+    "views": [
+      "albumCard",
+      "albumRow",
+      "artistCard",
+      "artistRow",
+      "playlistCard",
+      "genreCard",
+      "songRow",
+      "emptyState",
+      "sectionHead",
+      "contentFor",
+      "render"
+    ],
+    "events": [
+      "bindWhenReady",
+      "bindEvents"
+    ],
+    "sync": [
+      "hydrateAll",
+      "refreshContent",
+      "hydrate"
+    ],
+    "menus": [
+      "closeMenus",
+      "openMenu",
+      "openFilterMenu",
+      "openSortMenu"
+    ],
+    "controls": [
+      "playArtist"
+    ],
+    "utils": [
+      "minutes",
+      "esc",
+      "pipeline",
+      "countFor",
+      "viewMeta",
+      "sortLabel",
+      "getRoot"
+    ]
+  },
+  "artist": {
+    "views": [
+      "render",
+      "renderFull",
+      "renderHeader",
+      "renderAlbumTabs",
+      "renderHeroCover",
+      "renderMetaSummary",
+      "renderSongsList",
+      "createSongRow",
+      "similarMarquee"
+    ],
+    "events": [
+      "bindWhenReady",
+      "bindSimilarPills",
+      "bindAlbumTabsClick"
+    ],
+    "sync": [
+      "afterRender",
+      "scrollHeroIntoView",
+      "watchAlbumTabsPin",
+      "pinTop"
+    ],
+    "utils": [
+      "getRoot"
+    ]
+  },
+  "favorites": {
+    "views": [
+      "emptyState",
+      "renderSongCards",
+      "renderAlbumCards",
+      "renderArtistCards",
+      "renderPlaylistCards",
+      "render",
+      "tabContent"
+    ],
+    "events": [
+      "bindWhenReady"
+    ]
+  },
+  "playlists": {
+    "views": [
+      "render",
+      "playlistsGrid",
+      "playlistViewer"
+    ],
+    "controls": [
+      "viewPlaylist",
+      "openCreateModal"
+    ]
+  },
+  "createPlaylist": {
+    "views": [
+      "render",
+      "coverPreview"
+    ],
+    "controls": [
+      "reset"
+    ]
+  },
+  "editPlaylist": {
+    "views": [
+      "render",
+      "coverPreview"
+    ]
+  }
+};
+
   const pending = new Map();
 
   async function importRoute(page) {
@@ -27,6 +151,98 @@
     const Class = window[definition.className];
     if (typeof Class !== "function") {
       throw new Error(`[RouteLoader] ${definition.className} did not register for ${page}`);
+    }
+    // Install grouped APIs only after Home's dynamic method extensions finish.
+    const groups = page === "home" ? {
+  "data": [
+    "buildSongs",
+    "buildAlbums",
+    "buildGenres",
+    "pickFeatured",
+    "getCounts",
+    "getDiscoverArtists",
+    "getRecent",
+    "getMostPlayed",
+    "getFavSummary"
+  ],
+  "utils": [
+    "shuffle",
+    "esc",
+    "iconChevronLeft",
+    "iconChevronRight",
+    "iconShuffle",
+    "sectionIconDiscover",
+    "sectionIconCollections",
+    "sectionIconGenres",
+    "musicNoteSvg",
+    "sectionTitle",
+    "actionButton",
+    "emptyNote"
+  ],
+  "views": [
+    "genreTile",
+    "renderHeader",
+    "playFeatured",
+    "renderGenres",
+    "songRow",
+    "rankRow",
+    "renderRecentlyPlayed",
+    "recentsEmptyState",
+    "renderNewRelease",
+    "renderMostPlayed",
+    "renderLibraryCard",
+    "favoritesCardInner",
+    "renderFavoritesCard",
+    "render"
+  ],
+  "loading": [
+    "bootstrap",
+    "refreshLoadedCards",
+    "bootstrapNewRelease",
+    "bootstrapDiscover",
+    "bootstrapRecent",
+    "bootstrapMostPlayed",
+    "bootstrapFavorites",
+    "patchCard"
+  ],
+  "discover": [
+    "discoverSongRow",
+    "discoverArtistCard",
+    "discoverNav",
+    "renderDiscover",
+    "moveDiscover",
+    "syncDiscover",
+    "rebuildDiscoverCard"
+  ],
+  "collections": [
+    "collectionCard",
+    "collectionsInner",
+    "renderCollections",
+    "syncCollections"
+  ],
+  "sync": [
+    "syncGenreFocus",
+    "clearGenreFocus",
+    "openGenre",
+    "isActive",
+    "onRecentlyPlayed",
+    "syncNowPlaying",
+    "syncFavorites",
+    "syncMostPlayed"
+  ],
+  "events": [
+    "bindWhenReady",
+    "getRoot",
+    "bindEvents",
+    "hydrateRow",
+    "bindLiveUpdates",
+    "handleCardFocus",
+    "clearCardFocus"
+  ]
+} : routeGroups[page];
+    if (groups && !Class.__mybeatsNamespacesInstalled) {
+      window.MethodNamespaces.install(Class, groups);
+      Object.defineProperty(Class, "__mybeatsNamespacesInstalled", { value: true });
     }
     return Class;
   }

@@ -2663,6 +2663,123 @@ class FavoritesPlaylistsManager {
 
 
 // ┌─────────── Globalizing ───────────┐
+// PopupsManager: namespaced method access with no changes to existing callers.
+window.MethodNamespaces.install(PopupsManager, {
+  "controls": [
+    "modal",
+    "dialog",
+    "dropdown",
+    "popover",
+    "tooltip",
+    "toast",
+    "closeType",
+    "closeAll"
+  ],
+  "events": [
+    "onKeyDown",
+    "enableTooltips",
+    "onTooltipEnter"
+  ],
+  "layout": [
+    "repositionPopups",
+    "updateToastStack",
+    "ensureToastContainer"
+  ],
+  "views": [
+    "showNotificationPanel",
+    "showSongMenu",
+    "showArtistPopover"
+  ],
+  "lifecycle": [
+    "register",
+    "unregister",
+    "cleanup",
+    "destroy"
+  ],
+  "utils": [
+    "_scheduleReposition",
+    "_fallbackCopy"
+  ]
+});
+
+// FavoritesPlaylistsManager: namespaced method access with no changes to existing callers.
+window.MethodNamespaces.install(FavoritesPlaylistsManager, {
+  "favorites": [
+    "isSong",
+    "toggleSong",
+    "isArtist",
+    "toggleArtist",
+    "isAlbum",
+    "toggleAlbum",
+    "isPlaylist",
+    "togglePlaylist"
+  ],
+  "playlists": [
+    "getPlaylist",
+    "createPlaylist",
+    "renamePlaylist",
+    "updateDesc",
+    "updateTags",
+    "deletePlaylist",
+    "reorderSongs",
+    "removeSongFromPlaylist",
+    "addSongToPlaylist",
+    "createNewPlaylist",
+    "editPlaylist",
+    "addToPlaylistModal"
+  ],
+  "views": [
+    "openModal",
+    "coverPreview",
+    "playlistIcon",
+    "confirmDelete"
+  ],
+  "sync": [
+    "_notify",
+    "_pagesShowingFavorites",
+    "_refreshFavoritesViewIfVisible",
+    "_refreshPlaylistsListIfVisible",
+    "_refreshPlaylistIfEditing"
+  ],
+  "utils": [
+    "toast"
+  ]
+});
+
+// HeartButtonManager: namespaced method access with no changes to existing callers.
+window.MethodNamespaces.install(HeartButtonManager, {
+  "events": [
+    "bindAll",
+    "bindOne"
+  ],
+  "sync": [
+    "syncEntity",
+    "syncAll",
+    "prune"
+  ],
+  "controls": [
+    "toggle",
+    "notify",
+    "set"
+  ],
+  "lifecycle": [
+    "destroy"
+  ]
+});
+
+// HeartStore: namespaced method access with no changes to existing callers.
+window.MethodNamespaces.install(HeartStore, {
+  "controls": [
+    "is",
+    "setOverride",
+    "clearOverride",
+    "set"
+  ],
+  "utils": [
+    "makeKey"
+  ]
+});
+
 window.PopupsManager = PopupsManager;
 window.PopupsBase = PopupsBase;
 window.PopupsModal = PopupsModal;

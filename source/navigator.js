@@ -882,5 +882,51 @@ class AppNavigator {
   }
 }
 
+// Organized namespaced entry points; existing navigator methods remain unchanged.
+window.MethodNamespaces.install(AppNavigator, {
+  "navigation": [
+    "go",
+    "goHome",
+    "goLibrary",
+    "goFavorites",
+    "goPlaylists",
+    "goPlaylist",
+    "goEditPlaylist",
+    "goCreatePlaylist",
+    "goArtist",
+    "goTo",
+    "switchAlbum",
+    "_commit",
+    "_pageTransition"
+  ],
+  "sync": [
+    "syncFromUrl",
+    "syncWithUrl",
+    "onPopState",
+    "handlePopState",
+    "updateActiveNav",
+    "updateTitle",
+    "updateBreadcrumbs",
+    "toggleBreadcrumb"
+  ],
+  "routes": [
+    "pathFor",
+    "_libraryPath",
+    "_parsePlaylist",
+    "_parseArtist",
+    "_parseLibrary",
+    "_parseDiscover",
+    "_swapArtistSections"
+  ],
+  "utils": [
+    "_normalize",
+    "normalizePath",
+    "_push",
+    "setUrl",
+    "_renderCrumbs",
+    "getBreadcrumbs"
+  ]
+});
+
 window.Spinner = Spinner;
 window.AppNavigator = AppNavigator;
