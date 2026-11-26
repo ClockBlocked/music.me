@@ -1165,3 +1165,48 @@ window.SearchUtils = SearchUtils;
 window.PersistenceManager = PersistenceManager;
 window.NProgress = NProgress;
 window.Icons = Icons;
+
+// ////////////////////////////////////////////////////////////////////////
+// Method namespaces: organized access without breaking legacy method calls.
+// ////////////////////////////////////////////////////////////////////////
+// Example: player.controls.openQueue() and player.openQueue() invoke the
+// SAME original method with the SAME instance (this) and arguments.
+// Namespaces are lazily created per instance, never on every getter access.
+class MethodNamespaces {
+  static install(Target, groups) {
+    if (typeof Target !== "function") throw new TypeError("Target must be a class");
+    for (const [groupName, names] of Object.entries(groups)) {
+      if (groupName in Target.prototype) {
+        throw new Error(`[MethodNamespaces] ${Target.name}.${groupName} already exists`);
+      }
+      const methods = Array.isArray(names)
+        ? Object.fromEntries(names.map((name) => [name, name]))
+        : names;
+      for (const [alias, method] of Object.entries(methods)) {
+        if (typeof Target.prototype[method] !== "function") {
+          throw new Error(`[MethodNamespaces] Missing ${Target.name}.${method} for ${groupName}.${alias}`);
+        }
+      }
+      const cache = new WeakMap();
+      Object.defineProperty(Target.prototype, groupName, {
+        configurable: true,
+        enumerable: false,
+        get() {
+          if (!cache.has(this)) {
+            const namespace = Object.create(null);
+            for (const [alias, method] of Object.entries(methods)) {
+              Object.defineProperty(namespace, alias, {
+                enumerable: true,
+                value: (...args) => this[method](...args),
+              });
+            }
+            cache.set(this, Object.freeze(namespace));
+          }
+          return cache.get(this);
+        },
+      });
+    }
+    return Target;
+  }
+}
+window.MethodNamespaces = MethodNamespaces;
