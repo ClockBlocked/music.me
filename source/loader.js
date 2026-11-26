@@ -12,6 +12,130 @@
     artist: { files: ["artist.js"], className: "Artists" },
     "404": { files: ["error.js"], className: "Error404" },
   });
+  // Lazy page-specific method group definitions; installed on first import.
+  const routeGroups = {
+  "404": {
+    "views": [
+      "render"
+    ]
+  },
+  "library": {
+    "data": [
+      "allSongs",
+      "allAlbums",
+      "allArtists",
+      "allGenres"
+    ],
+    "views": [
+      "albumCard",
+      "albumRow",
+      "artistCard",
+      "artistRow",
+      "playlistCard",
+      "genreCard",
+      "songRow",
+      "emptyState",
+      "sectionHead",
+      "contentFor",
+      "render"
+    ],
+    "events": [
+      "bindWhenReady",
+      "bindEvents"
+    ],
+    "sync": [
+      "hydrateAll",
+      "refreshContent",
+      "hydrate"
+    ],
+    "menus": [
+      "closeMenus",
+      "openMenu",
+      "openFilterMenu",
+      "openSortMenu"
+    ],
+    "controls": [
+      "playArtist"
+    ],
+    "utils": [
+      "minutes",
+      "esc",
+      "pipeline",
+      "countFor",
+      "viewMeta",
+      "sortLabel",
+      "getRoot"
+    ]
+  },
+  "artist": {
+    "views": [
+      "render",
+      "renderFull",
+      "renderHeader",
+      "renderAlbumTabs",
+      "renderHeroCover",
+      "renderMetaSummary",
+      "renderSongsList",
+      "createSongRow",
+      "similarMarquee"
+    ],
+    "events": [
+      "bindWhenReady",
+      "bindSimilarPills",
+      "bindAlbumTabsClick"
+    ],
+    "sync": [
+      "afterRender",
+      "scrollHeroIntoView",
+      "watchAlbumTabsPin",
+      "pinTop"
+    ],
+    "utils": [
+      "getRoot"
+    ]
+  },
+  "favorites": {
+    "views": [
+      "emptyState",
+      "renderSongCards",
+      "renderAlbumCards",
+      "renderArtistCards",
+      "renderPlaylistCards",
+      "render",
+      "tabContent"
+    ],
+    "events": [
+      "bindWhenReady"
+    ]
+  },
+  "playlists": {
+    "views": [
+      "render",
+      "playlistsGrid",
+      "playlistViewer"
+    ],
+    "controls": [
+      "viewPlaylist",
+      "openCreateModal"
+    ]
+  },
+  "createPlaylist": {
+    "views": [
+      "render",
+      "coverPreview"
+    ],
+    "controls": [
+      "reset"
+    ]
+  },
+  "editPlaylist": {
+    "views": [
+      "render",
+      "coverPreview"
+    ]
+  }
+};
+
   const pending = new Map();
 
   async function importRoute(page) {
@@ -29,8 +153,7 @@
       throw new Error(`[RouteLoader] ${definition.className} did not register for ${page}`);
     }
     // Install grouped APIs only after Home's dynamic method extensions finish.
-    if (page === "home" && !Class.prototype.events) {
-      window.MethodNamespaces.install(Class, {
+    const groups = page === "home" ? {
   "data": [
     "buildSongs",
     "buildAlbums",
@@ -116,7 +239,10 @@
     "handleCardFocus",
     "clearCardFocus"
   ]
-});
+} : routeGroups[page];
+    if (groups && !Class.__mybeatsNamespacesInstalled) {
+      window.MethodNamespaces.install(Class, groups);
+      Object.defineProperty(Class, "__mybeatsNamespacesInstalled", { value: true });
     }
     return Class;
   }
