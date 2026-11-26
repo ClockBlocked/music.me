@@ -1946,6 +1946,65 @@ window.MethodNamespaces.install(PlayerManager, {
 });
 
 
+// AudioEngine: logically named method accessors; original API remains available.
+window.MethodNamespaces.install(AudioEngine, {
+  "controls": [
+    "playSong",
+    "togglePlay",
+    "skipForward",
+    "skipBack",
+    "setVolume",
+    "toggleMute",
+    "toggleShuffle",
+    "cycleRepeat"
+  ],
+  "events": [
+    "on",
+    "off",
+    "emit",
+    "handleEnded"
+  ],
+  "sync": [
+    "init",
+    "restorePlaybackState",
+    "setMediaSessionManager"
+  ],
+  "stats": [
+    "trackRecently",
+    "trackPlayCount"
+  ]
+});
+
+// MediaSessionManager: logically named method accessors; original API remains available.
+window.MethodNamespaces.install(MediaSessionManager, {
+  "metadata": [
+    "imageCompiler",
+    "buildMetadata",
+    "reapplyMetadata",
+    "updateMetadata",
+    "clearMetadata",
+    "resolveSong",
+    "detectMimeType"
+  ],
+  "events": [
+    "setupActions",
+    "attachAudio",
+    "detachAudio"
+  ],
+  "sync": [
+    "updatePlaybackState",
+    "updatePositionState",
+    "seekTo"
+  ],
+  "utils": [
+    "isSupported",
+    "isValidPosition"
+  ],
+  "lifecycle": [
+    "destroy"
+  ]
+});
+
 window.AUDIO_CDN_BASE = AUDIO_CDN_BASE;
 window.PlayerState = PlayerState;
 window.AudioEngine = AudioEngine;
